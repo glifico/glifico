@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from 77.93.251.227/glifico/portal.nsf/terms.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:07:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookiebar.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.cookiebar.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/simple-line-icons/simple-line-icons.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.min.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/skins/navbar-inverse.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/animation/animation.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="main.css">
+<script type="text/javascript" src="functions.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+var sysIsLogged=false;var sysUsername='Anonymous';
+</script>
+
+		<link rel="styleSheet" href="angularjs/select.css"/>
+		<link rel="styleSheet" href="angularjs/select2.css"/>
+		<link rel="styleSheet" href="angularjs/selectize.default.css"/>
+		<link rel="styleSheet" href="angularjs/angular-material.min.css"/>
+		<link rel="styleSheet" href="angularjs/textAngular.css"/>
+		<script src="angularjs/api-check.min.js"></script>
+		<script src="angularjs/angular.js"></script>
+		<script src="angularjs/angular-route.js"></script>
+		<script src="angularjs/angular-resource.js"></script>	
+		<script src="angularjs/angular-animate.js"></script>	
+		<script src="angularjs/angular-aria.min.js"></script>
+		<script src="angularjs/textAngular-rangy.min.js"></script>
+		<script src="angularjs/textAngular.min.js"></script>	
+		<script src="angularjs/angular-material.min.js"></script>
+		<script src="angularjs/angular-touch.js"></script>	
+		
+		<script src="angularjs/formly.min.js"></script>
+		<script src="angularjs/formly-material.min.js"></script>	
+		<script src="angularjs/select.js"></script>	
+		<script src="angularjs/angular-sanitize.js"></script>	
+		<script src="angularjs/angular-messages.min.js"></script>	
+		<script src="angularjs/ui-bootstrap-tpls.js"></script>	
+		<script src="angularjs/ng-upload.js"></script>
+		
+		<link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
+		<script src="angularjs/ui-grid.min.js"></script>		
+	
+	
+	<!-- custom templates -->
+    <script type="text/ng-template" id="ui-select-single.html">
+      <ui-select data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
+        <ui-select-match placeholder="{{to.placeholder}}" data-allow-clear="true">{{$select.selected}}</ui-select-match>
+        <ui-select-choices data-repeat="option as option in to.options | filter: $select.search">
+          <div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </script>
+    <script type="text/ng-template" id="ui-select-multiple.html">
+      <ui-select multiple data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
+        <ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
+        <ui-select-choices data-repeat="option as option in to.options | filter: $select.search">
+          <div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </script>
+	<script type="text/ng-template" id="ui-tagging.html">
+		<ui-select multiple tagging="tagTransform" tagging-label="(nuovo)" data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap" sortable="true">
+		<ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
+		<ui-select-choices data-repeat="option in to.options | filter: $select.search">
+          <div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+		</ui-select>
+	</script>
+	<script type="text/ng-template" id="ui-tagging-single.html">
+		<ui-select tagging tagging-label="(nuovo)" data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap" sortable="true">
+		<ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
+		<ui-select-choices data-repeat="option in to.options | filter: $select.search">
+		<div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+		</ui-select>
+	</script>
+
+<script>var isLogged = false;
+var isAgenzia = null;
+</script><nav class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button class="navbar-toggle" data-target="#MegaNavbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand navbar-left" href="index.html"><i class="fa fa-home"></i><span class="reverse" style="font-size:22px;">GLIFICO</span></a></div><div class="collapse navbar-collapse" id="MegaNavbar"><ul class="nav navbar-nav navbar-left"><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="contacts.html">Contact</a></li></ul><ul class="nav navbar-nav navbar-right"><li id="li-rating"><a href="socialRating.html"></a></li><li id="li-trad"><a href="socialTrad.html"></a></li><li id="li-skill"><a href="skillTest.html"></a></li><li class="dropdown-grid" style="position: static;"><a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()"><div><span class="reverse"><span id="view:_id4:computedField1"><script>function modalLogin(){  $('#loginModal').modal('show');}</script><span onClick="modalLogin()">Register / Login</span></span></span></div>
+</a></li></ul></div></div></nav><div aria-labelledby="myModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"></span></button><h4 class="modal-title" id="myModalLabel">Welcome, register or login at GLIFICO</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a data-toggle="tab" href="#login">Login</a></li><li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li><li><a data-toggle="tab" href="#regAg">Registration Agency</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" id="login"><form class="form-horizontal"><fieldset><div class="form-group"><div class="col-md-12"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput" id="user">User:</label><div class="col-md-4"><input autofocus="autofocus" class="form-control input-md" id="textinput" name="textinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="User.." type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="passwordinput">Password:</label><div class="col-md-4"><input class="form-control input-md" id="passwordinput" name="passwordinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="Password..." type="password"></div></div><div class="alert alert-danger" id="errorPanel" style="display:none;"><strong>Attenzione!</strong>Impossibile accedere. Utente o password errati.</div><div class="form-group"><label class="col-md-4 control-label" for="button1id"></label><div class="col-md-8"><button IsDefault="false" class="btn btn-success" id="button1id" name="button1id" onClick="doDominoLogin()" type="button">Login</button></div></div></fieldset></form></div><div class="tab-pane fade" id="regTrad">
+<div id="regTradAPP" ng-controller="MainController_regTrad as vmMainController_regTrad">
+    <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
+        <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
+            <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
+        </formly-form>
+    </form>
+</div>
+
+<script>
+    (function() {
+
+        'use strict';
+
+        var app = angular.module('regTrad', ['formly', 'ngMessages', 'formlyMaterial','ui.select','ngSanitize','ngAria','ngAnimate','ngMaterial','textAngular']);
+        app.constant('formlyExampleApiCheck', apiCheck());
+        app.run(function(formlyConfig) {
+            // NOTE: This next line is highly recommended. Otherwise Chrome's autocomplete will appear over your options!
+            formlyConfig.extras.removeChromeAutoComplete = true;
+
+            // Configure custom types
+            formlyConfig.setType({
+                name: 'ui-select-single',
+                'extends': 'select',
+                templateUrl: 'ui-select-single.html'
+            });
+            formlyConfig.setType({
+                name: 'ui-select-multiple',
+                'extends': 'select',
+                templateUrl: 'ui-select-multiple.html'
+            });
+            formlyConfig.setType({
+                name: 'ui-tagging',
+                'extends': 'select',
+                templateUrl: 'ui-tagging.html'
+            });
+            formlyConfig.setType({
+                name: 'ui-tagging-single',
+                'extends': 'select',
+                templateUrl: 'ui-tagging-single.html'
+            });
+
+            formlyConfig.setType({
+                name: 'richEditor',
+                template: '<text-angular ng-model="model[options.key]" ta-disabled="{{to.disabled}}"></text-angular>'
+            });
+
+//INIZIO BLOCCO VALIDAZIONE CAMPO FIELDTOMATCH
+		      formlyConfig.setType({
+		        name: 'matchField',
+		        apiCheck: function() {
+		            return {
+		                data: {
+		                    fieldToMatch: formlyExampleApiCheck.string
+		                }
+		            }
+		        },
+		        apiCheckOptions: {
+		            prefix: 'matchField type'
+		        },
+		        defaultOptions: function matchFieldDefaultOptions(options) {
+		            return {
+		                extras: {
+		                    validateOnModelChange: true
+		                },
+		                expressionProperties: {
+		                    'templateOptions.disabled': function(viewValue, modelValue, scope) {
+		                        var matchField = find(scope.fields, 'key', options.data.fieldToMatch);
+		                        if (!matchField) {
+		                            throw new Error('Could not find a field for the key ' + options.data.fieldToMatch);
+		                        }
+		                        var model = options.data.modelToMatch || scope.model;
+		                        var originalValue = model[options.data.fieldToMatch];
+		                        var invalidOriginal = matchField.formControl && matchField.formControl.$invalid;
+		                        return !originalValue || invalidOriginal;
+		                    }
+		                },
+		                validators: {
+		                    fieldMatch: {
+		                        expression: function(viewValue, modelValue, fieldScope) {
+		                            var value = modelValue || viewValue;
+		                            var model = options.data.modelToMatch || fieldScope.model;
+		                            return value === model[options.data.fieldToMatch];
+		                        },
+		                        message: options.data.matchFieldMessage || '"Must match"'
+		                    }
+		                }
+		            };
+
+		            function find(array, prop, value) {
+		                var foundItem;
+		                array.some(function(item) {
+		                    if (item[prop] === value) {
+		                        foundItem = item;
+		                    }
+		                    return !!foundItem;
+		                });
+		                return foundItem;
+		            }
+		        }
+		    });
+//FINE BLOCCO VALIDAZIONE CAMPO FIELDTOMATCH
+        });
+    })();
+
+
+    var editMode = false;
+    var QueryString = function() {
+        // This function is anonymous, is executed immediately and
+        // the return value is assigned to QueryString!
+        var query_string = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for ( var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            // If first entry with this name
+            if (typeof query_string[pair[0]] === "undefined") {
+                query_string[pair[0]] = decodeURIComponent(pair[1]);
+                // If second entry with this name
+            } else if (typeof query_string[pair[0]] === "string") {
+                var arr = [ query_string[pair[0]], decodeURIComponent(pair[1]) ];
+                query_string[pair[0]] = arr;
+                // If third or later entry with this name
+            } else {
+                query_string[pair[0]].push(decodeURIComponent(pair[1]));
+            }
+        }
+        return query_string;
+    }();
+    function strLeft(sourceStr, keyStr) {
+        return (sourceStr.indexOf(keyStr) == -1 | keyStr == '') ? '' : sourceStr
+                .split(keyStr)[0];
+    }
+
+    ( function() {
+
+        'use strict';
+
+        angular.module('regTrad').controller('MainController_regTrad',
+                [ '$http','$timeout', MainController_regTrad ]);
+
+        function MainController_regTrad($http,$timeout) {
+            var vmMainController_regTrad = this;
+//		$http.get('rest.xsp?api=newMail').success( function(data) {
+//
+//			});
+            vmMainController_regTrad.fields = [ {
+                className : "row",
+                fieldGroup : [{
+                    className : "col-md-6",
+                    key : "FirstName",
+                    type : 'input',
+                    templateOptions : {
+                        label: "First Name",
+                        required: true
+                    }
+                },{
+                    className : "col-md-6",
+                    key : "LastName",
+                    type : 'input',
+                    templateOptions : {
+                        label: "Last Name",
+                        required: true
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "VATCode",
+                    type : 'input',
+                    templateOptions : {
+                        label: "VAT Code/Fiscal Code",
+                        required: false
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "Email",
+                    type : 'input',
+                    templateOptions : {
+                        label: "Email",
+                        required: true
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "Username",
+                    type : 'input',
+                    templateOptions : {
+                        label: "Username",
+                        required: true,
+                        placeholder: "Must be at least 7 characters",
+                        minlength: 7,
+                        onKeydown: function(value, options) {
+				            options.validation.show = false;
+				        }
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "Password",
+                    type : 'input',
+                    templateOptions : {
+                        type : "password",
+                        label: "Password",
+                        required: true,
+                        placeholder: "Must be at least 7 characters",
+                        minlength: 7
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "RepeatPassword",
+                    type : 'input',
+                    optionsTypes: [
+      					"matchField"
+    				],
+    				model: vmMainController_regTrad.confirmationModel,
+                    templateOptions : {
+                        type: "password",
+                        label: "Repeat Password",
+                        "placeholder": "Please re-enter your password",
+                        required: true
+                    },
+                    data: {
+				    	fieldToMatch: "Password",
+				    	modelToMatch: vmMainController_regTrad.model
+				    }
+                },{
+			        key: 'TermsVersion',
+			        type: 'checkbox',
+			        templateOptions: {
+			          label: 'I have read and accept GLIFICO Terms And Conditions',
+			          required: true
+			        }
+			      }]
+            }
+            ];
+            vmMainController_regTrad.submit = function() {
+                $http
+                        .post('rest.xsp?api=save&type=registraTraduttore&id=0', vmMainController_regTrad.model)
+                        .success(
+                                function(data) {
+                                    var ret = eval(data);
+                                    if (ret == undefined || ret[0] == undefined
+                                            || ret[0].data == undefined) {
+                                        $('#alertError').fadeIn().delay(10000)
+                                                .fadeOut();
+                                        $('#alertError')
+                                                .html(
+                                                        "Si è verificato un errore inaspettato");
+                                    } else if (ret[0].data.status != undefined
+                                            && ret[0].data.status.toLowerCase() == "error") {
+                                        $('#alertError').fadeIn().delay(10000)
+                                                .fadeOut();
+                                        if (ret[0].data.msg == undefined
+                                                || ret[0].data.msg == "") {
+                                            $('#alertError').html(
+                                                    "Si è verificato un errore.");
+                                        } else {
+                                        	var stringval=ret[0].data.msg
+                                        	if(stringval.indexOf("Cannot insert duplicate key") != -1){
+                                        		var errorField = strRight(ret[0].data.msg,"Index:");
+                                        		errorField = strLeft(errorField,"_Unique");
+                                        		$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+                                        	}else{
+                                            	$('#alertError').html(ret[0].data.msg);
+                                            }
+                                        }
+                                    } else {
+                                        $('#alertOK').fadeIn().delay(10000)
+                                                .fadeOut();
+                                        $('#alertOK').html(
+                                                "Thanks. We have sent you an email with a confirmation link.");
+                                    }
+                                    $('#loginModal').modal('hide');
+                                });
+            }
+        }
+
+    })();
+
+    angular.element(document).ready(function() {
+        console.log("registro regTrad");
+        angular.bootstrap(document.getElementById('regTradAPP'), ['regTrad']);
+    });
+
+</script>
+<style>
+md-input-container{
+	width:100%;
+}
+</style>
+</div><div class="tab-pane fade" id="regAg">
+<div id="regAgeAPP" ng-controller="MainController_regAge as vmMainController_regAge">
+    <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
+        <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
+            <md-button type="submit" ng-click="vmMainController_regAge.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regAge.form.$invalid">Register!</md-button>
+        </formly-form>
+    </form>
+</div>
+
+<script>
+    (function() {
+
+        'use strict';
+
+        var app = angular.module('regAge', ['formly', 'ngMessages', 'formlyMaterial','ui.select','ngSanitize','ngAria','ngAnimate','ngMaterial','textAngular']);
+        app.constant('formlyExampleApiCheck', apiCheck());
+        app.run(function(formlyConfig) {
+            // NOTE: This next line is highly recommended. Otherwise Chrome's autocomplete will appear over your options!
+            formlyConfig.extras.removeChromeAutoComplete = true;
+
+            // Configure custom types
+            formlyConfig.setType({
+                name: 'ui-select-single',
+                'extends': 'select',
+                templateUrl: 'ui-select-single.html'
+            });
+            formlyConfig.setType({
+                name: 'ui-select-multiple',
+                'extends': 'select',
+                templateUrl: 'ui-select-multiple.html'
+            });
+            formlyConfig.setType({
+                name: 'ui-tagging',
+                'extends': 'select',
+                templateUrl: 'ui-tagging.html'
+            });
+            formlyConfig.setType({
+                name: 'ui-tagging-single',
+                'extends': 'select',
+                templateUrl: 'ui-tagging-single.html'
+            });
+
+            formlyConfig.setType({
+                name: 'richEditor',
+                template: '<text-angular ng-model="model[options.key]" ta-disabled="{{to.disabled}}"></text-angular>'
+            });
+
+//INIZIO BLOCCO VALIDAZIONE CAMPO FIELDTOMATCH
+		      formlyConfig.setType({
+		        name: 'matchField',
+		        apiCheck: function() {
+		            return {
+		                data: {
+		                    fieldToMatch: formlyExampleApiCheck.string
+		                }
+		            }
+		        },
+		        apiCheckOptions: {
+		            prefix: 'matchField type'
+		        },
+		        defaultOptions: function matchFieldDefaultOptions(options) {
+		            return {
+		                extras: {
+		                    validateOnModelChange: true
+		                },
+		                expressionProperties: {
+		                    'templateOptions.disabled': function(viewValue, modelValue, scope) {
+		                        var matchField = find(scope.fields, 'key', options.data.fieldToMatch);
+		                        if (!matchField) {
+		                            throw new Error('Could not find a field for the key ' + options.data.fieldToMatch);
+		                        }
+		                        var model = options.data.modelToMatch || scope.model;
+		                        var originalValue = model[options.data.fieldToMatch];
+		                        var invalidOriginal = matchField.formControl && matchField.formControl.$invalid;
+		                        return !originalValue || invalidOriginal;
+		                    }
+		                },
+		                validators: {
+		                    fieldMatch: {
+		                        expression: function(viewValue, modelValue, fieldScope) {
+		                            var value = modelValue || viewValue;
+		                            var model = options.data.modelToMatch || fieldScope.model;
+		                            return value === model[options.data.fieldToMatch];
+		                        },
+		                        message: options.data.matchFieldMessage || '"Must match"'
+		                    }
+		                }
+		            };
+
+		            function find(array, prop, value) {
+		                var foundItem;
+		                array.some(function(item) {
+		                    if (item[prop] === value) {
+		                        foundItem = item;
+		                    }
+		                    return !!foundItem;
+		                });
+		                return foundItem;
+		            }
+		        }
+		    });
+//FINE BLOCCO VALIDAZIONE CAMPO FIELDTOMATCH
+        });
+    })();
+
+
+    var editMode = false;
+    var QueryString = function() {
+        // This function is anonymous, is executed immediately and
+        // the return value is assigned to QueryString!
+        var query_string = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for ( var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            // If first entry with this name
+            if (typeof query_string[pair[0]] === "undefined") {
+                query_string[pair[0]] = decodeURIComponent(pair[1]);
+                // If second entry with this name
+            } else if (typeof query_string[pair[0]] === "string") {
+                var arr = [ query_string[pair[0]], decodeURIComponent(pair[1]) ];
+                query_string[pair[0]] = arr;
+                // If third or later entry with this name
+            } else {
+                query_string[pair[0]].push(decodeURIComponent(pair[1]));
+            }
+        }
+        return query_string;
+    }();
+    function strLeft(sourceStr, keyStr) {
+        return (sourceStr.indexOf(keyStr) == -1 | keyStr == '') ? '' : sourceStr
+                .split(keyStr)[0];
+    }
+
+    ( function() {
+
+        'use strict';
+
+        angular.module('regAge').controller('MainController_regAge',
+                [ '$http','$timeout', MainController_regAge ]);
+
+        function MainController_regAge($http,$timeout) {
+            var vmMainController_regAge = this;
+//		$http.get('rest.xsp?api=newMail').success( function(data) {
+//
+//			});
+            vmMainController_regAge.fields = [ {
+                className : "row",
+                fieldGroup : [{
+                    className : "col-md-12",
+                    key : "CompanyName",
+                    type : 'input',
+                    templateOptions : {
+                        label: "Company Name",
+                        required: true
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "FiscalCode",
+                    type : 'input',
+                    templateOptions : {
+                        label: "Fiscal Code",
+                        required: false
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "VATCode",
+                    type : 'input',
+                    templateOptions : {
+                        label: "VAT Code",
+                        required: false
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "Email",
+                    type : 'input',
+                    templateOptions : {
+                        label: "Email",
+                        required: true
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "Username",
+                    type : 'input',
+                    templateOptions : {
+                        label: "Username",
+                        required: true,
+                        placeholder: "Must be at least 7 characters",
+                        minlength: 7,
+                        onKeydown: function(value, options) {
+				            options.validation.show = false;
+				        }
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "Password",
+                    type : 'input',
+                    templateOptions : {
+                        type : "password",
+                        label: "Password",
+                        required: true,
+                        placeholder: "Must be at least 7 characters",
+                        minlength: 7
+                    }
+                },{
+                    className : "col-md-12",
+                    key : "RepeatPassword",
+                    type : 'input',
+                    optionsTypes: [
+      					"matchField"
+    				],
+    				model: vmMainController_regAge.confirmationModel,
+                    templateOptions : {
+                        type: "password",
+                        label: "Repeat Password",
+                        "placeholder": "Please re-enter your password",
+                        required: true
+                    },
+                    data: {
+				    	fieldToMatch: "Password",
+				    	modelToMatch: vmMainController_regAge.model
+				    }
+                },{
+			        key: 'TermsVersion',
+			        type: 'checkbox',
+			        templateOptions: {
+			          label: 'I have read and accept GLIFICO Terms And Conditions',
+			          required: true
+			        }
+			      }]
+            }
+            ];
+            vmMainController_regAge.submit = function() {
+                $http
+                        .post('rest.xsp?api=save&type=registraAgenzia&id=0', vmMainController_regAge.model)
+                        .success(
+                                function(data) {
+                                    var ret = eval(data);
+                                    if (ret == undefined || ret[0] == undefined
+                                            || ret[0].data == undefined) {
+                                        $('#alertError').fadeIn().delay(10000)
+                                                .fadeOut();
+                                        $('#alertError')
+                                                .html(
+                                                        "Si è verificato un errore inaspettato");
+                                    } else if (ret[0].data.status != undefined
+                                            && ret[0].data.status.toLowerCase() == "error") {
+                                        $('#alertError').fadeIn().delay(10000)
+                                                .fadeOut();
+                                        if (ret[0].data.msg == undefined
+                                                || ret[0].data.msg == "") {
+                                            $('#alertError').html(
+                                                    "Si è verificato un errore.");
+                                        } else {
+                                        	var stringval=ret[0].data.msg
+                                        	if(stringval.indexOf("Cannot insert duplicate key") != -1){
+                                        		var errorField = strRight(ret[0].data.msg,"Index:");
+                                        		errorField = strLeft(errorField,"_Unique");
+                                        		$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+                                        	}else{
+                                            	$('#alertError').html(ret[0].data.msg);
+                                            }
+                                        }
+                                    } else {
+                                        $('#alertOK').fadeIn().delay(10000)
+                                                .fadeOut();
+                                        $('#alertOK').html(
+                                                "Thanks. We have sent you an email with a confirmation link.");
+                                    }
+                                    $('#loginModal').modal('hide');
+                                });
+            }
+        }
+
+    })();
+
+    angular.element(document).ready(function() {
+        console.log("registro regAge");
+        angular.bootstrap(document.getElementById('regAgeAPP'), ['regAge']);
+    });
+
+</script>
+<style>
+md-input-container{
+	width:100%;
+}
+</style>
+</div></div></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Close</button></div></div></div></div><script>$(document).ready(function(){
+		$.cookieBar({
+		fixed: true,
+		message:'We use cookies to track usage and preferences and to improve our website',
+		effect: 'slide',
+		policyButton: true,
+		policyText: 'Click to see our full privacy policy',
+		policyURL: 'privacy.xsp',
+		acceptButton:
+		true,
+		acceptText: 'I Understand',
+		zindex:9999,
+		bottom: true
+		});
+		})</script><div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><div class="alert alert-success" id="alertOK" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><script type="text/javascript">
+if (!isAgenzia && isLogged) {
+	$("#li-rating").show();
+	$("#li-trad").show();
+	$("#li-skill").show();
+} else {
+	$("#li-rating").hide();
+	$("#li-trad").hide();
+	$("#li-skill").hide();
+	
+}
+</script>
+<br><br><div class="jumbotron jumboMain"><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><h2>Terms &amp; Conditions</h2></div></div><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><p><b><span>20 September 2016</span></b></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span>GlificoSrL ("Glifico" and/or "We") provides certain services on or through our website platform and mobile platform that can be found at </span><span>www.glifico.com </span><span>(the "Platform"). The Platform mediates between freelance professionals such as, but not limited to, translators, proof-readers and any other service providers (the "Service Providers" and the "Services" respectively) and buyers of the Services (the "Service Buyers") offered through the Platform.</span></p>
+<p><span></span></p>
+<p><span>GLIFICO OFFERS THE USE OF ITS PLATFORM TO YOU STRICTLY UNDER THE FOLLOWING TERMS AND CONDITIONS, WHICH ARE NON - NEGOTIABLE AND MAY BE AMENDED AFTER PROPER NOTICE HAS BEEN GIVEN TO YOU AT THE ABSOLUTE DISCRETION OF GLIFICO SUBJECT TO THE PROVISIONS OF THE TERMS BELOW.</span></p>
+<p><span></span></p>
+<p><span>BY ACCEPTING AND AGREEING TO THESE TERMS AND CONDITIONS (THE "TERMS AND CONDITIONS") BY ANY OF THE FOLLOWING: </span></p>
+<ol>
+	<li><span>SELECTING "I AGREE" TO THESE TERMS AND CONDITIONS, </span></li>
+	<li><span>BY COMPLETING THE REGISTRATION PROCESS,</span></li>
+	<li><span>BY USING THE WEB-BASED AND/OR MOBILE PLATFORM IN ANY WAY, SUCH AS DOWNLOADING OR UPLOADING ANY CONTENTS OR MAKING USE OF THE SERVICES MADE AVAILABLE VIA THE PLATFORM, OR </span></li>
+	<li><span>BY MERELY VISIT THE PLATFORM, YOU BECOME A CUSTOMER OF GLIFICO AND ACCEPT THE FOLLOWING TERMS AND CONDITIONS AND ENTER INTO A LEGAL AND BINDING AGREEMENT WITH GLIFICO.</span></li>
+</ol>
+<p><span>IN THESE TERMS AND CONDITIONS ALL REFERENCES TO YOU AND/OR YOUR AND/OR THE USER AND/OR THE CUSTOMER SHALL REFER TO THE PARTY ENTERING INTO THIS AGREEMENT WITH GLIFICO.</span></p>
+<p><span></span></p>
+<p><span>We strongly recommend that prior to using the Platform you carefully read through these Terms and Conditions and any linked documents, including the Privacy Policy. If you require further clarification you may contact us using the "contact us" instructions in the Platform.</span></p>
+<p><span></span></p>
+<ul>
+	<li><b><span>ACCEPTANCE OF TERMS/ ELIGIBILITY</span></b><ul><li><span>You may not use the Platform if you do not agree to the Terms and Conditions.</span></li><li><span>Further you may not use the Platform if: (i) you are prohibited by local laws and regulations from using the Platform and/or the Services; or (ii) you are not fully able and competent to enter into a binding contract with Glifico.</span></li><li><span>By using the Platform, you represent and warrant that you have the right, authority, and capacity to agree to these Terms and Conditions and to abide by them.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<p><span></span></p>
+<ul>
+	<li><b><span>PRIVACY POLICY</span></b></li>
+</ul>
+<p><span>Glifico’s protection of information and collection practises of information is reflected in the Glifico Privacy Policy (</span><span>Click Here for the Privacy Policy</span><span>) You agree toGlifico’s use of information in accordance with the Privacy Policy. </span></p>
+<p><span></span></p>
+<ul>
+	<li><b><span>REGISTRATION</span></b><ul><li><span>In order to be listed as a Services Provider in the Platform or in order to use the Platform and receive Services as a Services Buyer, you are required to register with Glifico and open an account ("Account").</span></li><li><span>In order to register with Glifico and open an Account you must supply a valid email address (which will be used as a unique identifier for Account), your name, and a password in addition to general and personal information about yourself, such as, but not limited to, languages you are proficient in. Your provision of such information constitutes approval for Glifico and/or its staff to use such information, or part thereof, for any purposes as described in these Terms &amp; Conditions.</span></li><li><span>For the purpose of using the Services, the Services Buyer must transfer to Glifico the fee required for the provisions of the Services by the Services Provider chosen by the Services Buyer, including any fee and/or commission required by Glifico. For the avoidance of doubt, Glifico will not commerce the Services from the Services Provider prior to the transfer of such payment to Glifico by the Services Buyer.</span></li><li><span>Upon your successful registration whether as a Service Provider or a Service Buyer, you become a member of the Platform ("Member"), and for as long as you remain a Member, you agree to comply with these Terms and Conditions. In case you only visit the website and you do not register as a Member you are still obliged to some of the provisions of these Terms and Conditions. You may be registered as Service Buyer or Service Provider. &nbsp;</span></li><li><span>Glifico assumes no responsibility whatsoever for your use of the Platform and/or Services. You are solely responsible for maintaining the confidentiality of your password and Account, and agree not to transfer your email address or password, or lend or otherwise transfer your use of or access to the Platform, to any third party.</span></li><li><span>You are also solely responsible for any and all activities that occur under your Account. You may change your password, or any other Account information, at any time by following instructions available on your Account page. If you misplace, forget or lose your password or username because of anything other than Glifico's error, Glifico shall not be liable for any direct or indirect loss associated with such occurrence.</span></li><li><span>You agree to immediately notify us of any unauthorized use of your Account or any other breach of security related to your Account or the Platform.</span></li><li><span>When you receive the Services or provide the Services through the Platform, you agree to: (i) provide certain current, complete, and accurate information about you when prompted to do so by the Platform, and (ii) maintain and update this information as required to keep it current, complete and accurate. If any information provided by you during your original registration is inaccurate, then Glifico reserves the right to terminate your Account immediately and your right to receive the Services or provide the Services and to use the Platform.</span></li><li><span>By opening an Account, you hereby represent, warrant, acknowledge and undertake that: (a) you shall not make any charge backs and/or deny or reverse any payment made by you in connection with the Services, and you shall reimburse Glifico for any loss or damage Glifico incurs as a result of any such action by you, and in any event you will promptly pay any and all of your debts to Glifico, and (b) you shall indemnify Glifico and hold Glifico, and its officers, directors, employees, agents, contractors and suppliers, harmless, from and against all claims, liabilities, damages, losses, costs and expenses, including legal fees, arising out of or in connection with any breach of these Terms and Conditions by you, and any other liabilities arising out of your use or provision of the Services, the use of the Platform or any unauthorized use or provision of the Services or use of the Platform by any third party using your Account.</span></li><li><span>Glifico shall not be liable for any loss or damage arising from your failure to comply with any of the foregoing obligations.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>OPERATION OF SERVICES</span></b><ul><li><span>Service Provider defines its own rate (in local currency) for the Services provided.</span></li><li><span>Service Buyer will select the preferred Service Provider based on general information, expertise, social rating, feedbacks and cost range (high, medium, low).</span></li><li><span>The Service cost will be defined (for each work/job) starting by the Service Provider rate, converted in Euro currency. The currency conversion will be done based on information received by major websites listing the currency conversion rates. The currency conversion rates will be updated once a week. In case of unavailability of the updated currency conversion rates, Glifico will use the last information previously downloaded. All the transactions will be managed in Euro (both the Service cost paid to Glifico by Service Buyer, as well as the payment of the Service recognized to the Service Provider by Glifico).</span></li><li><span>Once the Service has been terminated, the Service Buyer will be providedwith a preview of the work/job done. Accepting that imply the payment of the full Service cost. After the payment has been managed and received by Glifico, the Service Buyer receives the complete work/job. A five days period is planned to review the work done by the Service Buyer and, eventually, asking to Service Provider, via the Platform, possible explanation, review, enrichment, etc. At the end of the review period, the job has been considered fully completed and the Service Provider will be paid.</span></li><li><span>The review period is done by the Service Provider without recognition of any additional fee. As well at the Service Buyer will not be charged any additional fee for the review period.</span></li><li><span>Test area is provided with Grammar and Translation Test associated to your Account. The tests will be used to get an initial rating of the Service Provider. This rating will be displayed (based on a five starts scale) to the Service Buyers.</span></li><li><span>Social Rating is performed by Service Providers to evaluate other Service Providers in an anonymous way based on the same language skills<a></a>. The Service Providers performing the Social Rating will have an additional fee on his/her works.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<p><span></span></p>
+<ul>
+	<li><b><span>LICENSE TO USE AND ACCESS THE SERVICE</span></b><ul><li><span>Glifico hereby grants you, and you hereby accept a personal, revocable, non- transferable, non-exclusive, non-licensable license ("License") to use the Platform in order to utilize the Services or to provide the Services.</span></li><li><span>All intellectual property (including, without limitation, copyrights, trade secrets, trademarks,<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>patents<span>&nbsp;&nbsp;&nbsp;&nbsp; </span>etc.)<span>&nbsp; </span>evidenced<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>by or embodied in and/or attached/connected/related to the Platform (including, without limitation, the software code, user guides and any other documentation) are and shall be owned solely by Glifico. Nothing in these Terms and Conditions and/or in granting the License shall constitute a waiver of Glifico's intellectual property under any law.</span></li><li><span>The License does not include any right to resell or license the Platform and/or its contents; any derivative use of this Platform or its contents; any third party intellectual property and contents; or any use of data mining, robots, or similar data gathering and extraction tools. The Platform or any portion thereof, may not be reproduced, duplicated, copied, sold, resold, visited, or otherwise exploited for any commercial purposes without Glifico’sprior written consent. Further you may not copy or imitate part or all of the design, or look-and-feel of the Platform, which are protected by intellectual property rights.</span></li><li><span>Glifico may, from time to time, release new tools and resources on the Platform or introduce other services and/or features for the Platform. Any new services and features will be subject to these Terms and Conditions as well as any additional terms and conditions that we may release for those specific services or features.</span></li><li><span>Use of the Platform that constitutes abuse shall be determined by Glifico, in its sole discretion. Glifico reserves the right to terminate your Account if Glifico determines you have not complied with these Terms and Conditions or that you have abused the Platform or committed any act in bad faith towards us or any third part.</span></li><li><span>In consideration for the use of the Platform, Glifico shall receive a fee from the Services Providers and/or the Services Buyers. Such fee shall be determined at the sole discretion of Glifico and shall be deducted from the payment made by the Services Buyer to the Services Provider.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>RESTRICTION ON USE OF CONTENT</span></b><ul><li><span>You acknowledge that the Platform may contain information, software, photos, video, text, graphics, music, sounds or other material (collectively, "Content") that are protected by copyrights, patents, trademarks, trade secrets or other proprietary rights, and that these rights are valid and protected in all forms, media and technologies existing now or hereafter developed. The entire Content, taken together, is protected under copyright laws as a collective work,</span><span> and we own a copyright<span> in the selection, coordination, arrangement and enhancement of such Content. Modification of the Content or use of the Content for any other purpose, including use of any such Content on any other web site or networked computer environment is strictly prohibited. Except as otherwise expressly authorized in writing in advance by us, you agree not to reproduce, redistribute, sell, modify, rent, lease, loan, adapt, translate, create derivative works based (whether in whole or in part) on, decompile, reverse engineer, disassemble, or otherwise reduce all or any part of the Platform, including the Content.</span></span></li><li><span>The Glifico name and logo are the intellectual property of Glifico. All other trademarks appearing on the Platform are trademarks of their respective owners. Our partners such as the Services Providers or Services Buyers may also have additional proprietary rights in the content which they make available through the Service and the Platform. The trade names, trademarks and service marks owned by us, whether registered or unregistered, may not be used in connection with any product or service that is not ours, in any manner that is likely to cause confusion. Nothing contained on the Platform should be construed as granting, by implication, estoppels or otherwise, any license or right to use any of our trade names, trademarks or service marks without our express prior written consent.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>PRODUCT QUALITY</span></b><ul><li><span>Glifico and its affiliates attempt that the Services provided by the Services Provider through the Platform be as accurate as possible. However, Glifico does not warrant that the Service is accurate, complete, reliable, current, or error-free. You agree that neither Glifico nor its affiliates shall be held liable for any inaccurate, incomplete, late or non delivery, unreliable or errors-in respect of the Services.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>THIRD PARTIES: LINKS TO THIRD PARTY SITES AND INTELLECTUAL PROPERTY</span></b><ul><li><span>The Platform may provide, or third parties may provide, links to other Internet websites, download or resources and further may contain third parties’intellectual <span>&nbsp;</span>property. Because we have no control over such sites, intellectual property and resources, you acknowledge and agree that we are not responsible for the availability or the correctness of such external sites and the intellectual property or resources, and do not endorse and are not responsible or liable for any content, advertising, products, services, intellectual property or other materials (collectively, "Third PartyMaterials") on or available from such sites or resources. You understand that you may be exposed to Third Party Materials that may be offensive, indecent or objectionable. You further acknowledge and agree that we shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such Third Party Materials available on or through any such site or resource.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>AVAILABILITY</span></b><ul><li><span>Glifico undertakes that it will use its reasonable best efforts to attempt that the Services shall be made available and shall be provided by the Services Providers introduced to the Services Buyer via the Platform. However, Glifico does not guarantee the availability of any such Services Providers to provide the Services Buyer with the Services, and does not represent or warrant in any way or manner that any of such Services Provider will be available or will agree to provide the Services Buyer with the Services.</span></li><li><span>Glifico further undertakes that it will use its reasonable best efforts to attempt to provide access to the Platform 24 hours a day, 7 days a week. However, there will be occasions when access to the Platform will be interrupted for maintenance, upgrades and repairs, that you acknowledge is a necessary function conducted by Glifico, or as a result of failure of telecommunications links and equipment that are beyond Glifico’s control, Glifico shall bare neither responsibility nor liability for any loss of revenue that may result therefrom.</span></li><li><span>Glifico may modify or discontinue, temporarily or permanently the Platform, or any portion thereof, with or without notice to you.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>USERS WARRANTY, INDEMNIFICATION OBLIGATION, AND WAIVER</span></b><ul><li><span>You agree to indemnify and hold Glifico and its shareholders, subsidiaries, affiliates, officers, agents, employees, co-branders or other partners, and licensors harmless from any claim or demand, including reasonable attorneys’ fees, due tu or arising out of your use of the Platform, providing or receiving the Services, your connection to the Platform, any dealings between you and anyone else advertising or promoting via the Platform, your violation of the terms of the Terms and Conditions, or your violation of any rights other rights whatsoever, including any Intellectual Property rights.</span></li><li><span>You will not hold Glifico responsible for the Services provided by the Service Providers, including but not limited to the translations provided by the Service Providers. You acknowledge that Glifico has no control over and does not guarantee the accuracy, quality, safety or legality of the Services provided by the Service Providers, the truth or accuracy of Service Providers' language skills, the ability of Service Providers to translate accurately.</span></li><li><span>You acknowledge and agree that Glifico is not liable for any loss or damage which may be incurred by you as a result of the use of the Platform or the Services or as a result of any reliance placed by you on the accuracy or completeness of the Services provided you by the Service Providers.</span></li><li><span>As a Service Provider you will not redistribute any of the content (information) on the Platform or which arise from the Services, including but not necessary limited to text submitted by Service Buyers, the translated results, private messages, documents.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<p><span></span></p>
+<ul>
+	<li><b><span>DISCLAIMER OF WARRANTIES</span></b><ul><li><span>You expressly understand and agree that, to the maximum extent permitted by applicable law:</span></li><li><span>Neither Glifico nor its affiliates guarantee the accuracy, completeness, or usefulness of any information on the Platform, and neither adopts nor endorses nor is responsible for the accuracy or reliability of any opinion, advice, or statement made.</span></li><li><span>The Platform, the content and the information therein are provided by Glifico "As Is" without warranty of any kind, express, implied, statutory, or otherwise, including the implied warranties of title, non-infringement, quiet enjoyment, merchantability, or fitness for a particular purpose. Without limiting the foregoing, Glifico and its licensors make no warranty that (a) the Platform, the Services (which are provided by the Services Providers) and the content will meet your requirements or will be constantly available, uninterrupted, timely, secure, or error- free; (b) the results that may be obtained from the use of the Platform and the Services and the content will be effective, accurate, or reliable; (c) the quality of the Services and the content will meet your expectations; or that (d) any errors or defects in the Platform, or Services will be corrected. No advice or information, whether oral or written, obtained by you from Glifico or through or from use of the Platform and the content shall create any warranty not expressly stated in these Terms and Conditions.</span></li><li><span>Glifico specifically disclaims any liability with regard to any actions resulting from user’s use of Services which are provided by the Services Providers and/or arising from the use of the Platform and the content. Any content downloaded arising from the Service, made available or otherwise obtained through use of the Platform is accessed at your own discretion and risk. Glifico assumes no liability for any computer virus or similar code that is downloaded to user’s computer from or through the Platform.</span></li><li><span>Glifico does not control, endorse, or accept responsibility for any platform or materials offered by third parties, including Services Providers, accessible through linked sites. Glifico makes no representations or warranties whatsoever about, and shall not be liable for, any such third parties, their contents or platform. Any dealings that user may have with such third parties are at its own risk.</span></li><li><span>Managers, hosts, participants, Services Providers, moderators, and other third parties are not authorized Glifico spokespersons, and their views do not necessarily reflect those of Glifico. To the maximum extent permitted by applicable law, Glifico will have no liability related to material arising under intellectual property rights, libel, privacy, publicity, obscenity, IP infringement, or other laws. Glifico also disclaims all liability with respect to the use, misuse, loss, modification, or unavailability of any material.</span></li><li><span>Glifico is not liable for any loss or damage which may be incurred by you as a result of the Services, or as a result of any reliance placed by you on the accuracy or completeness of the Services provided to you by the Service Providers.</span></li><li><span>Glifico will not be liable for any loss that you may incur as a result of someone else using your password or account or account information in connection with the Platform, either with or without your knowledge.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>LIMITATION OF LIABILITY</span></b><ul><li><span>IN NO EVENT SHALL GLIFICO, ITS SHAREHOLDERS, ITS OFFICERS, DIRECTORS, EMPLOYEES, PARTNERS, LICENSORS, OR SUPPLIERS BE LIABLE TO YOU OR ANYONE ELSE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, CONSEQUENTIAL, OR PUNITIVE DAMAGES WHATSOEVER, INCLUDING THOSE RESULTING FROM LOSS OF USE, DATA, OR PROFITS, WHETHER OR NOT FORESEEABLE OR IF GLIFICO HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR BASED ON ANY THEORY OF LIABILITY, INCLUDING BREACH OF CONTRACT OR WARRANTY, NEGLIGENCE OR OTHER TORTIOUS ACTION, OR ANY OTHER CLAIM ARISING OUT OF OR IN CONNECTION WITH ITS USE OF OR ACCESS TO THE PLATFORM, SERVICES OR CONTENTS.</span></li><li><span>GLIFICO’S AGGREGATE LIABILITY AND THAT OF ITS <span>&nbsp;</span>SHAREHOLDERS, AFFILIATES, LICENSORS, AND SUPPLIERS UNDER OR IN CONNECTION WITH THESE TERMS AND CONDITIONS SHALL BE LIMITED TO US €50 FOR ANY OCCURRENCE AND FOR EACH SERVICES PROVIDER AND SERVICES BUYER. THIS LIMITATION WILL APPLY EVEN IF GLIFICO HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>TERMINATION AND MODIFICATION OF THE SERVICE</span></b><ul><li><span>You agree that we, in our sole discretion, may terminate your password, account (or any part thereof) or use of the Platform, for any reason, including, without limitation, if we believe that you have violated or acted inconsistently with the letter or spirit of these Terms and Conditions. We will also terminate your account upon receiving reliable information involving your violation of any law, and will cooperate with law enforcement agencies on such matters. We may also, in our sole discretion and at any time, discontinue to operate the Platform, or any part thereof, with or without notice. You agree that any termination of your access to the Platform under any provision of these Terms and Conditions may be effected without prior notice, and acknowledge and agree that we may immediately deactivate or delete your Account. Further, you agree that we shall not be liable to you or any third party for any termination of your access to the Platform.</span></li><li><span>We reserve the right, at any time and from time to time, temporarily or permanently, in whole or in part, to: (a) modify or discontinue to operate the Platform, including, but not limited to: (i) restricting the time the Platform is available, (ii) restricting or terminating any Services Provider's or Services Buyer's right to use the Platform, with or without notice; (b) modify and/or waive any fees charged in connection with the Service provided through the Platform; and/or (c) offer opportunities to some or all users of the Platform. You agree that neither we nor any of our affiliates shall be liable to you or to any third party for any modification, suspension or discontinuance of operating the Platform, in whole or in part, or of any service, content or feature offered through the Platform.</span></li><li><span>We may revoke your registration privileges and/or take any other appropriate measures to enforce these guidelines if violations are brought to our attention. Further, we may, in our sole discretion, terminate your account or participation in any featureof the Platform for any reason.</span></li></ul></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>USER CONDUCT</span></b><ul><li><span>You agree not to access or attempt to access the Platform by any means other than the interface provided by Glifico or circumvent any access or use restrictions put into place by Glifico to prevent certain uses of the Platform.</span></li><li><span>You agree not to use, or to encourage others or permit others to use, the Platform to:</span></li></ul></li>
+</ul>
+<ol>
+	<li><span>Impersonate any person or entity, or falsely state or otherwise misrepresent your affiliation with a person or entity;</span></li>
+	<li><span>Access or use the Platform in any manner that could damage, disable, overburden, or impair any Glifico server or the networks connected to any Glifico server;</span></li>
+	<li><span>Intentionally or unintentionally interfere with or disrupt the Platform or violate any laws related to the access to or use of the Platform, violate any requirements, procedures, policies, or regulations of networks connected to the Platform, or engage in any activity prohibited by these Terms and Conditions;</span></li>
+	<li><span>Disrupt or interfere with the security of, or otherwise cause harm to, the Platform, accounts, passwords, servers, or networks connected to or accessible through the Platform or any affiliated or linked sites;</span></li>
+	<li><span>Disrupt, interfere with, or inhibit any other user from using and enjoying the Platform or other affiliated or linked sites, platforms, or contents;</span></li>
+	<li><span>Reproduce, sell, trade, resell or exploit for any commercial purpose, the Platform;</span></li>
+	<li><span>Publish, communicate or display any illegal material such as slanderous, abusive, profane, obscene, sexually offensive, threatening, racial, of political affiliation, of pornographic nature or any other material which is unlawful and/or unacceptable as decided by Glifico at its sole discretion.</span></li>
+	<li><span>Defraud, defame, or otherwise violate the legal rights (such as rights of privacy and publicity) of others; or</span></li>
+	<li><span>Engage in any other conduct which, in Glifico’s sole discretion, is considered inappropriate, unauthorized or objectionable.</span></li>
+</ol>
+<ul>
+	<li><span>In addition, you agree to comply will all applicable laws, regulations, and ordinances as a condition of use of provision of the Service and the use of the Platform.</span></li>
+	<li><span>In order to permit Glifico to protect the quality of the Platform, you hereby consent to Glifico's employees and representatives being able to access your account and records for any reason, in our sole discretion. Glifico also reserves the right, but does not assume the responsibility, to monitor or review your conduct while using the Platform. Your use of the Platform is subject to all applicable local, state, national and international laws and regulations. Further, you acknowledge that you are responsible for obtaining or providing all access lines, telephone and computer equipment (including modem), or other devices, necessary to access the Platform, and paying all charges related thereto.</span></li>
+</ul>
+<p><span></span></p>
+<ul>
+	<li><b><span>JURISDICTIONAL ISSUES</span></b></li>
+</ul>
+<p><span>The Platform is controlled and operated by Glifico from Italy, and is not intended to subject Glifico to the laws or jurisdiction of any territory other than that of the state of Italy. Glifico does not represent or warrant that the Services and/or the Platform or any part thereof is appropriate or available for use in any particular jurisdiction. Those who choose to access the Platform do so on their own initiative and at their own risk, and are responsible for complying with all local laws, rules and regulations. We may limit the Platform's availability, in whole or in part, toany person, geographic area or jurisdiction we choose, at any time and in our sole discretion.</span></p>
+<p><b><span></span></b></p>
+<p><b><span>15. NOTICES</span></b></p>
+<p><span>Glifico may give notice to you by email, a posting on the Platform, or other reasonable means. You must give notice to Glifico in writing via email or as otherwise expressly provided by Glifico. Glifico may broadcast, distribute or display notices or messages through the Service to inform you of changes to the Terms and Conditions, the Platform, the Privacy Policy or other matters of importance. Such broadcast, distributions or displays of information shall constitute notice to you.</span></p>
+<p><span></span></p>
+<p><b><span>16.<span>&nbsp;&nbsp;&nbsp; </span>GOVERNING LAW AND OTHER MISCELLANEOUS TERMS</span></b></p>
+<p><span>These Terms and Conditions do not, and shall not be construed to; create any partnership, joint venture, employer-employee, agency or franchisor-franchisee relationship between you and Glifico. These Terms and Conditions shall be governed by and construed in accordance with the laws of Italy, without giving effect to any principles of conflicts of law. You agree that any action at law or in equity arising out of or relating to these Terms and Conditions shall be filed only in courts located in the city of Torino and you hereby consent and submit to the personal jurisdiction of such courts for the purposes of litigating any such action and you waive any jurisdictional, venue or inconvenient forum objections to such courts. You agree that any claim or cause of action arising out of your use of the Platform or the Terms and Conditions must be filed within three (3) months after such claim or cause of action arose or it shall forever be barred, notwithstanding any statute of limitations or other law to the contrary. Within this period, any failure by Glifico to enforce or exercise any provisions of these Terms and Conditions or related right shall not constitute a waiver of that right or provision. If any provision of these Terms and Conditions shall be unlawful, void, or for any reason unenforceable, then that provision shall be deemed severable from these terms and shall not affect the validity and enforceability of any remaining provisions. Glifico may assign any right and/or obligation it has under these Terms and Conditions, in whole or in part, at any time with or without notice to you. You may not assign, transfer or sublicense any or all of your rights or obligations under these Terms and Conditions without Glifico's express prior written consent. No waiver by either party of any breach or default hereunder will be deemed to be a waiver of any preceding or subsequent breach or default. Any heading, caption or section title contained herein is inserted only as a matter of convenience, and in no way defines or explains any section or provision hereof. This is the entire agreement between you and Glifico relating to the subject matter herein and may not be modified by you. These Terms and Conditions will inure to the benefit of Glifico’s successors, assigns and licensees. Without limitation, you agree that a printed version of these Terms and Conditions and of any notice given in electronic form shall be admissible in judicial or administrative proceedings based upon or relating to these Terms and Conditions to the same extent and subject to the same conditions as other business documents and records originally generated and maintained in printed form.</span></p>
+<p><span></span></p>
+<p><b><span>17.<span>&nbsp;&nbsp;&nbsp; </span>MODIFICATIONS TO THE AGREEMENT</span></b></p>
+<p><span>Glifico reserves the right to amend these Terms and Conditions at its sole discretion and any modifications shall be effective immediately upon posting. Glifico will announce any such change by posting the revised version of these Terms and Conditions on its website. You can determine when the Terms and Conditions were last revised by referring to the "Last Revised On" legend at the top of this page. By continuing to use the Platform following such changes, you will be deemed to have agreed to such changes. If you do not agree with the provisions of these Terms and Conditions or any changes thereto, please do not continue using this Platform.</span></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span></span></p></div></div></div><footer class="footer"><div style="text-align:center">
+<hr><div style="display:block; width:100%; text-align:center;"><b>Glifico</b><br>Indirizzo<br>P.IVA ...<br>tel. ... - fax. ...<br>www.glifico.com - email: info@glifico.com<br></div></div>
+</footer></body>
+
+<!-- Mirrored from 77.93.251.227/glifico/portal.nsf/terms.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:07:53 GMT -->
+</html>

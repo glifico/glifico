@@ -6,11 +6,11 @@ function doDominoLogin() {
 	var username=document.getElementById('textinput').value 
 	var password=document.getElementById('passwordinput').value 
 	var logReq = createXHTMLHttpRequest() ;
+	// Da errore nelle seguenti righe
 	var poststring = "RedirectTo=" + escape('glifico/portal.nsf/index.xsp') +"&Username=" + username + "&password=" + password;
-	
-	logReq.open("POST.html", "srv01.ciemme.loc/names99de.html?Login" , false);
+	logReq.open("POST.html", "http://srv01.ciemme.loc/names.nsf?Login" , false);
 	logReq.send(poststring);
-	
+	// Fino a qui sopra
 	if (logReq.status == 200){ 
 		if(logReq.responseText.indexOf("Please type your user name" + " and password") == -1){
 			location.href=location.href;

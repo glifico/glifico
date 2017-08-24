@@ -12568,14 +12568,14 @@ var $locationMinErr = minErr('$location');
  * @returns {string}
  */
 function encodePath(path) {
-  var segments = path.split('../../index.html'),
+  var segments = path.split('http://77.93.251.227/'),
       i = segments.length;
 
   while (i--) {
     segments[i] = encodeUriSegment(segments[i]);
   }
 
-  return segments.join('../../index.html');
+  return segments.join('http://77.93.251.227/');
 }
 
 function parseAbsoluteUrl(absoluteUrl, locationObj) {
@@ -12588,7 +12588,7 @@ function parseAbsoluteUrl(absoluteUrl, locationObj) {
 
 
 function parseAppUrl(relativeUrl, locationObj) {
-  var prefixed = (relativeUrl.charAt(0) !== '../../index.html');
+  var prefixed = (relativeUrl.charAt(0) !== 'http://77.93.251.227/');
   if (prefixed) {
     relativeUrl = '/' + relativeUrl;
   }
@@ -12599,7 +12599,7 @@ function parseAppUrl(relativeUrl, locationObj) {
   locationObj.$$hash = decodeURIComponent(match.hash);
 
   // make sure path starts with '/';
-  if (locationObj.$$path && locationObj.$$path.charAt(0) != '../../index.html') {
+  if (locationObj.$$path && locationObj.$$path.charAt(0) != 'http://77.93.251.227/') {
     locationObj.$$path = '/' + locationObj.$$path;
   }
 }
@@ -12633,12 +12633,12 @@ function trimEmptyHash(url) {
 
 
 function stripFile(url) {
-  return url.substr(0, stripHash(url).lastIndexOf('../../index.html') + 1);
+  return url.substr(0, stripHash(url).lastIndexOf('http://77.93.251.227/') + 1);
 }
 
 /* return the server only (scheme://host:port) */
 function serverBase(url) {
-  return url.substring(0, url.indexOf('../../index.html', url.indexOf('//') + 2));
+  return url.substring(0, url.indexOf('http://77.93.251.227/', url.indexOf('//') + 2));
 }
 
 
@@ -12672,7 +12672,7 @@ function LocationHtml5Url(appBase, appBaseNoFile, basePrefix) {
     parseAppUrl(pathUrl, this);
 
     if (!this.$$path) {
-      this.$$path = '../../index.html';
+      this.$$path = 'http://77.93.251.227/';
     }
 
     this.$$compose();
@@ -12703,7 +12703,7 @@ function LocationHtml5Url(appBase, appBaseNoFile, basePrefix) {
     if (isDefined(appUrl = stripBaseUrl(appBase, url))) {
       prevAppUrl = appUrl;
       if (isDefined(appUrl = stripBaseUrl(basePrefix, appUrl))) {
-        rewrittenUrl = appBaseNoFile + (stripBaseUrl('../../index.html', appUrl) || appUrl);
+        rewrittenUrl = appBaseNoFile + (stripBaseUrl('http://77.93.251.227/', appUrl) || appUrl);
       } else {
         rewrittenUrl = appBase + prevAppUrl;
       }
@@ -14195,7 +14195,7 @@ AST.prototype = {
   multiplicative: function() {
     var left = this.unary();
     var token;
-    while ((token = this.expect('*','../../index.html','%'))) {
+    while ((token = this.expect('*','http://77.93.251.227/','%'))) {
       left = { type: AST.BinaryExpression, operator: token.text, left: left, right: this.unary() };
     }
     return left;
@@ -19492,7 +19492,7 @@ function urlResolve(url) {
     hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
     hostname: urlParsingNode.hostname,
     port: urlParsingNode.port,
-    pathname: (urlParsingNode.pathname.charAt(0) === '../../index.html')
+    pathname: (urlParsingNode.pathname.charAt(0) === 'http://77.93.251.227/')
       ? urlParsingNode.pathname
       : '/' + urlParsingNode.pathname
   };
@@ -21977,7 +21977,7 @@ forEach(ALIASED_ATTR, function(htmlAttr, ngAttr) {
       link: function(scope, element, attr) {
         //special case ngPattern when a literal regular expression value
         //is used as the expression (this way we don't have to watch anything).
-        if (ngAttr === "ngPattern" && attr.ngPattern.charAt(0) == "../../index.html") {
+        if (ngAttr === "ngPattern" && attr.ngPattern.charAt(0) == "http://77.93.251.227/") {
           var match = attr.ngPattern.match(REGEX_STRING_REGEXP);
           if (match) {
             attr.$set("ngPattern", new RegExp(match[1], match[2]));

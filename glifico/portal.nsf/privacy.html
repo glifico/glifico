@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from glifico.com/glifico/wip.nsf/skillTest.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:01:15 GMT -->
+<!-- Mirrored from 77.93.251.227/glifico/portal.nsf/privacy.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:07:53 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title></title>
-<script type="text/javascript">var dojoConfig = {locale: 'en'};</script>
-<script type="text/javascript" src="../../xsp/.ibmxspres/dojoroot-1.9.4/dojo/dojo.js"></script>
-<script type="text/javascript" src="../../xsp/.ibmxspres/dojoroot-1.9.4/ibm/xsp/widget/layout/layers/xspClientDojo.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -24,7 +21,6 @@
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/skins/navbar-inverse.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/animation/animation.css">
-<script type="text/javascript" src="skillTest.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="main.css">
 <script type="text/javascript" src="functions.js"></script>
@@ -96,9 +92,10 @@ var sysIsLogged=false;var sysUsername='Anonymous';
 		</ui-select>
 	</script>
 
-<nav class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button class="navbar-toggle" data-target="#MegaNavbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand navbar-left" href="index.html"><i class="fa fa-home"></i><span class="reverse" style="font-size:22px;">GLIFICO</span></a></div><div class="collapse navbar-collapse" id="MegaNavbar"><ul class="nav navbar-nav navbar-left"><li><a href="privacy.html">Privacy</a></li></ul><ul class="nav navbar-nav navbar-right" style="display:none"><li><a href="skillTest.html"></a></li><li class="dropdown-grid" style="position: static;"><a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()"><div><span class="reverse"><span id="view:_id4:computedField1"><script>function modalLogin(){  $('#loginModal').modal('show');}</script><span onClick="modalLogin()">Registrati / Accedi</span></span></span></div>
-</a></li></ul></div></div></nav><div aria-labelledby="myModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"></span></button><h4 class="modal-title" id="myModalLabel">Benvenuto, registrati od effettua il login a
-						GLIFICO</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a data-toggle="tab" href="#login">Login</a></li><li><a data-toggle="tab" href="#regTrad">Registrazione Traduttore</a></li><li><a data-toggle="tab" href="#regAg">Registrazione Agenzia</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" id="login"><form class="form-horizontal"><fieldset><div class="form-group"><div class="col-md-12"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput">Utente:</label><div class="col-md-4"><input class="form-control input-md" id="textinput" name="textinput" placeholder="Utente.." type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="passwordinput">Password:</label><div class="col-md-4"><input class="form-control input-md" id="passwordinput" name="passwordinput" placeholder="Password..." type="password"></div></div><div class="alert alert-danger" id="errorPanel" style="display:none;"><strong>Attenzione!</strong>Impossibile accedere. Utente o password errati.</div><div class="form-group"><label class="col-md-4 control-label" for="button1id"></label><div class="col-md-8"><button class="btn btn-success" id="button1id" name="button1id" onClick="doDominoLogin()" type="button">Login</button></div></div></fieldset></form></div><div class="tab-pane fade" id="regTrad">
+<script>var isLogged = false;
+var isAgenzia = null;
+</script><nav class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button class="navbar-toggle" data-target="#MegaNavbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand navbar-left" href="index.html"><i class="fa fa-home"></i><span class="reverse" style="font-size:22px;">GLIFICO</span></a></div><div class="collapse navbar-collapse" id="MegaNavbar"><ul class="nav navbar-nav navbar-left"><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="contacts.html">Contact</a></li></ul><ul class="nav navbar-nav navbar-right"><li id="li-rating"><a href="socialRating.html"></a></li><li id="li-trad"><a href="socialTrad.html"></a></li><li id="li-skill"><a href="skillTest.html"></a></li><li class="dropdown-grid" style="position: static;"><a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()"><div><span class="reverse"><span id="view:_id4:computedField1"><script>function modalLogin(){  $('#loginModal').modal('show');}</script><span onClick="modalLogin()">Register / Login</span></span></span></div>
+</a></li></ul></div></div></nav><div aria-labelledby="myModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"></span></button><h4 class="modal-title" id="myModalLabel">Welcome, register or login at GLIFICO</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a data-toggle="tab" href="#login">Login</a></li><li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li><li><a data-toggle="tab" href="#regAg">Registration Agency</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" id="login"><form class="form-horizontal"><fieldset><div class="form-group"><div class="col-md-12"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput" id="user">User:</label><div class="col-md-4"><input autofocus="autofocus" class="form-control input-md" id="textinput" name="textinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="User.." type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="passwordinput">Password:</label><div class="col-md-4"><input class="form-control input-md" id="passwordinput" name="passwordinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="Password..." type="password"></div></div><div class="alert alert-danger" id="errorPanel" style="display:none;"><strong>Attenzione!</strong>Impossibile accedere. Utente o password errati.</div><div class="form-group"><label class="col-md-4 control-label" for="button1id"></label><div class="col-md-8"><button IsDefault="false" class="btn btn-success" id="button1id" name="button1id" onClick="doDominoLogin()" type="button">Login</button></div></div></fieldset></form></div><div class="tab-pane fade" id="regTrad">
 <div id="regTradAPP" ng-controller="MainController_regTrad as vmMainController_regTrad">
     <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
         <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
@@ -672,7 +669,7 @@ md-input-container{
 	width:100%;
 }
 </style>
-</div></div></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Chiudi</button></div></div></div></div><script>$(document).ready(function(){
+</div></div></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Close</button></div></div></div></div><script>$(document).ready(function(){
 		$.cookieBar({
 		fixed: true,
 		message:'We use cookies to track usage and preferences and to improve our website',
@@ -686,7 +683,56 @@ md-input-container{
 		zindex:9999,
 		bottom: true
 		});
-		})</script><div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><div class="alert alert-success" id="alertOK" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><br><br><br><br><div style="margin-right:10px;margin-left:10px"><div class="panel panel-default"><div class="panel-heading">This test is designed to give you the opportunity to complete your fist assessment quickly.<br>Choose which language you want to be tested in and click on the button "try me out".<br>You will have 10 minutes to answer 10 questions randomly taken from our database.<br>The questions may about graeerer or reading comprension and will be submitted in the language in which you are being evalutaed. Select the most appropriate answer amoung the given choices.<br>You can keep track of time on the bar at the bottom of the page.<br>When the time expire the test will stop and your test can be submitted for evaluation. Any unaswered question will be greded as zeropoints.<br>If you first before time runs out click on the button "submit".<br><br>A deep breath... and he's take the test!</div></div><br><div style="text-align:center;"><div style="width:400px;display: table;margin: 0 auto;"><span>Choose the language you would like to be evaluated</span><br><div class="input-group"><span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span><select class="form-control" id="select-language"><option value="-"></option><option value="english">English</option><option value="english">French</option><option value="english">Japanese</option></select></div><br><a class="btn btn-default" onCLick="tryOut()">Try me out</a></div><br><div style="width:90%;display: table;margin: 0 auto;"><table style="width:100%"><thead><tr valign="middle"><th style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language</th><th style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Last Execution Date</th><th style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Status</th><th style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Rating</th></tr></thead></table><div style="height:10px"></div><table style="width:100%"><tbody><tr valign="middle"><td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF">English</td><td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF">Not yet executed</td><td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF"><span class="danger">Not Done</span></td><td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-right:1px solid #EFEFEF"></td></tr></tbody></table></div></div></div><div class="modal fade" id="skill-modal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content" style="width:800px"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"><span id="view:computedField1">X</span></span></button><h4 class="modal-title">Skill test</h4></div><div class="modal-body" id="skill-body"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Annulla</button></div></div></div></div></body>
+		})</script><div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><div class="alert alert-success" id="alertOK" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><script type="text/javascript">
+if (!isAgenzia && isLogged) {
+	$("#li-rating").show();
+	$("#li-trad").show();
+	$("#li-skill").show();
+} else {
+	$("#li-rating").hide();
+	$("#li-trad").hide();
+	$("#li-skill").hide();
+	
+}
+</script>
+<br><br><div class="jumbotron jumboMain"><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><h2>Policy &amp; Privacy</h2></div></div><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><p><span></span></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span></span></p>
+<p><span>Informativa ai sensi dell`art.13 del decreto legislativo  n.196/2003</span></p>
+<p><span>La presente informativa si riferisce al sito www.glifico.com (diseguito“Sito”) ed &egrave; destinata a tutti i soggetti che vi  accedano.La presente  informativa non si riferisce ad  altri siti Internet a cui l`utente può accedere attraverso i collegamenti ipertestuali presenti all` interno del Sito, i quali saranno soggetti alla disciplina prevista dalle rispettive Policy Privacy.<br><br></span> </p>
+<p><span>Al fine di rendere pi&ugrave; comoda la visita al nostro sito web e per rendere pi&ugrave; efficace la presentazione della nostra Societ&agrave; e dei nostri servizi, utilizziamo cookie.<br></span> </p>
+<p><span>Si tratta di piccoli aggregati di testo registrati localmente nella memoria temporanea del Suo browser, e quindi nel suo computer, per periodi di tempo variabili in funzione dell’esigenza e generalmente compresi tra poche ore e alcuni anni, con l’eccezione dei cookie di profilazione la cui durata massima &egrave; di 365 giorni solari.<br></span> </p>
+<p><span>Mediante i cookie &egrave; possibile registrare in modo semi-permanente informazioni relative alle sue preferenze e altri dati tecnici che permettono una navigazione pi&ugrave; agevole e una maggiore facilit&agrave; d’uso e efficacia del sito stesso.</span> </p>
+<p><span><br><br>
+<p><span><b>Quali sono le tipologie di cookie?<br></span> </p>
+<p><span>Esistono due principali macro-categorie di cookie:<br></span> </p>
+<ol>
+<li><span>CookieTecnici: la cui finalit&agrave; &egrave; migliorare e semplificare la navigazione di un utente su un sito web. Possono essere suddivisi in cookie di funzionalit&agrave;, che permettono all`utente la navigazione in funzione di una serie di criteri selezionati (ad esempio la lingua); cookie di navigazione o di sessione, che garantiscono la normale navigazione e fruizione del sito web; cookie analytics, assimilati ai cookie tecnici laddove utilizzati direttamente dal gestore del sito per raccogliere informazioni, in forma aggregata, sul numero degli utenti e su come questi visitano il sito stesso</span> </li>
+<li><span>Cookie di Profilazione: la cui finalit&agrave; &egrave; quella di creare profili relativi all`utente utilizzati per scopi commerciali-pubblicitari (es.Invio di messaggi pubblicitari in linea con le preferenze manifestate dall’utente nell`ambito della navigazione) </span> </li>
+</ol>
+<br><br>
+<p> <span><b>Perch&eacute; Glifico utilizza i cookie? </b></span> </p>
+<p> <span>Il Sito utilizza esclusivamente cookie tecnici finalizzati alla raccolta, in forma anonima e aggregata, di informazioni sulla navigazione degl iutenti, utilizzata per calcolare e migliorare le prestazioni del sito GoogleAnalytics<br> </span> </p>
+<br><br>
+<p> <span> <b>Il Sito utilizza i seguenti cookie </b></span> </p>
+<p> <span>Google Analytics con IP anonimizzato (Google Inc.)</span> </p>
+<p> <span>GoogleAnalytics &egrave; un servizio di analisi web fornito da Google Inc.(“Google”). Google utilizza i Dati Personali raccolti allo scopo di tracciare ed esaminare l’utilizzo di questo spazio online, compilare report e condividerli con gli altri servizi sviluppati da Google.<br> </span> </p>
+<p> <span>Google potrebbe utilizzare i Dati Personali per contestualizzare e personalizzare gli annunci del proprio network pubblicitario.<br></span> </p>
+<br><br>
+<p> <span>Questa integrazione di Google Analytics rende anonimo il tuo indirizzo IP .L’anonimizzazione funziona abbreviando entro i confini degli Stati Membri dell’unione Europea o in altri Paesi aderenti all’accordo sullo Spazio Economico Europeo l’indirizzo IP degli Utenti. Solo in casi eccezionali, l’indirizzo IP sar&agrave; inviato ai server di Google ed abbreviato all’interno degli Stati Uniti.<br></span> </p>
+<p> <span>Dati personali raccolti: Cookie e Dati di utilizzo.<br></span> </p>
+<p> <span>Luogo del trattamento:USA–Privacypolicy–OptOut Durata dei Cookie-Permanente<br></span> </p>
+<br><br>
+<p> <span> <b>Accettazione e rinuncia dei cookie </b><br> </span> </p>
+<p> <span>Proseguendo nella navigazione su questo sito chiudendo la fascetta informativa che compare nella Home Page o facendo click  in una qualsiasi parte della pagina o scorrendola per evidenziare ulteriore contenuto, si accetta la Cookie Policy di Glifico. Così che verranno impostati e raccolti i cookie. In caso di mancata accettazione dei cookie mediante abbandono della navigazione, eventuali cookie gi&agrave; registrati localmente nel Suo browser rimarranno ivi registrati ma non saranno pi&ugrave; letti né utilizzati da Glifico. Fino ad una successiva ed eventuale accettazione della Policy. Lei avr&agrave; sempre la possibilit&agrave; di rimuovere tali cookie in qualsiasi momento attraverso le modalit&agrave; di cui ai siti citati nel paragrafo “Gestionedeicookie”.<br> </span> </p>
+<br><br>
+<p> <span>Accettazione e rinuncia al consenso per il trattamento dei dati</b><br></span> </p>
+<p> <span>Titolare del Trattamento dati di cui alla presente informativa &egrave; Glifico di Torino<br></span> </p>
+<p> <span>L’esercizio dei diritti di cui all’art.7 del D.Lgs196/03 potr&agrave; effettuarsi attraverso specifica comunicazione a mezzo posta indirizzata alla medesima Societ&agrave;,o attraverso la casella di posta elettronica dedicata : fc@glifico.com<br></span> </p>
+</div></div></div><footer class="footer"><div style="text-align:center">
+<hr><div style="display:block; width:100%; text-align:center;"><b>Glifico</b><br>Indirizzo<br>P.IVA ...<br>tel. ... - fax. ...<br>www.glifico.com - email: info@glifico.com<br></div></div>
+</footer></body>
 
-<!-- Mirrored from glifico.com/glifico/wip.nsf/skillTest.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:01:18 GMT -->
+<!-- Mirrored from 77.93.251.227/glifico/portal.nsf/privacy.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:07:53 GMT -->
 </html>

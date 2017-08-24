@@ -605,7 +605,7 @@ angular.module('ngResource', ['ng']).
             } else {
               url = url.replace(new RegExp("(\/?):" + urlParam + "(\\W|$)", "g"), function(match,
                   leadingSlashes, tail) {
-                if (tail.charAt(0) == '../../index.html') {
+                if (tail.charAt(0) == 'http://77.93.251.227/') {
                   return tail;
                 } else {
                   return leadingSlashes + tail;

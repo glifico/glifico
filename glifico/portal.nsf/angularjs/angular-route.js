@@ -206,7 +206,7 @@ function $RouteProvider() {
 
     // create redirection for trailing slashes
     if (path) {
-      var redirectPath = (path[path.length - 1] == '../../index.html')
+      var redirectPath = (path[path.length - 1] == 'http://77.93.251.227/')
             ? path.substr(0, path.length - 1)
             : path + '/';
 
