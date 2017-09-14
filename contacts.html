@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from 77.93.251.227/glifico/portal.nsf/contacts.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:07:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookiebar.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-resource.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+
+<script src="angularjs/textAngular-rangy.min.js"></script>
+<script src="angularjs/textAngular.min.js"></script>
+<script src="angularjs/angular-material.min.js"></script>
+<script src="angularjs/angular-touch.js"></script>
+<script src="angularjs/api-check.min.js"></script>
+
+
+<script src="angularjs/formly.min.js"></script>
+<script src="angularjs/formly-material.min.js"></script>
+<script src="angularjs/select.js"></script>
+<script src="angularjs/angular-sanitize.js"></script>
+<script src="angularjs/angular-messages.min.js"></script>
+<script src="angularjs/ui-bootstrap-tpls.js"></script>
+<script src="angularjs/ng-upload.js"></script>
+
+<script src="angularjs/ui-grid.min.js"></script>
+
+<script type="text/javascript" src="functions.js"></script>
+<script type="text/javascript"></script>
+<script src="login.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.cookiebar.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/simple-line-icons/simple-line-icons.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.min.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/skins/navbar-inverse.css">
+<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/animation/animation.css">
+<link rel="styleSheet" href="angularjs/select.css"/>
+<link rel="styleSheet" href="angularjs/select2.css"/>
+<link rel="styleSheet" href="angularjs/selectize.default.css"/>
+<link rel="styleSheet" href="angularjs/angular-material.min.css"/>
+<link rel="styleSheet" href="angularjs/textAngular.css"/>
+<link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
+<link rel="stylesheet" type="text/css" href="main.css">
+
+		
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+var sysIsLogged=false;
+var sysUsername='Anonymous';
+var isLogged = false;
+var isAgenzia = null;
+</script>
+</head>
+<body>
+<script type="text/javascript">
+var sysIsLogged=false;var sysUsername='Anonymous';
+</script>
+		
+	<!-- custom templates -->
+    <script type="text/ng-template" id="ui-select-single.html">
+      <ui-select data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
+        <ui-select-match placeholder="{{to.placeholder}}" data-allow-clear="true">{{$select.selected}}</ui-select-match>
+        <ui-select-choices data-repeat="option as option in to.options | filter: $select.search">
+          <div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </script>
+    <script type="text/ng-template" id="ui-select-multiple.html">
+      <ui-select multiple data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
+        <ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
+        <ui-select-choices data-repeat="option as option in to.options | filter: $select.search">
+          <div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </script>
+	<script type="text/ng-template" id="ui-tagging.html">
+		<ui-select multiple tagging="tagTransform" tagging-label="(nuovo)" data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap" sortable="true">
+		<ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
+		<ui-select-choices data-repeat="option in to.options | filter: $select.search">
+          <div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+		</ui-select>
+	</script>
+	<script type="text/ng-template" id="ui-tagging-single.html">
+		<ui-select tagging tagging-label="(nuovo)" data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap" sortable="true">
+		<ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
+		<ui-select-choices data-repeat="option in to.options | filter: $select.search">
+		<div ng-bind-html="option | highlight: $select.search"></div>
+        </ui-select-choices>
+		</ui-select>
+	</script>
+
+<script>var isLogged = false;
+var isAgenzia = null;
+</script><nav class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button class="navbar-toggle" data-target="#MegaNavbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand navbar-left" href="index.html"><i class="fa fa-home"></i><span class="reverse" style="font-size:22px;">GLIFICO</span></a></div><div class="collapse navbar-collapse" id="MegaNavbar"><ul class="nav navbar-nav navbar-left"><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="contacts.html">Contact</a></li></ul><ul class="nav navbar-nav navbar-right"><li id="li-rating"><a href="socialRating.html"></a></li><li id="li-trad"><a href="socialTrad.html"></a></li><li id="li-skill"><a href="skillTest.html"></a></li><li class="dropdown-grid" style="position: static;"><a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()"><div><span class="reverse"><span id="view:_id4:computedField1"><script>function modalLogin(){  $('#loginModal').modal('show');}</script><span onClick="modalLogin()">Register / Login</span></span></span></div>
+</a></li></ul></div></div></nav><div aria-labelledby="myModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"></span></button><h4 class="modal-title" id="myModalLabel">Welcome, register or login at GLIFICO</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a data-toggle="tab" href="#login">Login</a></li><li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li><li><a data-toggle="tab" href="#regAg">Registration Agency</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" id="login"><form class="form-horizontal"><fieldset><div class="form-group"><div class="col-md-12"></div></div><div class="form-group"><label class="col-md-4 control-label" for="textinput" id="user">User:</label><div class="col-md-4"><input autofocus="autofocus" class="form-control input-md" id="textinput" name="textinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="User.." type="text"></div></div><div class="form-group"><label class="col-md-4 control-label" for="passwordinput">Password:</label><div class="col-md-4"><input class="form-control input-md" id="passwordinput" name="passwordinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="Password..." type="password"></div></div><div class="alert alert-danger" id="errorPanel" style="display:none;"><strong>Attenzione!</strong>Impossibile accedere. Utente o password errati.</div><div class="form-group"><label class="col-md-4 control-label" for="button1id"></label><div class="col-md-8"><button IsDefault="false" class="btn btn-success" id="button1id" name="button1id" onClick="doDominoLogin()" type="button">Login</button></div></div></fieldset></form></div><div class="tab-pane fade" id="regTrad">
+<div id="regTradAPP" ng-controller="MainController_regTrad as vmMainController_regTrad">
+    <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
+        <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
+            <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
+        </formly-form>
+    </form>
+</div>
+<style>
+md-input-container{
+	width:100%;
+}
+</style>
+</div>
+<div class="tab-pane fade" id="regAg">
+<div id="regAgeAPP" ng-controller="MainController_regAge as vmMainController_regAge">
+    <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
+        <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
+            <md-button type="submit" ng-click="vmMainController_regAge.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regAge.form.$invalid">Register!</md-button>
+        </formly-form>
+    </form>
+</div>
+
+
+<style>
+md-input-container{
+	width:100%;
+}
+</style>
+</div>
+</div>
+</div>
+
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+		$.cookieBar({
+		fixed: true,
+		message:'We use cookies to track usage and preferences and to improve our website',
+		effect: 'slide',
+		policyButton: true,
+		policyText: 'Click to see our full privacy policy',
+		policyURL: 'privacy.xsp',
+		acceptButton:
+		true,
+		acceptText: 'I Understand',
+		zindex:9999,
+		bottom: true
+		});
+		})</script>
+<div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><div class="alert alert-success" id="alertOK" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;"><a class="close" data-dismiss="alert" href="#">&nbsp;</a></div><script type="text/javascript">
+if (!isAgenzia && isLogged) {
+	$("#li-rating").show();
+	$("#li-trad").show();
+	$("#li-skill").show();
+} else {
+	$("#li-rating").hide();
+	$("#li-trad").hide();
+	$("#li-skill").hide();
+	
+}
+</script>
+<br><br><div class="jumbotron jumboMain"><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><h2>Contacts</h2></div></div><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12">
+<div ng-app="contactsApp" ng-controller="MainController_contacts as vmMainController_contacts">
+	<form ng-submit="vmMainController_contacts.onSubmit()" name="vmMainController_contacts.form" novalidate>
+        <formly-form model="vmMainController_contacts.model" fields="vmMainController_contacts.fields" options="vmMainController_contacts.options" form="vmMainController_contacts.form">
+          <md-button type="submit" ng-click="vmMainController_contacts.submit()" class="md-raised md-primary" ng-disabled="vmMainController_contacts.form.$invalid">Send Mail</md-button>
+        </formly-form>
+      </form>
+</div>
+</div></div>
+		<style>
+		
+		md-input-container{
+			width:100%;
+		}
+		</style>
+	<script src="appContacts.js"></script>
+	</div><footer class="footer"><div style="text-align:center">
+<hr><div style="display:block; width:100%; text-align:center;"><b>Glifico</b><br>Indirizzo<br>P.IVA ...<br>tel. ... - fax. ...<br>www.glifico.com - email: info@glifico.com<br></div></div>
+</footer></body>
+
+</html>
