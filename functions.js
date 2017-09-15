@@ -8,7 +8,7 @@ function doDominoLogin() {
 	var password=document.getElementById('passwordinput').value
 	var logReq = createXHTMLHttpRequest() ;
 
-	var poststring = "RedirectTo=" + escape('glifico/portal.nsf/index.xsp') +"&Username=" + username + "&password=" + password;
+	var poststring="?user="+username+"&password="+password;
 	logReq.onreadystatechange = function(){
 		if (logReq.status == 200){
 		if(JSON.parse(logReq.responseText)["statuscode"]==200){
@@ -26,8 +26,8 @@ function doDominoLogin() {
 		return(false);
 	};
 }
-	logReq.open("GET", "http://phil-personal-api.herokuapp.com/Temperature_version.php?key=xenoncursedavitindiesyb" , false);
-	logReq.send(poststring);
+	logReq.open("GET", "http://glifico.herokuapp.com/login.php"+poststring , false);
+	logReq.send();
 }
 
 
