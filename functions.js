@@ -11,9 +11,11 @@ function doDominoLogin() {
 	var poststring = "RedirectTo=" + escape('glifico/portal.nsf/index.xsp') +"&Username=" + username + "&password=" + password;
 	logReq.onreadystatechange = function(){
 		if (logReq.status == 200){
-		if(logReq.responseText.indexOf("Please type your user name" + " and password") == -1){
+		if(JSON.parse(logReq.responseText)["statuscode"]==200){
+			var user_value=username;
+			saveTheCookie(user_value);
 			console.log("logged");
-			location.href=escape('index.html') +"?Username=" + username + "&password=" + password;
+			location.href=location.href;
 			return(true);
 		}else{
 			mostraDialogTimed('errorPanel');
@@ -26,8 +28,61 @@ function doDominoLogin() {
 }
 	logReq.open("GET", "http://phil-personal-api.herokuapp.com/Temperature_version.php?key=xenoncursedavitindiesyb" , false);
 	logReq.send(poststring);
-	isLogged=true;
 }
+
+
+var cookie_name = "maincookie";
+
+function saveTheCookie(value) {
+	var today = new Date(); // Actual date
+    var expire = new Date(); // Expiration of the cookie
+
+    var number_of_days = 10; // Number of days for the cookie to be valid (10 in this case)
+
+    expire.setTime( today.getTime() + 60 * 60 * 1000 * 24 * number_of_days ); // Current time + (60 sec * 60 min * 1000 milisecs * 24 hours * number_of_days)
+
+    document.cookie = cookie_name + "=" + escape(value) + "; expires=" + expire.toGMTString();
+	console.log("cookie set");
+}
+
+
+function getLogged(){
+	 var return_value = false;
+
+	    var pos_start = document.cookie.indexOf(cookie_name+"=");
+
+	    if (pos_start != -1) { // Cookie already set, read it
+	    	pos_start+=cookie_name.length+1;
+	        var pos_end = document.cookie.indexOf(";", pos_start); // Find ";" after the start position
+
+	        if (pos_end - pos_start>=1) return_value=true;
+	    }
+
+	    return return_value; 
+}
+
+
+function getUsername() {
+    var return_value = null;
+
+    var pos_start = document.cookie.indexOf("=");
+
+    if (pos_start != -1) { // Cookie already set, read it
+    	pos_start++;
+        var pos_end = document.cookie.indexOf(";", pos_start); // Find ";" after the start position
+
+        if (pos_end == -1) pos_end = document.cookie.length;
+        return_value = unescape( document.cookie.substring(pos_start, pos_end) );
+    }
+
+    return return_value; // null if cookie doesn't exist, string otherwise
+}
+
+function logout() {
+    document.cookie = cookie_name + "=; expires=" + new Date;
+	location.href="index.html";
+}
+
 
 function createXHTMLHttpRequest() {
 	try { return new ActiveXObject("Msxml2.XMLHTTP") ; } catch (e) {}

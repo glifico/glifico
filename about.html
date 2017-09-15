@@ -42,6 +42,7 @@
 <script src="app/glificoFooter.controller.js"></script>
 
 <script src="app/login.controller.js"></script>
+<script src="app/login.service.js"></script>
 
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -150,21 +151,6 @@
 </span>
 </a>
 </li>
-
-<li class="dropdown">
-<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown">
-<span class="reverse">
-<div id="loginController" ng-controller="loginController as ctrl">
-<span><p id="usernameTab">{{ctrl.username}}</p></span>
-</div>
-</span>
-</a>
-
-<ul class="dropdown-menu">
-    <li><a onclick="logout()">logout</a></li>
-  </ul>
-</li>
-
 </ul>
 </div>
 </div>
@@ -257,6 +243,7 @@ md-input-container{
 </div>
 </div>
 </div>
+</div>
 
 <script>
 $(document).ready(function(){
@@ -284,110 +271,68 @@ $(document).ready(function(){
 </div>
 
 <script type="text/javascript">
-	console.log(document.cookie);
+if(getTheCookie()){
+isLogged=true;
+document.getElementById("usernameLoginRegister").innerHTML="username";
+console.log("cookie got")
+}
 
-	if (getLogged()) {
-		isLogged = true;
-		$("#usernameTab").show();
-		$("#usernameLoginRegister").hide();
-	} else {
-		$("#usernameTab").hide();
-		$("#usernameLoginRegister").show();
-	}
 
-	if (!isAgenzia && isLogged) {
-		console.log("should show");
-		$("#li-rating").show();
-		$("#li-trad").show();
-		$("#li-skill").show();
-	} else {
-		$("#li-rating").hide();
-		$("#li-trad").hide();
-		$("#li-skill").hide();
+if (!isAgenzia && isLogged) {
+	console.log("should show");
+	$("#li-rating").show();
+	$("#li-trad").show();
+	$("#li-skill").show();
+} else {
+	$("#li-rating").hide();
+	$("#li-trad").hide();
+	$("#li-skill").hide();
 
-	}
+}
 </script>
-<div id="divGlificoMain">
-<div id="divGlificoHeader">GLIFICO<br>
-<div id="divMadeEasy"><br>Translations made easy. Your way</div>
-</div>
-</div>
-<br><br>
 <div class="jumbotron jumboMain">
-<div class="row" id="what">
-<div class="col-md-12">
-<div class="row" style="height:50px;">
-<div class="col-md-12"><b><h2 class="title" style=" margin-left:15%;">WHAT WE DO?</h2></b></div>
-</div>
-<div class="row">
-<div class="col-md-4 text-right" style="vertical-align: top;padding-right:30px;"><b>WE MAKE IT EASY<br>FOR YOU<br>TO FIND<br>YOUR IDEAL<br>TRANSLATOR OR INTERPRETER<br><br><br>THIS WAY YOU<br>HAVE COMPLETE CONTROL<br>OVER YOUR PROJECT<br>BY CHOOSING<br>WHEN, WHO AND HOW<br>YOUR TRANSLATOR WILL BE DONE<br><br></b></div>
-<div class="col-md-8" style="vertical-align: middle;padding-right:15px;">
-<div class="carousel slide" id="this-carousel-id">
-<div class="carousel-inner">
-<div class="item active">
-<img src="trasp.jpg" width="200px">
-<div class="carousel-caption">
-<h2><p style="font-size:40px;color:#000;">GET RID OF RISK</p></h2>
-</div>
-</div>
-<div class="item">
-<img src="trasp.jpg" width="200px">
-<div class="carousel-caption"><h2><p style="font-size:40px;color:#000;">GET MORE OPPORTUNITIES</p></h2></div>
-</div>
-<div class="item">
-<img src="trasp.jpg" width="200px">
-<div class="carousel-caption"><h2><p style="font-size:40px;color:#000;">GET RID OF NEGOTIATING</p></h2></div>
-</div>
-<div class="item">
-<img src="trasp.jpg" width="200px">
-<div class="carousel-caption"><h2><p style="font-size:40px;color:#000;">GET MORE MONEY</p></h2></div>
-</div>
-</div>
-</div>
-</div>
-<script>$(document).ready(function(){
-	    $('.carousel').carousel({
-		  interval: 3500
-		});
-})</script>
-</div>
-</div>
+	<div class="row" style="margin-left: 10px; margin-right: 10px;">
+		<div class="col-md-12">
+			<h2 class="title">About Us</h2>
+			<h4 class="subtitle">Everything you need to find your translator
+				and be sure to get you job done!</h4>
+		</div>
+	</div>
+	<div class="row" style="margin-left: 10px; margin-right: 10px;">
+		<div class="col-md-4" style="border-right: solid 1px;">
+			<div class="icon-box">
+				<i class="fa fa-info fa-4x"></i>
+			</div>
+			<h5>About Glifico</h5>
+			<div class="text-justify">Glifico is a platform that allows
+				translation agencies to contact translators and interpreters from
+				all the world and translate documents into any languages.</div>
+		</div>
+		<div class="col-md-4" style="border-right: solid 1px;">
+			<div class="icon-box">
+				<i class="fa fa-eye fa-4x"></i>
+			</div>
+			<h5>Our Vision</h5>
+			<div class="text-justify">We want to create a brand new way to
+				communicate and collaborate faster and easier without geographical
+				limits, increasing job opportunities and efficiency of the usual
+				workflow.</div>
+		</div>
+		<div class="col-md-4">
+			<div class="icon-box">
+				<i class="fa fa-rocket fa-4x"></i>
+			</div>
+			<h5>Our Mission</h5>
+			<div class="text-justify">To create a dynamic and interactive
+				environment that allows allows agencies to find the best translators
+				or interpreters for a specific project using a data validation
+				system based on ratings and feedback.</div>
+		</div>
+	</div>
 </div>
 
-<div class="row" style="margin-left:10px; margin-right:10px;">
-<div class="col-md-12">
-<h2 class="title">About Us</h2>
-<h4 class="subtitle">Everything you need to find your translator and be sure to get you job done!</h4>
-</div>
-</div>
-<div class="row" style="margin-left:10px; margin-right:10px;">
-<div class="col-md-4" style="border-right:solid 1px;">
-<div class="icon-box"><i class="fa fa-info fa-4x"></i></div>
-<h5>About Glifico</h5>
-<div class="text-justify">
-Glifico is a platform that allows translation agencies to contact translators and
-interpreters from all the world and translate documents into any languages.</div>
-</div>
-<div class="col-md-4" style="border-right:solid 1px;">
-<div class="icon-box"><i class="fa fa-eye fa-4x"></i></div>
-<h5>Our Vision</h5>
-<div class="text-justify">We want to create a brand new way to communicate and collaborate faster and easier without geographical limits, increasing job opportunities and efficiency of the usual workflow.</div></div><div class="col-md-4"><div class="icon-box"><i class="fa fa-rocket fa-4x"></i></div><h5>Our Mission</h5><div class="text-justify">To create a dynamic and interactive environment that allows allows agencies to find the best translators or interpreters for a specific project using a data validation system based on ratings
- and feedback.</div>
- </div>
- </div>
- <div class="row" style="margin-left:10px; margin-right:10px;">
- <div class="col-md-12">
- <h2>Policy &amp; Privacy</h2>
- </div>
- </div>
- <div class="row" style="margin-left:10px; margin-right:10px;">
- <div class="col-md-12">
- </div>
- </div>
- </div>
- 
 
- <footer class="footer">
+<footer class="footer">
  <div id="glificoFooter" data-ng-controller="glificoFooterController as ctrl">
 <div style="text-align:center">
 <hr><div style="display:block; width:100%; text-align:center;">

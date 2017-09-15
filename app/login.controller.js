@@ -1,33 +1,28 @@
-(function(){
-	'use strict';
+angular.module('Authentication',[])
   
-angular.module('Authentication')
-  
-.controller('LoginController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
-    	var ctrl=this;
-    	
-        // reset login status
-        AuthenticationService.ClearCredentials();
-  
-        $scope.login = function () {
-            $scope.dataLoading = true;
-            AuthenticationService.Login($scope.username, $scope.password, function(response) {
-                if(response.success) {
-                    AuthenticationService.SetCredentials($scope.username, $scope.password);
-                    ctrl.isLogged=true;
-                    $location.path('/');
-                } else {
-                    $scope.error = response.message;
-                    $scope.dataLoading = false;
-                }
-            });
-        };
-    }]);
-})
+.controller('loginController', function loginController($scope, $document) {
+	var ctrl=this;
+	ctrl.username=getUsername();
+	
+	
+	function getUsername(){
+		var return_value = null;
+
+	    var pos_start = $document[0].cookie.indexOf("=");
+
+	    if (pos_start != -1) { // Cookie already set, read it
+	    	pos_start++;
+	        var pos_end = $document[0].cookie.indexOf(";", pos_start); // Find ";" after the start position
+
+	        if (pos_end == -1) pos_end = document.cookie.length;
+	        return_value = unescape( $document[0].cookie.substring(pos_start, pos_end) );
+	    }
+
+	    return return_value; // null if cookie doesn't exist, string otherwise
+	}
+});
 
 angular.element(document).ready(function() {
         console.log("registro Authentication");
-        angular.bootstrap(document.getElementById('LoginController'), ['Authentication']);
+        angular.bootstrap(document.getElementById('loginController'), ['Authentication']);
     });
