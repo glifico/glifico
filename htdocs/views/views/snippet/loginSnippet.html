@@ -1,0 +1,22 @@
+<form name=loginForm ng-submit="doAccedi(username, password);" novalidate>
+  <div style="margin-bottom: 10px" class="input-group input-group-sm">
+    <span class="input-group-addon glyphicon glyphicon-user"></span>
+    <input id=login-username ng-model=username name=username class=form-control>
+  </div>
+  <div style="margin-bottom: 10px" class="input-group input-group-sm">
+    <span class=input-group-addon><i class="glyphicon glyphicon-lock"></i></span>
+    <input id=login-password ng-model=password name=password type=password class=form-control>
+  </div>
+  <a data-toggle=modal id=showModal style="cursor: pointer" data-target=#forgotPassword>Forgot password?</a>
+
+  <div style=margin-top:10px class=text-center>
+    <button type=submit class="btn btn-default btn-sm">Login</button>
+    <a class="btn btn-social-icon btn-linkedin" ng-click=linkedinLogin()>
+      <i class="fa fa-linkedin"></i>
+    </a>
+    <a class="btn btn-social-icon btn-facebook" ng-click=facebookLogin()>
+      <i class="fa fa-facebook"></i>
+    </a>
+  </div>
+
+</form>

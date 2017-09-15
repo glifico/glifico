@@ -1,0 +1,148 @@
+<form name="userForm" novalidate>
+  <div class="container-fluid">
+    <h2 class="title">Association Dashboard</h2>
+
+    <div class="container-inner">
+
+      <div class="panel panel-default">
+        <div class="panel-body text-center" style="padding:25px;">
+
+          <div class="row form-group">
+            <label class="text-center">Choose the language to manage</label>
+          </div>
+          <div class="row form-group">
+              <span class="col-sm-2 col-xs-offset-5">
+									 <select class="form-control" name="language" ng-model="language" ng-change="loadTest();showAddPair=false;"
+                           ng-options="language.DESCRIZIONE for language in languages" required></select>
+								</span>
+          </div>
+
+          <div ng-if="language != NULL">
+            <div class="row form-group text-left">
+              <button ng-click="$parent.showAddPair=true" class="btn btn-default btn-sm"><i class="fa fa-comment"></i> Add
+                Question
+              </button>
+            </div>
+
+            <div class="row form-group" ng-if="$parent.showAddPair">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="row form-group">
+                    <!-- QUESTION -->
+                    <div ng-class="{ 'has-error' : userForm.question.$invalid && !userForm.question.$pristine }">
+                      <label class="col-xs-2 control-label text-right ">
+                        <span>Question:*</span>
+                      </label>
+                    <span class="col-sm-4">
+                      <input type="text" name="question" ng-model="question" class="form-control" required>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <!-- ANSWER1 -->
+                    <div ng-class="{ 'has-error' : userForm.answer1.$invalid && !userForm.answer1.$pristine }">
+                      <label class="col-xs-2 control-label text-right ">
+                        <span>Answer1:*</span>
+                      </label>
+                    <span class="col-sm-4">
+                      <input type="text" name="answer1" ng-model="answer1" class="form-control" required>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <!-- ANSWER2 -->
+                    <div ng-class="{ 'has-error' : userForm.answer2.$invalid && !userForm.answer2.$pristine }">
+                      <label class="col-xs-2 control-label text-right ">
+                        <span>Answer2:*</span>
+                      </label>
+                    <span class="col-sm-4">
+                      <input type="text" name="answer2" ng-model="answer2" class="form-control" required>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div class="row form-group">
+                    <!-- ANSWER3 -->
+                    <div ng-class="{ 'has-error' : userForm.answer3.$invalid && !userForm.answer3.$pristine }">
+                      <label class="col-xs-2 control-label text-right ">
+                        <span>Answer3:*</span>
+                      </label>
+                    <span class="col-sm-4">
+                      <input type="text" name="answer3" ng-model="answer3" class="form-control" required>
+                    </span>
+                    </div>
+                  </div>
+
+                  <div ng-if="answer1 != NULL && answer2 != NULL && answer3 != NULL">
+                  <label class="col-xs-2 control-label text-right ">
+                    <span>Correct Answer:*</span>
+                  </label>
+                  <span class="col-sm-4">
+                    <div class="row form-group text-left">
+                      <label class="radio-inline">
+                        <input type="radio" ng-model="correct" name="correct" required ng-value="1"> {{answer1}} </label>
+                      <label class="radio-inline">
+                        <input type="radio" ng-model="correct" name="correct" required ng-value="2"> {{answer2}} </label>
+                      <label class="radio-inline">
+                        <input type="radio" ng-model="correct" name="correct" required ng-value="3"> {{answer3}} </label>
+                    </div>
+                   </span>
+                  </div>
+
+                  <!-- ADD QUESTION BUTTON -->
+                  <div class="row text-right" style="margin-top:10px;margin-right: 15px;">
+                    <button ng-click="addQuestion()" class="btn btn-lg btn-default btn-sm" ng-disabled="userForm.$invalid">
+                      <i class='fa fa-comment'/> Add Question
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div ng-if="testResult == NULL" class="alert alert-warning" role="alert">At the moment you
+              don't have any questions
+              for this language! Let's start to create you first question!
+            </div>
+
+            <div ng-if="testResult != NULL" class="row form-group">
+              <ul id="{{$index}}" ng-repeat="test in testResult" class="list-group-item text-left">
+                <li>
+                  <div class="row form-group">
+                    <div class="col-xs-2 text-right">Question:</div>
+                    <div class="col-xs-6 text-left">{{test.QUESTION}}</div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-xs-2 text-right">Answer 1:</div>
+                    <div class="col-xs-6 text-left">{{test.ANSWER1}}</div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-xs-2 text-right">Answer 2:</div>
+                    <div class="col-xs-6 text-left">{{test.ANSWER2}}</div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-xs-2 text-right">Answer 3:</div>
+                    <div class="col-xs-6 text-left">{{test.ANSWER3}}</div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="col-xs-2 text-right">Correct Answer:</div>
+                    <div class="col-xs-6 text-left">{{test.CORRECT_ANSWER}}</div>
+                  </div>
+                  <div class="row form-group">
+                    <div class="text-right" style="margin-right:25px;">
+                      <button ng-click="deleteQuestion(test.ID)" class="btn btn-lg btn-default btn-sm">
+                        <i class='fa fa-trash'/> Delete Question
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

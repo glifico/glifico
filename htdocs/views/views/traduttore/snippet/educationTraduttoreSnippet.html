@@ -1,0 +1,92 @@
+<div class=container-fluid>
+  <h2 class=title>Education</h2>
+
+  <div class=container-inner>
+    <div ng-if="educationList == NULL" class="alert alert-warning" role=alert>At the moment you don't have any
+      education skills! Can we help you?
+    </div>
+    <form name=educationForm ng-submit=doAddEducation() novalidate> 
+      <div class="panel panel-default" style=opacity:0.9>
+        <div class=panel-body>
+          <div class="row form-group">
+            
+            <div ng-class="{ 'has-error' : educationForm.institute.$invalid && !educationForm.institute.$pristine }">
+              <label class="col-xs-2 control-label text-right">
+                <span class=tipped data-title="Where did you achieve your highest degree?"> Institute*</span>
+              </label>
+						<span class=col-sm-4>
+							<input name=institute class=form-control ng-model=institute required placeholder="" data-toggle=tooltip data-placement=right title="Name of the Institute"></span>
+            </div>
+
+            
+            <div ng-class="{ 'has-error' : educationForm.fieldE.$invalid && !educationForm.fieldE.$pristine }">
+              <label class="col-xs-2 control-label text-right">
+                <span class=tipped data-title="What did you study?"> Field*</span>
+
+              </label>
+              <span class=col-sm-4><input name=field class=form-control ng-model=fieldE required data-toggle=tooltip data-placement=right title="Name of Course of the University"></span>
+            </div>
+          </div>
+          
+          <div class=text-right style=margin-top:10px>
+            <button type=submit class="btn btn-lg btn-default btn-sm" ng-disabled=educationForm.$invalid>
+              <i class="fa fa-book"> Add education
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style=clear:both></div>
+    </form>
+
+    <div ng-if="educationList.length !=0">
+      <div id={{$index}} ng-repeat="education in educationList">
+        <div class="panel panel-default" style=opacity:0.9>
+          <div class=panel-body>
+            <div class="row form-group">
+              
+              <label class="col-xs-2 control-label text-right">Institute:</label>
+              <span class=col-sm-3>{{education.INSTITUTE}}</span>
+              
+              <label class="col-xs-2 control-label text-right">Field:</label>
+              <span class=col-sm-3>{{education.FIELD}}</span>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-3 text-right col-xs-offset-5" ng-controller=UploadEducationCtrl>
+                <span ng-click="certItem=education.ID" ng-file-select ng-model=files class="btn btn-default btn-sm">
+                  <i class="fa fa-upload"> </i>
+                    <span class=tipped data-title="Here you can upload an image of your certificate"> Upload Education </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="row form-group">
+              <div class="col-xs-3 col-xs-offset-6" ng-show="education.IMAGE_PICTURE != null">
+                <a ng-href=data:image/jpeg;base64,{{education.IMAGE_PICTURE}} data-rel=prettyPhoto pretty-photo>
+                  <img ng-src=data:image/jpeg;base64,{{education.THUMB_IMAGE_PICTURE}} width=200 height=200 alt="education">
+
+                  <div class=mask></div>
+                  <h5>{{education.INSTITUTE}}</h5>
+                </a>
+              </div>
+            </div>
+
+            <div class=clearfix></div>
+
+            
+            <form name=educationForm ng-submit=doDeleteEducation(education.ID) novalidate>
+              
+              <div class=text-right style=margin-top:10px>
+                <button type=submit class="btn btn-lg btn-default btn-sm">
+                  <i class="fa fa-times"> Delete education
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style=clear:both></div>
+  </div>
+  
+</div>

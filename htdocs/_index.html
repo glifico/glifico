@@ -1,0 +1,181 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <title>Glifico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <meta name="description"
+        content="Glifico is a platform that allows translation agencies to contact translators and interpreter from all the world and translate documents in every languages.">
+  <meta name="keywords" content="translation, agencies, translator, interpreter, translate">
+  <meta name="author" content="Giuseppe Terribilio, Luca Sapone">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="styles/vendor.476df695.css">
+
+  <!-- VECCHI, STO PROVANDO A TOGLIERLI -- DEVONO STARE FUORI DALLE BUILD ALTRIMENTI BOWER LE INCLUDE UGUALMENTE!
+  <link rel="stylesheet" href="styles/main.b6200fa0.css">
+  <link href="styles/grayscale.css" rel="stylesheet">
+  <link href="styles/glifico.css" rel="stylesheet">
+  <link href="styles/home_traduttore.css" rel="stylesheet">
+  -->
+
+  <link rel="stylesheet" href="styles/prettyPhoto.css"/>
+  <!-- AL MOMENTO NON E' USATO
+  <link rel="stylesheet" href="styles/player/YTPlayer.css"/>
+  -->
+
+  <!-- Custom Fonts -->
+  <!-- REMOVED
+  <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  -->
+
+  <link rel="stylesheet" href="styles/main.b6200fa0.css">
+
+  <!-- New CSS Files -->
+  <link rel="stylesheet" href="styles/reset.b33fc0c8.css">
+  <link rel="stylesheet" href="styles/grid.e6bef0cd.css">
+  <link rel="stylesheet" href="styles/base.7b608314.css">
+  <link rel="stylesheet" href="styles/layout.bbc47731.css">
+  <link href="styles/custom.56644a02.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/flexslider.3e751663.css">
+  <link rel="stylesheet" href="styles/font-awesome.6c182b58.css">
+  <link rel="stylesheet" href="styles/media-queries.13f6400c.css">
+
+  <!-- Color Options -->
+  <link id="color-options" rel="stylesheet" href="styles/colors/blue.23ee1906.css">
+  <!-- Theme Options -->
+  <link id="theme-options" rel="stylesheet" href="styles/theme/light.afc286c4.css">
+
+  <!--Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.ico"/>
+
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-48333491-3', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+</head>
+<!-- OLD BODY
+<body id="explicoBody" ng-app="lemietraduzioniApp" data-spy="scroll"
+      data-target=".navbar-fixed-top.navbar-fixed-bottom">-->
+
+<!-- NEW BODY -->
+<body id="explicoBody" ng-app="lemietraduzioniApp">
+
+<!-- Page Loader -->
+<section preloader id="preloader">
+  <div loader class="loader fa fa-spin"></div>
+</section>
+
+<div id="fb-root"></div>
+<!-- facebook initializaiton -->
+
+<li class="hidden">
+  <a href="#page-top"></a>
+</li>
+
+<div style="margin-bottom:52px;" ng-show="isLogged">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="collapse navbar-collapse navbar-left navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <!-- IMPORTANTE: NON INCLUDERE LA CLASSE PAGE-SCROLL ALTRIMENTI VIENE ESEGUITA LA REGOLA
+        DELLO SCROLL VERTICALE PRESENTE IN GRAYSCALE.JS QUESTE SONO CAMBI DI PATH CHE DEVONO ESSERE DESTITE SOLO DAL ROOTPROVIDER PRESENTE IN APP.JS -->
+        <li style="margin:10px;" ng-show="isLogged && userData.RUOLO=='TRADUTTORE'">
+          <a href="#/home_traduttore" ng-click="showWorkarea=false;">
+            <img style="width:100%;height:100%;" class="thumb_img" ng-src="data:image/jpeg;base64,{{image}}"/>
+          </a>
+        </li>
+        <li ng-class="{blink_me:userData.HAS_NEW_MESSAGE=='Y'}" ng-show="false && isLogged && userData.RUOLO=='TRADUTTORE'">
+          <a href="#/jobs_traduttore" ng-click="showWorkarea=false;"><i class="fa fa-comments"></i> Jobs</a>
+        </li>
+        <li ng-class="{blink_me:userData.HAS_NEW_MESSAGE=='Y'}" ng-show="false && isLogged && userData.RUOLO=='TRADUTTORE'">
+          <a href="#/jobs_traduttore" ng-click="showWorkarea=false;"><i class="fa fa-comments"></i> Jobs</a>
+        </li>
+        <li ng-show="isLogged && userData.RUOLO=='TRADUTTORE'">
+          <a href="#/skills_traduttore" ng-click="showWorkarea=false;"><i class="fa fa-bar-chart"></i> SKILL TEST</a>
+        </li>
+        <li ng-show="isLogged && userData.RUOLO=='TRADUTTORE' && showWorkarea">
+          <a href=""><i class="fa fa-pencil"></i> Workarea</a>
+        </li>
+        <li style="margin:10px;" ng-show="isLogged && userData.RUOLO=='AGENZIA'">
+          <a href="#/home_agenzia">
+            <img style="width:100%;height:100%;" class="thumb_img"
+                 ng-src="data:image/jpeg;base64,{{image}}"/>
+          </a>
+        </li>
+        <li ng-show="isLogged && userData.RUOLO=='AGENZIA'">
+          <a href="#/search_agenzia"><i class="fa fa-search"></i> Search</a>
+        </li>
+        <li ng-show="isLogged && userData.RUOLO=='AGENZIA'">
+          <a href="#/jobs_agenzia"><i class="fa fa-file-text"></i> Jobs</a>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden">
+          <a href="#page-top"></a>
+        </li>
+        <li ng-show="isLogged">
+          <a class='scroll link' ng-click='doLogout();'>Logout <span
+            class="glyphicon glyphicon-share-alt"></span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="clearfix"></div>
+
+<div ng-view></div>
+
+<!--[if lt IE 9]>
+<script src="scripts/oldieshim.0d8f8fe3.js"></script>
+<![endif]-->
+
+<script src="scripts/vendor.831497e6.js"></script>
+
+<script src="scripts/scripts.7af10062.js"></script>
+
+<!-- non minificare, altrimenti non funziona-->
+<script src="ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="scripts/jquery.flexslider.c65abaef.js"></script>
+<script type="text/javascript" src="scripts/jquery.prettyPhoto.fddf8de2.js"></script>
+<script type="text/javascript" src="scripts/SmoothScroll.d566b996.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
+
+<!--Dentro alle build, anche se sono commentate, vengono presi lo stesso gli script javascript-->
+<!-- VECCHIO, PROVO A RIMUOVERE
+<script src="scripts/explico.js"></script>
+-->
+
+<!--<script type="text/javascript" src="scripts/jquery.isotope.js"></script>-->
+<!--<script type="text/javascript" src="scripts/jquery.mb.YTPlayer.js"></script>-->
+
+</body>
+</html>

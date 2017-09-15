@@ -1,0 +1,33 @@
+<h4 class="title text-left"><span class="color">From Language: {{$parent.currentSourceLanguageTranslation}}</span></h4>
+<h4 class="title text-left"><span class="color">To Language: {{$parent.currentDestinationLanguageTranslation}}</span></h4>
+<form name="translationForm" novalidate>
+
+  <div class="row form-group text-justify" style="padding:15px;">
+    <label for="comment">Text To Translate:</label>
+    <textarea disabled class="form-control" rows="10"
+              id="comment">{{$parent.textToTranslate.TEXT_TO_TRANSLATE}}</textarea>
+  </div>
+
+  <textarea name="done" ck-editor ng-model="$parent.TEXT_DONE" id="done">
+	</textarea>
+
+  <div class="row form-group text-center" style="margin-top:30px;">
+    <button ng-click="sendTranslationTest()" class="btn btn-default btn-sm">
+      <i class="fa fa-edit"></i> Submit
+    </button>
+  </div>
+
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container" style="padding: 20px 0 0 0">
+      <timer interval="1000" countdown="60">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="progressBar"
+               aria-valuemin="0" aria-valuemax="100" style="width:{{progressBar}}%">
+            {{progressBar}} %
+          </div>
+        </div>
+      </timer>
+    </div>
+  </nav>
+
+</form>

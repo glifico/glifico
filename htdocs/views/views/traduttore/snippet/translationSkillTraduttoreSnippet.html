@@ -1,0 +1,110 @@
+<form name=translationForm novalidate>
+  <div class=container-fluid>
+    <h2 class=title>Translation</h2>
+
+    <div class=container-inner>
+      <div class="panel panel-default">
+        <div class="panel-body text-center" style=padding:25px>
+
+          <div ng-if=!translationTestStarted>
+
+            <div class=row>
+              <div class=text-justify>
+                <div class="alert alert-info alert-dismissible" role=alert>
+                  <button type=button class=close data-dismiss=alert aria-label=Close><span aria-hidden=true>&times;</span></button>
+                  <p>Hi {{userData.NOME}} {{userData.COGNOME}},</p>
+                  <br>
+                  <p>Thanks for participating in our rating validation system!</p>
+                  <br>
+                  <p>How to play this game: TODO</p>
+                  <br>
+                  <p>When you feel ready click on "Try me out" and start the test</p>
+                  <br>
+                  <p>Good luck!</p>
+                </div>
+              </div>
+            </div>
+            <div ng-if="pairListTranslation != NULL">
+              <div class="row form-group">
+                <label class=text-center>Choose the language you would like to be evaluated (source language)</label>
+              </div>
+              <div class="row form-group">
+              <span class="col-sm-4 col-xs-offset-4">
+									 <select class=form-control name=pairListItemSource ng-model=pairListItemSource ng-change=reloadPairListItemDestination(pairListItemSource.FROM) ng-options="pairListItemSource.FROM for pairListItemSource in pairList | unique:'FROM'" required></select>
+								</span>
+              </div>
+              <div ng-if="pairListItemSource!=NULL">
+              <div class="row form-group">
+                <label class=text-center>Choose the language you would like translate to (destination language)</label>
+              </div>
+              <div class="row form-group" ng-if="pairListItemSource!=NULL">
+              <span class="col-sm-4 col-xs-offset-4">
+									 <select class=form-control name=pairListItemDestination ng-model=pairListItemDestination ng-change=updatePairListItemDestination(pairListItemDestination.TO) ng-options="pairListItemDestination.TO for pairListItemDestination in pairListBySource | unique:'TO'" required></select>
+								</span>
+              </div>
+              </div>
+              <div class="row form-group">
+                <button ng-click=launchTranslationTest() type=submit class="btn btn-lg btn-default btn-sm" ng-disabled=translationForm.$invalid>
+                  <i class="fa fa-edit"></i> Try me out
+                </button>
+              </div>
+
+              <div class="row form-group">
+                <div id={{$index}} ng-repeat="pair in pairListTranslation">
+                  <div class="panel panel-default">
+                    <div class=panel-body>
+                      <div class="row form-group">
+                        
+                        <label class="col-xs-2 control-label text-right">From Language:</label>
+                        <span class="col-sm-1 text-left">{{pair.SOURCE_LANGUAGE}}</span>
+                        
+                        <label class="col-xs-2 control-label text-right">To Language:</label>
+                        <span class="col-sm-1 text-left">{{pair.DESTINATION_LANGUAGE}}</span>
+                        
+                        <label class="col-xs-2 control-label text-right">Last Execution Date:</label>
+                        <span class="col-sm-1 text-left">{{pair.LAST_EXECUTION!=NULL ? pair.LAST_EXECUTION : 'Not yet executed'}}</span>
+                        
+                      <span class="col-xs-offset-1 col-xs-1 label text-left" style=margin-top:5px ng-class="{ 'label-default' : pair.STATUS==0, 'label-success' : pair.STATUS==1}">{{pair.STATUS==0 ? 'Not Done' : 'Done'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div ng-if="pairListTranslation == NULL" class="row form-group">
+              <div class="col-xs-8 col-xs-offset-2">
+                <div class="alert alert-warning" role=alert>
+                  At the moment you don't have any language pair set and you can't get any translation test!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if=translationTestStarted>
+
+            <section template-snippet name=traduttore/snippet/translationTestSnippet id=contact class=section></section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<div class="modal fade" id=testResultTranslationModal tabindex=-1 role=dialog aria-labelledby=myTranslationModalLabel>
+  <div class=modal-dialog role=document>
+    <div class=modal-content>
+      <div class=modal-header>
+        <button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button>
+        <h4 class=modal-title id=myModalLabel2>Congratulation!</h4>
+      </div>
+      <div class=modal-body>
+        Thanks for your support! This translation test will be used by other translator to evaluate your translation skills!
+      </div>
+      <div class=modal-footer>
+        <button type=button class="btn btn-default" data-dismiss=modal>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

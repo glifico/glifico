@@ -1,0 +1,134 @@
+<form name="grammarForm" novalidate>
+  <div class="container-fluid">
+    <h2 class="title">Grammar</h2>
+
+    <div class="container-inner">
+      <div class="panel panel-default">
+        <div class="panel-body text-center" style="padding:25px;">
+
+          <div ng-if="!testStarted">
+
+            <div class="row">
+              <div class="text-justify">
+                <div class="alert alert-info alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+                  <p>Hi {{userData.NOME}} {{userData.COGNOME}},</p>
+                  <br/>
+
+                  <p>Thanks for participating in our rating validation system!</p>
+                  <br/>
+
+                  <p>How to play this game:</p>
+
+                  <p>The exercises automatically check your level of knowledge of the language. We are going to submit
+                    some
+                    sentences about lexical questions, grammatical errors and comprehension matters. What you have to do
+                    is select the correct answer among the given options.</p>
+                  <br/>
+                  <br/>
+
+                  <p>Rules:</p>
+
+                  <p>- The quiz consists of 10 questions</p>
+
+                  <p>- You have 60 seconds to answer each question</p>
+
+                  <p>- If you don’t give an answer within 60 seconds the question will have a value of 0 (zero) points
+                    and
+                    affect your rating negatively</p>
+
+                  <p>- You cannot return to the previous questions, so be careful before confirming an answer</p>
+
+                  <p>- Do the test carefully because you are allowed to performe it only once a month</p>
+                  <br/>
+
+                  <p>When you feel ready click on "Try me out" and start the test</p>
+                  <br/>
+
+                  <p>Good luck!</p>
+                </div>
+              </div>
+            </div>
+            <div ng-if="pairListGrammar != NULL">
+              <div class="row form-group">
+                <label class="text-center">Choose the language you would like to be evaluated</label>
+              </div>
+              <div class="row form-group">
+              <span class="col-sm-4 col-xs-offset-4">
+									 <select class="form-control" name="pairListItem" ng-model="pairListItem"
+                           ng-options="pairListItem.LANGUAGE for pairListItem in pairListGrammar" required></select>
+								</span>
+              </div>
+              <div class="row form-group">
+                <button ng-click="launchTest(pairListItem.LANGUAGE)"
+                        type="submit" class="btn btn-lg btn-default btn-sm"
+                        ng-disabled="grammarForm.$invalid">
+                  <i class="fa fa-edit"></i> Try me out
+                </button>
+              </div>
+
+              <div class="row form-group">
+                <div id="{{$index}}" ng-repeat="pair in pairListGrammar">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="row form-group">
+                        <!-- FROM -->
+                        <label class="col-xs-2 control-label text-right">Language:</label>
+                        <span class="col-sm-2 text-left">{{pair.LANGUAGE}}</span>
+                        <!-- LAST_EXECUTION -->
+                        <label class="col-xs-2 control-label text-right">Last Execution Date:</label>
+                        <span class="col-sm-2 text-left">{{pair.LAST_EXECUTION!=NULL ? pair.LAST_EXECUTION : 'Not yet executed'}}</span>
+                        <!-- RATING -->
+
+                        <span style="pointer-events: none;" id="div_rating"
+                              class="star-rating col-xs-2"
+                              star-rating rating-value="pair.MARK" data-max="5">
+                        </span>
+                        <!-- STATUS -->
+                      <span class="col-xs-1 label text-left" style="margin-top:5px;"
+                            ng-class="{ 'label-default' : pair.STATUS==0, 'label-success' : pair.STATUS==1}">{{pair.STATUS==0 ? 'Not Done' : 'Done'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div ng-if="pairListGrammar == NULL" class="row form-group">
+              <div class="col-xs-8 col-xs-offset-2">
+                <div class="alert alert-warning" role="alert">
+                  At the moment you don't have any language pair set and you can't get any grammar test!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-if="testStarted">
+
+            <section template-snippet name="traduttore/snippet/grammarTestSnippet" id="contact"
+                     class="section"></section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="testResultModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Congratulation!</h4>
+      </div>
+      <div class="modal-body">
+        You got {{score.SCORE}}/10 for your grammar test! Contratulation! Your Profile rank will now be updated!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

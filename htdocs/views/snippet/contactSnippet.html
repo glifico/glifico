@@ -1,0 +1,37 @@
+<div class="container">
+
+  <h2 class="title">There's no better time than now</h2>
+  <h4 class="subtitle">Get in touch, let's work together</h4>
+
+  <div class="contact-form">
+    <form name="contactForm" ng-submit="doContatta()" novalidate>
+      <div class="eight columns animated" data-animate="fadeInLeft" data-animate-delay="400">
+
+        <!-- EMAIL -->
+        <div class="form-group" ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }">
+          <input type="email" name="email" class="form-control" ng-model="email" required placeholder="Email*">
+        </div>
+
+        <!-- SUBJECT -->
+        <div class="form-group" ng-class="{ 'has-error' : contactForm.subject.$invalid && !contactForm.subject.$pristine }">
+          <input type="text" name="subject" class="form-control" ng-model="subject" required placeholder="Subject*">
+        </div>
+        
+      </div>
+
+      <div class="eight columns animated" data-animate="fadeInRight" data-animate-delay="400">
+
+        <!-- TEXT -->
+        <div ng-class="{ 'has-error' : contactForm.text.$invalid && !contactForm.text.$pristine }">
+          <textarea class="form-control" name="text" ng-model="text" required rows="4" placeholder="Text*"></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn" ng-disabled="contactForm.$invalid"><i class="fa fa-envelope"></i>&nbsp;Send
+      </button>
+    </form>
+  </div>
+  <!-- end contact form -->
+
+</div>
+<!-- end container -->

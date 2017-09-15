@@ -1,0 +1,220 @@
+<form name=userForm novalidate>
+  <div class=container-fluid>
+    <h2 class=title>Profile</h2>
+
+    <div class=container-inner>
+
+      <div class="panel panel-default">
+        <div class=panel-body>
+
+          <div class="animated col-xs-2" data-animate=fadeInLeft data-animate-delay=400 ng-controller=UploadCtrl>
+            
+            <div id=container_image_profile>
+              <img class=thumb_img width=180 height=180 ng-src="data:image/jpeg;base64,{{image}}">
+
+              <p id=text_image_profile>
+                <i class="fa fa-camera"> <span class=button ng-file-select ng-model=files>Update image</span></i>
+              </p>
+            </div>
+            <div style="pointer-events: none;margin:10px 25px" id=div_rating class=star-rating star-rating rating-value=userData.RATING/userData.NUM_RATING data-max=5>
+            </div>
+          </div>
+
+          <div class="animated col-xs-10" data-animate=fadeInRight data-animate-delay=400>
+            
+
+            <div class="row form-group">
+              <label class="col-xs-3 control-label text-right">Username:</label>
+              <span class="col-sm-3 text-left">{{userData.USERNAME}}</span>
+            </div>
+
+            
+            <div class="row form-group" ng-show=editMode ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+
+              <label class="col-sm-3 control-label text-right">Password:</label>
+
+              <div class=col-sm-3>
+                <input type=password id=password name=password class=form-control ng-model=password ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/">
+                
+              </div>
+              <div class="col-sm-6 text-justify">
+                <span ng-show="userForm.password.$invalid && !userForm.password.$pristine && userForm.password.$error.pattern" class=help-block>Password must be at least 4 characters, max 8 and must include at least one uppercase character, one lowercase character and a number</span>
+              </div>
+            </div>
+
+            
+            <div class="row form-group" ng-show="editMode && password.length>0" ng-class="{ 'has-error' : userForm.passwordR.$invalid && !userForm.passwordR.$pristine}">
+
+              <label class="col-sm-3 control-label text-right">Retype Password:</label>
+
+              <div class=col-sm-3>
+                <input type=password id=passwordR name=passwordR pw-check=password class=form-control ng-model=passwordR ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/">
+              </div>
+              <div class="col-sm-6 text-justify">
+          <span ng-show="userForm.passwordR.$invalid && !userForm.passwordR.$pristine && userForm.passwordR.$error.pattern" class=help-block>Password must be at least 4 characters, max 8 and must include at least one uppercase character, one lowercase character
+        and a number</span>
+              </div>
+
+              
+              <div class=text-justify ng-show="userForm.passwordR.$error.pwmatch && passwordR.length>0">
+                <span class=help-block>Password mismatching</span>
+              </div>
+            </div>
+
+            <div class="row form-group" ng-show=!editMode>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert you First and Middle Name"> Name:</span>
+              </label>
+              <span class="col-sm-3 text-left">{{userData.NOME}}</span>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert you Last Name"> Surname:</span>
+              </label>
+              <span class="col-sm-3 text-left">{{userData.COGNOME}}</span>
+            </div>
+            
+            <div class="row form-group" ng-show=editMode>
+              <div ng-class="{ 'has-error' : userForm.nomeTraduttore.$invalid && !userForm.nomeTraduttore.$pristine }">
+                <label class="col-xs-3 control-label text-right">
+                  <span class=tipped data-title="Insert you First and Middle Name"> Name*</span>
+                </label>
+            <span class=col-sm-3>
+              <input name=nomeTraduttore class=form-control ng-model=nomeTraduttore required placeholder="">
+            </span>
+              </div>
+
+              
+              <div ng-class="{ 'has-error' : userForm.cognomeTraduttore.$invalid && !userForm.cognomeTraduttore.$pristine }">
+                <label class="col-xs-3 control-label text-right">
+                  <span class=tipped data-title="Insert you Last Name"> Surname*</span>
+                </label>
+            <span class=col-sm-3><input name=cognomeTraduttore class=form-control ng-model=cognomeTraduttore required placeholder=""></span>
+              </div>
+            </div>
+
+            
+            <div class="form-group row" ng-show=!editMode>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert your personal e-mail address"> Email:</span>
+              </label>
+              <span class="col-sm-3 text-left">{{userData.EMAIL}}</span>
+            </div>
+
+            <div class="row form-group" ng-show=editMode>
+              <div ng-class="{ 'has-error' : userForm.emailTraduttore.$invalid && !userForm.emailTraduttore.$pristine }">
+                <label class="col-xs-3 control-label text-right">
+                  <span class=tipped data-title="Insert your personal e-mail address"> Email*</span>
+                </label>
+								<span class=col-sm-3>
+									<input type=email name=emailTraduttore class=form-control ng-model=emailTraduttore required>
+								</span>
+              </div>
+            </div>
+
+            
+            <div class="form-group row" ng-show=!editMode>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert your date of birth"> Birthday:</span>
+              </label>
+              <span class="col-sm-3 text-left">{{userData.DATA_NASCITA | date:'dd/MM/yyyy'}}</span>
+            </div>
+            <div ng-show=editMode class="form-group row" ng-class="{ 'has-error' : userForm.birthdayTraduttore.$invalid && !userForm.birthdayTraduttore.$pristine }">
+              <label for=birthdayTraduttore class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert your date of birth"> Birthday</span>
+              </label>
+          <span class=col-sm-3><input type=date id=birthdayTraduttore name=birthdayTraduttore ng-model=birthdayTraduttore class=form-control placeholder="" ng-pattern="/^((\d{4})-(\d{2})-(\d{2}))$/"></span>
+            </div>
+
+            
+            <div class="form-group row" ng-show=!editMode>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert your current city"> City:</span>
+              </label>
+              <span class="col-sm-3 text-left">{{userData.CITTA}}</span>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert the country you are current living in"> Country:</span>
+              </label>
+              <span class="col-sm-3 text-left">{{userData.PAESE}}</span>
+            </div>
+
+            <div class="row form-group" ng-show=editMode>
+              <div ng-class="{ 'has-error' : userForm.cittaTraduttore.$invalid && !userForm.cittaTraduttore.$pristine }">
+                <label class="col-xs-3 control-label text-right">
+                  <span class=tipped data-title="Insert your current city"> City*</span>
+                </label>
+								<span class=col-sm-3>
+									<input name=cittaTraduttore class=form-control ng-model=cittaTraduttore required>
+								</span>
+              </div>
+
+              <div ng-class="{ 'has-error' : userForm.countryTraduttore.$invalid && !userForm.countryTraduttore.$pristine }">
+                <label class="col-xs-3 text-right control-label">
+                  <span class=tipped data-title="Insert the country you are current living in"> Country*</span>
+                </label>
+
+                <div class=col-sm-3>
+                  <select class=form-control name=countryTraduttore ng-model=countryTraduttore ng-options="countryTraduttore.DESCRIZIONE for countryTraduttore in countries" required></select>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="form-group row" ng-show=!editMode>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Select your native language"> Mothertongue:</span>
+              </label>
+              <span class="col-sm-3 text-left">{{userData.MADRELINGUA}}</span>
+            </div>
+
+            
+            <div class="form-group row" ng-show=!editMode>
+              <label class="col-xs-3 control-label text-right">
+                <span class=tipped data-title="Insert you personal VAT number"> VAT number:</span>
+                </label>
+              <span class="col-sm-3 text-left">{{userData.VAT}}</span>
+            </div>
+
+            <div ng-show=editMode class="form-group row">
+              <div ng-class="{ 'has-error' : userForm.mothertongueTraduttore.$invalid && !userForm.mothertongueTraduttore.$pristine }">
+                <label class="col-xs-3 text-right control-label">
+                  <span class=tipped data-title="Select your native language"> Mothertongue*</span>
+                </label>
+
+                <div class=col-sm-3>
+                  <select class=form-control name=mothertongueTraduttore ng-model=mothertongueTraduttore ng-options="mothertongueTraduttore.DESCRIZIONE for mothertongueTraduttore in languages" required></select>
+                </div>
+              </div>
+            </div>
+
+            <div ng-show=editMode class="form-group row">
+              <div ng-class="{ 'has-error' : userForm.vat.$invalid && !userForm.vat.$pristine }">
+                <label class="col-xs-3 control-label text-right">
+                  <span class=tipped data-title="Insert you personal VAT number"> VAT number</span>
+                </label>
+								<span class=col-sm-3>
+									<input name=vat class=form-control ng-model=vat>
+								</span>
+              </div>
+            </div>
+
+
+          </div>
+          <div style=clear:both></div>
+          <div ng-show=!editMode class=text-right style=margin-top:10px>
+            <button type=submit class="btn btn-lg btn-default btn-sm" ng-click="editMode=true;isShowMessage=false;">
+              <i class="fa fa-edit"></i> edit
+            </button>
+          </div>
+
+          <div ng-show=editMode class=text-right style=margin-top:10px>
+            <button type=submit class="btn btn-lg btn-default btn-sm" ng-click="editMode=false;doUpdateProfileTraduttore();" ng-disabled=userForm.$invalid>
+              <i class="fa fa-edit"></i> Confirm
+            </button>
+            <button type=submit class="btn btn-lg btn-default btn-sm" ng-click="editMode=false;">
+              <i class="fa fa-angle-double-left"></i> Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

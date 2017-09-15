@@ -1,0 +1,35 @@
+<h4 class="title text-left"><span class="color">Language: {{$parent.currentLanguageGrammar}}</span></h4>
+<form name="grammarTest" novalidate>
+  <div ng-if="marks != NULL">
+    <ul id="{{$index}}" ng-repeat="mark in marks" ng-transclude-custom class="list-group-item text-left">
+      <li>{{mark.QUESTION}}</li>
+      <label class="radio" style="margin-left:20px;">
+        <input type="radio" ng-model="mark.VAL" ng-value="1"> {{mark.ANSWER1}} </label>
+      <label class="radio" style="margin-left:20px;">
+        <input type="radio" ng-model="mark.VAL" ng-value="2"> {{mark.ANSWER2}} </label>
+      <label class="radio" style="margin-left:20px;">
+        <input type="radio" ng-model="mark.VAL" ng-value="3"> {{mark.ANSWER3}} </label>
+    </ul>
+  </div>
+
+  <div class="row form-group text-center" style="margin-top:30px;">
+    <button ng-click="sendGrammarTest($parent.currentLanguageGrammar)" class="btn btn-default btn-sm">
+      <i class="fa fa-edit"></i> Submit
+    </button>
+  </div>
+
+
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container" style="padding: 20px 0 0 0">
+      <timer interval="1000" countdown="60">
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="progressBar"
+               aria-valuemin="0" aria-valuemax="100" style="width:{{progressBar}}%">
+            {{progressBar}} %
+          </div>
+        </div>
+      </timer>
+    </div>
+  </nav>
+
+</form>
