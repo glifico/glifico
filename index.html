@@ -36,7 +36,9 @@
 
 <script type="text/javascript" src="functions.js"></script>
 <script type="text/javascript"></script>
+<script src="cookie.js"></script>
 <script src="login.js"></script>
+
 
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.controller.js"></script>
@@ -67,8 +69,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body>
-
+<body onload="onLoad()">
 
 
 	<!-- custom templates -->
@@ -258,23 +259,6 @@ md-input-container{
 </div>
 </div>
 
-<script>
-$(document).ready(function(){
-		$.cookieBar({
-		fixed: true,
-		message:'We use cookies to track usage and preferences and to improve our website',
-		effect: 'slide',
-		policyButton: true,
-		policyText: 'Click to see our full privacy policy',
-		policyURL: 'privacy.xsp',
-		acceptButton:
-		true,
-		acceptText: 'I Understand',
-		zindex:9999,
-		bottom: true
-		});
-		})
-</script>
 
 <div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;">
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
@@ -282,31 +266,6 @@ $(document).ready(function(){
 <div class="alert alert-success" id="alertOK" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;">
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
 </div>
-
-<script type="text/javascript">
-	console.log(document.cookie);
-
-	if (getLogged()) {
-		isLogged = true;
-		$("#usernameTab").show();
-		$("#usernameLoginRegister").hide();
-	} else {
-		$("#usernameTab").hide();
-		$("#usernameLoginRegister").show();
-	}
-
-	if (!isAgenzia && isLogged) {
-		console.log("should show");
-		$("#li-rating").show();
-		$("#li-trad").show();
-		$("#li-skill").show();
-	} else {
-		$("#li-rating").hide();
-		$("#li-trad").hide();
-		$("#li-skill").hide();
-
-	}
-</script>
 <div id="divGlificoMain">
 <div id="divGlificoHeader">GLIFICO<br>
 <div id="divMadeEasy"><br>Translations made easy. Your way</div>

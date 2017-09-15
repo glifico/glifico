@@ -1,7 +1,29 @@
 /*
  * GLIFICO Functions
  */
+function onLoad(){
+	console.log(document.cookie);
 
+	if (getLogged()) {
+		isLogged = true;
+		$("#usernameTab").show();
+		$("#usernameLoginRegister").hide();
+	} else {
+		$("#usernameTab").hide();
+		$("#usernameLoginRegister").show();
+	}
+
+	if (!isAgenzia && isLogged) {
+		console.log("should show");
+		$("#li-rating").show();
+		$("#li-trad").show();
+		$("#li-skill").show();
+	} else {
+		$("#li-rating").hide();
+		$("#li-trad").hide();
+		$("#li-skill").hide();
+	}
+}
 
 function doDominoLogin() {
 	var username=document.getElementById('textinput').value

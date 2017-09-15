@@ -36,13 +36,14 @@
 
 <script type="text/javascript" src="functions.js"></script>
 <script type="text/javascript"></script>
+<script src="cookie.js"></script>
 <script src="login.js"></script>
+
 
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.controller.js"></script>
 
 <script src="app/login.controller.js"></script>
-<script src="app/login.service.js"></script>
 
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -68,8 +69,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body>
-
+<body onload="onLoad()">
 
 
 	<!-- custom templates -->
@@ -151,6 +151,21 @@
 </span>
 </a>
 </li>
+
+<li class="dropdown">
+<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown">
+<span class="reverse">
+<div id="loginController" ng-controller="loginController as ctrl">
+<span><p id="usernameTab">{{ctrl.username}}</p></span>
+</div>
+</span>
+</a>
+
+<ul class="dropdown-menu">
+    <li><a onclick="logout()">logout</a></li>
+  </ul>
+</li>
+
 </ul>
 </div>
 </div>
@@ -191,7 +206,7 @@
 </div>
 </div>
 <div class="alert alert-danger" id="errorPanel" style="display:none;">
-<strong>Attenzione!</strong>Impossibile accedere. Utente o password errati.
+<strong>Warning!</strong>Wrong username or password
 </div>
 <div class="form-group">
 <label class="col-md-4 control-label" for="button1id"></label>
@@ -243,25 +258,7 @@ md-input-container{
 </div>
 </div>
 </div>
-</div>
 
-<script>
-$(document).ready(function(){
-		$.cookieBar({
-		fixed: true,
-		message:'We use cookies to track usage and preferences and to improve our website',
-		effect: 'slide',
-		policyButton: true,
-		policyText: 'Click to see our full privacy policy',
-		policyURL: 'privacy.xsp',
-		acceptButton:
-		true,
-		acceptText: 'I Understand',
-		zindex:9999,
-		bottom: true
-		});
-		})
-</script>
 
 <div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;">
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
@@ -270,26 +267,13 @@ $(document).ready(function(){
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
 </div>
 
-<script type="text/javascript">
-if(getTheCookie()){
-isLogged=true;
-document.getElementById("usernameLoginRegister").innerHTML="username";
-console.log("cookie got")
-}
+<div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;">
+<a class="close" data-dismiss="alert" href="#">&nbsp;</a>
+</div>
+<div class="alert alert-success" id="alertOK" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;">
+<a class="close" data-dismiss="alert" href="#">&nbsp;</a>
+</div>
 
-
-if (!isAgenzia && isLogged) {
-	console.log("should show");
-	$("#li-rating").show();
-	$("#li-trad").show();
-	$("#li-skill").show();
-} else {
-	$("#li-rating").hide();
-	$("#li-trad").hide();
-	$("#li-skill").hide();
-
-}
-</script>
 <div class="jumbotron jumboMain">
 	<div class="row" style="margin-left: 10px; margin-right: 10px;">
 		<div class="col-md-12">
