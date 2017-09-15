@@ -1,7 +1,7 @@
 <?php
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $dsn = "pgsql:"
-"host=".$dbopts["host"].";"
+."host=".$dbopts["host"].";"
 . "dbname=".ltrim($dbopts["path"],'/').";"
 . "user=".$dbopts["user"].";"
 . "port=5432;"
