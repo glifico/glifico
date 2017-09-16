@@ -35,5 +35,4 @@ curl_setopt($handle, CURLOPT_HTTPHEADER, array(
 curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
 
 $result = curl_exec($handle);
-$result= json_decode($result,true);
 exit($result);
