@@ -1,6 +1,6 @@
 <?php
 
-require("/sendgrid-php/sendgrid-php.php");
+require 'vendor/autoload.php';
 
 $apiKey="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";
 $from = new SendGrid\Email("Glifico", "info@glifico.com");
