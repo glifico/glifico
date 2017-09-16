@@ -2,25 +2,25 @@
 
 $url="https://api.sendgrid.com/v3/mail/send";
 $handle = curl_init($url);
-
+$dest=_GET['to'];
 $data='{
   "personalizations": [
     {
       "to": [
         {
-          "email": "fili27182@gmail.com"
+          "email": "'.$dest.'"
         }
       ],
-      "subject": "Hello, World!"
+      "subject": "Thank you for sign up on Glifico!"
     }
   ],
   "from": {
-    "email": "from_address@example.com"
+    "email": "info@glifico.com"
   },
   "content": [
     {
       "type": "text/plain",
-      "value": "Hello, World!"
+      "value": "You are now registered on Glifico!"
     }
   ]
 }';
@@ -36,5 +36,4 @@ curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
 
 $result = curl_exec($handle);
 $result= json_decode($result,true);
-echo("$data");
 exit($result);
