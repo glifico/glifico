@@ -3,4 +3,4 @@
 
 *.phar
 
-/vendor/
+sendgrid.key
