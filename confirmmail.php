@@ -1,8 +1,6 @@
 <?php
-// using SendGrid's PHP Library
-// https://github.com/sendgrid/sendgrid-php
-// If you are using Composer (recommended)
-require 'vendor/autoload.php';
+
+require("/sendgrid-php/sendgrid-php.php");
 
 $apiKey="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";
 $from = new SendGrid\Email("Glifico", "info@glifico.com");
