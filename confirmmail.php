@@ -2,7 +2,7 @@
 
 $url="https://api.sendgrid.com/v3/mail/send";
 $handle = curl_init($url);
-$dest=_GET['to'];
+$dest=$_GET['to'];
 $data='{
   "personalizations": [
     {
