@@ -71,7 +71,9 @@ function saveTheCookie(value) {
 
 function getLogged(){
 	var storedText = document.cookie;
+	console.debug(storedText);
 	var patt=/maincookie=[a-zA-Z0-9]{4,}[;\s]/g; //da aggiornare 4, 
+	console.debug(patt.test(storedText));
 	return patt.test(storedText); 
 }
 
