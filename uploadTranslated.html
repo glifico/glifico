@@ -290,20 +290,21 @@ Please use the form below to upload translated document
 <div id="upController" ng-controller="uploadController as ctrl">
 
 <div id="upDescr">
-You have to upload the document, please use button below
-
+Hi {{ctrl.translator}}
+<br>
+Please use button, to upload the document...
+<br>
 <input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" ng-show="!ctrl.uploaded"/>
 
 </div>
 <div id="remove">
 
 <div id="upThanks">
-<p>Thank you for updating your document...</p> 
+<p>Thank you {{ctrl.translator}} for uploading your document...</p> 
 <p id="url"></p>
 </div>
 
-<p>Change your mind? Remove document.</p>
-
+<p>Change your mind?</p>
 <input class="btn"  type="button" ng-click="ctrl.remove()" value="Delete document"/>
 
 

@@ -14,6 +14,7 @@ angular.module("uploadController",[])
 	ctrl.$onInit=function(){
 		ctrl.storedUrl="http://www.example.com";
 		ctrl.uploaded=false;
+		ctrl.translator=getUsername();
 		document.getElementById("remove").style.visibility="hidden";
 	}
 
@@ -41,9 +42,10 @@ angular.module("uploadController",[])
 
 	ctrl.remove=function(){
 		document.getElementById("url").innerHTML="";
-		document.getElementById("upThanks").style.visibility="hidden";
+		document.getElementById("upDescr").style.visibility="visible";
+		document.getElementById("remove").style.visibility="hidden";
 	};
-
+	
 })
 
 
