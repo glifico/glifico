@@ -70,18 +70,9 @@ function saveTheCookie(value) {
 
 
 function getLogged(){
-	 var return_value = false;
-
-	    var pos_start = document.cookie.indexOf(cookie_name+"=");
-
-	    if (pos_start != -1) { // Cookie already set, read it
-	    	pos_start+=cookie_name.length+1;
-	        var pos_end = document.cookie.indexOf(";", pos_start); // Find ";" after the start position
-
-	        if (pos_end - pos_start>=1) return_value=true;
-	    }
-
-	    return return_value; 
+	var storedText = document.cookie;
+	var patt=/maincookie=[a-zA-Z0-9]{4,}[;\s]/g; //da aggiornare 4, 
+	return patt.test(storedText); 
 }
 
 
