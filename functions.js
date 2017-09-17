@@ -44,9 +44,6 @@ function doDominoLogin() {
 			mostraDialogTimed('errorPanel');
 			return(false);
 		}
-	} else {
-		mostraDialogTimed('errorPanel');
-		return(false);
 	};
 }
 	logReq.open("GET", "https://glifico.herokuapp.com/login.php"+poststring , false);
@@ -64,7 +61,7 @@ function saveTheCookie(value) {
 
     expire.setTime( today.getTime() + 60 * 60 * 1000 * 24 * number_of_days ); // Current time + (60 sec * 60 min * 1000 milisecs * 24 hours * number_of_days)
 
-    document.cookie = cookie_name + "=" + escape(value) + "; expires=" + expire.toGMTString();
+    document.cookie = cookie_name + "=" + escape(value) + "$; expires=" + expire.toGMTString();
 	console.log("cookie set");
 }
 
@@ -72,19 +69,18 @@ function saveTheCookie(value) {
 function getLogged(){
 	var storedText = document.cookie;
 	console.debug("getlogged");
-	return /maincookie=[a-zA-Z0-9]{4,}[;\s]{0,1}/g.test(storedText); 
+	return /maincookie=[a-zA-Z0-9]{4,}$[;\s]{0,1}/g.test(storedText); 
 }
 
 
 function getUsername() {
     var return_value = null;
 
-    var pos_start = document.cookie.indexOf("=");
+    var pos_start = document.cookie.indexOf(cookie_name+"=");
 
     if (pos_start != -1) { // Cookie already set, read it
     	pos_start++;
-        var pos_end = document.cookie.indexOf(";", pos_start); // Find ";" after the start position
-
+	var pos_end=document.cookie.indexOf("$", pos_start); // Find ";" after the start position
         if (pos_end == -1) pos_end = document.cookie.length;
         return_value = unescape( document.cookie.substring(pos_start, pos_end) );
     }
