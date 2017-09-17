@@ -268,6 +268,15 @@ md-input-container{
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
 </div>
 
+<script>
+$(document).ready(function () {
+	
+	if(!getLogged()){
+		$("#styledbody").hide();
+		alert("Please login");
+	}
+});
+</script>
 
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
@@ -276,13 +285,29 @@ Please use the form below to upload translated document
 </div>
 </div>
 </div>
-<div style="text-align:center;">
+<div id="styledbody" style="text-align:center;">
 <div style="width:400px;display: table;margin: 0 auto;">
 <div id="upController" ng-controller="uploadController as ctrl">
-<input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" />
 
-<div ng-show="ctrl.showpay">
-Thank you for updating your document
+<div id="upDescr">
+You have to upload the document, please use button below
+
+<input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" ng-show="!ctrl.uploaded"/>
+
+</div>
+<div id="remove">
+
+<div id="upThanks">
+<p>Thank you for updating your document...</p> 
+<p id="url"></p>
+</div>
+
+<p>Change your mind? Remove document.</p>
+
+<input class="btn"  type="button" ng-click="ctrl.remove()" value="Delete document"/>
+
+
+<p>Return to <a href="index.html">homepage</a></p>
 </div>
 </div>
 </div>
