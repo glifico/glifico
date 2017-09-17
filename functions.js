@@ -3,7 +3,6 @@
  */
 function onLoad(){
 	console.log(document.cookie);
-	console.debug(getLogged());
 	if (getLogged()) {
 		console.debug("set logged to true");
 		isLogged = true;
@@ -68,7 +67,6 @@ function saveTheCookie(value) {
 
 function getLogged(){
 	var storedText = document.cookie;
-	console.debug("getlogged");
 	return /maincookie=[a-zA-Z0-9]{4,}[$][;\s]{0,1}/g.test(storedText); 
 }
 
