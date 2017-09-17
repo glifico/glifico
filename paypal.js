@@ -1,5 +1,11 @@
 $(document).ready(function () {
 	$('#payCompleted').hide();
+	
+	if(!getLogged()){
+		$("#styledbody").hide();
+		
+		alert("Please login");
+	}
 });
 
 
@@ -9,6 +15,7 @@ function getAmount(){
 
 function paymentCompleted(){
 	$('#payCompleted').show();
+	$('#payment').hide();
 }
 
 paypal.Button.render({
