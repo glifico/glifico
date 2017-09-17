@@ -69,7 +69,7 @@ function saveTheCookie(value) {
 function getLogged(){
 	var storedText = document.cookie;
 	console.debug("getlogged");
-	return /maincookie=[a-zA-Z0-9]{4,}$[;\s]{0,1}/g.test(storedText); 
+	return /maincookie=[a-zA-Z0-9]{4,}[$][;\s]{0,1}/g.test(storedText); 
 }
 
 
