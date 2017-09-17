@@ -11,7 +11,7 @@ angular.module('Authentication',[])
     		var pos_start = document.cookie.indexOf(cookie_name+"=");
 
     		if (pos_start != -1) { // Cookie already set, read it
-    			pos_start++;
+    			pos_start+=cookie_name.length+1;
 			var pos_end=document.cookie.indexOf("$", pos_start); // Find ";" after the start position
         		if (pos_end == -1) pos_end = document.cookie.length;
         		return_value = unescape( document.cookie.substring(pos_start, pos_end) );
