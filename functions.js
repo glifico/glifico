@@ -3,8 +3,9 @@
  */
 function onLoad(){
 	console.log(document.cookie);
-
+	console.debug(getLogged());
 	if (getLogged()) {
+		console.debug("set logged to true");
 		isLogged = true;
 		$("#usernameTab").show();
 		$("#usernameLoginRegister").hide();
