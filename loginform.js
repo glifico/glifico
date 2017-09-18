@@ -193,9 +193,9 @@
 
 		function storeTranslatorInfos(model){
 			console.log(model);
-			var req = createXHTMLRequests();
+			var req = createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
-				if (req.status == 200&&JSON.parse(logReq.responseText)["statuscode"]==200){
+				if (req.status == 200&&JSON.parse(req.responseText)["statuscode"]==200){
 					console.log("user created");
 				}
 			}
@@ -209,7 +209,6 @@
 		};
 
 		vmMainController_regTrad.submit = function() {
-			console.debug(vmMainController_regTrad.model);            	
 			var req = createXHTMLHttpRequest() ;
 			req.onreadystatechange = function(){
 				if (req.status == 200){
