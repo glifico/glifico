@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS TRADUTTORE (
   }
 
 
-  $query="SELECT NOME, PASSWORD FROM traduttore WHERE nome='$user';";
+  $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
   if(htmlspecialchars($row["password"])==$password){

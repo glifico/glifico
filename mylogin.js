@@ -16,6 +16,10 @@ function doDominoLogin() {
 			mostraDialogTimed('errorPanel');
 			return(false);
 		}
+		//Todo
+		/*
+		 * if response = username already present
+		 */
 	};
 }
 	logReq.open("GET", "https://glifico.herokuapp.com/login.php"+poststring , false);

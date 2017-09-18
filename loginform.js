@@ -188,8 +188,25 @@
 						modelToMatch: vmMainController_regTrad.model
 					}
 			}
-		]
+			]
 		}];
+
+		function storeTranslatorInfos(model){
+			console.log(model);
+			var req = createXHTMLRequests();
+			req.onreadystatechange = function(){
+				if (req.status == 200&&JSON.parse(logReq.responseText)["statuscode"]==200){
+					console.log("user created");
+				}
+			}
+			req.open("GET", "https://glifico.herokuapp.com/storeTranslator.php"+"?user="+vmMainController_regTrad.model["Username"]+
+					"&user="+vmMainController_regTrad.model["Username"]+
+					"&name="+vmMainController_regTrad.model["FirstName"]+
+					"&lastname="+vmMainController_regTrad.model["LastName"]+
+					"&password="+vmMainController_regTrad.model["Password"]
+					, false);
+			req.send();
+		};
 
 		vmMainController_regTrad.submit = function() {
 			console.debug(vmMainController_regTrad.model);            	
@@ -202,7 +219,7 @@
 					"Thanks. We have sent you an email with a confirmation link.");
 					$("#loginModal").hide();
 					location.href="index.html"
-					return(true);
+						return(true);
 				}else{
 					mostraDialogTimed('errorPanel');
 					return(false);
@@ -211,6 +228,7 @@
 
 			req.open("GET", "https://glifico.herokuapp.com/confirmmail.php"+"?to="+vmMainController_regTrad.model["Email"] , false);
 			req.send();
+			storeTranslatorInfos(vmMainController_regTrad.model);
 		}
 
 	}
