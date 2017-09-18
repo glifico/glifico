@@ -12,4 +12,4 @@ $(document).ready(function(){
 		zindex:9999,
 		bottom: true
 		});
-		})
+})

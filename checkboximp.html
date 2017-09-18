@@ -1,0 +1,11 @@
+<script type="text/ng-template" id="checkboximp.html">
+     <div class="checkbox">
+          <label>
+            <input type="checkbox"
+                   class="formly-field-checkbox"
+                   ng-model="model[options.key]">           
+            {{to.required ? '*' : ''}}
+            <span  ng-bind-html="to.label"> </span>
+          </label>
+        </div>     
+</script>

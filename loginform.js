@@ -187,17 +187,9 @@
 						fieldToMatch: "Password",
 						modelToMatch: vmMainController_regTrad.model
 					}
-			},
-			{
-				key: 'TermsVersion',
-				type: 'checkbox',
-				templateOptions: {
-					label: 'I have read and accept GLIFICO Terms And Conditions',
-					required: true
-				}
-			}]
-		}
-		];
+			}
+		]
+		}];
 
 		vmMainController_regTrad.submit = function() {
 			console.debug(vmMainController_regTrad.model);            	
@@ -224,6 +216,7 @@
 	}
 
 })();
+
 
 angular.element(document).ready(function() {
 	console.log("registro regTrad");
@@ -421,15 +414,8 @@ angular.element(document).ready(function() {
 						fieldToMatch: "Password",
 						modelToMatch: vmMainController_regAge.model
 					}
-			},{
-				key: 'TermsVersion',
-				type: 'checkbox',
-				templateOptions: {
-					label: 'I have read and accept GLIFICO Terms And Conditions',
-					required: true
-				}
-			}]
-		}
+			},
+			]}
 		];
 		vmMainController_regAge.submit = function() {
 			$http
