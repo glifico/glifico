@@ -15,7 +15,7 @@ $cognome=$_GET['lastname'];
 $password=$_GET['password'];
 $user=$_GET['user'];
 
-$query="INSERT INTO traduttore(nome, cognome, username, password) VALUES ($nome, $cognome, $user, $password)";
+$query="INSERT INTO traduttore(nome, cognome, username, password) VALUES ('$nome', '$cognome', '$user', '$password');";
 
 $db->query($query);
 
