@@ -2,5 +2,6 @@
 .DS_STORE
 
 *.phar
+genHash.py
 
 sendgrid.key
