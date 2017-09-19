@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS TRADUTTORE (
   if(isset($_GET["user"])&&isset($_GET["password"])){
     $user=$_GET["user"];
     $password=$_GET["password"];
+    $salted="startup".$password;
+    $pwd=hash('sha256',$salted);
   }else{
     exit (json_encode(array("message"=>"error: user not found", "statuscode"=>400)));
   }
@@ -35,7 +37,7 @@ CREATE TABLE IF NOT EXISTS TRADUTTORE (
   $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
-  if(htmlspecialchars($row["password"])==$password){
+  if(htmlspecialchars($row["password"])==$pwd){
     echo json_encode(array("statuscode"=>200));
   }else{
     exit (json_encode(array("message"=>"error: wrong password", "statuscode"=>400)));
