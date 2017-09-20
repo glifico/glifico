@@ -18,8 +18,8 @@ angular.module('Authentication',[])
 			if(pos_end-pos_start<2){
 				return null;
 			}else{
-				var string=unescape( document.cookie.substring(pos_start, pos_end));
-				console.debug(string);
+				var string=document.cookie.substring(pos_start, pos_end);
+				console.log(string);
 				return_value = JSON.parse(string)['user'];
 			}
 		}
