@@ -53,7 +53,7 @@ function getLogged(){
 	var pos_start = document.cookie.indexOf(maincookie+"=");
 
 	if (pos_start != -1) { // Cookie already set, read it
-		pos_start=maincookie.length+1;
+		pos_start+=maincookie.length+1;
 		var pos_end=document.cookie.indexOf("$", pos_start); // Find ";" after the start position
 		if (pos_end == -1) pos_end = pos_start;
 		console.debug(pos_start);
@@ -93,5 +93,7 @@ function getUsername() {
 
 function logout() {
 	document.cookie = maincookie + "=; expires=" + new Date;
+	document.cookie = "token=; expires=" + new Date;
+	document.cookie = "username=; expires=" + new Date;
 	location.href="index.html";
 }
