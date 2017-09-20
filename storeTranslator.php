@@ -24,7 +24,7 @@ $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
 
-$query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$hashed');";
+$query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$pwd');";
 
 $db->query($query);
 

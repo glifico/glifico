@@ -28,7 +28,7 @@ $data='{
   },
   "content": [
     {
-      "type": "text/html",
+      "type": "text/plain",
       "value": "To complete registration on <b>Glifico</b> open or copy this link in a browser:'.$link.'"
     }
   ]
