@@ -14,7 +14,7 @@ $token=$_GET['token'];
 $str=base64_decode($token);
 $json=json_decode($str);
 
-echo(json_encode($json);
+echo(json_encode($json));
 echo($json['email']);
 
 $password=$_GET["password"];
