@@ -1,4 +1,9 @@
 <?php
+
+function tokenize($user, $password){}
+  return hash('crc32',$user."tokenize".$password);
+}
+
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $dsn = "pgsql:"
 ."host=".$dbopts["host"].";"
@@ -38,7 +43,8 @@ CREATE TABLE IF NOT EXISTS TRADUTTORE (
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
   if(htmlspecialchars($row["password"])==$pwd){
-    echo json_encode(array("statuscode"=>200));
+    $token=tokenize($user, $password);
+    echo json_encode(array("user"=>$user, "token"=>$token, "statuscode"=>200));
   }else{
     exit (json_encode(array("message"=>"error: wrong password", "statuscode"=>400)));
   }
