@@ -11,10 +11,11 @@ $db = new PDO($dsn);
 if(!$db) exit;
 
 $object=$_GET['token'];
+echo($object);
 $str=base64_decode($object);
 $json=json_decode($str);
 
-echo(json_encode($json);
+echo(json_encode($json));
 
 $nome=$json['name'];
 $cognome=$json['lastname'];
