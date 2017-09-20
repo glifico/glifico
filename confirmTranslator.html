@@ -173,7 +173,7 @@ function storeTranslator(){
 				token=location.href.substring(start,end);
 			}
 			
-			req.open("POST", "https://glifico.herokuapp.com/storeTranslator.php"+"?"+
+			req.open("GET", "https://glifico.herokuapp.com/storeTranslator.php"+"?"+
 					"token="+token, true);
 			req.send();
 }
