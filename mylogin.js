@@ -23,7 +23,7 @@ function doDominoLogin() {
 			 */
 		};
 	}
-	logReq.open("GET", "https://glifico.herokuapp.com/login.php"+poststring , false);
+	logReq.open("GET", "https://glifico.herokuapp.com/login.php"+poststring , true);
 	logReq.send();
 }
 
