@@ -17,21 +17,20 @@ $json=json_decode($str);
 
 echo(json_encode($json));
 
-$nome=$json["name"];
-echo($nome);
-$cognome=$json["lastName"];
-echo($cognome);
-$password=$json["password"];
-echo($password);
-
-$email=$json["email"];
-echo($email);
-
-$user=$json["user"];
-echo($user);
-
+$nome=$json['name'];
+echo("pippo");
+$cognome=$json['lastName'];
+echo("pippo");
+$password=$json['password'];
+echo("pippo");
+$email=$json['email'];
+echo("pippo");
+$user=$json['user'];
+echo("pippo");
 $salted_password=$user."startup".$password;
+echo("pippo");
 $hashed= hash('sha256' , $salted_password );
+echo("pippo");
 
 echo($nome);
 echo($cognome);
