@@ -14,9 +14,10 @@ $token=$_GET['token'];
 $str=base64_decode($token);
 $json=json_decode($str,true);
 
-echo(json_encode($json));
-echo($json['email']);
-
+$nome=$_GET['name'];
+$cognome=$_GET['lastName'];
+$email=$_GET['email'];
+$user=$_GET['user'];
 $password=$_GET["password"];
 $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
