@@ -194,7 +194,7 @@
 		vmMainController_regTrad.submit = function() {
 			var req = createXHTMLHttpRequest() ;
 			req.onreadystatechange = function(){
-				if (req.status == 200 && req.readyState == 4){
+				if (req.status == 200){
 					$('#alertOK').fadeIn().delay(10000)
 					.fadeOut();
 					$('#alertOK').html(
