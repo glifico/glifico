@@ -14,18 +14,16 @@ $token=$_GET['token'];
 $str=base64_decode($token);
 $json=json_decode($str,true);
 
-$nome=$_GET['name'];
-$cognome=$_GET['lastName'];
-$email=$_GET['email'];
-$user=$_GET['user'];
-$password=$_GET["password"];
+$nome=$json['name'];
+$cognome=$json['lastName'];
+$email=$json['email'];
+$user=$json['user'];
+$password=$json["password"];
 $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
 
 $query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$hashed');";
-
-echo($query);
 
 $db->query($query);
 
