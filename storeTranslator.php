@@ -12,7 +12,7 @@ if(!$db) exit;
 
 $token=$_GET['token'];
 $str=base64_decode($token);
-$json=json_decode($str);
+$json=json_decode($str,true);
 
 echo(json_encode($json));
 echo($json['email']);
