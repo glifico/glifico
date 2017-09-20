@@ -191,28 +191,10 @@
 			]
 		}];
 
-		function storeTranslatorInfos(model){
-			console.log(model);
-			var req = createXHTMLHttpRequest();
-			req.onreadystatechange = function(){
-				if (req.status == 200&&JSON.parse(req.responseText)["statuscode"]==200){
-					console.log("user created");
-				}
-			}
-			req.open("GET", "https://glifico.herokuapp.com/storeTranslator.php"+"?user="+vmMainController_regTrad.model["Username"]+
-					"&user="+vmMainController_regTrad.model["Username"]+
-					"&name="+vmMainController_regTrad.model["FirstName"]+
-					"&lastname="+vmMainController_regTrad.model["LastName"]+
-					"&password="+vmMainController_regTrad.model["Password"]+
-					"&email="+vmMainController_regTrad.model["Email"]
-					, false);
-			req.send();
-		};
-
 		vmMainController_regTrad.submit = function() {
 			var req = createXHTMLHttpRequest() ;
 			req.onreadystatechange = function(){
-				if (req.status == 200){
+				if (req.status == 200 && req.readyState == 4){
 					$('#alertOK').fadeIn().delay(10000)
 					.fadeOut();
 					$('#alertOK').html(
@@ -226,9 +208,14 @@
 				}
 			};
 
-			req.open("GET", "https://glifico.herokuapp.com/confirmmail.php"+"?to="+vmMainController_regTrad.model["Email"] , false);
+			req.open("POST", "https://glifico.herokuapp.com/confirmMailT.php"+"?"+
+					"user="+vmMainController_regTrad.model["Username"]+
+					"&name="+vmMainController_regTrad.model["FirstName"]+
+					"&lastname="+vmMainController_regTrad.model["LastName"]+
+					"&password="+vmMainController_regTrad.model["Password"]+
+					"&email="+vmMainController_regTrad.model["Email"]
+					, true);
 			req.send();
-			storeTranslatorInfos(vmMainController_regTrad.model);
 		}
 
 	}

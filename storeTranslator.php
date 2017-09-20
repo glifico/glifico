@@ -10,13 +10,17 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit;
 
-$nome=$_GET['name'];
-$cognome=$_GET['lastname'];
-$password=$_GET['password'];
-$email=$_GET['email'];
+$object=$_POST['token'];
+$str=base64_decode($object);
+$json=json_decode($str);
+
+$nome=$json['name'];
+$cognome=$json['lastname'];
+$password=$json['password'];
+$email=$json['email'];
+$user=$json['user'];
 $salted_password=$user."startup".$password;
 $hashed= hash('sha256' , $salted_password );
-$user=$_GET['user'];
 
 $query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$hashed');";
 

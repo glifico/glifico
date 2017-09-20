@@ -1,14 +1,23 @@
 <?php
 
+$name=$_POST['name'];
+$last=$_POST['lastname'];
+$password=$_POST['password'];
+$email=$_POST['email'];
+$user=$_POST['user'];
+
+$object=array("user"=>$user,"password"=>$password, "name"=>$name, "lastName"=>$last,"email"=>$email);
+$jsonarray=json_encode($object);
+$link="https://glifico.herokuapp.com/confirmTranslator.html/?token=".base64_encode($jsonarray);
+
 $url="https://api.sendgrid.com/v3/mail/send";
 $handle = curl_init($url);
-$dest=$_GET['to'];
 $data='{
   "personalizations": [
     {
       "to": [
         {
-          "email": "'.$dest.'"
+          "email": "'.$email.'"
         }
       ],
       "subject": "Thank you for sign up on Glifico!"
@@ -20,7 +29,7 @@ $data='{
   "content": [
     {
       "type": "text/plain",
-      "value": "You are now registered on Glifico!"
+      "value": "To complete registration on glifico open or copy this link in a browser:'.$link.'!"
     }
   ]
 }';

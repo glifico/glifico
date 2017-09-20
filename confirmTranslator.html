@@ -38,7 +38,6 @@
 <script type="text/javascript"></script>
 <script src="cookiebar.js"></script>
 <script src="loginform.js"></script>
-<script src="mylogin.js"></script>
 
 
 <script src="app/glifico.modules.js"></script>
@@ -274,28 +273,51 @@ md-input-container{
 
 Add your code here
 -->
+
+<script>
+function storeTranslator(){
+	var req = createXHTMLHttpRequest() ;
+			req.onreadystatechange = function(){
+				if (req.status == 200 && req.readyState == 4){
+					$("#completed").show();
+					location.href="index.html"
+						return(true);
+				}else{
+					mostraDialogTimed('errorPanel');
+					return(false);
+				}
+			};
+
+			var start=location.href.indexOf("token=");
+			start+=6;
+			var end=location.href.length;
+			var token = "";
+			if(end-start>2) {
+				token=location.href.substring(start,end);
+			}
+			
+			req.open("POST", "https://glifico.herokuapp.com/storeTranslator.php"+"?"+
+					"token="+token, true);
+			req.send();
+}
+</script>
+
 <br><br><br><br>
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
 <div class="panel-heading">
 
-Use the form below to update your password
+You are now a Glifico user
 
 </div>
 </div>
 </div>
 <div style="text-align:center;">
-<div style="width:400px;display: table;margin: 0 auto;">
+<div style="width:400px;display: table;margin: 0 auto;" onload="$(#completed).hide()">
 
-<div id="resetPassword" ng-controller="resetController as ctrl">
-<div id="form" ng-show="!ctrl.resetCompleted">
-Choose a new password:
-<input type="password" class="form-control" placeholder="newpassword" ng-model="ctrl.password" onkeydown="if(event.keyCode == 13) document.getElementById('passwordbtn').click()"><br>
-<input id="passwordbtn" class="btn btn-warning" type="button" value="Change password"  ng-click="ctrl.onChangePassword()"/>
-</div>
-
-<div id="completed" ng-show="ctrl.resetCompleted">
-Now you can login with your <b>new password</b>.
+<div id="resetPassword" onload="storeTranslator()">
+<div id="completed">
+Now you can login with your <b>new credentials</b>.
 
 <p>Return to <a href="index.html">homepage</a></p>
 </div>
@@ -303,6 +325,9 @@ Now you can login with your <b>new password</b>.
 
 </div>
 </div>
+
+
+
 
  <footer class="footer">
  <div id="glificoFooter" data-ng-controller="glificoFooterController as ctrl">

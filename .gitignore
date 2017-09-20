@@ -1,5 +1,6 @@
 *~
 .DS_STORE
+.DS_Store
 
 *.phar
 genHash.py
