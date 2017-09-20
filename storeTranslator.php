@@ -12,6 +12,7 @@ if(!$db) exit;
 
 $token=$_GET['token'];
 $str=base64_decode($token);
+//true return an array instead of an object
 $json=json_decode($str,true);
 
 $nome=$json['name'];
