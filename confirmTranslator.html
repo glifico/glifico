@@ -151,9 +151,14 @@
 Add your code here
 -->
 
+
 <script>
+$("#completed").hide();
+
+
 function storeTranslator(){
-	var req = createXHTMLHttpRequest() ;
+	var req = createXHTMLHttpRequest();
+	console.log("function called");
 			req.onreadystatechange = function(){
 				if (req.status == 200 && req.readyState == 4){
 					$("#completed").show();
@@ -177,6 +182,8 @@ function storeTranslator(){
 					"token="+token, true);
 			req.send();
 }
+
+storeTranslator();
 </script>
 
 <br><br><br><br>
@@ -192,7 +199,7 @@ You are now a Glifico user
 <div style="text-align:center;">
 <div style="width:400px;display: table;margin: 0 auto;" onload="$(#completed).hide()">
 
-<div id="resetPassword" onload="storeTranslator()">
+<div id="resetPassword">
 <div id="completed">
 <p>Go to Glifico's <a href="index.html">homepage</a></p> and login with your <b>new credentials</b>.
 </div>
