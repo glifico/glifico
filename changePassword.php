@@ -15,7 +15,7 @@ if(isset($_GET["user"])&&isset($_GET["password"])&&isset($_GET["token"])){
   $password=$_GET["password"];
   $token=$_GET["token"];
 }else{
-  exit (json_encode(array("message"=>"error: user not found", "statuscode"=>400)));
+  exit (json_encode(array("message"=>"error: parameters not correctly setted", "statuscode"=>400)));
 }
 
 $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
