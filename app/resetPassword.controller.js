@@ -16,7 +16,7 @@ angular.module("resetController",[])
 	ctrl.onSubmit=function(){
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange=function(){
-			if(req.status==200){
+			if(req.status==200&&req.readyState==4){
 				ctrl.submitCompleted=true;
 				$("#form").hide();
 			}else{
@@ -31,7 +31,7 @@ angular.module("resetController",[])
 	ctrl.onChangePassword=function(){
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange=function(){
-			if(req.status==200&&req.ready==4){
+			if(req.status==200&&req.readyState==4){
 				if(JSON.parse(req.responseText)['statuscode']==200){
 					ctrl.resetCompleted=true;
 					$("#form").hide();

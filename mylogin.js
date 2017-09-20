@@ -5,7 +5,7 @@ function doDominoLogin() {
 
 	var poststring="?user="+username+"&password="+password;
 	logReq.onreadystatechange = function(){
-		if (logReq.status == 200){
+		if (logReq.status == 200&&req.readyState==4){
 			if(JSON.parse(logReq.responseText)["statuscode"]==200){
 				var user=JSON.parse(logReq.responseText)["user"];
 				var token=JSON.parse(logReq.responseText)["token"];
