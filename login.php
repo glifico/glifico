@@ -42,9 +42,11 @@ CREATE TABLE IF NOT EXISTS TRADUTTORE (
   $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
+
+  $type="T";
   if(htmlspecialchars($row["password"])==$pwd){
     $token=tokenize($user, $password);
-    echo json_encode(array("user"=>$user, "token"=>$token, "statuscode"=>200));
+    echo json_encode(array("user"=>$user, "token"=>$token, "type"=>$type, "statuscode"=>200));
   }else{
     exit (json_encode(array("message"=>"error: wrong password", "statuscode"=>400)));
   }

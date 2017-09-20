@@ -9,6 +9,7 @@ function doDominoLogin() {
 			if(JSON.parse(logReq.responseText)["statuscode"]==200){
 				var user=JSON.parse(logReq.responseText)["user"];
 				var token=JSON.parse(logReq.responseText)["token"];
+				var type=JSON.parse(logReq.responseText)["type"];
 				saveTheCookie(user, token);
 				console.log("logged");
 				location.href=location.href;
@@ -30,7 +31,7 @@ function doDominoLogin() {
 
 var maincookie = "maincookie";
 
-function saveTheCookie(user, token) {
+function saveTheCookie(user, token, type) {
 	var today = new Date(); // Actual date
 	var expire = new Date(); // Expiration of the cookie
 
@@ -41,6 +42,7 @@ function saveTheCookie(user, token) {
 	var object={};
 	object.user=user;
 	object.token=token;
+	object.type=type;
 
 	document.cookie = maincookie + "=" + (JSON.stringify(object)) +"$; expires=" + expire.toGMTString();
 	console.log("cookie set");
