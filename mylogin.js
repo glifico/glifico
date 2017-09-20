@@ -61,11 +61,12 @@ function getLogged(){
 		if(pos_end-pos_start<2){
 			return false;
 		}else{
-			string=( document.cookie.substring(pos_start, pos_end))
-			testToken = JSON.parse(string)['token'];
+			var string=( document.cookie.substring(pos_start, pos_end))
+			var testToken = JSON.parse(string)['token'];
+			return_value=/[a-zA-Z0-9]{8}[$]{0,1}[;\s]{0,1}/g.test(testToken);
 		}
 	}
-	return /[a-zA-Z0-9]{8}[$]{0,1}[;\s]{0,1}/g.test(testToken); 
+	return return_value; 
 }
 
 
@@ -82,7 +83,7 @@ function getUsername() {
 		if(pos_end-pos_start<2){
 			return null;
 		}else{
-			string=unescape( document.cookie.substring(pos_start, pos_end))
+			var string=unescape( document.cookie.substring(pos_start, pos_end))
 			return_value = JSON.parse(string)['user'];
 		}
 	}
