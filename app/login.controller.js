@@ -11,7 +11,7 @@ angular.module('Authentication',[])
 		var pos_start = document.cookie.indexOf(maincookie+"=");
 
 		if (pos_start != -1) { // Cookie already set, read it
-			pos_start=maincookie.length+1;
+			pos_start+=maincookie.length+1;
 			var pos_end=document.cookie.indexOf("$", pos_start); // Find ";" after the start position
 			if (pos_end == -1) pos_end = pos_start;
 			//JSON object has at list two {}
