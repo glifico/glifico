@@ -64,7 +64,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 
 $str=htmlspecialchars($row["password"]).$username."glifico";
 $token=hash('sha256',$str);
-$link="https://glifico.herokuapp.com/changePassword.hml?token=".$token."&user=".$user;
+$link="https://glifico.herokuapp.com/changePassword.html?token=".$token."&user=".$user;
 $result->CloseCursor();
 
 sendMail(htmlspecialchars($row["email"]),$link);
