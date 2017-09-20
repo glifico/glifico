@@ -13,11 +13,12 @@ if(!$db) exit;
 $nome=$_GET['name'];
 $cognome=$_GET['lastname'];
 $password=$_GET['password'];
+$email=$_GET['email'];
 $salted_password="startup".$password;
 $hashed= hash('sha256' , $salted_password );
 $user=$_GET['user'];
 
-$query="INSERT INTO traduttore(nome, cognome, username, password) VALUES ('$nome', '$cognome', '$user', '$hashed');";
+$query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$hashed');";
 
 $db->query($query);
 

@@ -203,7 +203,8 @@
 					"&user="+vmMainController_regTrad.model["Username"]+
 					"&name="+vmMainController_regTrad.model["FirstName"]+
 					"&lastname="+vmMainController_regTrad.model["LastName"]+
-					"&password="+vmMainController_regTrad.model["Password"]
+					"&password="+vmMainController_regTrad.model["Password"]+
+					"&email="+vmMainController_regTrad.model["Email"]
 					, false);
 			req.send();
 		};
