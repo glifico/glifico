@@ -1,10 +1,10 @@
 <?php
 
-$name=$_POST['name'];
-$last=$_POST['lastname'];
-$password=$_POST['password'];
-$email=$_POST['email'];
-$user=$_POST['user'];
+$name=$_GET['name'];
+$last=$_GET['lastname'];
+$password=$_GET['password'];
+$email=$_GET['email'];
+$user=$_GET['user'];
 
 $object=array("user"=>$user,"password"=>$password, "name"=>$name, "lastName"=>$last,"email"=>$email);
 $jsonarray=json_encode($object);

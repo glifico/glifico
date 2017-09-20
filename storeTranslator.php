@@ -10,7 +10,7 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit;
 
-$object=$_POST['token'];
+$object=$_GET['token'];
 $str=base64_decode($object);
 $json=json_decode($str);
 
