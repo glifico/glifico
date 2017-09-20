@@ -25,6 +25,13 @@ $user=$json['user'];
 $salted_password=$user."startup".$password;
 $hashed= hash('sha256' , $salted_password );
 
+echo($nome);
+echo($cognome);
+echo($password);
+echo($email);
+echo($user);
+echo($hashed);
+
 $query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$hashed');";
 
 echo($query);
