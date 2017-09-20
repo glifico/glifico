@@ -90,6 +90,26 @@ function getUsername() {
 	return return_value; // null if cookie doesn't exist, string otherwise
 }
 
+function getToken() {
+	var return_value = null;
+
+	var pos_start = document.cookie.indexOf(maincookie+"=");
+
+	if (pos_start != -1) { // Cookie already set, read it
+		pos_start=maincookie.length+1;
+		var pos_end=document.cookie.indexOf("$", pos_start); // Find ";" after the start position
+		if (pos_end == -1) pos_end = pos_start;
+		//JSON object has at list two {}
+		if(pos_end-pos_start<2){
+			return null;
+		}else{
+			var string=unescape( document.cookie.substring(pos_start, pos_end))
+			return_value = JSON.parse(string)['token'];
+		}
+	}
+	return return_value; // null if cookie doesn't exist, string otherwise
+}
+
 
 function logout() {
 	document.cookie = maincookie + "=; expires=" + new Date;

@@ -19,7 +19,6 @@ angular.module('Authentication',[])
 				return null;
 			}else{
 				var string=document.cookie.substring(pos_start, pos_end);
-				console.log(string);
 				return_value = JSON.parse(string)['user'];
 			}
 		}
