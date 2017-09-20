@@ -52,7 +52,7 @@ angular.module("resetController",[])
 
 
 	function message(messageStr){
-		$('#alertOK').fadeIn().delay(2000).fadeOut;
+		$('#alertOK').fadeIn().delay(2000).fadeOut();
 		$('#alertOK').html(messageStr);
 	};
 
