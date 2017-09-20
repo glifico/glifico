@@ -17,7 +17,9 @@ $json=json_decode($str);
 
 echo(json_encode($json));
 
-$nome=$json["name"];
+$nome=$str["name"];
+echo($str);
+echo($nome);
 $cognome=$json["lastName"];
 $password=$json["password"];
 $email=$json["email"];
