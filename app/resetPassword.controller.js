@@ -18,6 +18,7 @@ angular.module("resetController",[])
 		req.onreadystatechange=function(){
 			if(req.status==200){
 				ctrl.submitCompleted=true;
+				$("#form").hide();
 			}else{
 
 			}
@@ -33,6 +34,7 @@ angular.module("resetController",[])
 			if(req.status==200){
 				if(JSON.parse(req.responseText)['statuscode']==200){
 					ctrl.resetCompleted=true;
+					$("#form").hide();
 					message('Thanks. Password updated');
 				}else{
 					errorMessage("wrong token");
