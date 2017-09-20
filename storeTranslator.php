@@ -14,6 +14,8 @@ $object=$_GET['token'];
 $str=base64_decode($object);
 $json=json_decode($str);
 
+echo(json_encode($json);
+
 $nome=$json['name'];
 $cognome=$json['lastname'];
 $password=$json['password'];
@@ -23,6 +25,8 @@ $salted_password=$user."startup".$password;
 $hashed= hash('sha256' , $salted_password );
 
 $query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$hashed');";
+
+echo($query);
 
 $db->query($query);
 
