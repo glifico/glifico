@@ -16,7 +16,7 @@ $str=base64_decode($object);
 $json=json_decode($str);
 
 echo(json_encode($json));
-echo($json['name']);
+echo("pippo");
 
 $nome=$json['name'];
 echo("pippo");
