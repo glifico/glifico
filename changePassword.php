@@ -25,7 +25,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 $str=htmlspecialchars($row["password"]).$user."glifico";
 $true_token=hash('sha256',$str);
 
-if(!$true_token==$token){
+if($true_token!=$token){
   exit (json_encode(array("message"=>"error: wrong token", "statuscode"=>400)));
 }
 
