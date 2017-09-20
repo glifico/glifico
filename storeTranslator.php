@@ -14,7 +14,7 @@ $nome=$_GET['name'];
 $cognome=$_GET['lastname'];
 $password=$_GET['password'];
 $email=$_GET['email'];
-$salted_password="startup".$password;
+$salted_password=$user."startup".$password;
 $hashed= hash('sha256' , $salted_password );
 $user=$_GET['user'];
 

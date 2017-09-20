@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS TRADUTTORE (
   if(isset($_GET["user"])&&isset($_GET["password"])){
     $user=$_GET["user"];
     $password=$_GET["password"];
-    $salted="startup".$password;
+    $salted=$user."startup".$password;
     $pwd=hash('sha256',$salted);
   }else{
     exit (json_encode(array("message"=>"error: user not found", "statuscode"=>400)));
