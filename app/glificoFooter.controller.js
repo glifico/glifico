@@ -2,7 +2,7 @@ angular.module("glificoFooter",[])
 .controller('glificoFooterController', function glificoFooter() {
 	var ctrl=this;
 
-	ctrl.address="torino";
+	ctrl.address="...";
 });
 
 angular.element(document).ready(function() {
