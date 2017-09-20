@@ -62,7 +62,7 @@ $query="SELECT USERNAME, PASSWORD, EMAIL FROM traduttore WHERE username='$user';
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
-$str=htmlspecialchars($row["password"]).$username."glifico";
+$str=htmlspecialchars($row["password"]).$user."glifico";
 $token=hash('sha256',$str);
 $link="https://glifico.herokuapp.com/changePassword.html?token=".$token."&user=".$user;
 $result->CloseCursor();
