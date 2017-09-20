@@ -56,8 +56,6 @@ function getLogged(){
 		pos_start+=maincookie.length+1;
 		var pos_end=document.cookie.indexOf("$", pos_start); // Find ";" after the start position
 		if (pos_end == -1) pos_end = pos_start;
-		console.debug(pos_start);
-		console.debug(pos_end);
 		if(pos_end-pos_start<2){
 			return false;
 		}else{
@@ -93,7 +91,5 @@ function getUsername() {
 
 function logout() {
 	document.cookie = maincookie + "=; expires=" + new Date;
-	document.cookie = "token=; expires=" + new Date;
-	document.cookie = "username=; expires=" + new Date;
 	location.href="index.html";
 }
