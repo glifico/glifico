@@ -61,7 +61,7 @@ function getLogged(){
 		if(pos_end-pos_start<2){
 			return false;
 		}else{
-			var string=( document.cookie.substring(pos_start, pos_end))
+			var string=( document.cookie.substring(pos_start, pos_end));
 			var testToken = JSON.parse(string)['token'];
 			return_value=/[a-zA-Z0-9]{8}[$]{0,1}[;\s]{0,1}/g.test(testToken);
 		}
