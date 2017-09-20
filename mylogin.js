@@ -10,7 +10,7 @@ function doDominoLogin() {
 				var user=JSON.parse(logReq.responseText)["user"];
 				var token=JSON.parse(logReq.responseText)["token"];
 				var type=JSON.parse(logReq.responseText)["type"];
-				saveTheCookie(user, token);
+				saveTheCookie(user, token,type);
 				console.log("logged");
 				location.href=location.href;
 				return(true);
