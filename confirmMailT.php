@@ -8,7 +8,7 @@ $user=$_GET['user'];
 
 $object=array("user"=>$user,"password"=>$password, "name"=>$name, "lastName"=>$last,"email"=>$email);
 $jsonarray=json_encode($object);
-$link="https://glifico.herokuapp.com/confirmTranslator.html/?token=".base64_encode($jsonarray);
+$link="https://glifico.herokuapp.com/confirmTranslator.html?token=".base64_encode($jsonarray);
 
 $url="https://api.sendgrid.com/v3/mail/send";
 $handle = curl_init($url);
@@ -29,7 +29,7 @@ $data='{
   "content": [
     {
       "type": "text/plain",
-      "value": "To complete registration on glifico open or copy this link in a browser:'.$link.'!"
+      "value": "To complete registration on glifico open or copy this link in a browser:'.$link.'"
     }
   ]
 }';
