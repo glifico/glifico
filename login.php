@@ -1,6 +1,6 @@
 <?php
 
-function tokenize($user, $password){}
+function tokenize($user, $password){
   return hash('crc32',$user."tokenize".$password);
 }
 
