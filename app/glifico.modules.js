@@ -1,4 +1,5 @@
 angular.module("glifico",[
 	'glificoFooter',
-	'Authentication'
+	'Authentication',
+	'contactsApp'
 ]);

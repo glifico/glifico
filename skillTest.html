@@ -42,7 +42,7 @@
 
 
 <script src="app/glifico.modules.js"></script>
-<script src="app/glificoFooter.controller.js"></script>
+<script src="app/glificoFooter.component.js"></script>
 
 <script src="app/login.controller.js"></script>
 
@@ -279,7 +279,12 @@ skill
 				submitted in the language in which you are being evalutaed. Select
 				the most appropriate answer amoung the given choices.<br>You can keep track of time on the bar at the bottom of the page.<br>When the time expire the test will stop and your test can be
 				submitted for evaluation. Any unaswered question will be greded as
-				zeropoints.<br>If you first before time runs out click on the button "submit".<br><br>A deep breath... and he's take the test!</div></div><div style="text-align:center;"><div style="width:400px;display: table;margin: 0 auto;"><span>Choose the language you would like to be evaluated:</span><br><div class="input-group"><span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span><span class="cambia" id="span-combo-lingue">Loading...</span><span></span></div><br><a class="btn btn-default" onCLick="tryOut()">Try me out</a></div><br><div style="width:90%;display: table;margin: 0 auto;"><span id="tabella"></span><br><div style="height:3px"></div></div></div></div><div class="modal fade" id="skill-modal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content" style="width:800px"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"><span id="view:computedField1">X</span></span></button><h4 class="modal-title">Skill test</h4></div><div class="modal-body" id="skill-body"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Annulla</button></div></div></div></div></body>
-
-<!-- Mirrored from 77.93.251.227/glifico/portal.nsf/skillTest.xsp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Aug 2017 07:08:03 GMT -->
+				zeropoints.<br>If you first before time runs out click on the button "submit".<br><br>A deep breath... and he's take the test!</div></div><div style="text-align:center;"><div style="width:400px;display: table;margin: 0 auto;"><span>Choose the language you would like to be evaluated:</span><br><div class="input-group"><span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span><span class="cambia" id="span-combo-lingue">Loading...</span><span></span></div><br><a class="btn btn-default" onCLick="tryOut()">Try me out</a></div><br><div style="width:90%;display: table;margin: 0 auto;"><span id="tabella"></span><br><div style="height:3px"></div></div></div></div><div class="modal fade" id="skill-modal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content" style="width:800px"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"><span id="view:computedField1">X</span></span></button><h4 class="modal-title">Skill test</h4></div><div class="modal-body" id="skill-body"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Annulla</button></div></div></div></div>
+				
+				
+				
+				<div ng-app="glifico">
+ <glificofooter></glificofooter>
+ </div>
+				</body>
 </html>

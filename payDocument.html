@@ -48,7 +48,7 @@
 
 
 <script src="app/glifico.modules.js"></script>
-<script src="app/glificoFooter.controller.js"></script>
+<script src="app/glificoFooter.component.js"></script>
 
 <script src="app/login.controller.js"></script>
 
@@ -304,16 +304,9 @@ Your payment has been completed on Paypal, thanks!
 
  
 
- <footer class="footer">
- <div id="glificoFooter" data-ng-controller="glificoFooterController as ctrl">
-<div style="text-align:center">
-<hr><div style="display:block; width:100%; text-align:center;">
-<b>Glifico</b><br>Address {{ctrl.address}}<br>P.IVA ...<br>tel. ... - fax. ...<br>www.glifico.com - email: info@glifico.com<br>
-</div>
-</div>
-</div>
-
-</footer>
+ <div ng-app="glifico">
+ <glificofooter></glificofooter>
+ </div>
 
 
 </body>

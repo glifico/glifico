@@ -42,7 +42,7 @@
 
 
 <script src="app/glifico.modules.js"></script>
-<script src="app/glificoFooter.controller.js"></script>
+<script src="app/glificoFooter.component.js"></script>
 
 <script src="app/login.controller.js"></script>
 
@@ -278,6 +278,13 @@ Rating
 				submitted in the language in which you are being evalutaed. Select
 				the most appropriate answer amoung the given choices.<br>You can keep track of time on the bar at the bottom of the page.<br>When the time expire the test will stop and your test can be
 				submitted for evaluation.<br>A deep breath... and he's take the test!</div></div><div style="text-align:center;"><div style="width:400px;display: table;margin: 0 auto;"><span>Please select your mother tongue to evaluate other
-					translators:</span><br><div class="input-group" style="float: left;"><span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span><span class="cambia" id="span-combo-lingue">Loading...</span><span></span></div></div><br><a class="btn btn-default" onCLick="tryOut3()"><strong>Rate Now!</strong></a></div><br><div style="width:90%;display: table;margin: 0 auto;"><span id="titolo"></span><span id="tabella"></span><br><div align="right"><span id="next"></span></div><div align="center"><span id="page"></span></div><br><div style="height:10px"></div></div></div><div style="margin-right:10px;margin-left:10px"><br></div><div class="modal fade bs-example-modal-lg" id="skill-modal" role="dialog" tabindex="-1"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"><span id="view:computedField1">X</span></span></button><h4 class="modal-title">Social Rating</h4></div><div class="modal-body" id="skill-body"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button><button class="btn btn-primary" onClick="finishTest()" type="button"><i class="fa fa-check"></i>&nbsp;Confirm</button></div></div></div></div></body>
+					translators:</span><br><div class="input-group" style="float: left;"><span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span><span class="cambia" id="span-combo-lingue">Loading...</span><span></span></div></div><br><a class="btn btn-default" onCLick="tryOut3()"><strong>Rate Now!</strong></a></div><br><div style="width:90%;display: table;margin: 0 auto;"><span id="titolo"></span><span id="tabella"></span><br><div align="right"><span id="next"></span></div><div align="center"><span id="page"></span></div><br><div style="height:10px"></div></div></div><div style="margin-right:10px;margin-left:10px"><br></div><div class="modal fade bs-example-modal-lg" id="skill-modal" role="dialog" tabindex="-1"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"><span id="view:computedField1">X</span></span></button><h4 class="modal-title">Social Rating</h4></div><div class="modal-body" id="skill-body"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button><button class="btn btn-primary" onClick="finishTest()" type="button"><i class="fa fa-check"></i>&nbsp;Confirm</button></div></div></div></div>
+					
+					
+					
+<div ng-app="glifico">
+ <glificofooter></glificofooter>
+ </div>
+					</body>
 
 </html>

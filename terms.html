@@ -42,7 +42,7 @@
 
 
 <script src="app/glifico.modules.js"></script>
-<script src="app/glificoFooter.controller.js"></script>
+<script src="app/glificoFooter.component.js"></script>
 
 <script src="app/login.controller.js"></script>
 
@@ -275,9 +275,11 @@ md-input-container{
 terms
 
 </div></div></div>
-<footer class="footer"><div style="text-align:center">
-<hr><div style="display:block; width:100%; text-align:center;"><b>Glifico</b><br>Indirizzo<br>P.IVA ...<br>tel. ... - fax. ...<br>www.glifico.com - email: info@glifico.com<br></div></div>
-</footer>
+
+
+<div ng-app="glifico">
+ <glificofooter></glificofooter>
+ </div>
 </body>
 
 </html>
