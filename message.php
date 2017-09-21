@@ -24,6 +24,9 @@ $data='{
         },
         {
           "email": "info@glifico.com"
+        },
+        {
+          "email": "info.startupproject@gmail.com"
         }
       ],
       "subject": "'.$subject.'"
