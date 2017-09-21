@@ -2,8 +2,11 @@
 
 $name=$_GET['name'];
 $subject="Messaggio da un utente";
+
 if(isset($_GET['subject'])){
+  if(strlen($_GET['subject'])>2){
     $subject=$_GET['subject'];
+  }
 }
 $email=$_GET['email'];
 $body=$_GET['message'];
