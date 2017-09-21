@@ -82,7 +82,7 @@
 				}
 			};
 
-			req.open("GET", "message.php"+"?"+
+			req.open("GET", "https://glifico.herokuapp.com/message.php"+"?"+
 					"name="+ctrl.model["FirstName"]+
 					"&subject="+ctrl.model["Subject"]+
 					"&message="+ctrl.model["Message"]+
