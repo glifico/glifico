@@ -8,7 +8,7 @@ $vat=$_GET['VAT'];
 
 $object=array("user"=>$user, "password"=>$password, "name"=>$name, "email"=>$email, "vat"=>$vat);
 $jsonarray=json_encode($object);
-$link="https://glifico.herokuapp.com/confirmTranslator.html?token=".base64_encode($jsonarray);
+$link="https://glifico.herokuapp.com/confirmAgency.html?token=".base64_encode($jsonarray);
 
 $url="https://api.sendgrid.com/v3/mail/send";
 $handle = curl_init($url);
