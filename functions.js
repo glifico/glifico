@@ -1,8 +1,18 @@
 /*
  * GLIFICO Functions
  */
+
+/**
+ * show or hide elements in all pages based on login and user type
+ * 
+ * getLogged() and getType() are from mylogin.js 
+ * @returns void
+ */
 function onLoad(){
 	console.log(document.cookie);
+	var isLogged=false;
+	var isAgency=false;
+	
 	if (getLogged()) {
 		isLogged = true;
 		$("#usernameTab").show();
@@ -12,7 +22,11 @@ function onLoad(){
 		$("#usernameLoginRegister").show();
 	}
 
-	if (!isAgenzia && isLogged) {
+	if(getType()=="A"){
+		isAgency=true;
+	}
+	
+	if (!isAgency && isLogged) {
 		console.log("should show");
 		$("#li-rating").show();
 		$("#li-trad").show();
