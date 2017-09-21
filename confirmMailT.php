@@ -29,7 +29,7 @@ $data='{
   "content": [
     {
       "type": "text/plain",
-      "value": "To complete registration on <b>Glifico</b> open or copy this link in a browser:'.$link.'"
+      "value": "To complete registration on Glifico open or copy this link in a browser:'.$link.'"
     }
   ]
 }';
