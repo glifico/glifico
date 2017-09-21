@@ -216,7 +216,7 @@
 				}
 			};
 
-			req.open("POST", "https://glifico.herokuapp.com/confirmMailT.php"+"?"+
+			req.open("GET", "confirmMailT.php"+"?"+
 					"user="+vmMainController_regTrad.model["Username"]+
 					"&name="+vmMainController_regTrad.model["FirstName"]+
 					"&lastname="+vmMainController_regTrad.model["LastName"]+
