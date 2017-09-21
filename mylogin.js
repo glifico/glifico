@@ -94,7 +94,7 @@ function getLogged(){
 	var JSONarray=getJSON();
 
 	if(JSONarray){
-		var testToken = JSON.parse(string)['token'];
+		var testToken = JSONarray['token'];
 		return_value=/[a-zA-Z0-9]{8}[$]{0,1}[;\s]{0,1}/g.test(testToken);
 	}
 	return return_value; 
@@ -111,7 +111,7 @@ function getUsername() {
 	var JSONarray=getJSON();
 
 	if(JSONarray){
-		return_value = JSON.parse(string)['user'];
+		return_value = JSONarray['user'];
 	}
 	return return_value; // null if cookie doesn't exist, string otherwise
 }
@@ -125,7 +125,7 @@ function getToken() {
 	var JSONarray=getJSON();
 
 	if(JSONarray){
-		return_value = JSON.parse(string)['token'];
+		return_value = JSONarray['token'];
 	}
 	return return_value; // null if cookie doesn't exist, string otherwise
 }
@@ -139,7 +139,7 @@ function getType(){
 	var JSONarray=getJSON();
 
 	if(JSONarray){
-		return_value = JSON.parse(string)['type'];
+		return_value = JSONarray['type'];
 	}
 	return return_value; // null if cookie doesn't exist, string otherwise
 }
