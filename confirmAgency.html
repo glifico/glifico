@@ -162,7 +162,6 @@ function storeTranslator(){
 			req.onreadystatechange = function(){
 				if (req.status == 200 && req.readyState == 4){
 					$("#completed").show();
-					location.href="index.html"
 						return(true);
 				}else{
 					mostraDialogTimed('errorPanel');
