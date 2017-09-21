@@ -26,18 +26,41 @@ function onLoad(){
 		isAgency=true;
 	}
 	
-	if (!isAgency && isLogged) {
-		console.log("should show");
-		$("#li-rating").show();
-		$("#li-trad").show();
-		$("#li-skill").show();
-	} else {
-		$("#li-rating").hide();
-		$("#li-trad").hide();
-		$("#li-skill").hide();
+	if(isLogged){
+		if(isAgency){
+			showAgencyStuff();
+			hideTranslatorStuff();
+		}else{
+			showTranlatorStuff();
+			hideAgencyStuff();
+		}
+	}else{
+		hideTranslatorStuff();
+		hideAgencyStuff();
 	}
 }
 
+function showTranslatorStuff(){
+	$("#li-rating").show();
+	$("#li-trad").show();
+	$("#li-skill").show();
+}
+
+function showAgencyStuff(){
+	$("#li-pay").show();
+	$("#li-search").show();
+}
+
+function hideTranslatorStuff(){
+	$("#li-rating").hide();
+	$("#li-trad").hide();
+	$("#li-skill").hide();
+}
+
+function hideAgencyStuff(){
+	$("#li-pay").hide();
+	$("#li-search").hide();
+}
 
 function createXHTMLHttpRequest() {
 	try { return new ActiveXObject("Msxml2.XMLHTTP") ; } catch (e) {}
