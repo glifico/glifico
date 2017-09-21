@@ -31,7 +31,7 @@ function onLoad(){
 			showAgencyStuff();
 			hideTranslatorStuff();
 		}else{
-			showTranlatorStuff();
+			showTranslatorStuff();
 			hideAgencyStuff();
 		}
 	}else{
