@@ -2,31 +2,38 @@
  * GLIFICO Functions
  */
 
+/**
+ * show or hide elements in all pages based on login and user type
+ *
+ * getLogged() and getType() are from mylogin.js
+ * @returns void
+ */
+function onLoad(){
+		hideTranslatorStuff();
+		hideAgencyStuff();
+		$("#usernameLoginRegister").hide();
+	}
 
-function doDominoLogin() {
-	var username=document.getElementById('textinput').value
-	var password=document.getElementById('passwordinput').value
-	var logReq = createXHTMLHttpRequest() ;
-
-	var poststring = "RedirectTo=" + escape('glifico/portal.nsf/index.xsp') +"&Username=" + username + "&password=" + password;
-	logReq.onreadystatechange = function(){
-		if (logReq.status == 200){
-		if(logReq.responseText.indexOf("Please type your user name" + " and password") == -1){
-			console.log("logged");
-			location.href=escape('index.html') +"?Username=" + username + "&password=" + password;
-			return(true);
-		}else{
-			mostraDialogTimed('errorPanel');
-			return(false);
-		}
-	} else {
-		mostraDialogTimed('errorPanel');
-		return(false);
-	};
+function showTranslatorStuff(){
+	$("#li-rating").show();
+	$("#li-trad").show();
+	$("#li-skill").show();
 }
-	logReq.open("GET", "http://phil-personal-api.herokuapp.com/Temperature_version.php?key=xenoncursedavitindiesyb" , false);
-	logReq.send(poststring);
-	isLogged=true;
+
+function showAgencyStuff(){
+	$("#li-pay").show();
+	$("#li-search").show();
+}
+
+function hideTranslatorStuff(){
+	$("#li-rating").hide();
+	$("#li-trad").hide();
+	$("#li-skill").hide();
+}
+
+function hideAgencyStuff(){
+	$("#li-pay").hide();
+	$("#li-search").hide();
 }
 
 function createXHTMLHttpRequest() {

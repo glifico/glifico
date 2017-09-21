@@ -37,14 +37,9 @@
 <script type="text/javascript" src="functions.js"></script>
 <script type="text/javascript"></script>
 <script src="cookiebar.js"></script>
-<script src="loginform.js"></script>
-<script src="mylogin.js"></script>
-
 
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.component.js"></script>
-
-<script src="app/login.controller.js"></script>
 
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -66,11 +61,11 @@
 <link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
 <link rel="stylesheet" type="text/css" href="main.css">
 
-		
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-<body onload="onLoad()">
+<body>
 
 
 	<!-- custom templates -->
@@ -138,128 +133,9 @@
 <li><a href="terms.html">Terms</a></li>
 <li><a href="contacts.html">Contacts</a></li>
 </ul>
-<ul class="nav navbar-nav navbar-right">
-<li id="li-rating"><a href="socialRating.html">Rating</a></li>
-<li id="li-trad"><a href="socialTrad.html">Trad</a></li>
-<li id="li-skill"><a href="skillTest.html">Skill</a></li>
-<li class="dropdown-grid" style="position: static;">
-<a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()">
-<span class="reverse">
-<span id="view:_id4:computedField1">
-<script>function modalLogin(){  $('#loginModal').modal('show');}</script>
-<span id="usernameLoginRegister" onClick="modalLogin()">Register / Login</span>
-</span>
-</span>
-</a>
-</li>
-
-<li class="dropdown">
-<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown">
-<span class="reverse">
-<div id="loginController" ng-controller="loginController as ctrl">
-<span><p id="usernameTab">{{ctrl.username}}</p></span>
-</div>
-</span>
-</a>
-
-<ul class="dropdown-menu">
-    <li><a onclick="logout()">logout</a></li>
-  </ul>
-</li>
-
-</ul>
 </div>
 </div>
 </nav>
-<div aria-labelledby="myModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<button aria-label="Close" class="close" data-dismiss="modal" type="button">
-<span aria-hidden="true"></span>
-</button>
-<h4 class="modal-title" id="myModalLabel">Welcome, register or login at GLIFICO</h4>
-</div>
-<div class="modal-body">
-<ul class="nav nav-tabs">
-<li class="active"><a data-toggle="tab" href="#login">Login</a></li>
-<li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li>
-<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li>
-</ul>
-</div>
-<div class="tab-content"><div class="tab-pane fade in active" id="login">
-<form class="form-horizontal">
-
-<fieldset>
-<div class="form-group">
-<div class="col-md-12"></div>
-</div>
-<div class="form-group">
-<label class="col-md-4 control-label" for="textinput" id="user">User:</label>
-<div class="col-md-4">
-<input autofocus="autofocus" class="form-control input-md" id="textinput" name="textinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="User.." type="text">
-</div>
-</div>
-<div class="form-group">
-<label class="col-md-4 control-label" for="passwordinput">Password:</label>
-<div class="col-md-4">
-<input class="form-control input-md" id="passwordinput" name="passwordinput" onkeydown="if(event.keyCode == 13) document.getElementById('button1id').click()" placeholder="Password..." type="password">
-</div>
-</div>
-<div class="alert alert-danger" id="errorPanel" style="display:none;">
-<strong>Warning!</strong>Wrong username or password
-</div>
-<div class="form-group">
-<label class="col-md-4 control-label" for="button1id"></label>
-<div class="col-md-8">
-<button IsDefault="false" class="btn btn-success" id="button1id" name="button1id" onClick="doDominoLogin()" type="button">Login</button>
-</div>
-</div>
-</fieldset>
-
-</form>
-
-</div>
-<div class="tab-pane fade" id="regTrad">
-<div id="regTradAPP" data-ng-controller="MainController_regTrad as vmMainController_regTrad">
-    <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
-        <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
-            <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
-        </formly-form>
-    </form>
-</div>
-
-
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
-</div><div class="tab-pane fade" id="regAg">
-<div id="regAgeAPP" data-ng-controller="MainController_regAge as vmMainController_regAge">
-    <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
-        <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
-            <md-button type="submit" ng-click="vmMainController_regAge.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regAge.form.$invalid">Register!</md-button>
-        </formly-form>
-    </form>
-</div>
-
-
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
-</div>
-</div>
-</div>
-
-<div class="modal-footer">
-<button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-</div>
-</div>
-</div>
-
 
 <div class="alert alert-danger" id="alertError" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;">
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
@@ -269,25 +145,76 @@ md-input-container{
 </div>
 
 
-<br><br>
-<div class="jumbotron jumboMain">
-<div class="row" style="margin-left:10px; margin-right:10px;">
-<div class="col-md-12"><h2>Terms &amp; Conditions</h2></div>
-</div>
-<div class="row" style="margin-left:10px; margin-right:10px;">
-<div class="col-md-12">
-<p><b><span>20 September 2016</span></b></p>
 
-terms
+<!--
 
-</div>
-</div>
-</div>
+Add your code here
+-->
 
 
-<div ng-app="glifico">
+<script>
+$("#completed").hide();
+
+
+function storeTranslator(){
+	var req = createXHTMLHttpRequest();
+	console.log("function called");
+			req.onreadystatechange = function(){
+				if (req.status == 200 && req.readyState == 4){
+					$("#completed").show();
+						return(true);
+				}else{
+					mostraDialogTimed('errorPanel');
+					return(false);
+				}
+			};
+
+			var start=location.href.indexOf("token=");
+			start+=6;
+			var end=location.href.length;
+			var token = "";
+			if(end-start>2) {
+				token=location.href.substring(start,end);
+			}
+			
+			req.open("GET", "storeTranslator.php"+"?"+
+					"token="+token, true);
+			req.send();
+}
+
+storeTranslator();
+</script>
+
+<br><br><br><br>
+<div style="margin-right:10px;margin-left:10px">
+<div class="panel panel-default">
+<div class="panel-heading">
+
+You are now a Glifico user
+
+</div>
+</div>
+</div>
+<div style="text-align:center;">
+<div style="width:400px;display: table;margin: 0 auto;" onload="$(#completed).hide()">
+
+<div id="resetPassword">
+<div id="completed">
+<p>Go to Glifico's <a href="index.html">homepage</a></p> and login with your <b>new credentials</b>.
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+ <div ng-app="glifico">
  <glificofooter></glificofooter>
  </div>
+
+
 </body>
 
 </html>

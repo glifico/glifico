@@ -1,168 +1,153 @@
-(function(){
-	'use-sctrict';
+/**
+ * ask db is user/password is correct and set the cookie
+ * @returns
+ */
 
-	angular.module('Authentication',[])
+function doDominoLogin() {
+	var username=document.getElementById('textinput').value
+	var password=document.getElementById('passwordinput').value
+	var logReq = createXHTMLHttpRequest() ;
 
-	.controller('LoginController',
-			['$scope', '$rootScope', '$location', 'AuthenticationService',
-				function ($scope, $rootScope, $location, AuthenticationService) {
-				// reset login status
-				AuthenticationService.ClearCredentials();
-
-				$scope.login = function () {
-					$scope.dataLoading = true;
-					AuthenticationService.Login($scope.username, $scope.password, function(response) {
-						if(response.success) {
-							AuthenticationService.SetCredentials($scope.username, $scope.password);
-							$location.path('/');
-						} else {
-							$scope.error = response.message;
-							$scope.dataLoading = false;
-						}
-					});
-				};
-			}]);
-})
-
-(function(){
-	angular.module('Authentication')
-	.factory('AuthenticationService',
-			['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
-				function (Base64, $http, $cookieStore, $rootScope, $timeout) {
-				var service = {};
-
-				service.Login = function (username, password, callback) {
-
-					/* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
-					$timeout(function(){
-						var response = { success: username === 'test' && password === 'test' };
-						if(!response.success) {
-							response.message = 'Username or password is incorrect';
-						}
-						callback(response);
-					}, 1000);
+	var poststring="?user="+username+"&password="+password;
+	logReq.onreadystatechange = function(){
+		if (logReq.status == 200&&logReq.readyState==4){
+			if(JSON.parse(logReq.responseText)["statuscode"]==200){
+				var user=JSON.parse(logReq.responseText)["user"];
+				var token=JSON.parse(logReq.responseText)["token"];
+				var type=JSON.parse(logReq.responseText)["type"];
+				saveTheCookie(user, token,type);
+				console.log("logged");
+				location.href=location.href;
+				return(true);
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
+			}
+			//Todo
+			/*
+			 * if response = username already present
+			 */
+		};
+	}
+	logReq.open("GET", "login.php"+poststring , true);
+	logReq.send();
+}
 
 
-					/* Use this for real authentication
-             ----------------------------------------------*/
-					//$http.post('/api/authenticate', { username: username, password: password })
-					//    .success(function (response) {
-					//        callback(response);
-					//    });
+var maincookie = "maincookie";
 
-				};
+/**
+ * save a cookie with a JSON array of useful parameters
+ * @param user username of current session
+ * @param token get from db useful for future calls
+ * @param type "A"/"T"
+ * @returns
+ */
+function saveTheCookie(user, token, type) {
+	var today = new Date(); // Actual date
+	var expire = new Date(); // Expiration of the cookie
 
-				service.SetCredentials = function (username, password) {
-					var authdata = Base64.encode(username + ':' + password);
+	var number_of_days = 10; // Number of days for the cookie to be valid (10 in this case)
 
-					$rootScope.globals = {
-							currentUser: {
-								username: username,
-								authdata: authdata
-							}
-					};
+	expire.setTime( today.getTime() + 60 * 60 * 1000 * 24 * number_of_days ); // Current time + (60 sec * 60 min * 1000 milisecs * 24 hours * number_of_days)
 
-					$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-					$cookieStore.put('globals', $rootScope.globals);
-				};
+	var object={};
+	object.user=user;
+	object.token=token;
+	object.type=type;
 
-				service.ClearCredentials = function () {
-					$rootScope.globals = {};
-					$cookieStore.remove('globals');
-					$http.defaults.headers.common.Authorization = 'Basic ';
-				};
+	document.cookie = maincookie + "=" + (JSON.stringify(object)) +"$; expires=" + expire.toGMTString();
+	console.log("cookie set");
+}
 
-				return service;
-			}])
 
-			.factory('Base64', function () {
-				/* jshint ignore:start */
+/**
+ * get JSON array in token
+ * @returns JSON object
+ */
 
-				var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+function getJSON(){
+	var return_value = null;
 
-				return {
-					encode: function (input) {
-						var output = "";
-						var chr1, chr2, chr3 = "";
-						var enc1, enc2, enc3, enc4 = "";
-						var i = 0;
+	var pos_start = document.cookie.indexOf(maincookie+"=");
 
-						do {
-							chr1 = input.charCodeAt(i++);
-							chr2 = input.charCodeAt(i++);
-							chr3 = input.charCodeAt(i++);
+	if (pos_start != -1) { // Cookie already set, read it
+		pos_start+=maincookie.length+1;
+		var pos_end=document.cookie.indexOf("$", pos_start); // Find ";" after the start position
+		if (pos_end == -1) pos_end = pos_start; //if cookie is not set
+		if(pos_end-pos_start<2){
+			return false;
+		}else{
+			var string=(document.cookie.substring(pos_start, pos_end));
+			return_value=JSON.parse(string);
+		}
+	}
+	return return_value;	
+}
 
-							enc1 = chr1 >> 2;
-							enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-							enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-							enc4 = chr3 & 63;
+/**
+ * null if cookie is not correct for a user
+ * @returns
+ */
+function getLogged(){
+	var return_value=false;
+	var JSONarray=getJSON();
 
-							if (isNaN(chr2)) {
-								enc3 = enc4 = 64;
-							} else if (isNaN(chr3)) {
-								enc4 = 64;
-							}
-
-							output = output +
-							keyStr.charAt(enc1) +
-							keyStr.charAt(enc2) +
-							keyStr.charAt(enc3) +
-							keyStr.charAt(enc4);
-							chr1 = chr2 = chr3 = "";
-							enc1 = enc2 = enc3 = enc4 = "";
-						} while (i < input.length);
-
-						return output;
-					},
-
-					decode: function (input) {
-						var output = "";
-						var chr1, chr2, chr3 = "";
-						var enc1, enc2, enc3, enc4 = "";
-						var i = 0;
-
-						// remove all characters that are not A-Z, a-z, 0-9, +, /, or =
-						var base64test = /[^A-Za-z0-9\+\/\=]/g;
-						if (base64test.exec(input)) {
-							window.alert("There were invalid base64 characters in the input text.\n" +
-									"Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
-							"Expect errors in decoding.");
-						}
-						input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-
-						do {
-							enc1 = keyStr.indexOf(input.charAt(i++));
-							enc2 = keyStr.indexOf(input.charAt(i++));
-							enc3 = keyStr.indexOf(input.charAt(i++));
-							enc4 = keyStr.indexOf(input.charAt(i++));
-
-							chr1 = (enc1 << 2) | (enc2 >> 4);
-							chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-							chr3 = ((enc3 & 3) << 6) | enc4;
-
-							output = output + String.fromCharCode(chr1);
-
-							if (enc3 != 64) {
-								output = output + String.fromCharCode(chr2);
-							}
-							if (enc4 != 64) {
-								output = output + String.fromCharCode(chr3);
-							}
-
-							chr1 = chr2 = chr3 = "";
-							enc1 = enc2 = enc3 = enc4 = "";
-
-						} while (i < input.length);
-
-						return output;
-					}
-				};
-
-				/* jshint ignore:end */
-			});
-})
+	if(JSONarray){
+		var testToken = JSONarray['token'];
+		return_value=/[a-zA-Z0-9]{8}[$]{0,1}[;\s]{0,1}/g.test(testToken);
+	}
+	return return_value; 
+}
 
 
 
+/**
+ *
+ * @returns session user
+ */
+function getUsername() {
+	var return_value=null;
+	var JSONarray=getJSON();
 
+	if(JSONarray){
+		return_value = JSONarray['user'];
+	}
+	return return_value; // null if cookie doesn't exist, string otherwise
+}
+
+/**
+ * 
+ * @returns session token
+ */
+function getToken() {
+	var return_value=null;
+	var JSONarray=getJSON();
+
+	if(JSONarray){
+		return_value = JSONarray['token'];
+	}
+	return return_value; // null if cookie doesn't exist, string otherwise
+}
+
+/**
+ * 
+ * @returns "A" or "T"
+ */
+function getType(){
+	var return_value=null;
+	var JSONarray=getJSON();
+
+	if(JSONarray){
+		return_value = JSONarray['type'];
+	}
+	return return_value; // null if cookie doesn't exist, string otherwise
+}
+
+/**
+ * delete cookie and refresh
+ */
+function logout() {
+	document.cookie = maincookie + "=; expires=" + new Date;
+	location.href="index.html";
+}

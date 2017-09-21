@@ -19,13 +19,6 @@
     color: White;
     font-size: 500%;
 }
-
-#workinprogress{
-  color: red;
-  font-size: 45px;
-  font-weight: bold;
-}
-
 .carousel-content {
     color:black;
     display:flex;
@@ -56,6 +49,13 @@
     text-shadow: 2px 2px #000;
     color: #cbcbcb;
 }
+
+#workinprogress{
+  color: red;
+  font-size: 45px;
+  font-weight: bold;
+}
+
 /*Default Bootstrap Paging Style*/
 .bootstrapPager {
   display: inline-block;
