@@ -15,19 +15,9 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit;
 
-$query="
-CREATE TABLE IF NOT EXISTS TRADUTTORE (
-  ID SERIAL,
-  NOME varchar(100) DEFAULT NULL,
-  COGNOME varchar(100) DEFAULT NULL,
-  DATA_NASCITA date DEFAULT NULL,
-  MADRELINGUA varchar(100) DEFAULT NULL,
-  PASSWORD varchar(50) DEFAULT NULL,
-  HAS_NEW_MESSAGE varchar(1) NOT NULL DEFAULT 'N'
-  );
-  ";
-
-  $db->query($query);
+//tables are traduttere and agenzia
+//select * from traduttore,agenzia;
+//use that for more information
 
   if(isset($_GET["user"])&&isset($_GET["password"])){
     $user=$_GET["user"];
@@ -42,10 +32,18 @@ CREATE TABLE IF NOT EXISTS TRADUTTORE (
   $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
-
   $type="T";
+
+if(strlen(htmlspecialchars($row["username"]))<2){
+  //translator not found look for agency
+  $query="SELECT USERNAME, PASSWORD FROM agenzia WHERE username='$user';";
+  $result = $db->query($query);
+  $row = $result->fetch(PDO::FETCH_ASSOC);
+  $type="A";
+}
+
   if(htmlspecialchars($row["password"])==$pwd){
-    $token=tokenize($user, $password);
+    $token=tokenize($user, $pwd);
     echo json_encode(array("user"=>$user, "token"=>$token, "type"=>$type, "statuscode"=>200));
   }else{
     exit (json_encode(array("message"=>"error: wrong password", "statuscode"=>400)));

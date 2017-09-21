@@ -16,7 +16,6 @@ $str=base64_decode($token);
 $json=json_decode($str,true);
 
 $nome=$json['name'];
-$cognome=$json['lastName'];
 $email=$json['email'];
 $user=$json['user'];
 $password=$json["password"];
@@ -25,11 +24,11 @@ $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
 
-$query="INSERT INTO traduttore(nome, cognome, vat, email, username, password) VALUES ('$nome', '$cognome', '$vat', '$email', '$user', '$pwd');";
+$query="INSERT INTO agenzia(nome, vat, email, username, password) VALUES ('$nome', '$vat', '$email', '$user', '$pwd');";
 
 $db->query($query);
 
-exit (json_encode(array("message"=>"translator added", "statuscode"=>200)));
+exit (json_encode(array("message"=>"agency added", "statuscode"=>200)));
 
 $result->CloseCursor();
 ?>
