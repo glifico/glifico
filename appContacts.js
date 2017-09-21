@@ -64,18 +64,34 @@
 				}]
 			}
 			];
-		
+
 		ctrl.submit= function(){
-			$("#alertOK").fadeIn().delay(1000).fadeOut();
-			$("#alertOK").html("Message sent");
-			location.href=location.href;
 			sendMessage();
+			alert("Your message has been sent");
+			location.href=location.href;
 		};
-		
+
 		function sendMessage(){
-			console.log(ctrl.model);
-		}
-		
+			var req = createXHTMLHttpRequest() ;
+			req.onreadystatechange = function(){
+				if (req.status == 200){
+					return(true);
+				}else{
+					mostraDialogTimed('errorPanel');
+					return(false);
+				}
+			};
+
+			req.open("GET", "message.php"+"?"+
+					"name="+ctrl.model["FirstName"]+
+					"&subject="+ctrl.model["Subject"]+
+					"&message="+ctrl.model["Message"]+
+					"&email="+ctrl.model["Email"]
+			, true);
+			req.send();
+		};
+
+
 	});
 
 	app.run(function(formlyConfig) {
