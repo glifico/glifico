@@ -449,11 +449,11 @@ angular.element(document).ready(function() {
 			};
 
 			req.open("GET", "confirmMailA.php"+"?"+
-					"user="+vmMainController_regTrad.model["Username"]+
+					"user="+vmMainController_regAge.model["Username"]+
 					"&name="+vmMainController_regAge.model["CompanyName"]+
 					"&VAT="+vmMainController_regAge.model["VATCode"]+
-					"&password="+vmMainController_regTrad.model["Password"]+
-					"&email="+vmMainController_regTrad.model["Email"]
+					"&password="+vmMainController_regAge.model["Password"]+
+					"&email="+vmMainController_regAge.model["Email"]
 					, true);
 			req.send();
 		}
