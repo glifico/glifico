@@ -144,6 +144,14 @@
 				templateOptions : {
 					label: "Email",
 					required: true
+				},
+				validators: {
+					emailValidator: function($viewValue, $modelValue, scope) {
+						var value = $modelValue || $viewValue;
+						if(value) {
+							return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/g.test(value)
+						}
+					}
 				}
 			},{
 				className : "col-md-12",
