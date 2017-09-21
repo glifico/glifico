@@ -5,8 +5,9 @@ $last=$_GET['lastname'];
 $password=$_GET['password'];
 $email=$_GET['email'];
 $user=$_GET['user'];
+$vat=$_GET['VAT'];
 
-$object=array("user"=>$user, "password"=>$password, "name"=>$name, "lastName"=>$last,"email"=>$email);
+$object=array("user"=>$user, "password"=>$password, "name"=>$name, "lastName"=>$last,"email"=>$email, "vat"=>$vat);
 $jsonarray=json_encode($object);
 $link="https://glifico.herokuapp.com/confirmTranslator.html?token=".base64_encode($jsonarray);
 

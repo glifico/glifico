@@ -221,7 +221,8 @@
 					"&name="+vmMainController_regTrad.model["FirstName"]+
 					"&lastname="+vmMainController_regTrad.model["LastName"]+
 					"&password="+vmMainController_regTrad.model["Password"]+
-					"&email="+vmMainController_regTrad.model["Email"]
+					"&email="+vmMainController_regTrad.model["Email"]+
+					"$VAT="+vmMainController_regTrad.model["VATCode"]
 					, true);
 			req.send();
 		}
@@ -363,14 +364,6 @@ angular.element(document).ready(function() {
 				}
 			},{
 				className : "col-md-12",
-				key : "FiscalCode",
-				type : 'input',
-				templateOptions : {
-					label: "Fiscal Code",
-					required: false
-				}
-			},{
-				className : "col-md-12",
 				key : "VATCode",
 				type : 'input',
 				templateOptions : {
@@ -384,6 +377,14 @@ angular.element(document).ready(function() {
 				templateOptions : {
 					label: "Email",
 					required: true
+				},
+				validators: {
+					emailValidator: function($viewValue, $modelValue, scope) {
+						var value = $modelValue || $viewValue;
+						if(value) {
+							return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/g.test(value)
+						}
+					}
 				}
 			},{
 				className : "col-md-12",
@@ -431,44 +432,30 @@ angular.element(document).ready(function() {
 			]}
 		];
 		vmMainController_regAge.submit = function() {
-			$http
-			.post('rest.xsp?api=save&type=registraAgenzia&id=0', vmMainController_regAge.model)
-			.success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined
-								|| ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"Si è verificato un errore inaspettato");
-						} else if (ret[0].data.status != undefined
-								&& ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined
-									|| ret[0].data.msg == "") {
-								$('#alertError').html(
-								"Si è verificato un errore.");
-							} else {
-								var stringval=ret[0].data.msg
-								if(stringval.indexOf("Cannot insert duplicate key") != -1){
-									var errorField = strRight(ret[0].data.msg,"Index:");
-									errorField = strLeft(errorField,"_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								}else{
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Thanks. We have sent you an email with a confirmation link.");
-						}
-						$('#loginModal').modal('hide');
-					});
+			var req = createXHTMLHttpRequest() ;
+			req.onreadystatechange = function(){
+				if (req.status == 200){
+					$('#alertOK').fadeIn().delay(10000)
+					.fadeOut();
+					$('#alertOK').html(
+					"Thanks. We have sent you an email with a confirmation link.");
+					$("#loginModal").hide();
+					location.href="index.html"
+						return(true);
+				}else{
+					mostraDialogTimed('errorPanel');
+					return(false);
+				}
+			};
+
+			req.open("GET", "confirmMailA.php"+"?"+
+					"user="+vmMainController_regTrad.model["Username"]+
+					"&name="+vmMainController_regAge.model["CompanyName"]+
+					"&VAT="+vmMainController_regAge.model["VATCode"]+
+					"&password="+vmMainController_regTrad.model["Password"]+
+					"&email="+vmMainController_regTrad.model["Email"]
+					, true);
+			req.send();
 		}
 	}
 

@@ -20,11 +20,12 @@ $cognome=$json['lastName'];
 $email=$json['email'];
 $user=$json['user'];
 $password=$json["password"];
+$vat=$json['VAT'];
 $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
 
-$query="INSERT INTO traduttore(nome, cognome, email, username, password) VALUES ('$nome', '$cognome', '$email', '$user', '$pwd');";
+$query="INSERT INTO traduttore(nome, cognome, vat, email, username, password) VALUES ('$nome', '$cognome', '$vat', '$email', '$user', '$pwd');";
 
 $db->query($query);
 
