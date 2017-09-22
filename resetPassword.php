@@ -64,7 +64,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 
 if(strlen(htmlspecialchars($row["username"]))<2){
 	//translator not found look for agency
-	$query="SELECT USERNAME, PASSWORD FROM agenzia WHERE username='$user';";
+	$query="SELECT USERNAME, PASSWORD, EMAIL FROM agenzia WHERE username='$user';";
 	$result = $db->query($query);
 	$row = $result->fetch(PDO::FETCH_ASSOC);
 }
