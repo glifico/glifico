@@ -46,7 +46,7 @@ angular.module("resetController",[])
 				}else{
 					errorMessage("Wrong token");
 				}
-			}else{
+			}else if(req.status!=200){
 				errorMessage("There was an error, please retry");
 			}
 		}
