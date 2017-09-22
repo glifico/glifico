@@ -13,6 +13,13 @@ angular.module("resetController",[])
 		}
 	};
 
+	ctrl.getUsername=function(){
+		var start=location.href.indexOf("user=");
+		start+=5;
+		var end=location.href.length;
+		return location.href.substring(start,end);
+	};
+	
 	ctrl.onSubmit=function(){
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange=function(){

@@ -62,6 +62,13 @@ $query="SELECT USERNAME, PASSWORD, EMAIL FROM traduttore WHERE username='$user';
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
+if(strlen(htmlspecialchars($row["username"]))<2){
+	//translator not found look for agency
+	$query="SELECT USERNAME, PASSWORD FROM agenzia WHERE username='$user';";
+	$result = $db->query($query);
+	$row = $result->fetch(PDO::FETCH_ASSOC);
+}
+
 $str=htmlspecialchars($row["password"]).$user."glifico";
 $token=hash('sha256',$str);
 $link="https://glifico.herokuapp.com/changePassword.html?token=".$token."&user=".$user;
