@@ -30,7 +30,7 @@ angular.module("resetController",[])
 
 			}
 		}
-		req.open("GET","https://glifico.herokuapp.com/resetPassword.php?user="+ctrl.user,true);
+		req.open("GET","resetPassword.php?user="+ctrl.user,true);
 		req.send();
 		message('Thanks. We have sent you an email with instructions.');
 	};
@@ -53,7 +53,7 @@ angular.module("resetController",[])
 
 		var startQuery=location.href.indexOf("?",0)+1;
 		var endQuery=location.href.length;
-		req.open("GET","https://glifico.herokuapp.com/changePassword.php?"+"password="+ctrl.password+"&"+location.href.substring(startQuery,endQuery),true);
+		req.open("GET","changePassword.php?"+"password="+ctrl.password+"&"+location.href.substring(startQuery,endQuery),true);
 		req.send();
 	}
 
