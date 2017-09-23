@@ -40,21 +40,17 @@ array_push($languages,json_encode(array("LanguageTo"=>"Klingon","IdLanguageTo"=>
 
 $languages_str=json_encode($languages);
 
-echo($languages);
-echo($languages_str);
-
 $query="UPDATE languages SET languages= '$languages_str' WHERE username='$user'";
 
 $db->query($query);
-echo("$query");
 
 $query="SELECT USERNAME, LANGUAGES FROM languages WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
-echo(htmlspecialchars($row['languages']));
+$toExit=json_encode(htmlspecialchars($row['languages']));
 
 $result->CloseCursor();
 
-
+exit($toExit);
 ?>
