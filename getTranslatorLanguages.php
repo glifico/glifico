@@ -29,7 +29,8 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit;
 
-if(!certToken($db, $_GET['user'],$_GET['token'])) exit(json_encode(array("message"=>"wrond token", "statuscode"=>400)));
+$user=$_GET['user'];
+if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrond token", "statuscode"=>400)));
 
 
 $languages=[];
@@ -42,7 +43,7 @@ $languages_str=json_encode($languages);
 echo($languages);
 echo($languages_str);
 
-$query="INSERT INTO languages (username, languages) VALUES ('$user','$languages_str')";
+$query="UPDATE languages SET languages= '$languages_str' WHERE username='$user'";
 
 $db->query($query);
 echo("$query");
