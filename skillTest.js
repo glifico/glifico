@@ -54,6 +54,8 @@ function init() {
 		html += '<option value="-"></option>';
 
 		for (i = 0; i < data.length; i++) {
+			console.log(data[i]);
+			console.log(data[i]['LanguageTo']);
 			html += '<option value="' + data[i].IdLanguageTo + '">'
 			+ data[i].LanguageTo + '</option>';
 		}
