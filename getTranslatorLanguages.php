@@ -1,6 +1,6 @@
 <?php
 
-function certToken($token){
+function certToken($user, $token){
   $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -10,7 +10,6 @@ function certToken($token){
     $query="SELECT USERNAME, PASSWORD FROM agenzia WHERE username='$user';";
     $result = $db->query($query);
     $row = $result->fetch(PDO::FETCH_ASSOC);
-    $type="A";
   }
 
   $password=htmlspecialchars($row['password']);
@@ -28,8 +27,8 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit;
 
-if(certToken()) echo("token Ok");
-if(!certToken($_GET['token'])) exit;
+if(certToken($_GET['user'],$_GET['token'])) echo("token Ok");
+if(!certToken($_GET['user'],$_GET['token'])) exit;
 
 
 $languages=[];
