@@ -1,4 +1,22 @@
 /**
+ * captcha
+ */
+
+
+var widgetAge;
+var widgetTrad;
+var onloadCallback = function() {
+	widgetTrad = grecaptcha.render('captchaTrad', {
+		'sitekey' : '6Lf1wjEUAAAAAOf4MdQzLzsqsdp4t_Wzp6BzfXpu',
+		'theme' : 'light'
+	});
+	widgetAge = grecaptcha.render('captchaAge', {
+		'sitekey' : '6Lf1wjEUAAAAAOf4MdQzLzsqsdp4t_Wzp6BzfXpu',
+		'theme' : 'light'
+	});
+};
+
+/**
  * Transl
  */
 
@@ -200,7 +218,7 @@
 		}];
 
 		vmMainController_regTrad.submit = function() {
-			if(grecaptcha.getResponse().length>1){
+			if(grecaptcha.getResponse(widgetTrad).length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange = function(){
 					if (req.status == 200){
@@ -436,7 +454,7 @@ angular.element(document).ready(function() {
 			]}
 		];
 		vmMainController_regAge.submit = function() {
-			if(grecaptcha.getResponse().length>1){
+			if(grecaptcha.getResponse(widgetAge).length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange = function(){
 					if (req.status == 200){
