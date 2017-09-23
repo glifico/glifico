@@ -32,18 +32,6 @@ if(!$db) exit;
 $user=$_GET['user'];
 if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrond token", "statuscode"=>400)));
 
-
-$languages=[];
-array_push($languages,json_encode(array("LanguageTo"=>"Italian","IdLanguageTo"=>"it")));
-array_push($languages,json_encode(array("LanguageTo"=>"English","IdLanguageTo"=>"en")));
-array_push($languages,json_encode(array("LanguageTo"=>"Klingon","IdLanguageTo"=>"kl")));
-
-$languages_str=json_encode($languages);
-
-$query="UPDATE languages SET languages= '$languages_str' WHERE username='$user'";
-
-$db->query($query);
-
 $query="SELECT USERNAME, LANGUAGES FROM languages WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
