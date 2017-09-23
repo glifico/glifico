@@ -324,10 +324,11 @@ zeropoints.<br>If you first before time runs out click on the button "submit".<b
 </div>		
 		
 <script>
-if(!(isLogged&&isAgency)){
+//befor deMorgan law if(!(isLogged&&!isAgency)){
+if(!isLogged||isAgency){
 	//comment for debug porpouses
 	//$("#skillBody").hide();
-	alert("Please login as Agency");
+	alert("Please login as Translator");
 }
 </script>
 				
