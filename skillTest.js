@@ -19,22 +19,12 @@ $(document).ready( function() {
 });
 
 function init() {
-	console.log("init");
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
-
-//	var data=[{
-//	"IdLanguageTo": "it",
-//	"LanguageTo": "Italian"
-//	},
-//	];
 
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
-			console.debug(req.responseText);
-			console.debug(req.responseText.replace(/([\\]{1,2})/g,""));
 			var data=JSON.parse(req.responseText);
-			console.debug(data);
 			gotLanguages(data);
 			return(true);
 		}else{
@@ -59,7 +49,6 @@ function init() {
 		}
 		html += '</select>';
 		$('#span-combo-lingue').html(html);
-		console.debug(html);
 		document.getElementById('span-combo-lingue').innerHtml=html;
 	}
 }
