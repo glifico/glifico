@@ -30,7 +30,7 @@ $db = new PDO($dsn);
 if(!$db) exit;
 
 $user=$_GET['user'];
-if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrond token", "statuscode"=>400)));
+if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $query="SELECT USERNAME, LANGUAGES FROM languages WHERE username='$user';";
 $result = $db->query($query);
