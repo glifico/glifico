@@ -1,4 +1,26 @@
 <?php
+function NotifySlack($subject, $name, $email, $body)
+{
+  $url="https://hooks.slack.com/services/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";
+  $handle = curl_init($url);
+  curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
+  curl_setopt($handle, CURLOPT_TIMEOUT, 60);
+  curl_setopt($handle, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json'
+  ));
+  $data='{
+    "channel": "#costumerservice",
+    "username": "GlificoForm",
+    "text": "'.$name.' ('.$email.') wrote to Glifico: '.$body.'",
+    "icon_emoji": ":email:"
+  }
+';
+  curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
+
+  curl_exec($handle);
+}
+
 
 $name=$_GET['name'];
 $subject="Messaggio da un utente";
@@ -51,6 +73,8 @@ curl_setopt($handle, CURLOPT_HTTPHEADER, array(
   'Content-Type: application/json'
 ));
 curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
+
+NotifySlack($subject,$email,$name,$body);
 
 $result = curl_exec($handle);
 exit($result);
