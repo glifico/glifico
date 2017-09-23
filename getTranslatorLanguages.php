@@ -1,7 +1,6 @@
 <?php
 
 function certToken($db, $user, $token){
-  echo("check");
   $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -12,14 +11,10 @@ function certToken($db, $user, $token){
     $result = $db->query($query);
     $row = $result->fetch(PDO::FETCH_ASSOC);
   }
-echo("aa");
   $password=htmlspecialchars($row['password']);
-echo($password);
-$result->CloseCursor();
+  $result->CloseCursor();
   return $token==hash('crc32',$user."tokenize".$password);
 }
-
-echo("start");
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $dsn = "pgsql:"
@@ -34,14 +29,13 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit;
 
-if(certToken($db, $_GET['user'],$_GET['token'])) echo("token Ok");
-if(!certToken($db, $_GET['user'],$_GET['token'])) exit;
+if(!certToken($db, $_GET['user'],$_GET['token'])) exit(json_encode(array("message"=>"wrond token", "statuscode"=>400)));
 
 
 $languages=[];
-push_back($languages,json_encode(array("LanguageTo"=>"Italian","IdLanguageTo"=>"it")));
-push_back($languages,json_encode(array("LanguageTo"=>"English","IdLanguageTo"=>"en")));
-push_back($languages,json_encode(array("LanguageTo"=>"Klingon","IdLanguageTo"=>"kl")));
+array_push($languages,json_encode(array("LanguageTo"=>"Italian","IdLanguageTo"=>"it")));
+array_push($languages,json_encode(array("LanguageTo"=>"English","IdLanguageTo"=>"en")));
+array_push($languages,json_encode(array("LanguageTo"=>"Klingon","IdLanguageTo"=>"kl")));
 
 $languages_str=json_encode($languages);
 
