@@ -225,6 +225,8 @@
 					"$VAT="+vmMainController_regTrad.model["VATCode"]
 					, true);
 			req.send();
+		
+			alert(grecaptcha.getResponse());
 		}
 
 	}

@@ -70,7 +70,7 @@
 		
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body onload="onLoad()">
 
@@ -226,12 +226,12 @@
 <div id="regTradAPP" data-ng-controller="MainController_regTrad as vmMainController_regTrad">
     <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
         <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
+           <div class="g-recaptcha" data-sitekey="6Lf1wjEUAAAAAOf4MdQzLzsqsdp4t_Wzp6BzfXpu"></div>
            <div style="taxt-align:centered;padding-left:2rem;">
            Clicking on Register you declare to have read and accepted <a href="terms.html" target="_Blank">Glifico Terms and Conditions</a>
            </div>
             <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
         </formly-form>
-        <div class="g-recaptcha" data-sitekey="6Lf1wjEUAAAAAOf4MdQzLzsqsdp4t_Wzp6BzfXpu"></div>
     </form>
 </div>
 
