@@ -6,7 +6,7 @@ angular.module("uploadController",[])
 .controller("uploadController",function upController(){
 	var ctrl=this;
 
-	var client = filestack.init('MYGBA2RMQNAGRPZSQIUCB2QMKY');
+	var client = filestack.init('AY86cSRLQTreZccdDlJimz');
 
 	ctrl.$onInit=function(){
 		ctrl.storedUrl="http://www.example.com";
