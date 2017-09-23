@@ -16,7 +16,7 @@ var onloadCallback = function() {
 	});
 };
 
-var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
+var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖";
 
 /**
  * Transl
