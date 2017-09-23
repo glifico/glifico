@@ -200,7 +200,7 @@
 		}];
 
 		vmMainController_regTrad.submit = function() {
-			if(grecaptcha.getResponse()!=null){
+			if(grecaptcha.getResponse().length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange = function(){
 					if (req.status == 200){
@@ -436,7 +436,7 @@ angular.element(document).ready(function() {
 			]}
 		];
 		vmMainController_regAge.submit = function() {
-			if(grecaptcha.getResponse!=null){
+			if(grecaptcha.getResponse().length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange = function(){
 					if (req.status == 200){
