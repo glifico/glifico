@@ -1,8 +1,7 @@
-*~
-.DS_STORE
-.DS_Store
-
-*.phar
+policy.py
 genHash.py
 
-sendgrid.key
+*~
+
+.DS_Store
+*.phar
