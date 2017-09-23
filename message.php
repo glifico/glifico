@@ -11,7 +11,7 @@ if(isset($_GET['subject'])){
 $email=$_GET['email'];
 $body=$_GET['message'];
 
-$customerService="filippovalle@aim.com";
+$customerService="fvalle.glifico@outlook.com";
 
 $url="https://api.sendgrid.com/v3/mail/send";
 $handle = curl_init($url);
