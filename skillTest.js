@@ -1,4 +1,4 @@
-	var maxpages = 0;
+var maxpages = 0;
 var actualPage = 0;
 var started = false;
 var maxSeconds = 600;
@@ -13,87 +13,98 @@ $.ajaxSetup( {
 $(document).ready( function() {
 	init();
 });
+
 $(document).ready( function() {
 	result();
 });
+
 function init() {
-	
-	var url = "rest.xsp?api=getTraduttoreLingue&id="+ sysIdUtente;
+	console.log("init");
+	//var url = "rest.xsp?api=getTraduttoreLingue&id="+ sysIdUtente;
 
-	$.get(url, function(data) {
-		var html = "";
-		html += '<select id="select-language" class="form-control">'
-		html += '<option value="-"></option>'
+	var data=[{
+		"IdLanguageTo": "it",
+		"LanguageTo": "Italian"
+	},
+	];
 
-		for (i = 0; i < data.length; i++) {
-			html += '<option value="' + data[i].IdLanguageTo + '">'
-					+ data[i].LanguageTo + '</option>'
-		}
-		html += '</select>'
-		$('#span-combo-lingue').html(html);
-		result();
-	});
+
+	var html = "";
+	html += '<select id="select-language" class="form-control">';
+	html += '<option value="-"></option>';
+
+	for (i = 0; i < data.length; i++) {
+		html += '<option value="' + data[i].IdLanguageTo + '">'
+		+ data[i].LanguageTo + '</option>';
+	}
+	html += '</select>';
+	$('#span-combo-lingue').html(html);
+	console.debug(html);
+	document.getElementById('span-combo-lingue').innerHtml=html;
 }
+
+
 function result(){
 	var url = "rest.xsp?api=getTest&id=" + sysIdUtente;
 	$.get(url, function(data) {
-						var html = "";
-						html += '<table style="width:100%" class="table">';
-						html += '<thead>';
-						html += '	<tr valign="middle">';
-						html += '		<th';
-						html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language</th>';
-						html += '		<th';
-						html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Last Execution Date</th>';
-						html += '		<th';
-						html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Status</th>';
-						html += '		<th';
-						html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Rating</th>';
-						html += '	</tr>';
-						html += '</thead>';
-						html += '</tbody>';
-						for ( var i = 0; i < data.length; i++) {
-							var classe="";
-							if (data[i].TotTest == null) {
-								classe=' class="danger"'
-							}
-							html += '<tr valign="middle"  '+classe+'>'
-							
-							var lang = data[i].Language
-							html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
-									+ lang
-									+ '</b> </td>'
-							if (data[i].TotTest == null) {
-								html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">Not done yet</td>'
-								html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
-								html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"><img src=images/00.png style="max-width:100px" />'+ '</td>'
-							} else {
-								var data1 = data[i].DataTest
-								data1 = data1.replace("T"," ")
-								data1 = data1.replace("Z","")
-								data1 = data1.substring(0,data1.length-7)
-								html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>'
-								html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="#008000"> <b>Done </b></font>' + '</td>'
-								var totString = (data[i].TotTest + "")
-								if(totString.lenght = 1){
-									totString = totString + '0';
-								}
-								html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'
-										+ '<font color="blue"><b><img src=images/'
-										+ totString.replace(".", "")
-										+ '.png style="max-width:100px" />'
-										+ '</b></font>' + '</td>'
-							}
+		var html = "";
+		html += '<table style="width:100%" class="table">';
+		html += '<thead>';
+		html += '	<tr valign="middle">';
+		html += '		<th';
+		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language</th>';
+		html += '		<th';
+		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Last Execution Date</th>';
+		html += '		<th';
+		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Status</th>';
+		html += '		<th';
+		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Rating</th>';
+		html += '	</tr>';
+		html += '</thead>';
+		html += '</tbody>';
+		for ( var i = 0; i < data.length; i++) {
+			var classe="";
+			if (data[i].TotTest == null) {
+				classe=' class="danger"'
+			}
+			html += '<tr valign="middle"  '+classe+'>'
 
-							html += '</tr>'
-						}
-						html += "</tbody>";
-						html += "</table>";
-						
-						$('#tabella').html(html);
+			var lang = data[i].Language
+			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
+				+ lang
+				+ '</b> </td>'
+				if (data[i].TotTest == null) {
+					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">Not done yet</td>'
+						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
+						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"><img src=images/00.png style="max-width:100px" />'+ '</td>'
+				} else {
+					var data1 = data[i].DataTest
+					data1 = data1.replace("T"," ")
+					data1 = data1.replace("Z","")
+					data1 = data1.substring(0,data1.length-7)
+					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>'
+					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="#008000"> <b>Done </b></font>' + '</td>'
+					var totString = (data[i].TotTest + "")
+					if(totString.lenght = 1){
+						totString = totString + '0';
+					}
+					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'
+						+ '<font color="blue"><b><img src=images/'
+						+ totString.replace(".", "")
+						+ '.png style="max-width:100px" />'
+						+ '</b></font>' + '</td>'
+				}
 
-					});
+			html += '</tr>'
+		}
+		html += "</tbody>";
+		html += "</table>";
+
+		$('#tabella').html(html);
+
+	});
 }
+
 function getDomande() {
 	var url = "rest.xsp?api=getDomande&lingua=" + $("#select-language").val();
 
@@ -115,7 +126,7 @@ function tryOut() {
 	if (lan != null && lan != "-") {
 		var html = "";
 		html = 'Are you ready?<br /><a class="btn btn-default" href="javascript:void(0)" onClick="startTest()">Go!</a>'
-		$("#skill-body").html(html);
+			$("#skill-body").html(html);
 		$('#skill-modal').modal('show');
 	}else{
 		alert("Please complete the field");
@@ -132,6 +143,7 @@ function startTest() {
 
 	}
 }
+
 function mioTimer() {
 	nowSeconds++;
 	if (nowSeconds >= maxSeconds) {
@@ -141,6 +153,7 @@ function mioTimer() {
 	}
 	getProgress();
 }
+
 function showDomanda() {
 
 	$("#skill-body").hide();
@@ -151,8 +164,8 @@ function showDomanda() {
 	html += actualPage + ". " + domanda.Question;
 	html += "<br />"
 
-	// risposta 1
-	var selected = "";
+		// risposta 1
+		var selected = "";
 	var disabled = "";
 	if (outTime) {
 		disabled = "disabled"
@@ -161,8 +174,8 @@ function showDomanda() {
 		selected = 'checked="checked"';
 	}
 	html += '<input ' + disabled + ' ' + selected
-			+ ' type="radio" name="domanda_' + (actualPage - 1)
-			+ '" value="1">&nbsp;' + domanda.Answer1 + '<br>'
+	+ ' type="radio" name="domanda_' + (actualPage - 1)
+	+ '" value="1">&nbsp;' + domanda.Answer1 + '<br>'
 
 	// risposta 2
 	var selected = "";
@@ -174,8 +187,8 @@ function showDomanda() {
 		selected = 'checked="checked"';
 	}
 	html += '<input ' + disabled + ' ' + selected
-			+ ' type="radio" name="domanda_' + (actualPage - 1)
-			+ '" value="2">&nbsp;' + domanda.Answer2 + '<br>'
+	+ ' type="radio" name="domanda_' + (actualPage - 1)
+	+ '" value="2">&nbsp;' + domanda.Answer2 + '<br>'
 
 	// risposta 3
 	var selected = "";
@@ -187,10 +200,10 @@ function showDomanda() {
 		selected = 'checked="checked"';
 	}
 	html += '<input ' + disabled + ' ' + selected
-			+ ' type="radio" name="domanda_' + (actualPage - 1)
-			+ '" value="3" >&nbsp;' + domanda.Answer3 + '<br>'
+	+ ' type="radio" name="domanda_' + (actualPage - 1)
+	+ '" value="3" >&nbsp;' + domanda.Answer3 + '<br>'
 	html += '<input type="hidden" name="domanda_' + (actualPage - 1)
-			+ '1"value="' + domanda.Id + '">';
+	+ '1"value="' + domanda.Id + '">';
 	prev = true;
 	next = true;
 	last = false;
@@ -212,13 +225,13 @@ function showDomanda() {
 		html += '&nbsp;<a class="btn btn-default" href="javascript:void(0)" onclick="finishTest()"><i class="fa fa-paper-plane"></i>&nbsp;Submit</a>'
 	}
 	html += "</span>"
-	html += "</form></p><br /><br />";
+		html += "</form></p><br /><br />";
 
 	html += '<div class="progress" id="bar-progress">'
-	html += '</div>'
-	if (started) {
-		html += '<span id="rimanente"></span>';
-	}
+		html += '</div>'
+			if (started) {
+				html += '<span id="rimanente"></span>';
+			}
 	if (outTime) {
 		html += '<div style="text-align:center;width:100%"><span id="scaduto" style="font-weight:bold;font-color:red>Tempo scaduto</span></div>'
 	}
@@ -230,8 +243,8 @@ function showDomanda() {
 function finishTest() {
 	if (confirm("Do you want to submit the test?")) {
 		var temp = {
-			userId : sysIdUtente,
-			document : domande
+				userId : sysIdUtente,
+				document : domande
 		};
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass
@@ -243,16 +256,16 @@ function finishTest() {
 			url : "rest.xsp?api=saveTest",
 			complete : function(ret) {
 
-			clearTimeout(myTimer);
-			nowSeconds = 0;
-			$('#skill-modal').modal('hide');
-		},
-		error : function(xhr) {
-			if (xhr.status == 500) {
-				showNotifica("danger", "Errore dal server");
-			}
+				clearTimeout(myTimer);
+				nowSeconds = 0;
+				$('#skill-modal').modal('hide');
+			},
+			error : function(xhr) {
+				if (xhr.status == 500) {
+					showNotifica("danger", "Errore dal server");
+				}
 
-		}
+			}
 		});
 		result();
 	}
@@ -260,7 +273,7 @@ function finishTest() {
 
 function nextDomanda() {
 	var selezionato = $('input[name=domanda_' + (actualPage - 1) + ']:checked',
-			'#myForm').val();
+	'#myForm').val();
 	var name = $("input[name=domanda_" + (actualPage - 1) + "1").val();
 	if (selezionato != undefined) {
 		domande[actualPage - 1].Scelta = selezionato;
@@ -269,9 +282,10 @@ function nextDomanda() {
 	actualPage++;
 	showDomanda();
 }
+
 function prevDomanda() {
 	var selezionato = $('input[name=domanda_' + (actualPage - 1) + ']:checked',
-			'#myForm').val();
+	'#myForm').val();
 	var name = $("input[name=domanda_" + (actualPage - 1) + "1").val();
 	if (selezionato != undefined) {
 		domande[actualPage - 1].Scelta = selezionato;
@@ -286,15 +300,15 @@ function getProgress() {
 	var html = "";
 
 	html += '<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="'
-			+ nowSeconds
-			+ '" aria-valuemin="0" aria-valuemax="'
-			+ maxSeconds
-			+ '" style="width: '
-			+ parseInt((nowSeconds * 100) / maxSeconds)
-			+ '%">'
-	html += "</div>"
+		+ nowSeconds
+		+ '" aria-valuemin="0" aria-valuemax="'
+		+ maxSeconds
+		+ '" style="width: '
+		+ parseInt((nowSeconds * 100) / maxSeconds)
+		+ '%">'
+		html += "</div>"
 
-	$("#bar-progress").html(html);
+			$("#bar-progress").html(html);
 	$("#rimanente").html("Seconds remaining: " + (maxSeconds - nowSeconds))
 
 }

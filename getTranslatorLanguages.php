@@ -11,8 +11,9 @@ function certToken($user, $token){
     $result = $db->query($query);
     $row = $result->fetch(PDO::FETCH_ASSOC);
   }
-
+echo("aa");
   $password=htmlspecialchars($row['password']);
+echo($password);
   return $token==hash('crc32',$user."tokenize".$password);
 }
 

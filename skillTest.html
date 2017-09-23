@@ -43,9 +43,8 @@
 
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.component.js"></script>
-
 <script src="app/login.controller.js"></script>
-
+<script src="skillTest.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -235,7 +234,8 @@ md-input-container{
 	width:100%;
 }
 </style>
-</div><div class="tab-pane fade" id="regAg">
+</div>
+<div class="tab-pane fade" id="regAg">
 <div id="regAgeAPP" data-ng-controller="MainController_regAge as vmMainController_regAge">
     <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
         <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
@@ -272,19 +272,67 @@ md-input-container{
 skill
  -->
 <br><br><br><br>
-<div style="margin-right:10px;margin-left:10px"><div class="panel panel-default"><div class="panel-heading">This test is designed to give you the opportunity to complete your
-				fist assessment quickly.<br>Choose which language you want to be tested in and click on the
-				button "try me out".<br>You will have 10 minutes to answer 10 questions randomly taken from
-				our database.<br>The questions may about graeerer or reading comprension and will be
-				submitted in the language in which you are being evalutaed. Select
-				the most appropriate answer amoung the given choices.<br>You can keep track of time on the bar at the bottom of the page.<br>When the time expire the test will stop and your test can be
-				submitted for evaluation. Any unaswered question will be greded as
-				zeropoints.<br>If you first before time runs out click on the button "submit".<br><br>A deep breath... and he's take the test!</div></div><div style="text-align:center;"><div style="width:400px;display: table;margin: 0 auto;"><span>Choose the language you would like to be evaluated:</span><br><div class="input-group"><span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span><span class="cambia" id="span-combo-lingue">Loading...</span><span></span></div><br><a class="btn btn-default" onCLick="tryOut()">Try me out</a></div><br><div style="width:90%;display: table;margin: 0 auto;"><span id="tabella"></span><br><div style="height:3px"></div></div></div></div><div class="modal fade" id="skill-modal" role="dialog" tabindex="-1"><div class="modal-dialog" role="document"><div class="modal-content" style="width:800px"><div class="modal-header"><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"><span id="view:computedField1">X</span></span></button><h4 class="modal-title">Skill test</h4></div><div class="modal-body" id="skill-body"></div><div class="modal-footer"><button class="btn btn-default" data-dismiss="modal" type="button">Annulla</button></div></div></div></div>
+<div style="margin-right:10px;margin-left:10px">
+<div class="panel panel-default">
+<div class="panel-heading">
+This test is designed to give you the opportunity to complete your 
+fist assessment quickly.<br>Choose which language you want to be tested in and click on the
+button "try me out".<br>You will have 10 minutes to answer 10 questions randomly taken from
+our database.<br>The questions may about graeerer or reading comprension and will be
+submitted in the language in which you are being evalutaed. Select
+the most appropriate answer amoung the given choices.<br>You can keep track of time on the bar at the bottom of the page.<br>When the time expire the test will stop and your test can be
+submitted for evaluation. Any unaswered question will be greded as
+zeropoints.<br>If you first before time runs out click on the button "submit".<br><br>A deep breath... and he's take the test!
+</div>
+</div>
+
+<div id="skillBody">
+<div style="text-align:center;">
+<div style="width:400px;display: table;margin: 0 auto;">
+<span>Choose the language you would like to be evaluated:</span><br>
+<div class="input-group">
+<span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span>
+<span class="cambia" id="span-combo-lingue">Loading...</span>
+<span></span>
+</div>
+<br><a class="btn btn-default" onCLick="tryOut()">Try me out</a>
+</div>
+<br>
+<div style="width:90%;display: table;margin: 0 auto;">
+<span id="tabella"></span>
+<br>
+<div style="height:3px"></div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="skill-modal" role="dialog" tabindex="-1">
+<div class="modal-dialog" role="document">
+<div class="modal-content" style="width:800px">
+<div class="modal-header">
+<button aria-label="Close" class="close" data-dismiss="modal" type="button">
+<span aria-hidden="true"><span id="view:computedField1">X</span>
+</span>
+</button>
+<h4 class="modal-title">Skill test</h4></div>
+<div class="modal-body" id="skill-body"></div>
+<div class="modal-footer">
+<button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button></div>
+</div>
+</div>
+</div>
+</div>		
+		
+<script>
+if(!(isLogged&&isAgency)){
+	//comment for debug porpouses
+	//$("#skillBody").hide();
+	alert("Please login as Agency");
+}
+</script>
 				
-				
-				
-				<div ng-app="glifico">
- <glificofooter></glificofooter>
- </div>
-				</body>
+<div ng-app="glifico">
+<glificofooter></glificofooter>
+</div>
+</body>
 </html>
