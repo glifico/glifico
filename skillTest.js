@@ -20,29 +20,48 @@ $(document).ready( function() {
 
 function init() {
 	console.log("init");
-	//var url = "rest.xsp?api=getTraduttoreLingue&id="+ sysIdUtente;
+	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-	var data=[{
-		"IdLanguageTo": "it",
-		"LanguageTo": "Italian"
-	},
-	];
+//	var data=[{
+//	"IdLanguageTo": "it",
+//	"LanguageTo": "Italian"
+//	},
+//	];
 
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			console.log(data);
 
-	var html = "";
-	html += '<select id="select-language" class="form-control">';
-	html += '<option value="-"></option>';
-
-	for (i = 0; i < data.length; i++) {
-		html += '<option value="' + data[i].IdLanguageTo + '">'
-		+ data[i].LanguageTo + '</option>';
+			gotLanguages(data);
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
 	}
-	html += '</select>';
-	$('#span-combo-lingue').html(html);
-	console.debug(html);
-	document.getElementById('span-combo-lingue').innerHtml=html;
-}
 
+
+	req.open("GET", url, true);
+	req.send();
+
+	function gotLanguages(data){
+
+		var html = "";
+		html += '<select id="select-language" class="form-control">';
+		html += '<option value="-"></option>';
+
+		for (i = 0; i < data.length; i++) {
+			html += '<option value="' + data[i].IdLanguageTo + '">'
+			+ data[i].LanguageTo + '</option>';
+		}
+		html += '</select>';
+		$('#span-combo-lingue').html(html);
+		console.debug(html);
+		document.getElementById('span-combo-lingue').innerHtml=html;
+	}
+}
 
 function result(){
 	var url = "rest.xsp?api=getTest&id=" + sysIdUtente;
