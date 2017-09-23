@@ -200,20 +200,24 @@
 		}];
 
 		vmMainController_regTrad.submit = function() {
-			var req = createXHTMLHttpRequest() ;
-			req.onreadystatechange = function(){
-				if (req.status == 200){
-					$('#alertOK').fadeIn().delay(10000)
-					.fadeOut();
-					$('#alertOK').html(
-					"Thanks. We have sent you an email with a confirmation link.");
-					$("#loginModal").hide();
-					location.href="index.html"
-						return(true);
-				}else{
-					mostraDialogTimed('errorPanel');
-					return(false);
+			if(grecaptcha.getResponse()!=null){
+				var req = createXHTMLHttpRequest() ;
+				req.onreadystatechange = function(){
+					if (req.status == 200){
+						$('#alertOK').fadeIn().delay(10000)
+						.fadeOut();
+						$('#alertOK').html(
+						"Thanks. We have sent you an email with a confirmation link.");
+						$("#loginModal").hide();
+						location.href="index.html"
+							return(true);
+					}else{
+						mostraDialogTimed('errorPanel');
+						return(false);
+					}
 				}
+			}else{
+				alert("Please complete captcha");
 			};
 
 			req.open("GET", "confirmMailT.php"+"?"+
@@ -223,10 +227,8 @@
 					"&password="+vmMainController_regTrad.model["Password"]+
 					"&email="+vmMainController_regTrad.model["Email"]+
 					"$VAT="+vmMainController_regTrad.model["VATCode"]
-					, true);
+			, true);
 			req.send();
-		
-			alert(grecaptcha.getResponse());
 		}
 
 	}
@@ -434,30 +436,34 @@ angular.element(document).ready(function() {
 			]}
 		];
 		vmMainController_regAge.submit = function() {
-			var req = createXHTMLHttpRequest() ;
-			req.onreadystatechange = function(){
-				if (req.status == 200){
-					$('#alertOK').fadeIn().delay(10000)
-					.fadeOut();
-					$('#alertOK').html(
-					"Thanks. We have sent you an email with a confirmation link.");
-					$("#loginModal").hide();
-					location.href="index.html"
-						return(true);
-				}else{
-					mostraDialogTimed('errorPanel');
-					return(false);
-				}
-			};
+			if(grecaptcha.getResponse!=null){
+				var req = createXHTMLHttpRequest() ;
+				req.onreadystatechange = function(){
+					if (req.status == 200){
+						$('#alertOK').fadeIn().delay(10000)
+						.fadeOut();
+						$('#alertOK').html(
+						"Thanks. We have sent you an email with a confirmation link.");
+						$("#loginModal").hide();
+						location.href="index.html"
+							return(true);
+					}else{
+						mostraDialogTimed('errorPanel');
+						return(false);
+					}
+				};
 
-			req.open("GET", "confirmMailA.php"+"?"+
-					"user="+vmMainController_regAge.model["Username"]+
-					"&name="+vmMainController_regAge.model["CompanyName"]+
-					"&VAT="+vmMainController_regAge.model["VATCode"]+
-					"&password="+vmMainController_regAge.model["Password"]+
-					"&email="+vmMainController_regAge.model["Email"]
-					, true);
-			req.send();
+				req.open("GET", "confirmMailA.php"+"?"+
+						"user="+vmMainController_regAge.model["Username"]+
+						"&name="+vmMainController_regAge.model["CompanyName"]+
+						"&VAT="+vmMainController_regAge.model["VATCode"]+
+						"&password="+vmMainController_regAge.model["Password"]+
+						"&email="+vmMainController_regAge.model["Email"]
+				, true);
+				req.send();
+			}else{
+				alert("Please complete captcha");
+			};
 		}
 	}
 
