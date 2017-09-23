@@ -54,10 +54,8 @@ function init() {
 		html += '<option value="-"></option>';
 
 		for (i = 0; i < data.length; i++) {
-			console.log(JSON.parse(data[i]));
-			console.log(data[i]['LanguageTo']);
 			html += '<option value="' + JSON.parse(data[i]).IdLanguageTo + '">'
-			+ data[i].LanguageTo + '</option>';
+			+ JSON.parse(data[i]).LanguageTo + '</option>';
 		}
 		html += '</select>';
 		$('#span-combo-lingue').html(html);

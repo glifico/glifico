@@ -144,6 +144,10 @@ function getType(){
 	return return_value; // null if cookie doesn't exist, string otherwise
 }
 
+function isAgency(){
+	return getType=="A";
+}
+
 /**
  * delete cookie and refresh
  */
