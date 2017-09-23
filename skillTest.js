@@ -31,9 +31,9 @@ function init() {
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
-			var data=JSON.parse(req.responseText.replace(/([\\]{1,2})/g,""));
+			var data=JSON.parse(req.responseText.replace(/([\\]{1,2})/g,"").replace(/(&quot;)/g,'"'));
 			console.debug(req.responseText);
-			console.debug(req.responseText.replace(/([\\]{1,2})/g,"").replace(/(&quot)/g,'"'));
+			console.debug(req.responseText.replace(/([\\]{1,2})/g,"").replace(/(&quot;)/g,'"'));
 			console.debug(data);
 			gotLanguages(data);
 			return(true);

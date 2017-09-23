@@ -107,14 +107,6 @@
 	</script>
 
 
-<script>
-  var sysIsLogged=false;
-  var sysUsername='Anonymous';
-  var isLogged = false;
-  var isAgenzia = null;
-</script>
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 <div class="navbar-header">
@@ -324,9 +316,11 @@ zeropoints.<br>If you first before time runs out click on the button "submit".<b
 </div>		
 		
 <script>
-//befor deMorgan law if(!(isLogged&&!isAgency)){
+//before deMorgan law if(!(isLogged&&!isAgency)){
 	console.log(isLogged);
 	console.log(isAgency);
+	console.log(getLogged());
+	console.log(getAgency());
 if(!isLogged||isAgency){
 	//comment for debug porpouses
 	//$("#skillBody").hide();
