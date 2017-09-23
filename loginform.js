@@ -16,6 +16,8 @@ var onloadCallback = function() {
 	});
 };
 
+var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
+
 /**
  * Transl
  */
@@ -235,7 +237,7 @@ var onloadCallback = function() {
 					}
 				}
 			}else{
-				alert("Please complete captcha");
+				alert(wrongCaptcha);
 			};
 
 			req.open("GET", "confirmMailT.php"+"?"+
@@ -480,7 +482,7 @@ angular.element(document).ready(function() {
 				, true);
 				req.send();
 			}else{
-				alert("Please complete captcha");
+				alert(wrongCaptcha);
 			};
 		}
 	}
@@ -490,4 +492,4 @@ angular.element(document).ready(function() {
 angular.element(document).ready(function() {
 	console.log("registro regAge");
 	angular.bootstrap(document.getElementById('regAgeAPP'), ['regAge']);
-});    
+});
