@@ -200,8 +200,6 @@
 		}];
 
 		vmMainController_regTrad.submit = function() {
-			console.debug(grecaptcha.getResponse());
-			console.debug(grecaptcha.getResponse().length);
 			if(grecaptcha.getResponse().length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange = function(){
