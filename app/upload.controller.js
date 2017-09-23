@@ -1,15 +1,12 @@
 /**
- * 
+ *
  */
 
 angular.module("uploadController",[])
 .controller("uploadController",function upController(){
 	var ctrl=this;
 
-	var client = filestack.init('ALwn7aYCDTAConyTqVba8z',
-			{
-		policy:"eyJoYW5kbGUiOiJBTHduN2FZQ0RUQUNvbnlUcVZiYTh6IiwiZXhwaXJ5IjoxNTA1NjgyMzE5fQ",
-			});
+	var client = filestack.init('MYGBA2RMQNAGRPZSQIUCB2QMKY');
 
 	ctrl.$onInit=function(){
 		ctrl.storedUrl="http://www.example.com";
@@ -45,7 +42,7 @@ angular.module("uploadController",[])
 		document.getElementById("upDescr").style.visibility="visible";
 		document.getElementById("remove").style.visibility="hidden";
 	};
-	
+
 })
 
 
@@ -53,5 +50,3 @@ angular.element(document).ready(function() {
 	console.log("registro upload");
 	angular.bootstrap(document.getElementById('upController'), ['uploadController']);
 });
-
-
