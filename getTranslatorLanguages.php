@@ -48,7 +48,7 @@ $query="SELECT USERNAME, LANGUAGES FROM languages WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
-$toExit=json_encode(htmlspecialchars($row['languages']));
+$toExit=$row['languages'];
 
 $result->CloseCursor();
 
