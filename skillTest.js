@@ -1,7 +1,7 @@
 var maxpages = 0;
 var actualPage = 0;
 var started = false;
-var maxSeconds = 600;
+var maxSeconds = 100;
 var nowSeconds = 0;
 var outTime = false;
 var myTimer;
@@ -12,7 +12,6 @@ $.ajaxSetup( {
 
 $(document).ready( function() {
 	init();
-	notify("ready for skill test");
 });
 
 
@@ -23,30 +22,30 @@ $(document).ready( function() {
 function init() {
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-//	var req = createXHTMLHttpRequest() ;
-//	req.onreadystatechange = function(){
-//	if (req.status == 200&req.readyState==4){
-//	var data=JSON.parse(req.responseText);
-//	gotLanguages(data);
-//	return(true);
-//	}else{
-//	mostraDialogTimed('errorPanel');
-//	return(false);
-//	}
-//	}
-//
-//
-//	req.open("GET", url, true);
-//	req.send();
-
-	var data=[
-		JSON.stringify({
-			"LanguageTo":"Italian",
-			"IdLanguageTo":"it"
-		})
-		];
-
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+	if (req.status == 200&req.readyState==4){
+	var data=JSON.parse(req.responseText);
 	gotLanguages(data);
+	return(true);
+	}else{
+	mostraDialogTimed('errorPanel');
+	return(false);
+	}
+	}
+
+
+	req.open("GET", url, true);
+	req.send();
+
+//	var data=[
+//		JSON.stringify({
+//			"LanguageTo":"Italian",
+//			"IdLanguageTo":"it"
+//		})
+//		];
+//
+//	gotLanguages(data);
 
 	function gotLanguages(data){
 
@@ -69,19 +68,19 @@ function result(){
 
 //	var req = createXHTMLHttpRequest() ;
 //	req.onreadystatechange = function(){
-//		if (req.status == 200&req.readyState==4){
-//			var data=JSON.parse(req.responseText);
-//			console.log(data);
-//			gotData(data);
-//			return(true);
-//		}else{
-//			mostraDialogTimed('errorPanel');
-//			return(false);
-//		}
+//	if (req.status == 200&req.readyState==4){
+//	var data=JSON.parse(req.responseText);
+//	console.log(data);
+//	gotData(data);
+//	return(true);
+//	}else{
+//	mostraDialogTimed('errorPanel');
+//	return(false);
+//	}
 //	}
 //	req.open("GET",url,true);
 //	req.send();
-	
+
 	var data=[
 		{
 			"Language":"Italian",
@@ -91,13 +90,13 @@ function result(){
 		{
 			"Language":"Japanese",
 			"DataTest":"25/09/2017T12:000Z",
-		}
-	];
-	
+		},
+		];
+
 	gotData(data);
-	
-	
-	
+
+
+
 	function gotData(data){
 
 
@@ -167,14 +166,29 @@ function getDomande() {
 			"Answer1":"42",
 			"Answer2":"44",
 			"Answer3":"3,14",
+			"Scelta": ""
+		},
+		{
+			"Question":"Pippo?",
+			"Answer1":"qui",
+			"Answer2":"quo",
+			"Answer3":"qua",
+			"Scelta": ""
+		},
+		{
+			"Question":"The Internet giant, Amazon, has put a warning on some of the ''Tom and Jerry'' cartoons it offers to its customers. Visitors who want to buy or download the series ''Tom and Jerry: The Complete Second Volume'' get a warning that the cartoons contain scenes that are racist. The warning says: ''Tom and Jerry shorts may show some ethnic and racial prejudices that were once commonplace in American society.'' It added that the scenes were wrong when the cartoons were made 70 years ago, and are still wrong today. People say the character of the black maid in the cartoon series is racist. Some of the cartoons were edited in the 1960s because of worries about racism. Tom and Jerry were created in 1940 by cartoonists William Hanna and Joseph Barbera. The cartoons won the Oscar for the best Animated Short Film seven times. The shows have become one of the most popular cartoons in animation history. Many people posted on Twitter to say it was ''madness'' for Amazon to put a warning on the cartoons.", 
+			"Answer1":"Based on the text information, Tom and Jerry shows were created to criticize racism", 
+			"Answer2":"According to the warning of Amazon, the racist scenes are wrong nowadays; however, in the past they were acceptable.", 
+			"Answer3":"According to the warning of Amazon, racism is no longer a common behavior in America",
+			"Scelta":""
 		}
-	];
-	
+		];
+
 	//$.get(url, function(data) {
-		maxpages = data.length;
-		actualPage = 1;
-		domande = data
-		showDomanda();
+	maxpages = data.length;
+	actualPage = 1;
+	domande = data
+	showDomanda();
 	//});
 
 }
@@ -202,8 +216,8 @@ function startTest() {
 	if (!started) {
 		started = true;
 		myTimer = setInterval(mioTimer, 1000)
-
 	}
+	getProgress();
 }
 
 function mioTimer() {
@@ -216,18 +230,17 @@ function mioTimer() {
 	getProgress();
 }
 
-function showDomanda() {
-
+function showDomanda() {	
 	$("#skill-body").hide();
 
 	var html = "";
 	var domanda = domande[actualPage - 1];
 	html += "<p><form id=\"myForm\">";
 	html += actualPage + ". " + domanda.Question;
-	html += "<br />"
+	html += "<br />";
 
-		// risposta 1
-		var selected = "";
+	// risposta 1
+	var selected = "";
 	var disabled = "";
 	if (outTime) {
 		disabled = "disabled"
@@ -291,25 +304,29 @@ function showDomanda() {
 
 	html += '<div class="progress" id="bar-progress">'
 		html += '</div>'
-			if (started) {
-				html += '<span id="rimanente"></span>';
-			}
+
+			html += '<span id="rimanente"></span>';
+
 	if (outTime) {
 		html += '<div style="text-align:center;width:100%"><span id="scaduto" style="font-weight:bold;font-color:red>Tempo scaduto</span></div>'
 	}
+
+
 	$("#skill-body").html(html);
 	$("#skill-body").fadeIn("slow");
-	getProgress();
 }
 
 function finishTest() {
+	domande[actualPage-1].Scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();
+
 	if (confirm("Do you want to submit the test?")) {
 		var temp = {
-				userId : sysIdUtente,
+				//userId : sysIdUtente,
 				document : domande
 		};
 		var stringPass = JSON.stringify(temp);
-		var data = stringPass
+		var data = stringPass;
+		console.log(stringPass);
 		$.ajax( {
 			type : "POST",
 			dataType : "application/json",
@@ -334,24 +351,12 @@ function finishTest() {
 }
 
 function nextDomanda() {
-	var selezionato = $('input[name=domanda_' + (actualPage - 1) + ']:checked',
-	'#myForm').val();
-	var name = $("input[name=domanda_" + (actualPage - 1) + "1").val();
-	if (selezionato != undefined) {
-		domande[actualPage - 1].Scelta = selezionato;
-
-	}
+	domande[actualPage-1].Scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();	
 	actualPage++;
 	showDomanda();
 }
 
 function prevDomanda() {
-	var selezionato = $('input[name=domanda_' + (actualPage - 1) + ']:checked',
-	'#myForm').val();
-	var name = $("input[name=domanda_" + (actualPage - 1) + "1").val();
-	if (selezionato != undefined) {
-		domande[actualPage - 1].Scelta = selezionato;
-	}
 	actualPage--;
 	if (actualPage < 1)
 		actualPage = 1;
@@ -368,9 +373,9 @@ function getProgress() {
 		+ '" style="width: '
 		+ parseInt((nowSeconds * 100) / maxSeconds)
 		+ '%">'
-		html += "</div>"
+		html += "</div>";
 
-			$("#bar-progress").html(html);
+	$("#bar-progress").html(html);
 	$("#rimanente").html("Seconds remaining: " + (maxSeconds - nowSeconds))
 
 }

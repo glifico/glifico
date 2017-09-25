@@ -49,8 +49,9 @@ function notify(text){
 				icon: "favicon288.ico"
 		}
 		var not = new Notification("Glifico",options);
-		setTimeout(not.close.bind(not), 5000); 
-		new Notification(text);
+		setTimeout(not.close.bind(not), 3000); 
+	}else{
+		alert(text);
 	}
 }
 
