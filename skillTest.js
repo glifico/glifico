@@ -21,30 +21,30 @@ $(document).ready( function() {
 function init() {
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-	var req = createXHTMLHttpRequest() ;
-	req.onreadystatechange = function(){
-	if (req.status == 200&req.readyState==4){
-	var data=JSON.parse(req.responseText);
-	gotLanguages(data);
-	return(true);
-	}else{
-	mostraDialogTimed('errorPanel');
-	return(false);
-	}
-	}
-
-
-	req.open("GET", url, true);
-	req.send();
-
-//	var data=[
-//		JSON.stringify({
-//			"LanguageTo":"Italian",
-//			"IdLanguageTo":"it"
-//		})
-//		];
-//
+//	var req = createXHTMLHttpRequest() ;
+//	req.onreadystatechange = function(){
+//	if (req.status == 200&req.readyState==4){
+//	var data=JSON.parse(req.responseText);
 //	gotLanguages(data);
+//	return(true);
+//	}else{
+//	mostraDialogTimed('errorPanel');
+//	return(false);
+//	}
+//	}
+//
+//
+//	req.open("GET", url, true);
+//	req.send();
+
+	var data=[
+		JSON.stringify({
+			"LanguageTo":"Italian",
+			"IdLanguageTo":"it"
+		})
+		];
+
+	gotLanguages(data);
 
 	function gotLanguages(data){
 
@@ -65,21 +65,37 @@ function init() {
 function result(){
 	var url = "getTest.php?user=" + getUsername()+"&token="+getToken();
 
-	var req = createXHTMLHttpRequest() ;
-	req.onreadystatechange = function(){
-		if (req.status == 200&req.readyState==4){
-			var data=JSON.parse(req.responseText);
-			console.log(data);
-			gotData(data);
-			return(true);
-		}else{
-			mostraDialogTimed('errorPanel');
-			return(false);
-		}
-	}
-	req.open("GET",url,true);
-	req.send();
+//	var req = createXHTMLHttpRequest() ;
+//	req.onreadystatechange = function(){
+//		if (req.status == 200&req.readyState==4){
+//			var data=JSON.parse(req.responseText);
+//			console.log(data);
+//			gotData(data);
+//			return(true);
+//		}else{
+//			mostraDialogTimed('errorPanel');
+//			return(false);
+//		}
+//	}
+//	req.open("GET",url,true);
+//	req.send();
 
+	var data=[
+		{
+			"Language":"Italian",
+			"DataTest":"25/09/2017T12:000Z",
+			"TotTest":5
+		},
+		{
+			"Language":"Japanese",
+			"DataTest":"25/09/2017T12:000Z",
+		}
+	];
+	
+	gotData(data);
+	
+	
+	
 	function gotData(data){
 
 
@@ -142,14 +158,23 @@ function result(){
 }
 
 function getDomande() {
-	var url = "rest.xsp?api=getDomande&lingua=" + $("#select-language").val();
+	//var url = "rest.xsp?api=getDomande&lingua=" + $("#select-language").val();
 
-	$.get(url, function(data) {
+	var data=[
+		{
+			"Question":"Fondamental",
+			"Answer1":"42",
+			"Answer2":"44",
+			"Answer3":"3,14",
+		}
+	];
+	
+	//$.get(url, function(data) {
 		maxpages = data.length;
 		actualPage = 1;
 		domande = data
 		showDomanda();
-	});
+	//});
 
 }
 
