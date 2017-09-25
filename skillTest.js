@@ -21,30 +21,30 @@ $(document).ready( function() {
 function init() {
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-//	var req = createXHTMLHttpRequest() ;
-//	req.onreadystatechange = function(){
-//	if (req.status == 200&req.readyState==4){
-//	var data=JSON.parse(req.responseText);
-//	gotLanguages(data);
-//	return(true);
-//	}else{
-//	mostraDialogTimed('errorPanel');
-//	return(false);
-//	}
-//	}
-
-
-//	req.open("GET", url, true);
-//	req.send();
-
-	var data=[
-		JSON.stringify({
-			"LanguageTo":"Italian",
-			"IdLanguageTo":"it"
-		})
-		];
-
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+	if (req.status == 200&req.readyState==4){
+	var data=JSON.parse(req.responseText);
 	gotLanguages(data);
+	return(true);
+	}else{
+	mostraDialogTimed('errorPanel');
+	return(false);
+	}
+	}
+
+
+	req.open("GET", url, true);
+	req.send();
+
+//	var data=[
+//		JSON.stringify({
+//			"LanguageTo":"Italian",
+//			"IdLanguageTo":"it"
+//		})
+//		];
+//
+//	gotLanguages(data);
 
 	function gotLanguages(data){
 
