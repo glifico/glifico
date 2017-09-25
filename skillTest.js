@@ -12,7 +12,9 @@ $.ajaxSetup( {
 
 $(document).ready( function() {
 	init();
+	notify("ready for skill test");
 });
+
 
 $(document).ready( function() {
 	result();
@@ -79,7 +81,7 @@ function result(){
 //	}
 //	req.open("GET",url,true);
 //	req.send();
-
+	
 	var data=[
 		{
 			"Language":"Italian",
@@ -151,7 +153,6 @@ function result(){
 		}
 		html += "</tbody>";
 		html += "</table>";
-		console.debug(html);
 		$('#tabella').html(html);
 	}
 

@@ -12,7 +12,7 @@ function onLoad(){
 	console.log(document.cookie);
 	var isLogged=false;
 	var isAgency=false;
-	
+
 	if (getLogged()) {
 		isLogged = true;
 		$("#usernameTab").show();
@@ -25,7 +25,7 @@ function onLoad(){
 	if(getType()=="A"){
 		isAgency=true;
 	}
-	
+
 	if(isLogged){
 		if(isAgency){
 			showAgencyStuff();
@@ -37,6 +37,20 @@ function onLoad(){
 	}else{
 		hideTranslatorStuff();
 		hideAgencyStuff();
+	}
+
+	if(Notification.permission!="denied") Notification.requestPermission();
+}
+
+function notify(text){
+	if(Notification.permission=="granted"){
+		var options = {
+				body: text,
+				icon: "favicon288.ico"
+		}
+		var not = new Notification("Glifico",options);
+		setTimeout(not.close.bind(not), 5000); 
+		new Notification(text);
 	}
 }
 

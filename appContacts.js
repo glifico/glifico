@@ -67,7 +67,7 @@
 
 		ctrl.submit= function(){
 			sendMessage();
-			alert("Your message has been sent");
+			notify("Your message has been sent");
 			location.href=location.href;
 		};
 
