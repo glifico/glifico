@@ -21,21 +21,30 @@ $(document).ready( function() {
 function init() {
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-	var req = createXHTMLHttpRequest() ;
-	req.onreadystatechange = function(){
-		if (req.status == 200&req.readyState==4){
-			var data=JSON.parse(req.responseText);
-			gotLanguages(data);
-			return(true);
-		}else{
-			mostraDialogTimed('errorPanel');
-			return(false);
-		}
-	}
+//	var req = createXHTMLHttpRequest() ;
+//	req.onreadystatechange = function(){
+//	if (req.status == 200&req.readyState==4){
+//	var data=JSON.parse(req.responseText);
+//	gotLanguages(data);
+//	return(true);
+//	}else{
+//	mostraDialogTimed('errorPanel');
+//	return(false);
+//	}
+//	}
 
 
-	req.open("GET", url, true);
-	req.send();
+//	req.open("GET", url, true);
+//	req.send();
+
+	var data=[
+		JSON.stringify({
+			"LanguageTo":"Italian",
+			"IdLanguageTo":"it"
+		})
+		];
+
+	gotLanguages(data);
 
 	function gotLanguages(data){
 
@@ -54,8 +63,26 @@ function init() {
 }
 
 function result(){
-	var url = "rest.xsp?api=getTest&id=" + sysIdUtente;
-	$.get(url, function(data) {
+	var url = "getTest.php?user=" + getUsername()+"&token="+getToken();
+
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			console.log(data);
+			gotData(data);
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
+	}
+	req.open("GET",url,true);
+	req.send();
+
+	function gotData(data){
+
+
 		var html = "";
 		html += '<table style="width:100%" class="table">';
 		html += '<thead>';
@@ -108,10 +135,10 @@ function result(){
 		}
 		html += "</tbody>";
 		html += "</table>";
-
+		console.debug(html);
 		$('#tabella').html(html);
+	}
 
-	});
 }
 
 function getDomande() {
