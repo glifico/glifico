@@ -28,36 +28,36 @@ $(document).ready( function() {
 });
 
 function init() {
-	
+
 	if(!debug){
-	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
+		var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-	var req = createXHTMLHttpRequest() ;
-	req.onreadystatechange = function(){
-	if (req.status == 200&req.readyState==4){
-	var data=JSON.parse(req.responseText);
-	gotLanguages(data);
-	return(true);
+		var req = createXHTMLHttpRequest() ;
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var data=JSON.parse(req.responseText);
+				gotLanguages(data);
+				return(true);
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
+			}
+		}
+
+
+		req.open("GET", url, true);
+		req.send();
 	}else{
-	mostraDialogTimed('errorPanel');
-	return(false);
-	}
+		var data=[
+			JSON.stringify({
+				"LanguageTo":"Italian",
+				"IdLanguageTo":"it"
+			})
+			];
+
+		gotLanguages(data);
 	}
 
-
-	req.open("GET", url, true);
-	req.send();
-	}else{
-	var data=[
-		JSON.stringify({
-			"LanguageTo":"Italian",
-			"IdLanguageTo":"it"
-		})
-		];
-
-	gotLanguages(data);
-	}
-	
 	function gotLanguages(data){
 
 		var html = "";
@@ -173,49 +173,46 @@ function getDomande() {
 
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
-	if (req.status == 200&req.readyState==4){
-	var data=JSON.parse(req.responseText);
-	console.log(data);
-	gotData(data);
-	return(true);
-	}else{
-	mostraDialogTimed('errorPanel');
-	return(false);
-	}
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			console.log(data);
+			maxpages = data.length;
+			actualPage = 1;
+			domande = data
+			showDomanda();
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
 	}
 	req.open("GET",url,true);
 	req.send();
-	
-//	var data=[
-//		{
-//			"Question":"Fondamental",
-//			"Answer1":"42",
-//			"Answer2":"44",
-//			"Answer3":"3,14",
-//			"Scelta": ""
-//		},
-//		{
-//			"Question":"Pippo?",
-//			"Answer1":"qui",
-//			"Answer2":"quo",
-//			"Answer3":"qua",
-//			"Scelta": ""
-//		},
-//		{
-//			"Question":"The Internet giant, Amazon, has put a warning on some of the ''Tom and Jerry'' cartoons it offers to its customers. Visitors who want to buy or download the series ''Tom and Jerry: The Complete Second Volume'' get a warning that the cartoons contain scenes that are racist. The warning says: ''Tom and Jerry shorts may show some ethnic and racial prejudices that were once commonplace in American society.'' It added that the scenes were wrong when the cartoons were made 70 years ago, and are still wrong today. People say the character of the black maid in the cartoon series is racist. Some of the cartoons were edited in the 1960s because of worries about racism. Tom and Jerry were created in 1940 by cartoonists William Hanna and Joseph Barbera. The cartoons won the Oscar for the best Animated Short Film seven times. The shows have become one of the most popular cartoons in animation history. Many people posted on Twitter to say it was ''madness'' for Amazon to put a warning on the cartoons.", 
-//			"Answer1":"Based on the text information, Tom and Jerry shows were created to criticize racism", 
-//			"Answer2":"According to the warning of Amazon, the racist scenes are wrong nowadays; however, in the past they were acceptable.", 
-//			"Answer3":"According to the warning of Amazon, racism is no longer a common behavior in America",
-//			"Scelta":""
-//		}
-//		];
 
-	//$.get(url, function(data) {
-	maxpages = data.length;
-	actualPage = 1;
-	domande = data
-	showDomanda();
-	//});
+//	var data=[
+//	{
+//	"Question":"Fondamental",
+//	"Answer1":"42",
+//	"Answer2":"44",
+//	"Answer3":"3,14",
+//	"Scelta": ""
+//	},
+//	{
+//	"Question":"Pippo?",
+//	"Answer1":"qui",
+//	"Answer2":"quo",
+//	"Answer3":"qua",
+//	"Scelta": ""
+//	},
+//	{
+//	"Question":"The Internet giant, Amazon, has put a warning on some of the ''Tom and Jerry'' cartoons it offers to its customers. Visitors who want to buy or download the series ''Tom and Jerry: The Complete Second Volume'' get a warning that the cartoons contain scenes that are racist. The warning says: ''Tom and Jerry shorts may show some ethnic and racial prejudices that were once commonplace in American society.'' It added that the scenes were wrong when the cartoons were made 70 years ago, and are still wrong today. People say the character of the black maid in the cartoon series is racist. Some of the cartoons were edited in the 1960s because of worries about racism. Tom and Jerry were created in 1940 by cartoonists William Hanna and Joseph Barbera. The cartoons won the Oscar for the best Animated Short Film seven times. The shows have become one of the most popular cartoons in animation history. Many people posted on Twitter to say it was ''madness'' for Amazon to put a warning on the cartoons.", 
+//	"Answer1":"Based on the text information, Tom and Jerry shows were created to criticize racism", 
+//	"Answer2":"According to the warning of Amazon, the racist scenes are wrong nowadays; however, in the past they were acceptable.", 
+//	"Answer3":"According to the warning of Amazon, racism is no longer a common behavior in America",
+//	"Scelta":""
+//	}
+//	];
+
 
 }
 
@@ -337,7 +334,7 @@ function showDomanda() {
 			html += '<span id="rimanente"></span>';
 
 	html += '<div style="text-align:center;width:100%;background:red;"><span id="scaduto" style="font-weight:bold;font-size:30px;color:#FFF"></span></div>';
-	
+
 	$("#skill-body").html(html);
 	if(outTime) $("#scaduto").html("Time is up");
 	$("#skill-body").fadeIn("slow");
