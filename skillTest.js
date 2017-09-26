@@ -169,9 +169,12 @@ function result(){
 }
 
 function getDomande() {
-	var url = "getDomande.php?user="+getUsername()+"&token="+getToken()+"&lang=" + $("#select-language").text;
+	var e = document.getElementById("select-language");
+	var lang = e.options[e.selectedIndex].text;
+	
+	var url = "getDomande.php?user="+getUsername()+"&token="+getToken()+"&lang=" + lang;
 
-	console.log($("#select-language").text);
+	console.log(lang);
 	
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
