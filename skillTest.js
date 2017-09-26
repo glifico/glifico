@@ -189,31 +189,6 @@ function getDomande() {
 	req.open("GET",url,true);
 	req.send();
 
-//	var data=[
-//	{
-//	"Question":"Fondamental",
-//	"Answer1":"42",
-//	"Answer2":"44",
-//	"Answer3":"3,14",
-//	"Scelta": ""
-//	},
-//	{
-//	"Question":"Pippo?",
-//	"Answer1":"qui",
-//	"Answer2":"quo",
-//	"Answer3":"qua",
-//	"Scelta": ""
-//	},
-//	{
-//	"Question":"The Internet giant, Amazon, has put a warning on some of the ''Tom and Jerry'' cartoons it offers to its customers. Visitors who want to buy or download the series ''Tom and Jerry: The Complete Second Volume'' get a warning that the cartoons contain scenes that are racist. The warning says: ''Tom and Jerry shorts may show some ethnic and racial prejudices that were once commonplace in American society.'' It added that the scenes were wrong when the cartoons were made 70 years ago, and are still wrong today. People say the character of the black maid in the cartoon series is racist. Some of the cartoons were edited in the 1960s because of worries about racism. Tom and Jerry were created in 1940 by cartoonists William Hanna and Joseph Barbera. The cartoons won the Oscar for the best Animated Short Film seven times. The shows have become one of the most popular cartoons in animation history. Many people posted on Twitter to say it was ''madness'' for Amazon to put a warning on the cartoons.", 
-//	"Answer1":"Based on the text information, Tom and Jerry shows were created to criticize racism", 
-//	"Answer2":"According to the warning of Amazon, the racist scenes are wrong nowadays; however, in the past they were acceptable.", 
-//	"Answer3":"According to the warning of Amazon, racism is no longer a common behavior in America",
-//	"Scelta":""
-//	}
-//	];
-
-
 }
 
 function tryOut() {
@@ -262,7 +237,7 @@ function showDomanda() {
 	var html = "";
 	var domanda = domande[actualPage - 1];
 	html += "<p><form id=\"myForm\">";
-	html += actualPage + ". " + domanda.Question;
+	html += actualPage + ". " + domanda.question;
 	html += "<br />";
 
 	// risposta 1
@@ -271,12 +246,12 @@ function showDomanda() {
 	if (outTime) {
 		disabled = "disabled"
 	}
-	if (domanda.Scelta != undefined && domanda.Scelta == 1) {
+	if (domanda.scelta != undefined && domanda.scelta == 1) {
 		selected = 'checked="checked"';
 	}
 	html += '<input ' + disabled + ' ' + selected
 	+ ' type="radio" name="domanda_' + (actualPage - 1)
-	+ '" value="1">&nbsp;' + domanda.Answer1 + '<br>'
+	+ '" value="1">&nbsp;' + domanda.answer1 + '<br>'
 
 	// risposta 2
 	var selected = "";
@@ -284,12 +259,12 @@ function showDomanda() {
 	if (outTime) {
 		disabled = "disabled"
 	}
-	if (domanda.Scelta != undefined && domanda.Scelta == 2) {
+	if (domanda.scelta != undefined && domanda.scelta == 2) {
 		selected = 'checked="checked"';
 	}
 	html += '<input ' + disabled + ' ' + selected
 	+ ' type="radio" name="domanda_' + (actualPage - 1)
-	+ '" value="2">&nbsp;' + domanda.Answer2 + '<br>'
+	+ '" value="2">&nbsp;' + domanda.answer2 + '<br>'
 
 	// risposta 3
 	var selected = "";
@@ -297,14 +272,14 @@ function showDomanda() {
 	if (outTime) {
 		disabled = "disabled"
 	}
-	if (domanda.Scelta != undefined && domanda.Scelta == 3) {
+	if (domanda.scelta != undefined && domanda.scelta == 3) {
 		selected = 'checked="checked"';
 	}
 	html += '<input ' + disabled + ' ' + selected
 	+ ' type="radio" name="domanda_' + (actualPage - 1)
-	+ '" value="3" >&nbsp;' + domanda.Answer3 + '<br>'
+	+ '" value="3" >&nbsp;' + domanda.answer3 + '<br>'
 	html += '<input type="hidden" name="domanda_' + (actualPage - 1)
-	+ '1"value="' + domanda.Id + '">';
+	+ '1"value="' + domanda.id + '">';
 	prev = true;
 	next = true;
 	last = false;
