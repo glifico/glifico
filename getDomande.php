@@ -42,7 +42,7 @@ $toExit=$row['languages'];
 $result->CloseCursor();
 
 $toExit=[];
-array_push($toExit,"{\"Question\":5,\"Answer1\":\"45\",\"Answer2\":\"42\",\"Answer3\":\"Wrong\"}");
+array_push($toExit,array("Question"=>"What is your name","Answer1"=>"pippo","Answer2"=>"pluto","Answer3"=>"ppaperino","Scelta"=>-1));
 
 exit(json_encode($toExit));
 ?>
