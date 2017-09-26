@@ -169,9 +169,9 @@ function result(){
 }
 
 function getDomande() {
-	var url = "getDomande.php?user="+getUsername()+"&token="+getToken()+"&lang=" + $("#select-language").val();
+	var url = "getDomande.php?user="+getUsername()+"&token="+getToken()+"&lang=" + $("#select-language").text;
 
-	console.log($("#select-language").val());
+	console.log($("#select-language").text);
 	
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
