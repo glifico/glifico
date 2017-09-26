@@ -284,10 +284,10 @@ zeropoints.<br>If you first before time runs out click on the button "submit".<b
 <span>Choose the language you would like to be evaluated:</span><br>
 <div class="input-group">
 <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span>
-<span class="cambia" id="span-combo-lingue">Loading...</span>
+<span class="cambia" id="span-combo-lingue" onkeydown="if(event.keyCode == 13) document.getElementById('buttonTry').click()">Loading...</span>
 <span></span>
 </div>
-<br><a class="btn btn-default" onCLick="tryOut()">Try me out</a>
+<br><a id="buttonTry" class="btn btn-default" onCLick="tryOut()">Try me out</a>
 </div>
 <br>
 <div style="width:90%;display: table;margin: 0 auto;">

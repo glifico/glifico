@@ -1,7 +1,15 @@
 var maxpages = 0;
 var actualPage = 0;
 var started = false;
-var maxSeconds = 100;
+
+var debug=false;
+
+//were 600 before debug
+if(debug){
+	var maxSeconds = 10;
+}else{
+	var maxSeconds = 100;
+}
 var nowSeconds = 0;
 var outTime = false;
 var myTimer;
@@ -20,6 +28,8 @@ $(document).ready( function() {
 });
 
 function init() {
+	
+	if(!debug){
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
 	var req = createXHTMLHttpRequest() ;
@@ -37,16 +47,17 @@ function init() {
 
 	req.open("GET", url, true);
 	req.send();
+	}else{
+	var data=[
+		JSON.stringify({
+			"LanguageTo":"Italian",
+			"IdLanguageTo":"it"
+		})
+		];
 
-//	var data=[
-//		JSON.stringify({
-//			"LanguageTo":"Italian",
-//			"IdLanguageTo":"it"
-//		})
-//		];
-//
-//	gotLanguages(data);
-
+	gotLanguages(data);
+	}
+	
 	function gotLanguages(data){
 
 		var html = "";
@@ -210,6 +221,7 @@ function tryOut() {
 	}
 
 }
+
 function startTest() {
 	actualPage = 1;
 	getDomande();
@@ -222,10 +234,12 @@ function startTest() {
 
 function mioTimer() {
 	nowSeconds++;
+	console.log("mioTimer");
 	if (nowSeconds >= maxSeconds) {
+		console.debug("should exit");
 		clearTimeout(myTimer);
 		outTime = true;
-		// showDomanda();
+		$("#scaduto").html("Time is up");
 	}
 	getProgress();
 }
@@ -307,17 +321,20 @@ function showDomanda() {
 
 			html += '<span id="rimanente"></span>';
 
-	if (outTime) {
-		html += '<div style="text-align:center;width:100%"><span id="scaduto" style="font-weight:bold;font-color:red>Tempo scaduto</span></div>'
-	}
-
-
+	html += '<div style="text-align:center;width:100%;background:red;"><span id="scaduto" style="font-weight:bold;font-size:30px;color:#FFF"></span></div>';
+	
 	$("#skill-body").html(html);
+	if(outTime) $("#scaduto").html("Time is up");
 	$("#skill-body").fadeIn("slow");
 }
 
 function finishTest() {
 	domande[actualPage-1].Scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();
+
+	if(outTime){
+		notify("Sorry, time is ended");
+		return;
+	}
 
 	if (confirm("Do you want to submit the test?")) {
 		var temp = {
