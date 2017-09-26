@@ -171,7 +171,7 @@ function result(){
 function getDomande() {
 	var url = "getDomande.php?user="+getUsername()+"&token="+getToken()+"&lang=" + $("#select-language").val();
 
-	$("#select-language").val();
+	console.log($("#select-language").val());
 	
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
