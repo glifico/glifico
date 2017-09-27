@@ -19,6 +19,15 @@
     color: White;
     font-size: 500%;
 }
+
+.glifico-footer{
+	color:black;
+}
+
+:visited.glifico-footer{
+	color:black;
+}
+
 .carousel-content {
     color:black;
     display:flex;
@@ -59,8 +68,8 @@
   margin-top: 10px;
   line-height: 1.42857;
 }
-  
-.bootstrapPagerPrevious{ 
+
+.bootstrapPagerPrevious{
   background-color: #fff;
   border: 1px solid #ddd;
   border-bottom-left-radius: 4px;
@@ -74,26 +83,26 @@
   line-height: 1.42857143;
   text-decoration: none;
 }
- 
+
 .bootstrapPagerPrevious > a, .bootstrapPagerNext > a, .bootstrapPagerMiddle > span > span > a{
   color: #337ab7;
   text-decoration: none;
 }
-  
+
 .bootstrapPagerPrevious:focus, .bootstrapPagerPrevious:hover, .bootstrapPagerNext:focus, .bootstrapPagerNext:hover {
   background-color:#eee;
   border-color: #ddd;
   color: #23527c;
-} 
-  
+}
+
 .bootstrapPagerMiddle {
   display:inline;
 }
-  
+
 .bootstrapPagerMiddle > span {
   float: left;
 }
-  
+
 .bootstrapPagerMiddle > span > span {
   margin-left:5px;
   float: left;
@@ -105,19 +114,19 @@
   background-color:#fff;
   text-decoration: none;
 }
- 
+
 .xspCurrentItem{
   background-color:#337ab7 !important;
   border-color:#337ab7 !important;
   color:#fff !important;
 }
- 
+
 .bootstrapPagerMiddle > span > span:focus, .bootstrapPagerMiddle > span > span:hover {
   background-color:#eee;
   border-color: #ddd;
   color: #23527c;
 }
-  
+
 .bootstrapPagerNext {
   display:inline;
   border-top-right-radius: 4px;
