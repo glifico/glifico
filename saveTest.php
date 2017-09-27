@@ -17,5 +17,5 @@ foreach ($domande as $domanda) {
   echo($score);
 }
 
-exit($score);
+exit(json_encode(array("message"=>"Test submitted","statuscode"=>400,"score"=>$score)));
  ?>
