@@ -173,8 +173,6 @@ function getDomande() {
 	var lang = e.options[e.selectedIndex].text;
 	
 	var url = "getDomande.php?user="+getUsername()+"&token="+getToken()+"&lang=" + lang;
-
-	console.log(lang);
 	
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
@@ -226,7 +224,6 @@ function startTest() {
 
 function mioTimer() {
 	nowSeconds++;
-	console.log("mioTimer");
 	if (nowSeconds >= maxSeconds) {
 		console.debug("should exit");
 		clearTimeout(myTimer);
@@ -321,7 +318,7 @@ function showDomanda() {
 }
 
 function finishTest() {
-	domande[actualPage-1].Scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();
+	domande[actualPage-1].scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();
 
 	if(outTime){
 		notify("Sorry, time is ended");
@@ -330,7 +327,7 @@ function finishTest() {
 
 	if (confirm("Do you want to submit the test?")) {
 		var temp = {
-				//userId : sysIdUtente,
+				user : getUsername(),
 				document : domande
 		};
 		var stringPass = JSON.stringify(temp);
@@ -341,16 +338,16 @@ function finishTest() {
 			dataType : "application/json",
 			contentType : "application/json; charset=utf-8",
 			data : data,
-			url : "rest.xsp?api=saveTest",
+			url : "saveTest.php",
 			complete : function(ret) {
-
+				console.log(ret);
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
 			},
 			error : function(xhr) {
 				if (xhr.status == 500) {
-					showNotifica("danger", "Errore dal server");
+					showNotifica("danger", "Error from server");
 				}
 
 			}
@@ -360,7 +357,7 @@ function finishTest() {
 }
 
 function nextDomanda() {
-	domande[actualPage-1].Scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();	
+	domande[actualPage-1].scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();	
 	actualPage++;
 	showDomanda();
 }
