@@ -38,6 +38,7 @@ $query="SELECT question, answer1, answer2, answer3 FROM skillTest WHERE language
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
+  $row['scelta']="";
   array_push($toExit,$row);
 }
 
