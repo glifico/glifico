@@ -19,6 +19,16 @@
     color: White;
     font-size: 500%;
 }
+
+
+.glifico-footer{
+	color:black;
+}
+
+:visited.glifico-footer{
+	color:black;
+}
+
 .carousel-content {
     color:black;
     display:flex;
