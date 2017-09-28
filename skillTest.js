@@ -302,7 +302,7 @@ function finishTest() {
 				user : getUsername(),
 				document : domande
 		};
-		var stringPass = JSON.stringify(temp);
+		var stringPass = "&user="+getUsername()+"&document="+JSON.stringify(temp);
 		var data = stringPass;
 		console.log(data);
 		$.ajax( {
