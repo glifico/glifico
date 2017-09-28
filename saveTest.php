@@ -29,7 +29,7 @@ $data = json_decode(file_get_contents("php://input"));
 }
 
 if(!$data){
-  exit(json_encode(array("message"=>"wrong request","statuscode"=>400)))
+  exit(json_encode(array("message"=>"wrong request","statuscode"=>400)));
 }
 
 $user=$data['user'];
