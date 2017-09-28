@@ -1,7 +1,7 @@
 <?php
 
 function search($db, $id){
-  $query="SELECT id, scelta WHERE id='$id'";
+  $query="SELECT id, scelta FROM test WHERE id='$id'";
 
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -37,12 +37,16 @@ $document=json_decode($data['document'],true);
 $domande=$document['domande'];
 
 $score=0;
-
+$text="";
+$text=$domande.$user;
 foreach ($domande as $domanda) {
   $id=$domanda['id'];
   $risposta=search($db, $id);
   if($risposta==$domanda['scelta']) $score+=1;
+  $score+=10;
 }
 
-exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$score)));
+$score+=100;
+
+exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$score,"text"=>$text)));
 ?>
