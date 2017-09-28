@@ -9,12 +9,14 @@
  * @returns void
  */
 var isLogged=false;
-var isAgency=false;
-var isTranslator=false;
 
 function onLoad(){
 	console.log(document.cookie);
 
+	var isAgency=false;
+	var isTranslator=false;
+
+	
 	if (getLogged()) {
 		isLogged = true;
 		$("#usernameTab").show();
@@ -30,9 +32,6 @@ function onLoad(){
 		isAgency=true;
 	}else if (getType()=="T"){
 		isTranslator=true;
-	}else{
-		isAgency=false;
-		isTranslator=false;
 	}
 
 	if(isLogged){
