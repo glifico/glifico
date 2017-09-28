@@ -148,11 +148,11 @@ function getType(){
 }
 
 function isAgency(){
-	return getType=="A";
+	return getType()=="A";
 }
 
 function isTranslator(){
-	return getType=="T";
+	return getType()=="T";
 }
 
 /**

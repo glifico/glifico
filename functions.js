@@ -43,7 +43,6 @@ function onLoad(){
 		}
 		
 		if(isTranslator){
-			console.log("isTranslator");
 			showTranslatorStuff();
 			hideAgencyStuff();
 		}else{
