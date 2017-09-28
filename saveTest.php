@@ -40,5 +40,5 @@ foreach ($domande as $domanda) {
   if($risposta==$domanda['scelta']) $score+=1;
 }
 
-exit(json_encode(array("data"=>$data,"message"=>"Test submitted","statuscode"=>400,"score"=>$score,"domande"=>$data['document'])));
+exit(json_encode(array("message"=>"Test submitted","statuscode"=>400,"score"=>$score)));
 ?>
