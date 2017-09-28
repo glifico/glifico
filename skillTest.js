@@ -302,7 +302,7 @@ function finishTest() {
 				user : getUsername(),
 				document : domande
 		};
-		var stringPass = "&user="+getUsername()+"&document="+JSON.stringify(temp);
+		var stringPass = JSON.stringify(temp);
 		var data = stringPass;
 		console.log(data);
 		$.ajax( {
@@ -310,7 +310,7 @@ function finishTest() {
 			dataType : "application/json",
 			contentType : "application/json; charset=utf-8",
 			data : data,
-			url : "saveTest.php",
+			url : "localhost:8000/saveTest.php",
 			complete : function(ret) {
 				var response=ret.responseText;
 				clearTimeout(myTimer);

@@ -23,8 +23,14 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit();
 
-$user=$_POST['user'];
-$document=json_decode($_POST['document'],true);
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+  $data = json_decode(file_get_contents("php://input"));
+  print_r($data);
+}
+
+$user=$data['user'];
+$document=json_decode($data['document'],true);
 $domande=$document['domande'];
 
 $score=0;
@@ -35,5 +41,5 @@ foreach ($domande as $domanda) {
   if($risposta==$domanda['scelta']) $score+=1;
 }
 
-exit(json_encode(array("message"=>"Test submitted","statuscode"=>400,"score"=>$score,"domande"=>$_POST['document'])));
+exit(json_encode(array("message"=>"Test submitted","statuscode"=>400,"score"=>$score,"domande"=>$data['document'])));
 ?>
