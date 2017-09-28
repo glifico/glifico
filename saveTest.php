@@ -35,12 +35,11 @@ if(!$data){
 $user=$data['user'];
 $domande=$data['document'];
 
-echo(json_encode($domande));
-
 $score=0;
-$text="";
+
 foreach ($domande as $domanda) {
   $id=$domanda['id'];
+  echo($id);
   $risposta=search($db, $id);
   if($risposta==$domanda['scelta']) $score+=1;
   $score+=10;
