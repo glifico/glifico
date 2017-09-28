@@ -103,7 +103,7 @@ function result(){
 		html += '</tbody>';
 		for ( var i = 0; i < data.length; i++) {
 			var classe="";
-			if (data[i].TotTest == null) {
+			if (data[i].TotTest == null||data[i].TotTest <1) {
 				classe=' class="danger"'
 			}
 			html += '<tr valign="middle"  '+classe+'>'
@@ -112,7 +112,7 @@ function result(){
 			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
 				+ lang
 				+ '</b> </td>'
-				if (data[i].TotTest == null) {
+				if (data[i].TotTest == null ||data[i].TotTest <1) {
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">Not done yet</td>'
 						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
 						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"><img src=images/00.png style="max-width:100px" />'+ '</td>'
