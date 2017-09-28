@@ -312,11 +312,12 @@ function finishTest() {
 			data : data,
 			url : "saveTest.php",
 			complete : function(ret) {
+				var response=ret.responseText;
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
-				console.log(ret);
-				var result=(JSON.parse(ret.replace(/\\/,"")))['score'];
+				console.log(response);
+				var result=(JSON.parse(response.replace(/\\/,"")))['score'];
 				notify("result:"+result);
 			},
 			error : function(xhr) {
