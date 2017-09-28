@@ -109,14 +109,6 @@
 	</script>
 
 
-<script>
-  var sysIsLogged=false;
-  var sysUsername='Anonymous';
-  var isLogged = false;
-  var isAgenzia = null;
-</script>
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 <div class="navbar-header">
@@ -140,7 +132,7 @@
 <li><a href="contacts.html">Contacts</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-<li id="li-rating"><a href="socialRating.html">Rating</a></li>
+<li id=""><a href="socialRating.html">Rating</a></li>
 <li id="li-trad"><a href="socialTrad.html">Trad</a></li>
 <li id="li-skill"><a href="skillTest.html">Skill Test</a></li>
 <li class="dropdown-grid" style="position: static;">
@@ -269,51 +261,52 @@ md-input-container{
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
 </div>
 
-<script>
-$(document).ready(function () {
-	
-	if(!getLogged()){
-		$("#styledbody").hide();
-		alert("Please login");
-	}
-});
-</script>
-
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
 <div class="panel-heading">
-Please use the form below to upload translated document
+Please use the form below to upload a translated document
 </div>
 </div>
 </div>
-<div id="styledbody" style="text-align:center;">
-<div style="width:400px;display: table;margin: 0 auto;">
+<div id="styledbody" style="text-align:center;font-size:20px;">
+<div style="width:95%;display: table;margin: 0 auto;">
 <div id="upController" ng-controller="uploadController as ctrl">
 
 <div id="upDescr">
 Hi {{ctrl.translator}}
 <br>
-Please use button, to upload the document...
+<div>
+You have to upload your translation for <b>{{ctrl.title}}</b>
+</div>
 <br>
+Click on the button to choose which document to upload...
+<br>
+
 <input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" ng-show="!ctrl.uploaded"/>
 
 </div>
-<div id="remove">
 
+<div id="remove">
 <div id="upThanks">
 <p>Thank you {{ctrl.translator}} for uploading your document...</p> 
 <p id="url"></p>
 </div>
 
-<p>Change your mind?</p>
+<p>Changed your mind?</p>
 <input class="btn"  type="button" ng-click="ctrl.remove()" value="Delete document"/>
-
 
 <p>Return to <a href="index.html">homepage</a></p>
 </div>
 </div>
 </div>
 </div>
+
+<script>
+shouldBeTranslator();
+//commented for debug
+if(!isTranslator()||!isLogged()) $("#styledbody").hide();
+$("#li-rating").hide();
+</script>
 
  <div ng-app="glifico">
  <glificofooter></glificofooter>
