@@ -305,7 +305,7 @@ function finishTest() {
 
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass;
-		console.log(data);
+		
 		$.ajax( {
 			type : "POST",
 			dataType : "application/json",
@@ -323,7 +323,8 @@ function finishTest() {
 			},
 			error : function(xhr) {
 				if (xhr.status == 500) {
-					showNotifica("danger", "Error from server");
+					$("#alertError").html("Error from server, please retry.");
+					$("#alertError").fadeIn().delay(1000).fadeOut();
 				}
 
 			}
