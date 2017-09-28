@@ -34,7 +34,7 @@ $user=$_GET['user'];
 if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $lang=$_GET['lang'];
-$query="SELECT question, answer1, answer2, answer3 FROM skillTest WHERE language='$lang' ORDER BY RANDOM() LIMIT 5;";
+$query="SELECT id, question, answer1, answer2, answer3 FROM skillTest WHERE language='$lang' ORDER BY RANDOM() LIMIT 5;";
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){

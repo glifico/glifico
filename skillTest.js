@@ -294,7 +294,7 @@ function finishTest() {
 	domande[actualPage-1].scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();
 
 	if(outTime){
-		notify("Sorry, time is ended");
+		alert("Sorry, time is ended");
 		return;
 	}
 
@@ -313,6 +313,8 @@ function finishTest() {
 			url : "saveTest.php",
 			complete : function(ret) {
 				console.log(ret);
+				var result=(JSON.parse(ret))['score'];
+				notify("result:"+result);
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
