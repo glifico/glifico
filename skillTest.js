@@ -312,12 +312,12 @@ function finishTest() {
 			data : data,
 			url : "saveTest.php",
 			complete : function(ret) {
-				console.log(ret);
-				var result=(JSON.parse(ret))['score'];
-				notify("result:"+result);
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
+				console.log(ret);
+				var result=(JSON.parse(ret.replace(/\\/,"")))['score'];
+				notify("result:"+result);
 			},
 			error : function(xhr) {
 				if (xhr.status == 500) {
