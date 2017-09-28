@@ -51,7 +51,7 @@ angular.module("uploadController",[])
 	var start=location.href.indexOf("token=");
 	start+=6;
 	var end=location.href.length;
-	var tok=location.href.substring(start,stop);
+	var tok=location.href.substring(start,end);
 	
 	var toReturn=ctrl.askServer(tok);
 	
