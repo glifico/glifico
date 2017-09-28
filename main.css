@@ -21,11 +21,15 @@
 }
 
 .glifico-footer{
-	color:black;
+	color:#333333;
 }
 
 :visited.glifico-footer{
-	color:black;
+	color:#333333;
+}
+
+:hover.glifico-footer{
+	color: #3f6391;
 }
 
 .carousel-content {
