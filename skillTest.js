@@ -310,7 +310,7 @@ function finishTest() {
 			dataType : "application/json",
 			contentType : "application/json; charset=utf-8",
 			data : data,
-			url : "localhost:8000/saveTest.php",
+			url : "saveTest.php",
 			complete : function(ret) {
 				var response=ret.responseText;
 				clearTimeout(myTimer);
