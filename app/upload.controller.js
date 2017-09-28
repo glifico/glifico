@@ -11,6 +11,7 @@ angular.module("uploadController",[])
 	});
 
 	ctrl.$onInit=function(){
+		ctrl.title=ctrl.getTitle();
 		ctrl.storedUrl="http://www.example.com";
 		ctrl.uploaded=false;
 		ctrl.translator=getUsername();
@@ -45,6 +46,22 @@ angular.module("uploadController",[])
 		document.getElementById("remove").style.visibility="hidden";
 	};
 
+	
+	ctrl.getTitle=function(){
+	var start=location.href.indexOf("token=");
+	start+=6;
+	var end=location.href.length;
+	var tok=location.href.substring(start,stop);
+	
+	var toReturn=ctrl.askServer(tok);
+	
+	return toReturn;
+	};
+	
+	ctrl.askServer=function(tok){
+		return "Titolo da richiedere al server con il token"+tok;
+	};
+	
 })
 
 

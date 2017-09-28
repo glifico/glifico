@@ -20,14 +20,19 @@ function onLoad(){
 		$("#usernameTab").show();
 		$("#usernameLoginRegister").hide();
 	} else {
+		isAgency=false;
+		isTranslator=false;
 		$("#usernameTab").hide();
 		$("#usernameLoginRegister").show();
 	}
 
 	if(getType()=="A"){
 		isAgency=true;
-	}else if (getType=="T"){
+	}else if (getType()=="T"){
 		isTranslator=true;
+	}else{
+		isAgency=false;
+		isTranslator=false;
 	}
 
 	if(isLogged){
@@ -39,6 +44,7 @@ function onLoad(){
 		}
 		
 		if(isTranslator){
+			console.log("isTranslator");
 			showTranslatorStuff();
 			hideAgencyStuff();
 		}else{
