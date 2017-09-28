@@ -317,9 +317,10 @@ function finishTest() {
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
-				console.log(response);
 				var result=(JSON.parse(response.replace(/\\/,"")))['score'];
-				notify("result:"+result);
+				notify("Result:"+result+"/"+domande.length);
+				$("#alertOK").html("Test Completed!");
+				$("#alertOK").fadeIn().delay(5000).fadeOut();
 			},
 			error : function(xhr) {
 				if (xhr.status == 500) {
