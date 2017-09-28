@@ -33,7 +33,7 @@ if(!$data){
 }
 
 $user=$data['user'];
-$document=json_decode($data['document'],true);
+$document=$data['document'];
 $domande=$document['domande'];
 
 $score=0;
@@ -45,8 +45,6 @@ foreach ($domande as $domanda) {
   if($risposta==$domanda['scelta']) $score+=1;
   $score+=10;
 }
-
-$score+=100;
 
 exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$score,"text"=>$text)));
 ?>
