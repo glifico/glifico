@@ -2,14 +2,7 @@ var maxpages = 0;
 var actualPage = 0;
 var started = false;
 
-var debug=false;
-
-//were 600 before debug
-if(debug){
-	var maxSeconds = 10;
-}else{
-	var maxSeconds = 100;
-}
+var maxSeconds = 100;
 var nowSeconds = 0;
 var outTime = false;
 var myTimer;
@@ -29,34 +22,31 @@ $(document).ready( function() {
 
 function init() {
 
-	if(!debug){
-		var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
+	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-		var req = createXHTMLHttpRequest() ;
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				var data=JSON.parse(req.responseText);
-				gotLanguages(data);
-				return(true);
-			}else{
-				mostraDialogTimed('errorPanel');
-				return(false);
-			}
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			gotLanguages(data);
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
 		}
-
-
-		req.open("GET", url, true);
-		req.send();
-	}else{
-		var data=[
-			JSON.stringify({
-				"LanguageTo":"Italian",
-				"IdLanguageTo":"it"
-			})
-			];
-
-		gotLanguages(data);
 	}
+
+
+
+	req.open("GET", url, true);
+	req.send();
+
+//	var data=[
+//	JSON.stringify({
+//	"LanguageTo":"Italian",
+//	"IdLanguageTo":"it"
+//	})
+//	];
 
 	function gotLanguages(data){
 
@@ -171,14 +161,13 @@ function result(){
 function getDomande() {
 	var e = document.getElementById("select-language");
 	var lang = e.options[e.selectedIndex].text;
-	
+
 	var url = "getDomande.php?user="+getUsername()+"&token="+getToken()+"&lang=" + lang;
-	
+
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			console.log(data);
 			maxpages = data.length;
 			actualPage = 1;
 			domande = data
@@ -225,7 +214,6 @@ function startTest() {
 function mioTimer() {
 	nowSeconds++;
 	if (nowSeconds >= maxSeconds) {
-		console.debug("should exit");
 		clearTimeout(myTimer);
 		outTime = true;
 		$("#scaduto").html("Time is up");
@@ -332,7 +320,6 @@ function finishTest() {
 		};
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass;
-		console.log(stringPass);
 		$.ajax( {
 			type : "POST",
 			dataType : "application/json",

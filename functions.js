@@ -8,10 +8,12 @@
  * getLogged() and getType() are from mylogin.js 
  * @returns void
  */
+var isLogged=false;
+var isAgency=false;
+var isTranslator=false;
+
 function onLoad(){
 	console.log(document.cookie);
-	var isLogged=false;
-	var isAgency=false;
 
 	if (getLogged()) {
 		isLogged = true;
@@ -24,6 +26,8 @@ function onLoad(){
 
 	if(getType()=="A"){
 		isAgency=true;
+	}else if (getType=="T"){
+		isTranslator=true;
 	}
 
 	if(isLogged){
@@ -31,8 +35,14 @@ function onLoad(){
 			showAgencyStuff();
 			hideTranslatorStuff();
 		}else{
+			hideAgencyStuff();
+		}
+		
+		if(isTranslator){
 			showTranslatorStuff();
 			hideAgencyStuff();
+		}else{
+			hideTranslatorStuff();
 		}
 	}else{
 		hideTranslatorStuff();
@@ -76,6 +86,22 @@ function hideAgencyStuff(){
 	$("#li-pay").hide();
 	$("#li-search").hide();
 }
+
+
+function shouldBeTranslator(){
+	//before deMorgan law if(!(isLogged&&!isAgency)){
+	if(!getLogged()||isAgency()){
+		alert("Please login as Translator");
+	}
+}
+
+function shouldBeAgency(){
+	//before deMorgan law if(!(isLogged&&isAgency)){
+	if(!getLogged()||!isAgency()){
+		alert("Please login as Agency");
+	}
+}
+
 
 function createXHTMLHttpRequest() {
 	try { return new ActiveXObject("Msxml2.XMLHTTP") ; } catch (e) {}

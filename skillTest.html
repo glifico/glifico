@@ -316,12 +316,9 @@ zeropoints.<br>If you first before time runs out click on the button "submit".<b
 </div>		
 		
 <script>
-//before deMorgan law if(!(isLogged&&!isAgency)){
-if(!getLogged()||isAgency()){
-	//comment for debug porpouses
-	//$("#skillBody").hide();
-	alert("Please login as Translator");
-}
+shouldBeTranslator();
+//before DeMorgan law !(isTranslator&&isLogged)
+if(!isTranslator()||!isLogged()) $("#skillBody").hide();
 </script>
 				
 <div ng-app="glifico">

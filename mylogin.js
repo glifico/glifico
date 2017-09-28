@@ -100,6 +100,9 @@ function getLogged(){
 	return return_value; 
 }
 
+function isLogged(){
+	return getLogged();
+}
 
 
 /**
@@ -146,6 +149,10 @@ function getType(){
 
 function isAgency(){
 	return getType=="A";
+}
+
+function isTranslator(){
+	return getType=="T";
 }
 
 /**
