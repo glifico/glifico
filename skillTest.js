@@ -67,35 +67,20 @@ function init() {
 function result(){
 	var url = "getTest.php?user=" + getUsername()+"&token="+getToken();
 
-//	var req = createXHTMLHttpRequest() ;
-//	req.onreadystatechange = function(){
-//	if (req.status == 200&req.readyState==4){
-//	var data=JSON.parse(req.responseText);
-//	console.log(data);
-//	gotData(data);
-//	return(true);
-//	}else{
-//	mostraDialogTimed('errorPanel');
-//	return(false);
-//	}
-//	}
-//	req.open("GET",url,true);
-//	req.send();
-
-	var data=[
-		{
-			"Language":"Italian",
-			"DataTest":"25/09/2017T12:000Z",
-			"TotTest":5
-		},
-		{
-			"Language":"Japanese",
-			"DataTest":"25/09/2017T12:000Z",
-		},
-		];
-
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+	if (req.status == 200&req.readyState==4){
+	var data=JSON.parse(req.responseText);
+	console.log(data);
 	gotData(data);
-
+	return(true);
+	}else{
+	mostraDialogTimed('errorPanel');
+	return(false);
+	}
+	}
+	req.open("GET",url,true);
+	req.send();
 
 
 	function gotData(data){
