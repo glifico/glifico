@@ -1,7 +1,7 @@
 <?php
 
 function search($db, $id){
-  $query="SELECT id, scelta FROM test WHERE id='$id'";
+  $query="SELECT id, scelta FROM test WHERE id='$id';";
 
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -38,9 +38,9 @@ $score=0;
 
 foreach ($domande as $domanda) {
   $id=$domanda['id'];
-  echo($id);
   $risposta=search($db, $id);
   if($risposta==$domanda['scelta']) $score+=1;
+  echo($score);
   $score+=10;
 }
 
