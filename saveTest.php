@@ -6,7 +6,6 @@ function search($db, $id){
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
-  $result->CloseCursor();
   return $row['scelta'];
 }
 
