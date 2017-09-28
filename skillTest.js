@@ -71,7 +71,6 @@ function result(){
 	req.onreadystatechange = function(){
 	if (req.status == 200&req.readyState==4){
 	var data=JSON.parse(req.responseText);
-	console.log(data);
 	gotData(data);
 	return(true);
 	}else{
@@ -305,6 +304,7 @@ function finishTest() {
 		};
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass;
+		console.log(data);
 		$.ajax( {
 			type : "POST",
 			dataType : "application/json",
