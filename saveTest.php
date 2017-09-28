@@ -1,7 +1,7 @@
 <?php
 
 function search($db, $id){
-  $query="SELECT id, scelta FROM test WHERE id='$id';";
+  $query="SELECT id, scelta FROM skilltest WHERE id='$id';";
 
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
