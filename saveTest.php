@@ -33,12 +33,12 @@ if(!$data){
 }
 
 $user=$data['user'];
-$document=$data['document'];
-$domande=$document['domande'];
+$domande=$data['document'];
+
+echo(json_encode($domande));
 
 $score=0;
 $text="";
-$text=$domande.$user;
 foreach ($domande as $domanda) {
   $id=$domanda['id'];
   $risposta=search($db, $id);
@@ -46,5 +46,5 @@ foreach ($domande as $domanda) {
   $score+=10;
 }
 
-exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$score,"text"=>$text)));
+exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$score)));
 ?>
