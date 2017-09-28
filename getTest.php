@@ -32,7 +32,7 @@ if(!$db) exit;
 $user=$_GET['user'];
 if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT username, language, score, datatest, tottest FROM test WHERE username='$user';";
+$query="SELECT username, language, datatest, tottest FROM test WHERE username='$user';";
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
