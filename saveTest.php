@@ -33,7 +33,6 @@ foreach ($domande as $domanda) {
   $id=$domanda['id'];
   $risposta=search($db, $id);
   if($risposta==$domanda['scelta']) $score+=1;
-  $score+=1;
 }
 
 exit(json_encode(array("message"=>"Test submitted","statuscode"=>400,"score"=>$score)));
