@@ -10,11 +10,10 @@ function search($db, $id){
 }
 
 function updateTest($db, $user, $languageto, $tot){
-  $query="UPDATE languages set tottest='$tot' WHERE username='$user' and languageto='$languageto';";
+  $query="UPDATE languages set tottest='$tot' WHERE username='$user' and language='$languageto';";
 
   $result = $db->query($query);
 
-  return $result;
 }
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
