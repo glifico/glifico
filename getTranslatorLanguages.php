@@ -32,13 +32,15 @@ if(!$db) exit;
 $user=$_GET['user'];
 if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT USERNAME, LANGUAGES FROM languages WHERE username='$user';";
+$query="SELECT USERNAME, LANGUAGE, idlanguageto FROM test WHERE username='$user';";
 $result = $db->query($query);
-$row = $result->fetch(PDO::FETCH_ASSOC);
 
-$toExit=$row['languages'];
+$toExit=[];
+while($row = $result->fetch(PDO::FETCH_ASSOC)){
+  array_push($toExit,array("IdLanguageTo"=>$row['idlanguageto'],"LanguageTo"=>$row['language']));
+}
 
 $result->CloseCursor();
 
-exit($toExit);
+exit(json_encode($toExit));
 ?>
