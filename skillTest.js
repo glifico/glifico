@@ -314,6 +314,7 @@ function finishTest() {
 			url : "saveTest.php",
 			complete : function(ret) {
 				var response=ret.responseText;
+				console.debug(response);
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');

@@ -10,8 +10,10 @@ function search($db, $id){
 }
 
 function updateTest($db, $user, $languageto, $tot){
-  $query="UPDATE languages set tottest='$tot' WHERE username='$user' and language='$languageto';";
-
+  $query="UPDATE languages SET tottest='$tot' WHERE username='$user' and language='$languageto';";
+  echo($user);
+  echo($languageto);
+  echo($tot);
   $result = $db->query($query);
 
 }
