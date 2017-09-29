@@ -318,6 +318,7 @@ function finishTest() {
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
+				
 				var result=(JSON.parse(response.replace(/\\/,"")))['score'];
 				notify("Result:"+result+"/"+domande.length);
 				$("#alertOK").html("Test Completed!");
