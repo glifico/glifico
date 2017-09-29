@@ -9,6 +9,14 @@ function search($db, $id){
   return $row['scelta'];
 }
 
+function updateTest($db, $user, $languageto, $tot){
+  $query="UPDATE languages set tottest='$tot' WHERE username='$user' and languageto='$languageto';";
+
+  $result = $db->query($query);
+
+  return $result;
+}
+
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $dsn = "pgsql:"
 ."host=".$dbopts["host"].";"
@@ -41,6 +49,10 @@ foreach ($domande as $domanda) {
   $risposta=search($db, $id);
   if($risposta==$domanda['scelta']) $score+=1;
 }
+
+if($score>5) $score=5;
+
+updateTest($db,$user,$domande[0]['language'],$score);
 
 exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$score)));
 ?>
