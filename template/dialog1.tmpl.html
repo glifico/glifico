@@ -1,0 +1,24 @@
+
+
+<md-dialog aria-label="Upload File">
+  <form  action="xsp/upload" ng-upload="uploadComplete(content)" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Upload Certificate</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <i class="fa fa-times"></i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Select file you want upload</h2>
+     		<input type="file" name="avatar"></input>
+     		<input type="submit" value="Upload" ng-disabled="$isUploading"></input>
+      </div>
+    </md-dialog-content>
+
+  </form>
+</md-dialog>
