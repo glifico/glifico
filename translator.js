@@ -165,7 +165,6 @@ function strLeft(sourceStr, keyStr) {
 					$scope.loadLanguages();
 					$scope.loadCountries();
 					$scope.model=ret[0];	
-					console.log($scope.model);
 				}
 			}else{
 				mostraDialogTimed('errorPanel');

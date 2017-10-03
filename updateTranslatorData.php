@@ -44,8 +44,8 @@ $data_nascita=$params['Birthday'];
 $citta=$params['City'];
 $provincia=$params['StateProvince'];
 $cap=$params['ZIP'];
-$idStato=$params['idCountry'];
-$madrelingua=$params['idMothertongue'];
+$idStato=$params['IdCountry'];
+$madrelingua=$params['IdMothertongue'];
 
 //data_nascita='$data_nascita',
 $query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";

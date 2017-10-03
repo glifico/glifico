@@ -29,5 +29,5 @@ $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
 
-exit (json_encode([array("FirstName"=>$row['nome'],"LastName"=>$row['cognome'],"Birthday"=>$row['data_nascita'],"City"=>$row['citta'],"StateProvince"=>$row['provincia'],"ZIP"=>$row['cap'], "idCountry"=>$row['idStato'],"idMothertongue"=>$row['madrelingua'])]));
+exit (json_encode([array("FirstName"=>$row['nome'],"LastName"=>$row['cognome'],"Birthday"=>$row['data_nascita'],"City"=>$row['citta'],"StateProvince"=>$row['provincia'],"ZIP"=>$row['cap'], "IdCountry"=>$row['idstato'],"IdMothertongue"=>$row['madrelingua'])]));
 ?>
