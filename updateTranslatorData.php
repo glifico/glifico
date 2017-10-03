@@ -43,7 +43,7 @@ $cognome=$params['LastName'];
 $data_nascita=$params['Birthday'];
 $citta=$params['City'];
 $provincia=$params['StateProvince'];
-$zip=$params['ZIP'];
+$cap=$params['ZIP'];
 $idStato=$params['idCountry'];
 $madrelingua=$params['idMothertongue'];
 
