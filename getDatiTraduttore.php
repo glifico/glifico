@@ -24,10 +24,10 @@ if(!$db) exit;
 $user=$_GET['user'];
 if(!certToken($db, $user, $_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));;
 
-$query="SELECT firstname, lastname FROM traduttore WHERE username='$user';";
+$query="SELECT * FROM traduttore WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
 
-exit (json_encode([array("FirstName"=>$row['firstname'],"LastName"=>$row['lastname'],"Birthday"=>"","City"=>$row['city'],"StateProvince"=>$row['stateprovince'],"ZIP"=>$row['zip'], "idCountry"=>$row['idCountry'], "idMothertongue"=>$row['idMothertongue'])]));
+exit (json_encode([array("FirstName"=>$row['nome'],"LastName"=>$row['cognome'],"Birthday"=>"data_nascita","City"=>$row['citta'],"StateProvince"=>$row['provincia'],"ZIP"=>$row['cap'], "idCountry"=>$row['idStato'], "idMothertongue"=>$row['madrelingua'])]));
 ?>
