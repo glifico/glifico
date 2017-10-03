@@ -49,7 +49,6 @@ $madrelingua=$params['idMothertongue'];
 
 //data_nascita='$data_nascita',
 $query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";
-echo($query);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
