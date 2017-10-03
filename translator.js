@@ -96,7 +96,8 @@ function strLeft(sourceStr, keyStr) {
 
 	angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
 
-
+		var ctrl=this;
+		
 		$scope.loadCountries = function(){
 			var req=createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
@@ -141,9 +142,7 @@ function strLeft(sourceStr, keyStr) {
 			req.send();
 		};
 
-		$scope.$onInit=function(){
-
-
+		ctrl.$onInit=function(){
 			var req=createXHTMLHttpRequest();
 
 			req.onreadystatechange = function(){
