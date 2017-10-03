@@ -194,7 +194,7 @@ function strLeft(sourceStr, keyStr) {
 				data : data,
 				url : "updateTranslatorData.php",
 				complete : function(ret) {
-					var response=ret.responseText;
+					var response=ret.responseText.replace(/\\/,"");
 					console.debug(ret);
 					if(convertJSON(response).statuscode==200){
 					$('#alertOK').fadeIn().delay(10000).fadeOut();
