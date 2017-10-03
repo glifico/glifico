@@ -32,9 +32,11 @@ $dsn = "pgsql:"
 $db = new PDO($dsn);
 if(!$db) exit;
 
-if(!certToken($db, $user, $_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
-
 $user=$data['user'];
+
+echo("user");
+if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>500)));
+
 
 $params=$data['values'];
 echo($params);
