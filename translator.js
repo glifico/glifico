@@ -141,6 +141,10 @@ function strLeft(sourceStr, keyStr) {
 			req.send();
 		};
 
+		var ctrl=this;
+		
+		ctrl.$onInit=function(){
+		
 		var req=createXHTMLHttpRequest();
 
 		req.onreadystatechange = function(){
@@ -166,7 +170,7 @@ function strLeft(sourceStr, keyStr) {
 
 		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
 		req.send();
-
+		}
 
 
 		$scope.submit = function() {
