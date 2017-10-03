@@ -38,26 +38,26 @@ echo($user);
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>500)));
 
 
-$params=$data['values'];
-echo($params);
-$nome=$params['FirstName'];
-$cognome=$params['LastName'];
-$data_nascita=$params['Birthday'];
-$citta=$params['City'];
-$provincia=$params['StateProvince'];
-$zip=$params['ZIP'];
-$idStato=$params['idCountry'];
-$madrelingua=$params['idMothertongue'];
-
-echo($data);
-
-
-$query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";
-echo($query);
-$result = $db->query($query);
-$row = $result->fetch(PDO::FETCH_ASSOC);
-
-$result->CloseCursor();
+// $params=$data['values'];
+// echo($params);
+// $nome=$params['FirstName'];
+// $cognome=$params['LastName'];
+// $data_nascita=$params['Birthday'];
+// $citta=$params['City'];
+// $provincia=$params['StateProvince'];
+// $zip=$params['ZIP'];
+// $idStato=$params['idCountry'];
+// $madrelingua=$params['idMothertongue'];
+//
+// echo($data);
+//
+//
+// $query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";
+// echo($query);
+// $result = $db->query($query);
+// $row = $result->fetch(PDO::FETCH_ASSOC);
+//
+// $result->CloseCursor();
 exit(json_encode(array("statuscode"=>200));
 
 ?>
