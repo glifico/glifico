@@ -343,7 +343,7 @@ What does this page do?
 
 									<md-input-container>
 										<label>Postal Code</label>
-										<input name="postalCode" ng-model="model.ZIP" placeholder="" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+										<input name="postalCode" ng-model="model.ZIP" placeholder="" ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
 
 										<div ng-messages="userForm.postalCode.$error" role="alert" multiple>
 											<div ng-message="required" class="my-message">You must supply a postal code.</div>

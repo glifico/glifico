@@ -139,79 +139,73 @@ function strLeft(sourceStr, keyStr) {
 
 			req.open("GET","getLanguages.php",true);
 			req.send();
-		}
+		};
+
+		$scope.$onInit=function(){
 
 
-		var req=createXHTMLHttpRequest();
+			var req=createXHTMLHttpRequest();
 
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("Si è verificato un errore.");
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("Si è verificato un errore.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
 					} else {
-						$('#alertError').html(ret[0].data.msg);
+						$scope.model=ret[0];
+						$scope.loadLanguages();
+						$scope.loadCountries();
 					}
-				} else {
-					$scope.model=ret[0];
-					$scope.loadLanguages();
-					$scope.loadCountries();
+				}else{
+					mostraDialogTimed('errorPanel');
+					return(false);
 				}
-			}else{
-				mostraDialogTimed('errorPanel');
-				return(false);
 			}
+
+			req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
+			req.send();
+
 		}
-
-		req.open("GET", 'getDatiTraduttore.php?user='+getUsername()+'&token='+getToken(), true);
-		req.send();
-
 
 		$scope.submit = function() {
-			console.debug($scope.model);
-			
-			$http
-			.post('updateTranslator.php&user='+getUsername(), $scope.model)
-			.success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined
-								|| ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"Si è verificato un errore inaspettato");
-						} else if (ret[0].data.status != undefined
-								&& ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined
-									|| ret[0].data.msg == "") {
-								$('#alertError').html(
-								"Si è verificato un errore.");
-							} else {
-								var stringval=ret[0].data.msg
-								if(stringval.indexOf("Cannot insert duplicate key") != -1){
-									var errorField = strRight(ret[0].data.msg,"Index:");
-									errorField = strLeft(errorField,"_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								}else{
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Your data was saved correctly.");
-						}
-						$('#loginModal').modal('hide');
-					});
-		}
-	});
+			var data=JSON.stringify({
+				"user": getUsername(),
+				"token": getToken(),
+				"values": JSON.stringify($scope.model),
+			}
+			);
+
+			$.ajax( {
+				type : "POST",
+				dataType : "application/json",
+				contentType : "application/json; charset=utf-8",
+				data : data,
+				url : "updateTranslatorData.php",
+				complete : function(ret) {
+					var response=ret.responseText;
+					console.debug(response);
+					$('#alertOK').fadeIn().delay(10000).fadeOut();
+					$('#alertOK').html("Your data was saved correctly.");			
+				},
+				error : function(xhr) {
+					if (xhr.status == 500) {
+						$("#alertError").html("Error from server, please retry.");
+						$("#alertError").fadeIn().delay(1000).fadeOut();
+					}
+
+				}
+			});
+
+	};
+
+
+
+});
 
 	angular.module('EducationApp').controller('EducationAppCtrl',function($http,$timeout,$scope,$mdDialog) {
 
