@@ -47,8 +47,8 @@ $zip=$params['ZIP'];
 $idStato=$params['idCountry'];
 $madrelingua=$params['idMothertongue'];
 
-
-$query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";
+//data_nascita='$data_nascita',
+$query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";
 echo($query);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
