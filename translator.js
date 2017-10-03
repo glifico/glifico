@@ -189,9 +189,14 @@ function strLeft(sourceStr, keyStr) {
 				url : "updateTranslatorData.php",
 				complete : function(ret) {
 					var response=ret.responseText;
-					console.debug(response);
+					console.debug(ret);
+					if(convertJSON(response).statuscode==200){
 					$('#alertOK').fadeIn().delay(10000).fadeOut();
-					$('#alertOK').html("Your data was saved correctly.");			
+					$('#alertOK').html("Your data was saved correctly.");	
+					}else{
+						$('#alertError').fadeIn().delay(1000).fadeOut();
+						$('#alertOK').html("There was an error, please retry.");
+					}
 				},
 				error : function(xhr) {
 					if (xhr.status == 500) {

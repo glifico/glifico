@@ -34,7 +34,7 @@ if(!$db) exit;
 
 $user=$data['user'];
 
-echo("user");
+echo($user);
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>500)));
 
 
