@@ -181,7 +181,7 @@ function strLeft(sourceStr, keyStr) {
 			var arr={
 					"user": getUsername(),
 					"token": getToken(),
-					"values": JSON.stringify($scope.model),
+					"values": $scope.model,
 				};
 			
 			var stringPass=JSON.stringify(arr);
