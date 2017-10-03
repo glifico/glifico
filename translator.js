@@ -1,3 +1,7 @@
+$.ajaxSetup( {
+	async : false
+});
+
 var regexIso8601 = /^(\d{4}|\+\d{6})(?:-(\d{2})(?:-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2})\.(\d{1,})(Z|([\-+])(\d{2}):(\d{2}))?)?)?)?$/;
 
 function convertDateStringsToDates(input) {
@@ -174,13 +178,15 @@ function strLeft(sourceStr, keyStr) {
 
 
 		$scope.submit = function() {
-			var data=JSON.stringify({
-				"user": getUsername(),
-				"token": getToken(),
-				"values": JSON.stringify($scope.model),
-			}
-			);
-
+			var arr={
+					"user": getUsername(),
+					"token": getToken(),
+					"values": JSON.stringify($scope.model),
+				};
+			
+			var stringPass=JSON.stringify(arr);
+			var data=stringPass;
+			
 			$.ajax( {
 				type : "POST",
 				dataType : "application/json",
