@@ -164,7 +164,10 @@ function strLeft(sourceStr, keyStr) {
 				} else {
 					$scope.loadLanguages();
 					$scope.loadCountries();
+					$scope.model.IdCountry="fr";
 					$scope.model=ret[0];	
+					$scope.model.IdMothertongue="it";
+					console.log($scope.model);
 				}
 			}else{
 				mostraDialogTimed('errorPanel');
