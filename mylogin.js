@@ -155,6 +155,15 @@ function isTranslator(){
 	return (getType()=="T")&&getLogged();
 }
 
+function personalArea(){
+	if(isTranslator()){
+		location.href="translator.html";
+	}else if(isAgency()){
+		location.href="agency.html";
+	}
+}
+
+
 /**
  * delete cookie and refresh
  */
