@@ -2,11 +2,11 @@
 exit(json_encode([
   array(
     "Language"=>'Italian',
-    "id"=>"it"
+    "Id"=>"it"
   ),
   array(
     "Language"=>'French',
-    "id"=>"fr"
+    "Id"=>"fr"
   )
   ]));
 ?>

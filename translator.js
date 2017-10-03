@@ -164,7 +164,6 @@ function strLeft(sourceStr, keyStr) {
 						}
 					} else {
 						$scope.model=ret[0];	
-						console.log($scope.model);
 					}
 				}else{
 					mostraDialogTimed('errorPanel');
@@ -186,7 +185,6 @@ function strLeft(sourceStr, keyStr) {
 
 			var stringPass=JSON.stringify(arr);
 			var data=stringPass;
-			console.log(arr);
 
 			$.ajax( {
 				type : "POST",
@@ -196,7 +194,6 @@ function strLeft(sourceStr, keyStr) {
 				url : "updateTranslatorData.php",
 				complete : function(ret) {
 					var response=ret.responseText.replace(/\\/,"");
-					console.debug(ret);
 					if(convertJSON(response).statuscode==200){
 						$('#alertOK').fadeIn().delay(10000).fadeOut();
 						$('#alertOK').html("Your data was saved correctly.");	

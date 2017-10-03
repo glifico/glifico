@@ -2,11 +2,11 @@
 exit(json_encode([
   array(
     "Country"=>'Italy',
-    "id"=>"it"
+    "Id"=>"it"
   ),
   array(
     "Country"=>'France',
-    "id"=>"fr"
+    "Id"=>"fr"
   )
   ]));
 ?>
