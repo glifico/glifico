@@ -186,6 +186,7 @@ function strLeft(sourceStr, keyStr) {
 			
 			var stringPass=JSON.stringify(arr);
 			var data=stringPass;
+			console.log(arr);
 			
 			$.ajax( {
 				type : "POST",
