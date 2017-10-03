@@ -48,9 +48,17 @@ foreach ($domande as $domanda) {
   if($risposta==$domanda['scelta']) $score+=1;
 }
 
-if($score>5) $score=5;
+$language=$domande[0]['language'];
+$query="SELECT username, tottest FROM languages WHERE username='$user' AND language='$language' ORDER BY tottest DESC;";
+$result = $db->query($query);
 
-updateTest($db,$user,$domande[0]['language'],$score);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+$oldscore=$row['tottest'];
+$newscore=$score;
+$score=($newscore+$oldscore)/2
 
-exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$score)));
+updateTest($db,$user,$language,$newscore);
+
+$result->CloseCursor();
+exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$newscore)));
 ?>
