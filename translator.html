@@ -359,14 +359,13 @@ What does this page do?
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Country</label>
-										<md-select placeholder="Select your Country" ng-model="model.IdCountry" md-on-open="loadCountries();" >
+										<md-select placeholder="Select your Country" ng-model="model.IdCountry"  >
 											<md-option ng-repeat="element in Countries" value="{{element.Id}}">
 												{{element.Country}}
 											</md-option>
 										</md-select>
 									</md-input-container>
 								</div>
-	{{model.IdCountry}}
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Mothertongue</label>

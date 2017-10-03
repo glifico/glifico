@@ -146,35 +146,34 @@ function strLeft(sourceStr, keyStr) {
 		};
 
 		var ctrl=this;
-		
+
 		ctrl.$onInit=function(){
-		
-		var req=createXHTMLHttpRequest();
+			$scope.loadLanguages();
+			$scope.loadCountries();
+			var req=createXHTMLHttpRequest();
 
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("Si è verificato un errore.");
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("Si è verificato un errore.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
 					} else {
-						$('#alertError').html(ret[0].data.msg);
+						$scope.model=ret[0];	
+						console.log($scope.model);
 					}
-				} else {
-					$scope.loadLanguages();
-					$scope.loadCountries();
-					$scope.model=ret[0];	
-					console.log($scope.model);
+				}else{
+					mostraDialogTimed('errorPanel');
+					return(false);
 				}
-			}else{
-				mostraDialogTimed('errorPanel');
-				return(false);
 			}
-		}
 
-		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
-		req.send();
+			req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
+			req.send();
 		}
 
 
@@ -183,12 +182,12 @@ function strLeft(sourceStr, keyStr) {
 					"user": getUsername(),
 					"token": getToken(),
 					"values": $scope.model,
-				};
-			
+			};
+
 			var stringPass=JSON.stringify(arr);
 			var data=stringPass;
 			console.log(arr);
-			
+
 			$.ajax( {
 				type : "POST",
 				dataType : "application/json",
@@ -199,8 +198,8 @@ function strLeft(sourceStr, keyStr) {
 					var response=ret.responseText.replace(/\\/,"");
 					console.debug(ret);
 					if(convertJSON(response).statuscode==200){
-					$('#alertOK').fadeIn().delay(10000).fadeOut();
-					$('#alertOK').html("Your data was saved correctly.");	
+						$('#alertOK').fadeIn().delay(10000).fadeOut();
+						$('#alertOK').html("Your data was saved correctly.");	
 					}else{
 						$('#alertError').fadeIn().delay(1000).fadeOut();
 						$('#alertOK').html("There was an error, please retry.");
