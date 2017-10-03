@@ -1,0 +1,12 @@
+<?php
+exit(json_encode([
+  array(
+    "Country"=>'Italy',
+    "id"=>"it"
+  ),
+  array(
+    "Country"=>'France',
+    "id"=>"fr"
+  )
+  ]));
+?>

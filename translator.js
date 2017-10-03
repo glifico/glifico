@@ -98,26 +98,55 @@ function strLeft(sourceStr, keyStr) {
 
 
 		$scope.loadCountries = function(){
-			$http.get('rest.xsp?api=getCountries').success( function(data) {
-				var ret = convertJSON(data);
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("Si è verificato un errore.");
+			var req=createXHTMLHttpRequest();
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("Si è verificato un errore.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
 					} else {
-						$('#alertError').html(ret[0].data.msg);
+						$scope.Countries=ret;
 					}
-				} else {
-
-					$scope.Countries=ret;
 				}
-			});
-		}
+			}
 
+			req.open("GET","getCountries.php",true);
+			req.send();
+		}
 
 		$scope.loadLanguages = function(){
-			$http.get('rest.xsp?api=getLanguages').success( function(data) {
-				var ret = convertJSON(data);
+			var req=createXHTMLHttpRequest();
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("Si è verificato un errore.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
+					} else {
+						$scope.Languages=ret;
+					}
+				}
+			}
+
+			req.open("GET","getLanguages.php",true);
+			req.send();
+		}
+
+
+		var req=createXHTMLHttpRequest();
+
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
 				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
 					$('#alertError').fadeIn().delay(10000).fadeOut();
 					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
@@ -126,31 +155,25 @@ function strLeft(sourceStr, keyStr) {
 						$('#alertError').html(ret[0].data.msg);
 					}
 				} else {
-					$scope.Languages=ret;
+					$scope.model=ret[0];
+					$scope.loadLanguages();
+					$scope.loadCountries();
 				}
-			});
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
+			}
 		}
 
+		req.open("GET", 'getDatiTraduttore.php?user='+getUsername()+'&token='+getToken(), true);
+		req.send();
 
-		$http.get('rest.xsp?api=getDatiTraduttore&id='+QueryString.id).success( function(data) {
-			var ret = convertJSON(data);
-			if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-				$('#alertError').fadeIn().delay(10000).fadeOut();
-				if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-					$('#alertError').html("Si è verificato un errore.");
-				} else {
-					$('#alertError').html(ret[0].data.msg);
-				}
-			} else {
-				$scope.model=ret[0];
-				$scope.loadLanguages();
-				$scope.loadCountries();
-			}
-		});
 
 		$scope.submit = function() {
+			console.debug($scope.model);
+			
 			$http
-			.post('rest.xsp?api=save&type=modificaTraduttore&id='+QueryString.id, $scope.model)
+			.post('updateTranslator.php&user='+getUsername(), $scope.model)
 			.success(
 					function(data) {
 						var ret = eval(data);
@@ -160,7 +183,7 @@ function strLeft(sourceStr, keyStr) {
 							.fadeOut();
 							$('#alertError')
 							.html(
-									"Si è verificato un errore inaspettato");
+							"Si è verificato un errore inaspettato");
 						} else if (ret[0].data.status != undefined
 								&& ret[0].data.status.toLowerCase() == "error") {
 							$('#alertError').fadeIn().delay(10000)
@@ -319,7 +342,7 @@ function strLeft(sourceStr, keyStr) {
 							.fadeOut();
 							$('#alertError')
 							.html(
-									"Si è verificato un errore inaspettato");
+							"Si è verificato un errore inaspettato");
 						} else if (ret[0].data.status != undefined
 								&& ret[0].data.status.toLowerCase() == "error") {
 							$('#alertError').fadeIn().delay(10000)
@@ -492,7 +515,7 @@ function strLeft(sourceStr, keyStr) {
 							.fadeOut();
 							$('#alertError')
 							.html(
-									"Si è verificato un errore inaspettato");
+							"Si è verificato un errore inaspettato");
 						} else if (ret[0].data.status != undefined
 								&& ret[0].data.status.toLowerCase() == "error") {
 							$('#alertError').fadeIn().delay(10000)
@@ -684,7 +707,7 @@ function strLeft(sourceStr, keyStr) {
 							.fadeOut();
 							$('#alertError')
 							.html(
-									"Si è verificato un errore inaspettato");
+							"Si è verificato un errore inaspettato");
 						} else if (ret[0].data.status != undefined
 								&& ret[0].data.status.toLowerCase() == "error") {
 							$('#alertError').fadeIn().delay(10000)

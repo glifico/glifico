@@ -1,0 +1,12 @@
+<?php
+exit(json_encode([
+  array(
+    "Language"=>'Italian',
+    "id"=>"it"
+  ),
+  array(
+    "Language"=>'French',
+    "id"=>"fr"
+  )
+  ]));
+?>

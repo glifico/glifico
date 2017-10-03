@@ -343,7 +343,7 @@ What does this page do?
 
 									<md-input-container>
 										<label>Postal Code</label>
-										<input name="postalCode" ng-model="model.ZIP" placeholder="12345" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+										<input name="postalCode" ng-model="model.ZIP" placeholder="" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
 
 										<div ng-messages="userForm.postalCode.$error" role="alert" multiple>
 											<div ng-message="required" class="my-message">You must supply a postal code.</div>
@@ -359,7 +359,7 @@ What does this page do?
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Country</label>
-										<md-select placeholder="Select your Country" ng-model="model.IdCountry" md-on-open="loadCountries();" required>
+										<md-select placeholder="Select your Country" ng-model="model.IdCountry" md-on-open="loadCountries();" >
 											<md-option ng-repeat="element in Countries" value="{{element.Id}}">
 												{{element.Country}}
 											</md-option>
@@ -370,7 +370,7 @@ What does this page do?
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Mothertongue</label>
-										<md-select placeholder="Select your Mothertongue" ng-model="model.IdMothertongue" md-on-open="loadLanguages();">
+										<md-select placeholder="Select your Mothertongue" ng-model="model.IdMothertongue" md-on-open="loadLanguages();" required>
 											<md-option ng-repeat="element in Languages" value="{{element.Id}}">
 												{{element.Language}}
 											</md-option>

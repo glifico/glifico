@@ -14,7 +14,6 @@ function certToken($db, $user, $token){
   $password=htmlspecialchars($row['password']);
   $result->CloseCursor();
   return $token==hash('crc32',$user."tokenize".$password);
-return true;
 }
 
 $dbopts = parse_url(getenv('DATABASE_URL'));

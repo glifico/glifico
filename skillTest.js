@@ -127,7 +127,7 @@ function result(){
 						totString = totString + '0';
 					}
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'
-						+ '<font color="blue"><b><img src=images/'
+						+ '<font color="blue"><b><ph src=images/'
 						+ totString.replace(".", "")
 						+ '.png style="max-width:100px" />'
 						+ '</b></font>' + '</td>'
@@ -205,7 +205,7 @@ function mioTimer() {
 	getProgress();
 }
 
-function showDomanda() {	
+function showDomanda() {
 	$("#skill-body").hide();
 
 	var html = "";
@@ -305,7 +305,7 @@ function finishTest() {
 
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass;
-		
+
 		$.ajax( {
 			type : "POST",
 			dataType : "application/json",
@@ -318,7 +318,7 @@ function finishTest() {
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
-				
+
 				var result=(JSON.parse(response.replace(/\\/,"")))['score'];
 				notify("Result:"+result+"/"+domande.length);
 				$("#alertOK").html("Test Completed!");
@@ -337,7 +337,7 @@ function finishTest() {
 }
 
 function nextDomanda() {
-	domande[actualPage-1].scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();	
+	domande[actualPage-1].scelta=$('input[name='+'domanda_' + (actualPage - 1)+ ']:checked').val();
 	actualPage++;
 	showDomanda();
 }
