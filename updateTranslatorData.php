@@ -35,16 +35,23 @@ if(!$db) exit;
 if(!certToken($db, $user, $_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $user=$data['user'];
-$nome=$data['FirstName'];
-$cognome=$data['LastName'];
-$data_nascita=$data['Birthday'];
-$citta=$data['City'];
-$provincia=$data['StateProvince'];
-$zip=$data['ZIP'];
-$idStato=$data['idCountry'];
-$madrelingua=$data['idMothertongue'];
+
+$params=$data['values'];
+echo($params);
+$nome=$params['FirstName'];
+$cognome=$params['LastName'];
+$data_nascita=$params['Birthday'];
+$citta=$params['City'];
+$provincia=$params['StateProvince'];
+$zip=$params['ZIP'];
+$idStato=$params['idCountry'];
+$madrelingua=$params['idMothertongue'];
+
+echo($data);
+
 
 $query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";
+echo($query);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
