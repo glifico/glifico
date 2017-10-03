@@ -34,12 +34,10 @@ if(!$db) exit;
 
 $user=$data['user'];
 
-echo($user);
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>500)));
 
 
 $params=$data['values'];
-echo($params);
 $nome=$params['FirstName'];
 $cognome=$params['LastName'];
 $data_nascita=$params['Birthday'];
@@ -48,8 +46,6 @@ $provincia=$params['StateProvince'];
 $zip=$params['ZIP'];
 $idStato=$params['idCountry'];
 $madrelingua=$params['idMothertongue'];
-
-echo($data);
 
 
 $query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', cap='$cap', idstato='$idStato', madrelingua='$madrelingua' WHERE username='$user';";
