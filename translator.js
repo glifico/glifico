@@ -96,8 +96,7 @@ function strLeft(sourceStr, keyStr) {
 
 	angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
 
-		var ctrl=this;
-		
+
 		$scope.loadCountries = function(){
 			var req=createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
@@ -142,34 +141,33 @@ function strLeft(sourceStr, keyStr) {
 			req.send();
 		};
 
-		ctrl.$onInit=function(){
-			var req=createXHTMLHttpRequest();
+		var req=createXHTMLHttpRequest();
 
-			req.onreadystatechange = function(){
-				if (req.status == 200&req.readyState==4){
-					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("Si è verificato un errore.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+					$('#alertError').fadeIn().delay(10000).fadeOut();
+					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+						$('#alertError').html("Si è verificato un errore.");
 					} else {
-						$scope.model=ret[0];
-						$scope.loadLanguages();
-						$scope.loadCountries();
+						$('#alertError').html(ret[0].data.msg);
 					}
-				}else{
-					mostraDialogTimed('errorPanel');
-					return(false);
+				} else {
+					$scope.model=ret[0];
+					$scope.loadLanguages();
+					$scope.loadCountries();
 				}
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
 			}
-
-			req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
-			req.send();
-
 		}
+
+		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
+		req.send();
+
+
 
 		$scope.submit = function() {
 			var data=JSON.stringify({
@@ -200,11 +198,11 @@ function strLeft(sourceStr, keyStr) {
 				}
 			});
 
-	};
+		};
 
 
 
-});
+	});
 
 	angular.module('EducationApp').controller('EducationAppCtrl',function($http,$timeout,$scope,$mdDialog) {
 
