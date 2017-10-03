@@ -162,9 +162,10 @@ function strLeft(sourceStr, keyStr) {
 						$('#alertError').html(ret[0].data.msg);
 					}
 				} else {
-					$scope.model=ret[0];
 					$scope.loadLanguages();
 					$scope.loadCountries();
+					$scope.model=ret[0];	
+					console.log($scope.model);
 				}
 			}else{
 				mostraDialogTimed('errorPanel');
