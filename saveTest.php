@@ -60,5 +60,5 @@ $score=intval(($newscore+$oldscore)/2);
 updateTest($db,$user,$language,$newscore);
 
 $result->CloseCursor();
-exit(json_encode(array("message"=>"Test submitted","statuscode"=>200,"score"=>$newscore)));
+exit(json_encode(array("message"=>"test submitted","statuscode"=>200,"score"=>$newscore)));
 ?>
