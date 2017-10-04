@@ -55,7 +55,7 @@ $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 $oldscore=$row['tottest'];
 $newscore=$score;
-$score=($newscore+$oldscore)/2
+$score=intval(($newscore+$oldscore)/2);
 
 updateTest($db,$user,$language,$newscore);
 
