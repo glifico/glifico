@@ -69,14 +69,14 @@ function result(){
 
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
-	if (req.status == 200&req.readyState==4){
-	var data=JSON.parse(req.responseText);
-	gotData(data);
-	return(true);
-	}else{
-	mostraDialogTimed('errorPanel');
-	return(false);
-	}
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			gotData(data);
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
 	}
 	req.open("GET",url,true);
 	req.send();
@@ -114,7 +114,11 @@ function result(){
 				if (data[i].TotTest == null ||data[i].TotTest <1) {
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">Not done yet</td>'
 						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
-						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"><img src=images/00.png style="max-width:100px" />'+ '</td>'
+						if(data[i].TotTest==0){
+							html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"><img src=images/00.png style="max-width:100px" />'+ '</td>'
+						}else{
+							html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'+ '</td>'
+						}
 				} else {
 					var data1 = data[i].DataTest
 					data1 = data1.replace("T"," ")
