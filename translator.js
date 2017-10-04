@@ -656,7 +656,7 @@ function strLeft(sourceStr, keyStr) {
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
 				angular.copy($scope.nullModel,$scope.model);
-				ret=convertJSON(req.responseText);
+				var ret=convertJSON(req.responseText);
 				$scope.Pairs=ret;
 				$scope.loadLanguages();
 				$scope.loadFields();
