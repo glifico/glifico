@@ -296,10 +296,9 @@ What does this page do?
 		<ul class="nav nav-tabs">
 			<li class="active">
 				<a data-toggle="tab" href="#Personal">Personal Data</a></li>
-			<li><a data-toggle="tab" href="#Education">Education</a></li>
-			<li><a data-toggle="tab" href="#Specialization">Specialization</a></li>
+			<li><a data-toggle="tab" href="#Education" style="visibility:hidden;">Education</a></li>
+			<li><a data-toggle="tab" href="#Specialization" style="visibility:hidden;">Specialization</a></li>
 			<li><a data-toggle="tab" href="#LanguagePairs">Language Pairs</a></li>
-			<li><a data-toggle="tab" href="#Prova">Prova</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -430,7 +429,7 @@ What does this page do?
 				</div>
 				
 			</div>
-
+			
 			<div id="Specialization" class="tab-pane fade">
 				<h3>Specialization</h3>
 
@@ -489,6 +488,7 @@ What does this page do?
 					</md-content>
 				</div>
 			</div>
+			
 		
 			<div id="LanguagePairs" class="tab-pane fade">
 				<h3>Language Pairs</h3>
@@ -522,7 +522,7 @@ What does this page do?
 										<label>Field</label>
 										<md-select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required>
 											<md-option ng-repeat="element in Fields" value="{{element.Id}}">
-												{{element.Parametro}}
+												{{element.Field}}
 											</md-option>
 										</md-select>
 									</md-input-container>
@@ -530,7 +530,7 @@ What does this page do?
 										<label>Service</label>
 										<md-select placeholder="Select service" ng-model="model.IdParametro_Service" md-on-open="loadServices();" required>
 											<md-option ng-repeat="element in Services" value="{{element.Id}}">
-												{{element.Parametro}}
+												{{element.Service}}
 											</md-option>
 										</md-select>
 									</md-input-container>
@@ -540,7 +540,7 @@ What does this page do?
 									<md-input-container>
 										<label>Currency</label>
 										<md-select placeholder="Select Currency" ng-model="model.IdCurrency" md-on-open="loadCurrencies();" required>
-											<md-option ng-repeat="element in Currencies" value="{{element.id}}">
+											<md-option ng-repeat="element in Currencies" value="{{element.Id}}">
 												{{element.Currency}}
 											</md-option>
 										</md-select>
@@ -577,9 +577,6 @@ What does this page do?
 					
 					</md-content>
 				</div>
-			</div>
-			<div id="Prova" class="tab-pane fade">
-				<h3>Prova</h3>
 			</div>
 		</div>
 	</div>

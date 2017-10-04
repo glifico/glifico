@@ -109,7 +109,7 @@ function strLeft(sourceStr, keyStr) {
 					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
 						$('#alertError').fadeIn().delay(10000).fadeOut();
 						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("Si è verificato un errore.");
+							$('#alertError').html("There was an error, please retry.");
 						} else {
 							$('#alertError').html(ret[0].data.msg);
 						}
@@ -131,7 +131,7 @@ function strLeft(sourceStr, keyStr) {
 					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
 						$('#alertError').fadeIn().delay(10000).fadeOut();
 						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("Si è verificato un errore.");
+							$('#alertError').html("There was an error, please retry.");
 						} else {
 							$('#alertError').html(ret[0].data.msg);
 						}
@@ -158,7 +158,7 @@ function strLeft(sourceStr, keyStr) {
 					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
 						$('#alertError').fadeIn().delay(10000).fadeOut();
 						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("Si è verificato un errore.");
+							$('#alertError').html("There was an error, please retry.");
 						} else {
 							$('#alertError').html(ret[0].data.msg);
 						}
@@ -217,339 +217,342 @@ function strLeft(sourceStr, keyStr) {
 
 	});
 
-	angular.module('EducationApp').controller('EducationAppCtrl',function($http,$timeout,$scope,$mdDialog) {
-
-		$scope.model = {Id:null,Field:"",Institute:"",AttachmentDoc:""};
-
-		$http.get('rest.xsp?api=getDatiEducations&id='+QueryString.id).success( function(data) {
-			var ret = convertJSON(data);
-			if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-				$('#alertError').fadeIn().delay(10000).fadeOut();
-				if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-					$('#alertError').html("Si è verificato un errore.");
-				} else {
-					$('#alertError').html(ret[0].data.msg);
-				}
-			} else {
-				$scope.edus=ret;
-			}
-		});
-
-		$scope.loadEducation = function(edu){
-			angular.copy(edu,$scope.model);
-		}
-
-		$scope.doDelete = function(edu){
-			$http.post('rest.xsp?api=save&type=deleteEducation&id=' + QueryString.id, edu).success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined ||
-								ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"Si è verificato un errore inaspettato");
-						} else if (ret[0].data.status != undefined &&
-								ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined ||
-									ret[0].data.msg == "") {
-								$('#alertError').html(
-								"Si è verificato un errore.");
-							} else {
-								var stringval = ret[0].data.msg
-								if (stringval.indexOf("Cannot insert duplicate key") != -1) {
-									var errorField = strRight(ret[0].data.msg, "Index:");
-									errorField = strLeft(errorField, "_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								} else {
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Your data was saved correctly.");
-							$scope.model = {
-									Id: null,
-									Field: "",
-									Institute: ""
-							};
-							$scope.edus = ret[0].data.Educations;
-						}
-					});
-
-		}
-
-		$scope.isToShow=function(edu) {
-			if(edu.AttachmentDoc==null){
-				return false;
-			}
-			if(edu.AttachmentDoc==""){
-				return false;
-			}
-			return true;
-		}
-		$scope.download=function(edu) {
-			console.log("qui si");
-			location.href = "xsp/download?id=" + edu.AttachmentDoc;
-		}
-		$scope.showAdvanced = function(ev,edu) {
-			angular.copy(edu,$scope.model);
-			$mdDialog.show({
-				controller: DialogController,
-				templateUrl: 'templates/dialog1.tmpl.html',
-				parent: angular.element(document.body),
-				targetEvent: ev,
-				clickOutsideToClose:false,
-				fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-			}).then(function(answer,edu) {
-				if(answer.success==true){
-					if(answer.files[0].Checksum != undefined){
-						$scope.model.AttachmentDoc=answer.files[0].Checksum;
-						$scope.submit();
-						$scope.model = {Id:null,Field:"",Institute:"",AttachmentDoc:""};
-					}
-				}
-			}, function() {
-				console.log("cancel");
-			});
-		};
-
-		function DialogController($scope, $mdDialog) {
-			$scope.hide = function() {
-				$mdDialog.hide();
-			};
-
-			$scope.cancel = function() {
-				$mdDialog.cancel();
-			};
-
-			$scope.uploadComplete = function(answer) {
-				$mdDialog.hide(answer);
-			};
-		}
-
-
-		$scope.submit = function() {
-			$http
-			.post('rest.xsp?api=save&type=modificaEducation&id='+QueryString.id, $scope.model)
-			.success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined
-								|| ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"Si è verificato un errore inaspettato");
-						} else if (ret[0].data.status != undefined
-								&& ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined
-									|| ret[0].data.msg == "") {
-								$('#alertError').html(
-								"Si è verificato un errore.");
-							} else {
-								var stringval=ret[0].data.msg
-								if(stringval.indexOf("Cannot insert duplicate key") != -1){
-									var errorField = strRight(ret[0].data.msg,"Index:");
-									errorField = strLeft(errorField,"_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								}else{
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Your data was saved correctly.");
-							$scope.model = {Id:null,Field:"",Institute:"",AttachmentDoc:""};
-							$scope.edus=ret[0].data.Educations;
-						}
-						$('#loginModal').modal('hide');
-					});
-		}
-	});
-
-
-
-
-	angular.module('SpecializationApp').controller('SpecializationAppCtrl',function($http,$timeout,$scope,$mdDialog) {
-
-		$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
-
-		$scope.loadLevels = function(){
-			$scope.Levels=[
-				{Id:"Basic",Level:"Basic"},
-				{Id:"Intermediate",Level:"Intermediate"},
-				{Id:"Fluency",Level:"Fluency"}
-				];
-		}
-
-		$http.get('rest.xsp?api=getDatiSpecializations&id='+QueryString.id).success( function(data) {
-			var ret = convertJSON(data);
-			if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-				$('#alertError').fadeIn().delay(10000).fadeOut();
-				if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-					$('#alertError').html("Si è verificato un errore.");
-				} else {
-					$('#alertError').html(ret[0].data.msg);
-				}
-			} else {
-				$scope.Specializations=ret;
-				$scope.loadLevels();
-			}
-		});
-
-		$scope.loadSpecializations = function(edu){
-			angular.copy(edu,$scope.model);
-		}
+	
+	
+//
+//	angular.module('EducationApp').controller('EducationAppCtrl',function($http,$timeout,$scope,$mdDialog) {
+//
+//		$scope.model = {Id:null,Field:"",Institute:"",AttachmentDoc:""};
+//
+//		$http.get('rest.xsp?api=getDatiEducations&id='+QueryString.id).success( function(data) {
+//			var ret = convertJSON(data);
+//			if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+//				$('#alertError').fadeIn().delay(10000).fadeOut();
+//				if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+//					$('#alertError').html("There was an error, please retry.");
+//				} else {
+//					$('#alertError').html(ret[0].data.msg);
+//				}
+//			} else {
+//				$scope.edus=ret;
+//			}
+//		});
+//
+//		$scope.loadEducation = function(edu){
+//			angular.copy(edu,$scope.model);
+//		}
+//
+//		$scope.doDelete = function(edu){
+//			$http.post('rest.xsp?api=save&type=deleteEducation&id=' + QueryString.id, edu).success(
+//					function(data) {
+//						var ret = eval(data);
+//						if (ret == undefined || ret[0] == undefined ||
+//								ret[0].data == undefined) {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertError')
+//							.html(
+//							"There was an error, please retry inaspettato");
+//						} else if (ret[0].data.status != undefined &&
+//								ret[0].data.status.toLowerCase() == "error") {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							if (ret[0].data.msg == undefined ||
+//									ret[0].data.msg == "") {
+//								$('#alertError').html(
+//								"There was an error, please retry.");
+//							} else {
+//								var stringval = ret[0].data.msg
+//								if (stringval.indexOf("Cannot insert duplicate key") != -1) {
+//									var errorField = strRight(ret[0].data.msg, "Index:");
+//									errorField = strLeft(errorField, "_Unique");
+//									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+//								} else {
+//									$('#alertError').html(ret[0].data.msg);
+//								}
+//							}
+//						} else {
+//							$('#alertOK').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertOK').html(
+//							"Your data was saved correctly.");
+//							$scope.model = {
+//									Id: null,
+//									Field: "",
+//									Institute: ""
+//							};
+//							$scope.edus = ret[0].data.Educations;
+//						}
+//					});
+//
+//		}
+//
+//		$scope.isToShow=function(edu) {
+//			if(edu.AttachmentDoc==null){
+//				return false;
+//			}
+//			if(edu.AttachmentDoc==""){
+//				return false;
+//			}
+//			return true;
+//		}
+//		$scope.download=function(edu) {
+//			console.log("qui si");
+//			location.href = "xsp/download?id=" + edu.AttachmentDoc;
+//		}
+//		$scope.showAdvanced = function(ev,edu) {
+//			angular.copy(edu,$scope.model);
+//			$mdDialog.show({
+//				controller: DialogController,
+//				templateUrl: 'templates/dialog1.tmpl.html',
+//				parent: angular.element(document.body),
+//				targetEvent: ev,
+//				clickOutsideToClose:false,
+//				fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+//			}).then(function(answer,edu) {
+//				if(answer.success==true){
+//					if(answer.files[0].Checksum != undefined){
+//						$scope.model.AttachmentDoc=answer.files[0].Checksum;
+//						$scope.submit();
+//						$scope.model = {Id:null,Field:"",Institute:"",AttachmentDoc:""};
+//					}
+//				}
+//			}, function() {
+//				console.log("cancel");
+//			});
+//		};
+//
+//		function DialogController($scope, $mdDialog) {
+//			$scope.hide = function() {
+//				$mdDialog.hide();
+//			};
+//
+//			$scope.cancel = function() {
+//				$mdDialog.cancel();
+//			};
+//
+//			$scope.uploadComplete = function(answer) {
+//				$mdDialog.hide(answer);
+//			};
+//		}
+//
+//
+//		$scope.submit = function() {
+//			$http
+//			.post('rest.xsp?api=save&type=modificaEducation&id='+QueryString.id, $scope.model)
+//			.success(
+//					function(data) {
+//						var ret = eval(data);
+//						if (ret == undefined || ret[0] == undefined
+//								|| ret[0].data == undefined) {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertError')
+//							.html(
+//							"There was an error, please retry inaspettato");
+//						} else if (ret[0].data.status != undefined
+//								&& ret[0].data.status.toLowerCase() == "error") {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							if (ret[0].data.msg == undefined
+//									|| ret[0].data.msg == "") {
+//								$('#alertError').html(
+//								"There was an error, please retry.");
+//							} else {
+//								var stringval=ret[0].data.msg
+//								if(stringval.indexOf("Cannot insert duplicate key") != -1){
+//									var errorField = strRight(ret[0].data.msg,"Index:");
+//									errorField = strLeft(errorField,"_Unique");
+//									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+//								}else{
+//									$('#alertError').html(ret[0].data.msg);
+//								}
+//							}
+//						} else {
+//							$('#alertOK').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertOK').html(
+//							"Your data was saved correctly.");
+//							$scope.model = {Id:null,Field:"",Institute:"",AttachmentDoc:""};
+//							$scope.edus=ret[0].data.Educations;
+//						}
+//						$('#loginModal').modal('hide');
+//					});
+//		}
+//	});
 
 
 
-		$scope.doDelete = function(edu){
-			$http.post('rest.xsp?api=save&type=deleteSpecialization&id=' + QueryString.id, edu).success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined ||
-								ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"Si è verificato un errore inaspettato");
-						} else if (ret[0].data.status != undefined &&
-								ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined ||
-									ret[0].data.msg == "") {
-								$('#alertError').html(
-								"Si è verificato un errore.");
-							} else {
-								var stringval = ret[0].data.msg
-								if (stringval.indexOf("Cannot insert duplicate key") != -1) {
-									var errorField = strRight(ret[0].data.msg, "Index:");
-									errorField = strLeft(errorField, "_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								} else {
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Your data was saved correctly.");
-							$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
-							$scope.Specializations = ret[0].data.Specializations;
-						}
-					});
 
-		}
-
-		$scope.isToShow=function(edu) {
-			if(edu.AttachmentDoc==null){
-				return false;
-			}
-			if(edu.AttachmentDoc==""){
-				return false;
-			}
-			return true;
-		}
-		$scope.download=function(edu) {
-			console.log("qui si");
-			location.href = "xsp/download?id=" + edu.AttachmentDoc;
-		}
-
-
-		$scope.showAdvanced = function(ev,edu) {
-			angular.copy(edu,$scope.model);
-			$mdDialog.show({
-				controller: DialogController,
-				templateUrl: 'templates/dialog2.tmpl.html',
-				parent: angular.element(document.body),
-				targetEvent: ev,
-				clickOutsideToClose:false,
-				fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-			}).then(function(answer,edu) {
-				if(answer.success==true){
-					if(answer.files[0].Checksum != undefined){
-						$scope.model.AttachmentDoc=answer.files[0].Checksum;
-						$scope.submit();
-						$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
-					}
-				}
-			}, function() {
-				console.log("cancel");
-			});
-		};
-
-		function DialogController($scope, $mdDialog) {
-			$scope.hide = function() {
-				$mdDialog.hide();
-			};
-
-			$scope.cancel = function() {
-				$mdDialog.cancel();
-			};
-
-			$scope.uploadComplete = function(answer) {
-				$mdDialog.hide(answer);
-			};
-		}
-
-
-		$scope.submit = function() {
-			$http
-			.post('rest.xsp?api=save&type=modificaSpecialization&id='+QueryString.id, $scope.model)
-			.success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined
-								|| ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"Si è verificato un errore inaspettato");
-						} else if (ret[0].data.status != undefined
-								&& ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined
-									|| ret[0].data.msg == "") {
-								$('#alertError').html(
-								"Si è verificato un errore.");
-							} else {
-								var stringval=ret[0].data.msg
-								if(stringval.indexOf("Cannot insert duplicate key") != -1){
-									var errorField = strRight(ret[0].data.msg,"Index:");
-									errorField = strLeft(errorField,"_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								}else{
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Your data was saved correctly.");
-							$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
-							$scope.Specializations=ret[0].data.Specializations;
-						}
-						$('#loginModal').modal('hide');
-					});
-		}
-	});
+//	angular.module('SpecializationApp').controller('SpecializationAppCtrl',function($http,$timeout,$scope,$mdDialog) {
+//
+//		$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
+//
+//		$scope.loadLevels = function(){
+//			$scope.Levels=[
+//				{Id:"Basic",Level:"Basic"},
+//				{Id:"Intermediate",Level:"Intermediate"},
+//				{Id:"Fluency",Level:"Fluency"}
+//				];
+//		}
+//
+//		$http.get('rest.xsp?api=getDatiSpecializations&id='+QueryString.id).success( function(data) {
+//			var ret = convertJSON(data);
+//			if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+//				$('#alertError').fadeIn().delay(10000).fadeOut();
+//				if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+//					$('#alertError').html("There was an error, please retry.");
+//				} else {
+//					$('#alertError').html(ret[0].data.msg);
+//				}
+//			} else {
+//				$scope.Specializations=ret;
+//				$scope.loadLevels();
+//			}
+//		});
+//
+//		$scope.loadSpecializations = function(edu){
+//			angular.copy(edu,$scope.model);
+//		}
+//
+//
+//
+//		$scope.doDelete = function(edu){
+//			$http.post('rest.xsp?api=save&type=deleteSpecialization&id=' + QueryString.id, edu).success(
+//					function(data) {
+//						var ret = eval(data);
+//						if (ret == undefined || ret[0] == undefined ||
+//								ret[0].data == undefined) {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertError')
+//							.html(
+//							"There was an error, please retry inaspettato");
+//						} else if (ret[0].data.status != undefined &&
+//								ret[0].data.status.toLowerCase() == "error") {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							if (ret[0].data.msg == undefined ||
+//									ret[0].data.msg == "") {
+//								$('#alertError').html(
+//								"There was an error, please retry.");
+//							} else {
+//								var stringval = ret[0].data.msg
+//								if (stringval.indexOf("Cannot insert duplicate key") != -1) {
+//									var errorField = strRight(ret[0].data.msg, "Index:");
+//									errorField = strLeft(errorField, "_Unique");
+//									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+//								} else {
+//									$('#alertError').html(ret[0].data.msg);
+//								}
+//							}
+//						} else {
+//							$('#alertOK').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertOK').html(
+//							"Your data was saved correctly.");
+//							$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
+//							$scope.Specializations = ret[0].data.Specializations;
+//						}
+//					});
+//
+//		}
+//
+//		$scope.isToShow=function(edu) {
+//			if(edu.AttachmentDoc==null){
+//				return false;
+//			}
+//			if(edu.AttachmentDoc==""){
+//				return false;
+//			}
+//			return true;
+//		}
+//		$scope.download=function(edu) {
+//			console.log("qui si");
+//			location.href = "xsp/download?id=" + edu.AttachmentDoc;
+//		}
+//
+//
+//		$scope.showAdvanced = function(ev,edu) {
+//			angular.copy(edu,$scope.model);
+//			$mdDialog.show({
+//				controller: DialogController,
+//				templateUrl: 'templates/dialog2.tmpl.html',
+//				parent: angular.element(document.body),
+//				targetEvent: ev,
+//				clickOutsideToClose:false,
+//				fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+//			}).then(function(answer,edu) {
+//				if(answer.success==true){
+//					if(answer.files[0].Checksum != undefined){
+//						$scope.model.AttachmentDoc=answer.files[0].Checksum;
+//						$scope.submit();
+//						$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
+//					}
+//				}
+//			}, function() {
+//				console.log("cancel");
+//			});
+//		};
+//
+//		function DialogController($scope, $mdDialog) {
+//			$scope.hide = function() {
+//				$mdDialog.hide();
+//			};
+//
+//			$scope.cancel = function() {
+//				$mdDialog.cancel();
+//			};
+//
+//			$scope.uploadComplete = function(answer) {
+//				$mdDialog.hide(answer);
+//			};
+//		}
+//
+//
+//		$scope.submit = function() {
+//			$http
+//			.post('rest.xsp?api=save&type=modificaSpecialization&id='+QueryString.id, $scope.model)
+//			.success(
+//					function(data) {
+//						var ret = eval(data);
+//						if (ret == undefined || ret[0] == undefined
+//								|| ret[0].data == undefined) {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertError')
+//							.html(
+//							"There was an error, please retry inaspettato");
+//						} else if (ret[0].data.status != undefined
+//								&& ret[0].data.status.toLowerCase() == "error") {
+//							$('#alertError').fadeIn().delay(10000)
+//							.fadeOut();
+//							if (ret[0].data.msg == undefined
+//									|| ret[0].data.msg == "") {
+//								$('#alertError').html(
+//								"There was an error, please retry.");
+//							} else {
+//								var stringval=ret[0].data.msg
+//								if(stringval.indexOf("Cannot insert duplicate key") != -1){
+//									var errorField = strRight(ret[0].data.msg,"Index:");
+//									errorField = strLeft(errorField,"_Unique");
+//									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+//								}else{
+//									$('#alertError').html(ret[0].data.msg);
+//								}
+//							}
+//						} else {
+//							$('#alertOK').fadeIn().delay(10000)
+//							.fadeOut();
+//							$('#alertOK').html(
+//							"Your data was saved correctly.");
+//							$scope.model = {Id:null,Institution:null,Specialization:null,Level:null,AttachmentDoc:""};
+//							$scope.Specializations=ret[0].data.Specializations;
+//						}
+//						$('#loginModal').modal('hide');
+//					});
+//		}
+//	});
 
 
 
@@ -560,92 +563,118 @@ function strLeft(sourceStr, keyStr) {
 		$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
 
 
-
 		$scope.loadLanguages = function(){
-			$http.get('rest.xsp?api=getLanguages').success( function(data) {
-				var ret = convertJSON(data);
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("Si è verificato un errore.");
+			var req=createXHTMLHttpRequest();
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("There was an error, please retry.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
 					} else {
-						$('#alertError').html(ret[0].data.msg);
+						$scope.Languages=ret;
 					}
-				} else {
-
-					$scope.Languages=ret;
 				}
-			});
-		}   	
+			}
+			req.open("GET","getLanguages.php",true);
+			req.send();	
+		}
+
+
 		$scope.loadFields = function(){
-			$http.get('rest.xsp?api=getParam&key=FIELD').success( function(data) {
-				var ret = convertJSON(data);
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("Si è verificato un errore.");
+			var req=createXHTMLHttpRequest();
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("There was an error, please retry.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
 					} else {
-						$('#alertError').html(ret[0].data.msg);
+						$scope.Fields=ret;
 					}
-				} else {
-
-					$scope.Fields=ret;
 				}
-			});
+			}
+			req.open("GET","getFields.php",true);
+			req.send();	
 		} 
+
 		$scope.loadServices = function(){
-			$http.get('rest.xsp?api=getParam&key=SERVICE').success( function(data) {
-				var ret = convertJSON(data);
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("Si è verificato un errore.");
+			var req=createXHTMLHttpRequest();
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("There was an error, please retry.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
 					} else {
-						$('#alertError').html(ret[0].data.msg);
+						$scope.Services=ret;
 					}
-				} else {
-
-					$scope.Services=ret;
 				}
-			});
+			}
+			req.open("GET","getServices.php",true);
+			req.send();	
 		} 
+
 		$scope.loadCurrencies = function(){
-			$http.get('rest.xsp?api=getCurrencies').success( function(data) {
-				var ret = convertJSON(data);
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("Si è verificato un errore.");
+			var req=createXHTMLHttpRequest();
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
+					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+							$('#alertError').html("There was an error, please retry.");
+						} else {
+							$('#alertError').html(ret[0].data.msg);
+						}
 					} else {
-						$('#alertError').html(ret[0].data.msg);
+						$scope.Currencies=ret;
 					}
-				} else {
-					$scope.Currencies=ret;
 				}
-			});
+			}
+			req.open("GET","getCurrencies.php",true);
+			req.send();	
 		} 
 
+		var ctrl=this;
+		
+		ctrl.$onInit=function(){
+		var req=createXHTMLHttpRequest();
 
-		$http.get('rest.xsp?api=getDatiLanguagePairs&id='+QueryString.id).success( function(data) {
-			var ret = convertJSON(data);
-			if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-				$('#alertError').fadeIn().delay(10000).fadeOut();
-				if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-					$('#alertError').html("Si è verificato un errore.");
-				} else {
-					$('#alertError').html(ret[0].data.msg);
-				}
-			} else {
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
 				angular.copy($scope.nullModel,$scope.model);
+				ret=convertJSON(req.responseText);
 				$scope.Pairs=ret;
 				$scope.loadLanguages();
 				$scope.loadFields();
 				$scope.loadServices();
 				$scope.loadCurrencies();
+			}else{
+				$('#alertError').fadeIn().delay(10000).fadeOut();
+				$('#alertError').html("There was an error, please retry.");
 			}
-		});
 
+		}
 
+		req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"token="+getToken(),true);
+		req.send();
+
+		}
+		
+		
 		$scope.loadPairs = function(edu){
 			console.log(edu);
 			angular.copy(edu,$scope.model);
@@ -665,7 +694,7 @@ function strLeft(sourceStr, keyStr) {
 							.fadeOut();
 							$('#alertError')
 							.html(
-							"Si è verificato un errore inaspettato");
+							"There was an error, please retry inaspettato");
 						} else if (ret[0].data.status != undefined &&
 								ret[0].data.status.toLowerCase() == "error") {
 							$('#alertError').fadeIn().delay(10000)
@@ -673,7 +702,7 @@ function strLeft(sourceStr, keyStr) {
 							if (ret[0].data.msg == undefined ||
 									ret[0].data.msg == "") {
 								$('#alertError').html(
-								"Si è verificato un errore.");
+								"There was an error, please retry.");
 							} else {
 								var stringval = ret[0].data.msg
 								if (stringval.indexOf("Cannot insert duplicate key") != -1) {
@@ -711,7 +740,7 @@ function strLeft(sourceStr, keyStr) {
 							.fadeOut();
 							$('#alertError')
 							.html(
-							"Si è verificato un errore inaspettato");
+							"There was an error, please retry inaspettato");
 						} else if (ret[0].data.status != undefined
 								&& ret[0].data.status.toLowerCase() == "error") {
 							$('#alertError').fadeIn().delay(10000)
@@ -719,7 +748,7 @@ function strLeft(sourceStr, keyStr) {
 							if (ret[0].data.msg == undefined
 									|| ret[0].data.msg == "") {
 								$('#alertError').html(
-								"Si è verificato un errore.");
+								"There was an error, please retry.");
 							} else {
 								var stringval=ret[0].data.msg
 								if(stringval.indexOf("Cannot insert duplicate key") != -1){
@@ -749,8 +778,8 @@ function strLeft(sourceStr, keyStr) {
 
 angular.element(document).ready(function() {
 	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalApp']);
-	angular.bootstrap(document.getElementById('EducationAppID'), ['EducationApp']);
-	angular.bootstrap(document.getElementById('SpecializationAppID'), ['SpecializationApp']);
+	//angular.bootstrap(document.getElementById('EducationAppID'), ['EducationApp']);
+	//angular.bootstrap(document.getElementById('SpecializationAppID'), ['SpecializationApp']);
 	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsApp']);
 
 });
