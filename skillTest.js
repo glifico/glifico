@@ -127,7 +127,7 @@ function result(){
 						totString = totString + '0';
 					}
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'
-						+ '<font color="blue"><b><ph src=images/'
+						+ '<font color="blue"><b><img src=images/'
 						+ totString.replace(".", "")
 						+ '.png style="max-width:100px" />'
 						+ '</b></font>' + '</td>'
