@@ -224,6 +224,7 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 				var req = createXHTMLHttpRequest() ;
 				if (req.status == 200&&req.readyState==4){
 					var response=convertJSON(req.responseText);
+					console.log(response);
 					if(response['statuscode']==200){
 						$('#alertOK').fadeIn().delay(10000).fadeOut();
 						$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
@@ -234,6 +235,9 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 						$('#alertError').fadeIn().delay(10000).fadeOut();
 						$('#alertError').html("Username already got, please try another");
 					}
+				}else{
+					$('#alertError').fadeIn().delay(10000).fadeOut();
+					$('#alertError').html("Error from server");
 				}
 			}else{
 				alert(wrongCaptcha);

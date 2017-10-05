@@ -227,7 +227,9 @@
 <div id="regTradAPP" data-ng-controller="MainController_regTrad as vmMainController_regTrad">
     <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
         <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
+           <div style="width:80%;margin:auto;">
            <div id="captchaTrad"></div>
+           </div>
            <div style="taxt-align:centered;padding-left:2rem;padding-top:8px;">
            Clicking on Register you declare to have read and accepted <a href="terms.html" target="_Blank">Glifico Terms and Conditions</a>
            </div>
@@ -247,7 +249,9 @@ md-input-container{
 <div id="regAgeAPP" data-ng-controller="MainController_regAge as vmMainController_regAge">
     <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
         <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
-           <div id="captchaAge"></div>
+         <div style="width:80%;margin:auto;">
+          <div id="captchaAge"></div>
+        </div>
             <div style="taxt-align:centered;padding-left:2rem;padding-top:10px;">
            Clicking on Register you declare to have read and accepted <a href="terms.html" target="_Blank">Glifico Terms and Conditions</a>
            </div>
