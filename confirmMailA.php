@@ -66,4 +66,6 @@ curl_setopt($handle, CURLOPT_HTTPHEADER, array(
 curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
 
 $result = curl_exec($handle);
-exit($result);
+exit (json_encode(array("message"=>"mail sent", "statuscode"=>200)));
+
+?>
