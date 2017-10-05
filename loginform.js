@@ -472,7 +472,7 @@ angular.element(document).ready(function() {
 							$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
 							$("#loginModal").hide();
 							location.href="index.html";
-								return(true);
+							return(true);
 						}else if(response['statuscode']==408){
 							alert("Username already got, please try another");
 						}else{
@@ -483,21 +483,21 @@ angular.element(document).ready(function() {
 					}
 				};
 
-					req.open("GET", "confirmMailA.php"+"?"+
-							"user="+vmMainController_regAge.model["Username"]+
-							"&name="+vmMainController_regAge.model["CompanyName"]+
-							"&VAT="+vmMainController_regAge.model["VATCode"]+
-							"&password="+vmMainController_regAge.model["Password"]+
-							"&email="+vmMainController_regAge.model["Email"]
-					, true);
-					req.send();
-				}else{
-					alert(wrongCaptcha);
-				};
-			}
+				req.open("GET", "confirmMailA.php"+"?"+
+						"user="+vmMainController_regAge.model["Username"]+
+						"&name="+vmMainController_regAge.model["CompanyName"]+
+						"&VAT="+vmMainController_regAge.model["VATCode"]+
+						"&password="+vmMainController_regAge.model["Password"]+
+						"&email="+vmMainController_regAge.model["Email"]
+				, true);
+				req.send();
+			}else{
+				alert(wrongCaptcha);
+			};
 		}
+	}
 
-	})();
+})();
 
 angular.element(document).ready(function() {
 	console.log("registro regAge");
