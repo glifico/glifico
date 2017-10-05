@@ -223,7 +223,7 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 			if(grecaptcha.getResponse(widgetTrad).length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange=function(){
-					if (req.status == 200){
+					if (req.status == 200&&req.readyState==4){
 						var response=convertJSON(req.responseText);
 						if(response['statuscode']==200){
 							$('#alertOK').fadeIn().delay(10000).fadeOut();
@@ -465,7 +465,7 @@ angular.element(document).ready(function() {
 			if(grecaptcha.getResponse(widgetAge).length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange = function(){
-					if (req.status == 200){
+					if (req.status == 200&&req.readyState==4){
 						var response=convertJSON(req.responseText);
 						if(response['statuscode']==200){
 							$('#alertOK').fadeIn().delay(10000).fadeOut();
