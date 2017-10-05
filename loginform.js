@@ -249,7 +249,7 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 					"&lastname="+vmMainController_regTrad.model["LastName"]+
 					"&password="+vmMainController_regTrad.model["Password"]+
 					"&email="+vmMainController_regTrad.model["Email"]+
-					"$VAT="+vmMainController_regTrad.model["VATCode"]
+					"&VAT="+vmMainController_regTrad.model["VATCode"]
 			, true);
 			req.send();
 		}
