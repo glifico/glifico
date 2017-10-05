@@ -229,17 +229,18 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 							$('#alertOK').fadeIn().delay(10000).fadeOut();
 							$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
 							$("#loginModal").hide();
-							location.href="index.html"
-								return(true);
+							location.href="index.html";
+							return (true);
 						}else if(response['statuscode']==408){
 							alert("Username already got, please try another");
+						}else{
+							$('#alertError').fadeIn().delay(10000).fadeOut();
+							$('#alertError').html("Error from server");
+							return (false)
 						}
-					}else{
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						$('#alertError').html("Error from server");
+
 					}
 				}
-
 				req.open("GET", "confirmMailT.php"+"?"+
 						"user="+vmMainController_regTrad.model["Username"]+
 						"&name="+vmMainController_regTrad.model["FirstName"]+
@@ -249,7 +250,7 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 						"&VAT="+vmMainController_regTrad.model["VATCode"]
 				, true);
 				req.send();
-				
+
 			}else{
 				alert(wrongCaptcha);
 			}
@@ -470,32 +471,33 @@ angular.element(document).ready(function() {
 							$('#alertOK').fadeIn().delay(10000).fadeOut();
 							$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
 							$("#loginModal").hide();
-							location.href="index.html"
+							location.href="index.html";
 								return(true);
 						}else if(response['statuscode']==408){
 							alert("Username already got, please try another");
+						}else{
+							$('#alertError').fadeIn().delay(10000).fadeOut();
+							$('#alertError').html("Error from server");
+							return(false);
 						}
-					}else{
-						mostraDialogTimed('errorPanel');
-						return(false);
 					}
 				};
 
-				req.open("GET", "confirmMailA.php"+"?"+
-						"user="+vmMainController_regAge.model["Username"]+
-						"&name="+vmMainController_regAge.model["CompanyName"]+
-						"&VAT="+vmMainController_regAge.model["VATCode"]+
-						"&password="+vmMainController_regAge.model["Password"]+
-						"&email="+vmMainController_regAge.model["Email"]
-				, true);
-				req.send();
-			}else{
-				alert(wrongCaptcha);
-			};
+					req.open("GET", "confirmMailA.php"+"?"+
+							"user="+vmMainController_regAge.model["Username"]+
+							"&name="+vmMainController_regAge.model["CompanyName"]+
+							"&VAT="+vmMainController_regAge.model["VATCode"]+
+							"&password="+vmMainController_regAge.model["Password"]+
+							"&email="+vmMainController_regAge.model["Email"]
+					, true);
+					req.send();
+				}else{
+					alert(wrongCaptcha);
+				};
+			}
 		}
-	}
 
-})();
+	})();
 
 angular.element(document).ready(function() {
 	console.log("registro regAge");
