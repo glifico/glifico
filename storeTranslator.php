@@ -1,4 +1,13 @@
 <?php
+
+function checkPresence($db, $user){
+  $query="SELECT username FROM traduttore WHERE username='$user';";
+  $result=$db->query($query);
+  $row = $result->fetch(PDO::FETCH_ASSOC)
+
+  if(strlen(htmlspecialchars($row["username"]))>2) exit(json_encode(array("message"=>"username already present", "statuscode"=>408)));
+}
+
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $dsn = "pgsql:"
 ."host=".$dbopts["host"].";"
@@ -15,10 +24,13 @@ $str=base64_decode($token);
 //true return an array instead of an object
 $json=json_decode($str,true);
 
+$user=$json['user'];
+
+checkPresence($db, $user);
+
 $nome=$json['name'];
 $cognome=$json['lastName'];
 $email=$json['email'];
-$user=$json['user'];
 $password=$json["password"];
 $vat=$json['vat'];
 $salted=$user."startup".$password;
