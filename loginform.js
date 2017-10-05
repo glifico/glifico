@@ -222,36 +222,40 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 		vmMainController_regTrad.submit = function() {
 			if(grecaptcha.getResponse(widgetTrad).length>1){
 				var req = createXHTMLHttpRequest() ;
-				if (req.status == 200&&req.readyState==4){
-					var response=convertJSON(req.responseText);
-					console.log(response);
-					if(response['statuscode']==200){
-						$('#alertOK').fadeIn().delay(10000).fadeOut();
-						$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
-						$("#loginModal").hide();
-						location.href="index.html"
-							return(true);
-					}else if(response['statuscode']==408){
+				req.onreadystatechange=function(){
+					if (req.status == 200&&req.readyState==4){
+						var response=convertJSON(req.responseText);
+						console.log(response);
+						if(response['statuscode']==200){
+							$('#alertOK').fadeIn().delay(10000).fadeOut();
+							$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
+							$("#loginModal").hide();
+							location.href="index.html"
+								return(true);
+						}else if(response['statuscode']==408){
+							$('#alertError').fadeIn().delay(10000).fadeOut();
+							$('#alertError').html("Username already got, please try another");
+						}
+					}else{
 						$('#alertError').fadeIn().delay(10000).fadeOut();
-						$('#alertError').html("Username already got, please try another");
+						$('#alertError').html("Error from server");
 					}
-				}else{
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					$('#alertError').html("Error from server");
 				}
+
+				req.open("GET", "confirmMailT.php"+"?"+
+						"user="+vmMainController_regTrad.model["Username"]+
+						"&name="+vmMainController_regTrad.model["FirstName"]+
+						"&lastname="+vmMainController_regTrad.model["LastName"]+
+						"&password="+vmMainController_regTrad.model["Password"]+
+						"&email="+vmMainController_regTrad.model["Email"]+
+						"&VAT="+vmMainController_regTrad.model["VATCode"]
+				, true);
+				req.send();
+				
 			}else{
 				alert(wrongCaptcha);
-			};
+			}
 
-			req.open("GET", "confirmMailT.php"+"?"+
-					"user="+vmMainController_regTrad.model["Username"]+
-					"&name="+vmMainController_regTrad.model["FirstName"]+
-					"&lastname="+vmMainController_regTrad.model["LastName"]+
-					"&password="+vmMainController_regTrad.model["Password"]+
-					"&email="+vmMainController_regTrad.model["Email"]+
-					"&VAT="+vmMainController_regTrad.model["VATCode"]
-			, true);
-			req.send();
 		}
 
 	}
