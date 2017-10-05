@@ -76,20 +76,38 @@
 
         function MainController_editAge($http,$timeout) {
             var vmMainController_editAge = this;
-		$http.get('rest.xsp?api=getDatiAgenzia&id='+QueryString.id).success( function(data) {
-									var ret = convertJSON(data);
-                                    if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-                                        $('#alertError').fadeIn().delay(10000).fadeOut();
-                                        if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-                                            $('#alertError').html("Si è verificato un errore.");
-                                        } else {
-                                            $('#alertError').html(ret[0].data.msg);
-                                        }
-                                    } else {
-                                        vmMainController_editAge.model=ret[0];
-                                    }
-		});
-            vmMainController_editAge.fields = [ {
+		
+            var ctrl=this;
+            
+            ctrl.$onInit=function(){
+    			$scope.loadLanguages();
+    			$scope.loadCountries();
+    			var req=createXHTMLHttpRequest();
+
+    			req.onreadystatechange = function(){
+    				if (req.status == 200&req.readyState==4){
+    					var ret = convertJSON(req.responseText);
+    					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+    						$('#alertError').fadeIn().delay(10000).fadeOut();
+    						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+    							$('#alertError').html("There was an error, please retry.");
+    						} else {
+    							$('#alertError').html(ret[0].data.msg);
+    						}
+    					} else {
+    						vmMainController_editAge.model=ret[0];	
+    					}
+    				}else{
+    					mostraDialogTimed('errorPanel');
+    					return(false);
+    				}
+    			}
+
+    			req.open("GET", 'getAgencyData.php?user='+getUsername()+'&token='+getToken(), true);
+    			req.send();
+    		}
+            
+                vmMainController_editAge.fields = [ {
                 className : "row",
                 fieldGroup : [{
                     className : "col-md-12",
