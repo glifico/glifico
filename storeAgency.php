@@ -1,12 +1,4 @@
 <?php
-function checkPresence($db, $user){
-  $query="SELECT username FROM traduttore WHERE username='$user';";
-  $result=$db->query($query);
-  $row = $result->fetch(PDO::FETCH_ASSOC)
-
-  if(strlen(htmlspecialchars($row["username"]))>2) exit(json_encode(array("message"=>"username already present", "statuscode"=>408)));
-}
-
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $dsn = "pgsql:"
 ."host=".$dbopts["host"].";"
@@ -30,8 +22,6 @@ $password=$json["password"];
 $vat=$json['vat'];
 $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
-
-checkPresence($db,$user);
 
 $query="INSERT INTO agenzia(nome, vat, email, username, password) VALUES ('$nome', '$vat', '$email', '$user', '$pwd');";
 

@@ -222,18 +222,17 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 		vmMainController_regTrad.submit = function() {
 			if(grecaptcha.getResponse(widgetTrad).length>1){
 				var req = createXHTMLHttpRequest() ;
-				req.onreadystatechange = function(){
-					if (req.status == 200){
-						$('#alertOK').fadeIn().delay(10000)
-						.fadeOut();
-						$('#alertOK').html(
-						"Thanks. We have sent you an email with a confirmation link.");
+				if (req.status == 200&&req.readyState==4){
+					var response=convertJSON(req.responseText);
+					if(response['statuscode']==200){
+						$('#alertOK').fadeIn().delay(10000).fadeOut();
+						$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
 						$("#loginModal").hide();
 						location.href="index.html"
 							return(true);
-					}else{
-						mostraDialogTimed('errorPanel');
-						return(false);
+					}else if(response['statuscode']==408){
+						$('#alertError').fadeIn().delay(10000).fadeOut();
+						$('#alertError').html("Username already got, please try another");
 					}
 				}
 			}else{
@@ -459,14 +458,18 @@ angular.element(document).ready(function() {
 			if(grecaptcha.getResponse(widgetAge).length>1){
 				var req = createXHTMLHttpRequest() ;
 				req.onreadystatechange = function(){
-					if (req.status == 200){
-						$('#alertOK').fadeIn().delay(10000)
-						.fadeOut();
-						$('#alertOK').html(
-						"Thanks. We have sent you an email with a confirmation link.");
-						$("#loginModal").hide();
-						location.href="index.html"
-							return(true);
+					if (req.status == 200&&req.readyState==4){
+						var response=convertJSON(req.responseText);
+						if(response['statuscode']==200){
+							$('#alertOK').fadeIn().delay(10000).fadeOut();
+							$('#alertOK').html("Thanks. We have sent you an email with a confirmation link.");
+							$("#loginModal").hide();
+							location.href="index.html"
+								return(true);
+						}else if(response['statuscode']==408){
+							$('#alertError').fadeIn().delay(10000).fadeOut();
+							$('#alertError').html("Username already got, please try another");
+						}
 					}else{
 						mostraDialogTimed('errorPanel');
 						return(false);

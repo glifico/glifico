@@ -1,10 +1,32 @@
 <?php
+function checkPresence($user){
+  $dbopts = parse_url(getenv('DATABASE_URL'));
+  $dsn = "pgsql:"
+  ."host=".$dbopts["host"].";"
+  . "dbname=".ltrim($dbopts["path"],'/').";"
+  . "user=".$dbopts["user"].";"
+  . "port=5432;"
+  . "sslmode=require;"
+  . "password=".$dbopts["pass"];
+  $db = new PDO($dsn);
+  if(!$db) exit;
+
+  $query="SELECT username FROM agenzia WHERE username='$user';";
+  $result=$db->query($query);
+  $row = $result->fetch(PDO::FETCH_ASSOC);
+
+  if(strlen(htmlspecialchars($row["username"]))>2) exit(json_encode(array("message"=>"username already present", "statuscode"=>408)));
+  $result->CloseCursor();
+}
+
 
 $name=$_GET['name'];
 $password=$_GET['password'];
 $email=$_GET['email'];
 $user=$_GET['user'];
 $vat=$_GET['VAT'];
+
+checkPresence($user);
 
 $object=array("user"=>$user, "password"=>$password, "name"=>$name, "email"=>$email, "vat"=>$vat);
 $jsonarray=json_encode($object);
