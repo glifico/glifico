@@ -29,5 +29,5 @@ $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
 
-exit (json_encode([array("City"=>$row['citta'],"StateProvince"=>$row['provincia'],"ZIP"=>$row['cap'], "IdCountry"=>$row['idstato'])]));
+exit (json_encode([array("CompanyName"=>$row['nome'], "FiscalCode"=>$row['vat'], "VATCode"=>$row['vat'], "Street"=>$row['street'], "Number"=>$row['number'], "Number"=>$row['number'], "City"=>$row['citta'],"StateProvince"=>$row['provincia'],"ZIP"=>$row['cap'], "Country"=>$row['stato'], "EmailReference"=>$row['email'],"Bank"=>$row['banca'], "PayamentMode"=>$row['pagamento'], "IBAN"=>$row['iban'],"EmailReferenceBilling"=>$row['email'])]));
 ?>
