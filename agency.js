@@ -80,8 +80,6 @@
             var ctrl=this;
             
             ctrl.$onInit=function(){
-    			$scope.loadLanguages();
-    			$scope.loadCountries();
     			var req=createXHTMLHttpRequest();
 
     			req.onreadystatechange = function(){
