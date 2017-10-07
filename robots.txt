@@ -1,0 +1,7 @@
+user-agent: *
+Disallow: /
+
+user-agent: Googlebot
+Disallow: /
+Allow: /index.html
+Allow: /services.html
