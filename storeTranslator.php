@@ -1,15 +1,8 @@
 <?php
+include 'functions.php';
 
+$db=getDB();
 
-$dbopts = parse_url(getenv('DATABASE_URL'));
-$dsn = "pgsql:"
-."host=".$dbopts["host"].";"
-. "dbname=".ltrim($dbopts["path"],'/').";"
-. "user=".$dbopts["user"].";"
-. "port=5432;"
-. "sslmode=require;"
-. "password=".$dbopts["pass"];
-$db = new PDO($dsn);
 if(!$db) exit;
 
 $token=$_GET['token'];

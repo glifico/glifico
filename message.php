@@ -1,4 +1,6 @@
 <?php
+include 'functions.php';
+
 function NotifySlack($subject, $name, $email, $body)
 {
   $url="https://hooks.slack.com/services/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";

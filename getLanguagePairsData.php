@@ -1,13 +1,5 @@
 <?php
-function certToken($db, $user, $token){
-  $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
-  $result = $db->query($query);
-  $row = $result->fetch(PDO::FETCH_ASSOC);
-
-  $password=htmlspecialchars($row['password']);
-  $result->CloseCursor();
-  return $token==hash('crc32',$user."tokenize".$password);
-}
+include 'functions.php';
 
 // $dbopts = parse_url(getenv('DATABASE_URL'));
 // $dsn = "pgsql:"

@@ -1,14 +1,8 @@
 <?php
+include 'functions.php';
+
 function checkPresence($user){
-  $dbopts = parse_url(getenv('DATABASE_URL'));
-  $dsn = "pgsql:"
-  ."host=".$dbopts["host"].";"
-  . "dbname=".ltrim($dbopts["path"],'/').";"
-  . "user=".$dbopts["user"].";"
-  . "port=5432;"
-  . "sslmode=require;"
-  . "password=".$dbopts["pass"];
-  $db = new PDO($dsn);
+  $db=getDB();
   if(!$db) exit;
 
   $query="SELECT username FROM agenzia WHERE username='$user';";
@@ -30,7 +24,7 @@ checkPresence($user);
 
 $object=array("user"=>$user, "password"=>$password, "name"=>$name, "email"=>$email, "vat"=>$vat);
 $jsonarray=json_encode($object);
-$link="https://glifico.herokuapp.com/confirmAgency.html?token=".base64_encode($jsonarray);
+$link="https://glifico.com/confirmAgency.html?token=".base64_encode($jsonarray);
 
 $url="https://api.sendgrid.com/v3/mail/send";
 $handle = curl_init($url);

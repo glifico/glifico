@@ -1,4 +1,5 @@
 <?php
+include 'functions.php';
 
 function sendMail($dest, $link)
 {
@@ -40,15 +41,7 @@ function sendMail($dest, $link)
 }
 
 
-$dbopts = parse_url(getenv('DATABASE_URL'));
-$dsn = "pgsql:"
-."host=".$dbopts["host"].";"
-. "dbname=".ltrim($dbopts["path"],'/').";"
-. "user=".$dbopts["user"].";"
-. "port=5432;"
-. "sslmode=require;"
-. "password=".$dbopts["pass"];
-$db = new PDO($dsn);
+$db=getDB();
 if(!$db) exit;
 
 if(isset($_GET["user"])){

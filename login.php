@@ -1,18 +1,8 @@
 <?php
+include 'functions.php';
 
-function tokenize($user, $password){
-  return hash('crc32',$user."tokenize".$password);
-}
 
-$dbopts = parse_url(getenv('DATABASE_URL'));
-$dsn = "pgsql:"
-."host=".$dbopts["host"].";"
-. "dbname=".ltrim($dbopts["path"],'/').";"
-. "user=".$dbopts["user"].";"
-. "port=5432;"
-. "sslmode=require;"
-. "password=".$dbopts["pass"];
-$db = new PDO($dsn);
+$db=getDB();
 if(!$db) exit;
 
 //tables are traduttere and agenzia
