@@ -97,31 +97,30 @@ function strLeft(sourceStr, keyStr) {
 
 		var ctrl=this;
 
-		ctrl.$onInit=function(){
-			var req=createXHTMLHttpRequest();
+		var req=createXHTMLHttpRequest();
 
-			req.onreadystatechange = function(){
-				if (req.status == 200&req.readyState==4){
-					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("There was an error, please retry.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+					$('#alertError').fadeIn().delay(10000).fadeOut();
+					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+						$('#alertError').html("There was an error, please retry.");
 					} else {
-						vmMainController_editAge.model=ret[0];	
+						$('#alertError').html(ret[0].data.msg);
 					}
-				}else{
-					mostraDialogTimed('errorPanel');
-					return(false);
+				} else {
+					vmMainController_editAge.model=ret[0];	
 				}
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
 			}
-
-			req.open("GET", 'getAgencyData.php?user='+getUsername()+'&token='+getToken(), true);
-			req.send();
 		}
+
+		req.open("GET", 'getAgencyData.php?user='+getUsername()+'&token='+getToken(), true);
+		req.send();
+
 
 		vmMainController_editAge.fields = [ {
 			className : "row",
