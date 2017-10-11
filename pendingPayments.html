@@ -297,11 +297,11 @@ You have to pay some works
 <th class="col-md-4" style="text-align:center;"></th>
 </tr>
 </thead>
-<tr class="row {{ctrl.getClass(doc.status)}}" data-ng-repeat="doc in ctrl.documents">
+<tr class="row {{ctrl.getClass(doc)}}" data-ng-repeat="doc in ctrl.documents">
 <td class="col-md-4">{{doc.job}}</td>
 <td class="col-md-4">{{doc.price}}{{doc.currency}}</td>
 <td class="col-md-4">{{doc.status}}</td>
-<td class="col-md-4"><span ng-show="doc.status=='Pending'"><button ng-click="ctrl.newPayment(doc)"  class="btn btn-primary">Pay now!</button></span></td>
+<td class="col-md-4"><button ng-show="doc.status!='Completed'" ng-click="ctrl.newPayment(doc)"  class="btn btn-primary">Pay now!</button><div id="{{doc.id}}" ng-load="{{ctrl.setHTML(doc)}}" ></div></td>
 <tr>
 </table>
 

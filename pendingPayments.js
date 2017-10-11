@@ -5,10 +5,21 @@ $(document).ready(function () {
 angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 	var ctrl=this;
 
-	ctrl.getClass=function(status){
-		if (status=="Pending") return "bg-danger";
-		if (status=="Completed") return "bg-success";
+	ctrl.getClass=function(doc){
+		if (doc.status=="Pending") return "bg-danger";
+		if (doc.status=="Completed") return "bg-success";
 		return "row";
+	}
+	
+	ctrl.getButton=function(doc){
+		if(doc.status=="Completed")	return '<i class="fa fa-check" aria-hidden="true"></i>';
+		if(doc.status=="Pending") return '';
+	}
+	
+	ctrl.setHTML=function(doc){
+		var html="";
+		html+=ctrl.getButton(doc);
+		$("#"+doc.id).html(html);
 	}
 	
 	ctrl.newPayment=function(doc){
