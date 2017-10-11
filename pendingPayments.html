@@ -279,7 +279,7 @@ Add your code here
 <div class="panel panel-default">
 <div class="panel-heading">
 
-You hae to pay some works
+You have to pay some works
 
 </div>
 </div>
@@ -288,20 +288,20 @@ You hae to pay some works
 <div style="width:100%;display: table;margin: 0 auto;">
 
 <div id="pendingPayments" style="width:90%;margin:auto;" data-ng-controller="pendingPayments as ctrl">
-<table class="table table-striped table-hover table-responsive">
+<table class="table table-responsive">
 <thead class="thead-default">
 <tr class="row">
-<th class="col-md-4">Job</th>
-<th class="col-md-4">Price</th>
-<th class="col-md-4">Status</th>
-<th class="col-md-4">Button</th>
+<th class="col-md-4" style="text-align:center;">Job</th>
+<th class="col-md-4" style="text-align:center;">Price</th>
+<th class="col-md-4" style="text-align:center;">Status</th>
+<th class="col-md-4" style="text-align:center;"></th>
 </tr>
 </thead>
 <tr class="row {{ctrl.getClass(doc.status)}}" data-ng-repeat="doc in ctrl.documents">
 <td class="col-md-4">{{doc.job}}</td>
 <td class="col-md-4">{{doc.price}}{{doc.currency}}</td>
 <td class="col-md-4">{{doc.status}}</td>
-<td class="col-md-4"><span ng-show="doc.status=='Pending'"><button class="btn"></button></span></td>
+<td class="col-md-4"><span ng-show="doc.status=='Pending'"><button ng-click="ctrl.newPayment(doc)"  class="btn btn-primary">Pay now!</button></span></td>
 <tr>
 </table>
 
