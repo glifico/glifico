@@ -40,18 +40,12 @@
 <script src="loginform.js"></script>
 <script src="mylogin.js"></script>
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
-<script src="paypal.js"></script>
-
 
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.component.js"></script>
 
 <script src="app/login.controller.js"></script>
-
+<script src="pendingPayments.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -276,35 +270,48 @@ md-input-container{
 
 
 
+<!-- 
 
+Add your code here
+-->
 <br><br><br><br>
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
 <div class="panel-heading">
-Please use the form below to pay translator
+
+You hae to pay some works
+
 </div>
 </div>
 </div>
-<div id="styledbody" style="text-align:center;">
+<div style="text-align:center;">
 <div style="width:100%;display: table;margin: 0 auto;">
-<div id="payment" ng-controller="paymentController as ctrl">
-You have to pay {{ctrl.amount}} EUR to {{ctrl.translator}} for <b>{{ctrl.job}}</b>
 
-<div id="paypal-button"></div>
+<div id="pendingPayments" style="width:90%;margin:auto;" data-ng-controller="pendingPayments as ctrl">
+<table class="table table-striped table-hover table-responsive">
+<thead class="thead-default">
+<tr class="row">
+<th class="col-md-4">Job</th>
+<th class="col-md-4">Price</th>
+<th class="col-md-4">Status</th>
+<th class="col-md-4">Button</th>
+</tr>
+</thead>
+<tr class="row {{ctrl.getClass(doc.status)}}" data-ng-repeat="doc in ctrl.documents">
+<td class="col-md-4">{{doc.job}}</td>
+<td class="col-md-4">{{doc.price}}{{doc.currency}}</td>
+<td class="col-md-4">{{doc.status}}</td>
+<td class="col-md-4"><span ng-show="doc.status=='Pending'"><button class="btn"></button></span></td>
+<tr>
+</table>
+
+
 </div>
-
-<div id="payCompleted">
-Your payment has been completed on Paypal, thanks!
-
-<p>Return to <a href="index.html">homepage</a></p>
-</div>
-
 </div>
 </div>
 
  
-
- <div ng-app="glifico">
+<div ng-app="glifico">
  <glificofooter></glificofooter>
  </div>
 
