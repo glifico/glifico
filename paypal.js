@@ -2,7 +2,7 @@ $(document).ready(function () {
 	$('#payCompleted').hide();
 
 	if(!getLogged()){
-		$("#styledbody").hide();
+		$("#payDocumentBody").hide();
 
 		alert("Please login");
 	}
