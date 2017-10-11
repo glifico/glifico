@@ -18,8 +18,6 @@ function tokenize($user, $password){
 }
 
 function certToken($db, $user, $token){
-  echo($user);
-  echo($token);
   $query="SELECT USERNAME, PASSWORD FROM traduttore WHERE username='$user';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
