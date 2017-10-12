@@ -19,7 +19,7 @@ function getPaymentId(){
 function paymentCompleted(){
 	$('#payCompleted').show();
 	$('#payment').hide();
-	var url = "setPaymentPaied.php?user="+getUsername()+"token="+getToken()+"id=" + getPaymentId();
+	var url = "setPaymentPaied.php?user="+getUsername()+"&token="+getToken()+"&id=" + getPaymentId();
 
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){

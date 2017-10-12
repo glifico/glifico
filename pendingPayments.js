@@ -46,9 +46,9 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			}else if(doc.status=="Ongoing"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job='+doc.job;
-				html+=" data-price="+doc.price;
-				html+=" data-currency="+doc.currency;
-				html+=" data-description="+doc.description;
+				html+=' data-price='+doc.price;
+				html+=' data-currency='+doc.currency;
+				html+=' data-description='+doc.description;
 				html+='>Show job</button>';
 			}
 			html+='</td>';
