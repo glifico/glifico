@@ -10,11 +10,9 @@ if(!certTokenA($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wr
 
 $query="SELECT * FROM payments WHERE username='$user' and id='$id' LIMIT 1;";
 $result = $db->query($query);
-$toExit=[];
 $row = $result->fetch(PDO::FETCH_ASSOC);
-array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"description"=>$row['description']));
 
 $result->CloseCursor();
 
-exit(json_encode($toExit));
+exit(json_encode(array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"description"=>$row['description'])));
 ?>
