@@ -4,9 +4,9 @@ $(document).ready(function () {
 
 newPayment=function(price){
 	alert("should pay"+price);
-	window.open('payDocument.html','_newtab');
+	location.href='payDocument.html';
 }
-
+	
 showJob=function(doc){
 	console.log(doc);
 }
