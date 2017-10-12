@@ -7,7 +7,7 @@ if(!$db) exit;
 $user=$_GET['user'];
 if(!certTokenA($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT * FROM payments WHERE username='$user' ORDER BY status ASC;";
+$query="SELECT * FROM payments WHERE username='$user' ORDER BY status DESC;";
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
