@@ -16,6 +16,7 @@ approveJob=function(id){
 			if(data['statuscode']==200){
 				$("#alertOK").html("Job approved!");
 				$("#alertOK").fadeIn().delay(2000).fadeOut();
+				location.href=location.href;
 			}
 		}else{
 			mostraDialogTimed('errorPanel');
