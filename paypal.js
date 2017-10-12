@@ -108,7 +108,7 @@ angular.module("payment",[])
 	}
 
 	ctrl.$onInit=function(){
-		var url = "getPayment.php?user="+getUsername()+"token="+getToken()+"id=" + getPaymentId();
+		var url = "getPayment.php?user="+getUsername()+"&token="+getToken()+"&id=" + getPaymentId();
 
 		var req = createXHTMLHttpRequest() ;
 		req.onreadystatechange = function(){
