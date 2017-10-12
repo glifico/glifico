@@ -319,9 +319,13 @@ $('#jobModal').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-title').text('Job: ' + job)
   var html="";
-  html+="Job title: <b>"+job+"</b><br>";
-  html+="price: "+button.data('price')+button.data('currency');
+  html+="Title: <b>"+job+"</b><br>";
+  html+="Price: "+button.data('price')+button.data('currency');
   html+="<br><br>"+button.data('description');
+  if(button.data('link')){
+	  html+="<br><br>";
+	  html+="Download file at: "+button.data('link');
+  }
   modal.find('.modal-body').html(html)
 })
 </script>

@@ -50,6 +50,14 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+='>Show job</button>';
+			}else if(doc.status=="Finished"){
+				html+='<button type="button" class="btn btn-success" data-toggle="modal" data-target="#jobModal"';
+				html+='data-job="'+doc.job+'"';
+				html+=' data-price="'+doc.price+'"';
+				html+=' data-currency="'+doc.currency+'"';
+				html+=' data-description="'+doc.description+'"';
+				html+=' data-link="'+doc.link+'"';
+				html+='>Approve Job</button>';
 			}
 			html+='</td>';
 			html+='<tr>';
