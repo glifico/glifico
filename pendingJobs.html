@@ -46,7 +46,6 @@
 <script src="app/login.controller.js"></script>
 
 <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-<script src="app/upload.controller.js"></script>
 <script src="pendingJobs.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -313,9 +312,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   html+="<br><br>"+button.data('description');
   if(button.data('status')=="Ongoing"){
 	  html+="<br><br>";
-	  html+='<input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" ng-show="!ctrl.uploaded"/>';
-	  
-	  html='<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+	  html+='<input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()"/>';
   }
   modal.find('.modal-body').html(html)
 })
