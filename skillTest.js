@@ -123,7 +123,7 @@ function result(){
 					var data1 = data[i].DataTest
 					data1 = data1.replace("T"," ")
 					data1 = data1.replace("Z","")
-					data1 = data1.substring(0,data1.length)
+					data1 = data1.substring(0,data1.length-3)
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>'
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="#008000"> <b>Done </b></font>' + '</td>'
 					var totString = (data[i].TotTest + "")

@@ -12,7 +12,8 @@ function search($db, $id){
 }
 
 function updateTest($db, $user, $languageto, $tot){
-  $query="UPDATE languages SET tottest='$tot' WHERE username='$user' and language='$languageto';";
+  $today=date("Y-m-d H:i:s");
+  $query="UPDATE languages SET tottest='$tot', datatest='$today' WHERE username='$user' and language='$languageto';";
   $result = $db->query($query);
 
 }
@@ -40,6 +41,7 @@ foreach ($domande as $domanda) {
   if($risposta==$domanda['scelta']) $score+=1;
 }
 
+//get old data to make a mean
 $language=$domande[0]['language'];
 $query="SELECT username, tottest FROM languages WHERE username='$user' AND language='$language' ORDER BY tottest DESC;";
 $result = $db->query($query);
