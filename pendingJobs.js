@@ -6,7 +6,7 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 	policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
 })
 
-showPicker=function() {
+showPicker=function(id) {
 	client.pick({
 		accept: ['.pdf','.odt','.doc','.docx','.txt'],
 		maxFiles: 1,
@@ -81,6 +81,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
+				html+=' data-id="'+doc.id+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-status="'+doc.status+'"';
 				html+=' data-description="'+doc.description+'"';
