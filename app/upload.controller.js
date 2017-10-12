@@ -15,7 +15,7 @@ angular.module("uploadController",[])
 		ctrl.storedUrl="http://www.example.com";
 		ctrl.uploaded=false;
 		ctrl.translator=getUsername();
-		document.getElementById("remove").style.visibility="hidden";
+		//document.getElementById("remove").style.visibility="hidden";
 	}
 
 
