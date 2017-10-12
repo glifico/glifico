@@ -85,8 +85,10 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-status="'+doc.status+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+='>Show job</button>';
-			}else if(doc.status=="Finished"||doc.status=="Pending"){
+			}else if(doc.status=="Finished"){
 				html+='Waiting payment...';
+			}else if(doc.status=="Pending"){
+				html+='Waiting approval...';
 			}
 			html+='</td>';
 			html+='<tr>';
