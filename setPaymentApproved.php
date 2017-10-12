@@ -15,7 +15,7 @@ function NotifySlack($name)
     "channel": "#payments",
     "username": "Glifico payments $$",
     "text": "'.$name.' approved a job on Glifico!",
-    "icon_emoji": ":heavy_dollar_sign:"
+    "icon_emoji": ":thumbsup:"
   }
 ';
   curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
