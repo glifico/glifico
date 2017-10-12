@@ -17,6 +17,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		if (doc.status=="Pending") return "bg-danger";
 		if (doc.status=="Completed") return "bg-success";
 		if (doc.status=="Ongoing") return "bg-info";
+		if (doc.status=="Finished") return "bg-warning";
 		return "row";
 	}
 
@@ -51,7 +52,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-description="'+doc.description+'"';
 				html+='>Show job</button>';
 			}else if(doc.status=="Finished"){
-				html+='<button type="button" class="btn btn-success" data-toggle="modal" data-target="#jobModal"';
+				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
