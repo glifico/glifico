@@ -2,47 +2,46 @@ $(document).ready(function () {
 
 });
 
+var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
+	policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
+})
+
+showPicker=function() {
+	client.pick({
+		accept: ['.pdf','.odt','.doc','.docx','.txt'],
+		maxFiles: 1,
+		onClose(){
+
+		},
+		onFileUploadFinished(){
+			var url = "setJobFinished.php?user="+getUsername()+"&token="+getToken()+"&id=" + id;
+
+			var req = createXHTMLHttpRequest() ;
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var data=JSON.parse(req.responseText);
+					if(data['statuscode']==200){
+						$("#alertOK").html("Job finished!");
+						$("#alertOK").fadeIn().delay(2000).fadeOut();
+						location.href=location.href;
+					}
+				}else{
+					mostraDialogTimed('errorPanel');
+				}
+			}
+			req.open("GET",url,true);
+			req.send();
+		},
+	}).then(function(result) {
+
+	},function(result){
+		alert("Error while uploading");
+	});
+
+};
 
 angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	var ctrl=this;
-
-	var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
-		policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
-	})
-
-	ctrl.showPicker=function() {
-		client.pick({
-			accept: ['.pdf','.odt','.doc','.docx','.txt'],
-			maxFiles: 1,
-			onClose(){
-
-			},
-			onFileUploadFinished(){
-				var url = "setJobFinished.php?user="+getUsername()+"&token="+getToken()+"&id=" + id;
-
-				var req = createXHTMLHttpRequest() ;
-				req.onreadystatechange = function(){
-					if (req.status == 200&req.readyState==4){
-						var data=JSON.parse(req.responseText);
-						if(data['statuscode']==200){
-							$("#alertOK").html("Job finished!");
-							$("#alertOK").fadeIn().delay(2000).fadeOut();
-							location.href=location.href;
-						}
-					}else{
-						mostraDialogTimed('errorPanel');
-					}
-				}
-				req.open("GET",url,true);
-				req.send();
-			},
-		}).then(function(result) {
-
-		},function(result){
-			alert("Error while uploading");
-		});
-
-	};
 
 	ctrl.getClass=function(doc){
 		if (doc.status=="Pending") return "bg-danger";
