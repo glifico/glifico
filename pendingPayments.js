@@ -49,8 +49,8 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-price='+doc.price;
 				html+=' data-currency='+doc.currency;
 				console.log(doc.description);
-				html+=' data-description='+doc.description;
-				html+='>Show job</button>';
+				html+=' data-description="'+doc.description;
+				html+='">Show job</button>';
 			}
 			html+='</td>';
 			html+='<tr>';
