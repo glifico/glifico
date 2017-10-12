@@ -14,8 +14,8 @@ function NotifySlack($name)
   $data='{
     "channel": "#payments",
     "username": "Glifico payments $$",
-    "text": "'.$name.' accepted a job!",
-    "icon_emoji": ":heavy_dollar_sign:"
+    "text": "'.$name.' finished a job!",
+    "icon_emoji": ":necktie:"
   }
 ';
   curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
@@ -30,10 +30,10 @@ $user=$_GET['user'];
 $id=$_GET['id'];
 if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="UPDATE payments SET status='Pending' WHERE username='$user' and id='$id';";
+$query="UPDATE payments SET status='Finished' WHERE username='$user' and id='$id';";
 $result = $db->query($query);
 
 $result->CloseCursor();
 NotifySlack($user);
-exit(json_encode(array("message"=>"Payment updated", "statuscode"=>200)));
+exit(json_encode(array("message"=>"Job updated", "statuscode"=>200)));
 ?>

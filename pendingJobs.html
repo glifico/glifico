@@ -271,13 +271,11 @@ Please use the form below to upload a translated document
 </div>
 <div id="styledbody" style="text-align:center;">
 <div style="width:95%;display: table;margin: 0 auto;">
-<div id="upController" ng-controller="uploadController as ctrl">
 
 <div id="upDescr">
 Here you may find your Jobs on Glifico!
 </div>
 
-</div>
 <div id="pendingJobs" ng-controller="pendingJobs as ctrl">
 
 <span id="table"></span>
@@ -313,6 +311,12 @@ $('#jobModal').on('show.bs.modal', function (event) {
   html+="Title: <b>"+job+"</b><br>";
   html+="Price: "+button.data('price')+button.data('currency');
   html+="<br><br>"+button.data('description');
+  if(button.data('status')=="Ongoing"){
+	  html+="<br><br>";
+	  html+='<input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" ng-show="!ctrl.uploaded"/>';
+	  
+	  html='<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+  }
   modal.find('.modal-body').html(html)
 })
 </script>
