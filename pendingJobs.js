@@ -2,14 +2,14 @@ $(document).ready(function () {
 
 });
 
-	
+
 angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	var ctrl=this;
-	
+
 	var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 		policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
 	})
-	
+
 	ctrl.showPicker=function() {
 		client.pick({
 			accept: ['.pdf','.odt','.doc','.docx','.txt'],
@@ -68,7 +68,11 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-4">'+doc.job+'</td>';
 			html+='<td class="col-md-4">'+doc.price+doc.currency+'</td>';
-			html+='<td class="col-md-4">'+doc.status+'</td>';
+			if(doc.status="Pending"){
+				html+='<td class="col-md-4">'+"Accepted"+'</td>';
+			}else{
+				html+='<td class="col-md-4">'+doc.status+'</td>';
+			}
 			html+='<td class="col-md-4">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Completed"){
