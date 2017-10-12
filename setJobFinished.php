@@ -40,7 +40,7 @@ $id=$data['id'];
 $url=$data['url'];
 if(!certToken($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="UPDATE payments SET status='Finished', link='$url' WHERE username='$user' and id='$id';";
+$query="UPDATE payments SET status='Finished', link='$url' WHERE translator='$user' and id='$id';";
 $result = $db->query($query);
 
 $result->CloseCursor();
