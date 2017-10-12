@@ -68,7 +68,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-4">'+doc.job+'</td>';
 			html+='<td class="col-md-4">'+doc.price+doc.currency+'</td>';
-			if(doc.status="Pending"){
+			if(doc.status=="Pending"){
 				html+='<td class="col-md-4">'+"Accepted"+'</td>';
 			}else{
 				html+='<td class="col-md-4">'+doc.status+'</td>';
