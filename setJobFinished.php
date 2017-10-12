@@ -26,10 +26,19 @@ function NotifySlack($name)
 $db=getDB();
 if(!$db) exit;
 
-$user=$_GET['user'];
-$id=$_GET['id'];
-$url=$_GET['url'];
-if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+  $data = json_decode(file_get_contents("php://input"),true);
+}
+
+if(!$data){
+  exit(json_encode(array("message"=>"wrong request","statuscode"=>500)));
+}
+
+$user=$data['user'];
+$id=$data['id'];
+$url=$data['url'];
+if(!certToken($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $query="UPDATE payments SET status='Finished', url='$url' WHERE username='$user' and id='$id';";
 $result = $db->query($query);

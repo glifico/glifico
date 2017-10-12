@@ -17,25 +17,38 @@ showPicker=function(id) {
 			//uploaded
 		},
 	}).then(function(result) {
-		var url = "setJobFinished.php?user="+getUsername()+"&token="+getToken()+"&id=" + id+"&url="+result.filesUploaded[0]["url"];
+		var temp = {
+				user : getUsername(),
+				token : getToken(),
+				id: id,
+				url: result.filesUploaded[0]["url"]
+		};
 
-		var req = createXHTMLHttpRequest() ;
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				var data=JSON.parse(req.responseText);
-				if(data['statuscode']==200){
-					$("#alertOK").html("Job finished!");
-					$("#alertOK").fadeIn().delay(2000).fadeOut();
-					$("#jobModal").hide();
-					location.href=location.href;
+		var stringPass = JSON.stringify(temp);
+		var data = stringPass;
+
+		$.ajax( {
+			type : "POST",
+			dataType : "application/json",
+			contentType : "application/json; charset=utf-8",
+			data : data,
+			url : "setJobFinished.php",
+			complete : function(ret) {
+				var response=ret.responseText;
+				$("#alertOK").html("Job finished!");
+				$("#alertOK").fadeIn().delay(2000).fadeOut();
+				$("#jobModal").hide();
+				location.href=location.href;
+			},
+			error : function(xhr) {
+				if (xhr.status == 500) {
+					$("#alertError").html("Error from server, please retry.");
+					$("#alertError").fadeIn().delay(1000).fadeOut();
 				}
-			}else{
-				mostraDialogTimed('errorPanel');
+
 			}
-		}
-		req.open("GET",url,true);
-		req.send();
-		
+		});
+			
 	},function(result){
 		alert("Error while uploading");
 	});
