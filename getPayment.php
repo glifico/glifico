@@ -14,7 +14,6 @@ $toExit=[];
 $row = $result->fetch(PDO::FETCH_ASSOC);
 array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"description"=>$row['description']));
 
-
 $result->CloseCursor();
 
 exit(json_encode($toExit));

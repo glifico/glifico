@@ -16,14 +16,24 @@ function getPaymentId(){
 }
 
 
-function getAmount(){
-	message
-}
-
 function paymentCompleted(){
 	$('#payCompleted').show();
 	$('#payment').hide();
-	location.href="pendingPayments.html";
+	var url = "setPaymentPaied.php?user="+getUsername()+"token="+getToken()+"id=" + getPaymentId();
+
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			if(data['statuscode']==200){
+				location.href="pendingPayments.html";
+			}
+		}else{
+			mostraDialogTimed('errorPanel');
+		}
+	}
+	req.open("GET",url,true);
+	req.send();
 }
 
 
@@ -35,10 +45,10 @@ angular.module("payment",[])
 	ctrl.createPage=function(){
 		var html="";
 		html+="You have to pay "+ctrl.amount+" EUR for <b>"+ctrl.job+"</b>";
-		
+
 		$("#message").html(html);
 	}
-	
+
 	ctrl.createPaypal=function(){
 		paypal.Button.render({
 
@@ -96,9 +106,9 @@ angular.module("payment",[])
 
 		}, '#paypal-button');
 	}
-	
+
 	ctrl.$onInit=function(){
-		var url = "getPayment.php?id=" + getPaymentId();
+		var url = "getPayment.php?user="+getUsername()+"token="+getToken()+"id=" + getPaymentId();
 
 		var req = createXHTMLHttpRequest() ;
 		req.onreadystatechange = function(){
@@ -114,9 +124,9 @@ angular.module("payment",[])
 		}
 		req.open("GET",url,true);
 		req.send();
-		
+
 	}
-	
+
 });
 
 

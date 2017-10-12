@@ -2,9 +2,8 @@ $(document).ready(function () {
 
 });
 
-newPayment=function(price){
-	alert("should pay"+price);
-	location.href='payDocument.html';
+newPayment=function(id){
+	location.href='payDocument.html'+'?token='+id;
 }
 	
 showJob=function(doc){
@@ -43,7 +42,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			if(doc.status=="Completed"){
 				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
 			}else if (doc.status=="Pending"){
-				html+='<button onClick="newPayment('+doc.price+')"  class="btn btn-primary">Pay now!</button>';				
+				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
 			}else if(doc.status=="Ongoing"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job='+doc.job;
