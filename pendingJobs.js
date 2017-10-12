@@ -14,26 +14,27 @@ showPicker=function() {
 
 		},
 		onFileUploadFinished(){
-			var url = "setJobFinished.php?user="+getUsername()+"&token="+getToken()+"&id=" + id;
-
-			var req = createXHTMLHttpRequest() ;
-			req.onreadystatechange = function(){
-				if (req.status == 200&req.readyState==4){
-					var data=JSON.parse(req.responseText);
-					if(data['statuscode']==200){
-						$("#alertOK").html("Job finished!");
-						$("#alertOK").fadeIn().delay(2000).fadeOut();
-						location.href=location.href;
-					}
-				}else{
-					mostraDialogTimed('errorPanel');
-				}
-			}
-			req.open("GET",url,true);
-			req.send();
+			//uploaded
 		},
 	}).then(function(result) {
+		var url = "setJobFinished.php?user="+getUsername()+"&token="+getToken()+"&id=" + id+"&url="+result.filesUploaded[0]["url"];
 
+		var req = createXHTMLHttpRequest() ;
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var data=JSON.parse(req.responseText);
+				if(data['statuscode']==200){
+					$("#alertOK").html("Job finished!");
+					$("#alertOK").fadeIn().delay(2000).fadeOut();
+					location.href=location.href;
+				}
+			}else{
+				mostraDialogTimed('errorPanel');
+			}
+		}
+		req.open("GET",url,true);
+		req.send();
+		
 	},function(result){
 		alert("Error while uploading");
 	});

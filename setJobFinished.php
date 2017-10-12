@@ -28,9 +28,10 @@ if(!$db) exit;
 
 $user=$_GET['user'];
 $id=$_GET['id'];
+$url=$_GET['url'];
 if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="UPDATE payments SET status='Finished' WHERE username='$user' and id='$id';";
+$query="UPDATE payments SET status='Finished', url='$url' WHERE username='$user' and id='$id';";
 $result = $db->query($query);
 
 $result->CloseCursor();
