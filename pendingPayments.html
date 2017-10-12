@@ -288,27 +288,49 @@ You have to pay some works
 <div style="width:100%;display: table;margin: 0 auto;">
 
 <div id="pendingPayments" style="width:90%;margin:auto;" data-ng-controller="pendingPayments as ctrl">
-<table class="table table-responsive">
-<thead class="thead-default">
-<tr class="row">
-<th class="col-md-4" style="text-align:center;">Job</th>
-<th class="col-md-4" style="text-align:center;">Price</th>
-<th class="col-md-4" style="text-align:center;">Status</th>
-<th class="col-md-4" style="text-align:center;"></th>
-</tr>
-</thead>
-<tr class="row {{ctrl.getClass(doc)}}" data-ng-repeat="doc in ctrl.documents">
-<td class="col-md-4">{{doc.job}}</td>
-<td class="col-md-4">{{doc.price}}{{doc.currency}}</td>
-<td class="col-md-4">{{doc.status}}</td>
-<td class="col-md-4"><button ng-show="doc.status!='Completed'" ng-click="ctrl.newPayment(doc)"  class="btn btn-primary">Pay now!</button><div id="{{doc.id}}" ng-load="{{ctrl.setHTML(doc)}}" ></div></td>
-<tr>
-</table>
+<span id=table></span>
+
+<!--  Job Modal -->
+<div class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="jobModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="jobModalLabel">Job</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#jobModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var job = button.data('job') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('Job: ' + job)
+  var html="";
+  html+="Job title: <b>"+job+"</b><br>";
+  html+="price: "+button.data('price')+button.data('currency');
+  html+="<br><br>"+button.data('description');
+  modal.find('.modal-body').html(html)
+})
+</script>
+
+</div>
+</div>
+</div>
 
 
-</div>
-</div>
-</div>
 
  
 <div ng-app="glifico">
