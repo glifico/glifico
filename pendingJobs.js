@@ -26,6 +26,7 @@ showPicker=function(id) {
 				if(data['statuscode']==200){
 					$("#alertOK").html("Job finished!");
 					$("#alertOK").fadeIn().delay(2000).fadeOut();
+					$("#jobModal").hide();
 					location.href=location.href;
 				}
 			}else{
