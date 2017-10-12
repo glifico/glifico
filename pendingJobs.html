@@ -47,6 +47,7 @@
 
 <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
 <script src="app/upload.controller.js"></script>
+<script src="pendingJobs.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -273,30 +274,12 @@ Please use the form below to upload a translated document
 <div id="upController" ng-controller="uploadController as ctrl">
 
 <div id="upDescr">
-Hi {{ctrl.translator}}
-<br>
-<div>
-You have to upload your translation for <b>{{ctrl.title}}</b>
-</div>
-<br>
-Click on the button to choose which document to upload...
-<br>
-
-<input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" ng-show="!ctrl.uploaded"/>
-
+Here you may find your Jobs on Glifico!
 </div>
 
-<div id="remove">
-<div id="upThanks">
-<p>Thank you {{ctrl.translator}} for uploading your document...</p> 
-<p id="url"></p>
-</div>
-
-<p>Changed your mind?</p>
-<input class="btn"  type="button" ng-click="ctrl.remove()" value="Delete document"/>
+<span id="table"></span>
 
 <p>Return to <a href="index.html">homepage</a></p>
-</div>
 </div>
 </div>
 </div>

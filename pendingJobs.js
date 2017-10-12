@@ -2,30 +2,8 @@ $(document).ready(function () {
 
 });
 
-newPayment=function(id){
-	location.href='payDocument.html'+'?token='+id;
-}
-
-approveJob=function(id){
-	var url = "setPaymentApproved.php?user="+getUsername()+"&token="+getToken()+"&id=" + id;
-
-	var req = createXHTMLHttpRequest() ;
-	req.onreadystatechange = function(){
-		if (req.status == 200&req.readyState==4){
-			var data=JSON.parse(req.responseText);
-			if(data['statuscode']==200){
-				$("#alertOK").html("Job approved!");
-				$("#alertOK").fadeIn().delay(2000).fadeOut();
-			}
-		}else{
-			mostraDialogTimed('errorPanel');
-		}
-	}
-	req.open("GET",url,true);
-	req.send();
-}
 	
-angular.module("pendingPayments",[]).controller("pendingPayments",function(){
+angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	var ctrl=this;
 
 	ctrl.getClass=function(doc){
@@ -58,7 +36,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			if(doc.status=="Completed"){
 				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
 			}else if (doc.status=="Pending"){
-				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
+				html+='<input class="btn btn-primary" type="button" value="Upload" ng-click="ctrl.showPicker()" ng-show="!ctrl.uploaded"/>';				
 			}else if(doc.status=="Ongoing"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
@@ -67,14 +45,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-description="'+doc.description+'"';
 				html+='>Show job</button>';
 			}else if(doc.status=="Finished"){
-				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
-				html+='data-job="'+doc.job+'"';
-				html+='data-id="'+doc.id+'"';
-				html+=' data-price="'+doc.price+'"';
-				html+=' data-currency="'+doc.currency+'"';
-				html+=' data-description="'+doc.description+'"';
-				html+=' data-link="'+doc.link+'"';
-				html+='>Approve Job</button>';
+				html+='Waiting payment';
 			}
 			html+='</td>';
 			html+='<tr>';
@@ -84,7 +55,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 	}
 
 	ctrl.$onInit=function(){
-		var url = "getPendingPayments.php?user=" + getUsername()+"&token="+getToken();
+		var url = "getPendingJobs.php?user=" + getUsername()+"&token="+getToken();
 
 		var req = createXHTMLHttpRequest() ;
 		req.onreadystatechange = function(){
@@ -107,6 +78,6 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 
 
 angular.element(document).ready(function() {
-	console.log("registro pendingPayment");
-	angular.bootstrap(document.getElementById('pendingPayments'), ['pendingPayments']);
+	console.log("registro pendingJobs");
+	angular.bootstrap(document.getElementById('pendingJobs'), ['pendingJobs']);
 });

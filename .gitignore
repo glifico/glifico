@@ -7,3 +7,5 @@ Cloudflare*
 deploy.sh
 .DS_Store
 *.phar
+
+*.swp
