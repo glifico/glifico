@@ -73,6 +73,7 @@ function showTranslatorStuff(){
 	$("#li-rating").show();
 	$("#li-trad").show();
 	$("#li-skill").show();
+	$("#li-jobs").show();
 }
 
 function showAgencyStuff(){
@@ -84,6 +85,7 @@ function hideTranslatorStuff(){
 	$("#li-rating").hide();
 	$("#li-trad").hide();
 	$("#li-skill").hide();
+	$("#li-jobs").hide();
 }
 
 function hideAgencyStuff(){
