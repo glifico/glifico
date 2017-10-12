@@ -5,11 +5,26 @@ $(document).ready(function () {
 newPayment=function(id){
 	location.href='payDocument.html'+'?token='+id;
 }
-	
-showJob=function(doc){
-	console.log(doc);
-}
 
+approveJob=function(id){
+	var url = "setPaymentApproved.php?user="+getUsername()+"&token="+getToken()+"&id=" + id;
+
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			if(data['statuscode']==200){
+				$("#alertOK").html("Job approved!");
+				$("#alertOK").fadeIn().delay(2000).fadeOut();
+			}
+		}else{
+			mostraDialogTimed('errorPanel');
+		}
+	}
+	req.open("GET",url,true);
+	req.send();
+}
+	
 angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 	var ctrl=this;
 
@@ -54,6 +69,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			}else if(doc.status=="Finished"){
 				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
+				html+='data-id="'+doc.id+'"';
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';

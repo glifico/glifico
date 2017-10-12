@@ -328,7 +328,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  html+='Download file at: <a href="'+link+'" target="_Blank">'+link+'</a>';
 	  
 	  btnHtml='<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-	  btnHtml+='<button type="button" class="btn btn-primary" data-dismiss="modal">Approve</button>';
+	  btnHtml+='<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="approveJob('+button.data('id')+')">Approve</button>';
 	modal.find('.modal-footer').html(btnHtml)
   }
   modal.find('.modal-body').html(html)
