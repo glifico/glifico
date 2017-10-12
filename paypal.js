@@ -1,11 +1,11 @@
 $(document).ready(function () {
 	$('#payCompleted').hide();
 
-//	if(!getLogged()){
-//	$("#payDocumentBody").hide();
+	if(!isAgency()){
+	$("#payDocumentBody").hide();
 
-//	alert("Please login");
-//	}
+	alert("Please login as agency");
+	}
 
 });
 
@@ -92,7 +92,7 @@ angular.module("payment",[])
 					// The payment is complete!
 					// You can now show a confirmation message to the customer
 
-					alert("good payment");
+					alert("Payment completed!");
 
 					paymentCompleted();
 
