@@ -56,6 +56,15 @@ showPicker=function(id) {
 };
 
 acceptJob=function(){
+	var temp = {
+			user : getUsername(),
+			token : getToken(),
+			id: id,
+	};
+
+	var stringPass = JSON.stringify(temp);
+	var data = stringPass;
+	
 	$.ajax( {
 		type : "POST",
 		dataType : "application/json",
