@@ -55,7 +55,7 @@ showPicker=function(id) {
 
 };
 
-acceptJob=function(){
+acceptJob=function(id){
 	var temp = {
 			user : getUsername(),
 			token : getToken(),
