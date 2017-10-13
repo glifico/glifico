@@ -34,7 +34,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		if (doc.status=="Completed") return "bg-success";
 		if (doc.status=="Ongoing") return "bg-info";
 		if (doc.status=="Finished") return "bg-warning";
-		if(doc.status=="ToBeAccepted") return "bg-info";
+		if(doc.status=="Proposed") return "bg-info";
 		return "row";
 	}
 
@@ -77,7 +77,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-link="'+doc.link+'"';
 				html+='>Approve Job</button>';
-			}else if(doc.status=="ToBeAccepted"){
+			}else if(doc.status=="Proposed"){
 				html+="Waiting for translator acceptance..";
 			}
 			html+='</td>';

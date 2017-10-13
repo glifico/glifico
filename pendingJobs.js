@@ -88,7 +88,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Completed") return "bg-success";
 		if (doc.status=="Ongoing") return "bg-warning";
 		if (doc.status=="Finished") return "bg-info";
-		if(doc.status=="ToBeAccepted") return "bg-danger";
+		if(doc.status=="Proposed") return "bg-danger";
 		return "row";
 	}
 
@@ -130,7 +130,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+='Waiting approval...';
 			}else if(doc.status=="Pending"){
 				html+='Waiting payment...';
-			}else if(doc.status=="ToBeAccepted"){
+			}else if(doc.status=="Proposed"){
 				html+='<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
