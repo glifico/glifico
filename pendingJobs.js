@@ -101,6 +101,15 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		return "row";
 	}
 
+	ctrl.getToolTip=function(doc){
+		if (doc.status=="Pending") return "Agency will pay this job";
+		if (doc.status=="Completed") return "Job is finished and payed";
+		if (doc.status=="Ongoing") return "When you have done you should update the translated document";
+		if (doc.status=="Finished") return "Agency need to review and approve this job";
+		if(doc.status=="Proposed") return "You can accept this job";
+		return "row";
+	}
+	
 	ctrl.createTable=function(){
 		var html="";	
 		html+='<table class="table table-responsive">';
@@ -118,9 +127,9 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='<td class="col-md-4">'+doc.job+'</td>';
 			html+='<td class="col-md-4">'+doc.price+doc.currency+'</td>';
 			if(doc.status=="Pending"){
-				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="Agency accept your job">'+"Accepted"+'</td>';
+				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+"Accepted"+'</td>';
 			}else{
-				html+='<td class="col-md-4">'+doc.status+'</td>';
+				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
 			}
 			html+='<td class="col-md-4">';
 			html+='<div id="'+doc.id+'">';
