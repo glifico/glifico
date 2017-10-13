@@ -38,6 +38,15 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		return "row";
 	}
 
+	ctrl.getToolTip=function(doc){
+		if (doc.status=="Pending") return "You need to pay this job";
+		if (doc.status=="Completed") return "Job is finished and payed";
+		if (doc.status=="Ongoing") return "Translator is working and will upload the traslated document";
+		if (doc.status=="Finished") return "You need to review and approve this job";
+		if(doc.status=="Proposed") return "Translator need to accept this job";
+		return "row";
+	}
+	
 	ctrl.createTable=function(){
 		var html="";	
 		html+='<table class="table table-responsive">';
