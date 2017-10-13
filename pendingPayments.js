@@ -63,7 +63,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-4">'+doc.job+'</td>';
 			html+='<td class="col-md-4">'+doc.price+doc.currency+'</td>';
-			html+='<td class="col-md-4">'+doc.status+'</td>';
+			html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
 			html+='<td class="col-md-4">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Completed"){
