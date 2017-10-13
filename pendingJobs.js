@@ -48,21 +48,47 @@ showPicker=function(id) {
 
 			}
 		});
-			
+
 	},function(result){
 		alert("Error while uploading");
 	});
 
 };
 
+acceptJob=function(){
+	$.ajax( {
+		type : "POST",
+		dataType : "application/json",
+		contentType : "application/json; charset=utf-8",
+		data : data,
+		url : "setJobOngoing.php",
+		complete : function(ret) {
+			var response=ret.responseText;
+			$("#alertOK").html("Job finished!");
+			$("#alertOK").fadeIn().delay(2000).fadeOut();
+			$("#jobModal").hide();
+			location.href=location.href;
+		},
+		error : function(xhr) {
+			if (xhr.status == 500) {
+				$("#alertError").html("Error from server, please retry.");
+				$("#alertError").fadeIn().delay(1000).fadeOut();
+			}
+
+		}
+	});
+
+}
+
 angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	var ctrl=this;
 
 	ctrl.getClass=function(doc){
-		if (doc.status=="Pending") return "bg-danger";
+		if (doc.status=="Pending") return "bg-info";
 		if (doc.status=="Completed") return "bg-success";
-		if (doc.status=="Ongoing") return "bg-info";
-		if (doc.status=="Finished") return "bg-warning";
+		if (doc.status=="Ongoing") return "bg-warning";
+		if (doc.status=="Finished") return "bg-info";
+		if(doc.status=="ToBeAccepted") return "bg-danger";
 		return "row";
 	}
 
@@ -92,7 +118,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			if(doc.status=="Completed"){
 				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
 			}else if(doc.status=="Ongoing"){
-				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
+				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-id="'+doc.id+'"';
@@ -104,6 +130,15 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+='Waiting approval...';
 			}else if(doc.status=="Pending"){
 				html+='Waiting payment...';
+			}else if(doc.status=="ToBeAccepted"){
+				html+='<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#jobModal"';
+				html+='data-job="'+doc.job+'"';
+				html+=' data-price="'+doc.price+'"';
+				html+=' data-id="'+doc.id+'"';
+				html+=' data-currency="'+doc.currency+'"';
+				html+=' data-status="'+doc.status+'"';
+				html+=' data-description="'+doc.description+'"';
+				html+='>Show job and accept it</button>';
 			}
 			html+='</td>';
 			html+='<tr>';

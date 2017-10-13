@@ -318,7 +318,10 @@ $('#jobModal').on('show.bs.modal', function (event) {
   if(button.data('status')=="Ongoing"){
 	  html+="<br><br>";
 	  html+='<input class="btn btn-primary" type="button" value="Upload" onclick="showPicker('+button.data("id")+')"/>';
-  }
+  }else if(button.data('status')=="ToBeAccepted"){
+	  html+="<br><br>";
+	  html+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+')"/>';
+  })
   modal.find('.modal-body').html(html)
 })
 </script>
