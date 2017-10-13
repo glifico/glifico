@@ -321,7 +321,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   }else if(button.data('status')=="Proposed"){
 	  html+="<br><br>";
 	  html+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+')"/>';
-  })
+  }
   modal.find('.modal-body').html(html)
 })
 </script>
