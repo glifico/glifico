@@ -118,7 +118,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='<td class="col-md-4">'+doc.job+'</td>';
 			html+='<td class="col-md-4">'+doc.price+doc.currency+'</td>';
 			if(doc.status=="Pending"){
-				html+='<td class="col-md-4" data-toggle="Agency accept your job">'+"Accepted"+'</td>';
+				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="Agency accept your job">'+"Accepted"+'</td>';
 			}else{
 				html+='<td class="col-md-4">'+doc.status+'</td>';
 			}
