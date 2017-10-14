@@ -14,7 +14,7 @@ function NotifySlack($name)
   $data='{
     "channel": "#payments",
     "username": "Glifico payments $$",
-    "text": "'.$name.' paied Glifico!",
+    "text": "'.$name.' paid Glifico!",
     "icon_emoji": ":heavy_dollar_sign:"
   }
 ';
