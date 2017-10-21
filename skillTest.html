@@ -65,7 +65,7 @@
 <link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
 <link rel="stylesheet" type="text/css" href="main.css">
 
-		
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -260,7 +260,7 @@ md-input-container{
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
 </div>
 
-<!-- 
+<!--
 skill
  -->
 <br><br><br><br>
@@ -268,7 +268,7 @@ skill
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
 <div class="panel-heading">
-This test is designed to give you the opportunity to complete your 
+This test is designed to give you the opportunity to complete your
 fist assessment quickly.<br>Choose which language you want to be tested in and click on the
 button "try me out".<br>You will have 10 minutes to answer 10 questions randomly taken from
 our database.<br>The questions may about graeerer or reading comprension and will be
@@ -284,7 +284,7 @@ zeropoints.<br>If you first before time runs out click on the button "submit".<b
 <span>Choose the language you would like to be evaluated:</span><br>
 <div class="input-group">
 <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span>
-<span class="cambia" id="span-combo-lingue" onkeydown="if(event.keyCode == 13) document.getElementById('buttonTry').click()">Loading...</span>
+<span class="cambia" id="span-combo-lingue" onkeydown="if(event.keyCode == 13) document.getElementById('buttonTry').click()"><i class="fa fa-spinner fa-pulse fa-fw"></i>Loading...</span>
 <span></span>
 </div>
 <br><a id="buttonTry" class="btn btn-default" onCLick="tryOut()">Try me out</a>
@@ -313,13 +313,13 @@ zeropoints.<br>If you first before time runs out click on the button "submit".<b
 </div>
 </div>
 </div>
-</div>		
-		
+</div>
+
 <script>
 shouldBeTranslator();
 if(!isTranslator()) $("#skillBody").hide();
 </script>
-				
+
 <div ng-app="glifico">
 <glificofooter></glificofooter>
 </div>
