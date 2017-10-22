@@ -50,38 +50,39 @@ angular.module("search",[]).controller("search",function(){
 		html+='<table class="table table-responsive">';
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
-		html+='<th class="col-md-4" style="text-align:center;">Translator</th>';
-		html+='<th class="col-md-4" style="text-align:center;">From</th>';
-		html+='<th class="col-md-4" style="text-align:center;">To</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Field</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Rating</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Price</th>';
-		html+='<th class="col-md-4" style="text-align:center;"></th>';
+		html+='<th class="col-md-12" style="text-align:center;">Translator</th>';
+		html+='<th class="col-md-12" style="text-align:center;">From</th>';
+		html+='<th class="col-md-12" style="text-align:center;">To</th>';
+		html+='<th class="col-md-12" style="text-align:center;">Field</th>';
+		html+='<th class="col-md-12" style="text-align:center;">Rating</th>';
+		html+='<th class="col-md-12" style="text-align:center;">Price</th>';
+		html+='<th class="col-md-12" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
-			html+='<td class="col-md-4">'+doc.FirstName+doc.LastName+'</td>';
-			html+='<td class="col-md-4">'+doc.IdMothertongue+'</td>';
-			html+='<td class="col-md-4">'+doc.IdMothertongue+'</td>';
-			html+='<td class="col-md-4">'+doc.Field+'</td>';
-			html+='<td class="col-md-4">'+doc.Rating+'</td>';
-			html+='<td class="col-md-4">';
+			html+='<td class="col-md-12">'+doc.FirstName+doc.LastName+'</td>';
+			html+='<td class="col-md-12">'+doc.IdMothertongue+'</td>';
+			html+='<td class="col-md-12">'+doc.IdMothertongue+'</td>';
+			html+='<td class="col-md-12">'+doc.Field+'</td>';
+			html+='<td class="col-md-12">'+doc.Rating+'</td>';
+			html+='<td class="col-md-12">';
 			html+='<div class="rating">';
+			var classPrice=[];
 			switch(doc.Price){
 			case 3:
-				var class1="filled";
+				classPrice[0]="filled";
 			case 2:
-				var class2="filled";
+				classPrice[1]="filled";
 			case 1:
-				var class3="filled";
+				classPrice[2]="filled";
 			default:
 				break;
 			}
-			html+='<span class="money '+class1+'"><i class="fa fa-usd fa-3x" aria-hidden="true" data-rating="1" onclick="alert("you pushed 1")"></i></span>';
-			html+='<span class="money '+class2+'"><i class="fa fa-usd fa-3x" aria-hidden="true" data-rating="2" onclick="alert("you pushed 2")"></i></span>';
-			html+='<span class="money '+class3+'"><i class="fa fa-usd fa-3x" aria-hidden="true" data-rating="3" onclick="alert("you pushed 3")"></i></span>';
+			html+='<span class="money '+classPrice[0]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="1" onclick="alert("you pushed 1")"></i></span>';
+			html+='<span class="money '+classPrice[1]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="2" onclick="alert("you pushed 2")"></i></span>';
+			html+='<span class="money '+classPrice[2]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3" onclick="alert("you pushed 3")"></i></span>';
 			html+='</div>';
 			html+='</td>';
 			html+='<tr>';
