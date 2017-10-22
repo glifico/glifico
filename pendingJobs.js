@@ -115,10 +115,10 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		html+='<table class="table table-responsive">';
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
-		html+='<th class="col-md-4" style="text-align:center;">Job</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Price</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Status</th>';
-		html+='<th class="col-md-4" style="text-align:center;"></th>';
+		html+='<th class="col-md-3" style="text-align:center;">Job</th>';
+		html+='<th class="col-md-3" style="text-align:center;">Price</th>';
+		html+='<th class="col-md-3" style="text-align:center;">Status</th>';
+		html+='<th class="col-md-3" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
