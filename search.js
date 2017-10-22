@@ -70,16 +70,10 @@ angular.module("search",[]).controller("search",function(){
 			html+='<td class="col-md-12">';
 			html+='<div class="rating">';
 			var classPrice=[];
-			switch(doc.Price){
-			case 3:
-				classPrice[0]="filled";
-			case 2:
-				classPrice[1]="filled";
-			case 1:
-				classPrice[2]="filled";
-			default:
-				break;
-			}
+			classPrice[0]="";
+			classPrice[1]="";
+			classPrice[2]="";
+			classPrice[doc.Price]="filled";
 			html+='<span class="money '+classPrice[0]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="1" onclick="alert("you pushed 1")"></i></span>';
 			html+='<span class="money '+classPrice[1]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="2" onclick="alert("you pushed 2")"></i></span>';
 			html+='<span class="money '+classPrice[2]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3" onclick="alert("you pushed 3")"></i></span>';
