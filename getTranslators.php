@@ -15,8 +15,8 @@ $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
   $query="SELECT * FROM languages WHERE username='$translator';";
-  $result = $db->query($query);
-  $langRow = $result->fetch(PDO::FETCH_ASSOC);
+  $langResult = $db->query($query);
+  $langRow = $langResult->fetch(PDO::FETCH_ASSOC);
   $rating=$langRow['tottest'];
   array_push($toExit,array("Price"=>2, "Rating"=>$rating, "FirstName"=>$row['nome']{0},"LastName"=>$row['cognome']{0}, "IdCountry"=>$row['idstato'],"IdMothertongue"=>$row['madrelingua']));
 }
