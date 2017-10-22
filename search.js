@@ -85,6 +85,7 @@ angular.module("search",[]).controller("search",function(){
 			html+='<span class="money '+classPrice[2]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3" onclick="alert("you pushed 3")"></i></span>';
 			html+='</div>';
 			html+='</td>';
+			html+='<td class="col-md-12"></td>';
 			html+='<tr>';
 		}
 		html+='</table>';
