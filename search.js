@@ -69,14 +69,9 @@ angular.module("search",[]).controller("search",function(){
 			html+='<td class="col-md-12">'+doc.Rating+'</td>';
 			html+='<td class="col-md-12">';
 			html+='<div class="rating">';
-			var classPrice=[];
-			classPrice[0]="";
-			classPrice[1]="";
-			classPrice[2]="";
-			classPrice[doc.Price]="filled";
-			html+='<span class="money '+classPrice[0]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="1" onclick="alert("you pushed 1")"></i></span>';
-			html+='<span class="money '+classPrice[1]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="2" onclick="alert("you pushed 2")"></i></span>';
-			html+='<span class="money '+classPrice[2]+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3" onclick="alert("you pushed 3")"></i></span>';
+			html+='<span class="money '+(doc.Price>=1?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="1" onclick="alert("you pushed 1")"></i></span>';
+			html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="2" onclick="alert("you pushed 2")"></i></span>';
+			html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3" onclick="alert("you pushed 3")"></i></span>';
 			html+='</div>';
 			html+='</td>';
 			html+='<td class="col-md-12"></td>';
