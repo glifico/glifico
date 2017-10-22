@@ -47,6 +47,7 @@
 <script src="app/login.controller.js"></script>
 
 <script src="search.js"></script>
+<link rel="stylesheet" type="text/css" href="search.css">
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -291,40 +292,6 @@ What does this page do?
 
 <div id="search" ng-controller="search as ctrl">
 <span id="table"></span>
-</div>
-
-
-<style>
-	.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-  text-align: center;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-}
-.rating > span:hover,
-.rating > span:hover ~ span {
-	color: gold;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-color: gold;
-}
-
-.rating > .filled {
-	color:red;
-}
-
-</style>
-
-<div class="rating">
-	<span class="money filled"><i class="fa fa-usd fa-3x" aria-hidden="true" data-rating="1" onclick="alert('you pushed 0')"></i>       </span>
-  <span class="money"><i class="fa fa-usd fa-3x" aria-hidden="true" data-rating="1" onclick="alert('you pushed 1')"></i>       </span>
-	<span class="money"><i class="fa fa-usd fa-3x" aria-hidden="true" data-rating="2" onclick="alert('you pushed 2')"></i>       </span>
-	<span class="money"><i class="fa fa-usd fa-3x" aria-hidden="true" data-rating="3" onclick="alert('you pushed 3')"></i>       </span>
 </div>
 
 </div>
