@@ -14,7 +14,8 @@ $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
-  $query="SELECT * FROM languages WHERE username='$translator';";
+  $langTo=$row['madrelingua'];
+  $query="SELECT * FROM languages WHERE username='$translator' AND idlanguageto='$langTo';";
   $langResult = $db->query($query);
   $langRow = $langResult->fetch(PDO::FETCH_ASSOC);
   $rating=$langRow['tottest'];
