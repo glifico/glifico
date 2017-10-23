@@ -11,13 +11,13 @@ $query="SELECT * FROM payments WHERE translator='$user' ORDER BY status DESC;";
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"link"=>$row['link'],"description"=>$row['description'],"choiche"=>"First"));
+  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"link"=>$row['link'],"description"=>$row['description'],"choice"=>1));
 }
 
 $query="SELECT * FROM payments WHERE secondTranslator='$user' ORDER BY status DESC;";
 $result = $db->query($query);
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"link"=>$row['link'],"description"=>$row['description'],"choiche"=>"Second"));
+  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"link"=>$row['link'],"description"=>$row['description'],"choice"=>2));
 }
 
 $result->CloseCursor();

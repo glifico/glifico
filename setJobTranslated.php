@@ -16,9 +16,12 @@ if(!$data){
 $user=$data['user'];
 $id=$data['id'];
 $url=$data['url'];
+$choice=$data['choice'];
 if(!certToken($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="UPDATE payments SET status='Translated', link='$url' WHERE translator='$user' and id='$id';";
+if($choice==1){$query="UPDATE payments SET status='Translated', link='$url' WHERE translator='$user' and id='$id';";}
+if($choice==2){$query="UPDATE payments SET secondStatus='Translated', link='$url' WHERE secondTranslator='$user' and id='$id';";}
+
 $result = $db->query($query);
 
 $result->CloseCursor();

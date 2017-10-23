@@ -37,10 +37,14 @@ if(!$data){
 
 $user=$data['user'];
 $id=$data['id'];
+$choice=$data['choice'];
+
 if(!certToken($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="UPDATE payments SET status='Ongoing' WHERE translator='$user' and id='$id';";
+if($choice==1){$query="UPDATE payments SET status='Assigned' WHERE translator='$user' and id='$id';";}
+if($choice==2){$query="UPDATE payments SET seconStatus='Assigned' WHERE seconTranslator='$user' and id='$id';";}
 $result = $db->query($query);
+
 
 $result->CloseCursor();
 NotifySlack($user);

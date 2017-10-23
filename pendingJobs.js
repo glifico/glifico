@@ -6,7 +6,7 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 	policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
 })
 
-showPicker=function(id) {
+showPicker=function(id, choice) {
 	client.pick({
 		accept: ['.pdf','.odt','.doc','.docx','.txt'],
 		maxFiles: 1,
@@ -21,6 +21,7 @@ showPicker=function(id) {
 				user : getUsername(),
 				token : getToken(),
 				id: id,
+				choice: choice,
 				url: result.filesUploaded[0]["url"]
 		};
 
@@ -55,10 +56,11 @@ showPicker=function(id) {
 
 };
 
-acceptJob=function(id){
+acceptJob=function(id, choice){
 	var temp = {
 			user : getUsername(),
 			token : getToken(),
+			choice: choice,
 			id: id,
 	};
 
@@ -75,6 +77,40 @@ acceptJob=function(id){
 			var response=ret.responseText;
 			$("#alertOK").html("Job Translated!");
 			$("#alertOK").fadeIn().delay(2000).fadeOut();
+			$("#jobModal").hide();
+			location.href=location.href;
+		},
+		error : function(xhr) {
+			if (xhr.status == 500) {
+				$("#alertError").html("Error from server, please retry.");
+				$("#alertError").fadeIn().delay(1000).fadeOut();
+			}
+
+		}
+	});
+
+}
+
+
+refuseJob=function(id, choice){
+	var temp = {
+			user : getUsername(),
+			token : getToken(),
+			choice: choice,
+			id: id,
+	};
+
+	var stringPass = JSON.stringify(temp);
+	var data = stringPass;
+	
+	$.ajax( {
+		type : "POST",
+		dataType : "application/json",
+		contentType : "application/json; charset=utf-8",
+		data : data,
+		url : "setJobRefused.php",
+		complete : function(ret) {
+			var response=ret.responseText;
 			$("#jobModal").hide();
 			location.href=location.href;
 		},
@@ -148,6 +184,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-id="'+doc.id+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-status="'+doc.status+'"';
+				html+=' data-choice="'+doc.choice+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+='>Show job</button>';
 			}else if(doc.status=="Translated"){
@@ -162,6 +199,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-status="'+doc.status+'"';
 				html+=' data-description="'+doc.description+'"';
+				html+=' data-choice="'+doc.choice+'"';
 				html+='>Show job and accept it</button>';
 			}
 			html+='</td>';
