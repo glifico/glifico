@@ -12,10 +12,7 @@ showPicker=function(id, choice) {
 		maxFiles: 1,
 		onClose(){
 
-		},
-		onFileUploadTranslated(){
-			//uploaded
-		},
+		}
 	}).then(function(result) {
 		var temp = {
 				user : getUsername(),
