@@ -27,7 +27,7 @@ $(document).ready(function () {
 //}
 
 
-angular.module("search",[]).controller("search",function(){
+angular.module("search",[]).controller("search",function($scope){
 	var ctrl=this;
 
 	ctrl.getClass=function(doc){
@@ -43,7 +43,20 @@ angular.module("search",[]).controller("search",function(){
 			"job":"ppp",
 			"price":"oooo"
 		}
-		]
+		];
+
+	ctrl.loadLanguages = function(){
+		var req=createXHTMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				ctrl.Languages=ret;
+			}
+		}
+
+		req.open("GET","getLanguages.php",true);
+		req.send();
+	};
 
 	ctrl.createTable=function(){
 		var html="";
@@ -81,8 +94,23 @@ angular.module("search",[]).controller("search",function(){
 		$("#table").html(html);
 	}
 
+
+	ctrl.createForm=function(){
+		var html="";
+		html+='<label>From</label>';
+		html+='<select placeholder="Translate from" required>';
+		html+='<option value="aaaaa">{{ctrl.prova}}</option>';
+		for(var i=0; i<ctrl.Languages.length; i++){
+			var element=ctrl.Languages[i];
+			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
+		}
+		html+='</select>';
+		$("#formleft").html(html);
+	}
+
 	ctrl.$onInit=function(){
 		var url = "getTranslators.php?user=" + getUsername()+"&token="+getToken();
+		ctrl.loadLanguages();
 
 		var req = createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
@@ -90,6 +118,7 @@ angular.module("search",[]).controller("search",function(){
 				var data=JSON.parse(req.responseText);
 				ctrl.documents=data;
 				ctrl.createTable();
+				ctrl.createForm();
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
