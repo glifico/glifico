@@ -5,6 +5,7 @@ Cloudflare*
 *~
 
 deploy.sh
+dumpDB.sh
 .DS_Store
 *.phar
 
