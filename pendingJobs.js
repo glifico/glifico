@@ -66,7 +66,7 @@ acceptJob=function(id, choice){
 
 	var stringPass = JSON.stringify(temp);
 	var data = stringPass;
-	
+
 	$.ajax( {
 		type : "POST",
 		dataType : "application/json",
@@ -102,7 +102,7 @@ refuseJob=function(id, choice){
 
 	var stringPass = JSON.stringify(temp);
 	var data = stringPass;
-	
+
 	$.ajax( {
 		type : "POST",
 		dataType : "application/json",
@@ -151,7 +151,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Closed") return "Work closed definetely";
 		return "row";
 	}
-	
+
 	ctrl.createTable=function(){
 		var html="";	
 		html+='<table class="table table-responsive">';
@@ -168,8 +168,10 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-4">'+doc.job+'</td>';
 			html+='<td class="col-md-4">'+doc.price+doc.currency+'</td>';
-			if(doc.status=="Pending"){
-				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+"Accepted"+'</td>';
+			if(doc.choice==1) {choiceStr="as first";}
+			else if(doc.choice==1) {choiceStr="as second";}
+			if(doc.status=="To Be accepted"){
+				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+"To be accepted "+choiceStr+'</td>';
 			}else{
 				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
 			}
