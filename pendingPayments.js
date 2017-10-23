@@ -31,19 +31,19 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 
 	ctrl.getClass=function(doc){
 		if (doc.status=="Pending") return "bg-danger";
-		if (doc.status=="Completed") return "bg-success";
-		if (doc.status=="Ongoing") return "bg-info";
-		if (doc.status=="Finished") return "bg-warning";
-		if(doc.status=="Proposed") return "bg-info";
+		if (doc.status=="Closed") return "bg-success";
+		if (doc.status=="Assigned") return "bg-info";
+		if (doc.status=="Translated") return "bg-warning";
+		if(doc.status=="To Be Assigned") return "bg-info";
 		return "row";
 	}
 
 	ctrl.getToolTip=function(doc){
 		if (doc.status=="Pending") return "You need to pay this job";
-		if (doc.status=="Completed") return "Job is finished and payed";
-		if (doc.status=="Ongoing") return "Translator is working and will upload the traslated document";
-		if (doc.status=="Finished") return "You need to review and approve this job";
-		if(doc.status=="Proposed") return "Translator need to accept this job";
+		if (doc.status=="Closed") return "Job is Translated and payed";
+		if (doc.status=="Assigned") return "Translator is working and will upload the traslated document";
+		if (doc.status=="Translated") return "You need to review and approve this job";
+		if(doc.status=="To Be Assigned") return "Translator need to accept this job";
 		return "row";
 	}
 	
@@ -66,18 +66,18 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
 			html+='<td class="col-md-3">';
 			html+='<div id="'+doc.id+'">';
-			if(doc.status=="Completed"){
+			if(doc.status=="Closed"){
 				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
 			}else if (doc.status=="Pending"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
-			}else if(doc.status=="Ongoing"){
+			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+='>Show job</button>';
-			}else if(doc.status=="Finished"){
+			}else if(doc.status=="Translated"){
 				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+='data-id="'+doc.id+'"';
@@ -86,7 +86,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-link="'+doc.link+'"';
 				html+='>Approve Job</button>';
-			}else if(doc.status=="Proposed"){
+			}else if(doc.status=="To Be Assigned"){
 				html+="Waiting for translator acceptance..";
 			}
 			html+='</td>';

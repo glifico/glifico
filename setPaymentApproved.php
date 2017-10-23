@@ -30,7 +30,7 @@ $user=$_GET['user'];
 $id=$_GET['id'];
 if(!certTokenA($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="UPDATE payments SET status='Pending' WHERE username='$user' and id='$id';";
+$query="UPDATE payments SET status='Accepted' WHERE username='$user' and id='$id';";
 $result = $db->query($query);
 
 $result->CloseCursor();

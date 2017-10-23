@@ -13,7 +13,7 @@ showPicker=function(id) {
 		onClose(){
 
 		},
-		onFileUploadFinished(){
+		onFileUploadTranslated(){
 			//uploaded
 		},
 	}).then(function(result) {
@@ -32,10 +32,10 @@ showPicker=function(id) {
 			dataType : "application/json",
 			contentType : "application/json; charset=utf-8",
 			data : data,
-			url : "setJobFinished.php",
+			url : "setJobTranslated.php",
 			complete : function(ret) {
 				var response=ret.responseText;
-				$("#alertOK").html("Job finished!");
+				$("#alertOK").html("Job Translated!");
 				$("#alertOK").fadeIn().delay(2000).fadeOut();
 				$("#jobModal").hide();
 				location.href=location.href;
@@ -70,10 +70,10 @@ acceptJob=function(id){
 		dataType : "application/json",
 		contentType : "application/json; charset=utf-8",
 		data : data,
-		url : "setJobOngoing.php",
+		url : "setJobAssigned.php",
 		complete : function(ret) {
 			var response=ret.responseText;
-			$("#alertOK").html("Job finished!");
+			$("#alertOK").html("Job Translated!");
 			$("#alertOK").fadeIn().delay(2000).fadeOut();
 			$("#jobModal").hide();
 			location.href=location.href;
@@ -94,19 +94,19 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 
 	ctrl.getClass=function(doc){
 		if (doc.status=="Pending") return "bg-info";
-		if (doc.status=="Completed") return "bg-success";
-		if (doc.status=="Ongoing") return "bg-warning";
-		if (doc.status=="Finished") return "bg-info";
-		if(doc.status=="Proposed") return "bg-danger";
+		if (doc.status=="Closed") return "bg-success";
+		if (doc.status=="Assigned") return "bg-warning";
+		if (doc.status=="Translated") return "bg-info";
+		if(doc.status=="To Be Assigned") return "bg-danger";
 		return "row";
 	}
 
 	ctrl.getToolTip=function(doc){
 		if (doc.status=="Pending") return "Agency will pay this job";
-		if (doc.status=="Completed") return "Job is finished and payed";
-		if (doc.status=="Ongoing") return "When you have done you should update the translated document";
-		if (doc.status=="Finished") return "Agency need to review and approve this job";
-		if(doc.status=="Proposed") return "You can accept this job";
+		if (doc.status=="Closed") return "Job is Translated and payed";
+		if (doc.status=="Assigned") return "When you have done you should update the translated document";
+		if (doc.status=="Translated") return "Agency need to review and approve this job";
+		if(doc.status=="To Be Assigned") return "You can accept this job";
 		return "row";
 	}
 	
@@ -133,9 +133,9 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			}
 			html+='<td class="col-md-4">';
 			html+='<div id="'+doc.id+'">';
-			if(doc.status=="Completed"){
+			if(doc.status=="Closed"){
 				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
-			}else if(doc.status=="Ongoing"){
+			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
@@ -144,11 +144,11 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-status="'+doc.status+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+='>Show job</button>';
-			}else if(doc.status=="Finished"){
+			}else if(doc.status=="Translated"){
 				html+='Waiting approval...';
 			}else if(doc.status=="Pending"){
 				html+='Waiting payment...';
-			}else if(doc.status=="Proposed"){
+			}else if(doc.status=="To Be Assigned"){
 				html+='<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
