@@ -120,6 +120,8 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 	
 	ctrl.search=function(){
+		$("#table").html('<i class="fa fa-spinner fa-spin fa-4x fa-fw"></i>');
+		
 		var url = "getTranslators.php?user=" + getUsername()+"&token="+getToken();
 		var req = createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
