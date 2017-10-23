@@ -30,21 +30,6 @@ $(document).ready(function () {
 angular.module("search",[]).controller("search",function($scope){
 	var ctrl=this;
 
-	ctrl.getClass=function(doc){
-		return "primary";
-	}
-
-	ctrl.getToolTip=function(doc){
-		return "";
-	}
-
-	ctrl.documents=[
-		{
-			"job":"ppp",
-			"price":"oooo"
-		}
-		];
-
 	ctrl.loadLanguages = function(){
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
