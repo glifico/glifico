@@ -134,7 +134,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Not Accepted") return "bg-info";
 		if (doc.status=="Paid") return "bg-success";
 		if (doc.status=="Completed") return "bg-success";
-		return "row";
+		return "";
 	}
 
 	ctrl.getToolTip=function(doc){
@@ -146,7 +146,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Not Accepted") return "Work neither accepted or paid";
 		if (doc.status=="Paid") return "ok";
 		if (doc.status=="Completed") return "Work closed definetely";
-		return "row";
+		return "";
 	}
 
 	ctrl.createTable=function(){

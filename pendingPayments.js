@@ -36,9 +36,9 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		if (doc.status=="Translated") return "bg-warning";
 		if (doc.status=="Accepted") return "bg-info";
 		if (doc.status=="Not Accepted") return "bg-warning";
-		if (doc.status=="Paied") return "bg-info";
-		if (doc.status=="Closed") return "bg-info";
-		return "row";
+		if (doc.status=="Paid") return "bg-success";
+		if (doc.status=="Completed") return "bg-success";
+		return "";
 	}
 
 	ctrl.getToolTip=function(doc){
@@ -49,8 +49,8 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		if (doc.status=="Accepted") return "Work to be paid";
 		if (doc.status=="Not Accepted") return "work neither accepted or paid";
 		if (doc.status=="Paid") return "ok";
-		if (doc.status=="Closed") return "Work closed definetely";
-		return "row";
+		if (doc.status=="Completed") return "Work closed definetely";
+		return "";
 	}
 	
 	ctrl.createTable=function(){
