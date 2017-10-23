@@ -88,7 +88,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.setRating=function(rat){
-		ctrl.selectedPrice=rat;
+		ctrl.selectedRating=rat;
 	}
 	
 	ctrl.createForm=function(){
