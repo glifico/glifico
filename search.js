@@ -29,6 +29,11 @@ $(document).ready(function () {
 
 angular.module("search",[]).controller("search",function($scope){
 	var ctrl=this;
+	
+	ctrl.getClass=function(doc){
+		return "primary";
+	}
+
 
 	ctrl.loadLanguages = function(){
 		var req=createXHTMLHttpRequest();
