@@ -291,10 +291,20 @@ What does this page do?
 
 
 <div id="search" style="width:90%;margin:auto;" data-ng-controller="search as ctrl">
+{{ctrl.selectedPrice}}
 <form name="searchForm" action="/" method="post">
 <div id="formleft" style="width:30%;margin:auto;float:left;"></div>
-<div style="width:30%;margin:auto;float:center;">{{ctrl.prova}}</div>
-<div style="width:30%;margin:auto;float:right;"></div>
+<div style="width:30%;margin:auto;float:center;"></div>
+<div style="width:30%;margin:auto;float:right;">
+<span id="formRating"></span>
+<div id="formPrice">
+<div class="rating">
+<span class="money"><i class="fa fa-usd" aria-hidden="true" data-rating="1" data-ng-click="{{ctrl.setPrice(1)}}"></i></span>
+<span class="money"><i class="fa fa-usd" aria-hidden="true" data-rating="2" data-ng-click="{{ctrl.setPrice(2)}}"></i></span>
+<span class="money"><i class="fa fa-usd" aria-hidden="true" data-rating="3" data-ng-click="{{ctrl.setPrice(3)}}"></i></span>
+</div>
+</div>
+</div>
 </form>
 
 <span id="table"></span>

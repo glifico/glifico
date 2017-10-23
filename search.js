@@ -94,20 +94,38 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#table").html(html);
 	}
 
-
+	ctrl.setPrice=function(price){
+		ctrl.selectedPrice=1;
+	}
+	
 	ctrl.createForm=function(){
 		var html="";
-		html+='<label>From</label>';
+		html+='<label>From: </label>';
 		html+='<select placeholder="Translate from" required>';
-		html+='<option value="aaaaa">{{ctrl.prova}}</option>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
 		$("#formleft").html(html);
+		
+		var html="";
+		html+='<label>To: </label>';
+		html+='<select placeholder="Translate from" required>';
+		for(var i=0; i<ctrl.Languages.length; i++){
+			var element=ctrl.Languages[i];
+			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
+		}
+		html+='</select>';
+		$("#formcenter").html(html);
+		
+		ctrl.createFormRight();
 	}
 
+	ctrl.createFormRight=function(){
+		
+	};
+	
 	ctrl.$onInit=function(){
 		var url = "getTranslators.php?user=" + getUsername()+"&token="+getToken();
 		ctrl.loadLanguages();
