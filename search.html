@@ -295,7 +295,15 @@ What does this page do?
 <div id="formleft" style="width:30%;margin:auto;float:left;"></div>
 <div id="formcenter" style="width:30%;margin:auto;float:center;"></div>
 <div id="formright" style="width:30%;margin:auto;float:right;">
-<div id="formRating"></div>
+<div id="formRating">
+<div class="rating">
+<span class="{{(ctrl.selectedRating>=5?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="5" data-ng-click="ctrl.setRating(5)"></i></span>;
+<span class="{{(ctrl.selectedRating>=4?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="4" data-ng-click="ctrl.setRating(4)"></i></span>;
+<span class="{{(ctrl.selectedRating>=3?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="3" data-ng-click="ctrl.setRating(3)"></i></span>;
+<span class="{{(ctrl.selectedRating>=2?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="2" data-ng-click="ctrl.setRating(2)"></i></span>;
+<span class="{{(ctrl.selectedRating>=1?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" data-ng-click="ctrl.setRating(1)"></i></span>;
+</div>
+</div>
 <div id="formPrice">
 Price class:</br>
 <div class="rating">
