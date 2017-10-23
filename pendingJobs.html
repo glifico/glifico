@@ -313,10 +313,10 @@ $('#jobModal').on('show.bs.modal', function (event) {
   html+="Title: <b>"+job+"</b><br>";
   html+="Price: "+button.data('price')+button.data('currency');
   html+="<br><br>"+button.data('description');
-  if(button.data('status')=="Ongoing"){
+  if(button.data('status')=="Assigned"){
 	  html+="<br><br>";
 	  html+='<input class="btn btn-primary" type="button" value="Upload" onclick="showPicker('+button.data("id")+')"/>';
-  }else if(button.data('status')=="Proposed"){
+  }else if(button.data('status')=="To Be Assigned"){
 	  html+="<br><br>";
 	  html+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+')"/>';
   }
