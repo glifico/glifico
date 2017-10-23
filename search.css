@@ -21,6 +21,10 @@
 	
 }
 
+.rating > .filled{
+	color: gold;
+}
+
 .price > .filled {
   color:gold;
 }
