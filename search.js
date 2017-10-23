@@ -120,7 +120,7 @@ angular.module("search",[]).controller("search",function($scope){
 		html+="Rating:</br>";
 		html+='<div class="rating">';
 		for (var i=5; i>=1; i--){
-			var classFilled="{{ctrl.selectedRating>="+i+"?'filled':''}}";
+			var classFilled="{{(ctrl.selectedRating>="+i+"?'filled':'')}}";
 			html+='<span class="'+classFilled+' "><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" data-ng-click="ctrl.setRating('+i+')"></i></span>';
 		}
 		html+='</div>';
