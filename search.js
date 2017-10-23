@@ -97,6 +97,10 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.setPrice=function(price){
 		ctrl.selectedPrice=price;
 	}
+
+	ctrl.setRating=function(rat){
+		ctrl.selectedPrice=rat;
+	}
 	
 	ctrl.createForm=function(){
 		var html="";
@@ -108,7 +112,7 @@ angular.module("search",[]).controller("search",function($scope){
 		}
 		html+='</select>';
 		$("#formleft").html(html);
-		
+
 		var html="";
 		html+='<label>To: </label>';
 		html+='<select placeholder="Translate from" required>';
@@ -118,20 +122,28 @@ angular.module("search",[]).controller("search",function($scope){
 		}
 		html+='</select>';
 		$("#formcenter").html(html);
-		
+
 		ctrl.createFormRight();
 	}
 
 	ctrl.createFormRight=function(){
-		
-	};
-	
+		var html="";
+		html+='<div class="rating">';
+		for (var i=1; i<=5; i++){
+			var classFilled=(ctrl.selectedRating>=i?"filled":"");
+			html+='<span class="money'+classFilled+' "><i  class="fa fa-star" aria-hidden="true" data-rating="'+i+'" data-ng-click="ctrl.setRating('+i+')"></i></span>';
+		}
+		html+='</div>';
+		$("#formrating").html(html);
+	}
+
 	ctrl.$onInit=function(){
 		var url = "getTranslators.php?user=" + getUsername()+"&token="+getToken();
-		
+
 		ctrl.loadLanguages();
 		ctrl.selectedPrice=0;
-		
+		ctrl.selectedRating=-1;
+
 		var req = createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
