@@ -132,8 +132,8 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Translated") return "bg-info";
 		if (doc.status=="Accepted") return "bg-warning";
 		if (doc.status=="Not Accepted") return "bg-info";
-		if (doc.status=="Paied") return "bg-info";
-		if (doc.status=="Closed") return "bg-info";
+		if (doc.status=="Paid") return "bg-success";
+		if (doc.status=="Completed") return "bg-success";
 		return "row";
 	}
 
@@ -145,7 +145,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Accepted") return "Agency need to pay";
 		if (doc.status=="Not Accepted") return "Work neither accepted or paid";
 		if (doc.status=="Paid") return "ok";
-		if (doc.status=="Closed") return "Work closed definetely";
+		if (doc.status=="Completed") return "Work closed definetely";
 		return "row";
 	}
 
