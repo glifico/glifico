@@ -95,7 +95,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.setPrice=function(price){
-		ctrl.selectedPrice=1;
+		ctrl.selectedPrice=price;
 	}
 	
 	ctrl.createForm=function(){
@@ -128,8 +128,10 @@ angular.module("search",[]).controller("search",function($scope){
 	
 	ctrl.$onInit=function(){
 		var url = "getTranslators.php?user=" + getUsername()+"&token="+getToken();
+		
 		ctrl.loadLanguages();
-
+		ctrl.selectedPrice=0;
+		
 		var req = createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
