@@ -129,12 +129,12 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.createFormRight=function(){
 		var html="";
 		html+='<div class="rating">';
-		for (var i=1; i<=5; i++){
+		for (var i=5; i>=1; i--){
 			var classFilled=(ctrl.selectedRating>=i?"filled":"");
 			html+='<span class="money'+classFilled+' "><i  class="fa fa-star" aria-hidden="true" data-rating="'+i+'" data-ng-click="ctrl.setRating('+i+')"></i></span>';
 		}
 		html+='</div>';
-		$("#formrating").html(html);
+		$("#formRating").html(html);
 	}
 
 	ctrl.$onInit=function(){
