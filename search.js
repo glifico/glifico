@@ -130,26 +130,21 @@ angular.module("search",[]).controller("search",function($scope){
 		var html="";
 		html+='<div class="rating">';
 		for (var i=5; i>=1; i--){
-			var classFilled=(ctrl.selectedRating>=i?"filled":"");
-			html+='<span class="money'+classFilled+' "><i  class="fa fa-star" aria-hidden="true" data-rating="'+i+'" data-ng-click="ctrl.setRating('+i+')"></i></span>';
+			var classFilled='{{ctrl.selectedRating>='+i+'?"filled":""}}';
+			html+='<span class="money'+classFilled+' "><i  class="fa fa-star fa-3x" aria-hidden="true" data-rating="'+i+'" data-ng-click="ctrl.setRating('+i+')"></i></span>';
 		}
 		html+='</div>';
 		$("#formRating").html(html);
 	}
-
-	ctrl.$onInit=function(){
+	
+	ctrl.search=function(){
 		var url = "getTranslators.php?user=" + getUsername()+"&token="+getToken();
-
-		ctrl.loadLanguages();
-		ctrl.selectedPrice=0;
-		ctrl.selectedRating=-1;
-
 		var req = createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
 				var data=JSON.parse(req.responseText);
 				ctrl.documents=data;
-				ctrl.createForm();
+				ctrl.createTable();
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
@@ -159,6 +154,15 @@ angular.module("search",[]).controller("search",function($scope){
 		req.open("GET",url,true);
 		req.send();
 	}
+
+	ctrl.$onInit=function(){
+		ctrl.selectedPrice=0;
+		ctrl.selectedRating=-1;
+
+		ctrl.loadLanguages();
+		ctrl.createForm();
+	}
+	
 });
 
 
