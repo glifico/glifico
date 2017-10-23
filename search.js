@@ -51,6 +51,7 @@ angular.module("search",[]).controller("search",function($scope){
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
 				ctrl.Languages=ret;
+				ctrl.createForm();
 				return(true);
 			}else{
 				return(false);
@@ -163,7 +164,6 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.selectedPrice=0;
 		ctrl.selectedRating=-1;
 		ctrl.loadLanguages();
-		ctrl.createForm();
 	}
 	
 });
