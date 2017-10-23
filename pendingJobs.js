@@ -93,20 +93,26 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	var ctrl=this;
 
 	ctrl.getClass=function(doc){
-		if (doc.status=="Pending") return "bg-info";
-		if (doc.status=="Closed") return "bg-success";
-		if (doc.status=="Assigned") return "bg-warning";
+		if (doc.status=="To Be Assigned") return "bg-warning";
+		if (doc.status=="Assigned") return "bg-info";
+		if (doc.status=="Refused") return "bg-danger";
 		if (doc.status=="Translated") return "bg-info";
-		if(doc.status=="To Be Assigned") return "bg-danger";
+		if (doc.status=="Accepted") return "bg-warning";
+		if (doc.status=="Not Accepted") return "bg-info";
+		if (doc.status=="Paied") return "bg-info";
+		if (doc.status=="Closed") return "bg-info";
 		return "row";
 	}
 
 	ctrl.getToolTip=function(doc){
-		if (doc.status=="Pending") return "Agency will pay this job";
-		if (doc.status=="Closed") return "Job is Translated and payed";
-		if (doc.status=="Assigned") return "When you have done you should update the translated document";
-		if (doc.status=="Translated") return "Agency need to review and approve this job";
-		if(doc.status=="To Be Assigned") return "You can accept this job";
+		if (doc.status=="To Be Assigned") return "Translators need to Accept";
+		if (doc.status=="Assigned") return "Translator is working";
+		if (doc.status=="Refused") return "Translator refused";
+		if (doc.status=="Translated") return "Work finished";
+		if (doc.status=="Accepted") return "Agency need to pay";
+		if (doc.status=="Not Accepted") return "Work neither accepted or paid";
+		if (doc.status=="Paid") return "ok";
+		if (doc.status=="Closed") return "Work closed definetely";
 		return "row";
 	}
 	
@@ -146,7 +152,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+='>Show job</button>';
 			}else if(doc.status=="Translated"){
 				html+='Waiting approval...';
-			}else if(doc.status=="Pending"){
+			}else if(doc.status=="Accepted"){
 				html+='Waiting payment...';
 			}else if(doc.status=="To Be Assigned"){
 				html+='<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#jobModal"';

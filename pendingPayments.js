@@ -30,20 +30,26 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 	var ctrl=this;
 
 	ctrl.getClass=function(doc){
-		if (doc.status=="Pending") return "bg-danger";
-		if (doc.status=="Closed") return "bg-success";
+		if (doc.status=="To Be Assigned") return "bg-info";
 		if (doc.status=="Assigned") return "bg-info";
+		if (doc.status=="Refused") return "bg-danger";
 		if (doc.status=="Translated") return "bg-warning";
-		if(doc.status=="To Be Assigned") return "bg-info";
+		if (doc.status=="Accepted") return "bg-info";
+		if (doc.status=="Not Accepted") return "bg-warning";
+		if (doc.status=="Paied") return "bg-info";
+		if (doc.status=="Closed") return "bg-info";
 		return "row";
 	}
 
 	ctrl.getToolTip=function(doc){
-		if (doc.status=="Pending") return "You need to pay this job";
-		if (doc.status=="Closed") return "Job is Translated and payed";
-		if (doc.status=="Assigned") return "Translator is working and will upload the traslated document";
-		if (doc.status=="Translated") return "You need to review and approve this job";
-		if(doc.status=="To Be Assigned") return "Translator need to accept this job";
+		if (doc.status=="To Be Assigned") return "Translators need to Accept";
+		if (doc.status=="Assigned") return "Translator is working";
+		if (doc.status=="Refused") return "Translator refused";
+		if (doc.status=="Translated") return "Work finished";
+		if (doc.status=="Accepted") return "Work to be paid";
+		if (doc.status=="Not Accepted") return "work neither accepted or paid";
+		if (doc.status=="Paid") return "ok";
+		if (doc.status=="Closed") return "Work closed definetely";
 		return "row";
 	}
 	
@@ -66,9 +72,9 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
 			html+='<td class="col-md-3">';
 			html+='<div id="'+doc.id+'">';
-			if(doc.status=="Closed"){
+			if(doc.status=="Closed"||doc.status=="Paid"){
 				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
-			}else if (doc.status=="Pending"){
+			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
 			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
