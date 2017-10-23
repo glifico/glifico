@@ -135,7 +135,6 @@ angular.module("search",[]).controller("search",function($scope){
 			if (req.status == 200&req.readyState==4){
 				var data=JSON.parse(req.responseText);
 				ctrl.documents=data;
-				ctrl.createTable();
 				ctrl.createForm();
 				return(true);
 			}else{
