@@ -31,11 +31,11 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 
 	ctrl.getClass=function(doc){
 		if (doc.status=="To Be Assigned") return "bg-info";
-		if (doc.status=="Assigned") return "bg-info";
+		if (doc.status=="Assigned") return "bg-warning";
 		if (doc.status=="Refused") return "bg-danger";
 		if (doc.status=="Translated") return "bg-warning";
 		if (doc.status=="Accepted") return "bg-info";
-		if (doc.status=="Not Accepted") return "bg-warning";
+		if (doc.status=="Not Accepted") return "bg-info";
 		if (doc.status=="Paid") return "bg-success";
 		if (doc.status=="Completed") return "bg-success";
 		return "";
