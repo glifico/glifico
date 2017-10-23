@@ -128,6 +128,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.createFormRight=function(){
 		var html="";
+		html+="Rating:</br>";
 		html+='<div class="rating">';
 		for (var i=5; i>=1; i--){
 			var classFilled='{{ctrl.selectedRating>='+i+'?"filled":""}}';
