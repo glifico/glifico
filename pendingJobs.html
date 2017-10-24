@@ -313,15 +313,17 @@ $('#jobModal').on('show.bs.modal', function (event) {
   html+="Title: <b>"+job+"</b><br>";
   html+="Price: "+button.data('price')+button.data('currency');
   html+="<br><br>"+button.data('description');
+  var btnHtml="";
   if(button.data('status')=="Assigned"){
 	  html+="<br><br>";
-	  html+='<input class="btn btn-primary" type="button" value="Upload" onclick="showPicker('+button.data("id")+","+button.data("choice")+')"/>';
+	  btnHtml+='<input class="btn btn-primary" type="button" value="Upload" onclick="showPicker('+button.data("id")+","+button.data("choice")+')"/>';
   }else if(button.data('status')=="To Be Assigned"){
-	  html+="<br><br>";
-	  html+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+","+button.data("choice")+')"/>';
-	  html+='<input class="btn btn-danger" type="button" value="Refuse" onclick="refuseJob('+button.data("id")+","+button.data("choice")+')"/>';
+	  btnHtml+="<br><br>";
+	  btnHtml+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+","+button.data("choice")+')"/>';
+	  btnHtml+='<input class="btn btn-danger" type="button" value="Refuse" onclick="refuseJob('+button.data("id")+","+button.data("choice")+')"/>';
   }
-  modal.find('.modal-body').html(html)
+  modal.find('.modal-body').html(html);
+  modal.find('.modal-footer').html(btnHtml);
 })
 </script>
 
