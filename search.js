@@ -76,9 +76,9 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<td class="col-md-3">'+doc.Rating+'</td>';
 			html+='<td class="col-md-2">';
 			html+='<div class="price">';
-			html+='<span class="money '+(doc.Price>=1?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="1" onclick="alert("you pushed 1")"></i></span>';
-			html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="2" onclick="alert("you pushed 2")"></i></span>';
-			html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3" onclick="alert("you pushed 3")"></i></span>';
+			html+='<span class="money '+(doc.Price>=1?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="1"></i></span>';
+			html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="2"></i></span>';
+			html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3"></i></span>';
 			html+='</div>';
 			html+='</td>';
 			html+='<td class="col-md-2"></td>';
