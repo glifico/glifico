@@ -25,9 +25,9 @@ if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong tok
 $query="SELECT * FROM languages WHERE idlanguageto='$langTo' AND tottest>='$reqRating';";
 $result = $db->query($query);
 
-$pricequery="select avg(price) from(select price from traduttore) sub;";
-$priceres=$db->query($query);
-$price=$result->fetch(PDO::FETCH_ASSOC);
+$pricequery="SELECT avg(price) FROM(SELECT price FROM traduttore) sub;";
+$priceRes=$db->query($query);
+$price=$priceRes->fetch(PDO::FETCH_ASSOC);
 
 
 
