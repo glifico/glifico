@@ -19,9 +19,10 @@ $token=$data['token'];
 $domande=$data['document'];
 $from=$data['from'];
 $to=$data['to'];
+$reqRating=['rating'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT * FROM traduttore WHERE madrelingua='$from' LIMIT 15;";
+$query="SELECT * FROM languages WHERE idlanguageto='$langTo' AND tottest>='$reqRating';";
 $result = $db->query($query);
 
 $price=2;
@@ -29,11 +30,7 @@ $price=2;
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
-  $langTo=$row['madrelinguaid'];
-  $query="SELECT * FROM languages WHERE username='$translator' AND idlanguageto='$langTo';";
-  $langResult = $db->query($query);
-  $langRow = $langResult->fetch(PDO::FETCH_ASSOC);
-  $rating=$langRow['tottest'];
+  $rating=$row['tottest'];
   array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "FirstName"=>$row['nome']{0},"LastName"=>$row['cognome']{0}, "IdCountry"=>$row['idstato'],"IdMothertongue"=>$row['madrelinguaid'],"Mothertongue"=>$row['madrelingua']));
 }
 
