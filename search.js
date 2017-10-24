@@ -106,6 +106,8 @@ angular.module("search",[]).controller("search",function($scope){
 		var temp = {
 				user: getUsername(),
 				token: getToken(),
+				price: ctrl.Price,
+				rating: ctrl.selectedRating,
 		};
 
 		var stringPass = JSON.stringify(temp);
