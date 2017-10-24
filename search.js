@@ -55,7 +55,7 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd" aria-hidden="true" data-rating="3"></i></span>';
 			html+='</div>';
 			html+='</td>';
-			html+='<td class="col-md-2"></td>';
+			html+='<td class="col-md-2"><button class="btn btn-primary" value="Select"></td>';
 			html+='<tr>';
 		}
 		html+='</table>';
