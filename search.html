@@ -292,9 +292,11 @@ What does this page do?
 
 <div id="search" style="width:90%;margin:auto;" data-ng-controller="search as ctrl">
 <form name="searchForm" action="/" method="post">
-<div id="formleft" style="width:30%;margin:auto;float:left;font-size:20px;"></div>
-<div id="formcenter" style="width:30%;margin:auto;float:center;font-size:20px;"></div>
-<div id="formright" style="width:30%;margin:auto;float:right;">
+<table class="table table-responsive">
+<tr class="row">
+<td class="col-md-3"><div id="formleft"></div></td>
+<td><div id="formcenter"></div></td>
+<td class="col-md-3">
 <div id="formRating">
 Rating:
 <div class="rating">
@@ -305,20 +307,24 @@ Rating:
 <span class="{{(ctrl.selectedRating>=1?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" data-ng-click="ctrl.setRating(1)"></i></span>;
 </div>
 </div>
+</td>
+<td class="col-md-3">
 <div id="formPrice">
-Price class:</br>
+Price class:<br>
 <div class="rating">
 <span class="money {{(ctrl.selectedPrice>=3?'filled':'')}}"><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="3" data-ng-click="ctrl.setPrice(3)"></i></span>
 <span class="money {{(ctrl.selectedPrice>=2?'filled':'')}}"><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="2" data-ng-click="ctrl.setPrice(2)"></i></span>
 <span class="money {{(ctrl.selectedPrice>=1?'filled':'')}}"><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="1" data-ng-click="ctrl.setPrice(1)"></i></span>
 </div>
 </div>
-</div>
-</br>
-</br>
-</br>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<br>
 <div style="width:100%;margin:auto;">
-</br>
+<br>
 <input type="button" class="btn btn-primary" value="search" data-ng-click="ctrl.search()">
 </div>
 </form>
