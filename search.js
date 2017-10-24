@@ -63,11 +63,19 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.setPrice=function(price){
-		ctrl.selectedPrice=price;
+		if(ctrl.selectedPrice==1){
+			ctrl.selectedPrice=-1;
+		}else{
+			ctrl.selectedPrice=price;
+		}
 	}
 
 	ctrl.setRating=function(rat){
-		ctrl.selectedRating=rat;
+		if(ctrl.selectedRating==1){
+			ctrl.selectedRating=-1;	
+		}else{
+			ctrl.selectedRating=rat;
+		}
 	}
 
 	ctrl.createForm=function(){
