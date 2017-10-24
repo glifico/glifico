@@ -22,7 +22,7 @@ $to=$data['to'];
 $reqRating=$data['rating'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT * FROM languages WHERE idlanguageto='$langTo' AND tottest>='$reqRating';";
+$query="SELECT * FROM languages WHERE language='$langTo' AND tottest>='$reqRating';";
 $result = $db->query($query);
 
 $pricequery="SELECT avg(price) FROM(SELECT price FROM traduttore) sub;";
