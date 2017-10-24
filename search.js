@@ -34,8 +34,7 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
 		html+='<th class="col-md-2" style="text-align:center;">Translator</th>';
-		html+='<th class="col-md-1" style="text-align:center;">From</th>';
-		html+='<th class="col-md-1" style="text-align:center;">To</th>';
+		html+='<th class="col-md-1" style="text-align:center;">Mothertongue</th>';
 		html+='<th class="col-md-2" style="text-align:center;">Field</th>';
 		html+='<th class="col-md-2" style="text-align:center;">Rating</th>';
 		html+='<th class="col-md-2" style="text-align:center;">Price</th>';
@@ -47,7 +46,6 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
 			html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
-			html+='<td class="col-md-1">'+doc.IdMothertongue+'</td>';
 			html+='<td class="col-md-2">'+doc.Field+'</td>';
 			html+='<td class="col-md-3">'+doc.Rating+'</td>';
 			html+='<td class="col-md-2">';
