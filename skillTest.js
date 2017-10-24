@@ -304,6 +304,7 @@ function finishTest() {
 	if (confirm("Do you want to submit the test?")) {
 		var temp = {
 				user : getUsername(),
+				token: getToken(),
 				document : domande
 		};
 

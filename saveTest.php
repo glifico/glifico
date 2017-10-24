@@ -31,7 +31,10 @@ if(!$data){
 }
 
 $user=$data['user'];
+$token=$data['token'];
 $domande=$data['document'];
+if(!certToken($db, $user,$token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
+
 
 $score=0;
 
