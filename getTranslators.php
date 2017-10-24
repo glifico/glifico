@@ -17,8 +17,8 @@ if(!$data){
 $user=$data['user'];
 $token=$data['token'];
 $domande=$data['document'];
-$from=$data['from'];
-$to=$data['to'];
+$langFrom=$data['from'];
+$langTo=$data['to'];
 $reqRating=$data['rating'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
