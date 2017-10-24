@@ -27,15 +27,15 @@ $result = $db->query($query);
 
 $pricequery="SELECT avg(price) FROM(SELECT price FROM traduttore) sub;";
 $priceRes=$db->query($query);
-$price=$priceRes->fetch(PDO::FETCH_ASSOC);
-
+//$price=$priceRes->fetch(PDO::FETCH_ASSOC);
+$price=2;
 
 
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
   $rating=$row['tottest'];
-  array_push($toExit,array("Price"=>$price['price'], "Rating"=>$rating, "FirstName"=>$row['nome']{0},"LastName"=>$row['cognome']{0}, "IdCountry"=>$row['idstato'],"IdMothertongue"=>$row['madrelinguaid'],"Mothertongue"=>$row['madrelingua']));
+  array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "FirstName"=>$row['nome']{0},"LastName"=>$row['cognome']{0}, "IdCountry"=>$row['idstato'],"IdMothertongue"=>$row['madrelinguaid'],"Mothertongue"=>$row['madrelingua']));
 }
 
 $result->CloseCursor();
