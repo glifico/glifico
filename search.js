@@ -2,34 +2,10 @@ $(document).ready(function () {
 
 });
 
-//$.ajax( {
-//type : "POST",
-//dataType : "application/json",
-//contentType : "application/json; charset=utf-8",
-//data : data,
-//url : "setJobOngoing.php",
-//complete : function(ret) {
-//var response=ret.responseText;
-//$("#alertOK").html("Job finished!");
-//$("#alertOK").fadeIn().delay(2000).fadeOut();
-//$("#jobModal").hide();
-//location.href=location.href;
-//},
-//error : function(xhr) {
-//if (xhr.status == 500) {
-//$("#alertError").html("Error from server, please retry.");
-//$("#alertError").fadeIn().delay(1000).fadeOut();
-//}
-
-//}
-//});
-
-//}
-
 
 angular.module("search",[]).controller("search",function($scope){
 	var ctrl=this;
-	
+
 	ctrl.getClass=function(doc){
 		return "primary";
 	}
@@ -95,7 +71,7 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.setRating=function(rat){
 		ctrl.selectedRating=rat;
 	}
-	
+
 	ctrl.createForm=function(){
 		var html="";
 		html+='<label>From: </label>';
@@ -121,27 +97,40 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.createFormRight=function(){
-		
+
 	}
-	
+
 	ctrl.search=function(){
 		$("#table").html('<i class="fa fa-spinner fa-spin fa-4x fa-fw"></i>');
+
+		var temp = {
+				user: getUsername(),
+				token: getToken(),
+		};
+
+		var stringPass = JSON.stringify(temp);
+		var data = stringPass;
 		
-		var url = "getTranslators.php?user=" + getUsername()+"&token="+getToken();
-		var req = createXHTMLHttpRequest();
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				var data=JSON.parse(req.responseText);
+		$.ajax( {
+			type : "POST",
+			dataType : "application/json",
+			contentType : "application/json; charset=utf-8",
+			data : data,
+			url : "getTranslators.php",
+			complete : function(ret) {
+				var response=ret.responseText;
 				ctrl.documents=data;
 				ctrl.createTable();
-				return(true);
-			}else{
-				mostraDialogTimed('errorPanel');
-				return(false);
+			},
+			error : function(xhr) {
+				if (xhr.status == 500) {
+					$("#alertError").html("Error from server, please retry.");
+					$("#alertError").fadeIn().delay(1000).fadeOut();
+				}
+
 			}
-		}
-		req.open("GET",url,true);
-		req.send();
+		});
+
 	}
 
 	ctrl.$onInit=function(){
@@ -151,7 +140,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.to="";
 		ctrl.loadLanguages();
 	}
-	
+
 });
 
 

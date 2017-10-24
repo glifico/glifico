@@ -5,8 +5,19 @@ $db=getDB();
 if(!$db) exit;
 
 
-$user=$_GET['user'];
-if(!certTokenA($db, $user, $_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+  $data = json_decode(file_get_contents("php://input"),true);
+}
+
+if(!$data){
+  exit(json_encode(array("message"=>"wrong request","statuscode"=>400)));
+}
+
+$user=$data['user'];
+$token=$data['token'];
+$domande=$data['document'];
+if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $query="SELECT * FROM traduttore LIMIT 10;";
 $result = $db->query($query);
