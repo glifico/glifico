@@ -46,7 +46,7 @@ angular.module("search",[]).controller("search",function($scope){
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
-			html+='<td class="col-md-1">'+doc.IdMothertongue+'</td>';
+			html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
 			html+='<td class="col-md-1">'+doc.IdMothertongue+'</td>';
 			html+='<td class="col-md-2">'+doc.Field+'</td>';
 			html+='<td class="col-md-3">'+doc.Rating+'</td>';
