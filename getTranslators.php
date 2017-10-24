@@ -29,7 +29,7 @@ $price=2;
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
-  $langTo=$row['madrelingua'];
+  $langTo=$row['madrelinguaid'];
   $query="SELECT * FROM languages WHERE username='$translator' AND idlanguageto='$langTo';";
   $langResult = $db->query($query);
   $langRow = $langResult->fetch(PDO::FETCH_ASSOC);
