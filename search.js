@@ -104,10 +104,10 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#table").html('<i class="fa fa-spinner fa-spin fa-4x fa-fw"></i>');
 
 		var e = document.getElementById("select-to");
-		ctrl.to = e.options[e.selectedIndex].text;
+		ctrl.to = e.options[e.selectedIndex].val();
 		
 		var e = document.getElementById("select-from");
-		ctrl.from = e.options[e.selectedIndex].text;
+		ctrl.from = e.options[e.selectedIndex].val();
 		
 		var temp = {
 				user: getUsername(),
