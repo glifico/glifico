@@ -174,7 +174,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			}
 			html+='<td class="col-md-4">';
 			html+='<div id="'+doc.id+'">';
-			if(doc.status=="Closed"){
+			if(doc.status=="Closed"||doc.status=="Paid"){
 				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
 			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
