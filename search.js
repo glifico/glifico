@@ -99,7 +99,7 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.createForm=function(){
 		var html="";
 		html+='<label>From: </label>';
-		html+='<select placeholder="Translate from" required>';
+		html+='<select placeholder="Translate from" data-ng-model="ctrl.from" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
@@ -109,7 +109,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		var html="";
 		html+='<label>To: </label>';
-		html+='<select placeholder="Translate from" required>';
+		html+='<select placeholder="Translate from" data-ng-model="ctrl.to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
@@ -147,6 +147,8 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=0;
 		ctrl.selectedRating=-1;
+		ctrl.from="";
+		ctrl.to="";
 		ctrl.loadLanguages();
 	}
 	
