@@ -19,7 +19,7 @@ $token=$data['token'];
 $domande=$data['document'];
 $from=$data['from'];
 $to=$data['to'];
-$reqRating=['rating'];
+$reqRating=$data['rating'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $query="SELECT * FROM languages WHERE idlanguageto='$langTo' AND tottest>='$reqRating';";
