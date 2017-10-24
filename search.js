@@ -75,7 +75,7 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.createForm=function(){
 		var html="";
 		html+='<label>From: </label>';
-		html+='<select placeholder="Translate from" data-ng-model="ctrl.from" required>';
+		html+='<select id="select-from" placeholder="Translate from" data-ng-model="ctrl.from" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
@@ -85,7 +85,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		var html="";
 		html+='<label>To: </label>';
-		html+='<select placeholder="Translate from" data-ng-model="ctrl.to" required>';
+		html+='<select id="select-to" placeholder="Translate from" data-ng-model="ctrl.to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
@@ -103,10 +103,18 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.search=function(){
 		$("#table").html('<i class="fa fa-spinner fa-spin fa-4x fa-fw"></i>');
 
+		var e = document.getElementById("select-to");
+		ctrl.to = e.options[e.selectedIndex].text;
+		
+		var e = document.getElementById("select-from");
+		ctrl.from = e.options[e.selectedIndex].text;
+		
 		var temp = {
 				user: getUsername(),
 				token: getToken(),
-				price: ctrl.Price,
+				from: ctrl.from,
+				to: ctrl.to,
+				price: ctrl.selectedPrice,
 				rating: ctrl.selectedRating,
 		};
 
