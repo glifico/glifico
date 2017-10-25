@@ -3,7 +3,7 @@ include 'functions.php';
 
 function doTheGaussian($prT, $Avg)
 {
-  return $prT;
+  return $Avg;
 
   if($prT<$Avg) return 1;
   if($prT==$Avg) return 2;
@@ -53,7 +53,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $queryRating="SELECT * FROM languages WHERE language='$langTo' AND tottest>='$reqRating' AND username='$translator';";
   $resultRating = $db->query($queryRating);
 
-  $rating=$row['tottest'];
+  $rating=$resultRating['tottest'];
   if($rating==NULL) $rating=0;
 
   $priceTransl=$row['price'];
