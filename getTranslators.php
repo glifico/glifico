@@ -45,7 +45,7 @@ $pricequery="SELECT avg(price) FROM($query) sub;";
 $priceRes=$db->query($query);
 $priceRow=$priceRes->fetch(PDO::FETCH_ASSOC);
 $priceAvg=$priceRow['avg'];
-
+echo(json_encode($priceRow));
 
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
