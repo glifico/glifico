@@ -3,8 +3,6 @@ include 'functions.php';
 
 function doTheGaussian($prT, $Avg)
 {
-  return $Avg;
-
   if($prT<$Avg){
     return 1;
   }
