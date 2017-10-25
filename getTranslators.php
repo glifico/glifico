@@ -29,7 +29,7 @@ $langTo=$data['to'];
 $reqRating=$data['rating'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT username, from_l, to_l, price from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'"
+$query="SELECT username, from_l, to_l, price from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
 $result = $db->query($query.";");
 
 
