@@ -22,8 +22,9 @@ $langTo=$data['to'];
 $reqRating=$data['rating'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT * FROM languages WHERE language='$langTo' AND tottest>='$reqRating';";
+$query="SELECT username, from_l, to_l, price from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo';"
 $result = $db->query($query);
+
 
 $pricequery="SELECT avg(price) FROM($query) sub;";
 $priceRes=$db->query($query);
@@ -36,6 +37,10 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
   $queryUser="SELECT * FROM traduttore WHERE username='$translator';";
   $resultUser = $db->query($queryUser);
+
+  $queryRating="SELECT * FROM languages WHERE language='$langTo' AND tottest>='$reqRating';";
+  $resultRating = $db->query($query);
+
   $rowUser=$resultUser->fetch(PDO::FETCH_ASSOC);
   $rating=$row['tottest'];
   array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
