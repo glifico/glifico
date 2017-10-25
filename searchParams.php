@@ -1,6 +1,6 @@
 <?php
 
-public function getCoefficients()
+function getCoefficients()
 {
   return array("A"=>0.1,"B"=>0.5,"C"=4);
 }
