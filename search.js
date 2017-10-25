@@ -71,15 +71,15 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.setPrice=function(price){
-		if(ctrl.selectedPrice==1){
-			ctrl.selectedPrice=-1;
-		}else{
-			ctrl.selectedPrice=price;
-		}
+		ctrl.selectedPrice=price;
 	}
 
 	ctrl.setRating=function(rat){
-		ctrl.selectedRating=rat;
+		if(ctrl.selectedRating==1){
+			ctrl.selectedRating=0;
+		}else{
+			ctrl.selectedRating=rat;
+		}
 	}
 
 	ctrl.createForm=function(){
@@ -120,12 +120,12 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.from = e.options[e.selectedIndex].text;
 
 		var temp = {
-				user: getUsername(),
-				token: getToken(),
-				from: ctrl.from,
-				to: ctrl.to,
-				price: ctrl.selectedPrice,
-				rating: ctrl.selectedRating,
+			user: getUsername(),
+			token: getToken(),
+			from: ctrl.from,
+			to: ctrl.to,
+			price: ctrl.selectedPrice,
+			rating: ctrl.selectedRating,
 		};
 
 		var stringPass = JSON.stringify(temp);
