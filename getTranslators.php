@@ -1,15 +1,19 @@
 <?php
 include 'functions.php';
+include 'searchParams.php';
 
-function doTheGaussian($prT, $Avg)
+function doTheGaussian($prT, $Avg, $sigma)
 {
-  if($prT<$Avg){
+  $normPrice=($prt-$Avg)/$sigma;
+  $C=getCoefficients();
+
+  if($normPrice<$C['A']){
     return 1;
   }
-  else if($prT==$Avg){
+  else if($normPrice<$C['B']){
     return 2;
   }
-  else if($prT>$Avg) {
+  else if($normPrice<$C['C']) {
     return 3;
   }
 }
@@ -44,6 +48,13 @@ $priceRes=$db->query($pricequery);
 $priceRow=$priceRes->fetch(PDO::FETCH_ASSOC);
 $priceAvg=$priceRow['avg'];
 
+$sigmaquery="SELECT stddev_samp(price) FROM($query) sub;";
+$sigmaRes=$db->query($sigmaquery);
+$sigmaRow=$sigmaRes->fetch(PDO::FETCH_ASSOC);
+$sigma=$sigmaRow['avg'];
+
+
+
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
@@ -62,7 +73,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   if($rating==NULL) $rating=0;
 
   $priceTransl=$row['price'];
-  $price=doTheGaussian($priceTransl,$priceAvg);
+  $price=doTheGaussian($priceTransl,$priceAvg, $sigma);
   if($rating>=$reqRating&&$price<=$reqPrice){
     array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "Field"=>"traduzioni", "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
   }
