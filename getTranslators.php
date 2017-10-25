@@ -61,7 +61,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $rowRating=$resultRating->fetch(PDO::FETCH_ASSOC);
 
 
-  $rating=$rowesultRating['tottest'];
+  $rating=$rowRating['tottest'];
   if($rating==NULL) $rating=0;
 
   $priceTransl=$row['price'];
