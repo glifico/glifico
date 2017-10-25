@@ -79,11 +79,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.setRating=function(rat){
-		if(ctrl.selectedRating==1){
-			ctrl.selectedRating=-1;	
-		}else{
-			ctrl.selectedRating=rat;
-		}
+		ctrl.selectedRating=rat;
 	}
 
 	ctrl.createForm=function(){
@@ -119,10 +115,10 @@ angular.module("search",[]).controller("search",function($scope){
 
 		var e = document.getElementById("select-to");
 		ctrl.to = e.options[e.selectedIndex].text;
-		
+
 		var e = document.getElementById("select-from");
 		ctrl.from = e.options[e.selectedIndex].text;
-		
+
 		var temp = {
 				user: getUsername(),
 				token: getToken(),
@@ -134,7 +130,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass;
-		
+
 		$.ajax( {
 			type : "POST",
 			dataType : "application/json",
