@@ -33,6 +33,7 @@ $domande=$data['document'];
 $langFrom=$data['from'];
 $langTo=$data['to'];
 $reqRating=$data['rating'];
+$reqPrice=$data['price'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $query="SELECT username, from_l, to_l, price from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
@@ -63,7 +64,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
   $priceTransl=$row['price'];
   $price=doTheGaussian($priceTransl,$priceAvg);
-  if($rating>=$reqRating){
+  if($rating>=$reqRating&&$price>=$reqPrice){
     array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "Field"=>"traduzioni", "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
   }
 }
