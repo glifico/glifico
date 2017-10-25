@@ -50,7 +50,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
   $rowUser=$resultUser->fetch(PDO::FETCH_ASSOC);
   $rating=$row['tottest'];
-  if(!$rating) $rating==0;
+  if($rating==NULL) $rating=0;
 
   $priceTransl=$row['price'];
   $price=doTheGaussian($priceTransl,$priceAvg);
