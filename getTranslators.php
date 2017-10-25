@@ -29,7 +29,6 @@ if(!$data){
 
 $user=$data['user'];
 $token=$data['token'];
-$domande=$data['document'];
 $langFrom=$data['from'];
 $langTo=$data['to'];
 $reqRating=$data['rating'];
