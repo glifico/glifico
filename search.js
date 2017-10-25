@@ -160,7 +160,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=0;
-		ctrl.selectedRating=-1;
+		ctrl.selectedRating=3;
 		ctrl.from="";
 		ctrl.to="";
 		ctrl.loadLanguages();
