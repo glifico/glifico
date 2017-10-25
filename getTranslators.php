@@ -3,6 +3,8 @@ include 'functions.php';
 
 function doTheGaussian($prT, $Avg)
 {
+  return $prT;
+
   if($prT<$Avg) return 1;
   if($prT==$Avg) return 2;
   if($prT>$Avg) return 3;
@@ -42,19 +44,23 @@ $priceAvg=$priceRow['avg'];
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
+
   $queryUser="SELECT * FROM traduttore WHERE username='$translator';";
   $resultUser = $db->query($queryUser);
+  $rowUser=$resultUser->fetch(PDO::FETCH_ASSOC);
+
 
   $queryRating="SELECT * FROM languages WHERE language='$langTo' AND tottest>='$reqRating' AND username='$translator';";
   $resultRating = $db->query($queryRating);
 
-  $rowUser=$resultUser->fetch(PDO::FETCH_ASSOC);
   $rating=$row['tottest'];
   if($rating==NULL) $rating=0;
 
   $priceTransl=$row['price'];
   $price=doTheGaussian($priceTransl,$priceAvg);
-  array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "Field"=>"traduzioni", "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
+  if($rating>=$reqRating){
+    array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "Field"=>"traduzioni", "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
+  }
 }
 
 $result->CloseCursor();
