@@ -16,6 +16,8 @@ function doTheGaussian($prT, $Avg, $sigma)
   else if($normPrice<$C['C']) {
     return 3;
   }
+
+  return 3;
 }
 
 $db=getDB();
