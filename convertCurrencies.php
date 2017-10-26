@@ -19,7 +19,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $price=$row['price'];
   $cur=substr($row['currency'],0,3);
   $priceEuro=$price*$handle['rates'][$cur];
-  $query "UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
+  $query="UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
   $result = $db->query($query);
 }
 
