@@ -32,17 +32,17 @@ angular.module("search",[]).controller("search",function($scope){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
 		case 1:
-			return Math.round(mb*ctrl.params.multA,2);
+			return (mb*ctrl.params.multA).toFixed(2);
 			break;
 		case 2:
-			return Math.round(mb*ctrl.params.multB,2);
+			return (mb*ctrl.params.multB).toFixed(2);
 			break;
 		case 3:
-			return Math.round(priceTr*ctrl.params.multC,2);
+			return (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
 	}
-	
+
 	ctrl.createTable=function(){
 		var html="";
 		if (ctrl.documents.length>0){
