@@ -53,7 +53,7 @@ $priceAvg=$priceRow['avg'];
 $sigmaquery="SELECT stddev_samp(price) FROM($query) sub;";
 $sigmaRes=$db->query($sigmaquery);
 $sigmaRow=$sigmaRes->fetch(PDO::FETCH_ASSOC);
-$sigma=$sigmaRow['avg'];
+$sigma=$sigmaRow['stddev_samp'];
 
 
 
