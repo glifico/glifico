@@ -28,6 +28,21 @@ angular.module("search",[]).controller("search",function($scope){
 		req.send();
 	};
 
+	ctrl.calculatePriceAg= function(priceClass,priceTr){
+		var mb=ctrl.params.maxB;
+		switch(priceClass){
+		case 1:
+			return mb*ctrl.params.maxA;
+			break;
+		case 2:
+			return mb*ctrl.params.maxB;
+			break;
+		case 3:
+			return priceTr*ctrl.params.maxC;
+			break;
+		}
+	}
+	
 	ctrl.createTable=function(){
 		var html="";
 		if (ctrl.documents.length>0){
@@ -44,6 +59,9 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='</thead>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
+			//doc.Price is class {1,2,3}
+			//doc.PriceTr is Translator defined price for pair
+			var priceAg = ctrl.calculatePriceAg(doc.Price, doc.PriceTr);
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
 			html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
@@ -145,6 +163,7 @@ angular.module("search",[]).controller("search",function($scope){
 				var response=ret.responseText;
 				var data=convertJSON(response);
 				ctrl.documents=data.data;
+				ctrl.params=data.params;
 				ctrl.createTable();
 			},
 			error : function(xhr) {

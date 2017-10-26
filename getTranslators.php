@@ -61,6 +61,7 @@ $toExit=[];
 $dataToExit=[];
 $maxB=0;
 $NB=0;
+$M=getMultipliers();
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
 
@@ -93,7 +94,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
 }
 
 $toExit['data']=$dataToExit;
-$toExit['params']=array("maxB"=>$maxB);
+$toExit['params']=array("maxB"=>$maxB,"multA"=>$M['A'],"multB"=>$M['B'],"multC"=>$M['C']);
 $result->CloseCursor();
 exit (json_encode($toExit));
 ?>
