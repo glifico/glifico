@@ -32,13 +32,13 @@ angular.module("search",[]).controller("search",function($scope){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
 		case 1:
-			return mb*ctrl.params.maxA;
+			return mb*ctrl.params.multA;
 			break;
 		case 2:
-			return mb*ctrl.params.maxB;
+			return mb*ctrl.params.multB;
 			break;
 		case 3:
-			return priceTr*ctrl.params.maxC;
+			return priceTr*ctrl.params.multC;
 			break;
 		}
 	}
