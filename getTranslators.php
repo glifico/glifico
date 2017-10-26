@@ -4,7 +4,7 @@ include 'searchParams.php';
 
 function doTheGaussian($prT, $Avg, $sigma)
 {
-  $normPrice=($prt-$Avg)/$sigma;
+  $normPrice=($prT-$Avg)/$sigma;
   $C=getCoefficients();
 
   if($normPrice<$C['A']){
@@ -16,7 +16,7 @@ function doTheGaussian($prT, $Avg, $sigma)
   else if($normPrice<$C['C']) {
     return 3;
   }
-
+//just in case be safe and use class C
   return 3;
 }
 
