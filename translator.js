@@ -606,7 +606,7 @@ function strLeft(sourceStr, keyStr) {
 
 			}
 
-			req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"token="+getToken(),true);
+			req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
 			req.send();
 
 		}
