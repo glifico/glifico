@@ -4,7 +4,7 @@ include 'functions.php';
 $db=getDB();
 if(!$db) exit;
 
-$query "SELECT * from language_pair;"
+$query="SELECT * from language_pair;";
 $result = $db->query($query);
 
 $url="https://v3.exchangerate-api.com/bulk/72aabbf884e8a2247df4bdff/EUR";
@@ -22,9 +22,9 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $cur=substr($row['currency'],0,3);
   echo($cur);
   $priceEuro=$price*$handle['rates'][$cur];
-echo($priceEuro);
+  echo($priceEuro);
   $query="UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
-$echo($query);
+  $echo($query);
   $result = $db->query($query);
 }
 
