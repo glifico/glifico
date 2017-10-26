@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 9.6.5
 
--- Started on 2017-10-25 22:00:08 CEST
+-- Started on 2017-10-26 08:03:36 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -217,7 +217,6 @@ CREATE TABLE traduttore (
     cap character varying(5),
     provincia character varying(30),
     idstato character varying(2),
-    price numeric,
     madrelinguaid character varying(2),
     stato character varying(30)
 );
@@ -984,67 +983,67 @@ SELECT pg_catalog.setval('skilltest_id_seq', 1, false);
 -- Data for Name: traduttore; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new_message, username, email, vat, citta, cap, provincia, idstato, price, madrelinguaid, stato) FROM stdin;
-26	Roufina Safiullina	ditta Adamantis	\N	Italian	\N	N	roufina@adamantis.eu	roufina@adamantis.eu	\N	Bologna Area	\N	\N	\N	\N	\N	Italy
-37	Irene Isabel	Dal Conte	\N	Italian	\N	N	idalconte	ire.dalconte@gmail.com	\N	Turin	\N	\N	\N	\N	\N	Italy
-38	Lucrezia	Bertolino	\N	Italian	\N	N	bertolinolucrezia@gmail.com	bertolinolucrezia@gmail.com	\N	Trapani	\N	\N	\N	\N	\N	Italy
-40	Sara	Tancredi	\N	Italian	\N	N	sarahtankr@gmail.com	sarahtankr@gmail.com	\N	Cosenza Area	\N	\N	\N	\N	\N	Italy
-42	Simona	Leggero	\N	Italian	\N	N	translatorsitalian	translatorsitalian@gmail.com	\N	Genoa	\N	\N	\N	\N	\N	Italy
-43	cristina	calin	\N	Italian	\N	N	cristina_1987ro	cristina_1987ro@yahoo.com	\N	Pisa	\N	\N	\N	\N	\N	Italy
-44	Giulia	Piaser	\N	Italian	\N	N	giuliapiaser	giulia.piaser@gmail.com	\N	Treviso	\N	\N	\N	\N	\N	Italy
-45	Maria Chiara	Sbragaglia	\N	Italian	\N	N	mchiarasbragaglia@hotmail.it	mchiarasbragaglia@hotmail.it	\N	Civitavecchia	\N	\N	\N	\N	\N	Italy
-46	Valentina	Ottomano	\N	Italian	\N	N	ValentinaO	valentina.ottomano@gmail.com	\N	Milan	\N	\N	\N	\N	\N	Italy
-47	Valentina	Lambrugo	\N	Italian	\N	N	VL11939	valentina.lambrugo@gmail.com	\N	Giussano	\N	\N	\N	\N	\N	Italy
-49	Anna	Baccenetti	\N	Italian	\N	N	annabaccenetti	anna.baccenetti@gmail.com	\N	Milan	\N	\N	\N	\N	\N	Italy
-12	Luca	Sapone	2017-10-12	Italian	4c3eeb5ba4109d98b0c309f9b13a333e622dd592bc8f5fc0a5a71ebf40b741aa	N	luca	luca.sapone86@gmail.com	\N	Torino	\N	TO	IT	0.001	it	\N
-13	Giorgio	Valle	1965-07-08	Italian	9f2c3e310418393bac624106a65cfc1f617af21963dd821bdfe5c6639baec339	N	giorgio	giorgio.valle@hotmail.it	\N	Rivara			IT	0.001	it	\N
-11	Gio	Val	1965-07-08	Italian	bda34b1b4ab8051f454ca1f61f91829e6eb872678284e100e6d549efca0d506d	N	GiorgioTraduttore	giorgio.valle@hotmail.it	\N	\N	\N	\N	IT	0.001	it	\N
-53	Delia	Fasano	\N	Italian	\N	N	d.fasano5	fasano.delia@gmail.com	\N	Cava deTirreni	\N	\N	\N	\N	\N	Italy
-56	Edoardo	Fattizzo	\N	Italian	\N	N	AngleRei	anglereikun@msn.com	\N	Firenze	\N	\N	\N	\N	\N	Italy
-10	Test	pippo	1900-03-14	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	JE	0.2	it	\N
-25	Rafael	Belomo	\N		\N	N	rbelomo@gmail.com	rbelomo@gmail.com	\N		\N	\N	\N	\N	\N	
-27	Okszána	Szimkovics	\N		\N	N	simkovich0811@gmail.com	simkovich0811@gmail.com	\N		\N	\N	\N	\N	\N	
-28	Zsuzsanna	Kiliti	\N	Hungarian	\N	N	porcica7953@gmail.com	porcica7953@gmail.com	\N	Kiskunhalas	\N	\N	\N	\N	\N	Hungary
-29	Zsofia	Kraus	\N	Hungarian	\N	N	Zsofia Kraus	kraus.harimau@gmail.com	\N	Budapest	\N	\N	\N	\N	\N	Hungary
-30	Claudia	Ramirez	\N	Spanish	\N	N	Claudia	claudiaramirez.m@gmail.com	\N	San Salvador	\N	\N	\N	\N	\N	El Salvador
-31	Jared	Firth	\N	English	\N	N	jaredfirth	translations@jaredfirth.com	\N	Abington	\N	\N	\N	\N	\N	United States
-32	Matheus	Ribeiro	\N	Portuguese	\N	N	TheSirion	matheus_ribeiro@hotmail.com	\N	Niterói	\N	\N	\N	\N	\N	Brazil
-33	Helga	Halász	\N	Hungarian	\N	N	helga83	helga.halasz@gmail.com	\N	Szeged	\N	\N	\N	\N	\N	Hungary
-34	Bibiana	Salazar	\N	Spanish	\N	N	BibianaSalazar	traductorescolombia@gmail.com	\N	Medellín	\N	\N	\N	\N	\N	Colombia
-35	Bekir	Diri	\N	Turkish	\N	N	BekirDiri	diribekir@gmail.com	\N	Fatsa	\N	\N	\N	\N	\N	Turkey
-36	Nadia	Kozin	\N		\N	N	nadia.kozin@c7c.org	nadia.kozin@c7c.org	\N	Istanbul	\N	\N	\N	\N	\N	Turkey
-39	Juan Antonio	Castán Abán	\N	Spanish	\N	N	juanantcastan@gmail.com	juanantcastan@gmail.com	\N	Zaragoza Area	\N	\N	\N	\N	\N	Spain
-41	Gulsah	Tamer Sergio	\N		\N	N	gulsah_tamer@hotmail.com	gulsah_tamer@hotmail.com	\N		\N	\N	\N	\N	\N	
-48	Christina	Argyropoulou	\N	Greek	\N	N	Christi	argyropoulou-ch@hotmail.com	\N	Salonicco	\N	\N	\N	\N	\N	Greece
-50	Mohamed Walid	Romdhane	\N	French	\N	N	walid.romdhane	romdhane.oualid@gmail.com	\N	MSAKEN	\N	\N	\N	\N	\N	Tunisia
-51	Monica	Pasin	\N	Italian	\N	N	MonicaPas	monica.pasin@outlook.com	\N	Leeds	\N	\N	\N	\N	\N	Great Britain
-52	Dalila	Minelli	\N		\N	N	lilyblack90@hotmail.it	lilyblack90@hotmail.it	\N		\N	\N	\N	\N	\N	
-54	Florin	Savu	\N	Romanian	\N	N	savu.florin@gmail.com	savu.florin@gmail.com	\N	Constanta	\N	\N	\N	\N	\N	Romania
-55	mariann	makrai	\N	Hungarian	\N	N	mmakrai@yahoo.com	mmakrai@yahoo.com	\N	Croatia	\N	\N	\N	\N	\N	
-57	Eng. Ipek	Budak	\N		\N	N	santaseta@hotmail.com	santaseta@hotmail.com	\N	Istanbul	\N	\N	\N	\N	\N	Turkey
-62	Seba	Vargas	\N		\N	N	seba.v_sk8@hotmail.com	seba.v_sk8@hotmail.com	\N		\N	\N	\N	\N	\N	
-58	Antonella	Donaggio	\N	Italian	\N	N	Tony1964	elledi.edi@gmail.com	\N	Vigliano Biellese (BI)	\N	\N	\N	\N	\N	Italy
-59	valentina	pandolfi	\N	Italian	\N	N	_valentina	valentina.pando@gmail.com	\N	Pesaro	\N	\N	\N	\N	\N	Italy
-60	Maria Rosaria	Leggieri	\N	Italian	\N	N	mariarosaria_leggieri@yahoo.it	mariarosaria_leggieri@yahoo.it	\N	Foggia Area	\N	\N	\N	\N	\N	Italy
-61	Angelica	Albergo	\N	Italian	\N	N	angelique23@hotmail.it	angelique23@hotmail.it	\N	Bari	\N	\N	\N	\N	\N	Italy
-63	Sebastián	Vargas	\N	Spanish	\N	N	sebastianvargas92@gmail.com	sebastianvargas92@gmail.com	\N	Mendoza	\N	\N	\N	\N	\N	Argentina
-65	Alla	Kolesnikova	\N	Russian	\N	N	alla.kolesnikova.95@mail.ru	alla.kolesnikova.95@mail.ru	\N	Pyatigorsk	\N	\N	\N	\N	\N	Russian Federation
-67	Rubru	Shrestha	\N	Nepali	\N	N	eespol@yahoo.com	eespol@yahoo.com	\N	Madrid	\N	\N	\N	\N	\N	Spain
-70	Olgica	Andric	\N	Serbian	\N	N	oljafiore@gmail.com	oljafiore@gmail.com	\N	Serbia	\N	\N	\N	\N	\N	Yugoslavia
-76	Peter	Senizza	\N	Slovenian	\N	N	petersenizza	info@petersenizza.eu	\N	Sezana	\N	\N	\N	\N	\N	Slovenia
-64	Viktorija	Simonovik	\N	Italian	\N	N	Viktorija	viki4kaitaly@yahoo.it	\N	Vicenza	\N	\N	\N	\N	\N	Italy
-66	Sonia	Giardini	\N	Italian	\N	N	sonia.giardini@gmail.com	sonia.giardini@gmail.com	\N	Italy	\N	\N	\N	\N	\N	Italy
-68	Camilla	Musso	\N	Italian	\N	N	camilla.musso@gmail.com	camilla.musso@gmail.com	\N	Milano	\N	\N	\N	\N	\N	Italy
-69	Alessandra	Gramignano	\N	Italian	\N	N	quistis25@gmail.com	alessandra.gramignano@gmail.com	\N	Trapani	\N	\N	\N	\N	\N	Italy
-71	simona	caiazzo	\N	Italian	\N	N	simona	scaiazzo@alice.it	\N	civitavecchia	\N	\N	\N	\N	\N	Italy
-72	Beatrice	De Bonis	\N	Italian	\N	N	bdebonis92	bdebonis@hotmail.it	\N	Rome	\N	\N	\N	\N	\N	Italy
-73	Maria Mihaela	Barbieru	\N	Italian	\N	N	mbarbieru@hotmail.com	mbarbieru@hotmail.com	\N	Milan Area	\N	\N	\N	\N	\N	Italy
-74	Gloria	Nobili	\N	Italian	\N	N	gloria_732000@yahoo.it	mglorianobili@gmail.com	\N	Monza and Brianza Area	\N	\N	\N	\N	\N	Italy
-75	Luca	Colangelo	\N	Italian	\N	N	luca.colangelo2287@gmail.com	luca.colangelo2287@gmail.com	\N	Milan Area	\N	\N	\N	\N	\N	Italy
-77	Serena	Genovese	\N	Italian	\N	N	Serena	genovese.serena@gmail.com	\N	Torino	\N	\N	\N	\N	\N	Italy
-78	Adriana Beatriz	Carriero	\N	Italian	\N	N	AdrianaB	adriana.carriero@gmail.com	\N	Montoro	\N	\N	\N	\N	\N	Italy
-79	Rita	Sanfilippo	\N	Italian	\N	N	rita11	rita.sanf91@gmail.com	\N	Palermo	\N	\N	\N	\N	\N	Italy
-80	Patrizia	Dal Zotto	\N	Italian	\N	N	patriziadz@teletu.it	patriziadz@teletu.it	\N	Padova Area	\N	\N	\N	\N	\N	Italy
+COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new_message, username, email, vat, citta, cap, provincia, idstato, madrelinguaid, stato) FROM stdin;
+26	Roufina Safiullina	ditta Adamantis	\N	Italian	\N	N	roufina@adamantis.eu	roufina@adamantis.eu	\N	Bologna Area	\N	\N	\N	\N	Italy
+37	Irene Isabel	Dal Conte	\N	Italian	\N	N	idalconte	ire.dalconte@gmail.com	\N	Turin	\N	\N	\N	\N	Italy
+38	Lucrezia	Bertolino	\N	Italian	\N	N	bertolinolucrezia@gmail.com	bertolinolucrezia@gmail.com	\N	Trapani	\N	\N	\N	\N	Italy
+40	Sara	Tancredi	\N	Italian	\N	N	sarahtankr@gmail.com	sarahtankr@gmail.com	\N	Cosenza Area	\N	\N	\N	\N	Italy
+42	Simona	Leggero	\N	Italian	\N	N	translatorsitalian	translatorsitalian@gmail.com	\N	Genoa	\N	\N	\N	\N	Italy
+43	cristina	calin	\N	Italian	\N	N	cristina_1987ro	cristina_1987ro@yahoo.com	\N	Pisa	\N	\N	\N	\N	Italy
+44	Giulia	Piaser	\N	Italian	\N	N	giuliapiaser	giulia.piaser@gmail.com	\N	Treviso	\N	\N	\N	\N	Italy
+45	Maria Chiara	Sbragaglia	\N	Italian	\N	N	mchiarasbragaglia@hotmail.it	mchiarasbragaglia@hotmail.it	\N	Civitavecchia	\N	\N	\N	\N	Italy
+46	Valentina	Ottomano	\N	Italian	\N	N	ValentinaO	valentina.ottomano@gmail.com	\N	Milan	\N	\N	\N	\N	Italy
+47	Valentina	Lambrugo	\N	Italian	\N	N	VL11939	valentina.lambrugo@gmail.com	\N	Giussano	\N	\N	\N	\N	Italy
+49	Anna	Baccenetti	\N	Italian	\N	N	annabaccenetti	anna.baccenetti@gmail.com	\N	Milan	\N	\N	\N	\N	Italy
+12	Luca	Sapone	2017-10-12	Italian	4c3eeb5ba4109d98b0c309f9b13a333e622dd592bc8f5fc0a5a71ebf40b741aa	N	luca	luca.sapone86@gmail.com	\N	Torino	\N	TO	IT	it	\N
+13	Giorgio	Valle	1965-07-08	Italian	9f2c3e310418393bac624106a65cfc1f617af21963dd821bdfe5c6639baec339	N	giorgio	giorgio.valle@hotmail.it	\N	Rivara			IT	it	\N
+11	Gio	Val	1965-07-08	Italian	bda34b1b4ab8051f454ca1f61f91829e6eb872678284e100e6d549efca0d506d	N	GiorgioTraduttore	giorgio.valle@hotmail.it	\N	\N	\N	\N	IT	it	\N
+53	Delia	Fasano	\N	Italian	\N	N	d.fasano5	fasano.delia@gmail.com	\N	Cava deTirreni	\N	\N	\N	\N	Italy
+56	Edoardo	Fattizzo	\N	Italian	\N	N	AngleRei	anglereikun@msn.com	\N	Firenze	\N	\N	\N	\N	Italy
+25	Rafael	Belomo	\N		\N	N	rbelomo@gmail.com	rbelomo@gmail.com	\N		\N	\N	\N	\N	
+27	Okszána	Szimkovics	\N		\N	N	simkovich0811@gmail.com	simkovich0811@gmail.com	\N		\N	\N	\N	\N	
+28	Zsuzsanna	Kiliti	\N	Hungarian	\N	N	porcica7953@gmail.com	porcica7953@gmail.com	\N	Kiskunhalas	\N	\N	\N	\N	Hungary
+29	Zsofia	Kraus	\N	Hungarian	\N	N	Zsofia Kraus	kraus.harimau@gmail.com	\N	Budapest	\N	\N	\N	\N	Hungary
+30	Claudia	Ramirez	\N	Spanish	\N	N	Claudia	claudiaramirez.m@gmail.com	\N	San Salvador	\N	\N	\N	\N	El Salvador
+31	Jared	Firth	\N	English	\N	N	jaredfirth	translations@jaredfirth.com	\N	Abington	\N	\N	\N	\N	United States
+32	Matheus	Ribeiro	\N	Portuguese	\N	N	TheSirion	matheus_ribeiro@hotmail.com	\N	Niterói	\N	\N	\N	\N	Brazil
+33	Helga	Halász	\N	Hungarian	\N	N	helga83	helga.halasz@gmail.com	\N	Szeged	\N	\N	\N	\N	Hungary
+34	Bibiana	Salazar	\N	Spanish	\N	N	BibianaSalazar	traductorescolombia@gmail.com	\N	Medellín	\N	\N	\N	\N	Colombia
+35	Bekir	Diri	\N	Turkish	\N	N	BekirDiri	diribekir@gmail.com	\N	Fatsa	\N	\N	\N	\N	Turkey
+36	Nadia	Kozin	\N		\N	N	nadia.kozin@c7c.org	nadia.kozin@c7c.org	\N	Istanbul	\N	\N	\N	\N	Turkey
+39	Juan Antonio	Castán Abán	\N	Spanish	\N	N	juanantcastan@gmail.com	juanantcastan@gmail.com	\N	Zaragoza Area	\N	\N	\N	\N	Spain
+41	Gulsah	Tamer Sergio	\N		\N	N	gulsah_tamer@hotmail.com	gulsah_tamer@hotmail.com	\N		\N	\N	\N	\N	
+48	Christina	Argyropoulou	\N	Greek	\N	N	Christi	argyropoulou-ch@hotmail.com	\N	Salonicco	\N	\N	\N	\N	Greece
+50	Mohamed Walid	Romdhane	\N	French	\N	N	walid.romdhane	romdhane.oualid@gmail.com	\N	MSAKEN	\N	\N	\N	\N	Tunisia
+51	Monica	Pasin	\N	Italian	\N	N	MonicaPas	monica.pasin@outlook.com	\N	Leeds	\N	\N	\N	\N	Great Britain
+52	Dalila	Minelli	\N		\N	N	lilyblack90@hotmail.it	lilyblack90@hotmail.it	\N		\N	\N	\N	\N	
+54	Florin	Savu	\N	Romanian	\N	N	savu.florin@gmail.com	savu.florin@gmail.com	\N	Constanta	\N	\N	\N	\N	Romania
+55	mariann	makrai	\N	Hungarian	\N	N	mmakrai@yahoo.com	mmakrai@yahoo.com	\N	Croatia	\N	\N	\N	\N	
+57	Eng. Ipek	Budak	\N		\N	N	santaseta@hotmail.com	santaseta@hotmail.com	\N	Istanbul	\N	\N	\N	\N	Turkey
+62	Seba	Vargas	\N		\N	N	seba.v_sk8@hotmail.com	seba.v_sk8@hotmail.com	\N		\N	\N	\N	\N	
+58	Antonella	Donaggio	\N	Italian	\N	N	Tony1964	elledi.edi@gmail.com	\N	Vigliano Biellese (BI)	\N	\N	\N	\N	Italy
+59	valentina	pandolfi	\N	Italian	\N	N	_valentina	valentina.pando@gmail.com	\N	Pesaro	\N	\N	\N	\N	Italy
+60	Maria Rosaria	Leggieri	\N	Italian	\N	N	mariarosaria_leggieri@yahoo.it	mariarosaria_leggieri@yahoo.it	\N	Foggia Area	\N	\N	\N	\N	Italy
+61	Angelica	Albergo	\N	Italian	\N	N	angelique23@hotmail.it	angelique23@hotmail.it	\N	Bari	\N	\N	\N	\N	Italy
+10	Test	pippo	1900-03-14	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	IT	it	\N
+63	Sebastián	Vargas	\N	Spanish	\N	N	sebastianvargas92@gmail.com	sebastianvargas92@gmail.com	\N	Mendoza	\N	\N	\N	\N	Argentina
+65	Alla	Kolesnikova	\N	Russian	\N	N	alla.kolesnikova.95@mail.ru	alla.kolesnikova.95@mail.ru	\N	Pyatigorsk	\N	\N	\N	\N	Russian Federation
+67	Rubru	Shrestha	\N	Nepali	\N	N	eespol@yahoo.com	eespol@yahoo.com	\N	Madrid	\N	\N	\N	\N	Spain
+70	Olgica	Andric	\N	Serbian	\N	N	oljafiore@gmail.com	oljafiore@gmail.com	\N	Serbia	\N	\N	\N	\N	Yugoslavia
+76	Peter	Senizza	\N	Slovenian	\N	N	petersenizza	info@petersenizza.eu	\N	Sezana	\N	\N	\N	\N	Slovenia
+64	Viktorija	Simonovik	\N	Italian	\N	N	Viktorija	viki4kaitaly@yahoo.it	\N	Vicenza	\N	\N	\N	\N	Italy
+66	Sonia	Giardini	\N	Italian	\N	N	sonia.giardini@gmail.com	sonia.giardini@gmail.com	\N	Italy	\N	\N	\N	\N	Italy
+68	Camilla	Musso	\N	Italian	\N	N	camilla.musso@gmail.com	camilla.musso@gmail.com	\N	Milano	\N	\N	\N	\N	Italy
+69	Alessandra	Gramignano	\N	Italian	\N	N	quistis25@gmail.com	alessandra.gramignano@gmail.com	\N	Trapani	\N	\N	\N	\N	Italy
+71	simona	caiazzo	\N	Italian	\N	N	simona	scaiazzo@alice.it	\N	civitavecchia	\N	\N	\N	\N	Italy
+72	Beatrice	De Bonis	\N	Italian	\N	N	bdebonis92	bdebonis@hotmail.it	\N	Rome	\N	\N	\N	\N	Italy
+73	Maria Mihaela	Barbieru	\N	Italian	\N	N	mbarbieru@hotmail.com	mbarbieru@hotmail.com	\N	Milan Area	\N	\N	\N	\N	Italy
+74	Gloria	Nobili	\N	Italian	\N	N	gloria_732000@yahoo.it	mglorianobili@gmail.com	\N	Monza and Brianza Area	\N	\N	\N	\N	Italy
+75	Luca	Colangelo	\N	Italian	\N	N	luca.colangelo2287@gmail.com	luca.colangelo2287@gmail.com	\N	Milan Area	\N	\N	\N	\N	Italy
+77	Serena	Genovese	\N	Italian	\N	N	Serena	genovese.serena@gmail.com	\N	Torino	\N	\N	\N	\N	Italy
+78	Adriana Beatriz	Carriero	\N	Italian	\N	N	AdrianaB	adriana.carriero@gmail.com	\N	Montoro	\N	\N	\N	\N	Italy
+79	Rita	Sanfilippo	\N	Italian	\N	N	rita11	rita.sanf91@gmail.com	\N	Palermo	\N	\N	\N	\N	Italy
+80	Patrizia	Dal Zotto	\N	Italian	\N	N	patriziadz@teletu.it	patriziadz@teletu.it	\N	Padova Area	\N	\N	\N	\N	Italy
 \.
 
 
@@ -1168,7 +1167,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2017-10-25 22:00:49 CEST
+-- Completed on 2017-10-26 08:04:25 CEST
 
 --
 -- PostgreSQL database dump complete
