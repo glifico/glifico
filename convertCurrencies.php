@@ -9,7 +9,7 @@ $result = $db->query($query);
 
 $url="https://v3.exchangerate-api.com/bulk/72aabbf884e8a2247df4bdff/EUR";
 //$url="https://api.fixer.io/latest";
-$handle = file_get_contents($url);
+$handle = json_decode(file_get_contents($url),true);
 
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
