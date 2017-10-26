@@ -536,6 +536,29 @@ function strLeft(sourceStr, keyStr) {
 
 		$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
 
+		var ctrl=this;
+
+		var req=createXHTMLHttpRequest();
+
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				angular.copy($scope.nullModel,$scope.model);
+				var ret=convertJSON(req.responseText);
+				$scope.Pairs=ret;
+				$scope.loadLanguages();
+				$scope.loadFields();
+				$scope.loadServices();
+				$scope.loadCurrencies();
+			}else{
+				$('#alertError').fadeIn().delay(10000).fadeOut();
+				$('#alertError').html("There was an error, please retry.");
+			}
+
+		}
+
+		req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
+		req.send();
+		
 
 		$scope.loadLanguages = function(){
 			var req=createXHTMLHttpRequest();
@@ -585,30 +608,8 @@ function strLeft(sourceStr, keyStr) {
 			req.send();	
 		} 
 
-		var ctrl=this;
 
 		ctrl.$onInit=function(){
-			var req=createXHTMLHttpRequest();
-
-			req.onreadystatechange = function(){
-				if (req.status == 200&req.readyState==4){
-					angular.copy($scope.nullModel,$scope.model);
-					var ret=convertJSON(req.responseText);
-					$scope.Pairs=ret;
-					$scope.loadLanguages();
-					$scope.loadFields();
-					$scope.loadServices();
-					$scope.loadCurrencies();
-				}else{
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					$('#alertError').html("There was an error, please retry.");
-				}
-
-			}
-
-			req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
-			req.send();
-
 		}
 
 
