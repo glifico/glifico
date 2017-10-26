@@ -81,6 +81,7 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
 			html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
 			html+='</div>';
+			html+=priceAg;
 			html+='</td>';
 			html+='<td class="col-md-2"><button class="btn btn-primary" value="Select"></td>';
 			html+='<tr>';

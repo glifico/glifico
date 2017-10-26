@@ -94,7 +94,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
 }
 
 $toExit['data']=$dataToExit;
-$toExit['params']=array("maxB"=>$maxB,"multA"=>$M['A'],"multB"=>$M['B'],"multC"=>$M['C']);
+$toExit['params']=array("maxB"=>$maxB,"multA"=>$M['multA'],"multB"=>$M['multB'],"multC"=>$M['multC']);
 $result->CloseCursor();
 exit (json_encode($toExit));
 ?>
