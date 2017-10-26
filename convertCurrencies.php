@@ -4,7 +4,7 @@ include 'functions.php';
 $db=getDB();
 if(!$db) exit;
 
-$query "SELECT * from language_pair GROUP BY currency;"
+$query "SELECT * from language_pair;"
 $result = $db->query($query);
 
 $url="https://v3.exchangerate-api.com/bulk/72aabbf884e8a2247df4bdff/EUR";
