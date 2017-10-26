@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 9.6.5
 
--- Started on 2017-10-25 20:28:01 CEST
+-- Started on 2017-10-25 22:00:08 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -304,7 +304,6 @@ SELECT pg_catalog.setval('agenzia_id_seq', 2, true);
 --
 
 COPY language_pair (username, from_l, to_l, price, field, currency) FROM stdin;
-VL11939	English	Italian	0	\N	EUR - Euro
 simkovich0811@gmail.com	Ukranian	Hungarian	1000	\N	HUF - Forint
 simkovich0811@gmail.com	Hungarian	Ukranian	1000	\N	HUF - Forint
 simkovich0811@gmail.com	Hungarian	English	1000	\N	HUF - Forint
@@ -330,8 +329,6 @@ Claudia	Portuguese	French	0	\N	USD - US Dollar
 Claudia	French	Portuguese	0	\N	USD - US Dollar
 Claudia	French	Italian	0	\N	USD - US Dollar
 jaredfirth	Russian	English	0.12	\N	USD - US Dollar
-jaredfirth	Russian	English	0.12	\N	USD - US Dollar
-jaredfirth	Russian	English	0.12	\N	USD - US Dollar
 TheSirion	English	Portuguese	0.07	\N	USD - US Dollar
 helga83	English	Hungarian	1	\N	HUF - Forint
 BibianaSalazar	English	Spanish	0	\N	COP - Colombian Peso
@@ -348,8 +345,6 @@ juanantcastan@gmail.com	French	Spanish	0.07	\N	EUR - Euro
 sarahtankr@gmail.com	English	Italian	20	\N	EUR - Euro
 sarahtankr@gmail.com	French	Italian	20	\N	EUR - Euro
 translatorsitalian	English	Italian	0.07	\N	EUR - Euro
-translatorsitalian	English	Italian	0.07	\N	EUR - Euro
-translatorsitalian	French	Italian	0.07	\N	EUR - Euro
 translatorsitalian	French	Italian	0.07	\N	EUR - Euro
 cristina_1987ro	English	Italian	0.1	\N	EUR - Euro
 cristina_1987ro	English	Spanish	0.1	\N	EUR - Euro
@@ -372,21 +367,12 @@ cristina_1987ro	Portuguese	Italian	0.1	\N	EUR - Euro
 cristina_1987ro	Portuguese	Spanish	0.1	\N	EUR - Euro
 cristina_1987ro	Portuguese	English	0.1	\N	EUR - Euro
 giuliapiaser	Spanish	Italian	0.06	\N	EUR - Euro
-giuliapiaser	Spanish	Italian	0.06	\N	EUR - Euro
-giuliapiaser	Spanish	Italian	0.06	\N	EUR - Euro
 giuliapiaser	English	Italian	0.06	\N	EUR - Euro
-giuliapiaser	English	Italian	0.06	\N	EUR - Euro
-giuliapiaser	English	Italian	0.06	\N	EUR - Euro
-giuliapiaser	English	Italian	0.06	\N	EUR - Euro
-giuliapiaser	Spanish	Italian	0.06	\N	EUR - Euro
 ValentinaO	English	Italian	0.03	\N	EUR - Euro
 ValentinaO	Spanish	Italian	0.03	\N	EUR - Euro
 ValentinaO	French	Italian	0.03	\N	EUR - Euro
-VL11939	English	Italian	7	\N	EUR - Euro
 VL11939	English	Italian	0	\N	EUR - Euro
 VL11939	French	Italian	0	\N	EUR - Euro
-VL11939	French	Italian	7	\N	EUR - Euro
-VL11939	French	Italian	7	\N	EUR - Euro
 Christi	English	Greek	0.07	\N	EUR - Euro
 Christi	French	Greek	0.07	\N	EUR - Euro
 Christi	Turkish	Greek	0.07	\N	EUR - Euro
@@ -397,68 +383,6 @@ d.fasano5	Russian	Italian	0.1	\N	EUR - Euro
 d.fasano5	English	Italian	0.1	\N	EUR - Euro
 savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
 savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
 savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
 mmakrai@yahoo.com	English	German	0.08	\N	EUR - Euro
 mmakrai@yahoo.com	English	Croation	0.055	\N	EUR - Euro
@@ -475,9 +399,6 @@ _valentina	Spanish	Italian	12	\N	EUR - Euro
 mariarosaria_leggieri@yahoo.it	English	Italian	0	\N	EUR - Euro
 mariarosaria_leggieri@yahoo.it	French	Italian	0	\N	EUR - Euro
 sebastianvargas92@gmail.com	English	Spanish	0.07	\N	USD - US Dollar
-sebastianvargas92@gmail.com	English	Spanish	0.07	\N	USD - US Dollar
-sebastianvargas92@gmail.com	English	Spanish	0.07	\N	USD - US Dollar
-sebastianvargas92@gmail.com	English	Spanish	0.07	\N	USD - US Dollar
 sebastianvargas92@gmail.com	Spanish	English	0.07	\N	USD - US Dollar
 Viktorija	Macedonian	Italian	15	\N	EUR - Euro
 Viktorija	Italian	Macedonian	15	\N	EUR - Euro
@@ -485,22 +406,11 @@ Viktorija	Italian	Serbian	15	\N	EUR - Euro
 Viktorija	Serbian	Italian	15	\N	EUR - Euro
 Viktorija	Croation	Italian	15	\N	EUR - Euro
 Viktorija	Italian	Croation	15	\N	EUR - Euro
+test	English	Italian	0.001	\N	EUR - Euro
 Viktorija	Italian	Bulgarian	15	\N	EUR - Euro
 Viktorija	Bulgarian	Italian	15	\N	EUR - Euro
 sonia.giardini@gmail.com	Japanese	Italian	30	\N	EUR - Euro
 eespol@yahoo.com	Nepali	English	15	\N	EUR - Euro
-camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro
 camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro
 camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro
 camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro
@@ -513,60 +423,16 @@ simona	English	Italian	10	\N	EUR - Euro
 simona	German	Italian	10	\N	EUR - Euro
 simona	French	Italian	10	\N	EUR - Euro
 simona	German	English	10	\N	EUR - Euro
-simona	German	Italian	12	\N	EUR - Euro
 petersenizza	English	Slovenian	0	\N	EUR - Euro
 petersenizza	English	Slovenian	0	\N	EUR - Euro
 petersenizza	English	Italian	0	\N	EUR - Euro
-petersenizza	English	Italian	0	\N	EUR - Euro
-petersenizza	Italian	English	0	\N	EUR - Euro
 petersenizza	Italian	English	0	\N	EUR - Euro
 gloria_732000@yahoo.it	English	Italian	1	\N	EUR - Euro
 Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
 Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
 mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
 mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
 AdrianaB	French	Italian	0.05	\N	EUR - Euro
-AdrianaB	French	Italian	0.05	\N	EUR - Euro
-AdrianaB	English	Italian	0.05	\N	EUR - Euro
-AdrianaB	English	Italian	0.05	\N	EUR - Euro
 AdrianaB	English	Italian	0.05	\N	EUR - Euro
 AdrianaB	Spanish	Italian	0.05	\N	EUR - Euro
 \.
@@ -1302,7 +1168,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2017-10-25 20:28:33 CEST
+-- Completed on 2017-10-25 22:00:49 CEST
 
 --
 -- PostgreSQL database dump complete
