@@ -106,16 +106,7 @@ function strLeft(sourceStr, keyStr) {
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("There was an error, please retry.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
-					} else {
-						$scope.Countries=ret;
-					}
+					$scope.Countries=ret;
 				}
 			}
 
@@ -128,16 +119,7 @@ function strLeft(sourceStr, keyStr) {
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("There was an error, please retry.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
-					} else {
-						$scope.Languages=ret;
-					}
+					$scope.Languages=ret;
 				}
 			}
 
@@ -156,16 +138,7 @@ function strLeft(sourceStr, keyStr) {
 				var ret = convertJSON(req.responseText);
 				$scope.loadLanguages();
 				$scope.loadCountries();
-				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-					$('#alertError').fadeIn().delay(10000).fadeOut();
-					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-						$('#alertError').html("There was an error, please retry.");
-					} else {
-						$('#alertError').html(ret[0].data.msg);
-					}
-				} else {
-					$scope.model=ret[0];	
-				}
+				$scope.model=ret[0];	
 			}else{
 				mostraDialogTimed('errorPanel');
 				return(false);
@@ -568,20 +541,10 @@ function strLeft(sourceStr, keyStr) {
 			var req=createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
-					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("There was an error, please retry.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
-					} else {
-						$scope.Languages=ret;
-					}
+					$scope.Languages=ret;
 				}
 			}
-			req.open("GET","getLanguages.php",true);
+			req.open("GET","getLanguages.php?",true);
 			req.send();	
 		}
 
@@ -591,16 +554,7 @@ function strLeft(sourceStr, keyStr) {
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("There was an error, please retry.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
-					} else {
-						$scope.Fields=ret;
-					}
+					$scope.Fields=ret;
 				}
 			}
 			req.open("GET","getFields.php",true);
@@ -612,16 +566,7 @@ function strLeft(sourceStr, keyStr) {
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("There was an error, please retry.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
-					} else {
-						$scope.Services=ret;
-					}
+					$scope.Services=ret;
 				}
 			}
 			req.open("GET","getServices.php",true);
@@ -633,16 +578,7 @@ function strLeft(sourceStr, keyStr) {
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret = convertJSON(req.responseText);
-					if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-						$('#alertError').fadeIn().delay(10000).fadeOut();
-						if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-							$('#alertError').html("There was an error, please retry.");
-						} else {
-							$('#alertError').html(ret[0].data.msg);
-						}
-					} else {
-						$scope.Currencies=ret;
-					}
+					$scope.Currencies=ret;
 				}
 			}
 			req.open("GET","getCurrencies.php",true);
