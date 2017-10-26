@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 9.6.5
 
--- Started on 2017-10-26 08:03:36 CEST
+-- Started on 2017-10-26 22:27:00 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -96,7 +96,8 @@ CREATE TABLE language_pair (
     to_l character varying(30),
     price numeric,
     field character varying(50),
-    currency character varying(30)
+    currency character varying(30),
+    price_euro numeric
 );
 
 
@@ -302,138 +303,138 @@ SELECT pg_catalog.setval('agenzia_id_seq', 2, true);
 -- Data for Name: language_pair; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY language_pair (username, from_l, to_l, price, field, currency) FROM stdin;
-simkovich0811@gmail.com	Ukranian	Hungarian	1000	\N	HUF - Forint
-simkovich0811@gmail.com	Hungarian	Ukranian	1000	\N	HUF - Forint
-simkovich0811@gmail.com	Hungarian	English	1000	\N	HUF - Forint
-simkovich0811@gmail.com	English	Hungarian	1000	\N	HUF - Forint
-Zsofia Kraus	Hungarian	Turkish	8500	\N	HUF - Forint
-Claudia	Spanish	English	0	\N	USD - US Dollar
-Claudia	English	Spanish	0	\N	USD - US Dollar
-Claudia	Spanish	Italian	0	\N	USD - US Dollar
-Claudia	Italian	Spanish	0	\N	USD - US Dollar
-Claudia	Spanish	Portuguese	0	\N	USD - US Dollar
-Claudia	Portuguese	Spanish	0	\N	USD - US Dollar
-Claudia	French	Spanish	0	\N	USD - US Dollar
-Claudia	Spanish	French	0	\N	USD - US Dollar
-Claudia	English	Italian	0	\N	USD - US Dollar
-Claudia	Italian	English	0	\N	USD - US Dollar
-Claudia	English	Portuguese	0	\N	USD - US Dollar
-Claudia	Portuguese	English	0	\N	USD - US Dollar
-Claudia	English	French	0	\N	USD - US Dollar
-Claudia	French	English	0	\N	USD - US Dollar
-Claudia	Italian	Portuguese	0	\N	USD - US Dollar
-Claudia	Portuguese	Italian	0	\N	USD - US Dollar
-Claudia	Portuguese	French	0	\N	USD - US Dollar
-Claudia	French	Portuguese	0	\N	USD - US Dollar
-Claudia	French	Italian	0	\N	USD - US Dollar
-jaredfirth	Russian	English	0.12	\N	USD - US Dollar
-TheSirion	English	Portuguese	0.07	\N	USD - US Dollar
-helga83	English	Hungarian	1	\N	HUF - Forint
-BibianaSalazar	English	Spanish	0	\N	COP - Colombian Peso
-BibianaSalazar	Spanish	English	0	\N	COP - Colombian Peso
-BekirDiri	Turkish	English	0.07	\N	EUR - Euro
-BekirDiri	English	Turkish	0.06	\N	EUR - Euro
-idalconte	English	Italian	500	\N	EUR - Euro
-idalconte	Russian	Italian	500	\N	EUR - Euro
-idalconte	Italian	English	500	\N	EUR - Euro
-idalconte	Italian	Russian	500	\N	EUR - Euro
-bertolinolucrezia@gmail.com	English	Italian	0.01	\N	USD - US Dollar
-juanantcastan@gmail.com	English	Spanish	0.07	\N	EUR - Euro
-juanantcastan@gmail.com	French	Spanish	0.07	\N	EUR - Euro
-sarahtankr@gmail.com	English	Italian	20	\N	EUR - Euro
-sarahtankr@gmail.com	French	Italian	20	\N	EUR - Euro
-translatorsitalian	English	Italian	0.07	\N	EUR - Euro
-translatorsitalian	French	Italian	0.07	\N	EUR - Euro
-cristina_1987ro	English	Italian	0.1	\N	EUR - Euro
-cristina_1987ro	English	Spanish	0.1	\N	EUR - Euro
-cristina_1987ro	Romanian	Spanish	0.1	\N	EUR - Euro
-cristina_1987ro	Romanian	Italian	0.1	\N	EUR - Euro
-cristina_1987ro	Romanian	English	0.1	\N	EUR - Euro
-cristina_1987ro	Spanish	English	0.1	\N	EUR - Euro
-cristina_1987ro	Spanish	Italian	0.1	\N	EUR - Euro
-cristina_1987ro	Spanish	Romanian	0.1	\N	EUR - Euro
-cristina_1987ro	Catalan	Romanian	0.1	\N	EUR - Euro
-cristina_1987ro	Catalan	Spanish	0.1	\N	EUR - Euro
-cristina_1987ro	Catalan	English	0.1	\N	EUR - Euro
-cristina_1987ro	Catalan	Italian	0.1	\N	EUR - Euro
-cristina_1987ro	French	Italian	0.1	\N	EUR - Euro
-cristina_1987ro	French	Spanish	0.1	\N	EUR - Euro
-cristina_1987ro	French	English	0.1	\N	EUR - Euro
-cristina_1987ro	French	Romanian	0.1	\N	EUR - Euro
-cristina_1987ro	Portuguese	Romanian	0.1	\N	EUR - Euro
-cristina_1987ro	Portuguese	Italian	0.1	\N	EUR - Euro
-cristina_1987ro	Portuguese	Spanish	0.1	\N	EUR - Euro
-cristina_1987ro	Portuguese	English	0.1	\N	EUR - Euro
-giuliapiaser	Spanish	Italian	0.06	\N	EUR - Euro
-giuliapiaser	English	Italian	0.06	\N	EUR - Euro
-ValentinaO	English	Italian	0.03	\N	EUR - Euro
-ValentinaO	Spanish	Italian	0.03	\N	EUR - Euro
-ValentinaO	French	Italian	0.03	\N	EUR - Euro
-VL11939	English	Italian	0	\N	EUR - Euro
-VL11939	French	Italian	0	\N	EUR - Euro
-Christi	English	Greek	0.07	\N	EUR - Euro
-Christi	French	Greek	0.07	\N	EUR - Euro
-Christi	Turkish	Greek	0.07	\N	EUR - Euro
-Christi	Italian	Greek	0.07	\N	EUR - Euro
-annabaccenetti	English	Italian	80	\N	EUR - Euro
-annabaccenetti	French	Italian	80	\N	EUR - Euro
-d.fasano5	Russian	Italian	0.1	\N	EUR - Euro
-d.fasano5	English	Italian	0.1	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro
-mmakrai@yahoo.com	English	German	0.08	\N	EUR - Euro
-mmakrai@yahoo.com	English	Croation	0.055	\N	EUR - Euro
-AngleRei	English	Italian	20	\N	EUR - Euro
-santaseta@hotmail.com	Italian	Turkish	100	\N	TRY - New Turkish Lira
-Tony1964	Italian	Spanish	13	\N	EUR - Euro
-Tony1964	Italian	English	13	\N	EUR - Euro
-Tony1964	Spanish	Italian	13	\N	EUR - Euro
-Tony1964	English	Italian	13	\N	EUR - Euro
-Tony1964	English	Spanish	13	\N	EUR - Euro
-Tony1964	French	Italian	13	\N	EUR - Euro
-_valentina	English	Italian	12	\N	EUR - Euro
-_valentina	Spanish	Italian	12	\N	EUR - Euro
-mariarosaria_leggieri@yahoo.it	English	Italian	0	\N	EUR - Euro
-mariarosaria_leggieri@yahoo.it	French	Italian	0	\N	EUR - Euro
-sebastianvargas92@gmail.com	English	Spanish	0.07	\N	USD - US Dollar
-sebastianvargas92@gmail.com	Spanish	English	0.07	\N	USD - US Dollar
-Viktorija	Macedonian	Italian	15	\N	EUR - Euro
-Viktorija	Italian	Macedonian	15	\N	EUR - Euro
-Viktorija	Italian	Serbian	15	\N	EUR - Euro
-Viktorija	Serbian	Italian	15	\N	EUR - Euro
-Viktorija	Croation	Italian	15	\N	EUR - Euro
-Viktorija	Italian	Croation	15	\N	EUR - Euro
-test	English	Italian	0.001	\N	EUR - Euro
-Viktorija	Italian	Bulgarian	15	\N	EUR - Euro
-Viktorija	Bulgarian	Italian	15	\N	EUR - Euro
-sonia.giardini@gmail.com	Japanese	Italian	30	\N	EUR - Euro
-eespol@yahoo.com	Nepali	English	15	\N	EUR - Euro
-camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro
-camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro
-quistis25@gmail.com	English	Italian	0.06	\N	EUR - Euro
-quistis25@gmail.com	Spanish	Italian	0.05	\N	EUR - Euro
-oljafiore@gmail.com	Serbian	Italian	20	\N	EUR - Euro
-oljafiore@gmail.com	Italian	Serbian	20	\N	EUR - Euro
-oljafiore@gmail.com	Portuguese	Serbian	20	\N	EUR - Euro
-simona	English	Italian	10	\N	EUR - Euro
-simona	German	Italian	10	\N	EUR - Euro
-simona	French	Italian	10	\N	EUR - Euro
-simona	German	English	10	\N	EUR - Euro
-petersenizza	English	Slovenian	0	\N	EUR - Euro
-petersenizza	English	Slovenian	0	\N	EUR - Euro
-petersenizza	English	Italian	0	\N	EUR - Euro
-petersenizza	Italian	English	0	\N	EUR - Euro
-gloria_732000@yahoo.it	English	Italian	1	\N	EUR - Euro
-Serena	Italian	English	6	\N	EUR - Euro
-Serena	Italian	French	6	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro
-AdrianaB	French	Italian	0.05	\N	EUR - Euro
-AdrianaB	English	Italian	0.05	\N	EUR - Euro
-AdrianaB	Spanish	Italian	0.05	\N	EUR - Euro
+COPY language_pair (username, from_l, to_l, price, field, currency, price_euro) FROM stdin;
+Claudia	Spanish	Italian	0	\N	USD - US Dollar	0
+Claudia	Italian	Spanish	0	\N	USD - US Dollar	0
+Claudia	Spanish	Portuguese	0	\N	USD - US Dollar	0
+Claudia	Portuguese	Spanish	0	\N	USD - US Dollar	0
+Claudia	French	Spanish	0	\N	USD - US Dollar	0
+Claudia	Spanish	French	0	\N	USD - US Dollar	0
+Claudia	English	Italian	0	\N	USD - US Dollar	0
+Claudia	Italian	English	0	\N	USD - US Dollar	0
+Claudia	English	Portuguese	0	\N	USD - US Dollar	0
+Claudia	Portuguese	English	0	\N	USD - US Dollar	0
+Claudia	English	French	0	\N	USD - US Dollar	0
+Claudia	French	English	0	\N	USD - US Dollar	0
+Claudia	Portuguese	Italian	0	\N	USD - US Dollar	0
+Claudia	Portuguese	French	0	\N	USD - US Dollar	0
+Claudia	French	Portuguese	0	\N	USD - US Dollar	0
+Claudia	French	Italian	0	\N	USD - US Dollar	0
+jaredfirth	Russian	English	0.12	\N	USD - US Dollar	0.1
+TheSirion	English	Portuguese	0.07	\N	USD - US Dollar	0.06
+helga83	English	Hungarian	1	\N	HUF - Forint	0
+BibianaSalazar	English	Spanish	0	\N	COP - Colombian Peso	0
+BibianaSalazar	Spanish	English	0	\N	COP - Colombian Peso	0
+BekirDiri	Turkish	English	0.07	\N	EUR - Euro	0.07
+BekirDiri	English	Turkish	0.06	\N	EUR - Euro	0.06
+idalconte	English	Italian	500	\N	EUR - Euro	500
+idalconte	Italian	English	500	\N	EUR - Euro	500
+idalconte	Italian	Russian	500	\N	EUR - Euro	500
+bertolinolucrezia@gmail.com	English	Italian	0.01	\N	USD - US Dollar	0.01
+juanantcastan@gmail.com	English	Spanish	0.07	\N	EUR - Euro	0.07
+juanantcastan@gmail.com	French	Spanish	0.07	\N	EUR - Euro	0.07
+sarahtankr@gmail.com	English	Italian	20	\N	EUR - Euro	20
+sarahtankr@gmail.com	French	Italian	20	\N	EUR - Euro	20
+translatorsitalian	English	Italian	0.07	\N	EUR - Euro	0.07
+translatorsitalian	French	Italian	0.07	\N	EUR - Euro	0.07
+cristina_1987ro	English	Italian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Romanian	Spanish	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Romanian	Italian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Romanian	English	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Spanish	English	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Spanish	Italian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Spanish	Romanian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Catalan	Romanian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Catalan	Spanish	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Catalan	English	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Catalan	Italian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	French	Spanish	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	French	English	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	French	Romanian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Portuguese	Romanian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Portuguese	Italian	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Portuguese	Spanish	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	Portuguese	English	0.1	\N	EUR - Euro	0.1
+giuliapiaser	Spanish	Italian	0.06	\N	EUR - Euro	0.06
+giuliapiaser	English	Italian	0.06	\N	EUR - Euro	0.06
+ValentinaO	English	Italian	0.03	\N	EUR - Euro	0.03
+ValentinaO	Spanish	Italian	0.03	\N	EUR - Euro	0.03
+ValentinaO	French	Italian	0.03	\N	EUR - Euro	0.03
+VL11939	French	Italian	0	\N	EUR - Euro	0
+Christi	English	Greek	0.07	\N	EUR - Euro	0.07
+Christi	French	Greek	0.07	\N	EUR - Euro	0.07
+Christi	Turkish	Greek	0.07	\N	EUR - Euro	0.07
+Christi	Italian	Greek	0.07	\N	EUR - Euro	0.07
+annabaccenetti	English	Italian	80	\N	EUR - Euro	80
+d.fasano5	Russian	Italian	0.1	\N	EUR - Euro	0.1
+d.fasano5	English	Italian	0.1	\N	EUR - Euro	0.1
+savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro	8
+mmakrai@yahoo.com	English	German	0.08	\N	EUR - Euro	0.08
+mmakrai@yahoo.com	English	Croation	0.055	\N	EUR - Euro	0.06
+simkovich0811@gmail.com	Hungarian	English	1000	\N	HUF - Forint	3.22
+AngleRei	English	Italian	20	\N	EUR - Euro	20
+Tony1964	Italian	Spanish	13	\N	EUR - Euro	13
+Tony1964	Italian	English	13	\N	EUR - Euro	13
+Tony1964	Spanish	Italian	13	\N	EUR - Euro	13
+Tony1964	English	Italian	13	\N	EUR - Euro	13
+Tony1964	English	Spanish	13	\N	EUR - Euro	13
+Tony1964	French	Italian	13	\N	EUR - Euro	13
+_valentina	English	Italian	12	\N	EUR - Euro	12
+_valentina	Spanish	Italian	12	\N	EUR - Euro	12
+mariarosaria_leggieri@yahoo.it	English	Italian	0	\N	EUR - Euro	0
+mariarosaria_leggieri@yahoo.it	French	Italian	0	\N	EUR - Euro	0
+Viktorija	Italian	Macedonian	15	\N	EUR - Euro	15
+Viktorija	Italian	Serbian	15	\N	EUR - Euro	15
+Viktorija	Serbian	Italian	15	\N	EUR - Euro	15
+Viktorija	Croation	Italian	15	\N	EUR - Euro	15
+Viktorija	Italian	Croation	15	\N	EUR - Euro	15
+test	English	Italian	0.001	\N	EUR - Euro	0
+simkovich0811@gmail.com	Hungarian	Ukranian	1000	\N	HUF - Forint	3.22
+Claudia	English	Spanish	0	\N	USD - US Dollar	0
+Zsofia Kraus	Hungarian	Turkish	8500	\N	HUF - Forint	27.36
+savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro	8
+simkovich0811@gmail.com	Ukranian	Hungarian	1000	\N	HUF - Forint	3.22
+simkovich0811@gmail.com	English	Hungarian	1000	\N	HUF - Forint	3.22
+santaseta@hotmail.com	Italian	Turkish	100	\N	TRY - New Turkish Lira	22.51
+oljafiore@gmail.com	Italian	Serbian	20	\N	EUR - Euro	20
+oljafiore@gmail.com	Portuguese	Serbian	20	\N	EUR - Euro	20
+simona	English	Italian	10	\N	EUR - Euro	10
+simona	German	Italian	10	\N	EUR - Euro	10
+simona	French	Italian	10	\N	EUR - Euro	10
+simona	German	English	10	\N	EUR - Euro	10
+petersenizza	English	Slovenian	0	\N	EUR - Euro	0
+petersenizza	English	Slovenian	0	\N	EUR - Euro	0
+petersenizza	English	Italian	0	\N	EUR - Euro	0
+petersenizza	Italian	English	0	\N	EUR - Euro	0
+gloria_732000@yahoo.it	English	Italian	1	\N	EUR - Euro	1
+Serena	Italian	English	6	\N	EUR - Euro	6
+Serena	Italian	French	6	\N	EUR - Euro	6
+mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro	0.01
+Claudia	Italian	Portuguese	0	\N	USD - US Dollar	0
+idalconte	Russian	Italian	500	\N	EUR - Euro	500
+cristina_1987ro	English	Spanish	0.1	\N	EUR - Euro	0.1
+cristina_1987ro	French	Italian	0.1	\N	EUR - Euro	0.1
+VL11939	English	Italian	0	\N	EUR - Euro	0
+annabaccenetti	French	Italian	80	\N	EUR - Euro	80
+savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro	8
+Viktorija	Italian	Bulgarian	15	\N	EUR - Euro	15
+Viktorija	Bulgarian	Italian	15	\N	EUR - Euro	15
+sonia.giardini@gmail.com	Japanese	Italian	30	\N	EUR - Euro	30
+sebastianvargas92@gmail.com	English	Spanish	0.07	\N	USD - US Dollar	0.06
+sebastianvargas92@gmail.com	Spanish	English	0.07	\N	USD - US Dollar	0.06
+Viktorija	Macedonian	Italian	15	\N	EUR - Euro	15
+eespol@yahoo.com	Nepali	English	15	\N	EUR - Euro	15
+camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro	0.02
+camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro	0.02
+camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro	0.02
+quistis25@gmail.com	English	Italian	0.06	\N	EUR - Euro	0.06
+quistis25@gmail.com	Spanish	Italian	0.05	\N	EUR - Euro	0.05
+oljafiore@gmail.com	Serbian	Italian	20	\N	EUR - Euro	20
+mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro	0.01
+AdrianaB	French	Italian	0.05	\N	EUR - Euro	0.05
+AdrianaB	English	Italian	0.05	\N	EUR - Euro	0.05
+AdrianaB	Spanish	Italian	0.05	\N	EUR - Euro	0.05
+Claudia	Spanish	English	0	\N	USD - US Dollar	0
 \.
 
 
@@ -1167,7 +1168,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2017-10-26 08:04:25 CEST
+-- Completed on 2017-10-26 22:27:20 CEST
 
 --
 -- PostgreSQL database dump complete
