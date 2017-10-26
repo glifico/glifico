@@ -140,7 +140,7 @@ angular.module("search",[]).controller("search",function($scope){
 			complete : function(ret) {
 				var response=ret.responseText;
 				var data=convertJSON(response);
-				ctrl.documents=data;
+				ctrl.documents=data.data;
 				ctrl.createTable();
 			},
 			error : function(xhr) {

@@ -58,6 +58,9 @@ $sigma=$sigmaRow['avg'];
 
 
 $toExit=[];
+$dataToExit=[];
+$maxB=0;
+$NB=0;
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $translator=$row['username'];
 
@@ -77,10 +80,18 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $priceTransl=$row['price'];
   $price=doTheGaussian($priceTransl,$priceAvg, $sigma);
   if($rating>=$reqRating&&$price<=$reqPrice){
-    array_push($toExit,array("Price"=>$price, "Rating"=>$rating, "Field"=>"traduzioni", "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
+    if($price==2){
+      $NB+=1;
+      if($priceTransl>=$maxB){
+        $maxB=$priceTransl;
+      }
+    }
+    array_push($dataToExit,array("Price"=>$price, "Rating"=>$rating, "Field"=>"traduzioni", "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
   }
 }
 
+$toExit['data']=$dataToExit;
+$toExit['params']=array("maxB"=>$maxB);
 $result->CloseCursor();
 exit (json_encode($toExit));
 ?>
