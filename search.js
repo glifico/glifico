@@ -30,6 +30,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.createTable=function(){
 		var html="";
+		if (ctrl.documents.length>0){
 		html+='<table class="table table-responsive">';
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
@@ -67,6 +68,9 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<tr>';
 		}
 		html+='</table>';
+		}else{
+			html+="No pair found for this search, please try another";
+		}
 		$("#table").html(html);
 	}
 
