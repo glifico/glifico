@@ -19,13 +19,11 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $price=$row['price'];
   $cur=substr($row['currency'],0,3);
   $priceEuro=$price*$handle['rates'][$cur];
-  echo($priceEuro);
   $query="UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
-  echo($query);
-  $result = $db->query($query);
+  $db->query($query);
 }
 
 $result->CloseCursor();
-exit(json_encode(array("stauscode"=>200,"message"=>"currencies updated","result"=>$handle['result'])));
+exit(json_encode(array("stauscode"=>200,"message"=>"currencies updated","result"=>json_encode($handle['result']))));
 
 ?>
