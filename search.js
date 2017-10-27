@@ -31,13 +31,13 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.calculatePriceAg= function(priceClass,priceTr){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
-		case 1:
+			case 1:
 			return (mb*ctrl.params.multA).toFixed(2);
 			break;
-		case 2:
+			case 2:
 			return (mb*ctrl.params.multB).toFixed(2);
 			break;
-		case 3:
+			case 3:
 			return (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
@@ -149,12 +149,12 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.from = e.options[e.selectedIndex].text;
 
 		var temp = {
-				user: getUsername(),
-				token: getToken(),
-				from: ctrl.from,
-				to: ctrl.to,
-				price: ctrl.selectedPrice,
-				rating: ctrl.selectedRating,
+			user: getUsername(),
+			token: getToken(),
+			from: ctrl.from,
+			to: ctrl.to,
+			price: ctrl.selectedPrice,
+			rating: ctrl.selectedRating,
 		};
 
 		var stringPass = JSON.stringify(temp);
@@ -182,6 +182,10 @@ angular.module("search",[]).controller("search",function($scope){
 			}
 		});
 
+	}
+
+	ctrl.feasibility=function(){
+		return 0;
 	}
 
 	ctrl.$onInit=function(){
