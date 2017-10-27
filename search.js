@@ -204,6 +204,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.feasibility=function(){
+		var days=ctrl.Trdeadline-ctrl.today;
 		return 0;
 	}
 
