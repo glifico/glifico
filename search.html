@@ -349,6 +349,9 @@ Price class:<br>
         Days until deadline: {{ctrl.TrDate - ctrl.today | date: "dd"}}<br>
         Available volume: {{8500*(ctrl.TrDate - ctrl.today | date: "dd")}}<br>
         Max available volume: {{10000*(ctrl.TrDate - ctrl.today | date: "dd")}}
+        <span data-ng-show="(10000*(ctrl.TrDate - ctrl.today | date: "dd"))<ctrl.TrCharacters" class="danger">Too much work</span>
+        <span data-ng-show="(10000*(ctrl.TrDate - ctrl.today | date: "dd"))>ctrl.TrCharacters and (8500*(ctrl.TrDate - ctrl.today | date: "dd"))<ctrl.TrCharacters)" class="danger">Urgent</span>
+        <span data-ng-show="(8500*(ctrl.TrDate - ctrl.today | date: "dd"))>ctrl.TrCharacters" class="">standard Job</span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
