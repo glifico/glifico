@@ -245,7 +245,6 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.today=new Date();
 		ctrl.tomorrow=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 		ctrl.TrDeadline=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-		ctrl.field="translations";
 	}
 
 });
