@@ -218,7 +218,7 @@ angular.module("search",[]).controller("search",function($scope){
 			ctrl.feasibility=1;
 			ctrl.feasibilityBack="orange";
 			ctrl.feasibilityColor="#FFF";
-			$("#feasibility").html("Job will be set as Urgent");
+			$("#feasibility").html("Job will be set as urgent");
 		}else{
 			ctrl.feasibility=0;
 			ctrl.feasibilityBack="red";
@@ -237,8 +237,9 @@ angular.module("search",[]).controller("search",function($scope){
 
 
 		ctrl.TrCharacters=0;
-		ctrl.TrDeadline=new Date();
 		ctrl.today=new Date();
+		ctrl.tomorrow=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+		ctrl.TrDeadline=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 	}
 
 });
