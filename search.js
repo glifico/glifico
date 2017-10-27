@@ -193,7 +193,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		ctrl.TrCharacters=0;
 		ctrl.Trdeadline=null;
-		ctrl.TrDay=new Date();
+		ctrl.today=new Date();
 	}
 
 });
