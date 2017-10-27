@@ -106,9 +106,9 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='<td class="col-md-2">';
 				html+='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal"';
 				html+=' data-id="'+doc.id+'"';
-				html+=' data-price="'+doc.price+'"';
-				html+=' data-priceTr="'+doc.priceTr+'"';
-				html+=' ng-click="ctrl.calculatePriceAg('+doc.price+','+doc.priceTr+')"';
+				html+=' data-price="'+doc.Price+'"';
+				html+=' data-priceTr="'+doc.PriceTr+'"';
+				html+=' ng-click="ctrl.calculatePriceAg('+doc.Price+','+doc.PriceTr+')"';
 				html+='>Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
