@@ -157,7 +157,7 @@ angular.module("search",[]).controller("search",function($scope){
 			var element=ctrl.Fields[i];
 			html+='<option value="'+element.Id+'"';
 			if(element.Id==97){
-				html+=" ng-selected ";
+				html+=' ng-selected="true"';
 			}
 			html+='>'+element.Field+'</option>';
 		}
