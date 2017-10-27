@@ -204,7 +204,13 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.feasibility=function(){
-		var days=ctrl.Trdeadline-ctrl.today;
+		var timeDiff = Math.abs(ctrl.Trdeadline.getTime() - ctrl.today.getTime());
+		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+		ctrl.MaxCh=days*8500;
+		ctrl.UrgCh=days*10000;
+		console.log(days);
+		if(ctrl.TrCharacters>ctrl.MaxCh) return 3;
+		if(ctrl.TrCharacters>ctrl.UrgCh) return 3;
 		return 0;
 	}
 
