@@ -208,7 +208,7 @@ angular.module("search",[]).controller("search",function($scope){
 		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 		ctrl.MaxCh=days*8500;
 		ctrl.UrgCh=days*10000;
-		console.log(days);
+		ctrl.days=days;
 		if(ctrl.TrCharacters>ctrl.MaxCh) {
 			ctrl.feasibility=3;
 		}else	if(ctrl.TrCharacters>ctrl.UrgCh){
@@ -216,6 +216,8 @@ angular.module("search",[]).controller("search",function($scope){
 		}else{
 			ctrl.feasibility=0;
 		}
+		console.log(ctrl.feasibility);
+		console.log(ctrl.days);
 	}
 
 	ctrl.$onInit=function(){
