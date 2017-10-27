@@ -343,16 +343,14 @@ Price class:<br>
         </button>
       </div>
       <div class="modal-body">
-        Number of characters: <input type="text" placeholder="dd" data-ng-keydown="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrCharacters"><br>
-        Deadline: <input type="date" id="TrDate" name="input" data-ng-keydown="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.today | date:'yyyy-MM-dd'}}" required />
+        Number of characters: <input type="text" placeholder="dd" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrCharacters"><br>
+        Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.today | date:'yyyy-MM-dd'}}" required />
         <br>
         Days until deadline: {{ctrl.days}}<br>
         Available volume: {{ctrl.UrgCh}}<br>
         Max available volume: {{ctrl.MaxCh}}
         <br>
-        <span data-ng-show="ctrl.feasibility==2" style="background-color:red;color:#FFF;">Too much work</span>
-        <span data-ng-show="ctrl.feasibility==1" style="background-color:orange;color:#FFF;">Urgent</span>
-        <span data-ng-show="ctrl.feasibility==0" style="">Standard job</span>
+        <span id="feasibility" data-ng-show="ctrl.feasibility==2" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};"></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
