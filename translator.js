@@ -623,93 +623,93 @@ function strLeft(sourceStr, keyStr) {
 
 
 
-		$scope.doDelete = function(edu){
-			$http.post('rest.xsp?api=save&type=deleteLanguagePair&id=' + QueryString.id, edu).success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined ||
-								ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"There was an error, please retry inaspettato");
-						} else if (ret[0].data.status != undefined &&
-								ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined ||
-									ret[0].data.msg == "") {
-								$('#alertError').html(
-								"There was an error, please retry.");
-							} else {
-								var stringval = ret[0].data.msg
-								if (stringval.indexOf("Cannot insert duplicate key") != -1) {
-									var errorField = strRight(ret[0].data.msg, "Index:");
-									errorField = strLeft(errorField, "_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								} else {
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Your data was saved correctly.");
-							angular.copy($scope.nullModel,$scope.model);
-							$scope.Pairs = ret[0].data.Pairs;
-						}
-					});
-
-		}
-
-
+		// $scope.doDelete = function(edu){
+		// 	$http.post('rest.xsp?api=save&type=deleteLanguagePair&id=' + QueryString.id, edu).success(
+		// 			function(data) {
+		// 				var ret = eval(data);
+		// 				if (ret == undefined || ret[0] == undefined ||
+		// 						ret[0].data == undefined) {
+		// 					$('#alertError').fadeIn().delay(10000)
+		// 					.fadeOut();
+		// 					$('#alertError')
+		// 					.html(
+		// 					"There was an error, please retry inaspettato");
+		// 				} else if (ret[0].data.status != undefined &&
+		// 						ret[0].data.status.toLowerCase() == "error") {
+		// 					$('#alertError').fadeIn().delay(10000)
+		// 					.fadeOut();
+		// 					if (ret[0].data.msg == undefined ||
+		// 							ret[0].data.msg == "") {
+		// 						$('#alertError').html(
+		// 						"There was an error, please retry.");
+		// 					} else {
+		// 						var stringval = ret[0].data.msg
+		// 						if (stringval.indexOf("Cannot insert duplicate key") != -1) {
+		// 							var errorField = strRight(ret[0].data.msg, "Index:");
+		// 							errorField = strLeft(errorField, "_Unique");
+		// 							$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+		// 						} else {
+		// 							$('#alertError').html(ret[0].data.msg);
+		// 						}
+		// 					}
+		// 				} else {
+		// 					$('#alertOK').fadeIn().delay(10000)
+		// 					.fadeOut();
+		// 					$('#alertOK').html(
+		// 					"Your data was saved correctly.");
+		// 					angular.copy($scope.nullModel,$scope.model);
+		// 					$scope.Pairs = ret[0].data.Pairs;
+		// 				}
+		// 			});
+		//
+		// }
 
 
-		$scope.submit = function() {
-			$http
-			.post('rest.xsp?api=save&type=modificaLanguagePair&id='+QueryString.id, $scope.model)
-			.success(
-					function(data) {
-						var ret = eval(data);
-						if (ret == undefined || ret[0] == undefined
-								|| ret[0].data == undefined) {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertError')
-							.html(
-							"There was an error, please retry inaspettato");
-						} else if (ret[0].data.status != undefined
-								&& ret[0].data.status.toLowerCase() == "error") {
-							$('#alertError').fadeIn().delay(10000)
-							.fadeOut();
-							if (ret[0].data.msg == undefined
-									|| ret[0].data.msg == "") {
-								$('#alertError').html(
-								"There was an error, please retry.");
-							} else {
-								var stringval=ret[0].data.msg
-								if(stringval.indexOf("Cannot insert duplicate key") != -1){
-									var errorField = strRight(ret[0].data.msg,"Index:");
-									errorField = strLeft(errorField,"_Unique");
-									$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-								}else{
-									$('#alertError').html(ret[0].data.msg);
-								}
-							}
-						} else {
-							$('#alertOK').fadeIn().delay(10000)
-							.fadeOut();
-							$('#alertOK').html(
-							"Your data was saved correctly.");
-							angular.copy($scope.nullModel,$scope.model);
-							$scope.Pairs=ret[0].data.Pairs;
-						}
-						$('#loginModal').modal('hide');
-					});
-		}
-	});
+
+
+	// 	$scope.submit = function() {
+	// 		$http
+	// 		.post('rest.xsp?api=save&type=modificaLanguagePair&id='+QueryString.id, $scope.model)
+	// 		.success(
+	// 				function(data) {
+	// 					var ret = eval(data);
+	// 					if (ret == undefined || ret[0] == undefined
+	// 							|| ret[0].data == undefined) {
+	// 						$('#alertError').fadeIn().delay(10000)
+	// 						.fadeOut();
+	// 						$('#alertError')
+	// 						.html(
+	// 						"There was an error, please retry inaspettato");
+	// 					} else if (ret[0].data.status != undefined
+	// 							&& ret[0].data.status.toLowerCase() == "error") {
+	// 						$('#alertError').fadeIn().delay(10000)
+	// 						.fadeOut();
+	// 						if (ret[0].data.msg == undefined
+	// 								|| ret[0].data.msg == "") {
+	// 							$('#alertError').html(
+	// 							"There was an error, please retry.");
+	// 						} else {
+	// 							var stringval=ret[0].data.msg
+	// 							if(stringval.indexOf("Cannot insert duplicate key") != -1){
+	// 								var errorField = strRight(ret[0].data.msg,"Index:");
+	// 								errorField = strLeft(errorField,"_Unique");
+	// 								$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+	// 							}else{
+	// 								$('#alertError').html(ret[0].data.msg);
+	// 							}
+	// 						}
+	// 					} else {
+	// 						$('#alertOK').fadeIn().delay(10000)
+	// 						.fadeOut();
+	// 						$('#alertOK').html(
+	// 						"Your data was saved correctly.");
+	// 						angular.copy($scope.nullModel,$scope.model);
+	// 						$scope.Pairs=ret[0].data.Pairs;
+	// 					}
+	// 					$('#loginModal').modal('hide');
+	// 				});
+	// 	}
+	// });
 
 
 
