@@ -82,7 +82,7 @@ angular.module("search",[]).controller("search",function($scope){
 				var doc=ctrl.documents[i];
 				//doc.Price is class {1,2,3}
 				//doc.PriceTr is Translator defined price for pair
-				var priceAg = ctrl.calculatePriceAg(doc.Price, doc.PriceTr);
+				var priceAg = ctrl.calculatePriceAg(doc.Price, doc.PriceTr)*ctrl.TrCharacters;
 				html+='<tr class="row '+ctrl.getClass(doc)+'">';
 				html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
