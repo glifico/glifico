@@ -350,8 +350,9 @@ Price class:<br>
         Available volume: {{ctrl.UrgCh}}<br>
         Max available volume: {{ctrl.MaxCh}}
         <br>
-        <span id="AgPrice"></span>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};"></span>
+      	<span id="AgPrice"></span>
+        <br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility==2" data-ng-click="ctrl.startJob">Start Job</button>
@@ -380,8 +381,8 @@ $('#TrModal').on('show.bs.modal', function (event) {
 
 		html+="";
 		html+="You will pay: ";
-		html+=button.data('price');
-		html+=" Euros"
+		html+=button.data('price')*{{ctrl.TrCharacters}};
+		html+=" Euro"
 		$("#AgPrice").html(html);
 	})
 </script>
