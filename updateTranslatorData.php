@@ -30,8 +30,8 @@ $idStato=$params['IdCountry'];
 $madrelinguaId=$params['IdMothertongue'];
 $data_nascita=$params['data_nascita'];
 
-//data_nascita='$data_nascita',
-$query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId' WHERE username='$user';";
+
+$query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId' WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 

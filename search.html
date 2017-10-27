@@ -349,6 +349,7 @@ Price class:<br>
         Days until deadline: {{ctrl.TrDate - ctrl.today | date: "dd"}}<br>
         Available volume: {{8500*(ctrl.TrDate - ctrl.today | date: "dd")}}<br>
         Max available volume: {{10000*(ctrl.TrDate - ctrl.today | date: "dd")}}
+        <br>
         <span data-ng-show="ctrl.feasibility()==2" class="danger">Too much work</span>
         <span data-ng-show="ctrl.feasibility()==1" class="warning">Urgent</span>
         <span data-ng-show="ctrl.feasibility()==0" class="">standard Job</span>
