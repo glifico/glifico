@@ -204,7 +204,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.feasibility=function(){
-		var timeDiff = Math.abs(ctrl.Trdeadline.getTime() - ctrl.today.getTime());
+		var timeDiff = Math.abs(ctrl.Deadline.getTime() - ctrl.today.getTime());
 		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 		ctrl.MaxCh=days*8500;
 		ctrl.UrgCh=days*10000;
@@ -224,7 +224,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 
 		ctrl.TrCharacters=0;
-		ctrl.Trdeadline=null;
+		ctrl.Deadline=new Date();
 		ctrl.today=new Date();
 	}
 
