@@ -210,9 +210,9 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
 		if(ctrl.TrCharacters>ctrl.MaxCh) {
-			ctrl.feasibility=3;
-		}else	if(ctrl.TrCharacters>ctrl.UrgCh){
 			ctrl.feasibility=2;
+		}else	if(ctrl.TrCharacters>ctrl.UrgCh){
+			ctrl.feasibility=1;
 		}else{
 			ctrl.feasibility=0;
 		}
