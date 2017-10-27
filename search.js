@@ -51,13 +51,13 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.calculatePriceAg= function(priceClass,priceTr){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
-			case 1:
+		case 1:
 			return (mb*ctrl.params.multA).toFixed(2);
 			break;
-			case 2:
+		case 2:
 			return (mb*ctrl.params.multB).toFixed(2);
 			break;
-			case 3:
+		case 3:
 			return (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
@@ -155,7 +155,11 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='<select id="select-from" placeholder="Field" data-ng-model="ctrl.field">';
 		for(var i=0; i<ctrl.Fields.length; i++){
 			var element=ctrl.Fields[i];
-			html+='<option value="'+element.Id+'">'+element.Field+'</option>';
+			html+='<option value="'+element.Id+'"';
+			if(element.Id==97){
+				html+=" ng-selected ";
+			}
+			html+='>'+element.Field+'</option>';
 		}
 		html+='</select>';
 		$("#formcenter").html(html);
@@ -172,13 +176,13 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.from = e.options[e.selectedIndex].text;
 
 		var temp = {
-			user: getUsername(),
-			token: getToken(),
-			from: ctrl.from,
-			to: ctrl.to,
-			price: ctrl.selectedPrice,
-			rating: ctrl.selectedRating,
-			field: ctrl.field,
+				user: getUsername(),
+				token: getToken(),
+				from: ctrl.from,
+				to: ctrl.to,
+				price: ctrl.selectedPrice,
+				rating: ctrl.selectedRating,
+				field: ctrl.field,
 		};
 
 		var stringPass = JSON.stringify(temp);
@@ -231,9 +235,9 @@ angular.module("search",[]).controller("search",function($scope){
 			$("#feasibility").html("");
 		}
 	}
-	
+
 	ctrl.startJob=function(){
-		
+
 	}
 
 	ctrl.$onInit=function(){
