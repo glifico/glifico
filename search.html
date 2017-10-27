@@ -344,9 +344,9 @@ Price class:<br>
       </div>
       <div class="modal-body">
         Number of characters: <input type="text" placeholder="dd" data-ng-model="ctrl.TrCharacters"><br>
-        Deadline: <input type="date" id="TrDate" name="input" data-ng-model="ctrl.TrDay" placeholder="dd-MM-yyyy" min="01-01-2017" required />
+        Deadline: <input type="date" id="TrDate" name="input" data-ng-model="ctrl.TrDate" placeholder="dd-MM-yyyy" min="01-01-2017" required />
         <br>
-        Days until deadline: {{ctrl.TrDate | date: "dd-MM-yyyy"}}<br>
+        Days until deadline: {{ctrl.TrDate - new Date() | date: "dd"}}<br>
         Available volume: {{8500*ctrl.TrCharacters}}<br>
         Max available volume: {{10000*ctrl.TrCharacters}}
       </div>
