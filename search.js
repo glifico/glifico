@@ -245,7 +245,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.selectedRating=0;
 		ctrl.from="";
 		ctrl.to="";
-		ctrl.field="translation";
+		ctrl.field="";
 		ctrl.initForm();
 
 
