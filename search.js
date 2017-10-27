@@ -43,50 +43,56 @@ angular.module("search",[]).controller("search",function($scope){
 		}
 	}
 
+
 	ctrl.createTable=function(){
 		var html="";
 		if (ctrl.documents.length>0){
-		html+='<table class="table table-responsive">';
-		html+='<thead class="thead-default">';
-		html+='<tr class="row">';
-		html+='<th class="col-md-2" style="text-align:center;">Translator</th>';
-		html+='<th class="col-md-1" style="text-align:center;">Mothertongue</th>';
-		html+='<th class="col-md-2" style="text-align:center;">Field</th>';
-		html+='<th class="col-md-2" style="text-align:center;">Rating</th>';
-		html+='<th class="col-md-2" style="text-align:center;">Price</th>';
-		html+='<th class="col-md-2" style="text-align:center;"></th>';
-		html+='</tr>';
-		html+='</thead>';
-		for (var i = 0; i < ctrl.documents.length; i++) {
-			var doc=ctrl.documents[i];
-			//doc.Price is class {1,2,3}
-			//doc.PriceTr is Translator defined price for pair
-			var priceAg = ctrl.calculatePriceAg(doc.Price, doc.PriceTr);
-			html+='<tr class="row '+ctrl.getClass(doc)+'">';
-			html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
-			html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
-			html+='<td class="col-md-2">'+doc.Field+'</td>';
-			html+='<td class="col-md-2">';
-			html+='<div class="price">';
-			html+='<span class="money '+(doc.Rating>=1?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-			html+='<span class="money '+(doc.Rating>=2?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-			html+='<span class="money '+(doc.Rating>=3?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="3"></i></span>';
-			html+='<span class="money '+(doc.Rating>=4?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="4"></i></span>';
-			html+='<span class="money '+(doc.Rating>=5?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="5"></i></span>';
-			html+='</div>';
-			html+='</td>';
-			html+='<td class="col-md-2">';
-			html+='<div class="price">';
-			html+='<span class="money '+(doc.Price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-			html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-			html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
-			html+='</div>';
-			html+=priceAg;
-			html+='</td>';
-			html+='<td class="col-md-2"><button class="btn btn-primary" value="Select"></td>';
-			html+='<tr>';
-		}
-		html+='</table>';
+			html+='<table class="table table-responsive">';
+			html+='<thead class="thead-default">';
+			html+='<tr class="row">';
+			html+='<th class="col-md-2" style="text-align:center;">Translator</th>';
+			html+='<th class="col-md-1" style="text-align:center;">Mothertongue</th>';
+			html+='<th class="col-md-2" style="text-align:center;">Field</th>';
+			html+='<th class="col-md-2" style="text-align:center;">Rating</th>';
+			html+='<th class="col-md-2" style="text-align:center;">Price</th>';
+			html+='<th class="col-md-2" style="text-align:center;"></th>';
+			html+='</tr>';
+			html+='</thead>';
+			for (var i = 0; i < ctrl.documents.length; i++) {
+				var doc=ctrl.documents[i];
+				//doc.Price is class {1,2,3}
+				//doc.PriceTr is Translator defined price for pair
+				var priceAg = ctrl.calculatePriceAg(doc.Price, doc.PriceTr);
+				html+='<tr class="row '+ctrl.getClass(doc)+'">';
+				html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
+				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
+				html+='<td class="col-md-2">'+doc.Field+'</td>';
+				html+='<td class="col-md-2">';
+				html+='<div class="price">';
+				html+='<span class="money '+(doc.Rating>=1?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+				html+='<span class="money '+(doc.Rating>=2?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+				html+='<span class="money '+(doc.Rating>=3?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+				html+='<span class="money '+(doc.Rating>=4?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="4"></i></span>';
+				html+='<span class="money '+(doc.Rating>=5?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="5"></i></span>';
+				html+='</div>';
+				html+='</td>';
+				html+='<td class="col-md-2">';
+				html+='<div class="price">';
+				html+='<span class="money '+(doc.Price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+				html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+				html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+				html+='</div>';
+				html+='</td>';
+				html+='<td class="col-md-2">';
+				html+='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal"';
+				html+=' data-price="'+priceAg+'"';
+				html+=' data-id="'+doc.id+'"';
+				html+=' data-currency="'+"EUR - EURO"+'"';
+				html+='>Select translator</button>';
+				html+='</td>';
+				html+='<tr>';
+			}
+			html+='</table>';
 		}else{
 			html+="No pair found for this search, please try another";
 		}
@@ -143,12 +149,12 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.from = e.options[e.selectedIndex].text;
 
 		var temp = {
-			user: getUsername(),
-			token: getToken(),
-			from: ctrl.from,
-			to: ctrl.to,
-			price: ctrl.selectedPrice,
-			rating: ctrl.selectedRating,
+				user: getUsername(),
+				token: getToken(),
+				from: ctrl.from,
+				to: ctrl.to,
+				price: ctrl.selectedPrice,
+				rating: ctrl.selectedRating,
 		};
 
 		var stringPass = JSON.stringify(temp);
@@ -184,6 +190,12 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.from="";
 		ctrl.to="";
 		ctrl.loadLanguages();
+
+		ctrl.TrCharacters=0;
+		ctrl.Trdeadline=null;
+		ctrl.TrDay=1;
+		ctrl.TrMonth=1;
+		ctrl.TrYear=2017;
 	}
 
 });

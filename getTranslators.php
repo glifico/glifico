@@ -89,7 +89,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   }
 
   if($rating>=$reqRating&&$price<=$reqPrice){
-    array_push($dataToExit,array("Price"=>$price, "PriceTr"=>$priceTransl,"NormPrice"=>($priceTransl-$priceAvg)/$sigma, "Rating"=>$rating, "Field"=>$row['field'], "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
+    array_push($dataToExit,array("Price"=>$price, "PriceTr"=>$priceTransl, "NormPrice"=>($priceTransl-$priceAvg)/$sigma, "Rating"=>$rating, "Field"=>$row['field'], "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
   }
 }
 

@@ -335,6 +335,50 @@ Price class:<br>
 </div>
 </div>
 
+<!-- Translator Modal -->
+<div class="modal fade" id="TrModal" tabindex="-1" role="dialog" aria-labelledby="TrModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TrModalLabel">Job</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Number of characters: {{ctrl.TrCharacters}}
+        Deadline: <input type="text" placeholder="dd" data-ng-model="ctrl.TrDay">/<input type="text" placeholder="mm" data-ng-model="ctrl.TrMonth">/<input type="text" placeholder="yyyy" value="2017" data-ng-model="ctrl.TrYear">
+        
+        Days until deadline: {{ctrl.TrDay}}
+        Volume: {{8500*ctrl.TrCharacters}}
+        Max Volume: {{10000*ctrl.TrCharacters}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#TrModal').on('show.bs.modal', function (event) {
+  
+	var button = $(event.relatedTarget) // Button that triggered the modal
+		var job = button.data('job') // Extract info from data-* attributes
+		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		var modal = $(this)
+		modal.find('.modal-title').text('Job: ' + job)
+		var html = "";
+		var footHtml = "";
+
+		html+=""
+		
+		modal.find('.modal-footer').html(footHtml)
+		modal.find('.modal-body').html(html)
+	})
+</script>
+
 
 <div ng-app="glifico">
  <glificofooter></glificofooter>
