@@ -209,15 +209,13 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.MaxCh=days*10000;
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
-		if(ctrl.TrCharacters>ctrl.MaxCh) {
+		if(ctrl.TrCharacters>=ctrl.MaxCh) {
 			ctrl.feasibility=2;
-		}else	if(ctrl.TrCharacters>ctrl.UrgCh){
+		}else	if(ctrl.TrCharacters>=ctrl.UrgCh){
 			ctrl.feasibility=1;
 		}else{
 			ctrl.feasibility=0;
 		}
-		console.log(ctrl.feasibility);
-		console.log(ctrl.days);
 	}
 
 	ctrl.$onInit=function(){
@@ -230,7 +228,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 
 		ctrl.TrCharacters=0;
-		ctrl.Deadline=new Date();
+		ctrl.TrDeadline=new Date();
 		ctrl.today=new Date();
 	}
 
