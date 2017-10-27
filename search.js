@@ -52,13 +52,13 @@ angular.module("search",[]).controller("search",function($scope){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
 		case 1:
-			ctrl.priceAg= (mb*ctrl.params.multA).toFixed(2);
+			ctrl.priceAg = (mb*ctrl.params.multA).toFixed(2);
 			break;
 		case 2:
-			ctrl.priceAg= (mb*ctrl.params.multB).toFixed(2);
+			ctrl.priceAg = (mb*ctrl.params.multB).toFixed(2);
 			break;
 		case 3:
-			ctrl.priceAg= (priceTr*ctrl.params.multC).toFixed(2);
+			ctrl.priceAg = (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
 	}
@@ -215,7 +215,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.calcultateFeasibility=function(){
 		var timeDiff = Math.abs(ctrl.TrDeadline.getTime() - ctrl.today.getTime());
-		var days = Math.ceil(timeDiff / (1000 * 3600 * 24))-1;
+		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 		ctrl.MaxCh=days*10000;
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
@@ -251,6 +251,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 
 		ctrl.TrCharacters=0;
+		ctrl.priceAg=0;
 		ctrl.today=new Date();
 		ctrl.tomorrow=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 		ctrl.TrDeadline=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
