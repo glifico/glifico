@@ -66,7 +66,7 @@
 <link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
 <link rel="stylesheet" type="text/css" href="main.css">
 
-		
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -270,7 +270,7 @@ md-input-container{
 
 
 
-<!-- 
+<!--
 
 Add your code here
 -->
@@ -289,7 +289,7 @@ User personal page
 <script src="translator.js"></script>
 
 <div class="jumbotron jumboMain"><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><h2>Editing Profile</h2></div></div><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12">
-				
+
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs">
@@ -324,7 +324,7 @@ User personal page
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Birthday</label>
-										<md-datepicker ng-model="model.Birthday"></md-datepicker>
+										<input type="date" id="birthday" name="input" data-ng-model="model.Birthday" placeholder="dd-MM-yyyy" min="01-01-1900" />
 									</md-input-container>
 								</div>
 
@@ -407,28 +407,28 @@ User personal page
 								</div>
 							</form>
 						</div>
-					
-				
-					 
-				
+
+
+
+
 						<md-list ng-cloak>
 							<md-subheader class="md-no-sticky">My Educations List</md-subheader>
 							  <md-list-item ng-repeat="edu in edus" ng-click="loadEducation(edu)" class="noright">
-							  	
+
 							    <p>{{ edu.Institute }}, {{ edu.Field }}</p>
 							    <span aria-label="edit" ng-click="loadEducation(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-pencil fa-2x"></i></span>
 							    <span aria-label="download" ng-show="isToShow(edu)" ng-click="download(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-download fa-2x"></i></span>
 							    <span aria-label="attach" ng-click="showAdvanced($event,edu)"  class="md-secondary md-hue-3" ><i class="fa fa-paperclip fa-2x"></i></span>
 							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
-							    
+
 							 </md-list-item>
 						</md-list>
-					
+
 					</md-content>
 				</div>
-				
+
 			</div>
-			
+
 			<div id="Specialization" class="tab-pane fade">
 				<h3>Specialization</h3>
 
@@ -467,28 +467,28 @@ User personal page
 								</div>
 							</form>
 						</div>
-					
-				
-					 
-				
+
+
+
+
 						<md-list ng-cloak>
 							<md-subheader class="md-no-sticky">My Specializations</md-subheader>
 							  <md-list-item ng-repeat="edu in Specializations" ng-click="loadSpecializations(edu)" class="noright">
-							  	
+
 							    <p>{{ edu.Institution }}, {{ edu.Certification }}</p>
 							    <span aria-label="edit" ng-click="loadSpecialization(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-pencil fa-2x"></i></span>
 							    <span aria-label="download" ng-show="isToShow(edu)" ng-click="download(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-download fa-2x"></i></span>
 							    <span aria-label="attach" ng-click="showAdvanced($event,edu)"  class="md-secondary md-hue-3" ><i class="fa fa-paperclip fa-2x"></i></span>
 							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
-							    
+
 							 </md-list-item>
 						</md-list>
-					
+
 					</md-content>
 				</div>
 			</div>
-			
-		
+
+
 			<div id="LanguagePairs" class="tab-pane fade">
 				<h3>Language Pairs</h3>
 
@@ -496,7 +496,7 @@ User personal page
 					<md-content layout-padding>
 						<div>
 							<form name="languagePairsForm" action="/" method="post">
-								
+
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Language From</label>
@@ -515,7 +515,7 @@ User personal page
 										</md-select>
 									</md-input-container>
 								</div>
-								
+
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Field</label>
@@ -534,7 +534,7 @@ User personal page
 										</md-select>
 									</md-input-container>
 								</div>
-								
+
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Currency</label>
@@ -545,35 +545,35 @@ User personal page
 										</md-select>
 									</md-input-container>
 								</div>
-								
+
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Price Per Character</label>
 										<input type="number" ng-model="model.PricePerCharacter" required>
 									</md-input-container>
 								</div>
-								
-								
+
+
 								<div layout-gt-xs="row">
 									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Save</md-button>
 								</div>
 							</form>
 						</div>
-					
-				
-					 
-				
+
+
+
+
 						<md-list ng-cloak>
 							<md-subheader class="md-no-sticky">My Language Pairs</md-subheader>
 							  <md-list-item ng-repeat="edu in Pairs" ng-click="loadPairs(edu)" class="noright">
-							  	
+
 							    <p>From: {{ edu.LanguageFrom }}, To: {{ edu.LanguageTo }}</p>
 							    <span aria-label="edit" ng-click="loadPairs(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-pencil fa-2x"></i></span>
 							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
-							    
+
 							 </md-list-item>
 						</md-list>
-					
+
 					</md-content>
 				</div>
 			</div>
@@ -585,7 +585,7 @@ User personal page
 </div>
 </div>
 
- 
+
 <div ng-app="glifico">
  <glificofooter></glificofooter>
  </div>
