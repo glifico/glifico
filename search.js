@@ -17,6 +17,7 @@ angular.module("search",[]).controller("search",function($scope){
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
 				ctrl.Languages=ret;
+				ctrl.loadFields();
 				ctrl.createForm();
 				return(true);
 			}else{
@@ -159,7 +160,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.search=function(){
-		$("#table").html('<i class="fa fa-pulse fa-spin fa-4x fa-fw"></i>');
+		$("#table").html('<i class="fa fa-pulse fa-spin fa-4x"></i>');
 
 		var e = document.getElementById("select-to");
 		ctrl.to = e.options[e.selectedIndex].text;
@@ -237,7 +238,6 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.selectedRating=0;
 		ctrl.from="";
 		ctrl.to="";
-		ctrl.loadFields();
 		ctrl.loadLanguages();
 
 
