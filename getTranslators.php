@@ -39,9 +39,10 @@ $langFrom=$data['from'];
 $langTo=$data['to'];
 $reqRating=$data['rating'];
 $reqPrice=$data['price'];
+$field=$data['field'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT username, from_l, to_l, field, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
+$query="SELECT username, from_l, to_l, field, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo' AND field LIKE '$field'";
 $result = $db->query($query.";");
 
 

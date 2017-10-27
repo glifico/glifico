@@ -174,6 +174,7 @@ angular.module("search",[]).controller("search",function($scope){
 			to: ctrl.to,
 			price: ctrl.selectedPrice,
 			rating: ctrl.selectedRating,
+			field: ctrl.field,
 		};
 
 		var stringPass = JSON.stringify(temp);
@@ -226,6 +227,10 @@ angular.module("search",[]).controller("search",function($scope){
 			$("#feasibility").html("");
 		}
 	}
+	
+	ctrl.startJob=function(){
+		
+	}
 
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=3;
@@ -240,6 +245,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.today=new Date();
 		ctrl.tomorrow=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 		ctrl.TrDeadline=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+		ctrl.field="translations";
 	}
 
 });

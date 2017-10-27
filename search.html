@@ -350,9 +350,11 @@ Price class:<br>
         Available volume: {{ctrl.UrgCh}}<br>
         Max available volume: {{ctrl.MaxCh}}
         <br>
+        <span id="AgPrice"></span>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};"></span>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility==2" data-ng-click="ctrl.startJob">Start Job</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -377,9 +379,10 @@ $('#TrModal').on('show.bs.modal', function (event) {
 		var footHtml = "";
 
 		html+="";
-
-		//modal.find('.modal-footer').html(footHtml)
-		//modal.find('.modal-body').html(html)
+		html+="You will pay: ";
+		html+=button.data('price');
+		html+=" Euros"
+		$("#AgPrice").html(html);
 	})
 </script>
 
