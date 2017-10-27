@@ -104,7 +104,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary" ng-click="alert("selected")">Check urgence</button>';
+				html+='<button type="button" class="btn btn-primary" ng-click="console.info()">Select Translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
