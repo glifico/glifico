@@ -1,6 +1,5 @@
 <?php
 $currencies=array(
-  "translation",
   "accounting",
   "advertising: TV, radio, newspapers",
   "agriculture",
@@ -98,6 +97,7 @@ $currencies=array(
   "tourism",
   "traffic management",
   "transport",
+  "translation",
   "white goods",
   "wood industry",
   "wood working",
