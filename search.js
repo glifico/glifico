@@ -28,6 +28,22 @@ angular.module("search",[]).controller("search",function($scope){
 		req.send();
 	};
 
+	ctrl.loadFields = function(){
+		var req=createXHTMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				ctrl.Fields=ret;
+				return(true);
+			}else{
+				return(false);
+			}
+		};
+
+		req.open("GET","getFields.php",true);
+		req.send();
+	};
+
 	ctrl.calculatePriceAg= function(priceClass,priceTr){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
@@ -120,9 +136,7 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
-		$("#formleft").html(html);
-
-		var html="";
+		htl+="<br>";
 		html+='<label>To: </label>';
 		html+='<select id="select-to" placeholder="Translate from" data-ng-model="ctrl.to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
@@ -130,12 +144,17 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
+		$("#formleft").html(html);
+
+		var html="";
+		html+='<label>Field: </label>';
+		html+='<select id="select-from" placeholder="Field" data-ng-model="ctrl.field">';
+		for(var i=0; i<ctrl.Fields.length; i++){
+			var element=ctrl.Fields[i];
+			html+='<option value="'+element.Id+'">'+element.Field+'</option>';
+		}
+		html+='</select>';
 		$("#formcenter").html(html);
-
-		ctrl.createFormRight();
-	}
-
-	ctrl.createFormRight=function(){
 
 	}
 
@@ -193,7 +212,9 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.selectedRating=0;
 		ctrl.from="";
 		ctrl.to="";
+		ctrl.loadFields();
 		ctrl.loadLanguages();
+
 
 		ctrl.TrCharacters=0;
 		ctrl.Trdeadline=null;
