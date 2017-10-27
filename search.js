@@ -10,6 +10,9 @@ angular.module("search",[]).controller("search",function($scope){
 		return "primary";
 	}
 
+	ctrl.initForm=function(){
+		ctrl.loadLanguages();
+	}
 
 	ctrl.loadLanguages = function(){
 		var req=createXHTMLHttpRequest();
@@ -17,6 +20,7 @@ angular.module("search",[]).controller("search",function($scope){
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
 				ctrl.Languages=ret;
+				ctrl.loadFields();
 				return(true);
 			}else{
 				return(false);
@@ -33,6 +37,7 @@ angular.module("search",[]).controller("search",function($scope){
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
 				ctrl.Fields=ret;
+				ctrl.createForm();
 				return(true);
 			}else{
 				return(false);
@@ -127,9 +132,6 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.createForm=function(){
-		ctrl.loadFields();
-		ctrl.loadLanguages();
-
 		var html="";
 		html+='<label>From: </label>';
 		html+='<select id="select-from" placeholder="Translate from" data-ng-model="ctrl.from" required>';
@@ -239,7 +241,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.selectedRating=0;
 		ctrl.from="";
 		ctrl.to="";
-		ctrl.createForm();
+		ctrl.initForm();
 
 
 		ctrl.TrCharacters=0;
