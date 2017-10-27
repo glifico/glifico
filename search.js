@@ -134,7 +134,7 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.createForm=function(){
 		var html="";
 		html+='<label>From: </label>';
-		html+='<select id="select-from" placeholder="Translate from" data-ng-model="ctrl.from" required>';
+		html+='<select id="select-from" placeholder="Translate from" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
@@ -142,7 +142,7 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='</select>';
 		html+="<br>";
 		html+='<label>To: </label>';
-		html+='<select id="select-to" placeholder="Translate to" data-ng-model="ctrl.to" required>';
+		html+='<select id="select-to" placeholder="Translate to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
@@ -152,12 +152,12 @@ angular.module("search",[]).controller("search",function($scope){
 
 		var html="";
 		html+='<label>Field: </label>';
-		html+='<select id="select-field" placeholder="Field" data-ng-model="ctrl.field" required>';
+		html+='<select id="select-field" placeholder="Field">';
 		for(var i=0; i<ctrl.Fields.length; i++){
 			var element=ctrl.Fields[i];
 			html+='<option value="'+element.Id+'"';
 			if(element.Id==97){
-				html+=' ng-selected="selected"';
+				html+=' selected="selected"';
 			}
 			html+='>'+element.Field+'</option>';
 		}
@@ -174,6 +174,9 @@ angular.module("search",[]).controller("search",function($scope){
 
 		var e = document.getElementById("select-from");
 		ctrl.from = e.options[e.selectedIndex].text;
+		
+		var e = document.getElementById("select-field");
+		ctrl.field = e.options[e.selectedIndex].text;
 
 		var temp = {
 				user: getUsername(),
