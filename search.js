@@ -61,6 +61,7 @@ angular.module("search",[]).controller("search",function($scope){
 			ctrl.priceAg = (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
+		console.log(ctrl.priceAg);
 	}
 
 
