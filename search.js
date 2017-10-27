@@ -203,15 +203,19 @@ angular.module("search",[]).controller("search",function($scope){
 
 	}
 
-	ctrl.feasibility=function(){
+	ctrl.calcultateFeasibility=function(){
 		var timeDiff = Math.abs(ctrl.Deadline.getTime() - ctrl.today.getTime());
 		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 		ctrl.MaxCh=days*8500;
 		ctrl.UrgCh=days*10000;
 		console.log(days);
-		if(ctrl.TrCharacters>ctrl.MaxCh) return 3;
-		if(ctrl.TrCharacters>ctrl.UrgCh) return 3;
-		return 0;
+		if(ctrl.TrCharacters>ctrl.MaxCh) {
+			ctrl.feasibility=3;
+		}else	if(ctrl.TrCharacters>ctrl.UrgCh){
+			ctrl.feasibility=2;
+		}else{
+			ctrl.feasibility=0;
+		}
 	}
 
 	ctrl.$onInit=function(){

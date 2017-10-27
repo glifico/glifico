@@ -343,16 +343,16 @@ Price class:<br>
         </button>
       </div>
       <div class="modal-body">
-        Number of characters: <input type="text" placeholder="dd" data-ng-model="ctrl.TrCharacters"><br>
-        Deadline: <input type="date" id="TrDate" name="input" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="01-01-2017" required />
+        Number of characters: <input type="text" placeholder="dd" data-ng-keydown="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrCharacters"><br>
+        Deadline: <input type="date" id="TrDate" name="input" data-ng-keydown="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="01-01-2017" required />
         <br>
         Days until deadline: {{ctrl.TrDeadline - ctrl.today | date: "dd"}}<br>
         Available volume: {{8500*(ctrl.TrDeadline - ctrl.today | date: "dd")}}<br>
         Max available volume: {{10000*(ctrl.TrDeadline - ctrl.today | date: "dd")}}
         <br>
-        <span data-ng-show="ctrl.feasibility()==2" style="color:red;font-color:#FFF;">Too much work</span>
-        <span data-ng-show="ctrl.feasibility()==1" style="color:orange;font-color:#FFF;">Urgent</span>
-        <span data-ng-show="ctrl.feasibility()==0" style="">standard Job</span>
+        <span data-ng-show="ctrl.feasibility==2" style="color:red;font-color:#FFF;">Too much work</span>
+        <span data-ng-show="ctrl.feasibility==1" style="color:orange;font-color:#FFF;">Urgent</span>
+        <span data-ng-show="ctrl.feasibility==0" style="">standard Job</span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
