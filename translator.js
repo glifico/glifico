@@ -138,7 +138,7 @@ function strLeft(sourceStr, keyStr) {
 				var ret = convertJSON(req.responseText);
 				$scope.loadLanguages();
 				$scope.loadCountries();
-				ret[0]['Birthday']=new Date();
+				ret[0]['Birthday']=new Date(ret[0]['data_nascita']);
 				$scope.model=ret[0];
 			}else{
 				mostraDialogTimed('errorPanel');
