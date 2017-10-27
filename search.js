@@ -193,9 +193,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		ctrl.TrCharacters=0;
 		ctrl.Trdeadline=null;
-		ctrl.TrDay=1;
-		ctrl.TrMonth=1;
-		ctrl.TrYear=2017;
+		ctrl.TrDay=new Date();
 	}
 
 });
