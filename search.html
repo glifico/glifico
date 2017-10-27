@@ -343,7 +343,7 @@ Price class:<br>
         </button>
       </div>
       <div class="modal-body">
-        Number of characters: <input type="number" placeholder="dd" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrCharacters"><br>
+        Number of characters: <input type="number" placeholder="dd" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrCharacters" min="0"><br>
         Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" required />
         <br>
         Days until deadline: {{ctrl.days}}<br>
