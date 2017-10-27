@@ -136,7 +136,7 @@ angular.module("search",[]).controller("search",function($scope){
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
-		htl+="<br>";
+		html+="<br>";
 		html+='<label>To: </label>';
 		html+='<select id="select-to" placeholder="Translate from" data-ng-model="ctrl.to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
