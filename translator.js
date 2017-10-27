@@ -138,7 +138,8 @@ function strLeft(sourceStr, keyStr) {
 				var ret = convertJSON(req.responseText);
 				$scope.loadLanguages();
 				$scope.loadCountries();
-				$scope.model=ret[0];	
+				ret[0]['Birthday']=new Date();
+				$scope.model=ret[0];
 			}else{
 				mostraDialogTimed('errorPanel');
 				return(false);
@@ -170,7 +171,7 @@ function strLeft(sourceStr, keyStr) {
 					var response=ret.responseText.replace(/\\/,"");
 					if(convertJSON(response).statuscode==200){
 						$('#alertOK').fadeIn().delay(10000).fadeOut();
-						$('#alertOK').html("Your data was saved correctly.");	
+						$('#alertOK').html("Your data was saved correctly.");
 					}else{
 						$('#alertError').fadeIn().delay(1000).fadeOut();
 						$('#alertOK').html("There was an error, please retry.");
@@ -558,7 +559,7 @@ function strLeft(sourceStr, keyStr) {
 
 		req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
 		req.send();
-		
+
 
 		$scope.loadLanguages = function(){
 			var req=createXHTMLHttpRequest();
@@ -568,7 +569,7 @@ function strLeft(sourceStr, keyStr) {
 				}
 			}
 			req.open("GET","getLanguages.php?",true);
-			req.send();	
+			req.send();
 		}
 
 
@@ -581,8 +582,8 @@ function strLeft(sourceStr, keyStr) {
 				}
 			}
 			req.open("GET","getFields.php",true);
-			req.send();	
-		} 
+			req.send();
+		}
 
 		$scope.loadServices = function(){
 			var req=createXHTMLHttpRequest();
@@ -593,8 +594,8 @@ function strLeft(sourceStr, keyStr) {
 				}
 			}
 			req.open("GET","getServices.php",true);
-			req.send();	
-		} 
+			req.send();
+		}
 
 		$scope.loadCurrencies = function(){
 			var req=createXHTMLHttpRequest();
@@ -605,8 +606,8 @@ function strLeft(sourceStr, keyStr) {
 				}
 			}
 			req.open("GET","getCurrencies.php",true);
-			req.send();	
-		} 
+			req.send();
+		}
 
 
 		ctrl.$onInit=function(){
