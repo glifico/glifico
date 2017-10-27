@@ -41,7 +41,7 @@ $reqRating=$data['rating'];
 $reqPrice=$data['price'];
 if(!certTokenA($db, $user, $token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT username, from_l, to_l, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
+$query="SELECT username, from_l, to_l, field, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
 $result = $db->query($query.";");
 
 
@@ -89,7 +89,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   }
 
   if($rating>=$reqRating&&$price<=$reqPrice){
-    array_push($dataToExit,array("Price"=>$price, "PriceTr"=>$priceTransl,"NormPrice"=>($priceTransl-$priceAvg)/$sigma, "Rating"=>$rating, "Field"=>"traduzioni", "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
+    array_push($dataToExit,array("Price"=>$price, "PriceTr"=>$priceTransl,"NormPrice"=>($priceTransl-$priceAvg)/$sigma, "Rating"=>$rating, "Field"=>$row['field'], "FirstName"=>$rowUser['nome']{0},"LastName"=>$rowUser['cognome']{0}, "IdMothertongue"=>$rowUser['madrelinguaid'],"Mothertongue"=>$rowUser['madrelingua']));
   }
 }
 
