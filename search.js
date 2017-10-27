@@ -52,13 +52,13 @@ angular.module("search",[]).controller("search",function($scope){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
 		case 1:
-			return (mb*ctrl.params.multA).toFixed(2);
+			ctrl.priceAg= (mb*ctrl.params.multA).toFixed(2);
 			break;
 		case 2:
-			return (mb*ctrl.params.multB).toFixed(2);
+			ctrl.priceAg= (mb*ctrl.params.multB).toFixed(2);
 			break;
 		case 3:
-			return (priceTr*ctrl.params.multC).toFixed(2);
+			ctrl.priceAg= (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
 	}
@@ -82,7 +82,6 @@ angular.module("search",[]).controller("search",function($scope){
 				var doc=ctrl.documents[i];
 				//doc.Price is class {1,2,3}
 				//doc.PriceTr is Translator defined price for pair
-				var priceAg = ctrl.calculatePriceAg(doc.Price, doc.PriceTr)*ctrl.TrCharacters;
 				html+='<tr class="row '+ctrl.getClass(doc)+'">';
 				html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
@@ -105,9 +104,8 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				html+='<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal"';
-				html+=' data-price="'+priceAg+'"';
 				html+=' data-id="'+doc.id+'"';
-				html+=' data-currency="'+"EUR - EURO"+'"';
+				html+=' ng-click="ctrl.calculatePriceAg('+doc.Price+','+doc.PriceTr+')';
 				html+='>Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
