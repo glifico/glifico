@@ -347,8 +347,8 @@ Price class:<br>
         Deadline: <input type="date" id="TrDate" name="input" data-ng-model="ctrl.TrDate" placeholder="dd-MM-yyyy" min="01-01-2017" required />
         <br>
         Days until deadline: {{ctrl.TrDate - ctrl.today | date: "dd"}}<br>
-        Available volume: {{8500*ctrl.TrCharacters}}<br>
-        Max available volume: {{10000*ctrl.TrCharacters}}
+        Available volume: {{8500*(ctrl.TrDate - ctrl.today | date: "dd")}}<br>
+        Max available volume: {{10000*(ctrl.TrDate - ctrl.today | date: "dd")}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
