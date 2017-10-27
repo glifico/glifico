@@ -549,11 +549,7 @@ function strLeft(sourceStr, keyStr) {
 				$scope.loadFields();
 				$scope.loadServices();
 				$scope.loadCurrencies();
-			}else{
-				$('#alertError').fadeIn().delay(10000).fadeOut();
-				$('#alertError').html("There was an error, please retry.");
 			}
-
 		}
 
 		req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
