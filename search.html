@@ -330,10 +330,7 @@ Price class:<br>
 <div style="width:95%;margin:auto;">
 <span id="table"></span>
 </div>
-</div>
 
-</div>
-</div>
 
 <!-- Translator Modal -->
 <div class="modal fade" id="TrModal" tabindex="-1" role="dialog" aria-labelledby="TrModalLabel" aria-hidden="true">
@@ -350,8 +347,8 @@ Price class:<br>
         Deadline: <input type="text" placeholder="dd" data-ng-model="ctrl.TrDay">/<input type="text" placeholder="mm" data-ng-model="ctrl.TrMonth">/<input type="text" placeholder="yyyy" value="2017" data-ng-model="ctrl.TrYear">
         
         Days until deadline: {{ctrl.TrDay}}
-        Volume: {{8500*ctrl.TrCharacters}}
-        Max Volume: {{10000*ctrl.TrCharacters}}
+        Available volume: {{8500*ctrl.TrCharacters}}
+        Max available volume: {{10000*ctrl.TrCharacters}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -359,6 +356,12 @@ Price class:<br>
     </div>
   </div>
 </div>
+</div>
+
+</div>
+</div>
+
+
 
 <script>
 $('#TrModal').on('show.bs.modal', function (event) {
