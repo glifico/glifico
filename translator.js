@@ -565,6 +565,7 @@ function strLeft(sourceStr, keyStr) {
 			var req=createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
+					var ret = convertJSON(req.responseText);
 					$scope.Languages=ret;
 				}
 			}
