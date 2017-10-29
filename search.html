@@ -328,11 +328,19 @@ Price class:<br>
 </form>
 <br>
 <br>
-<div id="fieasibility">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal">Check urgence</button>;
-</div>
 <div style="width:95%;margin:auto;">
-<span id="table"></span>
+<div id="selectedtable">
+<table class="table table-responsive">
+<tr class="row" data-ng-show="ctrl.firstIsSelected"><td>First Translator:</td><td>Price/ch</td><td>Total</td></tr>
+<tr class="row" data-ng-show="ctrl.secondIsSelected"><td>Second Translator:</td><td>Price/ch</td><td>Totale</td></tr>
+</table>
+
+<div id="fieasibility">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal">Check urgence</button>
+</div>
+</div>
+
+<div id="table"></div>
 </div>
 
 
@@ -351,14 +359,13 @@ Price class:<br>
         Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" required />
         <br>
         Days until deadline: {{ctrl.days}}<br>
-        Available volume: {{ctrl.UrgCh}}<br>
-        Max available volume: {{ctrl.MaxCh}}
-        <br>
+        Available volume: {{ctrl.UrgCh}} characters<br>
+        Max available volume: {{ctrl.MaxCh}} characters<br>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};"></span>
         <br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility==2" data-ng-click="ctrl.startJob">Start Job</button>
+        <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility==2" data-ng-click="ctrl.startJob">Submit Job</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

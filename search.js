@@ -48,6 +48,15 @@ angular.module("search",[]).controller("search",function($scope){
 		req.send();
 	};
 
+	ctrl.selectFirst=function(){
+		ctrl.firstIsSelected=true;
+	}
+
+	ctrl.selectSecond=function(){
+		ctrl.secondIsSelected=true;
+	}
+
+
 	ctrl.calculatePriceAg= function(priceClass,priceTr){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
@@ -104,7 +113,8 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary" ng-click="console.info()">Select Translator</button>';
+				html+='<button type="button" class="btn btn-primary" ng-click="ctrl.selectSecond()">Select Translator</button>';
+				html+='<button type="button" class="btn btn-primary" ng-click="ctrl.selectSecond()">Select Translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
@@ -170,7 +180,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		var e = document.getElementById("select-from");
 		ctrl.from = e.options[e.selectedIndex].text;
-		
+
 		var e = document.getElementById("select-field");
 		ctrl.field = e.options[e.selectedIndex].text;
 
@@ -247,6 +257,8 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.field="";
 		ctrl.initForm();
 
+		ctrl.firstIsSelected=false;
+		ctrl.secondIsSelected=false;
 
 		ctrl.TrCharacters=0;
 		ctrl.priceAg=0;
