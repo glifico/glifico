@@ -8,9 +8,11 @@ var IsSecondSelected=false;
 selectTr=function(){
 	if(IsFirstSelected){
 		IsSecondSelected=true;
+		$("#secondPrice").html="aaa";
 	}else{
 		IsFirstSelected=true;
 		$("#selectedtable").show();
+		$("#firstPrice").html="aaa";
 	}
 	console.log("btn ok");
 	console.log(IsFirstSelected);
