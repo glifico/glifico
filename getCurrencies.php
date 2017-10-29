@@ -163,7 +163,6 @@ $currencies=array(
 "XDR - Special Drawing Rights",
 "XOF - CFA Franc BCEAO",
 "XPF - CFP franc",
-"XXX - No currency",
 "YER - Yemeni Rial",
 "ZAR - South African Rand",
 "ZMK - Kwacha",
