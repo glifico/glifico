@@ -29,7 +29,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		req.open("GET","getLanguages.php",true);
 		req.send();
-	};
+	}
 
 	ctrl.loadFields = function(){
 		var req=createXHTMLHttpRequest();
@@ -46,7 +46,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 		req.open("GET","getFields.php",true);
 		req.send();
-	};
+	}
 
 	ctrl.selectFirst=function(){
 		ctrl.firstIsSelected=true;
@@ -114,8 +114,8 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" href="" class="btn btn-primary btn-sm" data-ng-click="ctrl.selectFirst()">Select first translator</button>';
-				html+='<button type="button" href="" class="btn btn-primary btn-sm" data-ng-click="selectSecond()">Select second translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" data-ng-click="ctrl.selectFirst()" value="Select first translator">';
+				html+='<button type="button" class="btn btn-primary btn-sm" data-ng-click="ctrl.selectSecond()" value="Select first translator">';
 				html+='</td>';
 				html+='<tr>';
 			}
@@ -264,8 +264,8 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.TrCharacters=0;
 		ctrl.priceAg=0;
 		ctrl.today=new Date();
-		ctrl.tomorrow=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-		ctrl.TrDeadline=new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+		ctrl.tomorrow=new Date(ctrl.today.getTime() + 24 * 60 * 60 * 1000);
+		ctrl.TrDeadline=ctrl.tomorrow;
 	}
 
 });
