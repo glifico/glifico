@@ -110,7 +110,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" ng-click="ctrl.selectTr()">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="ctrl.selectTr()">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
