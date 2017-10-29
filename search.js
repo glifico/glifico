@@ -59,6 +59,10 @@ angular.module("search",[]).controller("search",function($scope){
 		req.open("GET","getFields.php",true);
 		req.send();
 	}
+	
+	ctrl.selectTr=function(){
+		console.log("selected");
+	}
 
 	ctrl.firstIsSelected=function(){
 		return $scope.IsFirstSelected;
@@ -123,7 +127,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr()">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="ctrl.selectTr()">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
