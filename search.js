@@ -50,6 +50,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.selectFirst=function(){
 		ctrl.firstIsSelected=true;
+		console.log("selected first");
 	}
 
 	ctrl.selectSecond=function(){
@@ -113,8 +114,8 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary" ng-click="ctrl.selectSecond()">Select Translator</button>';
-				html+='<button type="button" class="btn btn-primary" ng-click="ctrl.selectSecond()">Select Translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" ng-click="ctrl.selectFirst()">Select First Translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" ng-click="ctrl.selectSecond()">Select Second Translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
