@@ -1,7 +1,9 @@
 $(document).ready(function () {
-	var IsFirstSelected=false;
-	var IsSecondSelected=false;
+
 });
+
+var IsFirstSelected=false;
+var IsSecondSelected=false;
 
 selectTr=function(){
 	if(IsFirstSelected){
