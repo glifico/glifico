@@ -11,6 +11,8 @@ selectTr=function(){
 	}else{
 		IsFirstSelected=true;
 	}
+	console.log("btn ok");
+	console.log(IsFirstSelected);
 };
 
 angular.module("search",[]).controller("search",function($scope){
@@ -56,11 +58,6 @@ angular.module("search",[]).controller("search",function($scope){
 
 		req.open("GET","getFields.php",true);
 		req.send();
-	}
-
-	ctrl.selectTr=function(){
-		ctrl.firstIsSelected=true;
-		console.log("selected first");
 	}
 
 	ctrl.firstIsSelected=function(){
