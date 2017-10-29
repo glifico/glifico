@@ -149,13 +149,3 @@
 .nobluelink > a>a:hover>a:visited>div{
   color:#000;
 }
-
-/*show menu on mobile dev*/
-@media (max-width: 767px) {
-  .dropdown.custom:hover .dropdown-menu {
-    visibility: visible;
-    display:block;
-    border-radius:0;
-
-  }
-}
