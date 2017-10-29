@@ -1,11 +1,14 @@
 $(document).ready(function () {
-	IsFirstSelected=false;
-	IsSecondSelected=false;
+	var IsFirstSelected=false;
+	var IsSecondSelected=false;
 });
 
 selectTr=function(){
-	IsFirstSelected=true;
-	IsSecondSelected=false;
+	if(IsFirstSelected){
+		IsSecondSelected=true;
+	}else{
+		IsFirstSelected=true;
+	}
 };
 
 angular.module("search",[]).controller("search",function($scope){
