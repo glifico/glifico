@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+	$("#selectedtable").hide();
 });
 
 var IsFirstSelected=false;
@@ -10,6 +10,7 @@ selectTr=function(){
 		IsSecondSelected=true;
 	}else{
 		IsFirstSelected=true;
+		$("#selectedtable").show();
 	}
 	console.log("btn ok");
 	console.log(IsFirstSelected);
@@ -127,7 +128,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="ctrl.selectTr()">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr()">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
