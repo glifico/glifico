@@ -1,66 +1,66 @@
 #divGlificoMain{
-    background: url("intro-bg.jpg") no-repeat center center fixed;
-    margin-top:-70px;
-    width:100%;
-    min-height:100px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height:100%;
-    vertical-align:middle;
-    text-align:center;
+  background: url("intro-bg.jpg") no-repeat center center fixed;
+  margin-top:-70px;
+  width:100%;
+  min-height:100px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:100%;
+  vertical-align:middle;
+  text-align:center;
 }
 #divGlificoHeader {
-    padding-top:100px;
-    vertical-align: bottom;
-    height: 60px;
-    width:100%;
-    color: White;
-    font-size: 500%;
+  padding-top:100px;
+  vertical-align: bottom;
+  height: 60px;
+  width:100%;
+  color: White;
+  font-size: 500%;
 }
 
 .glifico-footer{
-	color:#333333;
+  color:#333333;
 }
 
 :visited.glifico-footer{
-	color:#333333;
+  color:#333333;
 }
 
 :hover.glifico-footer{
-	color: #3f6391;
+  color: #3f6391;
 }
 
 .carousel-content {
-    color:black;
-    display:flex;
-    align-items:center;
-    text-align: center;
-    width: 100%;
-    height:130px;
-    vertical-align: middle;
-    border-radius: 25px;
-    border: 2px solid #73AD21;
-    padding: 20px;
+  color:black;
+  display:flex;
+  align-items:center;
+  text-align: center;
+  width: 100%;
+  height:130px;
+  vertical-align: middle;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
 }
 
 #text-carousel {
-    width: 100%;
-    height: auto;
-    padding: 50px;
-    text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 50px;
+  text-align: center;
 }
 .carosElement{
-    color:white;
-    text-align: center;
-    font-size: 30px;
-    width:100%;
+  color:white;
+  text-align: center;
+  font-size: 30px;
+  width:100%;
 }
 #divMadeEasy{
-    font-size:25px;
-    text-shadow: 2px 2px #000;
-    color: #cbcbcb;
+  font-size:25px;
+  text-shadow: 2px 2px #000;
+  color: #cbcbcb;
 }
 /*Default Bootstrap Paging Style*/
 .bootstrapPager {
@@ -147,5 +147,15 @@
 }
 
 .nobluelink > a>a:hover>a:visited>div{
-	color:#000;
+  color:#000;
+}
+
+/*show menu on mobile dev*/
+@media (max-width: 767px) {
+  .dropdown.custom:hover .dropdown-menu {
+    visibility: visible;
+    display:block;
+    border-radius:0;
+
+  }
 }
