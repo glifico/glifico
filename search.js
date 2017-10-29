@@ -1,11 +1,12 @@
 $(document).ready(function () {
-
+	IsFirstSelected=false;
+	IsSecondSelected=false;
 });
 
 selectTr=function(){
 	IsFirstSelected=true;
 	IsSecondSelected=false;
-}
+};
 
 angular.module("search",[]).controller("search",function($scope){
 	var ctrl=this;
@@ -120,7 +121,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="ctrl.selectTr()">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr()">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
