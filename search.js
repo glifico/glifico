@@ -61,10 +61,10 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.firstIsSelected=function(){
-		return IsFirstSelected;
+		return $scope.IsFirstSelected;
 	}
 	ctrl.secondIsSelected=function(){
-		return IsSecondSelected;
+		return $scope.IsSecondSelected;
 	}
 
 	ctrl.calculatePriceAg= function(priceClass,priceTr){
