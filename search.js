@@ -114,8 +114,8 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" ng-click="ctrl.selectFirst()">Select first translator</button>';
-				html+='<button type="button" class="btn btn-primary btn-sm" ng-click="ctrl.selectSecond()">Select second translator</button>';
+				html+='<button type="button" href="" class="btn btn-primary btn-sm" data-ng-click="ctrl.selectFirst()">Select first translator</button>';
+				html+='<button type="button" href="" class="btn btn-primary btn-sm" data-ng-click="selectSecond()">Select second translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
