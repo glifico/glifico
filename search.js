@@ -2,6 +2,10 @@ $(document).ready(function () {
 
 });
 
+selectTr=function(){
+	IsFirstSelected=true;
+	IsSecondSelected=false;
+}
 
 angular.module("search",[]).controller("search",function($scope){
 	var ctrl=this;
@@ -53,6 +57,12 @@ angular.module("search",[]).controller("search",function($scope){
 		console.log("selected first");
 	}
 
+	ctrl.firstIsSelected=function(){
+		return IsFirstSelected;
+	}
+	ctrl.secondIsSelected=function(){
+		return IsSecondSelected;
+	}
 
 	ctrl.calculatePriceAg= function(priceClass,priceTr){
 		var mb=ctrl.params.maxB;
@@ -252,9 +262,6 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.to="";
 		ctrl.field="";
 		ctrl.initForm();
-
-		ctrl.firstIsSelected=false;
-		ctrl.secondIsSelected=false;
 
 		ctrl.TrCharacters=0;
 		ctrl.priceAg=0;
