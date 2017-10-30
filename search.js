@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	$("#selectedtable").hide();
+	$("#fieasibility").hide();
 });
 
 var selectedTr=[
@@ -28,12 +29,14 @@ getPriceDollars=function(price){
 selectTr=function(name, price, priceTr, totalTr, rowIndex){	
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#40bc99');
+		$("#fieasibility").hide();
 
 
 		selectedTr[0].isSelected=true;
 		selectedTr[0].price=price;
 
 		$("#selectedtable").show();
+		$("#secondRow").hide();
 		var html="";
 		html+=getPriceDollars(price);
 
@@ -41,7 +44,9 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		$("#firstName").html(name);
 	}else if(!selectedTr[1].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#92a7e8');
+		$("#secondRow").show();
 
+		
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
 
