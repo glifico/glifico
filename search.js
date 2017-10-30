@@ -15,10 +15,27 @@ var selectedTr=[
 	}
 	];
 
-selectTr=function(price, priceTr, rowIndex){
-	$("#rowN"+rowIndex).css('background-color', 'green');
-	
-	if(selectedTr[0].isSelected){
+selectTr=function(name, price, priceTr, rowIndex){	
+	if(!selectedTr[0].isSelected){
+		$("#rowN"+rowIndex).css('background-color', '#40bc99');
+
+
+		selectedTr[0].isSelected=true;
+		selectedTr[0].price=price;
+
+		$("#selectedtable").show();
+		var html="";
+		html+='<div class="price">';
+		html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+		html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+		html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+		html+='</div>';
+
+		$("#firstPrice").html(html);
+		$("#firstName").html(name);
+	}else if(!selectedTr[1].isSelected){
+		$("#rowN"+rowIndex).css('background-color', '#40bc99');
+
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
 
@@ -28,21 +45,9 @@ selectTr=function(price, priceTr, rowIndex){
 		html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
 		html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
 		html+='</div>';
-				
+
 		$("#secondPrice").html(html);
-	}else{
-		selectedTr[0].isSelected=true;
-		selectedTr[0].price=price;
-		
-		$("#selectedtable").show();
-		var html="";
-		html+='<div class="price">';
-		html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-		html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-		html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
-		html+='</div>';
-		
-		$("#firstPrice").html(html);
+		$("#secondName").html(name);
 	}
 };
 
@@ -137,8 +142,9 @@ angular.module("search",[]).controller("search",function($scope){
 				var doc=ctrl.documents[i];
 				//doc.Price is class {1,2,3}
 				//doc.PriceTr is Translator defined price for pair
+				var name=doc.FirstName+doc.LastName;
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
-				html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
+				html+='<td class="col-md-2">'+name+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
 				html+='<td class="col-md-2">'+doc.Field+'</td>';
 				html+='<td class="col-md-2">';
@@ -158,7 +164,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+doc.Price+','+doc.PriceTr+','+i+')">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
