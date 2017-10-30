@@ -29,7 +29,7 @@ getPriceDollars=function(price){
 selectTr=function(name, price, priceTr, totalTr, rowIndex){	
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#40bc99');
-		$("#fieasibility").hide();
+		$("#fieasibility").show();
 
 
 		selectedTr[0].isSelected=true;
