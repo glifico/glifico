@@ -166,7 +166,8 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr("'+name+'",'+doc.Price+','+doc.PriceTr+','+i+','+i+')">Select translator</button>';
+				name="'"+name+"'";
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+i+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
