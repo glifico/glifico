@@ -15,7 +15,7 @@ var selectedTr=[
 	}
 	];
 
-selectTr=function(name, price, priceTr, rowIndex){	
+selectTr=function(name, price, priceTr, totalTr, rowIndex){	
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#40bc99');
 
@@ -164,7 +164,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+i+')">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+'0'+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
