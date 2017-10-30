@@ -18,7 +18,7 @@ var selectedTr=[
 selectTr=function(price, priceTr){
 	if(selectedTr[0].isSelected){
 		selectedTr[1].isSelected=true;
-		selectedTr[0].price=price;
+		selectedTr[1].price=price;
 
 		$("#secondPrice").html=price;
 	}else{
@@ -27,6 +27,9 @@ selectTr=function(price, priceTr){
 		
 		$("#selectedtable").show();
 		$("#firstPrice").html=price;
+		console.debug(selectTr);
+		console.debug(selectedTr[1].price);
+		console.info(price);
 	}
 };
 
