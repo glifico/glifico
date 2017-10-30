@@ -20,13 +20,13 @@ selectTr=function(price, priceTr){
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
 
-		$("#secondPrice").html=price;
+		$("#secondPrice").html(price);
 	}else{
 		selectedTr[0].isSelected=true;
 		selectedTr[0].price=price;
 		
 		$("#selectedtable").show();
-		$("#firstPrice").html=price;
+		$("#firstPrice").html(price);
 		console.debug(selectTr);
 		console.debug(selectedTr[1].price);
 		console.info(price);
