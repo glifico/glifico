@@ -2,20 +2,32 @@ $(document).ready(function () {
 	$("#selectedtable").hide();
 });
 
-var IsFirstSelected=false;
-var IsSecondSelected=false;
-
-selectTr=function(){
-	if(IsFirstSelected){
-		IsSecondSelected=true;
-		$("#secondPrice").html="aaa";
-	}else{
-		IsFirstSelected=true;
-		$("#selectedtable").show();
-		$("#firstPrice").html="aaa";
+var selectedTr=[
+	{
+		isSelected: false,
+		price: 0,
+		total: 0,
+	},
+	{
+		isSelected: false,
+		price: 0,
+		total: 0,
 	}
-	console.log("btn ok");
-	console.log(IsFirstSelected);
+	];
+
+selectTr=function(price, priceTr){
+	if(selectedTr[0].isSelected){
+		selectedTr[1].isSelected=true;
+		selectedTr[0].price=price;
+
+		$("#secondPrice").html=price;
+	}else{
+		selectedTr[0].isSelected=true;
+		selectedTr[0].price=price;
+		
+		$("#selectedtable").show();
+		$("#firstPrice").html=price;
+	}
 };
 
 angular.module("search",[]).controller("search",function($scope){
@@ -62,7 +74,7 @@ angular.module("search",[]).controller("search",function($scope){
 		req.open("GET","getFields.php",true);
 		req.send();
 	}
-	
+
 	ctrl.selectTr=function(){
 		console.log("selected");
 	}
@@ -130,7 +142,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr()">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+doc.Price+','+doc.PriceTr+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
