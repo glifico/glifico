@@ -15,6 +15,16 @@ var selectedTr=[
 	}
 	];
 
+getPriceDollars=function(price){
+	var html="";
+	html+='<div class="price">';
+	html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+	html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+	html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+	html+='</div>';
+	return html;
+}
+
 selectTr=function(name, price, priceTr, totalTr, rowIndex){	
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#40bc99');
@@ -25,11 +35,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		$("#selectedtable").show();
 		var html="";
-		html+='<div class="price">';
-		html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-		html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-		html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
-		html+='</div>';
+		html+=getPriceDollars(price);
 
 		$("#firstPrice").html(html);
 		$("#firstName").html(name);
@@ -40,11 +46,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[1].price=price;
 
 		var html="";
-		html+='<div class="price">';
-		html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-		html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-		html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
-		html+='</div>';
+		html+=getPriceDollars(price);
 
 		$("#secondPrice").html(html);
 		$("#secondName").html(name);
