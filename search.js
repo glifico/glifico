@@ -15,21 +15,34 @@ var selectedTr=[
 	}
 	];
 
-selectTr=function(price, priceTr){
+selectTr=function(price, priceTr, rowIndex){
+	$("#rowN"+rowIndex).css('background-color', 'green');
+	
 	if(selectedTr[0].isSelected){
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
 
-		$("#secondPrice").html(price);
+		var html="";
+		html+='<div class="price">';
+		html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+		html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+		html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+		html+='</div>';
+				
+		$("#secondPrice").html(html);
 	}else{
 		selectedTr[0].isSelected=true;
 		selectedTr[0].price=price;
 		
 		$("#selectedtable").show();
-		$("#firstPrice").html(price);
-		console.debug(selectTr);
-		console.debug(selectedTr[1].price);
-		console.info(price);
+		var html="";
+		html+='<div class="price">';
+		html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+		html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+		html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+		html+='</div>';
+		
+		$("#firstPrice").html(html);
 	}
 };
 
@@ -124,7 +137,7 @@ angular.module("search",[]).controller("search",function($scope){
 				var doc=ctrl.documents[i];
 				//doc.Price is class {1,2,3}
 				//doc.PriceTr is Translator defined price for pair
-				html+='<tr class="row '+ctrl.getClass(doc)+'">';
+				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
 				html+='<td class="col-md-2">'+doc.FirstName+doc.LastName+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
 				html+='<td class="col-md-2">'+doc.Field+'</td>';
@@ -145,7 +158,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+doc.Price+','+doc.PriceTr+')">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+doc.Price+','+doc.PriceTr+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
