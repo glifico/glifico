@@ -226,7 +226,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.search=function(){
-		$("#table").html('<i class="fa fa-pulse fa-spin fa-4x"></i>');
+		$("#table").html('<i class="fa fa-pulse fa-spin fa-4x" aria-hidden="true"></i>');
 
 		var e = document.getElementById("select-to");
 		ctrl.to = e.options[e.selectedIndex].text;
