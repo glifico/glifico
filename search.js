@@ -40,7 +40,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		$("#firstPrice").html(html);
 		$("#firstName").html(name);
 	}else if(!selectedTr[1].isSelected){
-		$("#rowN"+rowIndex).css('background-color', '#40bc99');
+		$("#rowN"+rowIndex).css('background-color', '#92a7e8');
 
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
