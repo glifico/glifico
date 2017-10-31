@@ -75,7 +75,7 @@ calculatePr=function(){
 
 
 getAgPrice=function(tr){
-	return selectedTr[tr].total;
+	return selectedTr[tr-1].total;
 }
 
 resetTr=function(){
