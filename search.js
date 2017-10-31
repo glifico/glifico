@@ -34,11 +34,15 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		selectedTr[0].isSelected=true;
 		selectedTr[0].price=price;
-
+		selectedTr[0].rowIndex.total=totalTr;
+		selectedTr[0].rowIndex=rowIndex;
+		
 		$("#selectedtable").show();
 		$("#secondRow").hide();
 		var html="";
 		html+=getPriceDollars(price);
+		html+='     ';
+		html+=totalTr+' Euro';
 
 		$("#firstPrice").html(html);
 		$("#firstName").html(name);
@@ -46,16 +50,43 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		$("#rowN"+rowIndex).css('background-color', '#92a7e8');
 		$("#secondRow").show();
 
-		
+
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
+		selectedTr[1].rowIndex.total=totalTr;
+		selectedTr[1].rowIndex=rowIndex;
 
 		var html="";
 		html+=getPriceDollars(price);
+		html+='     ';
+		html+=totalTr+' Euro';
 
+		
 		$("#secondPrice").html(html);
 		$("#secondName").html(name);
 	}
+};
+
+calculatePr=function(){
+	
+};
+
+resetTr=function(name, price, priceTr, totalTr, rowIndex){	
+	$("#rowN"+selectedTr[0].rowIndex).css('background-color', '');
+	$("#rowN"+selectedTr[1].rowIndex).css('background-color', '');
+	
+	selectedTr[0].isSelected=false;
+	selectedTr[0].price=0;
+	selectedTr[0].total=0;
+	selectedTr[1].isSelected=false;
+	selectedTr[1].price=0;
+	selectedTr[1].total=0;
+
+	$("#fieasibility").hide();
+	$("#firstPrice").html("");
+	$("#firstName").html("");
+	$("#secondPrice").html("");
+	$("#secondName").html("");
 };
 
 angular.module("search",[]).controller("search",function($scope){
@@ -127,7 +158,6 @@ angular.module("search",[]).controller("search",function($scope){
 			ctrl.priceAg = (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
-		console.log(ctrl.priceAg);
 	}
 
 
@@ -150,6 +180,7 @@ angular.module("search",[]).controller("search",function($scope){
 				//doc.Price is class {1,2,3}
 				//doc.PriceTr is Translator defined price for pair
 				var name=doc.FirstName+doc.LastName;
+				var priceAg=ctrl.calculatePriceAg(doc.Price,doc.PriceTr);
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
 				html+='<td class="col-md-2">'+name+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
@@ -172,7 +203,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				name="'"+name+"'";
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+i+','+i+')">Select translator</button>';
+				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
