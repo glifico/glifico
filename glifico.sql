@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 9.6.5
 
--- Started on 2017-10-26 22:27:00 CEST
+-- Started on 2017-10-31 19:26:44 CET
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -25,7 +25,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3081 (class 0 OID 0)
+-- TOC entry 3091 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
@@ -77,12 +77,47 @@ CREATE SEQUENCE agenzia_id_seq
 
 
 --
--- TOC entry 3083 (class 0 OID 0)
+-- TOC entry 3093 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: agenzia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE agenzia_id_seq OWNED BY agenzia.id;
+
+
+--
+-- TOC entry 196 (class 1259 OID 3857799)
+-- Name: currencies; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE currencies (
+    id integer NOT NULL,
+    currency character varying(3),
+    conversion numeric,
+    description character varying(40)
+);
+
+
+--
+-- TOC entry 195 (class 1259 OID 3857797)
+-- Name: currencies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE currencies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 3094 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: currencies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE currencies_id_seq OWNED BY currencies.id;
 
 
 --
@@ -96,7 +131,7 @@ CREATE TABLE language_pair (
     to_l character varying(30),
     price numeric,
     field character varying(50),
-    currency character varying(30),
+    currency character varying(50),
     price_euro numeric
 );
 
@@ -123,8 +158,8 @@ CREATE TABLE languages (
 CREATE TABLE payments (
     id integer NOT NULL,
     job character varying(200),
-    price character varying(5),
-    currency character varying(1),
+    price character varying(20),
+    currency character varying(50),
     status character varying(15),
     description character varying(500),
     username character varying(20),
@@ -152,7 +187,7 @@ CREATE SEQUENCE payments_id_seq
 
 
 --
--- TOC entry 3084 (class 0 OID 0)
+-- TOC entry 3095 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: payments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -190,7 +225,7 @@ CREATE SEQUENCE skilltest_id_seq
 
 
 --
--- TOC entry 3085 (class 0 OID 0)
+-- TOC entry 3096 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: skilltest_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -237,7 +272,7 @@ CREATE SEQUENCE traduttore_id_seq
 
 
 --
--- TOC entry 3086 (class 0 OID 0)
+-- TOC entry 3097 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: traduttore_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -246,7 +281,7 @@ ALTER SEQUENCE traduttore_id_seq OWNED BY traduttore.id;
 
 
 --
--- TOC entry 2927 (class 2604 OID 2850710)
+-- TOC entry 2934 (class 2604 OID 2850710)
 -- Name: agenzia id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -254,7 +289,15 @@ ALTER TABLE ONLY agenzia ALTER COLUMN id SET DEFAULT nextval('agenzia_id_seq'::r
 
 
 --
--- TOC entry 2930 (class 2604 OID 3419740)
+-- TOC entry 2939 (class 2604 OID 3857802)
+-- Name: currencies id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY currencies ALTER COLUMN id SET DEFAULT nextval('currencies_id_seq'::regclass);
+
+
+--
+-- TOC entry 2937 (class 2604 OID 3419740)
 -- Name: payments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -262,7 +305,7 @@ ALTER TABLE ONLY payments ALTER COLUMN id SET DEFAULT nextval('payments_id_seq':
 
 
 --
--- TOC entry 2929 (class 2604 OID 2995907)
+-- TOC entry 2936 (class 2604 OID 2995907)
 -- Name: skilltest id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -270,7 +313,7 @@ ALTER TABLE ONLY skilltest ALTER COLUMN id SET DEFAULT nextval('skilltest_id_seq
 
 
 --
--- TOC entry 2921 (class 2604 OID 2794056)
+-- TOC entry 2928 (class 2604 OID 2794056)
 -- Name: traduttore id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -278,7 +321,7 @@ ALTER TABLE ONLY traduttore ALTER COLUMN id SET DEFAULT nextval('traduttore_id_s
 
 
 --
--- TOC entry 3067 (class 0 OID 2850707)
+-- TOC entry 3075 (class 0 OID 2850707)
 -- Dependencies: 188
 -- Data for Name: agenzia; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -289,7 +332,7 @@ COPY agenzia (id, nome, vat, username, password, email, street, number, citta, p
 
 
 --
--- TOC entry 3087 (class 0 OID 0)
+-- TOC entry 3098 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: agenzia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -298,148 +341,266 @@ SELECT pg_catalog.setval('agenzia_id_seq', 2, true);
 
 
 --
--- TOC entry 3073 (class 0 OID 3770600)
+-- TOC entry 3083 (class 0 OID 3857799)
+-- Dependencies: 196
+-- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY currencies (id, currency, conversion, description) FROM stdin;
+107	BDT	96.48141675	BDT - Bangladeshi Taka
+108	BGN	1.95705537	BGN - Bulgarian Lev
+109	BHD	0.43889083	BHD - Bahraini Dinar
+110	BRL	3.81580489	BRL - Brazilian Real
+115	CHF	1.16154512	CHF - Swiss Franc
+116	CLP	740.47535827	CLP - Chilean Peso
+117	CNY	7.7235862	CNY - Yuan Renminbi
+118	COP	3542.93358965	COP - Colombian Peso
+119	CZK	25.66627441	CZK - Czech Koruna
+120	DKK	7.44231398	DKK - Danish Krone
+121	DOP	55.80799254	DOP - Dominican Peso
+122	EEK	15.63053861	EEK - Kroon
+123	EGP	20.51730164	EGP - Egyptian Pound
+167	PKR	122.50961202	PKR - Pakistan Rupee
+168	PLN	4.2426867	PLN - Zloty
+169	PYG	6558.07969242	PYG - Guarani
+170	QAR	4.39892811	QAR - Qatari Rial
+171	RON	4.60159648	RON - Romanian New Leu
+172	RSD	119.07782827	RSD - Serbian Dinar
+173	RUB	67.87130136	RUB - Russian Ruble
+174	SAR	4.36754133	SAR - Saudi Riyal
+175	SCR	15.54235116	SCR - Seychelles Rupee
+176	SEK	9.74918486	SEK - Swedish Krona
+177	SGD	1.58708777	SGD - Singapore Dollar
+178	THB	38.66638973	THB - Baht
+179	TJS	10.25061167	TJS - Somoni
+113	BYN	2.00128027	BYN
+189	VEF	11.62122801	VEF
+191	XAF	655.43516253	XAF
+196	ZMW	11.6509379	ZMW
+139	JMD	147.08144006	JMD - Jamaican Dollar
+140	JOD	0.82430386	JOD - Jordanian Dinar
+141	JPY	132.21325513	JPY - Japanese yen
+142	KES	120.64546196	KES - Kenyan Shilling
+190	VND	26424.40562638	VND - Vietnamese
+100	AED	4.27845742	AED - United Arab Emirates dirham
+101	AMD	562.00629151	AMD - Armenian Dram
+102	ANG	2.07386695	ANG - Netherlands Antillian Guilder
+103	AOA	192.35348946	AOA - Kwanza
+104	ARS	20.5825469	ARS - Argentine Peso
+105	AUD	1.52135983	AUD - Australian Dollar
+106	BBD	2.33018758	BBD - Barbados Dollar
+111	BSD	1.16509379	BSD - Bahamian Dollar
+112	BWP	12.23255272	BWP - Pula
+114	CAD	1.5018664	CAD - Canadian Dollar
+124	ETB	31.45753233	ETB - Ethiopian Birr
+99	EUR	1	EUR - Euro
+125	FJD	2.41698707	FJD - Fiji Dollar
+126	GBP	0.878327	GBP - Pound Sterling
+127	GHS	5.1130141	GHS - Cedi
+128	GTQ	8.5552837	GTQ - Quetzal
+129	HKD	9.08318686	HKD - Hong Kong Dollar
+130	HNL	27.29698241	HNL - Lempira
+131	HRK	7.51986604	HRK - Croatian Kuna
+132	HUF	311.43857451	HUF - Forint
+133	IDR	15802.21051237	IDR - Rupiah
+134	ILS	4.09891249	ILS - New Israeli Shekel
+135	INR	75.39681513	INR - Indian Rupee
+136	IQD	1358.4993592	IQD - Iraqi Dinar
+137	IRR	40724.68833741	IRR - Iranian Rial
+138	ISK	122.68437609	ISK - Iceland Krona
+143	KHR	4698.82325527	KHR - Riel
+144	KRW	1301.7408783	KRW - South Korean Won
+145	KWD	0.35244087	KWD - Kuwaiti Dinar
+146	KZT	390.09670278	KZT - Tenge
+147	LAK	9670.27845742	LAK - Kip
+148	LBP	1760.45671677	LBP - Lebanese Pound
+149	LKR	178.90015146	LKR - Sri Lanka Rupee
+150	LTL	3.37993348	LTL - Lithuanian Litas
+151	LVL	0.68791574	LVL - Latvian Lats
+152	MAD	11.05732261	MAD - Moroccan Dirham
+153	MKD	61.24898054	MKD - Denar
+154	MMK	1588.02283584	MMK - Kyat
+155	MUR	39.78795293	MUR - Mauritius Rupee
+156	MXN	22.29595618	MXN - Mexican Peso
+157	MYR	4.92790108	MYR - Malaysian Ringgit
+158	NAD	16.47093091	NAD - Namibian Dollar
+159	NGN	415.93848305	NGN - Naira
+160	NOK	9.525421	NOK - Norwegian Krone
+161	NZD	1.70176193	NZD - New Zealand Dollar
+162	OMR	0.44634743	OMR - Rial Omani
+163	PAB	1.16509379	PAB - Balboa
+164	PEN	3.78069268	PEN - Nuevo Sol
+165	PGK	3.77606897	PGK - Kina
+166	PHP	60.10555274	PHP - Philippine Peso
+180	TND	2.90551089	TND - Tunisian Dinar
+181	TRY	4.41906665	TRY - New Turkish Lira
+182	TTD	7.83490621	TTD - Trinidad and Tobago Dollar
+183	TWD	35.10814325	TWD - New Taiwan Dollar
+184	TZS	2607.47990213	TZS - Tanzanian Shilling
+185	UAH	31.30607014	UAH - Hryvnia
+186	USD	1.16443258	USD - US Dollar
+187	UYU	34.02073867	UYU - Peso Uruguayo
+188	UZS	9390.6559478	UZS - Uzbekistan Som
+192	XCD	3.14575323	XCD - East Caribbean Dollar
+193	XOF	656.00605849	XOF - CFA Franc BCEAO
+194	XPF	118.99102878	XPF - CFP franc
+195	ZAR	16.44795532	ZAR - South African Rand
+\.
+
+
+--
+-- TOC entry 3099 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: currencies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('currencies_id_seq', 196, true);
+
+
+--
+-- TOC entry 3081 (class 0 OID 3770600)
 -- Dependencies: 194
 -- Data for Name: language_pair; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY language_pair (username, from_l, to_l, price, field, currency, price_euro) FROM stdin;
-Claudia	Spanish	Italian	0	\N	USD - US Dollar	0
-Claudia	Italian	Spanish	0	\N	USD - US Dollar	0
-Claudia	Spanish	Portuguese	0	\N	USD - US Dollar	0
-Claudia	Portuguese	Spanish	0	\N	USD - US Dollar	0
-Claudia	French	Spanish	0	\N	USD - US Dollar	0
-Claudia	Spanish	French	0	\N	USD - US Dollar	0
-Claudia	English	Italian	0	\N	USD - US Dollar	0
-Claudia	Italian	English	0	\N	USD - US Dollar	0
-Claudia	English	Portuguese	0	\N	USD - US Dollar	0
-Claudia	Portuguese	English	0	\N	USD - US Dollar	0
-Claudia	English	French	0	\N	USD - US Dollar	0
-Claudia	French	English	0	\N	USD - US Dollar	0
-Claudia	Portuguese	Italian	0	\N	USD - US Dollar	0
-Claudia	Portuguese	French	0	\N	USD - US Dollar	0
-Claudia	French	Portuguese	0	\N	USD - US Dollar	0
-Claudia	French	Italian	0	\N	USD - US Dollar	0
-jaredfirth	Russian	English	0.12	\N	USD - US Dollar	0.1
-TheSirion	English	Portuguese	0.07	\N	USD - US Dollar	0.06
-helga83	English	Hungarian	1	\N	HUF - Forint	0
-BibianaSalazar	English	Spanish	0	\N	COP - Colombian Peso	0
-BibianaSalazar	Spanish	English	0	\N	COP - Colombian Peso	0
-BekirDiri	Turkish	English	0.07	\N	EUR - Euro	0.07
-BekirDiri	English	Turkish	0.06	\N	EUR - Euro	0.06
-idalconte	English	Italian	500	\N	EUR - Euro	500
-idalconte	Italian	English	500	\N	EUR - Euro	500
-idalconte	Italian	Russian	500	\N	EUR - Euro	500
-bertolinolucrezia@gmail.com	English	Italian	0.01	\N	USD - US Dollar	0.01
-juanantcastan@gmail.com	English	Spanish	0.07	\N	EUR - Euro	0.07
-juanantcastan@gmail.com	French	Spanish	0.07	\N	EUR - Euro	0.07
-sarahtankr@gmail.com	English	Italian	20	\N	EUR - Euro	20
-sarahtankr@gmail.com	French	Italian	20	\N	EUR - Euro	20
-translatorsitalian	English	Italian	0.07	\N	EUR - Euro	0.07
-translatorsitalian	French	Italian	0.07	\N	EUR - Euro	0.07
-cristina_1987ro	English	Italian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Romanian	Spanish	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Romanian	Italian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Romanian	English	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Spanish	English	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Spanish	Italian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Spanish	Romanian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Catalan	Romanian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Catalan	Spanish	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Catalan	English	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Catalan	Italian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	French	Spanish	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	French	English	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	French	Romanian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Portuguese	Romanian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Portuguese	Italian	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Portuguese	Spanish	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	Portuguese	English	0.1	\N	EUR - Euro	0.1
-giuliapiaser	Spanish	Italian	0.06	\N	EUR - Euro	0.06
-giuliapiaser	English	Italian	0.06	\N	EUR - Euro	0.06
-ValentinaO	English	Italian	0.03	\N	EUR - Euro	0.03
-ValentinaO	Spanish	Italian	0.03	\N	EUR - Euro	0.03
-ValentinaO	French	Italian	0.03	\N	EUR - Euro	0.03
-VL11939	French	Italian	0	\N	EUR - Euro	0
-Christi	English	Greek	0.07	\N	EUR - Euro	0.07
-Christi	French	Greek	0.07	\N	EUR - Euro	0.07
-Christi	Turkish	Greek	0.07	\N	EUR - Euro	0.07
-Christi	Italian	Greek	0.07	\N	EUR - Euro	0.07
-annabaccenetti	English	Italian	80	\N	EUR - Euro	80
-d.fasano5	Russian	Italian	0.1	\N	EUR - Euro	0.1
-d.fasano5	English	Italian	0.1	\N	EUR - Euro	0.1
-savu.florin@gmail.com	Dutch	Romanian	8	\N	EUR - Euro	8
-mmakrai@yahoo.com	English	German	0.08	\N	EUR - Euro	0.08
-mmakrai@yahoo.com	English	Croation	0.055	\N	EUR - Euro	0.06
-simkovich0811@gmail.com	Hungarian	English	1000	\N	HUF - Forint	3.22
-AngleRei	English	Italian	20	\N	EUR - Euro	20
-Tony1964	Italian	Spanish	13	\N	EUR - Euro	13
-Tony1964	Italian	English	13	\N	EUR - Euro	13
-Tony1964	Spanish	Italian	13	\N	EUR - Euro	13
-Tony1964	English	Italian	13	\N	EUR - Euro	13
-Tony1964	English	Spanish	13	\N	EUR - Euro	13
-Tony1964	French	Italian	13	\N	EUR - Euro	13
-_valentina	English	Italian	12	\N	EUR - Euro	12
-_valentina	Spanish	Italian	12	\N	EUR - Euro	12
-mariarosaria_leggieri@yahoo.it	English	Italian	0	\N	EUR - Euro	0
-mariarosaria_leggieri@yahoo.it	French	Italian	0	\N	EUR - Euro	0
-Viktorija	Italian	Macedonian	15	\N	EUR - Euro	15
-Viktorija	Italian	Serbian	15	\N	EUR - Euro	15
-Viktorija	Serbian	Italian	15	\N	EUR - Euro	15
-Viktorija	Croation	Italian	15	\N	EUR - Euro	15
-Viktorija	Italian	Croation	15	\N	EUR - Euro	15
-test	English	Italian	0.001	\N	EUR - Euro	0
-simkovich0811@gmail.com	Hungarian	Ukranian	1000	\N	HUF - Forint	3.22
-Claudia	English	Spanish	0	\N	USD - US Dollar	0
-Zsofia Kraus	Hungarian	Turkish	8500	\N	HUF - Forint	27.36
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro	8
-simkovich0811@gmail.com	Ukranian	Hungarian	1000	\N	HUF - Forint	3.22
-simkovich0811@gmail.com	English	Hungarian	1000	\N	HUF - Forint	3.22
-santaseta@hotmail.com	Italian	Turkish	100	\N	TRY - New Turkish Lira	22.51
-oljafiore@gmail.com	Italian	Serbian	20	\N	EUR - Euro	20
-oljafiore@gmail.com	Portuguese	Serbian	20	\N	EUR - Euro	20
-simona	English	Italian	10	\N	EUR - Euro	10
-simona	German	Italian	10	\N	EUR - Euro	10
-simona	French	Italian	10	\N	EUR - Euro	10
-simona	German	English	10	\N	EUR - Euro	10
-petersenizza	English	Slovenian	0	\N	EUR - Euro	0
-petersenizza	English	Slovenian	0	\N	EUR - Euro	0
-petersenizza	English	Italian	0	\N	EUR - Euro	0
-petersenizza	Italian	English	0	\N	EUR - Euro	0
-gloria_732000@yahoo.it	English	Italian	1	\N	EUR - Euro	1
-Serena	Italian	English	6	\N	EUR - Euro	6
-Serena	Italian	French	6	\N	EUR - Euro	6
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	\N	EUR - Euro	0.01
-Claudia	Italian	Portuguese	0	\N	USD - US Dollar	0
-idalconte	Russian	Italian	500	\N	EUR - Euro	500
-cristina_1987ro	English	Spanish	0.1	\N	EUR - Euro	0.1
-cristina_1987ro	French	Italian	0.1	\N	EUR - Euro	0.1
-VL11939	English	Italian	0	\N	EUR - Euro	0
-annabaccenetti	French	Italian	80	\N	EUR - Euro	80
-savu.florin@gmail.com	Romanian	English	8	\N	EUR - Euro	8
-Viktorija	Italian	Bulgarian	15	\N	EUR - Euro	15
-Viktorija	Bulgarian	Italian	15	\N	EUR - Euro	15
-sonia.giardini@gmail.com	Japanese	Italian	30	\N	EUR - Euro	30
-sebastianvargas92@gmail.com	English	Spanish	0.07	\N	USD - US Dollar	0.06
-sebastianvargas92@gmail.com	Spanish	English	0.07	\N	USD - US Dollar	0.06
-Viktorija	Macedonian	Italian	15	\N	EUR - Euro	15
-eespol@yahoo.com	Nepali	English	15	\N	EUR - Euro	15
-camilla.musso@gmail.com	English	Italian	0.02	\N	EUR - Euro	0.02
-camilla.musso@gmail.com	French	Italian	0.02	\N	EUR - Euro	0.02
-camilla.musso@gmail.com	Spanish	Italian	0.02	\N	EUR - Euro	0.02
-quistis25@gmail.com	English	Italian	0.06	\N	EUR - Euro	0.06
-quistis25@gmail.com	Spanish	Italian	0.05	\N	EUR - Euro	0.05
-oljafiore@gmail.com	Serbian	Italian	20	\N	EUR - Euro	20
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	\N	EUR - Euro	0.01
-AdrianaB	French	Italian	0.05	\N	EUR - Euro	0.05
-AdrianaB	English	Italian	0.05	\N	EUR - Euro	0.05
-AdrianaB	Spanish	Italian	0.05	\N	EUR - Euro	0.05
-Claudia	Spanish	English	0	\N	USD - US Dollar	0
+Claudia	Spanish	Italian	0	translation	USD - US Dollar	0
+Claudia	Italian	Spanish	0	translation	USD - US Dollar	0
+Claudia	Spanish	Portuguese	0	translation	USD - US Dollar	0
+Claudia	Portuguese	Spanish	0	translation	USD - US Dollar	0
+cristina_1987ro	French	Romanian	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Portuguese	Romanian	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Portuguese	Italian	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Portuguese	Spanish	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Portuguese	English	0.1	translation	EUR - Euro	0.1
+giuliapiaser	Spanish	Italian	0.06	translation	EUR - Euro	0.06
+giuliapiaser	English	Italian	0.06	translation	EUR - Euro	0.06
+ValentinaO	English	Italian	0.03	translation	EUR - Euro	0.03
+ValentinaO	Spanish	Italian	0.03	translation	EUR - Euro	0.03
+ValentinaO	French	Italian	0.03	translation	EUR - Euro	0.03
+VL11939	French	Italian	0	translation	EUR - Euro	0
+simkovich0811@gmail.com	Hungarian	English	1000	translation	HUF - Forint	3.21
+AngleRei	English	Italian	20	translation	EUR - Euro	20
+Tony1964	Italian	Spanish	13	translation	EUR - Euro	13
+Tony1964	Italian	English	13	translation	EUR - Euro	13
+Tony1964	Spanish	Italian	13	translation	EUR - Euro	13
+Tony1964	English	Italian	13	translation	EUR - Euro	13
+Tony1964	English	Spanish	13	translation	EUR - Euro	13
+Tony1964	French	Italian	13	translation	EUR - Euro	13
+cristina_1987ro	Catalan	Spanish	0.1	translation	EUR - Euro	0.1
+_valentina	English	Italian	12	translation	EUR - Euro	12
+annabaccenetti	English	Italian	80	translation	EUR - Euro	80
+d.fasano5	Russian	Italian	0.1	translation	EUR - Euro	0.1
+d.fasano5	English	Italian	0.1	translation	EUR - Euro	0.1
+savu.florin@gmail.com	Dutch	Romanian	8	translation	EUR - Euro	8
+mmakrai@yahoo.com	English	German	0.08	translation	EUR - Euro	0.08
+mariarosaria_leggieri@yahoo.it	English	Italian	0	translation	EUR - Euro	0
+mariarosaria_leggieri@yahoo.it	French	Italian	0	translation	EUR - Euro	0
+cristina_1987ro	Catalan	English	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Catalan	Italian	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	French	Spanish	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	French	English	0.1	translation	EUR - Euro	0.1
+Christi	English	Greek	0.07	translation	EUR - Euro	0.07
+Christi	French	Greek	0.07	translation	EUR - Euro	0.07
+Claudia	French	Spanish	0	translation	USD - US Dollar	0
+_valentina	Spanish	Italian	12	translation	EUR - Euro	12
+juanantcastan@gmail.com	French	Spanish	0.07	translation	EUR - Euro	0.07
+sarahtankr@gmail.com	English	Italian	20	translation	EUR - Euro	20
+sarahtankr@gmail.com	French	Italian	20	translation	EUR - Euro	20
+translatorsitalian	English	Italian	0.07	translation	EUR - Euro	0.07
+translatorsitalian	French	Italian	0.07	translation	EUR - Euro	0.07
+cristina_1987ro	English	Italian	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Romanian	Spanish	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Romanian	Italian	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Spanish	Romanian	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Catalan	Romanian	0.1	translation	EUR - Euro	0.1
+Christi	Turkish	Greek	0.07	translation	EUR - Euro	0.07
+Christi	Italian	Greek	0.07	translation	EUR - Euro	0.07
+mmakrai@yahoo.com	English	Croation	0.055	translation	EUR - Euro	0.06
+Claudia	Portuguese	Italian	0	translation	USD - US Dollar	0
+Claudia	Portuguese	French	0	translation	USD - US Dollar	0
+savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8
+savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8
+Claudia	French	Portuguese	0	translation	USD - US Dollar	0
+santaseta@hotmail.com	Italian	Turkish	100	translation	TRY - New Turkish Lira	22.63
+oljafiore@gmail.com	Italian	Serbian	20	translation	EUR - Euro	20
+oljafiore@gmail.com	Portuguese	Serbian	20	translation	EUR - Euro	20
+simona	English	Italian	10	translation	EUR - Euro	10
+simona	German	Italian	10	translation	EUR - Euro	10
+simona	French	Italian	10	translation	EUR - Euro	10
+BibianaSalazar	Spanish	English	0	translation	COP - Colombian Peso	0
+BekirDiri	Turkish	English	0.07	translation	EUR - Euro	0.07
+BibianaSalazar	English	Spanish	0	translation	COP - Colombian Peso	0
+jaredfirth	Russian	English	0.12	translation	USD - US Dollar	0.1
+TheSirion	English	Portuguese	0.07	translation	USD - US Dollar	0.06
+idalconte	English	Italian	500	translation	EUR - Euro	500
+idalconte	Italian	English	500	translation	EUR - Euro	500
+petersenizza	English	Slovenian	0	translation	EUR - Euro	0
+petersenizza	English	Slovenian	0	translation	EUR - Euro	0
+Claudia	French	Italian	0	translation	USD - US Dollar	0
+petersenizza	English	Italian	0	translation	EUR - Euro	0
+petersenizza	Italian	English	0	translation	EUR - Euro	0
+gloria_732000@yahoo.it	English	Italian	1	translation	EUR - Euro	1
+BekirDiri	English	Turkish	0.06	translation	EUR - Euro	0.06
+idalconte	Italian	Russian	500	translation	EUR - Euro	500
+bertolinolucrezia@gmail.com	English	Italian	0.01	translation	USD - US Dollar	0.01
+juanantcastan@gmail.com	English	Spanish	0.07	translation	EUR - Euro	0.07
+cristina_1987ro	Romanian	English	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Spanish	English	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	Spanish	Italian	0.1	translation	EUR - Euro	0.1
+Viktorija	Croation	Italian	15	translation	EUR - Euro	15
+Viktorija	Italian	Croation	15	translation	EUR - Euro	15
+test	English	Italian	0.001	translation	EUR - Euro	0
+simkovich0811@gmail.com	Hungarian	Ukranian	1000	translation	HUF - Forint	3.21
+Claudia	English	Spanish	0	translation	USD - US Dollar	0
+Zsofia Kraus	Hungarian	Turkish	8500	translation	HUF - Forint	27.29
+Claudia	English	Italian	0	translation	USD - US Dollar	0
+Claudia	Italian	English	0	translation	USD - US Dollar	0
+simona	German	English	10	translation	EUR - Euro	10
+Viktorija	Italian	Macedonian	15	translation	EUR - Euro	15
+Viktorija	Italian	Serbian	15	translation	EUR - Euro	15
+Viktorija	Serbian	Italian	15	translation	EUR - Euro	15
+Serena	Italian	English	6	translation	EUR - Euro	6
+Serena	Italian	French	6	translation	EUR - Euro	6
+mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	translation	EUR - Euro	0.01
+Claudia	Italian	Portuguese	0	translation	USD - US Dollar	0
+idalconte	Russian	Italian	500	translation	EUR - Euro	500
+cristina_1987ro	English	Spanish	0.1	translation	EUR - Euro	0.1
+cristina_1987ro	French	Italian	0.1	translation	EUR - Euro	0.1
+VL11939	English	Italian	0	translation	EUR - Euro	0
+annabaccenetti	French	Italian	80	translation	EUR - Euro	80
+Claudia	English	French	0	translation	USD - US Dollar	0
+Claudia	French	English	0	translation	USD - US Dollar	0
+Claudia	Spanish	French	0	translation	USD - US Dollar	0
+Claudia	English	Portuguese	0	translation	USD - US Dollar	0
+Viktorija	Italian	Bulgarian	15	translation	EUR - Euro	15
+Viktorija	Bulgarian	Italian	15	translation	EUR - Euro	15
+sonia.giardini@gmail.com	Japanese	Italian	30	translation	EUR - Euro	30
+giorgio	English	Italian	0.01	translation	EUR - EURO	0.01
+simkovich0811@gmail.com	Ukranian	Hungarian	1000	translation	HUF - Forint	3.21
+simkovich0811@gmail.com	English	Hungarian	1000	translation	HUF - Forint	3.21
+Claudia	Portuguese	English	0	translation	USD - US Dollar	0
+helga83	English	Hungarian	1	translation	HUF - Forint	0
+sebastianvargas92@gmail.com	English	Spanish	0.07	translation	USD - US Dollar	0.06
+sebastianvargas92@gmail.com	Spanish	English	0.07	translation	USD - US Dollar	0.06
+Viktorija	Macedonian	Italian	15	translation	EUR - Euro	15
+eespol@yahoo.com	Nepali	English	15	translation	EUR - Euro	15
+camilla.musso@gmail.com	English	Italian	0.02	translation	EUR - Euro	0.02
+camilla.musso@gmail.com	French	Italian	0.02	translation	EUR - Euro	0.02
+camilla.musso@gmail.com	Spanish	Italian	0.02	translation	EUR - Euro	0.02
+quistis25@gmail.com	English	Italian	0.06	translation	EUR - Euro	0.06
+quistis25@gmail.com	Spanish	Italian	0.05	translation	EUR - Euro	0.05
+oljafiore@gmail.com	Serbian	Italian	20	translation	EUR - Euro	20
+mchiarasbragaglia@hotmail.it	English	Italian	0.008	translation	EUR - Euro	0.01
+AdrianaB	French	Italian	0.05	translation	EUR - Euro	0.05
+AdrianaB	English	Italian	0.05	translation	EUR - Euro	0.05
+AdrianaB	Spanish	Italian	0.05	translation	EUR - Euro	0.05
+Claudia	Spanish	English	0	translation	USD - US Dollar	0
 \.
 
 
 --
--- TOC entry 3070 (class 0 OID 3065281)
+-- TOC entry 3078 (class 0 OID 3065281)
 -- Dependencies: 191
 -- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -452,29 +613,29 @@ luca	English	2017-10-12 09:58:17	0	en
 GiorgioTraduttore	English	2017-10-12 09:58:17	0	en
 GiorgioTraduttore	Spanish	2017-10-12 09:58:17	0	es
 test	Japanese	2017-10-12 09:58:17	0	jp
-giorgio	English	2017-10-12 09:58:17	2	en
-test	English	2017-10-12 09:58:17	0	en
 test	Italian	2017-10-13 19:52:56	2	it
+test	English	2017-10-29 16:38:37	0	en
+giorgio	English	2017-10-29 16:39:51	1	en
 \.
 
 
 --
--- TOC entry 3072 (class 0 OID 3419737)
+-- TOC entry 3080 (class 0 OID 3419737)
 -- Dependencies: 193
 -- Data for Name: payments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY payments (id, job, price, currency, status, description, username, link, translator, secondtranslator, originallink, viewlink, secondstatus) FROM stdin;
-14	Test translation job	34	€	Paid	Carica una traduzione di qualcosa	agenzia	https://cdn.filestackcontent.com/4E0NKvVTEeHGuv560qLZ	test	giorgio	\N	\N	To Be Assigned
-12	Test translation job	34	€	To Be Assigned	carica una traduzione di qualcosa per favore (Test Luca)	agenzia		luca	test	\N	\N	Refused
-11	Test translation job	34	€	To Be Assigned	carica una traduzione di qualcosa per favore (Test Giorgio)	agenzia		giorgio	test	\N	\N	Assigned
-2	traduzione	5	€	To Be Assigned	prova  db	agenzia	https://cdn.filestackcontent.com/qUUkVpTJTwqFXRExpOve	test	giorgio	\N	\N	To Be Assigned
-1	libreoffice	10	€	To Be Assigned	traducimi questo	agenzia	https://cdn.filestackcontent.com/3hpArAFkRTKNBfjm4plx	test	giorgio	\N	\N	To Be Assigned
+14	Test translation job	10	EUR - EURO	Paid	Carica una traduzione di qualcosa	agenzia	https://cdn.filestackcontent.com/4E0NKvVTEeHGuv560qLZ	test	giorgio	\N	\N	To Be Assigned
+12	Test translation job	10	EUR - EURO	To Be Assigned	carica una traduzione di qualcosa per favore (Test Luca)	agenzia		luca	test	\N	\N	Refused
+1	libreoffice	10	EUR - EURO	To Be Assigned	traducimi questo	agenzia	https://cdn.filestackcontent.com/3hpArAFkRTKNBfjm4plx	test	giorgio	\N	\N	To Be Assigned
+11	Test translation job	10	EUR - EURO	Assigned	carica una traduzione di qualcosa per favore (Test Giorgio)	agenzia		giorgio	test	\N	\N	Assigned
+2	traduzione	10	EUR - EURO	To Be Assigned	prova  db	agenzia	https://cdn.filestackcontent.com/qUUkVpTJTwqFXRExpOve	test	giorgio	\N	\N	Refused
 \.
 
 
 --
--- TOC entry 3088 (class 0 OID 0)
+-- TOC entry 3100 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -483,7 +644,7 @@ SELECT pg_catalog.setval('payments_id_seq', 1, true);
 
 
 --
--- TOC entry 3069 (class 0 OID 2995904)
+-- TOC entry 3077 (class 0 OID 2995904)
 -- Dependencies: 190
 -- Data for Name: skilltest; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -970,7 +1131,7 @@ COPY skilltest (id, language, question, answer1, answer2, answer3, scelta) FROM 
 
 
 --
--- TOC entry 3089 (class 0 OID 0)
+-- TOC entry 3101 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: skilltest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -979,7 +1140,7 @@ SELECT pg_catalog.setval('skilltest_id_seq', 1, false);
 
 
 --
--- TOC entry 3065 (class 0 OID 2794053)
+-- TOC entry 3073 (class 0 OID 2794053)
 -- Dependencies: 186
 -- Data for Name: traduttore; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -997,8 +1158,8 @@ COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new
 47	Valentina	Lambrugo	\N	Italian	\N	N	VL11939	valentina.lambrugo@gmail.com	\N	Giussano	\N	\N	\N	\N	Italy
 49	Anna	Baccenetti	\N	Italian	\N	N	annabaccenetti	anna.baccenetti@gmail.com	\N	Milan	\N	\N	\N	\N	Italy
 12	Luca	Sapone	2017-10-12	Italian	4c3eeb5ba4109d98b0c309f9b13a333e622dd592bc8f5fc0a5a71ebf40b741aa	N	luca	luca.sapone86@gmail.com	\N	Torino	\N	TO	IT	it	\N
+10	Test	pippo	1965-07-09	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	IT	it	\N
 13	Giorgio	Valle	1965-07-08	Italian	9f2c3e310418393bac624106a65cfc1f617af21963dd821bdfe5c6639baec339	N	giorgio	giorgio.valle@hotmail.it	\N	Rivara			IT	it	\N
-11	Gio	Val	1965-07-08	Italian	bda34b1b4ab8051f454ca1f61f91829e6eb872678284e100e6d549efca0d506d	N	GiorgioTraduttore	giorgio.valle@hotmail.it	\N	\N	\N	\N	IT	it	\N
 53	Delia	Fasano	\N	Italian	\N	N	d.fasano5	fasano.delia@gmail.com	\N	Cava deTirreni	\N	\N	\N	\N	Italy
 56	Edoardo	Fattizzo	\N	Italian	\N	N	AngleRei	anglereikun@msn.com	\N	Firenze	\N	\N	\N	\N	Italy
 25	Rafael	Belomo	\N		\N	N	rbelomo@gmail.com	rbelomo@gmail.com	\N		\N	\N	\N	\N	
@@ -1026,7 +1187,7 @@ COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new
 59	valentina	pandolfi	\N	Italian	\N	N	_valentina	valentina.pando@gmail.com	\N	Pesaro	\N	\N	\N	\N	Italy
 60	Maria Rosaria	Leggieri	\N	Italian	\N	N	mariarosaria_leggieri@yahoo.it	mariarosaria_leggieri@yahoo.it	\N	Foggia Area	\N	\N	\N	\N	Italy
 61	Angelica	Albergo	\N	Italian	\N	N	angelique23@hotmail.it	angelique23@hotmail.it	\N	Bari	\N	\N	\N	\N	Italy
-10	Test	pippo	1900-03-14	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	IT	it	\N
+11	Gio	Val	1965-07-08	Italian	bda34b1b4ab8051f454ca1f61f91829e6eb872678284e100e6d549efca0d506d	N	GiorgioTraduttore	giorgio.valle@hotmail.it	\N	\N	\N	\N	IT	it	\N
 63	Sebastián	Vargas	\N	Spanish	\N	N	sebastianvargas92@gmail.com	sebastianvargas92@gmail.com	\N	Mendoza	\N	\N	\N	\N	Argentina
 65	Alla	Kolesnikova	\N	Russian	\N	N	alla.kolesnikova.95@mail.ru	alla.kolesnikova.95@mail.ru	\N	Pyatigorsk	\N	\N	\N	\N	Russian Federation
 67	Rubru	Shrestha	\N	Nepali	\N	N	eespol@yahoo.com	eespol@yahoo.com	\N	Madrid	\N	\N	\N	\N	Spain
@@ -1049,7 +1210,7 @@ COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new
 
 
 --
--- TOC entry 3090 (class 0 OID 0)
+-- TOC entry 3102 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: traduttore_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -1058,7 +1219,7 @@ SELECT pg_catalog.setval('traduttore_id_seq', 80, true);
 
 
 --
--- TOC entry 2937 (class 2606 OID 2967884)
+-- TOC entry 2945 (class 2606 OID 2967884)
 -- Name: agenzia agenzia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1067,7 +1228,7 @@ ALTER TABLE ONLY agenzia
 
 
 --
--- TOC entry 2939 (class 2606 OID 2850712)
+-- TOC entry 2947 (class 2606 OID 2850712)
 -- Name: agenzia agenzia_username_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1076,7 +1237,7 @@ ALTER TABLE ONLY agenzia
 
 
 --
--- TOC entry 2941 (class 2606 OID 3419745)
+-- TOC entry 2949 (class 2606 OID 3419745)
 -- Name: payments payments_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1085,7 +1246,7 @@ ALTER TABLE ONLY payments
 
 
 --
--- TOC entry 2933 (class 2606 OID 3751374)
+-- TOC entry 2941 (class 2606 OID 3751374)
 -- Name: traduttore traduttore_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1094,7 +1255,7 @@ ALTER TABLE ONLY traduttore
 
 
 --
--- TOC entry 2935 (class 2606 OID 3751376)
+-- TOC entry 2943 (class 2606 OID 3751376)
 -- Name: traduttore traduttore_username_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1103,7 +1264,7 @@ ALTER TABLE ONLY traduttore
 
 
 --
--- TOC entry 2946 (class 2606 OID 3770603)
+-- TOC entry 2954 (class 2606 OID 3770603)
 -- Name: language_pair language_pair_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1112,7 +1273,7 @@ ALTER TABLE ONLY language_pair
 
 
 --
--- TOC entry 2945 (class 2606 OID 3751387)
+-- TOC entry 2953 (class 2606 OID 3751387)
 -- Name: payments payments_secondtranslator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1121,7 +1282,7 @@ ALTER TABLE ONLY payments
 
 
 --
--- TOC entry 2944 (class 2606 OID 3751382)
+-- TOC entry 2952 (class 2606 OID 3751382)
 -- Name: payments payments_translator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1130,7 +1291,7 @@ ALTER TABLE ONLY payments
 
 
 --
--- TOC entry 2943 (class 2606 OID 3419820)
+-- TOC entry 2951 (class 2606 OID 3419820)
 -- Name: payments payments_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1139,7 +1300,7 @@ ALTER TABLE ONLY payments
 
 
 --
--- TOC entry 2942 (class 2606 OID 3751377)
+-- TOC entry 2950 (class 2606 OID 3751377)
 -- Name: languages test_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1148,7 +1309,7 @@ ALTER TABLE ONLY languages
 
 
 --
--- TOC entry 3080 (class 0 OID 0)
+-- TOC entry 3090 (class 0 OID 0)
 -- Dependencies: 7
 -- Name: public; Type: ACL; Schema: -; Owner: -
 --
@@ -1160,15 +1321,15 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 3082 (class 0 OID 0)
--- Dependencies: 594
+-- TOC entry 3092 (class 0 OID 0)
+-- Dependencies: 601
 -- Name: plpgsql; Type: ACL; Schema: -; Owner: -
 --
 
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2017-10-26 22:27:20 CEST
+-- Completed on 2017-10-31 19:28:01 CET
 
 --
 -- PostgreSQL database dump complete
