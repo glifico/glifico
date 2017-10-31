@@ -1,5 +1,5 @@
 <?php
-include 'functions.php'
+include 'functions.php';
 
 $currencies=array(
   "AED - United Arab Emirates dirham",
@@ -182,12 +182,13 @@ if(!$db) exit;
 
 foreach ($currencies as $value) {
   $cur=$value{3};
+  echo($cur);
   $query="SELECT * from currencies WHERE currency='$cur';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
   $query="UPDATE currencies SET description='$value' WHERE currency='$cur';";
-  $result = $db->query($query);
+  $db->query($query);
 
   array_push($exit,array("Id"=>$id,"Currency"=>$value));
   $id+=1;
