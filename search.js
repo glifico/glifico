@@ -85,6 +85,7 @@ resetTr=function(){
 	selectedTr[1].total=0;
 
 	$("#fieasibility").hide();
+	$("#selectedtable").hide();
 	$("#firstPrice").html("");
 	$("#firstName").html("");
 	$("#secondPrice").html("");
