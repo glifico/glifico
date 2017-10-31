@@ -10,7 +10,7 @@ $query="SELECT * from currencies;";
 $result = $db->query($query);
 
 while($row=$result->fetch(PDO::FETCH_ASSOC)) {
-  array_push($exit,array("Id"=>$row['currency'],"Currency"=>$row['description']));
+  array_push($toExit,array("Id"=>$row['currency'],"Currency"=>$row['description']));
 }
 
 $result->CloseCursor();
