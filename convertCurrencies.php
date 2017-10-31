@@ -23,6 +23,18 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $db->query($query);
 }
 
+
+$query="SELECT * from currencies;";
+$result = $db->query($query);
+
+$toExit=[];
+while($row = $result->fetch(PDO::FETCH_ASSOC)){
+  $currency=substr($row['currency'],0,3);
+  $conversion=round((float)$handle['rates'][$cur],2);
+  $query="UPDATE currencies SET conversion='$conversion' WHERE currency='$currency';";
+  $db->query($query);
+}
+
 $result->CloseCursor();
 exit(json_encode(array("stauscode"=>200,"message"=>"currencies updated")));
 
