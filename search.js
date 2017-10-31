@@ -36,7 +36,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		selectedTr[0].isSelected=true;
 		selectedTr[0].price=price;
-		selectedTr[0].rowIndex.total=totalTr;
+		selectedTr[0].total=totalTr;
 		selectedTr[0].rowIndex=rowIndex;
 
 		$("#selectedtable").show();
@@ -55,7 +55,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
-		selectedTr[1].rowIndex.total=totalTr;
+		selectedTr[1].total=totalTr;
 		selectedTr[1].rowIndex=rowIndex;
 
 		var html="";
@@ -75,8 +75,6 @@ calculatePr=function(){
 
 
 getAgPrice=function(tr){
-	console.log("out");
-	console.log(selectedTr[tr-1].total);
 	return selectedTr[tr-1].total;
 }
 
