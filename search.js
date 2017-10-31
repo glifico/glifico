@@ -8,11 +8,13 @@ var selectedTr=[
 		isSelected: false,
 		price: 0,
 		total: 0,
+		rowIndex: -1,
 	},
 	{
 		isSelected: false,
 		price: 0,
 		total: 0,
+		rowIndex: -1,
 	}
 	];
 
