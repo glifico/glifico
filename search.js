@@ -145,21 +145,21 @@ angular.module("search",[]).controller("search",function($scope){
 		return $scope.IsSecondSelected;
 	}
 
-	ctrl.calculatePriceAg= function(priceClass,priceTr){
-		console.debug(priceClass);
-		console.debug(priceTr);
+	ctrl.calculatePriceAg = function(priceClass,priceTr){
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
 		case 1:
-			ctrl.priceAg = (mb*ctrl.params.multA).toFixed(2);
+			toReturn = (mb*ctrl.params.multA).toFixed(2);
 			break;
 		case 2:
-			ctrl.priceAg = (mb*ctrl.params.multB).toFixed(2);
+			toReturn = (mb*ctrl.params.multB).toFixed(2);
 			break;
 		case 3:
-			ctrl.priceAg = (priceTr*ctrl.params.multC).toFixed(2);
+			toReturn = (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
+		
+		return toReturn;
 	}
 
 
@@ -349,7 +349,6 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.initForm();
 
 		ctrl.TrCharacters=0;
-		ctrl.priceAg=0;
 		ctrl.today=new Date();
 		ctrl.tomorrow=new Date(ctrl.today.getTime() + 24 * 60 * 60 * 1000);
 		ctrl.TrDeadline=ctrl.tomorrow;
