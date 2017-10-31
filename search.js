@@ -146,6 +146,8 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.calculatePriceAg= function(priceClass,priceTr){
+		console.debug(priceClass);
+		console.debug(priceTr);
 		var mb=ctrl.params.maxB;
 		switch(priceClass){
 		case 1:
