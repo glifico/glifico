@@ -1,25 +1,5 @@
 <?php
 include 'functions.php';
-
-$db=getDB();
-if(!$db) exit;
-
-$query="SELECT currency, conversion from currencies;";
-$result = $db->query($query);
-
-$toExit=[];
-while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  array_push($toExit,$row);
-}
-
-
-$result->CloseCursor();
-exit(json_encode($toExit));
-
-?>
-
-<?php
-include 'functions.php';
 $db=getDB();
 if(!$db) exit;
 $query="SELECT * from language_pair;";
@@ -34,7 +14,8 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
   $cur=substr($row['currency'],0,3);
   $query="SELECT currency, conversion from currencies where currency='$cur';";
   $convResult = $db->query($query);
-  $priceEuro=round((float)$price/$convResult['conversion'],2);
+  $convRow = $convResult->fetch(PDO::FETCH_ASSOC)
+  $priceEuro=round((float)$price/$convRow['conversion'],2);
   $query="UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
   $db->query($query);
 }
