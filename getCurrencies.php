@@ -181,7 +181,7 @@ if(!$db) exit;
 
 
 foreach ($currencies as $value) {
-  $cur=substring($value,0,3);
+  $cur=substr($value,0,3);
   $query="SELECT * from currencies WHERE currency='$cur';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
