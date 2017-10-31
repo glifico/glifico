@@ -44,7 +44,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		var html="";
 		html+=getPriceDollars(price);
 		html+='     ';
-		html+=totalTr+' Euro';
+		html+=totalTr+' Euro/ch';
 
 		$("#firstPrice").html(html);
 		$("#firstName").html(name);
@@ -61,7 +61,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		var html="";
 		html+=getPriceDollars(price);
 		html+='     ';
-		html+=totalTr+' Euro';
+		html+=totalTr+' Euro/ch';
 
 		
 		$("#secondPrice").html(html);
@@ -73,7 +73,7 @@ calculatePr=function(){
 	
 };
 
-resetTr=function(name, price, priceTr, totalTr, rowIndex){	
+resetTr=function(){	
 	$("#rowN"+selectedTr[0].rowIndex).css('background-color', '');
 	$("#rowN"+selectedTr[1].rowIndex).css('background-color', '');
 	
@@ -267,7 +267,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.search=function(){
 		$("#table").html('<i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>');
-
+		resetTr();
 		var e = document.getElementById("select-to");
 		ctrl.to = e.options[e.selectedIndex].text;
 
