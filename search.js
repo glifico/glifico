@@ -76,6 +76,7 @@ calculatePr=function(){
 
 getAgPrice=function(tr){
 	console.log("out");
+	console.log(selectedTr[tr-1].total);
 	return selectedTr[tr-1].total;
 }
 
@@ -172,9 +173,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.getAgPrice=function(tr){
-		console.debug(tr);
-		console.debug(getAgPrice(0));
-		return selectedTr[tr-1].total;
+		return getAgPrice(tr);
 	}
 
 	ctrl.createTable=function(){
