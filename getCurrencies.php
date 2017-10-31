@@ -188,10 +188,11 @@ foreach ($currencies as $value) {
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
   $query="UPDATE currencies SET description='$value' WHERE currency='$cur';";
+  echo($query);
   $db->query($query);
 
   array_push($exit,array("Id"=>$id,"Currency"=>$value));
   $id+=1;
 }
-exit(json_encode($exit));
+//exit(json_encode($exit));
  ?>
