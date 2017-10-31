@@ -11,27 +11,12 @@ $url="https://v3.exchangerate-api.com/bulk/72aabbf884e8a2247df4bdff/EUR";
 //$url="https://api.fixer.io/latest";
 $handle = json_decode(file_get_contents($url),true);
 
-$toExit=[];
-while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  $username=$row['username'];
-  $to=$row['to_l'];
-  $from=$row['from_l'];
-  $price=$row['price'];
-  $cur=substr($row['currency'],0,3);
-  $priceEuro=round((float)$price/$handle['rates'][$cur],2);
-  $query="UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
-  $db->query($query);
-}
-
-
 $query="SELECT * from currencies;";
 $result = $db->query($query);
 
-$toExit=[];
-while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  $currency=substr($row['currency'],0,3);
-  $conversion=round((float)$handle['rates'][$cur],2);
-  $query="UPDATE currencies SET conversion='$conversion' WHERE currency='$currency';";
+foreach ($handle['rates'] as $currency => $value) {
+  //$query="UPDATE currencies SET conversion='$conversion' WHERE currency='$currency';";
+  $query="INSERT INTO currencies (currency, conversion) VALUES('$currency',$value);";
   $db->query($query);
 }
 
