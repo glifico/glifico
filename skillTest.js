@@ -325,6 +325,7 @@ function finishTest() {
 				$('#skill-modal').modal('hide');
 
 				var result=(JSON.parse(response.replace(/\\/,"")))['score'];
+				alert("Test completed with a result of "+result+"/"+domande.length);
 				notify("Result:"+result+"/"+domande.length);
 				$("#alertOK").html("Test Completed!");
 				$("#alertOK").fadeIn().delay(5000).fadeOut();
