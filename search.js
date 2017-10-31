@@ -171,7 +171,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.getAgPrice=function(tr){
-		return getAgPrice(tr);
+		return selectedTr[tr-1].total;
 	}
 
 	ctrl.createTable=function(){
