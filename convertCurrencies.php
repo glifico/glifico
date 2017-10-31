@@ -15,8 +15,8 @@ $query="SELECT * from currencies;";
 $result = $db->query($query);
 
 foreach ($handle['rates'] as $currency => $value) {
-  //$query="UPDATE currencies SET conversion='$conversion' WHERE currency='$currency';";
-  $query="INSERT INTO currencies (currency, conversion) VALUES('$currency',$value);";
+  $query="UPDATE currencies SET conversion='$conversion' WHERE currency='$currency';";
+  //$query="INSERT INTO currencies (currency, conversion) VALUES('$currency',$value);";
   $db->query($query);
 }
 
