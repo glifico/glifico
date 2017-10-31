@@ -16,7 +16,7 @@ var selectedTr=[
 		total: 0,
 		rowIndex: -1,
 	}
-	];
+	]
 
 getPriceDollars=function(price){
 	var html="";
@@ -28,7 +28,7 @@ getPriceDollars=function(price){
 	return html;
 }
 
-selectTr=function(name, price, priceTr, totalTr, rowIndex){	
+selectTr=function(name, price, priceTr, totalTr, rowIndex){
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#40bc99');
 		$("#fieasibility").show();
@@ -38,7 +38,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[0].price=price;
 		selectedTr[0].rowIndex.total=totalTr;
 		selectedTr[0].rowIndex=rowIndex;
-		
+
 		$("#selectedtable").show();
 		$("#secondRow").hide();
 		var html="";
@@ -63,20 +63,25 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		html+='     ';
 		html+=totalTr+' Euro/ch';
 
-		
+
 		$("#secondPrice").html(html);
 		$("#secondName").html(name);
 	}
-};
+}
 
 calculatePr=function(){
-	
-};
 
-resetTr=function(){	
+}
+
+
+getAgPrice=function(tr){
+	return selectedTr[tr].total;
+}
+
+resetTr=function(){
 	$("#rowN"+selectedTr[0].rowIndex).css('background-color', '');
 	$("#rowN"+selectedTr[1].rowIndex).css('background-color', '');
-	
+
 	selectedTr[0].isSelected=false;
 	selectedTr[0].price=0;
 	selectedTr[0].total=0;
@@ -90,7 +95,7 @@ resetTr=function(){
 	$("#firstName").html("");
 	$("#secondPrice").html("");
 	$("#secondName").html("");
-};
+}
 
 angular.module("search",[]).controller("search",function($scope){
 	var ctrl=this;
@@ -161,10 +166,13 @@ angular.module("search",[]).controller("search",function($scope){
 			toReturn = (priceTr*ctrl.params.multC).toFixed(2);
 			break;
 		}
-		
+
 		return toReturn;
 	}
 
+	ctrl.getAgPrice=function(tr){
+		return getAgPrice(tr);
+	}
 
 	ctrl.createTable=function(){
 		var html="";
