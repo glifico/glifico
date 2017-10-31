@@ -181,14 +181,12 @@ if(!$db) exit;
 
 
 foreach ($currencies as $value) {
-  $cur=$value{3};
-  echo($cur);
+  $cur=substring($value,0,3);
   $query="SELECT * from currencies WHERE currency='$cur';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
   $query="UPDATE currencies SET description='$value' WHERE currency='$cur';";
-  echo($query);
   $db->query($query);
 
   array_push($exit,array("Id"=>$id,"Currency"=>$value));
