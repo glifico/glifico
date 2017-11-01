@@ -3,9 +3,9 @@
 --
 
 -- Dumped from database version 9.6.1
--- Dumped by pg_dump version 9.6.5
+-- Dumped by pg_dump version 10.0
 
--- Started on 2017-10-31 19:26:44 CET
+-- Started on 2017-11-01 19:31:06 CET
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -332,15 +332,6 @@ COPY agenzia (id, nome, vat, username, password, email, street, number, citta, p
 
 
 --
--- TOC entry 3098 (class 0 OID 0)
--- Dependencies: 187
--- Name: agenzia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('agenzia_id_seq', 2, true);
-
-
---
 -- TOC entry 3083 (class 0 OID 3857799)
 -- Dependencies: 196
 -- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: -
@@ -446,15 +437,6 @@ COPY currencies (id, currency, conversion, description) FROM stdin;
 194	XPF	118.99102878	XPF - CFP franc
 195	ZAR	16.44795532	ZAR - South African Rand
 \.
-
-
---
--- TOC entry 3099 (class 0 OID 0)
--- Dependencies: 195
--- Name: currencies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('currencies_id_seq', 196, true);
 
 
 --
@@ -613,9 +595,9 @@ luca	English	2017-10-12 09:58:17	0	en
 GiorgioTraduttore	English	2017-10-12 09:58:17	0	en
 GiorgioTraduttore	Spanish	2017-10-12 09:58:17	0	es
 test	Japanese	2017-10-12 09:58:17	0	jp
-test	Italian	2017-10-13 19:52:56	2	it
 test	English	2017-10-29 16:38:37	0	en
 giorgio	English	2017-10-29 16:39:51	1	en
+test	Italian	2017-10-31 21:01:32	0	it
 \.
 
 
@@ -632,15 +614,6 @@ COPY payments (id, job, price, currency, status, description, username, link, tr
 11	Test translation job	10	EUR - EURO	Assigned	carica una traduzione di qualcosa per favore (Test Giorgio)	agenzia		giorgio	test	\N	\N	Assigned
 2	traduzione	10	EUR - EURO	To Be Assigned	prova  db	agenzia	https://cdn.filestackcontent.com/qUUkVpTJTwqFXRExpOve	test	giorgio	\N	\N	Refused
 \.
-
-
---
--- TOC entry 3100 (class 0 OID 0)
--- Dependencies: 192
--- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('payments_id_seq', 1, true);
 
 
 --
@@ -1131,15 +1104,6 @@ COPY skilltest (id, language, question, answer1, answer2, answer3, scelta) FROM 
 
 
 --
--- TOC entry 3101 (class 0 OID 0)
--- Dependencies: 189
--- Name: skilltest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('skilltest_id_seq', 1, false);
-
-
---
 -- TOC entry 3073 (class 0 OID 2794053)
 -- Dependencies: 186
 -- Data for Name: traduttore; Type: TABLE DATA; Schema: public; Owner: -
@@ -1207,6 +1171,42 @@ COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new
 79	Rita	Sanfilippo	\N	Italian	\N	N	rita11	rita.sanf91@gmail.com	\N	Palermo	\N	\N	\N	\N	Italy
 80	Patrizia	Dal Zotto	\N	Italian	\N	N	patriziadz@teletu.it	patriziadz@teletu.it	\N	Padova Area	\N	\N	\N	\N	Italy
 \.
+
+
+--
+-- TOC entry 3098 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: agenzia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('agenzia_id_seq', 2, true);
+
+
+--
+-- TOC entry 3099 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: currencies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('currencies_id_seq', 196, true);
+
+
+--
+-- TOC entry 3100 (class 0 OID 0)
+-- Dependencies: 192
+-- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('payments_id_seq', 1, true);
+
+
+--
+-- TOC entry 3101 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: skilltest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('skilltest_id_seq', 1, false);
 
 
 --
@@ -1329,7 +1329,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2017-10-31 19:28:01 CET
+-- Completed on 2017-11-01 19:31:28 CET
 
 --
 -- PostgreSQL database dump complete
