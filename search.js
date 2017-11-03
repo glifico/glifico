@@ -81,6 +81,8 @@ getAgPrice=function(tr){
 resetTr=function(){
 	$("#rowN"+selectedTr[0].rowIndex).css('background-color', '');
 	$("#rowN"+selectedTr[1].rowIndex).css('background-color', '');
+	$(".selectTrBtn").prop("disabled",false);
+
 
 	selectedTr[0].isSelected=false;
 	selectedTr[0].price=0;
