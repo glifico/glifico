@@ -70,10 +70,6 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 	}
 }
 
-calculatePr=function(){
-
-}
-
 
 getAgPrice=function(tr){
 	return selectedTr[tr-1].total;
@@ -361,10 +357,10 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.updateTotals=function(){
 		var firstHtml="";
-		firstHtml+=ctrl.TrCharacters * ctrl.getAgPrice(0);
+		firstHtml+=ctrl.TrCharacters * ctrl.getAgPrice(1);
 		firstHtml+=" Euro";
 		var secondHtml="";
-		secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(1);
+		secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
 		secondHtml+=" Euro";
 		$("#firstTotal").html(firsthtml);
 		$("#secondTotal").html(secondHtml);
