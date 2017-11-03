@@ -325,13 +325,15 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.calcultateFeasibility=function(){
-		if(ctrl.TrDeadline.getTime() < ctrl.today.getTime()){
-			alert("Deadline should be at least tomorrow");
+		if(!ctrl.TrDeadline){ 
+			alert("Deadline is invalid!");
+			ctrl.feasibility=3;
+			return;	
 		}
-		
+
 		var timeDiff = Math.abs(ctrl.TrDeadline.getTime() - ctrl.today.getTime());
 		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
-		
+
 		ctrl.MaxCh=days*10000;
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
