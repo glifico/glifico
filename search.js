@@ -51,7 +51,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 	}else if(!selectedTr[1].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#92a7e8');
 		$("#secondRow").show();
-
+		$(".selectTrBtn").prop("disabled",true);
 
 		selectedTr[1].isSelected=true;
 		selectedTr[1].price=price;
@@ -216,9 +216,9 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				name="'"+name+"'";
-				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
+				html+='<button class="selectTrBtn" id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
 				html+="<script>";
-				html+="$(#btnRowN'"+i+").on('click',function() {";
+				html+="$(#btnRowN"+i+").on('click',function() {";
 				html+='$(this).prop("disabled",true);';
 				html+='});';
 				html+="</script>";
