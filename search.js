@@ -362,7 +362,7 @@ angular.module("search",[]).controller("search",function($scope){
 		var secondHtml="";
 		secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
 		secondHtml+=" Euro";
-		$("#firstTotal").html(firsthtml);
+		$("#firstTotal").html(firstHtml);
 		$("#secondTotal").html(secondHtml);
 	}
 	
