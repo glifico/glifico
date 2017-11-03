@@ -29,6 +29,7 @@ getPriceDollars=function(price){
 }
 
 selectTr=function(name, price, priceTr, totalTr, rowIndex){
+	$("#btnRowN"+rowIndex).disabled=true;
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#40bc99');
 		$("#fieasibility").show();
@@ -216,7 +217,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				name="'"+name+"'";
-				html+='<button type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
+				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
