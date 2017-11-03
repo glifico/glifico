@@ -356,8 +356,20 @@ angular.module("search",[]).controller("search",function($scope){
 			ctrl.feasibilityColor="#FFF";
 			$("#feasibility").html("");
 		}
+		ctrl.updateTotals();
 	}
 
+	ctrl.updateTotals=function(){
+		var firstHtml="";
+		firstHtml+=ctrl.TrCharacters * ctrl.getAgPrice(0);
+		firstHtml+=" Euro";
+		var secondHtml="";
+		secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(1);
+		secondHtml+=" Euro";
+		$("#firstTotal").html(firsthtml);
+		$("#secondTotal").html(secondHtml);
+	}
+	
 	ctrl.startJob=function(){
 
 	}
