@@ -217,9 +217,11 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='<td class="col-md-2">';
 				name="'"+name+"'";
 				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
-				$('.btnRowN'+i).on('click',function() {
-				    $(this).prop("disabled",true);
-				});
+				html+="<script>";
+				html+="$(#btnRowN'"+i+").on('click',function() {";
+				html+='$(this).prop("disabled",true);';
+				html+='});';
+				html+="</script>";
 				html+='</td>';
 				html+='<tr>';
 			}
