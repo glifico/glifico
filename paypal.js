@@ -57,7 +57,7 @@ angular.module("payment",[])
 			locale: 'en_US',
 
 			client: {
-				sandbox:    'AZRBS2QBR8wGqZxOApvDTn-Mte7wfv7iXGLxa-tN1UlmvFflKoyulHT_eunIcuwdW7667-jSgOOgCU5V',
+				sandbox:    'AbgPqa4wvkOb0CDLtOeyvNgjR0tGUkaZoK4asikkicfhrXEF1nJOa4eaKZJMp7l3cIKuLKNkO9Bs9ETl',
 				production: '<????>'
 			},
 
