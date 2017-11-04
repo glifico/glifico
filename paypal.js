@@ -101,6 +101,7 @@ angular.module("payment",[])
 
 			onCancel: function(data, actions) {
 				alert("Payment doesn't end well :-(");
+				location.href=location.href;
 			}
 
 
