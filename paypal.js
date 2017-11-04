@@ -82,11 +82,11 @@ angular.module("payment",[])
 							}
 							]
 					},
-//					experience: {
-//						input_fields: {
-//							no_shipping: 1
-//						}
-//					},
+					experience: {
+						input_fields: {
+							no_shipping: 1
+						}
+					},
 				});
 			},
 
