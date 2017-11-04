@@ -68,6 +68,8 @@ angular.module("payment",[])
 				color: 'silver',
 			},
 
+			
+			
 			payment: function(data, actions) {
 				return actions.payment.create({
 					payment: {
@@ -81,7 +83,7 @@ angular.module("payment",[])
 						input_fields: {
 							no_shipping: 1
 						}
-					}
+					},
 				});
 			},
 
