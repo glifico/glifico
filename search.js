@@ -340,7 +340,7 @@ angular.module("search",[]).controller("search",function($scope){
 			ctrl.feasibility=2;
 			ctrl.feasibilityBack="red";
 			ctrl.feasibilityColor="#FFF";
-			$("#feasibility").html("Job too Demanding, please posticipate deadline");
+			$("#feasibility").html("Job too demanding, please posticipate deadline");
 		}else	if(ctrl.TrCharacters>=ctrl.UrgCh){
 			ctrl.feasibility=1;
 			ctrl.feasibilityBack="orange";
