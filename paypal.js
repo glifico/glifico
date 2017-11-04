@@ -54,7 +54,7 @@ angular.module("payment",[])
 
 			env: 'sandbox', // Or 'production'
 
-			//locale: 'en_US',
+			locale: 'en_US',
 
 			client: {
 				sandbox:    'AZRBS2QBR8wGqZxOApvDTn-Mte7wfv7iXGLxa-tN1UlmvFflKoyulHT_eunIcuwdW7667-jSgOOgCU5V',
