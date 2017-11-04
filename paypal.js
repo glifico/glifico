@@ -62,12 +62,7 @@ angular.module("payment",[])
 			},
 			
 			locale: 'en_US',
-
-			funding: {
-		        allowed: [ paypal.FUNDING.CREDIT, paypal.FUNDING.CARD]
-		    },
-		    
-		    
+		    		    
 			commit: true, // Show a 'Pay Now' button
 
 			style: {
