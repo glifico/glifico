@@ -26,7 +26,9 @@ function paymentCompleted(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
 			if(data['statuscode']==200){
-				location.href="pendingPayments.html";
+				notify("Payment completed :-)");
+				alert("Payment completed :-)");
+				//location.href="pendingPayments.html";
 			}
 		}else{
 			mostraDialogTimed('errorPanel');
@@ -54,18 +56,24 @@ angular.module("payment",[])
 
 			env: 'sandbox', // Or 'production'
 
-			locale: 'en_US',
-
 			client: {
 				sandbox:    'AbgPqa4wvkOb0CDLtOeyvNgjR0tGUkaZoK4asikkicfhrXEF1nJOa4eaKZJMp7l3cIKuLKNkO9Bs9ETl',
 				production: '<????>'
 			},
+			
+			locale: 'en_US',
 
+			funding: {
+		        allowed: [ paypal.FUNDING.CREDIT, paypal.FUNDING.CARD]
+		    },
+		    
+		    
 			commit: true, // Show a 'Pay Now' button
 
 			style: {
 				size:'medium',
 				color: 'silver',
+				label: 'pay',
 			},
 
 			
