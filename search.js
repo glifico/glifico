@@ -71,6 +71,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 }
 
 deselectTr=function(tr){
+	var tr=tr-1;
 	selectedTr[tr].isSelected=false;
 	selectedTr[tr].price=-1;
 	selectedTr[tr].total=-1;
