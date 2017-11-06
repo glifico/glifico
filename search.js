@@ -6,14 +6,14 @@ $(document).ready(function () {
 var selectedTr=[
 	{
 		isSelected: false,
-		price: 0,
-		total: 0,
+		price: -1,
+		total: -1,
 		rowIndex: -1,
 	},
 	{
 		isSelected: false,
-		price: 0,
-		total: 0,
+		price: -1,
+		total: -1,
 		rowIndex: -1,
 	}
 	]
@@ -41,17 +41,17 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[0].rowIndex=rowIndex;
 
 		$("#selectedtable").show();
-		$("#secondRow").hide();
+		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
 		html+='     ';
 		html+=totalTr+' Euro/ch';
 
-		$("#firstPrice").html(html);
-		$("#firstName").html(name);
+		$("#selectedPrice1").html(html);
+		$("#selectedName1").html(name);
 	}else if(!selectedTr[1].isSelected){
 		$("#rowN"+rowIndex).css('background-color', '#92a7e8');
-		$("#secondRow").show();
+		$("#selectedRow2").show();
 		$(".selectTrBtn").prop("disabled",true);
 
 		selectedTr[1].isSelected=true;
@@ -65,11 +65,21 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		html+=totalTr+' Euro/ch';
 
 
-		$("#secondPrice").html(html);
-		$("#secondName").html(name);
+		$("#selectedPrice2").html(html);
+		$("#selectedName2").html(name);
 	}
 }
 
+deselectTr=function(tr){
+	selectedTr[tr].isSelected=false;
+	selectedTr[tr].price=-1;
+	selectedTr[tr].total=-1;
+	selectedTr[tr].rowIndex=-1;	
+	$("#selectedRow"+tr).hide();
+
+	$("#selectedPrice1").html("");
+	$("#selectedName1").html("");
+}
 
 getAgPrice=function(tr){
 	return selectedTr[tr-1].total;
@@ -94,10 +104,10 @@ resetTr=function(){
 
 	$("#fieasibility").hide();
 	$("#selectedtable").hide();
-	$("#firstPrice").html("");
-	$("#firstName").html("");
-	$("#secondPrice").html("");
-	$("#secondName").html("");
+	$("#selectedPrice1").html("");
+	$("#selectedName1").html("");
+	$("#selectedPrice2").html("");
+	$("#selectedName2").html("");
 }
 
 angular.module("search",[]).controller("search",function($scope){
@@ -368,16 +378,16 @@ angular.module("search",[]).controller("search",function($scope){
 			secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
 			secondHtml+=" Euro";	
 		}
-		$("#firstTotal").html(firstHtml);
-		$("#secondTotal").html(secondHtml);
+		$("#selectedTotal1").html(firstHtml);
+		$("#selectedTotal2").html(secondHtml);
 	}
 	
 	ctrl.isSelected=function(tr){
-		return isSelected(n);
+		return isSelected(tr);
 	}
 	
 	ctrl.deselect=function(tr){
-		alert("deselected"+tr);
+		deselectTr(tr);
 	}
 	
 	ctrl.startJob=function(){
