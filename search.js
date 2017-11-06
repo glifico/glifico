@@ -43,6 +43,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[0].rowIndex=rowIndex;
 
 		$("#selectedtable").show();
+		$("#selectedRow1").show();
 		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
@@ -74,6 +75,8 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 deselectTr=function(tr){
 	$(".selectTrBtn").prop("disabled",false);
+	$("#rowN"+selectedTr[tr-1].rowIndex).css('background-color', '');
+
 
 	selectedTr[tr-1].isSelected=false;
 	selectedTr[tr-1].price=-1;
