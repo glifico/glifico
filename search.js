@@ -31,7 +31,7 @@ getPriceDollars=function(price){
 selectTr=function(name, price, priceTr, totalTr, rowIndex){
 	$("#btnRowN"+rowIndex).prop("disabled",true);
 	if(!selectedTr[0].isSelected){
-		$("#rowN"+rowIndex).css('background-color', '#40bc99');
+		$("#rowN"+rowIndex).css('background-color', '#FEC538');
 		$("#fieasibility").show();
 
 
@@ -50,7 +50,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(name);
 	}else if(!selectedTr[1].isSelected){
-		$("#rowN"+rowIndex).css('background-color', '#92a7e8');
+		$("#rowN"+rowIndex).css('background-color', '#FE434D');
 		$("#selectedRow2").show();
 		$(".selectTrBtn").prop("disabled",true);
 
