@@ -376,6 +376,10 @@ angular.module("search",[]).controller("search",function($scope){
 		return isSelected(n);
 	}
 	
+	ctrl.deselect=function(tr){
+		alert("deselected"+tr);
+	}
+	
 	ctrl.startJob=function(){
 
 	}
