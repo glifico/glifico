@@ -18,6 +18,8 @@ var selectedTr=[
 	}
 	]
 
+var maximumSelectable=2;
+
 getPriceDollars=function(price){
 	var html="";
 	html+='<div class="price">';
@@ -71,20 +73,29 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 }
 
 deselectTr=function(tr){
-	$("#btnRowN"+selectedTr[tr-1].rowIndex).prop("disabled",false);
-
+	if(tr==1){
+		if(selectedTr[1].isSelected){
+			//deselecting 0 with 1 selected, have to shift
+		}else{
+			//deselecting 0 with 1 unselected, no one left
+			resetTr();
+		}
+	}else if(tr>1){
+		$("#btnRowN"+selectedTr[tr-1].rowIndex).prop("disabled",false);
 	
-	selectedTr[tr-1].isSelected=false;
-	selectedTr[tr-1].price=-1;
-	selectedTr[tr-1].total=-1;
-	selectedTr[tr-1].rowIndex=-1;	
+		selectedTr[tr-1].isSelected=false;
+		selectedTr[tr-1].price=-1;
+		selectedTr[tr-1].total=-1;
+		selectedTr[tr-1].rowIndex=-1;	
 
 
-	$("#selectedRow"+tr).hide();
+		$("#selectedRow"+tr).hide();
 
-	$("#selectedPrice"+tr).html("");
-	$("#selectedName1"+tr).html("");
-	$("#selectedTotal"+tr).html("");
+		$("#selectedPrice"+tr).html("");
+		$("#selectedName1"+tr).html("");
+		$("#selectedTotal"+tr).html("");
+	}
+	
 }
 
 getAgPrice=function(tr){
@@ -96,24 +107,19 @@ isSelected=function(n){
 }
 
 resetTr=function(){
-	$("#rowN"+selectedTr[0].rowIndex).css('background-color', '');
-	$("#rowN"+selectedTr[1].rowIndex).css('background-color', '');
 	$(".selectTrBtn").prop("disabled",false);
 
-
-	selectedTr[0].isSelected=false;
-	selectedTr[0].price=0;
-	selectedTr[0].total=0;
-	selectedTr[1].isSelected=false;
-	selectedTr[1].price=0;
-	selectedTr[1].total=0;
+for(var i=1; i<= maximumSelectable; i++){
+	$("#rowN"+selectedTr[i-1].rowIndex).css('background-color', '');
+	selectedTr[i-1].isSelected=false;
+	selectedTr[i-1].price=0;
+	selectedTr[i-1].total=0;
+	$("#selectedPrice"+i).html("");
+	$("#selectedName"+i).html("");
+}
 
 	$("#fieasibility").hide();
 	$("#selectedtable").hide();
-	$("#selectedPrice1").html("");
-	$("#selectedName1").html("");
-	$("#selectedPrice2").html("");
-	$("#selectedName2").html("");
 }
 
 angular.module("search",[]).controller("search",function($scope){
