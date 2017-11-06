@@ -71,10 +71,15 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 }
 
 deselectTr=function(tr){
+	$("#btnRowN"+selectedTr[tr-1].rowIndex).prop("disabled",false);
+
+	
 	selectedTr[tr-1].isSelected=false;
 	selectedTr[tr-1].price=-1;
 	selectedTr[tr-1].total=-1;
 	selectedTr[tr-1].rowIndex=-1;	
+
+
 	$("#selectedRow"+tr).hide();
 
 	$("#selectedPrice"+tr).html("");
