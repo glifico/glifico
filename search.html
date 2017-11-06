@@ -329,9 +329,9 @@ Price class:<br>
 <div style="width:95%;margin:auto;">
 <div id="selectedtable" style="width:80%;margin:auto;">
 <table class="table table-responsive">
-<thead class="thead-default"><tr class="row"><th class="col-md-3" style="text-align:center;"></th><th class="col-md-3" style="text-align:center;">Price/ch [Euro]</th><th class="col-md-3" style="text-align:center;">Total</th></tr></thead>
-<tr class="row" id="firstRow" style="background-color:#40bc99"><td class="col-md-3" id="">First Translator: <span id="firstName"></span></td><td class="col-md-3"><span id="firstPrice"></span></td><td class="col-md-3"><span id="firstTotal"></span></td></tr>
-<tr class="row" id="secondRow" style="background-color:#92a7e8"><td class="col-md-3">Second Translator: <span id="secondName"></span></td><td class="col-md-3"><span id="secondPrice"></span></td><td class="col-md-3"><span id="secondTotal"></span></td></tr>
+<thead class="thead-default"><tr class="row"><th class="col-md-3" style="text-align:center;"></th><th class="col-md-3" style="text-align:center;">Price/ch [Euro]</th><th class="col-md-3" style="text-align:center;">Total</th><th class="col-md-2"></th></tr></thead>
+<tr class="row" id="firstRow" style="background-color:#40bc99"><td class="col-md-3" id="">First Translator: <span id="firstName"></span></td><td class="col-md-3"><span id="firstPrice"></span></td><td class="col-md-3"><span id="firstTotal"></span></td><td></td></tr>
+<tr class="row" id="secondRow" style="background-color:#92a7e8"><td class="col-md-3">Second Translator: <span id="secondName"></span></td><td class="col-md-3"><span id="secondPrice"></span></td><td class="col-md-3"><span id="secondTotal"></span></td><td></td></tr>
 </table>
 
 <div id="fieasibility">
@@ -361,7 +361,7 @@ Price class:<br>
         Available volume: {{ctrl.UrgCh}} characters<br>
         Max available volume: {{ctrl.MaxCh}} characters<br>
         Total translator 1: {{ctrl.TrCharacters * ctrl.getAgPrice(1)}} Euro<br>
-        Total translator 2: {{ctrl.TrCharacters * ctrl.getAgPrice(2)}} Euro<br>
+        <div data-ng-show="ctrl.isSelected(2)">Total translator 2: {{ctrl.TrCharacters * ctrl.getAgPrice(2)}} Euro<br></div>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};font-size:18px;"></span>
         <br>
       </div>

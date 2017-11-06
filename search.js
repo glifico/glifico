@@ -75,6 +75,10 @@ getAgPrice=function(tr){
 	return selectedTr[tr-1].total;
 }
 
+isSelected=function(n){
+	return selectedTr[n-1].isSelected;
+}
+
 resetTr=function(){
 	$("#rowN"+selectedTr[0].rowIndex).css('background-color', '');
 	$("#rowN"+selectedTr[1].rowIndex).css('background-color', '');
@@ -360,10 +364,16 @@ angular.module("search",[]).controller("search",function($scope){
 		firstHtml+=ctrl.TrCharacters * ctrl.getAgPrice(1);
 		firstHtml+=" Euro";
 		var secondHtml="";
-		secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
-		secondHtml+=" Euro";
+		if(isSelected(2)){
+			secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
+			secondHtml+=" Euro";	
+		}
 		$("#firstTotal").html(firstHtml);
 		$("#secondTotal").html(secondHtml);
+	}
+	
+	ctrl.isSelected=function(tr){
+		return isSelected(n);
 	}
 	
 	ctrl.startJob=function(){
