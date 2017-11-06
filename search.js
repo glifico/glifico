@@ -76,6 +76,14 @@ deselectTr=function(tr){
 	if(tr==1){
 		if(selectedTr[1].isSelected){
 			//deselecting 0 with 1 selected, have to shift
+			selectedTr[0].isSelected=selectedTr[1].isSelected;
+			selectedTr[0].price=selectedTr[1].price;
+			selectedTr[0].total=selectedTr[1].total;
+			selectedTr[0].rowIndex=selectedTr[1].rowIndex;
+			selectedTr[tr+1].isSelected=false;
+			selectedTr[tr+1].price=-1;
+			selectedTr[tr+1].total=-1;
+			selectedTr[tr+1].rowIndex=-1;
 		}else{
 			//deselecting 0 with 1 unselected, no one left
 			resetTr();
