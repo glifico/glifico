@@ -77,8 +77,9 @@ deselectTr=function(tr){
 	selectedTr[tr].rowIndex=-1;	
 	$("#selectedRow"+tr).hide();
 
-	$("#selectedPrice1").html("");
-	$("#selectedName1").html("");
+	$("#selectedPrice"+tr).html("");
+	$("#selectedName1"+tr).html("");
+	$("#selectedTotal"+tr).html("");
 }
 
 getAgPrice=function(tr){
