@@ -73,37 +73,24 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 }
 
 deselectTr=function(tr){
-	if(tr==1){
-		if(selectedTr[1].isSelected){
-			//deselecting 0 with 1 selected, have to shift
-			selectedTr[0].isSelected=selectedTr[1].isSelected;
-			selectedTr[0].price=selectedTr[1].price;
-			selectedTr[0].total=selectedTr[1].total;
-			selectedTr[0].rowIndex=selectedTr[1].rowIndex;
-			selectedTr[tr+1].isSelected=false;
-			selectedTr[tr+1].price=-1;
-			selectedTr[tr+1].total=-1;
-			selectedTr[tr+1].rowIndex=-1;
-		}else{
-			//deselecting 0 with 1 unselected, no one left
-			resetTr();
-		}
-	}else if(tr>1){
-		$("#btnRowN"+selectedTr[tr-1].rowIndex).prop("disabled",false);
-	
-		selectedTr[tr-1].isSelected=false;
-		selectedTr[tr-1].price=-1;
-		selectedTr[tr-1].total=-1;
-		selectedTr[tr-1].rowIndex=-1;	
+	selectedTr[tr-1].isSelected=false;
+	selectedTr[tr-1].price=-1;
+	selectedTr[tr-1].total=-1;
+	selectedTr[tr-1].rowIndex=-1;	
 
+	$("#selectedRow"+tr).hide();
 
-		$("#selectedRow"+tr).hide();
+	$("#selectedPrice"+tr).html("");
+	$("#selectedName1"+tr).html("");
+	$("#selectedTotal"+tr).html("");
 
-		$("#selectedPrice"+tr).html("");
-		$("#selectedName1"+tr).html("");
-		$("#selectedTotal"+tr).html("");
+	refreshButtons();
+}
+
+refreshButtons=function(){
+	for (var i=1; i<=maximumSelectable;i++){
+		$("#btnRowN"+selectedTr[i-1].rowIndex).prop("disabled",selectedTr[i-1].isSelected);
 	}
-	
 }
 
 getAgPrice=function(tr){
@@ -117,14 +104,14 @@ isSelected=function(n){
 resetTr=function(){
 	$(".selectTrBtn").prop("disabled",false);
 
-for(var i=1; i<= maximumSelectable; i++){
-	$("#rowN"+selectedTr[i-1].rowIndex).css('background-color', '');
-	selectedTr[i-1].isSelected=false;
-	selectedTr[i-1].price=0;
-	selectedTr[i-1].total=0;
-	$("#selectedPrice"+i).html("");
-	$("#selectedName"+i).html("");
-}
+	for(var i=1; i<= maximumSelectable; i++){
+		$("#rowN"+selectedTr[i-1].rowIndex).css('background-color', '');
+		selectedTr[i-1].isSelected=false;
+		selectedTr[i-1].price=0;
+		selectedTr[i-1].total=0;
+		$("#selectedPrice"+i).html("");
+		$("#selectedName"+i).html("");
+	}
 
 	$("#fieasibility").hide();
 	$("#selectedtable").hide();
@@ -401,15 +388,15 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#selectedTotal1").html(firstHtml);
 		$("#selectedTotal2").html(secondHtml);
 	}
-	
+
 	ctrl.isSelected=function(tr){
 		return isSelected(tr);
 	}
-	
+
 	ctrl.deselect=function(tr){
 		deselectTr(tr);
 	}
-	
+
 	ctrl.startJob=function(){
 
 	}
