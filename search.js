@@ -95,7 +95,7 @@ deselectTr=function(tr){
 		html+='     ';
 		html+=selectedTr[tr-1].total+' Euro/ch';
 
-		$("#selectedPrice1").htm(html);
+		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(selectedTr[tr-1].name);
 		$("#selectedTotal1").html(selectedTr[tr-1].total+" Euro");
 
