@@ -335,7 +335,7 @@ Price class:<br>
 </table>
 
 <div id="fieasibility">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal" >Define and upload job</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal" >Define Job and calculate totals</button>
 </div>
 </div>
 
@@ -353,7 +353,7 @@ Price class:<br>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" data-ng-load="ctrl.calcultateFeasibility()">
         Number of characters: <input type="text" placeholder="0" pattern="[0-9]*" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrCharacters" min="0"><br>
         Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" required />
         <br>
@@ -366,7 +366,7 @@ Price class:<br>
         <br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility>=2" data-ng-click="ctrl.startJob">Submit Job</button>
+        <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility>=2" data-ng-click="ctrl.startJob">Start job</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
