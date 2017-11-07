@@ -135,6 +135,15 @@ refreshButtons=function(){
 	for (var i=1; i<=maximumSelectable;i++){
 		$("#btnRowN"+selectedTr[i-1].rowIndex).prop("disabled",selectedTr[i-1].isSelected);
 	}
+	if(countSelected()<=0) $("#selectedTable").hide();
+}
+
+countSelected=function(){
+	var counter=0;
+	for (var i=0; i<maximumSelectable;i++){
+		if(selectedTr[i].isSelected) counter++;
+	}
+	return counter;
 }
 
 getAgPrice=function(tr){
