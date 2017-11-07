@@ -135,7 +135,7 @@ refreshButtons=function(){
 	for (var i=1; i<=maximumSelectable;i++){
 		$("#btnRowN"+selectedTr[i-1].rowIndex).prop("disabled",selectedTr[i-1].isSelected);
 	}
-	if(countSelected()<=0) $("#selectedTable").hide();
+	if(countSelected()<=0) $("#selectedtable").hide();;
 }
 
 countSelected=function(){
