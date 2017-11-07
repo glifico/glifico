@@ -10,7 +10,7 @@ var selectedTr=[
 		price: -1,
 		total: -1,
 		rowIndex: -1,
-		rowColor:"",
+		rowColor:"#FEC538",
 	},
 	{
 		name:"",
@@ -18,7 +18,7 @@ var selectedTr=[
 		price: -1,
 		total: -1,
 		rowIndex: -1,
-		rowColor:"",
+		rowColor:"#FE434D",
 	}
 	]
 
@@ -37,7 +37,7 @@ getPriceDollars=function(price){
 selectTr=function(name, price, priceTr, totalTr, rowIndex){
 	$("#btnRowN"+rowIndex).prop("disabled",true);
 	if(!selectedTr[0].isSelected){
-		$("#rowN"+rowIndex).css('background-color', '#FEC538');
+		$("#rowN"+rowIndex).css('background-color', selectedTr[0].rowColor);
 		$("#fieasibility").show();
 
 
@@ -58,7 +58,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(name);
 	}else if(!selectedTr[1].isSelected){
-		$("#rowN"+rowIndex).css('background-color', '#FE434D');
+		$("#rowN"+rowIndex).css('background-color', selectedTr[1].rowColor);
 		$("#selectedRow2").show();
 		$(".selectTrBtn").prop("disabled",true);
 
@@ -89,6 +89,8 @@ deselectTr=function(tr){
 		selectedTr[tr-1].total=selectedTr[tr].total;
 		selectedTr[tr-1].rowIndex=selectedTr[tr].rowIndex;
 		selectedTr[tr-1].name=selectedTr[tr].name;
+		
+
 				
 		var html="";
 		html+=getPriceDollars(selectedTr[tr-1].price);
@@ -98,6 +100,8 @@ deselectTr=function(tr){
 		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(selectedTr[tr-1].name);
 		$("#selectedTotal1").html(selectedTr[tr-1].total+" Euro");
+		$("#rowN"+selectedTr[tr-1].rowIndex).css('background-color',selectedTr[tr-1].rowColor);
+
 
 		selectedTr[tr].isSelected=false;
 		selectedTr[tr].price=-1;
