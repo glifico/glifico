@@ -49,7 +49,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		$("#selectedtable").show();
 		$("#selectedRow1").show();
-		$("#totalPrice1").html("Click define job to calculate totals");
+		$("#selectedTotal1").html("Click define job to calculate totals");
 		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
@@ -77,7 +77,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		$("#selectedPrice2").html(html);
 		$("#selectedName2").html(name);
-		$("#totalPrice2").html("Click define job to calculate totals");
+		$("#selectedTotal2").html("Click define job to calculate totals");
 	}
 }
 
@@ -113,8 +113,8 @@ deselectTr=function(tr){
 
 		$("#selectedPrice"+2).html("");
 		$("#selectedName"+2).html("");
-		$("#selectedTotal"+2).html("");
-		
+		$("#selectedTotal1").html("");
+		$("#selectedTotal2").html("");
 		
 	}else{
 		selectedTr[tr-1].isSelected=false;
