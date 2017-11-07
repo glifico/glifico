@@ -49,6 +49,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		$("#selectedtable").show();
 		$("#selectedRow1").show();
+		$("#totalPrice1").html("Click define job to calculate totals");
 		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
@@ -76,6 +77,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		$("#selectedPrice2").html(html);
 		$("#selectedName2").html(name);
+		$("#totalPrice2").html("Click define job to calculate totals");
 	}
 }
 
@@ -99,7 +101,6 @@ deselectTr=function(tr){
 
 		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(selectedTr[tr-1].name);
-		$("#selectedTotal1").html(selectedTr[tr-1].total+" Euro");
 		$("#rowN"+selectedTr[tr-1].rowIndex).css('background-color',selectedTr[tr-1].rowColor);
 
 
