@@ -36,6 +36,9 @@ getPriceDollars=function(price){
 
 selectTr=function(name, price, priceTr, totalTr, rowIndex){
 	$("#btnRowN"+rowIndex).prop("disabled",true);
+	for(var i=1;i<=maximumSelectable;i++){
+		$("#selectedTotal"+i).html("Click define job to calculate totals");
+	}
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', selectedTr[0].rowColor);
 		$("#fieasibility").show();
@@ -49,7 +52,6 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		$("#selectedtable").show();
 		$("#selectedRow1").show();
-		$("#selectedTotal1").html("Click define job to calculate totals");
 		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
@@ -77,7 +79,6 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 
 		$("#selectedPrice2").html(html);
 		$("#selectedName2").html(name);
-		$("#selectedTotal2").html("Click define job to calculate totals");
 	}
 }
 
@@ -91,9 +92,9 @@ deselectTr=function(tr){
 		selectedTr[tr-1].total=selectedTr[tr].total;
 		selectedTr[tr-1].rowIndex=selectedTr[tr].rowIndex;
 		selectedTr[tr-1].name=selectedTr[tr].name;
-		
 
-				
+
+
 		var html="";
 		html+=getPriceDollars(selectedTr[tr-1].price);
 		html+='     ';
@@ -115,7 +116,7 @@ deselectTr=function(tr){
 		$("#selectedName"+2).html("");
 		$("#selectedTotal1").html("");
 		$("#selectedTotal2").html("");
-		
+
 	}else{
 		selectedTr[tr-1].isSelected=false;
 		selectedTr[tr-1].price=-1;
