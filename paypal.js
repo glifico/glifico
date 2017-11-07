@@ -28,7 +28,7 @@ function paymentCompleted(){
 			if(data['statuscode']==200){
 				notify("Payment completed :-)");
 				alert("Payment completed :-)");
-				//location.href="pendingPayments.html";
+				location.href="pendingPayments.html";
 			}
 		}else{
 			mostraDialogTimed('errorPanel');
