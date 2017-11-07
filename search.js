@@ -5,16 +5,20 @@ $(document).ready(function () {
 
 var selectedTr=[
 	{
+		name:"",
 		isSelected: false,
 		price: -1,
 		total: -1,
 		rowIndex: -1,
+		rowColor:"",
 	},
 	{
+		name:"",
 		isSelected: false,
 		price: -1,
 		total: -1,
 		rowIndex: -1,
+		rowColor:"",
 	}
 	]
 
@@ -41,6 +45,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[0].price=price;
 		selectedTr[0].total=totalTr;
 		selectedTr[0].rowIndex=rowIndex;
+		selectedTr[0].name=name;
 
 		$("#selectedtable").show();
 		$("#selectedRow1").show();
@@ -61,6 +66,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[1].price=price;
 		selectedTr[1].total=totalTr;
 		selectedTr[1].rowIndex=rowIndex;
+		selectedTr[1].name=name;
 
 		var html="";
 		html+=getPriceDollars(price);
@@ -77,17 +83,46 @@ deselectTr=function(tr){
 	$(".selectTrBtn").prop("disabled",false);
 	$("#rowN"+selectedTr[tr-1].rowIndex).css('background-color', '');
 
+	if(tr==1){
+		selectedTr[tr-1].isSelected=selectedTr[tr].isSelected;
+		selectedTr[tr-1].price=selectedTr[tr].price;
+		selectedTr[tr-1].total=selectedTr[tr].total;
+		selectedTr[tr-1].rowIndex=selectedTr[tr].rowIndex;
+		selectedTr[tr-1].name=selectedTr[tr].name;
+				
+		var html="";
+		html+=getPriceDollars(selectedTr[tr-1].price);
+		html+='     ';
+		html+=selectedTr[tr-1].total+' Euro/ch';
 
-	selectedTr[tr-1].isSelected=false;
-	selectedTr[tr-1].price=-1;
-	selectedTr[tr-1].total=-1;
-	selectedTr[tr-1].rowIndex=-1;	
+		$("#selectedPrice1").htm(html);
+		$("#selectedName1").html(selectedTr[tr-1].name);
+		$("#selectedTotal1").html(selectedTr[tr-1].total+" Euro");
 
-	$("#selectedRow"+tr).hide();
+		selectedTr[tr].isSelected=false;
+		selectedTr[tr].price=-1;
+		selectedTr[tr].total=-1;
+		selectedTr[tr].rowIndex=-1;	
 
-	$("#selectedPrice"+tr).html("");
-	$("#selectedName1"+tr).html("");
-	$("#selectedTotal"+tr).html("");
+		$("#selectedRow"+2).hide();
+
+		$("#selectedPrice"+2).html("");
+		$("#selectedName"+2).html("");
+		$("#selectedTotal"+2).html("");
+		
+		
+	}else{
+		selectedTr[tr-1].isSelected=false;
+		selectedTr[tr-1].price=-1;
+		selectedTr[tr-1].total=-1;
+		selectedTr[tr-1].rowIndex=-1;	
+
+		$("#selectedRow"+2).hide();
+
+		$("#selectedPrice"+2).html("");
+		$("#selectedName"+2).html("");
+		$("#selectedTotal"+2).html("");
+	}
 
 	refreshButtons();
 }
