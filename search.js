@@ -9,6 +9,7 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 })
 
 showPicker=function() {
+	console.debug("picker");
 	client.pick({
 		accept: ['.pdf','.odt','.doc','.docx','.txt'],
 		maxFiles: 1,
@@ -516,6 +517,9 @@ angular.module("search",[]).controller("search",function($scope){
 	ctrl.closeModal=function(){
 		$('#TrModal').modal('hide');
 		ctrl.processSelected=false;
+		ctrl.TrCharacters=0;
+		ctrl.TrDeadline=ctrl.tomorrow;
+		
 		$("#modalBodySelect").show();
 		$("#modalBodyUpload").hide();
 	}
