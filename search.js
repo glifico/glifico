@@ -514,7 +514,13 @@ angular.module("search",[]).controller("search",function($scope){
 					$('#TrModal').modal('hide');
 					$("#table").html("");
 					$("#selectedtable").hide();
-					
+					jobUploaded=false;
+					jobUploaded="";
+					ctrl.TrDeadline=ctrl.tomorrow;
+					ctrl.TrCharacters=0;
+					ctrl.processSelected=false;
+					ctrl.conditionsAccepted=false;
+					ctrl.pricesAccepted=false;
 					
 					$("#alertOK").html("Job created correctly, do another search or go to Jobs");
 					$("#alertOK").fadeIn().delay(5000).fadeOut();
@@ -549,6 +555,7 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#modalBodyUpload").hide();
 	}
 
+	
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=3;
 		ctrl.selectedRating=0;
