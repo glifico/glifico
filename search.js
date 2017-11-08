@@ -511,9 +511,14 @@ angular.module("search",[]).controller("search",function($scope){
 				url : "createJob.php",
 				complete : function(ret) {
 					var response=ret.responseText;
-					jobUploaded=true;
-					$('#TrModal').hide();
+					$('#TrModal').modal('hide');
 					$("#table").html("");
+					$("#selectedtable").hide();
+					
+					
+					$("#alertOK").html("Job created correctly, do another search or go to Jobs");
+					$("#alertOK").fadeIn().delay(5000).fadeOut();
+					$("#jobModal").hide();
 				},
 				error : function(xhr) {
 					if (xhr.status == 500) {
