@@ -368,6 +368,8 @@ Price class:<br>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};font-size:18px;"></span>
         <br>
         </div>
+        
+        
         <div id="modalBodyUpload">
         You have selected translators, now fill some informations about your job and upload the document to translate
         Title: <input type="text" placeholder="job's title" data-ng-model="ctrl.JobTitle" ><br>
@@ -385,6 +387,8 @@ Price class:<br>
 		</div>
 		</div>
         </div>
+        
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility>=2" data-ng-show="!ctrl.processSelected" data-ng-click="ctrl.startJob()">Start job</button>
