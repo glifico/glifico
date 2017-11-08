@@ -8,7 +8,7 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 	policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
 })
 
-showPicker=function(id, choice) {
+showPicker=function() {
 	client.pick({
 		accept: ['.pdf','.odt','.doc','.docx','.txt'],
 		maxFiles: 1,

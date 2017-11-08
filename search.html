@@ -370,20 +370,19 @@ Price class:<br>
         <div id="modalBodyUpload">
         You have selected translators, now fill some informations about your job and upload the document to translate
         Title: <input type="text" placeholder="Job's title" data-ng-model="ctrl.JobTitle" ><br>
-        Upload the document to translate: <input type="button" class="btn btn-primary" data-ng-click="showPicker()" value="Upload document">
+        Upload the document to translate: <input type="button" class="btn btn-primary btn-sm" data-ng-click="ctrl.showPicker()" value="Upload document">
 		<br><br>
 			Depending on your choices and prices translator will have up to 5h to accept or decline your request. <br>
 			The job will start when translator had verified feasibility (# of characters, deadline..).
 			Once submitted you will find informations about this and other jobs on <a href="pendingPayments.html" target="_Blank">job's page</a>
         <div class="checkbox">
-  		<label><input type="checkbox" data-ng-model="ctrl.conditionsAccepted">I accept <a href="terms.html">terms & conditions</a> and prices.</label>
+  		<label><input type="checkbox" data-ng-model="ctrl.conditionsAccepted">I accept <a href="terms.html" target="_Blank">terms & conditions</a> and prices.</label>
 		</div>
         <div id="accepturgency" data-ng-show="ctrl.feasibility==1">
          <div class="checkbox">
   		<label><input type="checkbox" data-ng-model="ctrl.pricesAccepted">I accept that this job is urgent and prices will be increased by 5%.</label>
 		</div>
 		</div>
-        <input>
         </div>
       </div>
       <div class="modal-footer">
