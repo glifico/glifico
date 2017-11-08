@@ -506,6 +506,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.deselect=function(tr){
 		deselectTr(tr);
+		calcultateFeasibility();
 	}
 
 	ctrl.startJob=function(){	
@@ -525,6 +526,8 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.TrDeadline=ctrl.tomorrow;
 		ctrl.conditionsAccepted=false;
 		ctrl.pricesAccepted=false;
+		
+		calcultateFeasibility();
 		$("#modalBodySelect").show();
 		$("#modalBodyUpload").hide();
 	}
