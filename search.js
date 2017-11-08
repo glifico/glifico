@@ -9,7 +9,6 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 })
 
 showPicker=function() {
-	console.debug("picker");
 	client.pick({
 		accept: ['.pdf','.odt','.doc','.docx','.txt'],
 		maxFiles: 1,
@@ -18,38 +17,39 @@ showPicker=function() {
 		}
 	}).then(function(result) {
 		alert("Job created");
-//		var temp = {
-//				user : getUsername(),
-//				token : getToken(),
-//				id: id,
-//				choice: choice,
-//				url: result.filesUploaded[0]["url"]
-//		};
-//
-//		var stringPass = JSON.stringify(temp);
-//		var data = stringPass;
-//
-//		$.ajax( {
-//			type : "POST",
-//			dataType : "application/json",
-//			contentType : "application/json; charset=utf-8",
-//			data : data,
-//			url : "setJobTranslated.php",
-//			complete : function(ret) {
-//				var response=ret.responseText;
-//				$("#alertOK").html("Job Translated!");
-//				$("#alertOK").fadeIn().delay(2000).fadeOut();
-//				$("#jobModal").hide();
-//				location.href=location.href;
-//			},
-//			error : function(xhr) {
-//				if (xhr.status == 500) {
-//					$("#alertError").html("Error from server, please retry.");
-//					$("#alertError").fadeIn().delay(1000).fadeOut();
-//				}
-//
-//			}
-//		});
+		var temp = {
+				user : getUsername(),
+				token : getToken(),
+				url: result.filesUploaded[0]["url"]
+		};
+
+		var stringPass = JSON.stringify(temp);
+		var data = stringPass;
+
+		$.ajax( {
+			type : "POST",
+			dataType : "application/json",
+			contentType : "application/json; charset=utf-8",
+			data : data,
+			url : "createJob.php",
+			complete : function(ret) {
+				var response=ret.responseText;
+				$("#alertOK").html("Job created!");
+				$("#alertOK").fadeIn().delay(2000).fadeOut();
+				$('#TrModal').modal('hide');
+				
+				resetTr();
+				$('#TrModal').hide();
+				$("#table").html("");
+			},
+			error : function(xhr) {
+				if (xhr.status == 500) {
+					$("#alertError").html("Error from server, please retry.");
+					$("#alertError").fadeIn().delay(1000).fadeOut();
+				}
+
+			}
+		});
 
 	},function(result){
 		alert("Error while uploading");
@@ -217,8 +217,8 @@ resetTr=function(){
 	for(var i=1; i<= maximumSelectable; i++){
 		$("#rowN"+selectedTr[i-1].rowIndex).css('background-color', '');
 		selectedTr[i-1].isSelected=false;
-		selectedTr[i-1].price=0;
-		selectedTr[i-1].total=0;
+		selectedTr[i-1].price=-1;
+		selectedTr[i-1].total=-1;
 		$("#selectedPrice"+i).html("");
 		$("#selectedName"+i).html("");
 	}
