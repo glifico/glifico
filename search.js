@@ -8,6 +8,8 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 	policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
 })
 
+var jobUploaded=false;
+
 showPicker=function() {
 	client.pick({
 		accept: ['.pdf','.odt','.doc','.docx','.txt'],
@@ -34,13 +36,9 @@ showPicker=function() {
 			url : "createJob.php",
 			complete : function(ret) {
 				var response=ret.responseText;
-				$("#alertOK").html("Job created!");
-				$("#alertOK").fadeIn().delay(2000).fadeOut();
-				$('#TrModal').modal('hide');
-				
-				resetTr();
-				$('#TrModal').hide();
-				$("#table").html("");
+				alert("Document uploade, accept conditions and submit job;!");
+				jobUploaded=true;
+				$(".btn-upload").prop("disabled",true);
 			},
 			error : function(xhr) {
 				if (xhr.status == 500) {
@@ -513,6 +511,11 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.processSelected=true;
 		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").show();
+	}
+	
+	ctrl.submitJob=function(){
+		$('#TrModal').hide();
+		$("#table").html("");
 	}
 	
 	ctrl.showPicker=function(){
