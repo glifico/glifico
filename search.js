@@ -513,6 +513,12 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#modalBodyUpload").show();
 	}
 
+	ctrl.closeModal=function(){
+		$('#TrModal').modal('hide');
+		$("#modalBodySelect").show();
+		$("#modalBodyUpload").hide();
+	}
+	
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=3;
 		ctrl.selectedRating=0;
