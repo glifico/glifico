@@ -9,6 +9,7 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 })
 
 var jobUploaded=false;
+var urlUploaded="";
 
 showPicker=function() {
 	client.pick({
@@ -18,37 +19,11 @@ showPicker=function() {
 
 		}
 	}).then(function(result) {
-		alert("Job created");
-		var temp = {
-				user : getUsername(),
-				token : getToken(),
-				url: result.filesUploaded[0]["url"]
-		};
-
-		var stringPass = JSON.stringify(temp);
-		var data = stringPass;
-
-		$.ajax( {
-			type : "POST",
-			dataType : "application/json",
-			contentType : "application/json; charset=utf-8",
-			data : data,
-			url : "createJob.php",
-			complete : function(ret) {
-				var response=ret.responseText;
-				alert("Document uploade, accept conditions and submit job;!");
-				jobUploaded=true;
-				$(".btn-upload").prop("disabled",true);
-			},
-			error : function(xhr) {
-				if (xhr.status == 500) {
-					$("#alertError").html("Error from server, please retry.");
-					$("#alertError").fadeIn().delay(1000).fadeOut();
-				}
-
-			}
-		});
-
+		notify("Document uploaded");
+		jobUploaded=true;
+		urlUploaded=result.filesUploaded[0]["url"];
+		$("#spanUpload").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$(".btn-upload").prop("disabled",true);
 	},function(result){
 		alert("Error while uploading");
 	});
@@ -514,8 +489,42 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.submitJob=function(){
-		$('#TrModal').hide();
-		$("#table").html("");
+		if(!jobUploaded){
+			alert("Please upload document to translate!!")
+		}else{
+			var temp = {
+					user : getUsername(),
+					token : getToken(),
+					count: countSelected(),
+					translators: selectedTr,
+					url: urlUploaded,
+			};
+
+			var stringPass = JSON.stringify(temp);
+			var data = stringPass;
+
+			$.ajax( {
+				type : "POST",
+				dataType : "application/json",
+				contentType : "application/json; charset=utf-8",
+				data : data,
+				url : "createJob.php",
+				complete : function(ret) {
+					var response=ret.responseText;
+					jobUploaded=true;
+					$('#TrModal').hide();
+					$("#table").html("");
+				},
+				error : function(xhr) {
+					if (xhr.status == 500) {
+						$("#alertError").html("Error from server, please retry.");
+						$("#alertError").fadeIn().delay(1000).fadeOut();
+					}
+
+				}
+			});
+		}
+
 	}
 
 	ctrl.showPicker=function(){

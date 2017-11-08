@@ -15,11 +15,13 @@ if(!$data){
 
 $user=$data['user'];
 $url=$data['url'];
+$count=$data['count'];
+$selected=$data['selected'];
 if(!certTokenA($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $query="SELECT * from payments LIMIT 0;";
 $result = $db->query($query);
 
 $result->CloseCursor();
-exit(json_encode(array("message"=>"Job created", "statuscode"=>200)));
+exit(json_encode(array("message"=>"Job created", "statuscode"=>200,"selected"=>json_encode($selected))));
 ?>
