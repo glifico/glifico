@@ -519,7 +519,8 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.processSelected=false;
 		ctrl.TrCharacters=0;
 		ctrl.TrDeadline=ctrl.tomorrow;
-		
+		ctrl.conditionsAccepted=false;
+		ctrl.pricesAccepted=false;
 		$("#modalBodySelect").show();
 		$("#modalBodyUpload").hide();
 	}

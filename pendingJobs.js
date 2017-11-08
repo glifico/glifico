@@ -148,6 +148,10 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Completed") return "Work closed definetely";
 		return "";
 	}
+	
+	ctrl.showPicker=function(){
+		showPicker();
+	}
 
 	ctrl.createTable=function(){
 		var html="";	
