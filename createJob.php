@@ -16,7 +16,7 @@ if(!$data){
 $user=$data['user'];
 $url=$data['url'];
 $count=$data['count'];
-$selected=$data['selected'];
+$selected=$data['translators'];
 if(!certTokenA($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $query="SELECT * from payments LIMIT 0;";
