@@ -3,6 +3,60 @@ $(document).ready(function () {
 	$("#fieasibility").hide();
 });
 
+
+var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
+	policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
+})
+
+showPicker=function(id, choice) {
+	client.pick({
+		accept: ['.pdf','.odt','.doc','.docx','.txt'],
+		maxFiles: 1,
+		onClose(){
+
+		}
+	}).then(function(result) {
+		alert("Job created");
+//		var temp = {
+//				user : getUsername(),
+//				token : getToken(),
+//				id: id,
+//				choice: choice,
+//				url: result.filesUploaded[0]["url"]
+//		};
+//
+//		var stringPass = JSON.stringify(temp);
+//		var data = stringPass;
+//
+//		$.ajax( {
+//			type : "POST",
+//			dataType : "application/json",
+//			contentType : "application/json; charset=utf-8",
+//			data : data,
+//			url : "setJobTranslated.php",
+//			complete : function(ret) {
+//				var response=ret.responseText;
+//				$("#alertOK").html("Job Translated!");
+//				$("#alertOK").fadeIn().delay(2000).fadeOut();
+//				$("#jobModal").hide();
+//				location.href=location.href;
+//			},
+//			error : function(xhr) {
+//				if (xhr.status == 500) {
+//					$("#alertError").html("Error from server, please retry.");
+//					$("#alertError").fadeIn().delay(1000).fadeOut();
+//				}
+//
+//			}
+//		});
+
+	},function(result){
+		alert("Error while uploading");
+	});
+
+};
+
+
 var selectedTr=[
 	{
 		name:"",
@@ -412,6 +466,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.MaxCh=days*10000;
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
+		//0=normal, 1=urgent, 2=impossible
 		if(ctrl.TrCharacters>=ctrl.MaxCh) {
 			ctrl.feasibility=2;
 			ctrl.feasibilityBack="red";
@@ -424,7 +479,7 @@ angular.module("search",[]).controller("search",function($scope){
 			$("#feasibility").html("Job will be set as urgent");
 		}else{
 			ctrl.feasibility=0;
-			ctrl.feasibilityBack="red";
+			ctrl.feasibilityBack="#FFF";
 			ctrl.feasibilityColor="#FFF";
 			$("#feasibility").html("");
 		}
@@ -452,8 +507,10 @@ angular.module("search",[]).controller("search",function($scope){
 		deselectTr(tr);
 	}
 
-	ctrl.startJob=function(){
-
+	ctrl.startJob=function(){	
+		ctrl.processSelected=true;
+		$("#modalBodySelect").hide();
+		$("#modalBodyUpload").show();
 	}
 
 	ctrl.$onInit=function(){
@@ -468,6 +525,11 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.today=new Date();
 		ctrl.tomorrow=new Date(ctrl.today.getTime() + 24 * 60 * 60 * 1000);
 		ctrl.TrDeadline=ctrl.tomorrow;
+		
+		ctrl.processSelected=false;
+		
+		$("#modalBodySelect").show();
+		$("#modalBodyUpload").hide();
 	}
 
 });
