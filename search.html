@@ -355,10 +355,10 @@ Price class:<br>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" data-ng-load="ctrl.calcultateFeasibility()">
+      <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
       <div id="modalBodySelect">
-        Number of characters: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
-        Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calcultateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" required />
+        Number of characters: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
+        Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" required />
         <br>
         Days until deadline: {{ctrl.days | number:0}}<br>
         Available volume: {{ctrl.UrgCh}} characters<br>
@@ -368,8 +368,8 @@ Price class:<br>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};font-size:18px;"></span>
         <br>
         </div>
-        
-        
+
+
         <div id="modalBodyUpload">
         You have selected translators, now fill some informations about your job and upload the document to translate
         Title: <input type="text" placeholder="job's title" data-ng-model="ctrl.JobTitle" ><br>
@@ -387,8 +387,8 @@ Price class:<br>
 		</div>
 		</div>
         </div>
-        
-        
+
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility>=2" data-ng-show="!ctrl.processSelected" data-ng-click="ctrl.startJob()">Start job</button>
@@ -413,7 +413,7 @@ $('#TrModal').on('show.bs.modal', function (event) {
 		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 		var modal = $(this)
-		
+
 	})
 </script>
 

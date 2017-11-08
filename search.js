@@ -161,7 +161,7 @@ deselectTr=function(tr){
 		selectedTr[tr].isSelected=false;
 		selectedTr[tr].price=-1;
 		selectedTr[tr].total=-1;
-		selectedTr[tr].rowIndex=-1;	
+		selectedTr[tr].rowIndex=-1;
 
 		$("#selectedRow"+2).hide();
 
@@ -174,7 +174,7 @@ deselectTr=function(tr){
 		selectedTr[tr-1].isSelected=false;
 		selectedTr[tr-1].price=-1;
 		selectedTr[tr-1].total=-1;
-		selectedTr[tr-1].rowIndex=-1;	
+		selectedTr[tr-1].rowIndex=-1;
 
 		$("#selectedRow"+2).hide();
 
@@ -451,12 +451,12 @@ angular.module("search",[]).controller("search",function($scope){
 
 	}
 
-	ctrl.calcultateFeasibility=function(){
-		if(!ctrl.TrDeadline){ 
+	ctrl.calculateFeasibility=function(){
+		if(!ctrl.TrDeadline){
 			ctrl.TrDeadline=ctrl.tomorrow;
 			ctrl.feasibility=3;
 			alert("Deadline is invalid!");
-			return;	
+			return;
 		}
 
 		var timeDiff = Math.abs(ctrl.TrDeadline.getTime() - ctrl.today.getTime());
@@ -492,7 +492,7 @@ angular.module("search",[]).controller("search",function($scope){
 		var secondHtml="";
 		if(isSelected(2)){
 			secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
-			secondHtml+=" Euro";	
+			secondHtml+=" Euro";
 		}
 		$("#selectedTotal1").html(firstHtml);
 		$("#selectedTotal2").html(secondHtml);
@@ -504,20 +504,20 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.deselect=function(tr){
 		deselectTr(tr);
-		calcultateFeasibility();
+		ctrl.calculateFeasibility();
 	}
 
-	ctrl.startJob=function(){	
+	ctrl.startJob=function(){
 		ctrl.processSelected=true;
 		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").show();
 	}
-	
+
 	ctrl.submitJob=function(){
 		$('#TrModal').hide();
 		$("#table").html("");
 	}
-	
+
 	ctrl.showPicker=function(){
 		showPicker();
 	}
@@ -529,12 +529,12 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.TrDeadline=ctrl.tomorrow;
 		ctrl.conditionsAccepted=false;
 		ctrl.pricesAccepted=false;
-		
-		calcultateFeasibility();
+
+		ctrl.calculateFeasibility();
 		$("#modalBodySelect").show();
 		$("#modalBodyUpload").hide();
 	}
-	
+
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=3;
 		ctrl.selectedRating=0;
@@ -547,11 +547,11 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.today=new Date();
 		ctrl.tomorrow=new Date(ctrl.today.getTime() + 24 * 60 * 60 * 1000);
 		ctrl.TrDeadline=ctrl.tomorrow;
-		
+
 		ctrl.processSelected=false;
 		ctrl.conditionsAccepted=false;
 		ctrl.pricesAccepted=false;
-		
+
 		$("#modalBodySelect").show();
 		$("#modalBodyUpload").hide();
 	}
