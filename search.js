@@ -513,6 +513,10 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").show();
 	}
+	
+	ctrl.showPicker=function(){
+		showPicker();
+	}
 
 	ctrl.closeModal=function(){
 		$('#TrModal').modal('hide');
