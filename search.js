@@ -515,6 +515,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.closeModal=function(){
 		$('#TrModal').modal('hide');
+		ctrl.processSelected=false;
 		$("#modalBodySelect").show();
 		$("#modalBodyUpload").hide();
 	}
