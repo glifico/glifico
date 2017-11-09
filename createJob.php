@@ -21,7 +21,7 @@ $jobTitle=$data['job'];
 $jobDescr=$data['description'];
 if(!certTokenA($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="INSERT INTO payments (job, description, status, username, document, translator) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url','test');";
+$query="INSERT INTO payments (job, description, status, username, document, translator, currency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url','test', 'EUR - Euro');";
 $result = $db->query($query);
 
 $result->CloseCursor();
