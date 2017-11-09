@@ -14,5 +14,5 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 
 $result->CloseCursor();
 
-exit(json_encode(array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"link"=>$row['link'],"description"=>$row['description'])));
+exit(json_encode(array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"link"=>$row['translated'],"description"=>$row['description'])));
 ?>
