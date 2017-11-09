@@ -17,9 +17,11 @@ $user=$data['user'];
 $url=$data['url'];
 $count=$data['count'];
 $selected=$data['translators'];
+$jobTitle=$data['job'];
+$jobDescr=$data['description'];
 if(!certTokenA($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="SELECT * from payments LIMIT 0;";
+$query="INSERT INTO payments (job, description, status, username, originallink, trasnlator) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url','test');";
 $result = $db->query($query);
 
 $result->CloseCursor();

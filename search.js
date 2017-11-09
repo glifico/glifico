@@ -34,6 +34,7 @@ showPicker=function() {
 var selectedTr=[
 	{
 		name:"",
+		id:-1,
 		isSelected: false,
 		price: -1,
 		total: -1,
@@ -42,6 +43,7 @@ var selectedTr=[
 	},
 	{
 		name:"",
+		id:-1,
 		isSelected: false,
 		price: -1,
 		total: -1,
@@ -62,7 +64,7 @@ getPriceDollars=function(price){
 	return html;
 }
 
-selectTr=function(name, price, priceTr, totalTr, rowIndex){
+selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 	$("#btnRowN"+rowIndex).prop("disabled",true);
 	for(var i=1;i<=maximumSelectable;i++){
 		$("#selectedTotal"+i).html("Click define job to calculate totals");
@@ -77,6 +79,7 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[0].total=totalTr;
 		selectedTr[0].rowIndex=rowIndex;
 		selectedTr[0].name=name;
+		selectedTr[0].id=id;
 
 		$("#selectedtable").show();
 		$("#selectedRow1").show();
@@ -98,6 +101,8 @@ selectTr=function(name, price, priceTr, totalTr, rowIndex){
 		selectedTr[1].total=totalTr;
 		selectedTr[1].rowIndex=rowIndex;
 		selectedTr[1].name=name;
+		selectedTr[1].id=id;
+
 
 		var html="";
 		html+=getPriceDollars(price);
@@ -120,6 +125,7 @@ deselectTr=function(tr){
 		selectedTr[tr-1].total=selectedTr[tr].total;
 		selectedTr[tr-1].rowIndex=selectedTr[tr].rowIndex;
 		selectedTr[tr-1].name=selectedTr[tr].name;
+		selectedTr[tr-1].id=selectedTr[tr].id;
 
 
 
@@ -137,7 +143,8 @@ deselectTr=function(tr){
 		selectedTr[tr].price=-1;
 		selectedTr[tr].total=-1;
 		selectedTr[tr].rowIndex=-1;
-
+		selectedTr[tr].id=-1;
+		
 		$("#selectedRow"+2).hide();
 
 		$("#selectedPrice"+2).html("");
@@ -150,6 +157,8 @@ deselectTr=function(tr){
 		selectedTr[tr-1].price=-1;
 		selectedTr[tr-1].total=-1;
 		selectedTr[tr-1].rowIndex=-1;
+		selectedTr[tr-1].id=-1;
+
 
 		$("#selectedRow"+2).hide();
 
@@ -245,9 +254,6 @@ angular.module("search",[]).controller("search",function($scope){
 		req.send();
 	}
 
-	ctrl.selectTr=function(){
-		console.log("selected");
-	}
 
 	ctrl.firstIsSelected=function(){
 		return $scope.IsFirstSelected;
@@ -319,7 +325,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				name="'"+name+"'";
-				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm selectTrBtn" onclick="selectTr('+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
+				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm selectTrBtn" onclick="selectTr('+doc.Id+','+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
@@ -495,6 +501,8 @@ angular.module("search",[]).controller("search",function($scope){
 			var temp = {
 					user : getUsername(),
 					token : getToken(),
+					job: ctrl.jobTitle,
+					description: ctrl.jobDescription,
 					count: countSelected(),
 					translators: selectedTr,
 					url: urlUploaded,
