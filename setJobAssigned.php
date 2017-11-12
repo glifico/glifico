@@ -27,6 +27,6 @@ $result = $db->query($query);
 
 
 $result->CloseCursor();
-notifySlack("#payments","a job was assigned to".$user,":necktie:");
+notifySlack("#payments","a job was assigned to ".$user,":necktie:");
 exit(json_encode(array("message"=>"job updated", "statuscode"=>200)));
 ?>
