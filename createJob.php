@@ -19,11 +19,14 @@ $count=$data['count'];
 $selected=$data['translators'];
 $jobTitle=$data['job'];
 $jobDescr=$data['description'];
+$translator="test";
 if(!certTokenA($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="INSERT INTO payments (job, description, status, username, document, translator, currency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url','test', 'EUR - Euro');";
+$query="INSERT INTO payments (job, description, status, username, document, translator, currency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url','$translator', 'EUR - Euro');";
 $result = $db->query($query);
 
 $result->CloseCursor();
+
+send_email(get_user_email($translator),"There is a new job on glifico","You have a new job on glifico, got to https://glifico.com/pendingJobs.html to look it out!");
 exit(json_encode(array("message"=>"Job created", "statuscode"=>200,"selected"=>json_encode($selected))));
 ?>

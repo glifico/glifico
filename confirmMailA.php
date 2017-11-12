@@ -29,7 +29,7 @@ $link="https://glifico.com/confirmAgency.html?token=".base64_encode($jsonarray);
 
 $to=[array("email"=>$email)];
 $subject="Thank you for sign up on Glifico!";
-$content="To complete registration on Glifico open or copy this link in a browser:'.$link.'";
+$content="To complete registration on Glifico open or copy this link in a browser: ".$link;
 send_email($to,$subject,$content);
 
 exit (json_encode(array("message"=>"mail sent", "statuscode"=>200)));
