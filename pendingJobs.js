@@ -204,6 +204,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-status="'+doc.status+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-choice="'+doc.choice+'"';
+				html+=' data-document="'+doc.document+'"';
 				html+='>Show job and accept it</button>';
 			}
 			html+='</td>';
