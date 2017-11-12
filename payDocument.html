@@ -72,7 +72,7 @@
 <link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
 <link rel="stylesheet" type="text/css" href="main.css">
 
-		
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -292,6 +292,14 @@ Please use the form below to pay translator
 <span id="message"></span>
 
 <div id="paypal-button"></div>
+<script src="https://staging.online.satispay.com/button.min.js"
+  data-key="mySandboxDataKey"
+  data-amount="1000"
+  data-description="Tickets"
+  data-webhook="https://myServer.com/myPaymentEndpoint"
+  data-orderid="876543456789876543"
+  data-callback="myFunctionToManageResponses"
+></script>
 
 <br><br>
 <button onclick="location.href='pendingPayments.html'" class="btn btn-default" type="button">Return to <br>pending Payments</button>
@@ -308,7 +316,7 @@ You will be automatically redirect in a few seconds...
 </div>
 </div>
 </div>
- 
+
 
  <div ng-app="glifico">
  <glificofooter></glificofooter>
