@@ -38,6 +38,7 @@ var selectedTr=[
 		isSelected: false,
 		price: -1,
 		total: -1,
+		currency: "EUR - EURO",
 		rowIndex: -1,
 		rowColor:"#FEC538",
 	},
@@ -47,6 +48,7 @@ var selectedTr=[
 		isSelected: false,
 		price: -1,
 		total: -1,
+		currency: "EUR - EURO",
 		rowIndex: -1,
 		rowColor:"#FE434D",
 	}
@@ -144,7 +146,7 @@ deselectTr=function(tr){
 		selectedTr[tr].total=-1;
 		selectedTr[tr].rowIndex=-1;
 		selectedTr[tr].id=-1;
-		
+
 		$("#selectedRow"+2).hide();
 
 		$("#selectedPrice"+2).html("");
@@ -466,7 +468,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.updateTotals();
 	}
 
-	ctrl.updateTotals=function(){
+	ctrl.updateTotals=function(){		
 		var firstHtml="";
 		firstHtml+=ctrl.TrCharacters * ctrl.getAgPrice(1);
 		firstHtml+=" Euro";
@@ -490,6 +492,15 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.startJob=function(){
 		ctrl.processSelected=true;
+		if(ctrl.feasibility==0){
+			selectedTr[0].total=ctrl.TrCharacters * ctrl.getAgPrice(1);
+			selectedTr[1].total=ctrl.TrCharacters * ctrl.getAgPrice(2);
+		}else if(ctrl.feasibility==1){
+			selectedTr[0].total=ctrl.TrCharacters * ctrl.getAgPrice(1) * 105./100;
+			selectedTr[1].total=ctrl.TrCharacters * ctrl.getAgPrice(2) * 105./100;
+		}else{
+			return;
+		}
 		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").show();
 	}
@@ -506,6 +517,7 @@ angular.module("search",[]).controller("search",function($scope){
 					count: countSelected(),
 					translators: selectedTr,
 					url: urlUploaded,
+					deadline: ctrl.TrDeadline,
 			};
 
 			var stringPass = JSON.stringify(temp);
@@ -529,7 +541,7 @@ angular.module("search",[]).controller("search",function($scope){
 					ctrl.processSelected=false;
 					ctrl.conditionsAccepted=false;
 					ctrl.pricesAccepted=false;
-					
+
 					$("#alertOK").html("Job created correctly, do another search or go to Jobs");
 					$("#alertOK").fadeIn().delay(5000).fadeOut();
 					$("#jobModal").hide();
@@ -563,7 +575,7 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#modalBodyUpload").hide();
 	}
 
-	
+
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=3;
 		ctrl.selectedRating=0;
