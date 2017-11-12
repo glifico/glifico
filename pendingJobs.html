@@ -314,7 +314,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   html+="Price: "+button.data('price')+" "+button.data('currency');
   html+="<br><br>"+button.data('description');
   var link=button.data('document');
-  html+="<br><br>you may find the document to translate at:"+'<a href="'+link+'" target="_Blank">'+link+'</a>';
+  html+="<br><br><div>You may find the document to translate at: "+'<a href="'+link+'" target="_Blank">'+link+'</a></div>';
   var btnHtml="";
   if(button.data('status')=="Assigned"){
 	  html+="<br><br>";
