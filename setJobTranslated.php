@@ -25,5 +25,6 @@ if($choice==2){$query="UPDATE payments SET secondStatus='Translated', translated
 $result = $db->query($query);
 
 $result->CloseCursor();
-exit(json_encode(array("message"=>"Job translated", "statuscode"=>200)));
+notifySlack("#payments",$user." translated a job",":thumbsup:");
+exit(json_encode(array("message"=>"job translated", "statuscode"=>200)));
 ?>

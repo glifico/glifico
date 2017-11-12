@@ -1,28 +1,6 @@
 <?php
 include 'functions.php';
 
-function NotifySlack($name)
-{
-  $url="https://hooks.slack.com/services/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";
-  $handle = curl_init($url);
-  curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
-  curl_setopt($handle, CURLOPT_TIMEOUT, 60);
-  curl_setopt($handle, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json'
-  ));
-  $data='{
-    "channel": "#payments",
-    "username": "Glifico payments $$",
-    "text": "'.$name.' paid Glifico!",
-    "icon_emoji": ":heavy_dollar_sign:"
-  }
-';
-  curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
-
-  curl_exec($handle);
-}
-
 $db=getDB();
 if(!$db) exit;
 
@@ -34,6 +12,6 @@ $query="UPDATE payments SET status='Paid' WHERE username='$user' and id='$id';";
 $result = $db->query($query);
 
 $result->CloseCursor();
-NotifySlack($user);
-exit(json_encode(array("message"=>"Payment updated", "statuscode"=>200)));
+notifySlack("#payments",$user." paid Glifico",":heavy_dollar_sign:");
+exit(json_encode(array("message"=>"payment updated", "statuscode"=>200)));
 ?>
