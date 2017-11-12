@@ -64,8 +64,6 @@ function notify(text){
 		}
 		var not = new Notification("Glifico",options);
 		setTimeout(not.close.bind(not), 3000); 
-	}else{
-		alert(text);
 	}
 }
 
