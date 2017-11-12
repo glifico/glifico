@@ -37,4 +37,16 @@ function certTokenA($db, $user, $token){
   return $token==hash('crc32',$user."tokenize".$password);
 }
 
+function get_user_email($user){
+  $db=getDB();
+  if(!$db) return;
+  $query="SELECT USERNAME, EMAIL FROM traduttore WHERE username='$user';";
+  $result = $db->query($query);
+  $row = $result->fetch(PDO::FETCH_ASSOC);
+
+  $email=htmlspecialchars($row['email']);
+  $result->CloseCursor();
+  return $email;
+}
+
  ?>
