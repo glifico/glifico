@@ -168,7 +168,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-4">'+doc.job+'</td>';
-			html+='<td class="col-md-4">'+doc.price+doc.currency+'</td>';
+			html+='<td class="col-md-4">'+doc.price+" "+doc.currency+'</td>';
 			if(doc.choice==1) {choiceStr="as first";}
 			else if(doc.choice==1) {choiceStr="as second";}
 			if(doc.status=="To Be accepted"){
