@@ -49,6 +49,18 @@ function get_user_email($user){
   return $email;
 }
 
+function get_username($id){
+  $db=getDB();
+  if(!$db) return;
+  $query="SELECT id, USERNAME FROM traduttore WHERE id='$id';";
+  $result = $db->query($query);
+  $row = $result->fetch(PDO::FETCH_ASSOC);
+
+  $user=htmlspecialchars($row['username']);
+  $result->CloseCursor();
+  return $user;
+}
+
 function send_email($to, $subject, $body){
   $url="https://api.sendgrid.com/v3/mail/send";
   $handle = curl_init($url);
