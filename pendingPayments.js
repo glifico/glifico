@@ -90,7 +90,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
-				html+=' data-link="'+doc.link+'"';
+				html+=' data-translated="'+doc.translated+'"';
 				html+='>Approve Job</button>';
 			}else if(doc.status=="To Be Assigned"){
 				html+="Waiting for translator acceptance..";

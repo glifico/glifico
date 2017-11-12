@@ -11,7 +11,7 @@ $query="SELECT * FROM payments WHERE username='$user' ORDER BY status DESC;";
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"link"=>$row['translated'],"description"=>$row['description']));
+  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"translated"=>$row['translated'],"description"=>$row['description']));
 }
 
 $result->CloseCursor();
