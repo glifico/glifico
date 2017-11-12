@@ -26,7 +26,7 @@ function paymentCompleted(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
 			if(data['statuscode']==200){
-				notify("Payment completed :-)");
+				notify("Payment completed");
 				alert("Payment completed :-)");
 				location.href="pendingPayments.html";
 			}
