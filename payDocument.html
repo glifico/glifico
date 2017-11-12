@@ -294,8 +294,8 @@ Please use the form below to pay translator
 <div id="paypal-button"></div>
 <script src="https://staging.online.satispay.com/button.min.js"
   data-key="mySandboxDataKey"
-  data-amount="1000"
-  data-description="Tickets"
+  data-amount="{{ctrl.amount}}"
+  data-description="{{ctrl.job}}"
   data-webhook="https://myServer.com/myPaymentEndpoint"
   data-orderid="876543456789876543"
   data-callback="myFunctionToManageResponses"
