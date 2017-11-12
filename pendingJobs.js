@@ -189,6 +189,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-status="'+doc.status+'"';
 				html+=' data-choice="'+doc.choice+'"';
 				html+=' data-description="'+doc.description+'"';
+				html+=' data-document="'+doc.document+'"';
 				html+='>Show job</button>';
 			}else if(doc.status=="Translated"){
 				html+='Waiting approval...';

@@ -17,7 +17,7 @@ while($row = $result->fetch(PDO::FETCH_ASSOC)){
 $query="SELECT * FROM payments WHERE secondTranslator='$user' ORDER BY status DESC;";
 $result = $db->query($query);
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['secondstatus'],"link"=>$row['translated'],"description"=>$row['description'],"choice"=>2));
+  array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['secondstatus'],"document"=>$row['document'],"description"=>$row['description'],"choice"=>2));
 }
 
 $result->CloseCursor();
