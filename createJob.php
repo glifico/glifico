@@ -27,6 +27,6 @@ $result = $db->query($query);
 
 $result->CloseCursor();
 
-send_email(get_user_email($translator),"There is a new job on glifico","You have a new job on glifico, got to https://glifico.com/pendingJobs.html to look it out!");
-exit(json_encode(array("message"=>"Job created", "statuscode"=>200,"selected"=>json_encode($selected))));
+send_email([array("email"=>get_user_email($translator))],"There is a new job on glifico","You have a new job on glifico, got to https://glifico.com/pendingJobs.html to look it out!");
+exit(json_encode(array("message"=>"job created", "statuscode"=>200,"selected"=>json_encode($selected))));
 ?>
