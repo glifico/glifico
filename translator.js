@@ -612,14 +612,14 @@ function strLeft(sourceStr, keyStr) {
 		}
 
 		ctrl.trigger =function(){
-			var input = $('input');
-		    input.val('xxx');
-		    input.trigger('input'); // Use for Chrome/Firefox/Edge
-		    input.trigger('change'); // Use for Chrome/Firefox/Edge + IE11
+//			var input = $('input');
+//		    input.val('xxx');
+//		    input.trigger('input'); // Use for Chrome/Firefox/Edge
+//		    input.trigger('change'); // Use for Chrome/Firefox/Edge + IE11
 		    
-		    /*
-		     * angular.element(jQuery('#myInputElement')).triggerHandler('input')
-		     */
+		    
+		     angular.element(jQuery('#LanguagePairForm')).triggerHandler('input');
+		     
 		}
 
 		$scope.loadPairs = function(edu){
