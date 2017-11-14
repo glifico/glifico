@@ -616,6 +616,10 @@ function strLeft(sourceStr, keyStr) {
 		    input.val('xxx');
 		    input.trigger('input'); // Use for Chrome/Firefox/Edge
 		    input.trigger('change'); // Use for Chrome/Firefox/Edge + IE11
+		    
+		    /*
+		     * angular.element(jQuery('#myInputElement')).triggerHandler('input')
+		     */
 		}
 
 		$scope.loadPairs = function(edu){
