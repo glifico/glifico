@@ -312,12 +312,12 @@ User personal page
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>First Name</label>
-										<input ng-model="model.FirstName" required>
+										<input ng-model="model.FirstName" class="text-center" required>
 									</md-input-container>
 
 									<md-input-container>
 										<label>Last Name</label>
-										<input ng-model="model.LastName" required>
+										<input ng-model="model.LastName" class="text-center" required>
 									</md-input-container>
 								</div>
 <!--
@@ -341,7 +341,7 @@ User personal page
 
 									<md-input-container>
 										<label>Postal Code</label>
-										<input name="postalCode" ng-model="model.ZIP" placeholder="" ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+										<input name="postalCode" ng-model="model.ZIP" class="text-center" placeholder="" ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
 
 										<div ng-messages="userForm.postalCode.$error" role="alert" multiple>
 											<div ng-message="required" class="my-message">You must supply a postal code.</div>
