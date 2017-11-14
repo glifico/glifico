@@ -612,6 +612,7 @@ function strLeft(sourceStr, keyStr) {
 
 		$scope.loadPairs = function(edu){
 			console.log(edu);
+			console.log($scope.model);
 			angular.copy(edu,$scope.model);
 			console.log($scope.model);
 			$scope.model=edu;
