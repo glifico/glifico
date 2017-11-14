@@ -550,6 +550,13 @@ User personal page
 									<md-input-container>
 										<label>Price Per Character</label>
 										<input type="number" ng-model="model.PricePerCharacter" required>
+										
+										<!-- DA DEFINIRE!!!!!!! -->
+										<div >
+											Price per word: {{model.PricePerCharacter *10}}
+											Price per document: {{model.PricePerCharacter *1000}}
+										</div>
+										
 									</md-input-container>
 								</div>
 
