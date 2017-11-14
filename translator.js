@@ -623,9 +623,10 @@ function strLeft(sourceStr, keyStr) {
 			console.log(edu);
 			console.log($scope.model);
 			angular.copy(edu,$scope.model);
-			console.log($scope.model);
 			$scope.model=edu;
+			console.log($scope.model);
 			ctrl.trigger;
+			console.log($scope.model);
 		}
 
 
