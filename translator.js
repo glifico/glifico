@@ -607,6 +607,7 @@ function strLeft(sourceStr, keyStr) {
 
 
 		ctrl.$onInit=function(){
+			$scope.model=$scope.nullModel;
 		}
 
 
