@@ -549,7 +549,7 @@ function strLeft(sourceStr, keyStr) {
 				$scope.loadFields();
 				$scope.loadServices();
 				$scope.loadCurrencies();
-				ctrl.trigger;
+				ctrl.trigger();
 			}
 		}
 
@@ -625,7 +625,7 @@ function strLeft(sourceStr, keyStr) {
 			angular.copy(edu,$scope.model);
 			$scope.model=edu;
 			console.log($scope.model);
-			ctrl.trigger;
+			ctrl.trigger();
 			console.log($scope.model);
 		}
 
