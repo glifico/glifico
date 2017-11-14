@@ -607,11 +607,12 @@ function strLeft(sourceStr, keyStr) {
 
 
 		ctrl.$onInit=function(){
-			$scope.model=$scope.nullModel;
+			
 		}
 
 
 		$scope.loadPairs = function(edu){
+			console.info("loadPairs");
 			console.log(edu);
 			console.log($scope.model);
 			angular.copy(edu,$scope.model);
