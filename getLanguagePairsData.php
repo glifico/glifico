@@ -13,7 +13,7 @@ $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
-  array_push($toExit,array("LanguageFrom"=>$row['from_l'], "LanguageTo"=>$row['to_l'], "Price"=>$row['price']));
+  array_push($toExit,array("LanguageFrom"=>$row['from_l'], "LanguageTo"=>$row['to_l'], "Price"=>$row['price'], "Currency"=>$Row['currency']));
 }
 
 exit (json_encode($toExit));

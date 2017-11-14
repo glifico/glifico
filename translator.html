@@ -567,7 +567,7 @@ User personal page
 							<md-subheader class="md-no-sticky">My Language Pairs</md-subheader>
 							  <md-list-item ng-repeat="edu in Pairs" ng-click="loadPairs(edu)" class="noright">
 
-							    <p>From: {{ edu.LanguageFrom }}, To: {{ edu.LanguageTo }}</p>
+							    <p>From: {{ edu.LanguageFrom }}, To: {{ edu.LanguageTo }}, Price: {{edu.Price}} {{edu.Currency}}</p>
 							    <span aria-label="edit" ng-click="loadPairs(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-pencil fa-2x"></i></span>
 							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
 
