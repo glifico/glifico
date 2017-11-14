@@ -549,6 +549,7 @@ function strLeft(sourceStr, keyStr) {
 				$scope.loadFields();
 				$scope.loadServices();
 				$scope.loadCurrencies();
+				ctrl.trigger;
 			}
 		}
 
@@ -610,6 +611,12 @@ function strLeft(sourceStr, keyStr) {
 			
 		}
 
+		ctrl.trigger =function(){
+			var input = $('input');
+		    input.val('xxx');
+		    input.trigger('input'); // Use for Chrome/Firefox/Edge
+		    input.trigger('change'); // Use for Chrome/Firefox/Edge + IE11
+		}
 
 		$scope.loadPairs = function(edu){
 			console.info("loadPairs");
@@ -618,6 +625,7 @@ function strLeft(sourceStr, keyStr) {
 			angular.copy(edu,$scope.model);
 			console.log($scope.model);
 			$scope.model=edu;
+			ctrl.trigger;
 		}
 
 
