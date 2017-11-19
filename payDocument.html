@@ -292,13 +292,24 @@ Please use the form below to pay translator
 <span id="message"></span>
 
 <div id="paypal-button"></div>
+<script>
+satispayCallback=function(charge){
+	if (charge.status === 'SUCCESS') {
+	    console.info("payment completed on satispay");
+	    paymentCompleted();
+	  } else {
+		  alert("Payment doesn't end well :-(");
+		  console.log('payment failed or refused')
+	  }
+}
+</script>
 <script src="https://staging.online.satispay.com/button.min.js"
-  data-key="mySandboxDataKey"
+  data-key="dk_gJYxwfxIbFVUZgGOtQNl"
   data-amount="{{ctrl.amount}}"
   data-description="{{ctrl.job}}"
   data-webhook="https://myServer.com/myPaymentEndpoint"
-  data-orderid="876543456789876543"
-  data-callback="myFunctionToManageResponses"
+  data-orderid="123"
+  data-callback="satispayCallback"
 ></script>
 
 <br><br>
