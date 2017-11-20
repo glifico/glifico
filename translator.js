@@ -624,13 +624,13 @@ function strLeft(sourceStr, keyStr) {
 		
 		$scope.closeModal=function(){
 			$('#LanguageModal').modal('hide');
-			ctrl.openedEdu=null;
+			$scope.openedEdu=null;
 		}
 
 		$scope.loadPairs = function(edu){
 			console.info("loadPairs");
 			$('#LanguageModal').modal('show');
-			ctrl.openedEdu=edu;
+			$scope.openedEdu=edu;
 		}
 
 
