@@ -583,17 +583,9 @@ User personal page
 						</md-list>
 
 					</md-content>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-</div>
-</div>
-
-<!-- Language Modal -->
+				
+				
+				<!-- Language Modal -->
 <div class="modal fade" id="LanguageModal" tabindex="-1" role="dialog" aria-labelledby="LanguageModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -605,20 +597,36 @@ User personal page
       </div>
       <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
      
-     Language
-     
+     	Language from: {{ctrl.openedEdu.LanguageFrom}} <br>
+        Language to: {{ctrl.openedEdu.LanguageTo}} <br>
+        Price: {{ctrl.openedEdu.Price ctrl.openedEdu.Currency}} <br>
+     <br>
+     <input type="text" class="" data-ng-model="ctrl.openedEdu.Price">
         </div>
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility>=2" data-ng-show="!ctrl.processSelected" data-ng-click="ctrl.startJob()">Update pair</button>
+        <button type="button" class="btn btn-primary" data-ng-click="ctrl.updatePair()">Update pair</button>
         <button type="button" class="btn btn-secondary" data-ng-click="ctrl.closeModal()">Close</button>
       </div>
     </div>
   </div>
 </div>
 </div>
+
+				</div>
+				<!-- language controller -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+</div>
+
+
 
 
 <div ng-app="glifico">
