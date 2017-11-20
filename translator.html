@@ -563,7 +563,7 @@ User personal page
 
 
 								<div layout-gt-xs="row">
-									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Save</md-button>
+									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Save new pair</md-button>
 								</div>
 							</form>
 						</div>
@@ -590,6 +590,33 @@ User personal page
 </div>
 
 
+</div>
+</div>
+
+<!-- Language Modal -->
+<div class="modal fade" id="LanguageModal" tabindex="-1" role="dialog" aria-labelledby="LanguageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="LanguageModalLabel">Language pair</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
+     
+     Language
+     
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility>=2" data-ng-show="!ctrl.processSelected" data-ng-click="ctrl.startJob()">Update pair</button>
+        <button type="button" class="btn btn-secondary" data-ng-click="ctrl.closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 

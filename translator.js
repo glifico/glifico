@@ -621,16 +621,14 @@ function strLeft(sourceStr, keyStr) {
 		     angular.element(jQuery('#LanguagePairForm')).triggerHandler('input');
 		     
 		}
+		
+		ctrl.closeModal=function(){
+			$('#LanguageModal').modal('hide');
+		}
 
 		$scope.loadPairs = function(edu){
 			console.info("loadPairs");
-			console.log(edu);
-			console.log($scope.model);
-			angular.copy(edu,$scope.model);
-			$scope.model=edu;
-			console.log($scope.model);
-			ctrl.trigger();
-			console.log($scope.model);
+			$('#TrModal').modal('show');
 		}
 
 
