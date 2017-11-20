@@ -608,7 +608,7 @@ function strLeft(sourceStr, keyStr) {
 
 
 		ctrl.$onInit=function(){
-			
+			ctrl.trigger();
 		}
 
 		ctrl.trigger =function(){
@@ -622,7 +622,7 @@ function strLeft(sourceStr, keyStr) {
 		     
 		}
 		
-		ctrl.closeModal=function(){
+		$scope.closeModal=function(){
 			$('#LanguageModal').modal('hide');
 			ctrl.openedEdu=null;
 		}

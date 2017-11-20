@@ -597,9 +597,9 @@ User personal page
       </div>
       <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
      
-     	Language from: {{ctrl.openedEdu.LanguageFrom}} <br>
-        Language to: {{ctrl.openedEdu.LanguageTo}} <br>
-        Price: {{ctrl.openedEdu.Price ctrl.openedEdu.Currency}} <br>
+     	Language from: {{openedEdu.LanguageFrom}} <br>
+        Language to: {{openedEdu.LanguageTo}} <br>
+        Price: {{openedEdu.Price openedEdu.Currency}} <br>
      <br>
      <input type="text" class="" data-ng-model="ctrl.openedEdu.Price">
         </div>
@@ -607,8 +607,8 @@ User personal page
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-ng-click="ctrl.updatePair()">Update pair</button>
-        <button type="button" class="btn btn-secondary" data-ng-click="ctrl.closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" data-ng-click="updatePair()">Update pair</button>
+        <button type="button" class="btn btn-secondary" data-ng-click="closeModal()">Close</button>
       </div>
     </div>
   </div>
