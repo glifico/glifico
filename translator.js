@@ -628,7 +628,7 @@ function strLeft(sourceStr, keyStr) {
 
 		$scope.loadPairs = function(edu){
 			console.info("loadPairs");
-			$('#TrModal').modal('show');
+			$('#LanguageModal').modal('show');
 		}
 
 
