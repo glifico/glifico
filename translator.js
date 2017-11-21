@@ -576,6 +576,30 @@ function strLeft(sourceStr, keyStr) {
 			req.send();
 		}
 
+
+		ctrl.createTable=function(){
+			var html="";
+			html+='<table class="table">';
+			html+='<thead>';
+			html+='<tr class="row">';
+			html+='<th class="col-md-5"></th>';
+			html+='<th class="col-md-1"></th>';
+			html+='<th class="col-md-1"></th>';
+			html+='</tr>';
+			for (var i = 0; i < $scope.Pairs.length; i++) {
+				var edu=Pairs[i];
+				html+='<tr class="row">';
+				html+='<td class=" col-md-5"><span style="font-size:18px;">From: '+edu.LanguageFrom+', To:'+ edu.LanguageTo +', Price: '+edu.Price+' '+ edu.Currency+'</span></td>';
+				html+='<td class=" col-md-5"><button   data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
+				html+='<td class=" col-md-5"><span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span></td>';
+				html+='</tr>';
+			}
+			html+='</thead>';
+			html+='</table>';	
+
+			$("#pairsTable").html(html);
+		};
+
 		$scope.loadCurrencies = function(){
 			var req=createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
@@ -601,6 +625,7 @@ function strLeft(sourceStr, keyStr) {
 					$scope.loadFields();
 					$scope.loadServices();
 					$scope.loadCurrencies();
+					ctrl.createTable();
 					ctrl.trigger();
 				}
 			}
@@ -634,92 +659,92 @@ function strLeft(sourceStr, keyStr) {
 
 
 
-		// $scope.doDelete = function(edu){
-		// 	$http.post('rest.xsp?api=save&type=deleteLanguagePair&id=' + QueryString.id, edu).success(
-		// 			function(data) {
-		// 				var ret = eval(data);
-		// 				if (ret == undefined || ret[0] == undefined ||
-		// 						ret[0].data == undefined) {
-		// 					$('#alertError').fadeIn().delay(10000)
-		// 					.fadeOut();
-		// 					$('#alertError')
-		// 					.html(
-		// 					"There was an error, please retry inaspettato");
-		// 				} else if (ret[0].data.status != undefined &&
-		// 						ret[0].data.status.toLowerCase() == "error") {
-		// 					$('#alertError').fadeIn().delay(10000)
-		// 					.fadeOut();
-		// 					if (ret[0].data.msg == undefined ||
-		// 							ret[0].data.msg == "") {
-		// 						$('#alertError').html(
-		// 						"There was an error, please retry.");
-		// 					} else {
-		// 						var stringval = ret[0].data.msg
-		// 						if (stringval.indexOf("Cannot insert duplicate key") != -1) {
-		// 							var errorField = strRight(ret[0].data.msg, "Index:");
-		// 							errorField = strLeft(errorField, "_Unique");
-		// 							$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-		// 						} else {
-		// 							$('#alertError').html(ret[0].data.msg);
-		// 						}
-		// 					}
-		// 				} else {
-		// 					$('#alertOK').fadeIn().delay(10000)
-		// 					.fadeOut();
-		// 					$('#alertOK').html(
-		// 					"Your data was saved correctly.");
-		// 					angular.copy($scope.nullModel,$scope.model);
-		// 					$scope.Pairs = ret[0].data.Pairs;
-		// 				}
-		// 			});
-		//
-		// }
+//		$scope.doDelete = function(edu){
+//		$http.post('rest.xsp?api=save&type=deleteLanguagePair&id=' + QueryString.id, edu).success(
+//		function(data) {
+//		var ret = eval(data);
+//		if (ret == undefined || ret[0] == undefined ||
+//		ret[0].data == undefined) {
+//		$('#alertError').fadeIn().delay(10000)
+//		.fadeOut();
+//		$('#alertError')
+//		.html(
+//		"There was an error, please retry inaspettato");
+//		} else if (ret[0].data.status != undefined &&
+//		ret[0].data.status.toLowerCase() == "error") {
+//		$('#alertError').fadeIn().delay(10000)
+//		.fadeOut();
+//		if (ret[0].data.msg == undefined ||
+//		ret[0].data.msg == "") {
+//		$('#alertError').html(
+//		"There was an error, please retry.");
+//		} else {
+//		var stringval = ret[0].data.msg
+//		if (stringval.indexOf("Cannot insert duplicate key") != -1) {
+//		var errorField = strRight(ret[0].data.msg, "Index:");
+//		errorField = strLeft(errorField, "_Unique");
+//		$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+//		} else {
+//		$('#alertError').html(ret[0].data.msg);
+//		}
+//		}
+//		} else {
+//		$('#alertOK').fadeIn().delay(10000)
+//		.fadeOut();
+//		$('#alertOK').html(
+//		"Your data was saved correctly.");
+//		angular.copy($scope.nullModel,$scope.model);
+//		$scope.Pairs = ret[0].data.Pairs;
+//		}
+//		});
+
+//		}
 
 
 
 
-		// 	$scope.submit = function() {
-		// 		$http
-		// 		.post('rest.xsp?api=save&type=modificaLanguagePair&id='+QueryString.id, $scope.model)
-		// 		.success(
-		// 				function(data) {
-		// 					var ret = eval(data);
-		// 					if (ret == undefined || ret[0] == undefined
-		// 							|| ret[0].data == undefined) {
-		// 						$('#alertError').fadeIn().delay(10000)
-		// 						.fadeOut();
-		// 						$('#alertError')
-		// 						.html(
-		// 						"There was an error, please retry inaspettato");
-		// 					} else if (ret[0].data.status != undefined
-		// 							&& ret[0].data.status.toLowerCase() == "error") {
-		// 						$('#alertError').fadeIn().delay(10000)
-		// 						.fadeOut();
-		// 						if (ret[0].data.msg == undefined
-		// 								|| ret[0].data.msg == "") {
-		// 							$('#alertError').html(
-		// 							"There was an error, please retry.");
-		// 						} else {
-		// 							var stringval=ret[0].data.msg
-		// 							if(stringval.indexOf("Cannot insert duplicate key") != -1){
-		// 								var errorField = strRight(ret[0].data.msg,"Index:");
-		// 								errorField = strLeft(errorField,"_Unique");
-		// 								$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-		// 							}else{
-		// 								$('#alertError').html(ret[0].data.msg);
-		// 							}
-		// 						}
-		// 					} else {
-		// 						$('#alertOK').fadeIn().delay(10000)
-		// 						.fadeOut();
-		// 						$('#alertOK').html(
-		// 						"Your data was saved correctly.");
-		// 						angular.copy($scope.nullModel,$scope.model);
-		// 						$scope.Pairs=ret[0].data.Pairs;
-		// 					}
-		// 					$('#loginModal').modal('hide');
-		// 				});
-		// 	}
+//		$scope.submit = function() {
+//		$http
+//		.post('rest.xsp?api=save&type=modificaLanguagePair&id='+QueryString.id, $scope.model)
+//		.success(
+//		function(data) {
+//		var ret = eval(data);
+//		if (ret == undefined || ret[0] == undefined
+//		|| ret[0].data == undefined) {
+//		$('#alertError').fadeIn().delay(10000)
+//		.fadeOut();
+//		$('#alertError')
+//		.html(
+//		"There was an error, please retry inaspettato");
+//		} else if (ret[0].data.status != undefined
+//		&& ret[0].data.status.toLowerCase() == "error") {
+//		$('#alertError').fadeIn().delay(10000)
+//		.fadeOut();
+//		if (ret[0].data.msg == undefined
+//		|| ret[0].data.msg == "") {
+//		$('#alertError').html(
+//		"There was an error, please retry.");
+//		} else {
+//		var stringval=ret[0].data.msg
+//		if(stringval.indexOf("Cannot insert duplicate key") != -1){
+//		var errorField = strRight(ret[0].data.msg,"Index:");
+//		errorField = strLeft(errorField,"_Unique");
+//		$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
+//		}else{
+//		$('#alertError').html(ret[0].data.msg);
+//		}
+//		}
+//		} else {
+//		$('#alertOK').fadeIn().delay(10000)
+//		.fadeOut();
+//		$('#alertOK').html(
+//		"Your data was saved correctly.");
+//		angular.copy($scope.nullModel,$scope.model);
+//		$scope.Pairs=ret[0].data.Pairs;
+//		}
+//		$('#loginModal').modal('hide');
+//		});
+//		}
 	});
 
 
