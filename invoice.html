@@ -1,0 +1,21 @@
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
+<input type="button" value="download" onclick="submit()">
+<script>
+var doc = new jsPDF()
+var name='pippo'
+var price=10;
+
+doc.text('Glifico', 10, 10)
+doc.text('Your invoice is here', 10, 20)
+doc.text(price+'Euro', 10, 30)
+doc.text('Thank you', 10, 40)
+
+
+
+submit=function(){
+  doc.save('a4.pdf')
+}
+</script>
+</html>
