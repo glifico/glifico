@@ -493,6 +493,34 @@ User personal page
 				<h3>Language Pairs</h3>
 
 				<div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" layout="column" ng-cloak class="md-inline-form">
+				
+				<!-- 
+				<md-list ng-cloak>
+							<md-subheader class="md-no-sticky">My Language Pairs</md-subheader>
+							  <md-list-item ng-repeat="edu in Pairs" ng-click="loadPairs(edu)" class="noright">
+
+							    <p>From: {{ edu.LanguageFrom }}, To: {{ edu.LanguageTo }}, Price: {{edu.Price}} {{edu.Currency}}</p>
+							    <button   data-toggle="modal" data-target="#LanguageModal"  data-price="{{edu.Price}}" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button>
+							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
+
+							 </md-list-item>
+						</md-list>
+						 -->
+				<table class="table">
+				<thead>
+				<tr class="row">
+				<th class="col-md-5"></th>
+				<th class="col-md-1"></th>
+				<th class="col-md-1"></th>
+				</tr>
+				<tr class="row" ng-repeat="edu in Pairs">
+				<td class=" col-md-5">From: {{ edu.LanguageFrom }}, To: {{ edu.LanguageTo }}, Price: {{edu.Price}} {{edu.Currency}}</td>
+				<td class=" col-md-5"><button   data-toggle="modal" data-target="#LanguageModal"  data-price="{{edu.Price}}" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>
+				<td class=" col-md-5"> <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span></td>
+				</tr>
+				</thead>
+				</table>
+				
 					<md-content layout-padding>
 						<div>
 							<form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
@@ -567,20 +595,6 @@ User personal page
 								</div>
 							</form>
 						</div>
-
-
-
-
-						<md-list ng-cloak>
-							<md-subheader class="md-no-sticky">My Language Pairs</md-subheader>
-							  <md-list-item ng-repeat="edu in Pairs" ng-click="loadPairs(edu)" class="noright">
-
-							    <p>From: {{ edu.LanguageFrom }}, To: {{ edu.LanguageTo }}, Price: {{edu.Price}} {{edu.Currency}}</p>
-							    <button   data-toggle="modal" data-target="#LanguageModal"  data-price="{{edu.Price}}" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button>
-							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
-
-							 </md-list-item>
-						</md-list>
 
 					</md-content>
 				
