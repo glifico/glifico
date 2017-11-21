@@ -535,11 +535,10 @@ function strLeft(sourceStr, keyStr) {
 	angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
 
 		$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
-		$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:'translations',IdParametro_Service:'translations',IdCurrency:'EUR - Euro',PricePerCharacter:0};
+		$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:0,IdParametro_Service:0,IdCurrency:'EUR',PricePerCharacter:0};
 
 
 		var ctrl=this;
-		angular.copy($scope.defaultModel,$scope.model);
 
 		$scope.loadLanguages = function(){
 			var req=createXHTMLHttpRequest();
@@ -636,6 +635,8 @@ function strLeft(sourceStr, keyStr) {
 
 		ctrl.$onInit=function(){
 			ctrl.refresh();
+			$scope.model=$scope.defaultModel;
+			console.debug($scope.model);
 		}
 
 		$scope.closeModal=function(){
