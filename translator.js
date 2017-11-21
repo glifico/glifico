@@ -535,9 +535,11 @@ function strLeft(sourceStr, keyStr) {
 	angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
 
 		$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
+		$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:'translations',IdParametro_Service:'translations',IdCurrency:'EUR - Euro',PricePerCharacter:0};
+
 
 		var ctrl=this;
-		angular.copy($scope.nullModel,$scope.model);
+		angular.copy($scope.defaultModel,$scope.model);
 
 		$scope.loadLanguages = function(){
 			var req=createXHTMLHttpRequest();
@@ -612,22 +614,19 @@ function strLeft(sourceStr, keyStr) {
 			req.send();
 		}
 
-
-		ctrl.$onInit=function(){
-			console.info("init");
+		ctrl.refresh=function(){
 			var req=createXHTMLHttpRequest();
 
 			$scope.loadLanguages();
 			$scope.loadFields();
 			$scope.loadServices();
 			$scope.loadCurrencies();
-			
+
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret=convertJSON(req.responseText);
 					$scope.Pairs=ret;
 					ctrl.createTable(ret);
-					ctrl.trigger();
 				}
 			}
 
@@ -635,16 +634,8 @@ function strLeft(sourceStr, keyStr) {
 			req.send();
 		}
 
-		ctrl.trigger =function(){
-			console.info("trigger");
-//			var input = $('input');
-//			input.val('xxx');
-//			input.trigger('input'); // Use for Chrome/Firefox/Edge
-//			input.trigger('change'); // Use for Chrome/Firefox/Edge + IE11
-
-
-			angular.element(jQuery('#LanguagePairForm')).triggerHandler('input');
-
+		ctrl.$onInit=function(){
+			ctrl.refresh();
 		}
 
 		$scope.closeModal=function(){
@@ -701,51 +692,48 @@ function strLeft(sourceStr, keyStr) {
 
 //		}
 
+		$scope.submit= function(){
+			console.debug($scope.model);
+
+			var arr={
+					"user": getUsername(),
+					"token": getToken(),
+					"values": $scope.model,
+			};
+
+			var stringPass=JSON.stringify(arr);
+			var data=stringPass;
+
+			$.ajax( {
+				type : "POST",
+				dataType : "application/json",
+				contentType : "application/json; charset=utf-8",
+				data : data,
+				url : "addLanguagePair.php",
+				complete : function(ret) {
+					var response=ret.responseText.replace(/\\/,"");
+					if(convertJSON(response).statuscode==200){
+						$('#alertOK').fadeIn().delay(10000).fadeOut();
+						$('#alertOK').html("Your data was saved correctly.");
+						ctrl.refresh();
+					}else{
+						$('#alertError').fadeIn().delay(1000).fadeOut();
+						$('#alertOK').html("There was an error, please retry.");
+					}
+				},
+				error : function(xhr) {
+					if (xhr.status == 500) {
+						$("#alertError").html("Error from server, please retry.");
+						$("#alertError").fadeIn().delay(1000).fadeOut();
+					}
+
+				}
+			});
+
+		}
 
 
 
-//		$scope.submit = function() {
-//		$http
-//		.post('rest.xsp?api=save&type=modificaLanguagePair&id='+QueryString.id, $scope.model)
-//		.success(
-//		function(data) {
-//		var ret = eval(data);
-//		if (ret == undefined || ret[0] == undefined
-//		|| ret[0].data == undefined) {
-//		$('#alertError').fadeIn().delay(10000)
-//		.fadeOut();
-//		$('#alertError')
-//		.html(
-//		"There was an error, please retry inaspettato");
-//		} else if (ret[0].data.status != undefined
-//		&& ret[0].data.status.toLowerCase() == "error") {
-//		$('#alertError').fadeIn().delay(10000)
-//		.fadeOut();
-//		if (ret[0].data.msg == undefined
-//		|| ret[0].data.msg == "") {
-//		$('#alertError').html(
-//		"There was an error, please retry.");
-//		} else {
-//		var stringval=ret[0].data.msg
-//		if(stringval.indexOf("Cannot insert duplicate key") != -1){
-//		var errorField = strRight(ret[0].data.msg,"Index:");
-//		errorField = strLeft(errorField,"_Unique");
-//		$('#alertError').html(errorField + " already exist. If you have lost your password use password recovery function.");
-//		}else{
-//		$('#alertError').html(ret[0].data.msg);
-//		}
-//		}
-//		} else {
-//		$('#alertOK').fadeIn().delay(10000)
-//		.fadeOut();
-//		$('#alertOK').html(
-//		"Your data was saved correctly.");
-//		angular.copy($scope.nullModel,$scope.model);
-//		$scope.Pairs=ret[0].data.Pairs;
-//		}
-//		$('#loginModal').modal('hide');
-//		});
-//		}
 	});
 
 
