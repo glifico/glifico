@@ -6,7 +6,7 @@ $toExit=[];
 $db=getDB();
 if(!$db) exit;
 
-$query="SELECT * from currencies;";
+$query="SELECT * from currencies ORDER BY description ASC;";
 $result = $db->query($query);
 
 while($row=$result->fetch(PDO::FETCH_ASSOC)) {
