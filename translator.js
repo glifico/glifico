@@ -50,7 +50,7 @@ var QueryString = function() {
 
 function strLeft(sourceStr, keyStr) {
 	return (sourceStr.indexOf(keyStr) == -1 | keyStr == '') ? '' : sourceStr
-	.split(keyStr)[0];
+			.split(keyStr)[0];
 }
 
 
@@ -152,9 +152,9 @@ function strLeft(sourceStr, keyStr) {
 
 		$scope.submit = function() {
 			var arr={
-				"user": getUsername(),
-				"token": getToken(),
-				"values": $scope.model,
+					"user": getUsername(),
+					"token": getToken(),
+					"values": $scope.model,
 			};
 
 			var stringPass=JSON.stringify(arr);
@@ -537,25 +537,7 @@ function strLeft(sourceStr, keyStr) {
 		$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
 
 		var ctrl=this;
-
-		var req=createXHTMLHttpRequest();
-
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				angular.copy($scope.nullModel,$scope.model);
-				var ret=convertJSON(req.responseText);
-				$scope.Pairs=ret;
-				$scope.loadLanguages();
-				$scope.loadFields();
-				$scope.loadServices();
-				$scope.loadCurrencies();
-				ctrl.trigger();
-			}
-		}
-
-		req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
-		req.send();
-
+		angular.copy($scope.nullModel,$scope.model);
 
 		$scope.loadLanguages = function(){
 			var req=createXHTMLHttpRequest();
@@ -608,29 +590,46 @@ function strLeft(sourceStr, keyStr) {
 
 
 		ctrl.$onInit=function(){
-			ctrl.trigger();
+			console.info("init");
+			var req=createXHTMLHttpRequest();
+
+			req.onreadystatechange = function(){
+				if (req.status == 200&req.readyState==4){
+					var ret=convertJSON(req.responseText);
+					$scope.Pairs=ret;
+					$scope.loadLanguages();
+					$scope.loadFields();
+					$scope.loadServices();
+					$scope.loadCurrencies();
+					ctrl.trigger();
+				}
+			}
+
+			req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
+			req.send();
 		}
 
 		ctrl.trigger =function(){
+			console.info("trigger");
 //			var input = $('input');
-//		    input.val('xxx');
-//		    input.trigger('input'); // Use for Chrome/Firefox/Edge
-//		    input.trigger('change'); // Use for Chrome/Firefox/Edge + IE11
-		    
-		    
-		     angular.element(jQuery('#LanguagePairForm')).triggerHandler('input');
-		     
+//			input.val('xxx');
+//			input.trigger('input'); // Use for Chrome/Firefox/Edge
+//			input.trigger('change'); // Use for Chrome/Firefox/Edge + IE11
+
+
+			angular.element(jQuery('#LanguagePairForm')).triggerHandler('input');
+
 		}
-		
+
 		$scope.closeModal=function(){
 			$('#LanguageModal').modal('hide');
 			$scope.openedEdu=null;
 		}
 
 //		$scope.loadPairs = function(edu){
-//			console.info("loadPairs");
-//			$('#LanguageModal').modal('show');
-//			$scope.openedEdu=edu;
+//		console.info("loadPairs");
+//		$('#LanguageModal').modal('show');
+//		$scope.openedEdu=edu;
 //		}
 
 
