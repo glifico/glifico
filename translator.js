@@ -577,7 +577,7 @@ function strLeft(sourceStr, keyStr) {
 		}
 
 
-		ctrl.createTable=function(){
+		ctrl.createTable=function(pairs){
 			var html="";
 			html+='<table class="table">';
 			html+='<thead>';
@@ -586,7 +586,7 @@ function strLeft(sourceStr, keyStr) {
 			html+='<th class="col-md-1"></th>';
 			html+='<th class="col-md-1"></th>';
 			html+='</tr>';
-			for (var i = 0; i < $scope.Pairs.length; i++) {
+			for (var i = 0; i < pairs.length; i++) {
 				var edu=Pairs[i];
 				html+='<tr class="row">';
 				html+='<td class=" col-md-5"><span style="font-size:18px;">From: '+edu.LanguageFrom+', To:'+ edu.LanguageTo +', Price: '+edu.Price+' '+ edu.Currency+'</span></td>';
@@ -617,15 +617,16 @@ function strLeft(sourceStr, keyStr) {
 			console.info("init");
 			var req=createXHTMLHttpRequest();
 
+			$scope.loadLanguages();
+			$scope.loadFields();
+			$scope.loadServices();
+			$scope.loadCurrencies();
+			
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret=convertJSON(req.responseText);
 					$scope.Pairs=ret;
-					$scope.loadLanguages();
-					$scope.loadFields();
-					$scope.loadServices();
-					$scope.loadCurrencies();
-					ctrl.createTable();
+					ctrl.createTable(ret);
 					ctrl.trigger();
 				}
 			}
