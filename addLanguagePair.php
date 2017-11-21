@@ -1,5 +1,6 @@
 <?php
 include 'functions.php';
+include 'languages.php';
 
 $db=getDB();
 if(!$db) exit;
@@ -15,6 +16,7 @@ if(!$data){
 
 $user=$data['user'];
 $pair=$data['values'];
+echo($language_codes[$data['IdLanguageFrom']])
 
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
