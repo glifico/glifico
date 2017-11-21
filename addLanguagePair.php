@@ -4,17 +4,23 @@ include 'functions.php';
 $db=getDB();
 if(!$db) exit;
 
-$user=$_GET['user'];
-if(!certToken($db, $user, $_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
-
-$query="SELECT username, from_l, to_l, price, currency from language_pair WHERE username='$user';";
-$result = $db->query($query);
-
-$toExit=[];
-while($row = $result->fetch(PDO::FETCH_ASSOC)){
-
-  array_push($toExit,array("LanguageFrom"=>$row['from_l'], "LanguageTo"=>$row['to_l'], "Price"=>$row['price'], "Currency"=>$row['currency']));
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+  $data = json_decode(file_get_contents("php://input"),true);
 }
+
+if(!$data){
+  exit(json_encode(array("message"=>"wrong request","statuscode"=>500)));
+}
+
+$user=$data['user'];
+$pair=$data['values'];
+
+if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
+
+//$query="INSERT INTO language_pair VALUES ();";
+//$result = $db->query($query);
+echo(json_encode($pair));
 
 exit (json_encode($toExit));
 ?>
