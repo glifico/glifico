@@ -576,7 +576,7 @@ User personal page
 							  <md-list-item ng-repeat="edu in Pairs" ng-click="loadPairs(edu)" class="noright">
 
 							    <p>From: {{ edu.LanguageFrom }}, To: {{ edu.LanguageTo }}, Price: {{edu.Price}} {{edu.Currency}}</p>
-							    <span aria-label="edit" ng-click="loadPairs(edu)"  data-price="{{edu.Price}}" class="md-secondary md-hue-3" ><i class="fa fa-pencil fa-2x"></i></span>
+							    <button  data-ng-click="loadPairs(edu)"  data-price="{{edu.Price}}" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button>
 							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
 
 							 </md-list-item>
