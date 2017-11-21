@@ -587,7 +587,7 @@ function strLeft(sourceStr, keyStr) {
 			html+='<th class="col-md-1"></th>';
 			html+='</tr>';
 			for (var i = 0; i < pairs.length; i++) {
-				var edu=Pairs[i];
+				var edu=pairs[i];
 				html+='<tr class="row">';
 				html+='<td class=" col-md-5"><span style="font-size:18px;">From: '+edu.LanguageFrom+', To:'+ edu.LanguageTo +', Price: '+edu.Price+' '+ edu.Currency+'</span></td>';
 				html+='<td class=" col-md-5"><button   data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
