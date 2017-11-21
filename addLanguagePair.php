@@ -25,5 +25,5 @@ if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wr
 //$result = $db->query($query);
 echo(json_encode($pair));
 
-exit (array("message"=>"pair added","statuscode"=>200)));
+exit (json_encode(array("message"=>"pair added","statuscode"=>200)));
 ?>
