@@ -29,6 +29,7 @@ $language_codes = array(
   'et' => 'Estonian' ,
   'de' => 'German' ,
   'el' => 'Greek' ,
+  'en' => 'English',
   'fi' => 'Finnish' ,
   'fj' => 'Fiji' ,
   'fo' => 'Faeroese' ,
