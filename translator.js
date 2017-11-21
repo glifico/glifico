@@ -627,11 +627,11 @@ function strLeft(sourceStr, keyStr) {
 			$scope.openedEdu=null;
 		}
 
-		$scope.loadPairs = function(edu){
-			console.info("loadPairs");
-			$('#LanguageModal').modal('show');
-			$scope.openedEdu=edu;
-		}
+//		$scope.loadPairs = function(edu){
+//			console.info("loadPairs");
+//			$('#LanguageModal').modal('show');
+//			$scope.openedEdu=edu;
+//		}
 
 
 
