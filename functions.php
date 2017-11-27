@@ -49,6 +49,29 @@ function get_user_email($user){
   return $email;
 }
 
+function get_currency_description($cur){
+  $db=getDB();
+  if(!$db) return;
+  $query="SELECT description FROM traduttore WHERE currency='$cur';";
+  $result = $db->query($query);
+  $row = $result->fetch(PDO::FETCH_ASSOC);
+
+  $descr=htmlspecialchars($row['description']);
+  $result->CloseCursor();
+  return $descr;
+}
+
+function convert_to_euro($price,$cur){
+  $db=getDB();
+  if(!$db) return;
+  $query="SELECT currency, conversion from currencies where currency='$cur';";
+  $convResult = $db->query($query);
+  $convRow = $convResult->fetch(PDO::FETCH_ASSOC);
+  $priceEuro=round((float)$price/$convRow['conversion'],2);
+  $result->CloseCursor();
+  return $priceEuro;
+}
+
 function get_username($id){
   $db=getDB();
   if(!$db) return;
@@ -110,9 +133,9 @@ function notifySlack($channel,$text,$emoji="::")
     "text": "'.$text.'",
     "icon_emoji": "'.$emoji.'"
   }
-';
+  ';
   curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
 
   curl_exec($handle);
 }
- ?>
+?>
