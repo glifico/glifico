@@ -714,7 +714,7 @@ function strLeft(sourceStr, keyStr) {
 				complete : function(ret) {
 					var response=ret.responseText.replace(/\\/,"");
 					if(convertJSON(response).statuscode==200){
-						$('#alertOK').fadeIn().delay(10000).fadeOut();
+						$('#alertOK').fadeIn().delay(5000).fadeOut();
 						$('#alertOK').html("Your data was saved correctly.");
 						ctrl.refresh();
 					}else{
