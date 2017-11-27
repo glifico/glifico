@@ -16,12 +16,12 @@ if(!$data){
 
 $user=$data['user'];
 $pair=$data['values'];
-$from=$data['from'];
-$from=$language_codes[$data['IdLanguageFrom']];
-$to=$language_codes[$data['IdLanguageTo']];
-$price=$data['PricePerCharacter'];
+$from=$pair['from'];
+$from=$language_codes[$pair['IdLanguageFrom']];
+$to=$language_codes[$pair['IdLanguageTo']];
+$price=$pair['PricePerCharacter'];
 $price_euro=convert_to_euro($price);
-$currency=get_currency_description($data['IdCurrency']);
+$currency=get_currency_description($pair['IdCurrency']);
 $field="translations";
 $seervice="translations";
 
