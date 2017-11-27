@@ -52,7 +52,7 @@ function get_user_email($user){
 function get_currency_description($cur){
   $db=getDB();
   if(!$db) return;
-  $query="SELECT description FROM traduttore WHERE currency='$cur';";
+  $query="SELECT description FROM currencies WHERE currency='$cur';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
