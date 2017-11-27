@@ -1,5 +1,5 @@
 <?php
-$currencies=array("Translations","Interpretations");
+$currencies=array("translations","interpretations");
 
 
 $exit=[];

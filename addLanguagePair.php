@@ -22,7 +22,7 @@ $to=$language_codes[$pair['IdLanguageTo']];
 $price=$pair['PricePerCharacter'];
 $price_euro=convert_to_euro($price,$pair['IdCurrency']);
 $currency=get_currency_description($pair['IdCurrency']);
-$field="translations";
+$field="translation";
 $seervice="translations";
 
 
