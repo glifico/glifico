@@ -80,7 +80,6 @@ $language_codes = array(
   'ne' => 'Nepali' ,
   'no' => 'Norwegian' ,
   'oc' => 'Occitan' ,
-  'om' => '(Afan)/Oromoor/Oriya' ,
   'pa' => 'Punjabi' ,
   'pl' => 'Polish' ,
   'ps' => 'Pashto/Pushto' ,
