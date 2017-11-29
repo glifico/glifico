@@ -13,7 +13,7 @@ function search($db, $id){
 
 function updateTest($db, $user, $languageto, $tot){
   $today=date("Y-m-d H:i:s");
-  $query="UPDATE languages SET tottest='$tot', datatest='$today' WHERE username='$user' and language='$languageto';";
+  $query="UPDATE languages SET skilltest='$tot', datatest='$today' WHERE username='$user' and language='$languageto';";
   $result = $db->query($query);
 
 }
@@ -46,11 +46,11 @@ foreach ($domande as $domanda) {
 
 //get old data to make a mean
 $language=$domande[0]['language'];
-$query="SELECT username, tottest FROM languages WHERE username='$user' AND language='$language' ORDER BY tottest DESC;";
+$query="SELECT username, skilltest FROM languages WHERE username='$user' AND language='$language' ORDER BY skilltest DESC;";
 $result = $db->query($query);
 
 $row = $result->fetch(PDO::FETCH_ASSOC);
-$oldscore=$row['tottest'];
+$oldscore=$row['skilltest'];
 $newscore=$score;
 $score=intval(($newscore+$oldscore)/2);
 
