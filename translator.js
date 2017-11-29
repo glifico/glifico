@@ -54,6 +54,50 @@ function strLeft(sourceStr, keyStr) {
 }
 
 
+doDelete = function(from,to){
+	console.debug("deleting");
+	var arr={
+			"user": getUsername(),
+			"token": getToken(),
+			"values": {
+				"IdLanguageFrom":from,
+				"IdLanguageTo":to,
+			}
+	};
+
+	var stringPass=JSON.stringify(arr);
+	var data=stringPass;
+
+	$.ajax( {
+		type : "POST",
+		dataType : "application/json",
+		contentType : "application/json; charset=utf-8",
+		data : data,
+		url : "deleteLanguagePair.php",
+		complete : function(ret) {
+			var response=ret.responseText.replace(/\\/,"");
+			if(convertJSON(response).statuscode==200){
+				$('#alertOK').fadeIn().delay(5000).fadeOut();
+				$('#alertOK').html("Your data was updated correctly.");
+				ctrl.refresh();
+			}else{
+				$('#alertError').fadeIn().delay(1000).fadeOut();
+				$('#alertOK').html("There was an error, please retry.");
+			}
+		},
+		error : function(xhr) {
+			if (xhr.status == 500) {
+				$("#alertError").html("Error from server, please retry.");
+				$("#alertError").fadeIn().delay(1000).fadeOut();
+			}
+
+		}
+	});
+
+}
+
+
+
 /*-----------------------APP-------------------*/
 
 (function() {
@@ -651,47 +695,7 @@ function strLeft(sourceStr, keyStr) {
 //		$scope.openedEdu=edu;
 //		}
 
-		$scope.doDelete = function(from,to){
-			console.debug("deleting");
-		var arr={
-				"user": getUsername(),
-				"token": getToken(),
-				"values": {
-					"IdLanguageFrom":from,
-					"IdLanguageTo":to,
-				}
-		};
 
-		var stringPass=JSON.stringify(arr);
-		var data=stringPass;
-
-		$.ajax( {
-			type : "POST",
-			dataType : "application/json",
-			contentType : "application/json; charset=utf-8",
-			data : data,
-			url : "deleteLanguagePair.php",
-			complete : function(ret) {
-				var response=ret.responseText.replace(/\\/,"");
-				if(convertJSON(response).statuscode==200){
-					$('#alertOK').fadeIn().delay(5000).fadeOut();
-					$('#alertOK').html("Your data was updated correctly.");
-					ctrl.refresh();
-				}else{
-					$('#alertError').fadeIn().delay(1000).fadeOut();
-					$('#alertOK').html("There was an error, please retry.");
-				}
-			},
-			error : function(xhr) {
-				if (xhr.status == 500) {
-					$("#alertError").html("Error from server, please retry.");
-					$("#alertError").fadeIn().delay(1000).fadeOut();
-				}
-
-			}
-		});
-
-	}
 
 
 
