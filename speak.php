@@ -30,4 +30,14 @@ function user_try_add_lang($user,$lang){
   if(!user_speak_lang($user,$lang)) user_add_lang($user,$lang);
 }
 
+function user_try_del_lang($user, $lang){
+  $db=getDB();
+  if(!$db) exit;
+
+  $query="DELETE FROM languages WHERE username='$user' AND language='$lang';";
+  $result = $db->query($query);
+
+  $result->CloseCursor();
+}
+
 ?>
