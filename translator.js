@@ -79,7 +79,7 @@ doDelete = function(from,to){
 			if(convertJSON(response).statuscode==200){
 				$('#alertOK').fadeIn().delay(5000).fadeOut();
 				$('#alertOK').html("Your data was updated correctly.");
-				ctrl.refresh();
+				location.href=location.href;
 			}else{
 				$('#alertError').fadeIn().delay(1000).fadeOut();
 				$('#alertOK').html("There was an error, please retry.");
