@@ -1,6 +1,8 @@
 <?php
 include 'functions.php';
 include 'languages.php';
+include 'speak.php'
+
 
 $db=getDB();
 if(!$db) exit;
@@ -30,6 +32,9 @@ if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wr
 
 $query="INSERT INTO language_pair (username,from_l,to_l,price,price_euro,field,service,currency) VALUES ('$user','$from','$to','$price','$price_euro','$field','$service','$currency');";
 $result = $db->query($query);
+
+user_speak_lang($user,$from);
+user_speak_lang($user,$from);
 
 
 exit (json_encode(array("message"=>"language added", "statuscode"=>200)));
