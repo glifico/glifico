@@ -1,10 +1,10 @@
 <?php
+include 'functions.php'
 
 function user_speak_lang($user, $lang)
 {
   $db=getDB();
   if(!$db) exit;
-
 
   $query="SELECT username, language FROM languages WHERE username='$user';";
   $result = $db->query($query);
