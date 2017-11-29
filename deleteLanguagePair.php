@@ -18,8 +18,8 @@ if(!$data){
 
 $user=$data['user'];
 $pair=$data['values'];
-$from=$language_codes[$pair['IdLanguageFrom']];
-$to=$language_codes[$pair['IdLanguageTo']];
+$from=$pair['LanguageFrom'];
+$to=$pair['LanguageTo'];
 
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
