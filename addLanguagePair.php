@@ -33,9 +33,8 @@ if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wr
 $query="INSERT INTO language_pair (username,from_l,to_l,price,price_euro,field,service,currency) VALUES ('$user','$from','$to','$price','$price_euro','$field','$service','$currency');";
 $result = $db->query($query);
 
-user_speak_lang($user,$from);
-user_speak_lang($user,$from);
-
+user_try_add_lang($user,$from);
+user_try_add_lang($user,$to);
 
 exit (json_encode(array("message"=>"language added", "statuscode"=>200)));
 ?>

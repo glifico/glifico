@@ -26,4 +26,8 @@ function user_add_lang($user, $lang){
   $result->CloseCursor();
 }
 
+function user_try_add_lang($user,$lang){
+  if(!user_speak_lang($user,$lang)) user_add_lang($user,$lang);
+}
+
 ?>
