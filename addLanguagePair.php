@@ -1,7 +1,7 @@
 <?php
-include 'functions.php';
-include 'languages.php';
-include 'speak.php';
+require_once 'functions.php';
+require_once 'languages.php';
+require_once 'speak.php';
 
 
 $db=getDB();
