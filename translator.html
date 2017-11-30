@@ -574,13 +574,13 @@ User personal page
 					</md-content>
 				
 				
-				<!-- Language Modal -->
+<!-- Language Modal -->
 <div class="modal fade" id="LanguageModal" tabindex="-1" role="dialog" aria-labelledby="LanguageModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <h5 class="modal-title" id="LanguageModalLabel">Language pair</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -599,16 +599,18 @@ User personal page
 
 <script>
 $('#LanguageModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var job = button.data('job') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  var html="";
-  html+="Language from: <br>";
-  html+="Language to: <br>";
-  html+="Price:"+button.data('price')+"  <br>";
-  modal.find('.modal-body').html(html)
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var job = button.data('job') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  var html="";
+	  html+="Language from:"+button.data('from')+"<br>";
+	  html+="Language to:"+button.data('to')+"<br>";
+	  html+='<label>Price ['+button.data('currency')+']</label>';
+	  ctrl.openedPrice=button.data('price');
+	  html+='<input type="number" pattern="[0-9]*" class="input" data-ng-model="ctrl.openedEdu.Price"><br>';
+	  modal.find('.modal-body').html(html)
 })
 </script>
 
