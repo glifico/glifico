@@ -54,14 +54,14 @@ function strLeft(sourceStr, keyStr) {
 }
 
 
-function doDelete(from,to){
+function doDelete(from, to){
 	console.debug("deleting");
 	var arr={
 			"user": getUsername(),
 			"token": getToken(),
 			"values": {
-				"IdLanguageFrom":from,
-				"IdLanguageTo":to,
+				"LanguageFrom": from,
+				"LanguageTo": to,
 			}
 	};
 
@@ -636,8 +636,7 @@ function doDelete(from,to){
 				html+='<tr class="row">';
 				html+='<td class=" col-md-5"><span style="font-size:18px;">From: '+edu.LanguageFrom+', To:'+ edu.LanguageTo +', Price: '+edu.Price+' '+ edu.Currency+'</span></td>';
 				html+='<td class=" col-md-5"><button   data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
-				html+='<td class=" col-md-5"><button onclick="doDelete('+edu.LanguageFrom+','+edu.LanguageTo+')"><span aria-label="delete" class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span></button></td>';
-				html+='<td class=" col-md-5"><button onclick="doDelete('+edu.LanguageFrom+','+edu.LanguageTo+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
+				html+='<td class=" col-md-5"><button onclick="doDelete('+"'"+edu.LanguageFrom+"'"+','+"'"+edu.LanguageTo+"'"+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
 				html+='</tr>';
 			}
 			html+='</thead>';
