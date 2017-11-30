@@ -695,7 +695,7 @@ function refresh(){
 
 		ctrl.$onInit=function(){
 			ctrl.refresh();
-			ctrl.openedPrice=-1;
+			$scope.openedPrice=-1;
 			$scope.model=$scope.defaultModel;
 			console.debug($scope.model);
 		}

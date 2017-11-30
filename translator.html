@@ -608,7 +608,7 @@ $('#LanguageModal').on('show.bs.modal', function (event) {
 	  html+="Language from:"+button.data('from')+"<br>";
 	  html+="Language to:"+button.data('to')+"<br>";
 	  html+='<label>Price ['+button.data('currency')+']</label>';
-	  ctrl.openedPrice=button.data('price');
+	  openedPrice=button.data('price');
 	  html+='<input type="number" pattern="[0-9]*" class="input" data-ng-model="ctrl.openedEdu.Price"><br>';
 	  modal.find('.modal-body').html(html)
 })
