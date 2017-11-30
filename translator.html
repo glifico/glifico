@@ -541,7 +541,7 @@ User personal page
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Currency</label>
-										<md-select placeholder="Select Currency" ng-model="model.IdCurrency" md-on-open="loadCurrencies();" required>
+										<md-select placeholder="Select Currency" ng-model="model.IdCurrency" md-on-load="loadCurrencies();" required>
 											<md-option ng-repeat="element in Currencies" value="{{element.Id}}">
 												{{element.Currency}}
 											</md-option>
