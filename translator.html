@@ -579,8 +579,8 @@ User personal page
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+		<h5 class="modal-title" id="LanguageModalLabel">Language pair</h5>
        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <h5 class="modal-title" id="LanguageModalLabel">Language pair</h5>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -605,9 +605,9 @@ $('#LanguageModal').on('show.bs.modal', function (event) {
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	  var modal = $(this)
 	  var html="";
-	  html+="Language from:"+button.data('from')+"<br>";
-	  html+="Language to:"+button.data('to')+"<br>";
-	  html+='<label>Price ['+button.data('currency')+']</label>';
+	  html+="Language from: "+button.data('from')+"<br>";
+	  html+="Language to: "+button.data('to')+"<br>";
+	  html+='<label>Price ['+button.data('currency')+']</label><br>';
 	  openedPrice=button.data('price');
 	  html+='<input type="number" pattern="[0-9]*" class="input" data-ng-model="ctrl.openedEdu.Price"><br>';
 	  modal.find('.modal-body').html(html)
