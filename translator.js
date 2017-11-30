@@ -79,7 +79,7 @@ function doDelete(from, to){
 			if(convertJSON(response).statuscode==200){
 				$('#alertOK').fadeIn().delay(5000).fadeOut();
 				$('#alertOK').html("Your data was updated correctly.");
-				location.href=location.href;
+				refresh();
 			}else{
 				$('#alertError').fadeIn().delay(1000).fadeOut();
 				$('#alertOK').html("There was an error, please retry.");
@@ -96,7 +96,42 @@ function doDelete(from, to){
 
 }
 
+function createTable(pairs){
+	var html="";
+	html+='<table class="table">';
+	html+='<thead>';
+	html+='<tr class="row">';
+	html+='<th class="col-md-5"></th>';
+	html+='<th class="col-md-1"></th>';
+	html+='<th class="col-md-1"></th>';
+	html+='</tr>';
+	for (var i = 0; i < pairs.length; i++) {
+		var edu=pairs[i];
+		html+='<tr class="row">';
+		html+='<td class=" col-md-5"><span style="font-size:18px;">From: '+edu.LanguageFrom+', To:'+ edu.LanguageTo +', Price: '+edu.Price+' '+ edu.Currency+'</span></td>';
+		html+='<td class=" col-md-5"><button   data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
+		html+='<td class=" col-md-5"><button onclick="doDelete('+"'"+edu.LanguageFrom+"'"+','+"'"+edu.LanguageTo+"'"+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
+		html+='</tr>';
+	}
+	html+='</thead>';
+	html+='</table>';	
 
+	$("#pairsTable").html(html);
+}
+
+function refresh(){
+	var req=createXHTMLHttpRequest();
+	
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var ret=convertJSON(req.responseText);
+			createTable(ret);
+		}
+	}
+
+	req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
+	req.send();
+}
 
 /*-----------------------APP-------------------*/
 
@@ -623,26 +658,7 @@ function doDelete(from, to){
 
 
 		ctrl.createTable=function(pairs){
-			var html="";
-			html+='<table class="table">';
-			html+='<thead>';
-			html+='<tr class="row">';
-			html+='<th class="col-md-5"></th>';
-			html+='<th class="col-md-1"></th>';
-			html+='<th class="col-md-1"></th>';
-			html+='</tr>';
-			for (var i = 0; i < pairs.length; i++) {
-				var edu=pairs[i];
-				html+='<tr class="row">';
-				html+='<td class=" col-md-5"><span style="font-size:18px;">From: '+edu.LanguageFrom+', To:'+ edu.LanguageTo +', Price: '+edu.Price+' '+ edu.Currency+'</span></td>';
-				html+='<td class=" col-md-5"><button   data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
-				html+='<td class=" col-md-5"><button onclick="doDelete('+"'"+edu.LanguageFrom+"'"+','+"'"+edu.LanguageTo+"'"+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
-				html+='</tr>';
-			}
-			html+='</thead>';
-			html+='</table>';	
-
-			$("#pairsTable").html(html);
+			createTable(pairs);	
 		};
 
 		$scope.loadCurrencies = function(){
