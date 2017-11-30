@@ -320,7 +320,7 @@ User personal page
 										<input ng-model="model.LastName" class="text-center" required>
 									</md-input-container>
 								</div>
-<!-- 
+<!--
 								<div layout-gt-xs="row">
 									<md-input-container>
 										<label>Birthday</label>
@@ -493,9 +493,9 @@ User personal page
 				<h3>Language Pairs</h3>
 
 				<div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" layout="column" ng-cloak class="md-inline-form">
-				
+
 				<div id="pairsTable"></div>
-				
+
 					<md-content layout-padding>
 						<div>
 							<form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
@@ -553,14 +553,14 @@ User personal page
 									<md-input-container>
 										<label>Price Per Character</label>
 										<input type="number" ng-model="model.PricePerCharacter" required>
-										
+
 										<!-- DA DEFINIRE!!!!!!! -->
 										<div >
-											Price per word: {{model.PricePerCharacter *10}}
+											Price per word: {{model.PricePerCharacter *10 | number:5}}
 											<br>
-											Price per document: {{model.PricePerCharacter *1000}}
+											Price per document: {{model.PricePerCharacter *1000 | number:5}}
 										</div>
-										
+
 									</md-input-container>
 								</div>
 
@@ -572,8 +572,8 @@ User personal page
 						</div>
 
 					</md-content>
-				
-				
+
+
 <!-- Language Modal -->
 <div class="modal fade" id="LanguageModal" tabindex="-1" role="dialog" aria-labelledby="LanguageModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
