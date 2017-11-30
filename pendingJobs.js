@@ -72,7 +72,7 @@ acceptJob=function(id, choice){
 		url : "setJobAssigned.php",
 		complete : function(ret) {
 			var response=ret.responseText;
-			$("#alertOK").html("Job Translated!");
+			$("#alertOK").html("Job correctly set as assigned!");
 			$("#alertOK").fadeIn().delay(2000).fadeOut();
 			$("#jobModal").hide();
 			location.href=location.href;
