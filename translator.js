@@ -54,7 +54,7 @@ function strLeft(sourceStr, keyStr) {
 }
 
 
-doDelete = function(from,to){
+function doDelete(from,to){
 	console.debug("deleting");
 	var arr={
 			"user": getUsername(),
