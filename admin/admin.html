@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Glifico - Admin page</title>
@@ -12,9 +13,12 @@
 <script src="angular.min.js"></script>
 <script src="gaussian.controller.js"></script>
 </head>
-<body>
+<body ng-app="admin">
+<div style="text-align:centered;padding-left:5%;padding-top:2rem;width:98%;">
+<h1>Admin options</h1>
 <div ng-controller="AdminCtrl as ctrl">
-  <gaussianComponent></gaussianComponent>
+<gaussiancomponent></gaussiancomponent>
+</div>
 </div>
 </body>
 </html>

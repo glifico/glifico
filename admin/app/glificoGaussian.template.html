@@ -1,53 +1,45 @@
-<div style="text-align:centered;padding-left:10%;padding-top:3rem;width:95%;">
-  <h1>Admin options</h1>
-  <div ng-app="gaussian" style="width:90%;margin:auto;">
-    <div id="gBody" ng-controller="gaussianController as ctrl">
-      <div style="{{ctrl.checkStyle}}">
-        <div class="danger" ng-show="!ctrl.sizeOk" style="font-size:40px;">
-          ATTENZIONE i valori non sono normalizzati!
-        </div>
-        <form class="form">
-          <table class="table">
-            <tr class="row">
-              <td class="col-md-2">Dimensione</td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[0]['size']" ng-change="ctrl.formChange()" id="first-class">
-              </td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[1]['size']" ng-change="ctrl.formChange()" id="second-class">
-              </td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[2]['size']" ng-change="ctrl.formChange()" id="third-class">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-2">Margine</td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[0]['margin']" id="first-class">
-              </td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[1]['margin']" id="second-class">
-              </td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[2]['margin']" id="third-class">
-              </td>
-            </tr>
-            <tr class="row">
-              <td class="col-md-2">Quota fissa</td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[0]['fix']" id="first-class">
-              </td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[1]['fix']" id="second-class">
-              </td>
-              <td>
-                <input class="form-control" type="text" ng-model="ctrl.data[2]['fix']" id="third-class">
-              </td>
-            </tr>
-          </table>
-        </form>
-        La prima classe ha {{ctrl.data[0]['size']}}
-      </div>
-    </div>
-  </div>
+<div>
+  <form class="form">
+    <table class="table">
+      <tr class="row">
+        <td class="col-md-2">Dimensione</td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[0]['size']" ng-change="ctrl.formChange()" id="first-class">
+        </td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[1]['size']" ng-change="ctrl.formChange()" id="second-class">
+        </td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[2]['size']" ng-change="ctrl.formChange()" id="third-class">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="col-md-2">Margine</td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[0]['margin']" id="first-class">
+        </td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[1]['margin']" id="second-class">
+        </td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[2]['margin']" id="third-class">
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="col-md-2">Quota fissa</td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[0]['fix']" id="first-class">
+        </td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[1]['fix']" id="second-class">
+        </td>
+        <td>
+          <input class="form-control" type="number" ng-model="ctrl.data[2]['fix']" id="third-class">
+        </td>
+      </tr>
+    </table>
+  </form>
+  La somma è {{ctrl.data[0]['size']+ctrl.data[1]['size']+ctrl.data[2]['size']}}
 </div>
+
+{{ctrl.sizeOK()}}
