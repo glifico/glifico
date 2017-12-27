@@ -358,7 +358,7 @@ Price class:<br>
       <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
       <div id="modalBodySelect">
         Number of characters: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
-        Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="dd-MM-yyyy" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" required />
+        Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />
         <br>
         Days until deadline: {{ctrl.days | number:0}}<br>
         Available volume: {{ctrl.UrgCh}} characters<br>
