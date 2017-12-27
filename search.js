@@ -438,7 +438,6 @@ angular.module("search",[]).controller("search",function($scope){
 		if(!ctrl.TrDeadline){
 			ctrl.TrDeadline=ctrl.tomorrow;
 			ctrl.feasibility=3;
-			alert("Deadline is invalid!");
 			return;
 		}
 
