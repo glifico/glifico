@@ -435,15 +435,16 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.calculateFeasibility=function(){
-		if(!ctrl.TrDeadline){
-			ctrl.TrDeadline=ctrl.tomorrow;
-			ctrl.feasibility=3;
-			return;
-		}
-
 		var timeDiff = Math.abs(ctrl.TrDeadline.getTime() - ctrl.today.getTime());
 		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
+		if(days<0){
+			ctrl.TrDeadline=ctrl.tomorrow;
+			ctrl.feasibility=3;
+			alert("wrong deadline");
+			return;
+		}
+		
 		ctrl.MaxCh=days*10000;
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
