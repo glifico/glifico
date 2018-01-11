@@ -6,52 +6,81 @@ var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
 	policy: "eyJoYW5kbGUiOiIiLCJleHBpcnkiOjE1MDYxNjEyMDh9=",
 })
 
-showPicker=function(id, choice) {
+var acceptableFormats=['.pdf','.odt','.doc','.docx','.txt']
+var NacceptableFiles=1
+
+var isPreviewUploaded=false;
+var previewURL="";
+
+uploadFull=function(id, choice) {
+	if(!isPreviewUploaded){
+		alert("Please upload a preview of the document")
+	}else{
+		client.pick({
+			accept: acceptableFormats,
+			maxFiles: NacceptableFiles,
+			onClose(){
+
+			}
+		}).then(function(result) {
+			translateJob(result);
+		},function(result){
+			alert("Error while uploading");
+		});
+	}
+}
+
+uploadPreview=function(){
 	client.pick({
-		accept: ['.pdf','.odt','.doc','.docx','.txt'],
-		maxFiles: 1,
+		accept: acceptableFormats,
+		maxFiles: NacceptableFiles,
 		onClose(){
 
 		}
 	}).then(function(result) {
-		var temp = {
-				user : getUsername(),
-				token : getToken(),
-				id: id,
-				choice: choice,
-				url: result.filesUploaded[0]["url"]
-		};
-
-		var stringPass = JSON.stringify(temp);
-		var data = stringPass;
-
-		$.ajax( {
-			type : "POST",
-			dataType : "application/json",
-			contentType : "application/json; charset=utf-8",
-			data : data,
-			url : "setJobTranslated.php",
-			complete : function(ret) {
-				var response=ret.responseText;
-				$("#alertOK").html("Job Translated!");
-				$("#alertOK").fadeIn().delay(2000).fadeOut();
-				$("#jobModal").hide();
-				location.href=location.href;
-			},
-			error : function(xhr) {
-				if (xhr.status == 500) {
-					$("#alertError").html("Error from server, please retry.");
-					$("#alertError").fadeIn().delay(1000).fadeOut();
-				}
-
-			}
-		});
-
+		previewURL=result.filesUploaded[0]["url"]
+		isPreviewUploaded=true
 	},function(result){
 		alert("Error while uploading");
 	});
+}
 
-};
+translateJob=function(result){
+	var temp = {
+			user : getUsername(),
+			token : getToken(),
+			id: id,
+			choice: choice,
+			url: result.filesUploaded[0]["url"],
+			preview: previewURL
+	}
+
+	var stringPass = JSON.stringify(temp);
+	var data = stringPass;
+
+	$.ajax( {
+		type : "POST",
+		dataType : "application/json",
+		contentType : "application/json; charset=utf-8",
+		data : data,
+		url : "setJobTranslated.php",
+		complete : function(ret) {
+			var response=ret.responseText;
+			$("#alertOK").html("Job Translated!");
+			$("#alertOK").fadeIn().delay(2000).fadeOut();
+			$("#jobModal").hide();
+			location.href=location.href;
+		},
+		error : function(xhr) {
+			if (xhr.status == 500) {
+				$("#alertError").html("Error from server, please retry.");
+				$("#alertError").fadeIn().delay(1000).fadeOut();
+			}
+
+		}
+	});
+
+}
 
 acceptJob=function(id, choice){
 	var temp = {
@@ -59,7 +88,7 @@ acceptJob=function(id, choice){
 			token : getToken(),
 			choice: choice,
 			id: id,
-	};
+	}
 
 	var stringPass = JSON.stringify(temp);
 	var data = stringPass;
@@ -95,7 +124,7 @@ refuseJob=function(id, choice){
 			token : getToken(),
 			choice: choice,
 			id: id,
-	};
+	}
 
 	var stringPass = JSON.stringify(temp);
 	var data = stringPass;
@@ -147,10 +176,6 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Paid") return "ok";
 		if (doc.status=="Completed") return "Work closed definetely";
 		return "";
-	}
-	
-	ctrl.showPicker=function(){
-		showPicker();
 	}
 
 	ctrl.createTable=function(){
