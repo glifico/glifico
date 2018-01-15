@@ -1,0 +1,64 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "de5266d56e814f0dfab91ddb47dbb3bb",
+    "packages": [
+        {
+            "name": "satispay/online-api-php-sdk",
+            "version": "1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/satispay/online-api-php-sdk.git",
+                "reference": "fc4a1cbad858202be92d517dd6d3d884dd1380d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/satispay/online-api-php-sdk/zipball/fc4a1cbad858202be92d517dd6d3d884dd1380d9",
+                "reference": "fc4a1cbad858202be92d517dd6d3d884dd1380d9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SatispayOnline\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Satispay",
+                    "homepage": "http://satispay.com"
+                }
+            ],
+            "description": "Satispay Online API PHP SDK",
+            "keywords": [
+                "api",
+                "online",
+                "php",
+                "satispay",
+                "sdk"
+            ],
+            "time": "2017-12-04T09:31:51+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
