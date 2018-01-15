@@ -15,3 +15,7 @@ dumpDB.sh
 *.swp
 /.~lock.awesomeTranslation.doc#
 test.php
+
+
+vendor/
+composer.phar
