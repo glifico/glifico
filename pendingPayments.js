@@ -69,11 +69,15 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-3">'+doc.job+'</td>';
 			html+='<td class="col-md-3">'+doc.price+" "+doc.currency+'</td>';
-			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
+			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
+			if(doc.status=="Paid"){
+				html+='<i class="fa fa-check" aria-hidden="true"></i>';
+			}
+			html+='</td>';
 			html+='<td class="col-md-3">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Closed"||doc.status=="Paid"){
-				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
+				html+='<a href="#">Download recipe</a>';
 			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
 			}else if(doc.status=="Assigned"){
@@ -95,6 +99,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			}else if(doc.status=="To Be Assigned"){
 				html+="Waiting for translator acceptance..";
 			}
+			html+='</div>';
 			html+='</td>';
 			html+='<tr>';
 		}
