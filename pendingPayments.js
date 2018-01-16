@@ -71,13 +71,13 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<td class="col-md-3">'+doc.price+" "+doc.currency+'</td>';
 			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
 			if(doc.status=="Paid"){
-				html+='<i class="fa fa-check" aria-hidden="true"></i>';
+				html+=' <i class="fa fa-check" aria-hidden="true"></i>';
 			}
 			html+='</td>';
 			html+='<td class="col-md-3">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Closed"||doc.status=="Paid"){
-				html+='<a href="#">Download recipe</a>';
+				html+='<button type="button" class="btn btn-info">Download recipe</button>';
 			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
 			}else if(doc.status=="Assigned"){
