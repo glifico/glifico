@@ -1,6 +1,16 @@
 <?php
 include 'fuctions.php';
 
+$dir="/vendor/satispay/online-api-php-sdk/";
+
+require(dirname(__FILE__) . $dir. '/lib/Api.php');
+
+require(dirname(__FILE__) . $dir. '/lib/Bearer.php');
+require(dirname(__FILE__) . $dir. '/lib/Charge.php');
+require(dirname(__FILE__) . $dir. '/lib/Checkout.php');
+require(dirname(__FILE__) . $dir. '/lib/Refund.php');
+require(dirname(__FILE__) . $dir. '/lib/User.php');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
   $data = json_decode(file_get_contents("php://input"),true);
