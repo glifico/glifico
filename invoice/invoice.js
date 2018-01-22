@@ -1,6 +1,7 @@
 var comapnyJSON={
   CompanyName:'Glifico',
-  CompanyGSTIN:'37B76C238B7E1Z5',
+  //VAT
+  CompanyGSTIN:'IT0000000000',
   CompanyState:'Italy',
   CompanyAddressLine1:'ABCDEFGD HOUSE,IX/642-D',
   companyEmail:'info@glifico.com',
@@ -15,7 +16,6 @@ var customer_BillingInfoJSON={
   CustomerAddressLine1:'ABCDEFGD HOUSE,IX/642-D',
   CustomerAddressLine2:'ABCDEFGD P.O., NEDUMBASSERY',
   CustomerAddressLine3:'COCHIN',
-  PIN: '683584',
   CustomerEmail:'abcd@gmail.com',
   CustomerPhone:'+918189457845',
 };
@@ -24,7 +24,6 @@ var customer_BillingInfoJSON={
 var invoiceJSON={
   InvoiceNo:'INV-120152',
   InvoiceDate:'03-12-2017',
-  RefNo:'REF-78445',
   TotalAmnt:'Rs.1,24,200',
   SubTotalAmnt:'Rs.1,04,200',
   TotalGST:'Rs.2,0000',
@@ -87,7 +86,7 @@ function generate_cutomPDF(id) {
   doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=150);
 
   doc.setFontSize(fontSizes.NormalFontSize);
-  doc.textAlign("GSTIN", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+  doc.textAlign("VAT", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
   doc.setFontType('normal');
   // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
   doc.textAlign(comapnyJSON.CompanyGSTIN, {align: "left"}, 80, startY);
@@ -131,15 +130,7 @@ function generate_cutomPDF(id) {
   doc.setFontType('normal');
   doc.textAlign(invoiceJSON.InvoiceDate, {align: "left"}, rightStartCol2, tempY);
 
-  doc.setFontType('bold');
-  doc.textAlign("Reference No: ", {align: "left"},  rightStartCol1, tempY+=lineSpacing.NormalSpacing);
-  doc.setFontType('normal');
-  doc.textAlign(invoiceJSON.RefNo, {align: "left"}, rightStartCol2, tempY);
 
-  doc.setFontType('bold');
-  doc.textAlign("Total: ", {align: "left"},  rightStartCol1, tempY+=lineSpacing.NormalSpacing);
-  doc.setFontType('normal');
-  doc.textAlign(invoiceJSON.TotalAmnt, {align: "left"}, rightStartCol2, tempY);
   // doc.writeText(0, tempY+=lineSpacing.NormalSpacing ,"INVOICE No  :  "+invoiceJSON.InvoiceNo + '     ', { align: 'right' });
   // doc.writeText(0, tempY+=lineSpacing.NormalSpacing ,"INVOICE Date: "+invoiceJSON.InvoiceDate + '     ', { align: 'right' });
   // doc.writeText(0, tempY+=lineSpacing.NormalSpacing ,"Reference No: "+invoiceJSON.RefNo + '     ', { align: 'right' });
@@ -165,7 +156,7 @@ function generate_cutomPDF(id) {
   doc.textAlign("Billing Address,", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
   doc.textAlign(customer_BillingInfoJSON.CustomerName, {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
   doc.setFontSize(fontSizes.NormalFontSize);
-  doc.textAlign("GSTIN", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+  doc.textAlign("VAT", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
   doc.setFontType('normal');
   // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
   doc.textAlign(customer_BillingInfoJSON.CustomerGSTIN, {align: "left"}, 80, startY);
@@ -187,11 +178,6 @@ function generate_cutomPDF(id) {
   doc.textAlign("STATE", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
   doc.setFontType('normal');
   doc.textAlign(customer_BillingInfoJSON.CustomerState, {align: "left"}, 80, startY);
-
-  doc.setFontType('bold');
-  doc.textAlign("PIN", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
-  doc.setFontType('normal');
-  doc.textAlign(customer_BillingInfoJSON.PIN, {align: "left"}, 80, startY);
 
   doc.setFontType('bold');
   doc.textAlign("EMAIL", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
@@ -235,9 +221,7 @@ function generate_cutomPDF(id) {
       1: {columnWidth: 'auto'},
       2: {columnWidth: 'auto'},
       3: {columnWidth: 'auto'},
-      4: {columnWidth: 'auto'},
-      5: {columnWidth: 'auto'},
-      6: {columnWidth: 'auto'},
+      4: {columnWidth: 'auto'}
     },
     startY: startY+=50
   };
@@ -245,18 +229,11 @@ function generate_cutomPDF(id) {
   var columns = [
     {title: "ID", dataKey: "id",width: 90},
     {title: "Product", dataKey: "Product",width: 40},
-    {title: "Rate/Item", dataKey: "Rate/Item",width: 40},
     {title: "Qty", dataKey: "Qty",width: 40},
-    {title: "Dsnt", dataKey: "Dsnt",width: 40},
-    {title: "S.Total", dataKey: "STotal",width: 40},
-    {title: "CGST", dataKey: "CGST",width: 40},
-    {title: "SGST", dataKey: "SGST",width: 40},
-    {title: "IGST", dataKey: "IGST",width: 40},
-    {title: "CESS", dataKey: "CESS",width: 40},
     {title: "Total", dataKey: "Total",width: 40},
   ];
   var rows = [
-    {"id": 1, "Product": "Translation", "Rate/Item": "10","Qty" : "1","Dsnt":"0","STotal":"10","CGST":20,"SGST":20,"IGST":0,"CESS":20,"Total":10},
+    {"id": 1, "Product": "Translation", "Qty" : "1", "Total":10},
 
   ];
 
@@ -288,39 +265,16 @@ function generate_cutomPDF(id) {
 
 
   doc.setFontType('bold');
-  doc.textAlign("SGST Rs.", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-  doc.setFontType('normal');
-  // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-  doc.textAlign(invoiceJSON.TotalSGST, {align: "left"},rightcol2, startY);
-
-  doc.setFontType('bold');
-  doc.textAlign("IGST Rs.", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-  doc.setFontType('normal');
-  // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-  doc.textAlign(invoiceJSON.TotalIGST, {align: "left"},rightcol2, startY);
-
-
-  doc.setFontType('bold');
-  doc.textAlign("CESS Rs.", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-  doc.setFontType('normal');
-  // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-  doc.textAlign(invoiceJSON.TotalCESS, {align: "left"},rightcol2, startY);
-
-  doc.setFontType('bold');
-  doc.textAlign("Total GST Rs.", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+  doc.textAlign("Total: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
   doc.setFontType('normal');
   // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
   doc.textAlign(invoiceJSON.TotalGST, {align: "left"},rightcol2, startY);
 
-
-  doc.setFontType('bold');
-  doc.textAlign("Grand Total Rs.", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-  doc.setFontType('normal');
   // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
   doc.textAlign(invoiceJSON.TotalAmnt, {align: "left"},rightcol2, startY);
   doc.setFontType('bold');
   doc.textAlign('For '+comapnyJSON.CompanyName+',', {align: "center"},rightcol2, startY+=lineSpacing.NormalSpacing+50);
   doc.textAlign('Authorised Signatory', {align: "center"},rightcol2, startY+=lineSpacing.NormalSpacing+50);
 
-  doc.save("invoice.pdf");
+  doc.save("Glifico_invoice.pdf");
 }
