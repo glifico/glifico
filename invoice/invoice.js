@@ -54,7 +54,9 @@ var lineSpacing={
   NormalSpacing:12,
 };
 
-function generate_cutomPDF() {
+function generate_cutomPDF(id) {
+
+  console.debug("generated");
 
   var doc = new jsPDF('p', 'pt');
 

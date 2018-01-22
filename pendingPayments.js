@@ -77,7 +77,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<td class="col-md-3">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Closed"||doc.status=="Paid"){
-				html+='<button type="button" class="btn btn-info" onclick="generate_cutomPDF()">Download recipe</button>';
+				html+='<button type="button" class="btn btn-info" onclick="generate_cutomPDF('+"445454"+')">Download recipe</button>';
 			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
 			}else if(doc.status=="Assigned"){
