@@ -257,8 +257,6 @@ function generate_cutomPDF(id) {
   doc.textAlign("Sub Total,", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
   doc.textAlign(invoiceJSON.SubTotalAmnt, {align: "left"}, rightcol2, startY);
   doc.setFontSize(fontSizes.NormalFontSize);
-  doc.setFontType('bold');
-  doc.textAlign("CGST Rs.", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
   doc.setFontType('normal');
   // var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
   doc.textAlign(invoiceJSON.TotalCGST, {align: "left"},rightcol2, startY);
