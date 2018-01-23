@@ -53,12 +53,12 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-class costumer{
+class Costumer{
 	constructor(id){
 		console.info("costumer N"+id)
 		this.params={
-			CustomerName:'costumer',
-			CustomerGSTIN:'371Z5',
+			CustomerName:'Jane Doe',
+			CustomerGSTIN:'42',
 			CustomerState:'KE09)',
 			CustomerPAN:'B76C',
 			CustomerAddressLine1:'AUSE,IX/642-D',
@@ -73,7 +73,7 @@ class costumer{
 
 function generate_cutomPDF(id) {
 
-	var costumer = new costumer(id);
+	var costumer = new Costumer(id);
 
 	customer_BillingInfoJSON=costumer.params;
 	
@@ -275,14 +275,12 @@ function generate_cutomPDF(id) {
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-	doc.textAlign(invoiceJSON.TotalCGST, {align: "left"},rightcol2, startY);
 
 
 	doc.setFontType('bold');
 	doc.textAlign("Total: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-	doc.textAlign(invoiceJSON.TotalGST, {align: "left"},rightcol2, startY);
 
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
 	doc.textAlign(invoiceJSON.TotalAmnt, {align: "left"},rightcol2, startY);
