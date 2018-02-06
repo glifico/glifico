@@ -23,14 +23,14 @@ uploadFull=function(id, choice) {
 
 			}
 		}).then(function(result) {
-			translateJob(result);
+			translateJob(id, result);
 		},function(result){
 			alert("Error while uploading");
 		});
 	}
 }
 
-uploadPreview=function(){
+uploadPreview=function(id){
 	client.pick({
 		accept: acceptableFormats,
 		maxFiles: NacceptableFiles,
@@ -46,7 +46,7 @@ uploadPreview=function(){
 	});
 }
 
-translateJob=function(result){
+translateJob=function(id, result){
 	var temp = {
 			user : getUsername(),
 			token : getToken(),
