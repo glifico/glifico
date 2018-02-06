@@ -23,7 +23,7 @@ uploadFull=function(id, choice) {
 
 			}
 		}).then(function(result) {
-			translateJob(id, result);
+			translateJob(id, choice, result);
 		},function(result){
 			alert("Error while uploading");
 		});
@@ -46,7 +46,7 @@ uploadPreview=function(id){
 	});
 }
 
-translateJob=function(id, result){
+translateJob=function(id, choice, result){
 	var temp = {
 			user : getUsername(),
 			token : getToken(),
