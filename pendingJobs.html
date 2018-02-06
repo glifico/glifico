@@ -318,7 +318,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   var btnHtml="";
   if(button.data('status')=="Assigned"){
 	  html+="<br><br>";
-	  btnHtml+='<input class="btn btn-info" type="button" value="Upload preview" onclick="uploadPreview('+button.data("id")+","+button.data("choice")+')"/>';
+	  btnHtml+='<span id="preview"><input id="preview-btn" class="btn btn-info" type="button" value="Upload preview" onclick="uploadPreview('+button.data("id")+","+button.data("choice")+')"/></span>';
 	  btnHtml+='<input class="btn btn-primary" type="button" value="Upload full translated document" onclick="uploadFull('+button.data("id")+","+button.data("choice")+')"/>';
   }else if(button.data('status')=="To Be Assigned"){
 	  btnHtml+="<br><br>";

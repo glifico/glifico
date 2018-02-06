@@ -40,6 +40,7 @@ uploadPreview=function(){
 	}).then(function(result) {
 		previewURL=result.filesUploaded[0]["url"]
 		isPreviewUploaded=true
+		$("preview").html('<i class="fas fa-check"></i>');
 	},function(result){
 		alert("Error while uploading");
 	});
