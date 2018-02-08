@@ -319,7 +319,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  html+="<br><br><div>You may find the preview of document translated at: "+'<a href="'+link+'" target="_Blank">'+link+'</a></div>';
 	  btnHtml+='<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="approveJob('+button.data('id')+')">Approve</button>';
   }else if(button.data('status')=="Paid"){
-		btnHtml+='<button type="button" class="btn btn-info" onclick="generate_cutomPDF()">Download recipe</button>';
+		btnHtml+='<button type="button" class="btn btn-success" onclick="generate_cutomPDF()">Download recipe</button>';
   }
   modal.find('.modal-body').html(html);
   modal.find('.modal-footer').html(btnHtml);
