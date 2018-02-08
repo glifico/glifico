@@ -79,7 +79,9 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			if(doc.status=="Closed"){
 				
 			}else if(doc.status=="Paid"){
-				html+='<button type="button" class="btn btn-info" onclick="generate_cutomPDF()">Download recipe</button>';
+				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
+				
+				html+='>Download recipe and document</button>';
 			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
 			}else if(doc.status=="Assigned"){
@@ -97,7 +99,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
-				html+=' data-translated="'+doc.preview+'"';
+				html+=' data-document="'+doc.preview+'"';
 				html+='>Approve Job</button>';
 			}else if(doc.status=="To Be Assigned"){
 				html+="Waiting for translator acceptance..";
