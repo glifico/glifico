@@ -79,7 +79,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			if(doc.status=="Closed"){
 				
 			}else if(doc.status=="Paid"){
-				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
+				html+='<button type="button" class="btn btn-success" data-toggle="modal" data-target="#jobModal"';
 				html+='data-status="'+doc.status+'"';
 				html+='data-job="'+doc.job+'"';
 				html+='data-id="'+doc.id+'"';
