@@ -325,8 +325,10 @@ Here you can find all your jobs
 console.debug("inscript");
 $('#jobModal').on('show.bs.modal', function (event) {
 	console.debug("inmodal");
+	
 	modal.find('.modal-body').html("pippopippo");
-  var button = $(event.relatedTarget); // Button that triggered the modal
+  /*
+	var button = $(event.relatedTarget); // Button that triggered the modal
   var job = button.data('job'); // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
@@ -346,7 +348,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  btnHtml+='<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="approveJob('+button.data('id')+')">Approve</button>';
 	modal.find('.modal-footer').html(btnHtml)
   }
-  modal.find('.modal-body').html(html)
+  modal.find('.modal-body').html(html)*/
 })
 </script>
 
