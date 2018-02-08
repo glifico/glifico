@@ -86,7 +86,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
-				html+=' data-document="'+doc.translated+'"';
+				html+=' data-document="'+doc.document+'"';
 				html+='>Download recipe and document</button>';
 			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
@@ -105,7 +105,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
-				html+=' data-document="'+doc.preview+'"';
+				html+=' data-document="'+doc.document+'"';
 				html+='>Approve Job</button>';
 			}else if(doc.status=="To Be Assigned"){
 				html+="Waiting for translator acceptance..";
