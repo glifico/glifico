@@ -80,7 +80,10 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				
 			}else if(doc.status=="Paid"){
 				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
-				
+				html+='data-status="'+doc.status+'"';
+				html+='data-job="'+doc.job+'"';
+				html+='data-id="'+doc.id+'"';
+				html+=' data-document="'+doc.translated+'"';
 				html+='>Download recipe and document</button>';
 			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
