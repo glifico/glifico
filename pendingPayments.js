@@ -76,7 +76,9 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='</td>';
 			html+='<td class="col-md-3">';
 			html+='<div id="'+doc.id+'">';
-			if(doc.status=="Closed"||doc.status=="Paid"){
+			if(doc.status=="Closed"){
+				
+			}else if(doc.status=="Paid"){
 				html+='<button type="button" class="btn btn-info" onclick="generate_cutomPDF()">Download recipe</button>';
 			}else if (doc.status=="Accepted"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
@@ -89,12 +91,13 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+='>Show job</button>';
 			}else if(doc.status=="Translated"){
 				html+='<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#jobModal"';
+				html+='data-status="'+doc.status+'"';
 				html+='data-job="'+doc.job+'"';
 				html+='data-id="'+doc.id+'"';
 				html+=' data-price="'+doc.price+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
-				html+=' data-translated="'+doc.translated+'"';
+				html+=' data-translated="'+doc.preview+'"';
 				html+='>Approve Job</button>';
 			}else if(doc.status=="To Be Assigned"){
 				html+="Waiting for translator acceptance..";
