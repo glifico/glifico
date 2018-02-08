@@ -83,6 +83,9 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+='data-status="'+doc.status+'"';
 				html+='data-job="'+doc.job+'"';
 				html+='data-id="'+doc.id+'"';
+				html+=' data-price="'+doc.price+'"';
+				html+=' data-currency="'+doc.currency+'"';
+				html+=' data-description="'+doc.description+'"';
 				html+=' data-document="'+doc.translated+'"';
 				html+='>Download recipe and document</button>';
 			}else if (doc.status=="Accepted"){
