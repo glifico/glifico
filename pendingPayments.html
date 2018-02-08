@@ -318,38 +318,29 @@ Here you can find all your jobs
 	</div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
 <script>
-console.debug("inscript");
-$('#jobModal').on('show.bs.modal', function (event) {
-	console.debug("inmodal");
-	
-	modal.find('.modal-body').html("pippopippo");
-  /*
-	var button = $(event.relatedTarget); // Button that triggered the modal
-  var job = button.data('job'); // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this);
-  modal.find('.modal-title').text('Job: ' + job);
-  var html="";
-  html+="Title: <b>"+job+"</b><br>";
-  html+="Price: "+button.data('price')+button.data('currency');
-  html+="<br><br>"+button.data('description');
-  if(button.data('status')=="Translated"){
-	  console.debug("okok");
-	  html+="<br><br>";
-	  link=button.data('translated');
-	  html+='Download preview file at: <a href="'+link+'" target="_Blank">'+link+'</a>';
-	  
-	  btnHtml='<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-	  btnHtml+='<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="approveJob('+button.data('id')+')">Approve</button>';
-	modal.find('.modal-footer').html(btnHtml)
-  }
-  modal.find('.modal-body').html(html)*/
-})
+$('#exampleModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text('New message to ' + recipient)
+	  modal.find('.modal-body input').val(recipient)
+	})
 </script>
 
 </div>
