@@ -56,18 +56,33 @@ var lineSpacing={
 class Costumer{
 	constructor(id){
 		console.info("costumer N"+id)
-		this.params={
-			CustomerName:'Jane Doe',
-			CustomerGSTIN:'42',
-			CustomerState:'KE09)',
-			CustomerPAN:'B76C',
-			CustomerAddressLine1:'AUSE,IX/642-D',
-			CustomerAddressLine2:'A.O., NEDUMBASSERY',
-			CustomerAddressLine3:'CHIN',
-			CustomerEmail:'abcd@gmal.com',
-			CustomerPhone:'+91857845',
-	};
-			
+
+		var url = "getTrasnlatorData.php?user="+getUsername()+"&token="+getToken();
+
+		var req = createXHTMLHttpRequest() ;
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var data=JSON.parse(req.responseText);
+				this.params={
+						CustomerName:data.FirstName+' '+data.LastName,
+						CustomerGSTIN:'',
+						CustomerState:data.IdCountry,
+						CustomerPAN:'',
+						CustomerAddressLine1:data.City,
+						CustomerAddressLine2:data.StateProvince,
+						CustomerAddressLine3:data.ZIP,
+						CustomerEmail:data.email,
+						CustomerPhone:'',
+				}
+				
+			}else{
+				mostraDialogTimed('Error getting info from service');
+			}
+		}
+		req.open("GET",url,true);
+		req.send();
+
+
 	}
 }
 
@@ -76,7 +91,7 @@ function generate_cutomPDF(id) {
 	var costumer = new Costumer(id);
 
 	customer_BillingInfoJSON=costumer.params;
-	
+
 	var doc = new jsPDF('p', 'pt');
 
 	var rightStartCol1=400;
