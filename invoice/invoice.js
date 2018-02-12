@@ -57,8 +57,10 @@ class Costumer{
 	constructor(id){
 		console.info("costumer N"+id)
 
-		var url = "getTrasnlatorData.php?user="+getUsername()+"&token="+getToken();
+		var url = "getTranslatorData.php?user="+getUsername()+"&token="+getToken();
 
+		this.params={}
+		
 		var req = createXHTMLHttpRequest() ;
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
