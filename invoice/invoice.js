@@ -54,10 +54,10 @@ var lineSpacing={
 };
 
 class Costumer{
-	constructor(id){
+	constructor(){
 		console.info("costumer N"+id)
 
-		var url = "getTranslatorData.php?user="+getUsername()+"&token="+getToken();
+		var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 		this.params={}
 		
@@ -73,7 +73,7 @@ class Costumer{
 						CustomerAddressLine1:data.City,
 						CustomerAddressLine2:data.StateProvince,
 						CustomerAddressLine3:data.ZIP,
-						CustomerEmail:data.email,
+						CustomerEmail:data.EmailReferenceBilling,
 						CustomerPhone:'',
 				}
 				
@@ -90,7 +90,7 @@ class Costumer{
 
 function generate_cutomPDF(id) {
 
-	var costumer = new Costumer(id);
+	var costumer = new Costumer();
 
 	customer_BillingInfoJSON=costumer.params;
 	
