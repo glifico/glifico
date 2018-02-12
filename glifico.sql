@@ -3,9 +3,9 @@
 --
 
 -- Dumped from database version 9.6.1
--- Dumped by pg_dump version 10.0
+-- Dumped by pg_dump version 10.2
 
--- Started on 2017-11-01 19:34:24 CET
+-- Started on 2018-02-12 07:44:32 CET
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -132,7 +132,8 @@ CREATE TABLE language_pair (
     price numeric,
     field character varying(50),
     currency character varying(50),
-    price_euro numeric
+    price_euro numeric,
+    service character varying(30)
 );
 
 
@@ -146,7 +147,8 @@ CREATE TABLE languages (
     language text,
     datatest timestamp without time zone,
     tottest integer,
-    idlanguageto character varying(2)
+    idlanguageto character varying(2),
+    skilltest integer
 );
 
 
@@ -158,17 +160,18 @@ CREATE TABLE languages (
 CREATE TABLE payments (
     id integer NOT NULL,
     job character varying(200),
-    price character varying(20),
+    price numeric,
     currency character varying(50),
     status character varying(15),
     description character varying(500),
     username character varying(20),
-    link character varying(200),
+    translated character varying(200),
     translator character varying(200),
     secondtranslator character varying(20),
-    originallink character varying(200),
-    viewlink character varying(200),
+    document character varying(200),
+    preview character varying(200),
     secondstatus character varying(20),
+    deadline date,
     CONSTRAINT payments_check CHECK (((translator)::text <> (secondtranslator)::text))
 );
 
@@ -445,139 +448,143 @@ COPY currencies (id, currency, conversion, description) FROM stdin;
 -- Data for Name: language_pair; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY language_pair (username, from_l, to_l, price, field, currency, price_euro) FROM stdin;
-Claudia	Spanish	Italian	0	translation	USD - US Dollar	0
-Claudia	Italian	Spanish	0	translation	USD - US Dollar	0
-Claudia	Spanish	Portuguese	0	translation	USD - US Dollar	0
-Claudia	Portuguese	Spanish	0	translation	USD - US Dollar	0
-cristina_1987ro	French	Romanian	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Portuguese	Romanian	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Portuguese	Italian	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Portuguese	Spanish	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Portuguese	English	0.1	translation	EUR - Euro	0.1
-giuliapiaser	Spanish	Italian	0.06	translation	EUR - Euro	0.06
-giuliapiaser	English	Italian	0.06	translation	EUR - Euro	0.06
-ValentinaO	English	Italian	0.03	translation	EUR - Euro	0.03
-ValentinaO	Spanish	Italian	0.03	translation	EUR - Euro	0.03
-ValentinaO	French	Italian	0.03	translation	EUR - Euro	0.03
-VL11939	French	Italian	0	translation	EUR - Euro	0
-simkovich0811@gmail.com	Hungarian	English	1000	translation	HUF - Forint	3.21
-AngleRei	English	Italian	20	translation	EUR - Euro	20
-Tony1964	Italian	Spanish	13	translation	EUR - Euro	13
-Tony1964	Italian	English	13	translation	EUR - Euro	13
-Tony1964	Spanish	Italian	13	translation	EUR - Euro	13
-Tony1964	English	Italian	13	translation	EUR - Euro	13
-Tony1964	English	Spanish	13	translation	EUR - Euro	13
-Tony1964	French	Italian	13	translation	EUR - Euro	13
-cristina_1987ro	Catalan	Spanish	0.1	translation	EUR - Euro	0.1
-_valentina	English	Italian	12	translation	EUR - Euro	12
-annabaccenetti	English	Italian	80	translation	EUR - Euro	80
-d.fasano5	Russian	Italian	0.1	translation	EUR - Euro	0.1
-d.fasano5	English	Italian	0.1	translation	EUR - Euro	0.1
-savu.florin@gmail.com	Dutch	Romanian	8	translation	EUR - Euro	8
-mmakrai@yahoo.com	English	German	0.08	translation	EUR - Euro	0.08
-mariarosaria_leggieri@yahoo.it	English	Italian	0	translation	EUR - Euro	0
-mariarosaria_leggieri@yahoo.it	French	Italian	0	translation	EUR - Euro	0
-cristina_1987ro	Catalan	English	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Catalan	Italian	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	French	Spanish	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	French	English	0.1	translation	EUR - Euro	0.1
-Christi	English	Greek	0.07	translation	EUR - Euro	0.07
-Christi	French	Greek	0.07	translation	EUR - Euro	0.07
-Claudia	French	Spanish	0	translation	USD - US Dollar	0
-_valentina	Spanish	Italian	12	translation	EUR - Euro	12
-juanantcastan@gmail.com	French	Spanish	0.07	translation	EUR - Euro	0.07
-sarahtankr@gmail.com	English	Italian	20	translation	EUR - Euro	20
-sarahtankr@gmail.com	French	Italian	20	translation	EUR - Euro	20
-translatorsitalian	English	Italian	0.07	translation	EUR - Euro	0.07
-translatorsitalian	French	Italian	0.07	translation	EUR - Euro	0.07
-cristina_1987ro	English	Italian	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Romanian	Spanish	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Romanian	Italian	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Spanish	Romanian	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Catalan	Romanian	0.1	translation	EUR - Euro	0.1
-Christi	Turkish	Greek	0.07	translation	EUR - Euro	0.07
-Christi	Italian	Greek	0.07	translation	EUR - Euro	0.07
-mmakrai@yahoo.com	English	Croation	0.055	translation	EUR - Euro	0.06
-Claudia	Portuguese	Italian	0	translation	USD - US Dollar	0
-Claudia	Portuguese	French	0	translation	USD - US Dollar	0
-savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8
-savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8
-Claudia	French	Portuguese	0	translation	USD - US Dollar	0
-santaseta@hotmail.com	Italian	Turkish	100	translation	TRY - New Turkish Lira	22.63
-oljafiore@gmail.com	Italian	Serbian	20	translation	EUR - Euro	20
-oljafiore@gmail.com	Portuguese	Serbian	20	translation	EUR - Euro	20
-simona	English	Italian	10	translation	EUR - Euro	10
-simona	German	Italian	10	translation	EUR - Euro	10
-simona	French	Italian	10	translation	EUR - Euro	10
-BibianaSalazar	Spanish	English	0	translation	COP - Colombian Peso	0
-BekirDiri	Turkish	English	0.07	translation	EUR - Euro	0.07
-BibianaSalazar	English	Spanish	0	translation	COP - Colombian Peso	0
-jaredfirth	Russian	English	0.12	translation	USD - US Dollar	0.1
-TheSirion	English	Portuguese	0.07	translation	USD - US Dollar	0.06
-idalconte	English	Italian	500	translation	EUR - Euro	500
-idalconte	Italian	English	500	translation	EUR - Euro	500
-petersenizza	English	Slovenian	0	translation	EUR - Euro	0
-petersenizza	English	Slovenian	0	translation	EUR - Euro	0
-Claudia	French	Italian	0	translation	USD - US Dollar	0
-petersenizza	English	Italian	0	translation	EUR - Euro	0
-petersenizza	Italian	English	0	translation	EUR - Euro	0
-gloria_732000@yahoo.it	English	Italian	1	translation	EUR - Euro	1
-BekirDiri	English	Turkish	0.06	translation	EUR - Euro	0.06
-idalconte	Italian	Russian	500	translation	EUR - Euro	500
-bertolinolucrezia@gmail.com	English	Italian	0.01	translation	USD - US Dollar	0.01
-juanantcastan@gmail.com	English	Spanish	0.07	translation	EUR - Euro	0.07
-cristina_1987ro	Romanian	English	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Spanish	English	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	Spanish	Italian	0.1	translation	EUR - Euro	0.1
-Viktorija	Croation	Italian	15	translation	EUR - Euro	15
-Viktorija	Italian	Croation	15	translation	EUR - Euro	15
-test	English	Italian	0.001	translation	EUR - Euro	0
-simkovich0811@gmail.com	Hungarian	Ukranian	1000	translation	HUF - Forint	3.21
-Claudia	English	Spanish	0	translation	USD - US Dollar	0
-Zsofia Kraus	Hungarian	Turkish	8500	translation	HUF - Forint	27.29
-Claudia	English	Italian	0	translation	USD - US Dollar	0
-Claudia	Italian	English	0	translation	USD - US Dollar	0
-simona	German	English	10	translation	EUR - Euro	10
-Viktorija	Italian	Macedonian	15	translation	EUR - Euro	15
-Viktorija	Italian	Serbian	15	translation	EUR - Euro	15
-Viktorija	Serbian	Italian	15	translation	EUR - Euro	15
-Serena	Italian	English	6	translation	EUR - Euro	6
-Serena	Italian	French	6	translation	EUR - Euro	6
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	translation	EUR - Euro	0.01
-Claudia	Italian	Portuguese	0	translation	USD - US Dollar	0
-idalconte	Russian	Italian	500	translation	EUR - Euro	500
-cristina_1987ro	English	Spanish	0.1	translation	EUR - Euro	0.1
-cristina_1987ro	French	Italian	0.1	translation	EUR - Euro	0.1
-VL11939	English	Italian	0	translation	EUR - Euro	0
-annabaccenetti	French	Italian	80	translation	EUR - Euro	80
-Claudia	English	French	0	translation	USD - US Dollar	0
-Claudia	French	English	0	translation	USD - US Dollar	0
-Claudia	Spanish	French	0	translation	USD - US Dollar	0
-Claudia	English	Portuguese	0	translation	USD - US Dollar	0
-Viktorija	Italian	Bulgarian	15	translation	EUR - Euro	15
-Viktorija	Bulgarian	Italian	15	translation	EUR - Euro	15
-sonia.giardini@gmail.com	Japanese	Italian	30	translation	EUR - Euro	30
-giorgio	English	Italian	0.01	translation	EUR - EURO	0.01
-simkovich0811@gmail.com	Ukranian	Hungarian	1000	translation	HUF - Forint	3.21
-simkovich0811@gmail.com	English	Hungarian	1000	translation	HUF - Forint	3.21
-Claudia	Portuguese	English	0	translation	USD - US Dollar	0
-helga83	English	Hungarian	1	translation	HUF - Forint	0
-sebastianvargas92@gmail.com	English	Spanish	0.07	translation	USD - US Dollar	0.06
-sebastianvargas92@gmail.com	Spanish	English	0.07	translation	USD - US Dollar	0.06
-Viktorija	Macedonian	Italian	15	translation	EUR - Euro	15
-eespol@yahoo.com	Nepali	English	15	translation	EUR - Euro	15
-camilla.musso@gmail.com	English	Italian	0.02	translation	EUR - Euro	0.02
-camilla.musso@gmail.com	French	Italian	0.02	translation	EUR - Euro	0.02
-camilla.musso@gmail.com	Spanish	Italian	0.02	translation	EUR - Euro	0.02
-quistis25@gmail.com	English	Italian	0.06	translation	EUR - Euro	0.06
-quistis25@gmail.com	Spanish	Italian	0.05	translation	EUR - Euro	0.05
-oljafiore@gmail.com	Serbian	Italian	20	translation	EUR - Euro	20
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	translation	EUR - Euro	0.01
-AdrianaB	French	Italian	0.05	translation	EUR - Euro	0.05
-AdrianaB	English	Italian	0.05	translation	EUR - Euro	0.05
-AdrianaB	Spanish	Italian	0.05	translation	EUR - Euro	0.05
-Claudia	Spanish	English	0	translation	USD - US Dollar	0
+COPY language_pair (username, from_l, to_l, price, field, currency, price_euro, service) FROM stdin;
+Claudia	Spanish	Italian	0	translation	USD - US Dollar	0	translations
+Claudia	Italian	Spanish	0	translation	USD - US Dollar	0	translations
+Claudia	Spanish	Portuguese	0	translation	USD - US Dollar	0	translations
+Claudia	Portuguese	Spanish	0	translation	USD - US Dollar	0	translations
+annabaccenetti	English	Italian	80	translation	EUR - Euro	80	translations
+d.fasano5	Russian	Italian	0.1	translation	EUR - Euro	0.1	translations
+d.fasano5	English	Italian	0.1	translation	EUR - Euro	0.1	translations
+savu.florin@gmail.com	Dutch	Romanian	8	translation	EUR - Euro	8	translations
+mmakrai@yahoo.com	English	German	0.08	translation	EUR - Euro	0.08	translations
+mariarosaria_leggieri@yahoo.it	English	Italian	0	translation	EUR - Euro	0	translations
+Christi	English	Greek	0.07	translation	EUR - Euro	0.07	translations
+test	Italian	English	0.001	translation	EUR - Euro	0	
+test	French	English	0.004	translation	EUR - Euro	0	
+luca	Nepali	Italian	0	translation	EUR - Euro	0	
+test	English	Italian	0.001	translation	EUR - Euro	0	
+cristina_1987ro	French	Romanian	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Portuguese	Romanian	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Portuguese	Italian	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Portuguese	Spanish	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Portuguese	English	0.1	translation	EUR - Euro	0.1	translations
+giuliapiaser	Spanish	Italian	0.06	translation	EUR - Euro	0.06	translations
+giuliapiaser	English	Italian	0.06	translation	EUR - Euro	0.06	translations
+ValentinaO	English	Italian	0.03	translation	EUR - Euro	0.03	translations
+ValentinaO	Spanish	Italian	0.03	translation	EUR - Euro	0.03	translations
+ValentinaO	French	Italian	0.03	translation	EUR - Euro	0.03	translations
+VL11939	French	Italian	0	translation	EUR - Euro	0	translations
+simkovich0811@gmail.com	Hungarian	English	1000	translation	HUF - Forint	3.21	translations
+AngleRei	English	Italian	20	translation	EUR - Euro	20	translations
+Tony1964	Italian	Spanish	13	translation	EUR - Euro	13	translations
+Tony1964	Italian	English	13	translation	EUR - Euro	13	translations
+Tony1964	Spanish	Italian	13	translation	EUR - Euro	13	translations
+Tony1964	English	Italian	13	translation	EUR - Euro	13	translations
+Tony1964	English	Spanish	13	translation	EUR - Euro	13	translations
+Tony1964	French	Italian	13	translation	EUR - Euro	13	translations
+cristina_1987ro	Catalan	Spanish	0.1	translation	EUR - Euro	0.1	translations
+_valentina	English	Italian	12	translation	EUR - Euro	12	translations
+luca	English	Italian	2	translation	EUR - Euro	2	
+mariarosaria_leggieri@yahoo.it	French	Italian	0	translation	EUR - Euro	0	translations
+cristina_1987ro	Catalan	English	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Catalan	Italian	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	French	Spanish	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	French	English	0.1	translation	EUR - Euro	0.1	translations
+Christi	French	Greek	0.07	translation	EUR - Euro	0.07	translations
+Claudia	French	Spanish	0	translation	USD - US Dollar	0	translations
+_valentina	Spanish	Italian	12	translation	EUR - Euro	12	translations
+juanantcastan@gmail.com	French	Spanish	0.07	translation	EUR - Euro	0.07	translations
+sarahtankr@gmail.com	English	Italian	20	translation	EUR - Euro	20	translations
+sarahtankr@gmail.com	French	Italian	20	translation	EUR - Euro	20	translations
+translatorsitalian	English	Italian	0.07	translation	EUR - Euro	0.07	translations
+translatorsitalian	French	Italian	0.07	translation	EUR - Euro	0.07	translations
+cristina_1987ro	English	Italian	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Romanian	Spanish	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Romanian	Italian	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Spanish	Romanian	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Catalan	Romanian	0.1	translation	EUR - Euro	0.1	translations
+Christi	Turkish	Greek	0.07	translation	EUR - Euro	0.07	translations
+Christi	Italian	Greek	0.07	translation	EUR - Euro	0.07	translations
+mmakrai@yahoo.com	English	Croation	0.055	translation	EUR - Euro	0.06	translations
+BibianaSalazar	Spanish	English	0	translation	COP - Colombian Peso	0	translations
+BekirDiri	Turkish	English	0.07	translation	EUR - Euro	0.07	translations
+BibianaSalazar	English	Spanish	0	translation	COP - Colombian Peso	0	translations
+jaredfirth	Russian	English	0.12	translation	USD - US Dollar	0.1	translations
+TheSirion	English	Portuguese	0.07	translation	USD - US Dollar	0.06	translations
+idalconte	English	Italian	500	translation	EUR - Euro	500	translations
+idalconte	Italian	English	500	translation	EUR - Euro	500	translations
+petersenizza	English	Slovenian	0	translation	EUR - Euro	0	translations
+petersenizza	English	Slovenian	0	translation	EUR - Euro	0	translations
+Claudia	French	Italian	0	translation	USD - US Dollar	0	translations
+petersenizza	English	Italian	0	translation	EUR - Euro	0	translations
+petersenizza	Italian	English	0	translation	EUR - Euro	0	translations
+gloria_732000@yahoo.it	English	Italian	1	translation	EUR - Euro	1	translations
+BekirDiri	English	Turkish	0.06	translation	EUR - Euro	0.06	translations
+idalconte	Italian	Russian	500	translation	EUR - Euro	500	translations
+bertolinolucrezia@gmail.com	English	Italian	0.01	translation	USD - US Dollar	0.01	translations
+juanantcastan@gmail.com	English	Spanish	0.07	translation	EUR - Euro	0.07	translations
+cristina_1987ro	Romanian	English	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Spanish	English	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	Spanish	Italian	0.1	translation	EUR - Euro	0.1	translations
+Viktorija	Croation	Italian	15	translation	EUR - Euro	15	translations
+Viktorija	Italian	Croation	15	translation	EUR - Euro	15	translations
+simkovich0811@gmail.com	Hungarian	Ukranian	1000	translation	HUF - Forint	3.21	translations
+Claudia	English	Spanish	0	translation	USD - US Dollar	0	translations
+Claudia	Portuguese	Italian	0	translation	USD - US Dollar	0	translations
+Claudia	Portuguese	French	0	translation	USD - US Dollar	0	translations
+savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8	translations
+savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8	translations
+Claudia	French	Portuguese	0	translation	USD - US Dollar	0	translations
+santaseta@hotmail.com	Italian	Turkish	100	translation	TRY - New Turkish Lira	22.63	translations
+oljafiore@gmail.com	Italian	Serbian	20	translation	EUR - Euro	20	translations
+oljafiore@gmail.com	Portuguese	Serbian	20	translation	EUR - Euro	20	translations
+simona	English	Italian	10	translation	EUR - Euro	10	translations
+simona	German	Italian	10	translation	EUR - Euro	10	translations
+simona	French	Italian	10	translation	EUR - Euro	10	translations
+sebastianvargas92@gmail.com	English	Spanish	0.07	translation	USD - US Dollar	0.06	translations
+sebastianvargas92@gmail.com	Spanish	English	0.07	translation	USD - US Dollar	0.06	translations
+Viktorija	Macedonian	Italian	15	translation	EUR - Euro	15	translations
+eespol@yahoo.com	Nepali	English	15	translation	EUR - Euro	15	translations
+camilla.musso@gmail.com	English	Italian	0.02	translation	EUR - Euro	0.02	translations
+camilla.musso@gmail.com	French	Italian	0.02	translation	EUR - Euro	0.02	translations
+camilla.musso@gmail.com	Spanish	Italian	0.02	translation	EUR - Euro	0.02	translations
+quistis25@gmail.com	English	Italian	0.06	translation	EUR - Euro	0.06	translations
+quistis25@gmail.com	Spanish	Italian	0.05	translation	EUR - Euro	0.05	translations
+oljafiore@gmail.com	Serbian	Italian	20	translation	EUR - Euro	20	translations
+mchiarasbragaglia@hotmail.it	English	Italian	0.008	translation	EUR - Euro	0.01	translations
+AdrianaB	French	Italian	0.05	translation	EUR - Euro	0.05	translations
+AdrianaB	English	Italian	0.05	translation	EUR - Euro	0.05	translations
+AdrianaB	Spanish	Italian	0.05	translation	EUR - Euro	0.05	translations
+Claudia	Spanish	English	0	translation	USD - US Dollar	0	translations
+Zsofia Kraus	Hungarian	Turkish	8500	translation	HUF - Forint	27.29	translations
+Claudia	English	Italian	0	translation	USD - US Dollar	0	translations
+Claudia	Italian	English	0	translation	USD - US Dollar	0	translations
+simona	German	English	10	translation	EUR - Euro	10	translations
+Viktorija	Italian	Macedonian	15	translation	EUR - Euro	15	translations
+Viktorija	Italian	Serbian	15	translation	EUR - Euro	15	translations
+Viktorija	Serbian	Italian	15	translation	EUR - Euro	15	translations
+Serena	Italian	English	6	translation	EUR - Euro	6	translations
+Serena	Italian	French	6	translation	EUR - Euro	6	translations
+mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	translation	EUR - Euro	0.01	translations
+Claudia	Italian	Portuguese	0	translation	USD - US Dollar	0	translations
+idalconte	Russian	Italian	500	translation	EUR - Euro	500	translations
+cristina_1987ro	English	Spanish	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	French	Italian	0.1	translation	EUR - Euro	0.1	translations
+VL11939	English	Italian	0	translation	EUR - Euro	0	translations
+annabaccenetti	French	Italian	80	translation	EUR - Euro	80	translations
+Claudia	English	French	0	translation	USD - US Dollar	0	translations
+Claudia	French	English	0	translation	USD - US Dollar	0	translations
+Claudia	Spanish	French	0	translation	USD - US Dollar	0	translations
+Claudia	English	Portuguese	0	translation	USD - US Dollar	0	translations
+Viktorija	Italian	Bulgarian	15	translation	EUR - Euro	15	translations
+Viktorija	Bulgarian	Italian	15	translation	EUR - Euro	15	translations
+sonia.giardini@gmail.com	Japanese	Italian	30	translation	EUR - Euro	30	translations
+giorgio	English	Italian	0.01	translation	EUR - EURO	0.01	translations
+simkovich0811@gmail.com	Ukranian	Hungarian	1000	translation	HUF - Forint	3.21	translations
+simkovich0811@gmail.com	English	Hungarian	1000	translation	HUF - Forint	3.21	translations
+Claudia	Portuguese	English	0	translation	USD - US Dollar	0	translations
+helga83	English	Hungarian	1	translation	HUF - Forint	0	translations
 \.
 
 
@@ -587,17 +594,19 @@ Claudia	Spanish	English	0	translation	USD - US Dollar	0
 -- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY languages (username, language, datatest, tottest, idlanguageto) FROM stdin;
-luca	Italian	2017-10-12 09:58:17	0	it
-giorgio	Italian	2017-10-12 09:58:17	0	it
-GiorgioTraduttore	Italian	2017-10-12 09:58:17	0	it
-luca	English	2017-10-12 09:58:17	0	en
-GiorgioTraduttore	English	2017-10-12 09:58:17	0	en
-GiorgioTraduttore	Spanish	2017-10-12 09:58:17	0	es
-test	Japanese	2017-10-12 09:58:17	0	jp
-test	English	2017-10-29 16:38:37	0	en
-giorgio	English	2017-10-29 16:39:51	1	en
-test	Italian	2017-10-31 21:01:32	0	it
+COPY languages (username, language, datatest, tottest, idlanguageto, skilltest) FROM stdin;
+giorgio	Italian	2017-10-12 09:58:17	0	it	0
+GiorgioTraduttore	Italian	2017-10-12 09:58:17	0	it	0
+luca	English	2017-10-12 09:58:17	0	en	0
+GiorgioTraduttore	English	2017-10-12 09:58:17	0	en	0
+GiorgioTraduttore	Spanish	2017-10-12 09:58:17	0	es	0
+giorgio	English	2017-10-29 16:39:51	1	en	1
+luca	Italian	2017-11-04 17:01:41	2	it	2
+test	Japanese	2017-10-12 09:58:17	2	jp	2
+test	English	2017-10-29 16:38:37	2	en	2
+test	French	2017-11-30 06:43:59	\N	\N	2
+luca	Nepali	\N	\N	\N	\N
+test	Italian	\N	\N	\N	\N
 \.
 
 
@@ -607,12 +616,9 @@ test	Italian	2017-10-31 21:01:32	0	it
 -- Data for Name: payments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY payments (id, job, price, currency, status, description, username, link, translator, secondtranslator, originallink, viewlink, secondstatus) FROM stdin;
-14	Test translation job	10	EUR - EURO	Paid	Carica una traduzione di qualcosa	agenzia	https://cdn.filestackcontent.com/4E0NKvVTEeHGuv560qLZ	test	giorgio	\N	\N	To Be Assigned
-12	Test translation job	10	EUR - EURO	To Be Assigned	carica una traduzione di qualcosa per favore (Test Luca)	agenzia		luca	test	\N	\N	Refused
-1	libreoffice	10	EUR - EURO	To Be Assigned	traducimi questo	agenzia	https://cdn.filestackcontent.com/3hpArAFkRTKNBfjm4plx	test	giorgio	\N	\N	To Be Assigned
-11	Test translation job	10	EUR - EURO	Assigned	carica una traduzione di qualcosa per favore (Test Giorgio)	agenzia		giorgio	test	\N	\N	Assigned
-2	traduzione	10	EUR - EURO	To Be Assigned	prova  db	agenzia	https://cdn.filestackcontent.com/qUUkVpTJTwqFXRExpOve	test	giorgio	\N	\N	Refused
+COPY payments (id, job, price, currency, status, description, username, translated, translator, secondtranslator, document, preview, secondstatus, deadline) FROM stdin;
+17		1	EUR - EURO	Paid		agenzia	https://cdn.filestackcontent.com/EG5mBCV1QfCetXSI6LPl	luca	\N	https://cdn.filestackcontent.com/S5TtYIMaSPy1SeiuHbMk	https://cdn.filestackcontent.com/tGUSfggTnGW0xVmN7CYX	\N	2018-02-13
+15	engl->ital	1	EUR - EURO	Accepted	pagato da filippo	agenzia	https://cdn.filestackcontent.com/TYrGb9QlS0KuavfQ2sDt	luca	\N	https://cdn.filestackcontent.com/kYFKpaOHS3mVGoMCk4lv	https://cdn.filestackcontent.com/VV0V49ZARKSYUIhIq5bw	\N	2018-02-12
 \.
 
 
@@ -1122,7 +1128,6 @@ COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new
 47	Valentina	Lambrugo	\N	Italian	\N	N	VL11939	valentina.lambrugo@gmail.com	\N	Giussano	\N	\N	\N	\N	Italy
 49	Anna	Baccenetti	\N	Italian	\N	N	annabaccenetti	anna.baccenetti@gmail.com	\N	Milan	\N	\N	\N	\N	Italy
 12	Luca	Sapone	2017-10-12	Italian	4c3eeb5ba4109d98b0c309f9b13a333e622dd592bc8f5fc0a5a71ebf40b741aa	N	luca	luca.sapone86@gmail.com	\N	Torino	\N	TO	IT	it	\N
-10	Test	pippo	1965-07-09	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	IT	it	\N
 13	Giorgio	Valle	1965-07-08	Italian	9f2c3e310418393bac624106a65cfc1f617af21963dd821bdfe5c6639baec339	N	giorgio	giorgio.valle@hotmail.it	\N	Rivara			IT	it	\N
 53	Delia	Fasano	\N	Italian	\N	N	d.fasano5	fasano.delia@gmail.com	\N	Cava deTirreni	\N	\N	\N	\N	Italy
 56	Edoardo	Fattizzo	\N	Italian	\N	N	AngleRei	anglereikun@msn.com	\N	Firenze	\N	\N	\N	\N	Italy
@@ -1151,6 +1156,7 @@ COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new
 59	valentina	pandolfi	\N	Italian	\N	N	_valentina	valentina.pando@gmail.com	\N	Pesaro	\N	\N	\N	\N	Italy
 60	Maria Rosaria	Leggieri	\N	Italian	\N	N	mariarosaria_leggieri@yahoo.it	mariarosaria_leggieri@yahoo.it	\N	Foggia Area	\N	\N	\N	\N	Italy
 61	Angelica	Albergo	\N	Italian	\N	N	angelique23@hotmail.it	angelique23@hotmail.it	\N	Bari	\N	\N	\N	\N	Italy
+10	Test	tester	2017-11-22	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	IT	it	\N
 11	Gio	Val	1965-07-08	Italian	bda34b1b4ab8051f454ca1f61f91829e6eb872678284e100e6d549efca0d506d	N	GiorgioTraduttore	giorgio.valle@hotmail.it	\N	\N	\N	\N	IT	it	\N
 63	Sebastián	Vargas	\N	Spanish	\N	N	sebastianvargas92@gmail.com	sebastianvargas92@gmail.com	\N	Mendoza	\N	\N	\N	\N	Argentina
 65	Alla	Kolesnikova	\N	Russian	\N	N	alla.kolesnikova.95@mail.ru	alla.kolesnikova.95@mail.ru	\N	Pyatigorsk	\N	\N	\N	\N	Russian Federation
@@ -1197,7 +1203,7 @@ SELECT pg_catalog.setval('currencies_id_seq', 196, true);
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('payments_id_seq', 1, true);
+SELECT pg_catalog.setval('payments_id_seq', 17, true);
 
 
 --
@@ -1311,7 +1317,7 @@ ALTER TABLE ONLY languages
 --
 -- TOC entry 3090 (class 0 OID 0)
 -- Dependencies: 7
--- Name: public; Type: ACL; Schema: -; Owner: -
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: -
 --
 
 REVOKE ALL ON SCHEMA public FROM postgres;
@@ -1323,13 +1329,13 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- TOC entry 3092 (class 0 OID 0)
 -- Dependencies: 601
--- Name: plpgsql; Type: ACL; Schema: -; Owner: -
+-- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: -
 --
 
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2017-11-01 19:34:43 CET
+-- Completed on 2018-02-12 07:44:59 CET
 
 --
 -- PostgreSQL database dump complete
