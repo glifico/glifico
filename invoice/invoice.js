@@ -93,8 +93,12 @@ function generate_cutomPDF(id) {
 	var costumer = new Costumer(id);
 
 	customer_BillingInfoJSON=costumer.params;
+	
+	console.debug(costumer.params)
 
 	var doc = new jsPDF('p', 'pt');
+	
+	console.debug("jsPDFcreated")
 
 	var rightStartCol1=400;
 	var rightStartCol2=480;
