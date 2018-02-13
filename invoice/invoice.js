@@ -55,7 +55,7 @@ var lineSpacing={
 
 class Costumer{
 	constructor(){
-		console.info("costumer N"+id)
+		console.info("costumer N")
 
 		var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
@@ -90,7 +90,7 @@ class Costumer{
 
 function generate_cutomPDF(id) {
 
-	var costumer = new Costumer();
+	const costumer = new Costumer();
 
 	customer_BillingInfoJSON=costumer.params;
 	
