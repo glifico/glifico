@@ -75,8 +75,7 @@ getCostumer= function() {
 					CustomerEmail:data.EmailReferenceBilling,
 					CustomerPhone:'',
 			}
-			
-			return params
+			console.debug("req")
 
 		}else{
 			mostraDialogTimed('Error getting info from service');
@@ -85,7 +84,10 @@ getCostumer= function() {
 	req.open("GET",url,true);
 	req.send();
 
-
+	console.debug(params)
+	
+	return params
+	
 }
 
 function generate_cutomPDF(id) {
