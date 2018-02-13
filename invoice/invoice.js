@@ -64,13 +64,14 @@ getData= function() {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
+			console.debug(data)
 			params={
-					CustomerName:data.FirstName+' '+data.LastName,
+					CustomerName:data.CompanyName,
 					CustomerGSTIN:'',
-					CustomerState:data.IdCountry,
+					CustomerState:data.Country,
 					CustomerPAN:'',
 					CustomerAddressLine1:data.City,
-					CustomerAddressLine2:data.StateProvince,
+					CustomerAddressLine2:data.Street,
 					CustomerAddressLine3:data.ZIP,
 					CustomerEmail:data.EmailReferenceBilling,
 					CustomerPhone:'',
