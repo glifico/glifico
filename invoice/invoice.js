@@ -53,51 +53,49 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-class Costumer{
-	constructor(){
-		console.info("costumer N")
+getCostumer= function() {
+	console.info("costumer N")
 
-		var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
+	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
-		this.params={}
-		
-		var req = createXHTMLHttpRequest() ;
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				var data=JSON.parse(req.responseText);
-				this.params={
-						CustomerName:data.FirstName+' '+data.LastName,
-						CustomerGSTIN:'',
-						CustomerState:data.IdCountry,
-						CustomerPAN:'',
-						CustomerAddressLine1:data.City,
-						CustomerAddressLine2:data.StateProvince,
-						CustomerAddressLine3:data.ZIP,
-						CustomerEmail:data.EmailReferenceBilling,
-						CustomerPhone:'',
-				}
-				
-			}else{
-				mostraDialogTimed('Error getting info from service');
+	params={}
+
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			params={
+					CustomerName:data.FirstName+' '+data.LastName,
+					CustomerGSTIN:'',
+					CustomerState:data.IdCountry,
+					CustomerPAN:'',
+					CustomerAddressLine1:data.City,
+					CustomerAddressLine2:data.StateProvince,
+					CustomerAddressLine3:data.ZIP,
+					CustomerEmail:data.EmailReferenceBilling,
+					CustomerPhone:'',
 			}
+			
+			return params
+
+		}else{
+			mostraDialogTimed('Error getting info from service');
 		}
-		req.open("GET",url,true);
-		req.send();
-
-
 	}
+	req.open("GET",url,true);
+	req.send();
+
+
 }
 
 function generate_cutomPDF(id) {
 
-	const costumer = new Costumer();
+	ustomer_BillingInfoJSON =  getCostumer();
 
-	customer_BillingInfoJSON=costumer.params;
-	
 	console.debug(costumer.params)
 
 	var doc = new jsPDF('p', 'pt');
-	
+
 	console.debug("jsPDFcreated")
 
 	var rightStartCol1=400;
