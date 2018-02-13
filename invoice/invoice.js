@@ -53,7 +53,7 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-getCostumer= function() {
+getData= function() {
 	console.info("costumer N")
 
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
@@ -77,6 +77,9 @@ getCostumer= function() {
 			}
 			console.debug("req")
 
+			console.debug(params)
+			create_customPDF(params);
+			
 		}else{
 			mostraDialogTimed('Error getting info from service');
 		}
@@ -85,14 +88,16 @@ getCostumer= function() {
 	req.send();
 
 	console.debug(params)
-	
-	return params
-	
+		
 }
 
 function generate_cutomPDF(id) {
+	getData()
+}
 
-	customer_BillingInfoJSON =  getCostumer();
+function create_customPDF(params){
+
+	customer_BillingInfoJSON =  params;
 
 	console.debug(customer_BillingInfoJSON)
 
