@@ -63,7 +63,7 @@ getData= function() {
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
-			var data=JSON.parse(req.responseText);
+			var data=JSON.parse(req.responseText)[0];
 			console.debug(data)
 			params={
 					CustomerName:data.CompanyName,
