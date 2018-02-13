@@ -90,7 +90,7 @@ class Costumer{
 
 function generate_cutomPDF(id) {
 
-	var costumer = new Costumer(id);
+	const costumer = new Costumer(id);
 
 	customer_BillingInfoJSON=costumer.params;
 	
