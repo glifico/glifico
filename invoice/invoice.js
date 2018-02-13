@@ -90,9 +90,9 @@ getCostumer= function() {
 
 function generate_cutomPDF(id) {
 
-	ustomer_BillingInfoJSON =  getCostumer();
+	customer_BillingInfoJSON =  getCostumer();
 
-	console.debug(costumer.params)
+	console.debug(customer_BillingInfoJSON)
 
 	var doc = new jsPDF('p', 'pt');
 
