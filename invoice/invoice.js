@@ -76,7 +76,7 @@ getData= function() {
 				},
 				invoice:{
 					InvoiceNo:"",
-					InvoiceDate: (new Date()).toString().slice(4,14)	
+					InvoiceDate: (new Date()).toISOString().slice(4,15)	
 				}
 			}
 
