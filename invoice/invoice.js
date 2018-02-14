@@ -26,11 +26,6 @@ var invoiceJSON={
 		InvoiceDate:'03-12-2017',
 		TotalAmnt:'Rs.1,24,200',
 		SubTotalAmnt:'Rs.1,04,200',
-		TotalGST:'Rs.2,0000',
-		TotalCGST:'Rs.1,0000',
-		TotalSGST:'Rs.1,0000',
-		TotalIGST:'Rs.0',
-		TotalCESS:'Rs.0',
 }
 
 var company_logo = {
@@ -53,7 +48,7 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-getData= function(id) {
+getData= function(id, price) {
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
@@ -76,7 +71,9 @@ getData= function(id) {
 				},
 				invoice:{
 					InvoiceNo:id.toString(),
-					InvoiceDate: (new Date()).toString().slice(4,15)	
+					InvoiceDate: (new Date()).toString().slice(4,15),
+					TotalAmnt: price,
+					SubTotalAmnt: price,
 				}
 			}
 
@@ -91,8 +88,8 @@ getData= function(id) {
 		
 }
 
-function generate_cutomPDF(id) {
-	getData(id)
+function generate_cutomPDF(id, price) {
+	getData(id,price)
 }
 
 function create_customPDF(params){
