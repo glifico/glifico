@@ -54,8 +54,6 @@ var lineSpacing={
 };
 
 getData= function() {
-	console.info("costumer N")
-
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
@@ -64,8 +62,8 @@ getData= function() {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText)[0];
-			console.debug(data)
 			params={
+				costumer:{
 					CustomerName:data.CompanyName,
 					CustomerGSTIN:'',
 					CustomerState:data.Country,
@@ -74,11 +72,15 @@ getData= function() {
 					CustomerAddressLine2:data.Street,
 					CustomerAddressLine3:data.ZIP,
 					CustomerEmail:data.EmailReferenceBilling,
-					CustomerPhone:'',
+					CustomerPhone:''
+				},
+				invoice:{
+					InvoiceNo:"",
+					InvoiceDate:new Date()
+						
+				}
 			}
-			console.debug("req")
 
-			console.debug(params)
 			create_customPDF(params);
 			
 		}else{
@@ -87,8 +89,6 @@ getData= function() {
 	}
 	req.open("GET",url,true);
 	req.send();
-
-	console.debug(params)
 		
 }
 
@@ -98,9 +98,8 @@ function generate_cutomPDF(id) {
 
 function create_customPDF(params){
 
-	customer_BillingInfoJSON =  params;
-
-	console.debug(customer_BillingInfoJSON)
+	customer_BillingInfoJSON =  params.costumer;
+	invoiceJSON = params.invoice;
 
 	var doc = new jsPDF('p', 'pt');
 
