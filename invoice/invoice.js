@@ -53,7 +53,7 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-getData= function() {
+getData= function(id) {
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
@@ -75,7 +75,7 @@ getData= function() {
 					CustomerPhone:''
 				},
 				invoice:{
-					InvoiceNo:"",
+					InvoiceNo:id,
 					InvoiceDate: (new Date()).toISOString().slice(4,15)	
 				}
 			}
@@ -92,7 +92,7 @@ getData= function() {
 }
 
 function generate_cutomPDF(id) {
-	getData()
+	getData(id)
 }
 
 function create_customPDF(params){
