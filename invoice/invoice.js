@@ -75,7 +75,7 @@ getData= function(id) {
 					CustomerPhone:''
 				},
 				invoice:{
-					InvoiceNo:id,
+					InvoiceNo:id.toString(),
 					InvoiceDate: (new Date()).toISOString().slice(4,15)	
 				}
 			}
