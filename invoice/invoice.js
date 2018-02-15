@@ -93,8 +93,6 @@ function generate_cutomPDF(id, price) {
 }
 
 function create_customPDF(params){
-
-	console.debug(params)
 	
 	customer_BillingInfoJSON =  params.costumer;
 	invoiceJSON = params.invoice;
