@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.1
 -- Dumped by pg_dump version 10.2
 
--- Started on 2018-02-12 07:44:32 CET
+-- Started on 2018-02-15 07:38:53 CET
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -330,7 +330,7 @@ ALTER TABLE ONLY traduttore ALTER COLUMN id SET DEFAULT nextval('traduttore_id_s
 --
 
 COPY agenzia (id, nome, vat, username, password, email, street, number, citta, provincia, cap, stato, banca, pagamento, iban) FROM stdin;
-1	agenzia		agenzia	cbf921b6eb12815a33f74360d66dfef435f1bbbc9e5a5e1f13196db757f8ae57	filippovalle@aim.com	\N	\N	\N	\N	\N	\N	\N	\N	\N
+1	agenzia		agenzia	cbf921b6eb12815a33f74360d66dfef435f1bbbc9e5a5e1f13196db757f8ae57	filippovalle@aim.com	roma	314	Torino	TO	12309	Italy	\N	\N	\N
 \.
 
 
@@ -618,7 +618,7 @@ test	Italian	\N	\N	\N	\N
 
 COPY payments (id, job, price, currency, status, description, username, translated, translator, secondtranslator, document, preview, secondstatus, deadline) FROM stdin;
 17		1	EUR - EURO	Paid		agenzia	https://cdn.filestackcontent.com/EG5mBCV1QfCetXSI6LPl	luca	\N	https://cdn.filestackcontent.com/S5TtYIMaSPy1SeiuHbMk	https://cdn.filestackcontent.com/tGUSfggTnGW0xVmN7CYX	\N	2018-02-13
-15	engl->ital	1	EUR - EURO	Accepted	pagato da filippo	agenzia	https://cdn.filestackcontent.com/TYrGb9QlS0KuavfQ2sDt	luca	\N	https://cdn.filestackcontent.com/kYFKpaOHS3mVGoMCk4lv	https://cdn.filestackcontent.com/VV0V49ZARKSYUIhIq5bw	\N	2018-02-12
+15	engl->ital	1	EUR - EURO	Paid	pagato da filippo	agenzia	https://cdn.filestackcontent.com/TYrGb9QlS0KuavfQ2sDt	luca	\N	https://cdn.filestackcontent.com/kYFKpaOHS3mVGoMCk4lv	https://cdn.filestackcontent.com/VV0V49ZARKSYUIhIq5bw	\N	2018-02-12
 \.
 
 
@@ -1335,7 +1335,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2018-02-12 07:44:59 CET
+-- Completed on 2018-02-15 07:39:57 CET
 
 --
 -- PostgreSQL database dump complete
