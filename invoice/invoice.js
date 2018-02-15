@@ -26,11 +26,6 @@ var invoiceJSON={
 		InvoiceDate:'03-12-2017',
 		TotalAmnt:'Rs.1,24,200',
 		SubTotalAmnt:'Rs.1,04,200',
-		TotalGST:'Rs.2,0000',
-		TotalCGST:'Rs.1,0000',
-		TotalSGST:'Rs.1,0000',
-		TotalIGST:'Rs.0',
-		TotalCESS:'Rs.0',
 }
 
 var company_logo = {
@@ -53,51 +48,57 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-class Costumer{
-	constructor(){
-		console.info("costumer N")
+getData= function(id, price) {
+	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
-		var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
+	params={}
 
-		this.params={}
-		
-		var req = createXHTMLHttpRequest() ;
-		req.onreadystatechange = function(){
-			if (req.status == 200&req.readyState==4){
-				var data=JSON.parse(req.responseText);
-				this.params={
-						CustomerName:data.FirstName+' '+data.LastName,
-						CustomerGSTIN:'',
-						CustomerState:data.IdCountry,
-						CustomerPAN:'',
-						CustomerAddressLine1:data.City,
-						CustomerAddressLine2:data.StateProvince,
-						CustomerAddressLine3:data.ZIP,
-						CustomerEmail:data.EmailReferenceBilling,
-						CustomerPhone:'',
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText)[0];
+			params={
+				costumer:{
+					CustomerName:data.CompanyName,
+					CustomerGSTIN:'',
+					CustomerState:data.Country,
+					CustomerPAN:'',
+					CustomerAddressLine1:data.City,
+					CustomerAddressLine2:data.Street,
+					CustomerAddressLine3:data.ZIP,
+					CustomerEmail:data.EmailReferenceBilling,
+					CustomerPhone:''
+				},
+				invoice:{
+					InvoiceNo:id.toString(),
+					InvoiceDate: (new Date()).toString().slice(4,15),
+					TotalAmnt: price.toString()+"Euro",
+					SubTotalAmnt: price.toString()+"Euro",
 				}
-				
-			}else{
-				mostraDialogTimed('Error getting info from service');
 			}
+
+			create_customPDF(params);
+			
+		}else{
+			mostraDialogTimed('Error getting info from service');
 		}
-		req.open("GET",url,true);
-		req.send();
-
-
 	}
+	req.open("GET",url,true);
+	req.send();
+		
 }
 
-function generate_cutomPDF(id) {
+function generate_cutomPDF(id, price) {
+	getData(id,price)
+}
 
-	const costumer = new Costumer();
-
-	customer_BillingInfoJSON=costumer.params;
+function create_customPDF(params){
 	
-	console.debug(costumer.params)
+	customer_BillingInfoJSON =  params.costumer;
+	invoiceJSON = params.invoice;
 
 	var doc = new jsPDF('p', 'pt');
-	
+
 	console.debug("jsPDFcreated")
 
 	var rightStartCol1=400;

@@ -97,7 +97,7 @@ angular.module("payment",[])
 					// The payment is complete!
 					// You can now show a confirmation message to the customer
 
-					alert("Payment completed!");
+					notify("Payment accepted by Paypal!");
 
 					paymentCompleted();
 
