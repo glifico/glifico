@@ -72,8 +72,8 @@ getData= function(id, price) {
 				invoice:{
 					InvoiceNo:id.toString(),
 					InvoiceDate: (new Date()).toString().slice(4,15),
-					TotalAmnt: price.toString(),
-					SubTotalAmnt: price.toString(),
+					TotalAmnt: price.toString()+"Euro",
+					SubTotalAmnt: price.toString()+"Euro",
 				}
 			}
 
