@@ -139,9 +139,12 @@
 <li><a href="contacts.html">Contacts</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
+<li id="li-jobs"><a href="pendingJobs.html">Jobs</a></li>
 <li id="li-rating"><a href="socialRating.html">Rating</a></li>
 <li id="li-trad"><a href="socialTrad.html">Trad</a></li>
 <li id="li-skill"><a href="skillTest.html">Skill Test</a></li>
+<li id="li-pay"><a href="pendingPayments.html">Jobs</a></li>
+<li id="li-search"><a href="search.html">Search Job</a></li>
 <li class="dropdown-grid" style="position: static;">
 <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()">
 <span class="reverse">
@@ -154,7 +157,7 @@
 </li>
 
 <li class="dropdown">
-<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown">
+<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
 <span class="reverse">
 <div id="loginController" ng-controller="loginController as ctrl">
 <span><p id="usernameTab">{{ctrl.username}}</p></span>
@@ -163,7 +166,8 @@
 </a>
 
 <ul class="dropdown-menu">
-    <li><a onclick="logout()">logout</a></li>
+ 	<li><a onclick="personalArea()">Personal page</a></li>
+    <li><a onclick="logout()">Logout</a></li>
   </ul>
 </li>
 
@@ -171,6 +175,7 @@
 </div>
 </div>
 </nav>
+
 <div aria-labelledby="myModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
@@ -625,7 +630,9 @@ $('#LanguageModal').on('show.bs.modal', function (event) {
 </div>
 </div>
 
-
+<script>
+shouldBeTranslator();
+</script>
 
 
 <div ng-app="glifico">
