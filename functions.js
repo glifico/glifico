@@ -68,9 +68,9 @@ function notify(text){
 }
 
 function showTranslatorStuff(){
-	//$("#li-rating").show();
-	//$("#li-trad").show();
-	//$("#li-skill").show();
+	$("#li-rating").hide();
+	$("#li-trad").hide();
+	$("#li-skill").hide();
 	$("#li-jobs").show();
 }
 
