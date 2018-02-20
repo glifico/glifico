@@ -24,7 +24,7 @@ if(strlen(htmlspecialchars($row["username"]))<2){
 
 $str=htmlspecialchars($row["password"]).$user."glifico";
 $token=hash('sha256',$str);
-$link="https://glifico.herokuapp.com/changePassword.html?token=".$token."&user=".$user;
+$link="http://beta.glifico.herokuapp.com/changePassword.html?token=".$token."&user=".$user;
 $result->CloseCursor();
 
 send_mail(htmlspecialchars($row["email"]),"Glifico password reset","Use this link to reset your password: '.$link.'");
