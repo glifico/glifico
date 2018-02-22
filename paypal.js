@@ -57,8 +57,8 @@ angular.module("payment",[])
 			env: 'sandbox', // Or 'production'
 
 			client: {
-				sandbox:    'ATC-_PZXQpRwRyYbSZrU2oBkbIeDKCueURj9N8G5zZayYsahxEfikLrn2dqFwrxpJjNWhT1Z0Xfp7pMc',
-				production: '<????>'
+				sandbox:    'AYB0shOY_nnLb7wt0_5T6kN0x3lZkAzOdLyCFcaBLrJuuVHv0E8IK1APo6c3rzaX1oBLCep3LLoa13zT',
+				production: 'AaOBmMuxg4dlVhxWPc2iWzwm4EbeiIt4G2V35LxyuDJ4UdJ8-YhseQw9zg4tPIkuvmY6eXa2wDKRHJH6'
 			},
 			
 			locale: 'en_US',
