@@ -32,6 +32,9 @@ function init() {
 			return(false);
 		}
 	}
+	
+	req.open("GET", url, true);
+	req.send();
 }
 
 function gotLanguages(data){
