@@ -111,6 +111,7 @@ function mioTimer() {
 	}
 	getProgress();
 }
+
 function showDomanda() {
 	alert("You have 10 minutes to complete the translation! Good Luck.");
 	var html = "";
