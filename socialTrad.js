@@ -19,9 +19,22 @@ $(document).ready( function() {
 
 function init() {
 
-	var url = "rest.xsp?api=getTraduttoreLingue&id=" + sysIdUtente;
+	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
-	$.get(url, function(data) {
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			gotLanguages(data);
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
+	}
+}
+
+function gotLanguages(data){
 		// Combo box 1
 			var html = "";
 			html += '<select id="select-language" class="form-control">'
@@ -46,7 +59,6 @@ function init() {
 			$('#span-combo-lingue').html(html);
 			$('#span2').html(html2);
 
-		});
 }
 
 function getTesto() {
