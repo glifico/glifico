@@ -149,3 +149,7 @@
 .nobluelink > a>a:hover>a:visited>div{
   color:#000;
 }
+
+.input-group {
+  width: 80%;
+}
