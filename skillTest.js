@@ -2,7 +2,8 @@ var maxpages = 0;
 var actualPage = 0;
 var started = false;
 
-var maxSeconds = 100;
+var maxSeconds = 400;
+//Se aggiorni qui aggiorna il testo!
 var nowSeconds = 0;
 var outTime = false;
 var myTimer;
