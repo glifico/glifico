@@ -46,6 +46,7 @@
 
 <script src="app/login.controller.js"></script>
 
+<script src="socialTrad.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -184,7 +185,7 @@
 <ul class="nav nav-tabs">
 <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
 <li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li>
-<!--<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li> -->
+<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li>
 </ul>
 </div>
 <div class="tab-content"><div class="tab-pane fade in active" id="login">
@@ -271,54 +272,56 @@ md-input-container{
 trad
  -->
  <br><br><br><br>
- <div style="margin-right:10px;margin-left:10px;"><div class="panel panel-default"><div class="panel-heading">This test is designed to give you the opportunity to complete your
-				fist assessment quickly.<br>Choose which language you want to be tested in and click on the
-				button "Start Test".<br>You will have 10 minutes to translate a random text taken from
-				our
-				database.<br>The questions may about graeerer or reading comprension and will be
+	<div style="margin-right: 10px; margin-left: 10px;">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				This test is designed to give you the opportunity to complete your
+				fist assessment quickly.<br>Choose which language you want to
+				be tested in and click on the button "Start Test".<br>You will
+				have 10 minutes to translate a random text taken from our database.<br>
+				The questions may about graeerer or reading comprension and will be
 				submitted in the language in which you are being evalutaed. Select
-				the most appropriate answer amoung the given choices.<br>You can keep track of time on the bar at the bottom of the page.<br>When the time expire the test will stop and your test can be
-				submitted for evaluation. Any unaswered question will be greded as
-				zeropoints.<br>If you first before time runs out click on the button "submit".<br><br>A deep breath... and he's take the test!</div></div><div style="text-align:center;"><div style="width:100%;display: table;margin: 0 auto;">
-				<span>Choose the language you want to translate<strong>&nbsp; from</strong>:</span>
-				<br><div class="input-group" style="float: left;">
-				<span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span>
-				<span class="cambia" id="span-combo-lingue">Loading...</span><span></span></div><br><br>
-				<span>Choose the language you want to translate<strong>&nbsp; to</strong>:</span><br>
-				<div class="input-group" style="float: right;">
-				<span class="input-group-addon" id="span1"><i class="fa fa-flag-o"></i></span>
-				<span class="cambia" id="span2">Loading...</span>
-				</div><br><br>
-				<a class="btn btn-default" onCLick="tryOut2()">Start Test</a>
-				</div>
-				<div style="width:90%;display: table;margin: 0 auto;">
-				<div style="height:10px">
-				</div>
-				</div>
-				</div>
-				<div style="margin-right:10px;margin-left:10px;"><br></div>
-				</div>
-				<div class="modal fade bs-example-modal-lg" id="skill-modal" role="dialog" tabindex="-1">
-				<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content"><div class="modal-header">
-				<button aria-label="Close" class="close" data-dismiss="modal" type="button">
-				<span aria-hidden="true"><span id="view:computedField1">X</span></span>
-				</button>
-				<h4 class="modal-title">Skill test - Translation</h4>
-				</div>
-				<div class="modal-body" id="skill-body">
-				</div>
-				<div class="modal-footer">
-				<button class="btn btn-default" data-dismiss="modal" type="button">Annulla</button>
-				</div>
-				</div>
-				</div>
-				</div>
-				
+				the most appropriate answer amoung the given choices.<br> You
+				can keep track of time on the bar at the bottom of the page.<br>When
+				the time expire the test will stop and your test can be submitted
+				for evaluation. Any unaswered question will be greded as zeropoints.<br>If
+				you first before time runs out click on the button "submit". <br>
+				<br>A deep breath... and he's take the test!
+			</div>
+		</div>
+<div style="text-align: center;">
+<div style="width: 100%; display: table; margin: 0 auto;">
+<span>Choose the language you want to translate <strong>from</strong>:</span><br>
+<div class="input-group" style="float: left;">
+<span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span>
+<span class="cambia" id="span-combo-lingue">Loading...</span>
+</div>
+<br><br>
+<span>Choose the language you want to translate <strong>to</strong>:</span>
+<br>
+<div class="input-group" style="float: right;">
+<span class="input-group-addon" id="span1"><i class="fa fa-flag-o"></i></span>
+<span class="cambia" id="span2">Loading...</span>
+</div>
+<br><br>
+<a class="btn btn-default" onCLick="tryOut2()">Start Test</a>
+</div>
+
+
+<div style="width: 90%; display: table; margin: 0 auto;">
+<div style="height: 10px"></div></div>
+</div>
+<div style="margin-right: 10px; margin-left: 10px;">
+<br>
+</div>
+</div>
+
+
+
 <div ng-app="glifico">
  <glificofooter></glificofooter>
  </div>
  
-				</body>
+</body>
 
 </html>
