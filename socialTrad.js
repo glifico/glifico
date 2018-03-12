@@ -92,8 +92,16 @@ function tryOut2() {
 	started = false;
 	outTime = false;
 	nowSeconds = 0;
-	var lan = $("#select-language").val();
-	var lan2 = $("#select-language2").val();
+	
+	var e = document.getElementById("select-language");
+	var lan = e.options[e.selectedIndex].text;
+	
+
+	e = document.getElementById("select-language2");
+	var lan2 = e.options[e.selectedIndex].text;
+	
+//	var lan = $("#select-language").val();
+//	var lan2 = $("#select-language2").val();
 
 	console.info(lan);
 	console.info(lan2);
