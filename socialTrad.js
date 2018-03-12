@@ -64,8 +64,8 @@ function gotLanguages(data){
 
 }
 
-function getTesto() {
-	var url = "getRatingQuestions.php?user="+getUsername()+"&token="+getToken();
+function getTesto(lang) {
+	var url = "getRatingQuestions.php?user="+getUsername()+"&token="+getToken()+"&lang="+lang;
 
 	console.debug("getTesto");
 	
@@ -100,12 +100,6 @@ function tryOut2() {
 	e = document.getElementById("select-language2");
 	var lan2 = e.options[e.selectedIndex].text;
 	
-//	var lan = $("#select-language").val();
-//	var lan2 = $("#select-language2").val();
-
-	console.info(lan);
-	console.info(lan2);
-	
 	if (lan == lan2) {
 		alert("Impossible insert the same language. Please change it");
 		return;
@@ -123,7 +117,10 @@ function tryOut2() {
 
 
 function startTest() {
-	getTesto();
+	e = document.getElementById("select-language");
+	var lang = e.options[e.selectedIndex].text;
+	
+	getTesto(lang);
 	if (!started) {
 		started = true;
 		myTimer = setInterval(mioTimer, 1000)
