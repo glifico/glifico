@@ -65,16 +65,26 @@ function gotLanguages(data){
 }
 
 function getTesto() {
-	$(document).ready(
-			function() {
-				var url = "rest.xsp?api=getTesto&lingua="
-						+ $("#select-language").val();
-				$.get(url, function(data) {
-					domande = data;
-				});
-				showDomanda();
-			});
+	var url = "getRatingQuestions.php?user="+getUsername()+"&token="+getToken();
 
+	console.debug("getTesto");
+	
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			domande = data;
+			console.debug(domande);
+			showDomanda();
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
+	}
+	
+	req.open("GET", url, true);
+	req.send();
 }
 
 function tryOut2() {
@@ -120,7 +130,7 @@ function showDomanda() {
 	var html = "";
 	var domanda = domande[0];
 	html += '<form>'
-	html += '<div class="panel panel-default"><div class="panel-heading"> <font size="2" >' + domanda.Testo;
+	html += '<div class="panel panel-default"><div class="panel-heading"> <font size="2" >' + domanda.text_to_translate;
 	+'</font>  </div> </div>'
 	html += '<br/>'
 	var url = "rest.xsp?api=getLanguage&lingua=" + $("#select-language2").val();
@@ -157,7 +167,7 @@ function finishTest() {
 		var linguaF = $("#select-language").val();
 		var linguaT = $("#select-language2").val();
 		var domanda = domande[0];
-		var testo = domanda.Testo;
+		var testo = domanda.text_to_translate;
 
 		var temp = {
 			userId : sysIdUtente,
