@@ -10,13 +10,8 @@ if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wro
 $lang=$_GET['lang'];
 $query="SELECT id, language, text_to_translate, topic FROM ratingTest WHERE language='$lang' ORDER BY RANDOM() LIMIT 1;";
 $result = $db->query($query);
-$toExit=[];
-while($row = $result->fetch(PDO::FETCH_ASSOC)){
-    echo($row['language']);
-    array_push($toExit,$row);
-}
-
+$row = $result->fetch(PDO::FETCH_ASSOC);
 $result->CloseCursor();
 
-exit(json_encode($toExit));
+exit(json_encode($row));
 ?>
