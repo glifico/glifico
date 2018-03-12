@@ -88,12 +88,16 @@ function getTesto() {
 }
 
 function tryOut2() {
+	console.debug("try");
 	started = false;
 	outTime = false;
 	nowSeconds = 0;
 	var lan = $("#select-language").val();
 	var lan2 = $("#select-language2").val();
 
+	console.info(lan);
+	console.info(lan2);
+	
 	if (lan == lan2) {
 		alert("Impossible insert the same language. Please change it");
 		return;
@@ -108,6 +112,8 @@ function tryOut2() {
 		return;
 	}
 }
+
+
 function startTest() {
 	getTesto();
 	if (!started) {
