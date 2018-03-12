@@ -12,7 +12,7 @@ $query="SELECT id, language, text_to_translate, topic FROM ratingTest WHERE lang
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-    echo($row);
+    echo($row['language']);
     array_push($toExit,$row);
 }
 
