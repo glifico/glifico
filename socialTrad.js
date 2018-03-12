@@ -74,7 +74,6 @@ function getTesto(lang) {
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
 			domande = data;
-			console.debug(domande);
 			showDomanda();
 			return(true);
 		}else{
@@ -137,6 +136,7 @@ function mioTimer() {
 }
 
 function showDomanda() {
+	console.debug(domande);
 	alert("You have 10 minutes to complete the translation! Good Luck.");
 	var html = "";
 	var domanda = domande[0];
