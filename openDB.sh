@@ -1,2 +1,2 @@
-echo 58aef519cd1d27811d7785d10c2d4fc4ba545b3f62aa0de2e752968c97b8ef67
-psql -h ec2-54-247-95-125.eu-west-1.compute.amazonaws.com -U rrvkxtiqcmdwhu dc818ph7etasa1
+echo 4bbec81bdddd97d0cc9a29e86d8da7afd5f69f927d7cb453f432346d305c544a
+psql -h ec2-54-247-81-76.eu-west-1.compute.amazonaws.com -U rxalpunoeboees d36l13eln0ugr5
