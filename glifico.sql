@@ -3,15 +3,16 @@
 --
 
 -- Dumped from database version 10.2 (Ubuntu 10.2-1.pgdg14.04+1)
--- Dumped by pg_dump version 10.2
+-- Dumped by pg_dump version 10.3
 
--- Started on 2018-02-20 07:24:58 CET
+-- Started on 2018-03-12 11:47:39 CET
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
@@ -25,15 +26,13 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3760 (class 0 OID 0)
+-- TOC entry 3769 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
-
-SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
 
@@ -44,7 +43,7 @@ SET default_with_oids = false;
 -- Name: agenzia; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE agenzia (
+CREATE TABLE public.agenzia (
     id integer NOT NULL,
     nome character varying(50),
     vat character varying(15) DEFAULT NULL::character varying,
@@ -68,7 +67,7 @@ CREATE TABLE agenzia (
 -- Name: agenzia_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE agenzia_id_seq
+CREATE SEQUENCE public.agenzia_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -77,12 +76,12 @@ CREATE SEQUENCE agenzia_id_seq
 
 
 --
--- TOC entry 3762 (class 0 OID 0)
+-- TOC entry 3771 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: agenzia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE agenzia_id_seq OWNED BY agenzia.id;
+ALTER SEQUENCE public.agenzia_id_seq OWNED BY public.agenzia.id;
 
 
 --
@@ -90,7 +89,7 @@ ALTER SEQUENCE agenzia_id_seq OWNED BY agenzia.id;
 -- Name: currencies; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE currencies (
+CREATE TABLE public.currencies (
     id integer NOT NULL,
     currency character varying(3),
     conversion numeric,
@@ -103,7 +102,7 @@ CREATE TABLE currencies (
 -- Name: currencies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE currencies_id_seq
+CREATE SEQUENCE public.currencies_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -112,12 +111,12 @@ CREATE SEQUENCE currencies_id_seq
 
 
 --
--- TOC entry 3763 (class 0 OID 0)
+-- TOC entry 3772 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: currencies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE currencies_id_seq OWNED BY currencies.id;
+ALTER SEQUENCE public.currencies_id_seq OWNED BY public.currencies.id;
 
 
 --
@@ -125,7 +124,7 @@ ALTER SEQUENCE currencies_id_seq OWNED BY currencies.id;
 -- Name: language_pair; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE language_pair (
+CREATE TABLE public.language_pair (
     username character varying(40),
     from_l character varying(30),
     to_l character varying(30),
@@ -142,7 +141,7 @@ CREATE TABLE language_pair (
 -- Name: languages; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE languages (
+CREATE TABLE public.languages (
     username character varying(50),
     language text,
     datatest timestamp without time zone,
@@ -157,7 +156,7 @@ CREATE TABLE languages (
 -- Name: payments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE payments (
+CREATE TABLE public.payments (
     id integer NOT NULL,
     job character varying(200),
     price numeric,
@@ -181,7 +180,7 @@ CREATE TABLE payments (
 -- Name: payments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE payments_id_seq
+CREATE SEQUENCE public.payments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -190,12 +189,25 @@ CREATE SEQUENCE payments_id_seq
 
 
 --
--- TOC entry 3764 (class 0 OID 0)
+-- TOC entry 3773 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: payments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE payments_id_seq OWNED BY payments.id;
+ALTER SEQUENCE public.payments_id_seq OWNED BY public.payments.id;
+
+
+--
+-- TOC entry 208 (class 1259 OID 9001213)
+-- Name: ratingtest; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ratingtest (
+    id integer,
+    language character varying(255),
+    text_to_translate character varying(2048),
+    topic character varying(255)
+);
 
 
 --
@@ -203,7 +215,7 @@ ALTER SEQUENCE payments_id_seq OWNED BY payments.id;
 -- Name: skilltest; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE skilltest (
+CREATE TABLE public.skilltest (
     id integer NOT NULL,
     language character varying(255) NOT NULL,
     question character varying(2000) NOT NULL,
@@ -219,7 +231,7 @@ CREATE TABLE skilltest (
 -- Name: skilltest_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE skilltest_id_seq
+CREATE SEQUENCE public.skilltest_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -228,12 +240,12 @@ CREATE SEQUENCE skilltest_id_seq
 
 
 --
--- TOC entry 3765 (class 0 OID 0)
+-- TOC entry 3774 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: skilltest_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE skilltest_id_seq OWNED BY skilltest.id;
+ALTER SEQUENCE public.skilltest_id_seq OWNED BY public.skilltest.id;
 
 
 --
@@ -241,7 +253,7 @@ ALTER SEQUENCE skilltest_id_seq OWNED BY skilltest.id;
 -- Name: traduttore; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE traduttore (
+CREATE TABLE public.traduttore (
     id integer NOT NULL,
     nome character varying(100) DEFAULT NULL::character varying,
     cognome character varying(100) DEFAULT NULL::character varying,
@@ -266,7 +278,7 @@ CREATE TABLE traduttore (
 -- Name: traduttore_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE traduttore_id_seq
+CREATE SEQUENCE public.traduttore_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -275,72 +287,72 @@ CREATE SEQUENCE traduttore_id_seq
 
 
 --
--- TOC entry 3766 (class 0 OID 0)
+-- TOC entry 3775 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: traduttore_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE traduttore_id_seq OWNED BY traduttore.id;
+ALTER SEQUENCE public.traduttore_id_seq OWNED BY public.traduttore.id;
 
 
 --
--- TOC entry 3594 (class 2604 OID 1791175)
+-- TOC entry 3599 (class 2604 OID 1791175)
 -- Name: agenzia id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY agenzia ALTER COLUMN id SET DEFAULT nextval('agenzia_id_seq'::regclass);
+ALTER TABLE ONLY public.agenzia ALTER COLUMN id SET DEFAULT nextval('public.agenzia_id_seq'::regclass);
 
 
 --
--- TOC entry 3595 (class 2604 OID 1791176)
+-- TOC entry 3600 (class 2604 OID 1791176)
 -- Name: currencies id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY currencies ALTER COLUMN id SET DEFAULT nextval('currencies_id_seq'::regclass);
+ALTER TABLE ONLY public.currencies ALTER COLUMN id SET DEFAULT nextval('public.currencies_id_seq'::regclass);
 
 
 --
--- TOC entry 3596 (class 2604 OID 1791177)
+-- TOC entry 3601 (class 2604 OID 1791177)
 -- Name: payments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payments ALTER COLUMN id SET DEFAULT nextval('payments_id_seq'::regclass);
+ALTER TABLE ONLY public.payments ALTER COLUMN id SET DEFAULT nextval('public.payments_id_seq'::regclass);
 
 
 --
--- TOC entry 3598 (class 2604 OID 1791178)
+-- TOC entry 3603 (class 2604 OID 1791178)
 -- Name: skilltest id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY skilltest ALTER COLUMN id SET DEFAULT nextval('skilltest_id_seq'::regclass);
+ALTER TABLE ONLY public.skilltest ALTER COLUMN id SET DEFAULT nextval('public.skilltest_id_seq'::regclass);
 
 
 --
--- TOC entry 3604 (class 2604 OID 1791179)
+-- TOC entry 3609 (class 2604 OID 1791179)
 -- Name: traduttore id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY traduttore ALTER COLUMN id SET DEFAULT nextval('traduttore_id_seq'::regclass);
+ALTER TABLE ONLY public.traduttore ALTER COLUMN id SET DEFAULT nextval('public.traduttore_id_seq'::regclass);
 
 
 --
--- TOC entry 3741 (class 0 OID 1791116)
+-- TOC entry 3748 (class 0 OID 1791116)
 -- Dependencies: 196
 -- Data for Name: agenzia; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY agenzia (id, nome, vat, username, password, email, street, number, citta, provincia, cap, stato, banca, pagamento, iban) FROM stdin;
+COPY public.agenzia (id, nome, vat, username, password, email, street, number, citta, provincia, cap, stato, banca, pagamento, iban) FROM stdin;
 1	agenzia		agenzia	cbf921b6eb12815a33f74360d66dfef435f1bbbc9e5a5e1f13196db757f8ae57	filippovalle@aim.com	roma	314	Torino	TO	12309	Italy	\N	\N	\N
 \.
 
 
 --
--- TOC entry 3743 (class 0 OID 1791125)
+-- TOC entry 3750 (class 0 OID 1791125)
 -- Dependencies: 198
 -- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY currencies (id, currency, conversion, description) FROM stdin;
+COPY public.currencies (id, currency, conversion, description) FROM stdin;
 107	BDT	96.48141675	BDT - Bangladeshi Taka
 108	BGN	1.95705537	BGN - Bulgarian Lev
 109	BHD	0.43889083	BHD - Bahraini Dinar
@@ -443,42 +455,125 @@ COPY currencies (id, currency, conversion, description) FROM stdin;
 
 
 --
--- TOC entry 3745 (class 0 OID 1791133)
+-- TOC entry 3752 (class 0 OID 1791133)
 -- Dependencies: 200
 -- Data for Name: language_pair; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY language_pair (username, from_l, to_l, price, field, currency, price_euro, service) FROM stdin;
+COPY public.language_pair (username, from_l, to_l, price, field, currency, price_euro, service) FROM stdin;
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	Italian	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	Italian	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	Italian	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	Italian	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	French	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	French	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	French	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	Portuguese	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	Portuguese	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	Portuguese	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+clrm2018	English	Spanish	0.008	translation	USD - US Dollar	0.01	
+Adi Saputra	English	Indonesian	0.06	translation	USD - US Dollar	0.05	
 \.
 
 
 --
--- TOC entry 3746 (class 0 OID 1791139)
+-- TOC entry 3753 (class 0 OID 1791139)
 -- Dependencies: 201
 -- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY languages (username, language, datatest, tottest, idlanguageto, skilltest) FROM stdin;
+COPY public.languages (username, language, datatest, tottest, idlanguageto, skilltest) FROM stdin;
+clrm2018	English	\N	\N	\N	\N
+clrm2018	Italian	\N	\N	\N	\N
+clrm2018	French	\N	\N	\N	\N
+clrm2018	Portuguese	\N	\N	\N	\N
+clrm2018	Spanish	2018-02-27 01:18:27	\N	\N	4
+Adi Saputra	English	\N	\N	\N	\N
+Adi Saputra	Indonesian	\N	\N	\N	\N
 \.
 
 
 --
--- TOC entry 3747 (class 0 OID 1791145)
+-- TOC entry 3754 (class 0 OID 1791145)
 -- Dependencies: 202
 -- Data for Name: payments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY payments (id, job, price, currency, status, description, username, translated, translator, secondtranslator, document, preview, secondstatus, deadline) FROM stdin;
+COPY public.payments (id, job, price, currency, status, description, username, translated, translator, secondtranslator, document, preview, secondstatus, deadline) FROM stdin;
 \.
 
 
 --
--- TOC entry 3749 (class 0 OID 1791154)
+-- TOC entry 3760 (class 0 OID 9001213)
+-- Dependencies: 208
+-- Data for Name: ratingtest; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.ratingtest (id, language, text_to_translate, topic) FROM stdin;
+75	Turkish	Kale Endüstri Holding Yönetim Kurulu Üyesi Mehmet Çevik, birkaç gün önce işten çıkarılan bir kişinin silahlı saldırısı sonucu ağır yaralandı. Hastaneye kaldırılan 47 yaşındaki Mehmet Çevik yoğun bakım ünitesinde tedavi altına alındı. \\n\\nOlay, saat 16.00 sıralarında Güngören Atatürk Caddesi, Başaklı Skak'tabulunan Kale Endüstri Holding binasında meydana geldi. İddiaya göre, birkaç gün önce işten çıkarıldığı öğrenilen saldırgan, Mehmet Çevik ile konuşmak üzere holding binasına geldi. Aralarında yaşanan kısa süreli tartışmanın ardından silahını çeken saldırgan, Mehmet Çevik'e ateş etti. Zanlı, daha sonra olay yerinden kaçtı. \\n	Social and Political Matters
+76	Turkish	Silvan'daki Hain Saldırı Teröristler, Askerlerin Başında Beklemiş\\n\\nDiyarbakır'da biri astsubay iki askerin şehit olduğu saldırının detayları netleşiyor. Teröristler askerlerin öldüğünden emin olmak için başında beklemiş.\\n\\nDiyarbakır'ın Silvan ilçesinde bugün sabah saat 07.30'da biri astsubay iki askerin şehit olduğu saldırının detayları ortaya çıkmaya başladı. Aynı apartmanda kapı komşu oldukları belirlenen şehitlerin bindikleri aracın otoparktan çıktığı sırada çapraz ateşe tutulduğu ve teröristlerin uzmanların öldüğünden emin olduktan sonra olay yerinden kaçtığı öğrenildi.\\n	\\nSocial and Political Matters
+77	Turkish	POLİS TÜPÇÜ GİBİ EVE GİRDİ\\n\\nAsayiş Şube Müdürlüğü'nün Aranan Şahıslar Büro Amirliği ekipleri, Leyla Yıldırım'ın merkez Yüreğir İlçesi'nin Kışla Mahallesi'nde bir evde oturduğunu tespit etti. Yıldırım'ın kaçmaması için özel bir plan hazırlayan ekipler, keşif için genç kadının evine gitti. Tüpçü görünümde evin ziline basan polis, kapıyı açan Leyla Yıldırım'ı teşhis etti. Şüphelinin evde olduğunun anlaşılması üzerine sokağa giren ekipler, "Dolandırıcı arıyoruz, bu sokağa girmiş" diyerek ev sahiplerinden yardım istedi. Leyla Yıldırım'ın evine de aynı yöntemle giren polis, 3 yıldan beri kaçmayı başaran Leyla Yıldırım'ı yakaladı.\\n	Social and Political Matters
+78	Turkish	Genel Sağlık Sigortası kapsamında yaptırılması gereken gelir testinde, son gün kaosu yaşandı. Yeni işe giren ve geçmişe ait borç çıkarılan gençler "İlk maaşımız devlete gitti" diyor.\\n\\nGenel Sağlık Sigortası (GSS) kapsamında, özellikle işsiz gençlerin 306 lira aylık prim ödememek için girdiği gelir testinde, dün son gündü. Bu nedenle Sosyal Yardımlaşma ve Dayanışma vakıflarında tam anlamıyla kaos yaşandı. İşte o gençlerin feyratları:\\n\\nHEM İŞSİZ HEM BORÇLU\\n\\nBora Yanık: 4 yıldır iş bulamıyorum. Bana 6 bin 700 lira borç çıkartıldı. Üstelik borç için tebligat da almadım. Sigortasız olduğum için borç çıkmasın diye hastanenin kapısından geçmiyorum.\\n	Health and Sport
+79	Turkish	Bir ilde daha sandıklar taşınacak\\n\\nBatman'da 15 mahalledeki 26 okulda güvenlik gerekçesiyle sandık kurulmayacağı açıklandı.\\nBatman'da Merkez İlçe Seçim Kurulu, 15 mahalledeki 26 okulda güvenlik gerekçesiyle sandık kurulmayacağına, bu nedenle seçmenlerin farklı bölgelerdeki sandıklarda oy kullanmasına karar verdi.\\nMerkez İlçe Seçim Kurulu  Başkanlığı, 1 Kasım'da yapılacak seçimde, İl Emniyet Müdürlüğünün son dönemlerde artan terör olayları nedeniyle kent merkezindeki bazı mahallelerde güvenlik gerekçesiyle, sandıkların güvenlik sorunu olmayan okullara taşınmasına yönelik talebini değerlendirdi.\\n	Social and Political Matters
+80	Hungarian	A piackutató cég felmérése 19 különböző reklámforma iránti bizalmat vizsgálta 60 ország 30 ezer internethasználója körében. \\n\\nAz MTI-vel hétfőn közölt összegzés szerint, amennyiben reklámokról van szó, a magyarok 80 százaléka ismerőseit vagy családtagjait tekinti hiteles információforrásnak, ami 3 százalékkal alacsonyabb mint a globális átlag. A magyar vásárlók 68 százaléka a vállalatok, márkák saját weboldalaiban bízik, 62 százalékuk más fogyasztók online posztjaira támaszkodik, valamint 56 százalék azok aránya, akik valamely médiumban olvasott vagy hallott szerkesztőségi véleményt tartanak hitelesnek.\\n	Social and Political Matters
+81	Hungarian	Minél komplexebb egy vállalat struktúrája, annál inkább osztályokon átívelővé válnak a tevékenységek, a szervezet egyre nagyobb hálózatot alkot. A folyamatosan rövidülő fejlesztési időszakok, a növekvő követelmények és a gyorsan változó piaci körülmények nehezítik a kitűzött stratégiai és pénzügyi célok elérését. A decentralizáltabb, lapos struktúrájú szervezetekben ily módon nem csak a vezető, hanem az egyes munkatársak felelőssége is egyre nő, és ez fokozhatja a szervezeten belüli feszültségeket. Az ilyen típusú munkakörnyezetben a munkatársak elkötelezettsége egyébként is erős a közös célok felé, de a növekvő leterheltség frusztráltabbá teheti őket egymás iránt.	Business and Managment
+82	Hungarian	A halgazdálkodási vállalat is igyekszik népszerűsíteni a horgászatot a gyerekek körében. Az éves bérlet nekik csak 1500 forintba kerül. Míg tavaly 5000, addig idén már 6500 gyerekbérletet értékesítettek. „Sajnos országos tendencia az, hogy a gyerekhorgászok létszáma csökkenőben van. Itt a Balatonon most sikerült nekünk ezt megfordítani azzal, hogy az idei évtől egy kedvezményes árú, valamint eléggé bő lehetőségű jegyet adtunk számukra. Korábban csak úszóval, úszós módszerrel lehetett horgászni a gyerekeknek, de az idei évtől bármilyen módszerrel horgászhatnak” – fogalmazott Nagy Gábor horgászati ágazatvezető.	Health and Sport
+83	Hungarian	Kutatás-fejlesztési projekthez nyújtott támogatás keretében alapkutatás, ipari kutatás, kísérleti fejlesztés támogatható, míg a csekély összegű támogatás keretében projektelőkészítés, projektmenedzsment, a projekt szakmai megvalósításához kapcsolódó szolgáltatások igénybevétele.\\n\\nKutatási infrastruktúrához nyújtott beruházási támogatás keretében technológiai fejlesztést eredményező új eszközök beszerzése, a kutatási infrastruktúrához feltétlenül szükséges épület építése, korszerűsítése és a szükséges alap infrastrukturális fejlesztések, immateriális javak beszerzése lehetséges.\\n	Business and Managment
+84	Hungarian	Ma már kevesebbet gondolunk az akkor bemutatott, megrázó képekre, és a bírósági tárgyalásokról érkező híreken kívül nem sok szó esik a katasztrófáról. Pedig a tragédia környezeti, anyagi és morális hatásai egy darabig még kísérni fogják Magyarországot, így szomorú aktualitása van Kollányi Péter csütörtökön nyíló fotókiállításának is. A fotográfus az élettelen devecseri kistérséget fotózta egy éven át, mielőtt a szerencsétlenül járt házakat lebontották volna. A fotók többsége a tragédiát követő első fél évben készült. A sorozat Marks of a Catastrophe (Egy katasztrófa nyomai) címmel 2010-ben a rangos Pictures of the Year (Az év képei) nemzetközi fotópályázaton második helyezést ért el.	Culture
+85	Uzbek	Ўзбекистон билан беш йўналишда ҳамкорлик қилишга тайёрмиз\\r\\n\\r\\nШанхай маъмурияти Ўзбекистон билан беш йўналишда ҳамкорлик муносабатларини йўлга қўйиш ва ривожлантиришга тайёр. Шанхай шаҳар ҳокимияти Ташқи ишлар бошқармаси раҳбари ўринбосари Фу Цзихуннинг “Ватандош” мухбирига айтишича, қадимий Буюк ипак йўлини қуруқлик ва денгизда тиклаш бўйича халқаро лойиҳа ўзаро робиталарни янада кучайтиришга хизмат қилади.\\r\\nСавдо-иқтисодий муносабатлар ҳамкорликнинг биринчи йўналиши саналади. Жаноб Фуга кўра, сармоядор ва ишбилармонлар фаоллигини ошириш учун савдо-иқтисодий жабҳада ахборот алмашувини жонлантириш лозим.\\r\\n	topic to define
+86	Uzbek	O'qituvchilik – mas'uliyatli va mashaqqatli kasb. Insoniyat kamoloti uchun butun bilimi, iqtidori va hayotini baxsh etgan ustozlarning xizmatlarini hamma zamonlarda ham kishilar hurmatlab, o'zlarini esa e'zozlab kelishgan. Mustaqillik va ezgulik – mana shu ikki buyuk qadriyat zamirida xalqimizning asriy intilishlari, ezgu orzu – umidlari, bu majmuaning siyosiy va insoniy ma'nosi mujassamdir. Muhtaram ustozlarimizga o'z hurmatimiz va e'tiborimizni 1997 yildan beri respublikamizda keng nishonlanib kelayotgan 1 oktyabr – Ustoz va murabbiylar kunida yana bir bor izhor qilishimiz mumkin.	topic to define
+87	Uzbek	O'zbekiston Badiiy Akademiyasi Ikuo Xirayama Xalqaro madaniyat karvon saroyida Nizomiy nomidagi Toshkent Davlat Pedagogika universitetining "Tasviriy san'at" fakulteti o'qituvchilarining "Mo'yqalam sehri" nomli ko'rgazmasining ochilishi bo'lib o'tdi.\\r\\nNizomiy nomidagi Toshkent Davlat Pedagogika universiteti 1935 yilda tashkil etilgan bo'lib, o'tgan yillar davomida respublikamiz ta'lim muassasalariga turli yo'nalishdagi pedagog kadrlarni tayyorlab keladi. Avval institut, hozirda esa universitet maqomini olgan ushbu bilim maskani bu yil 80 yillik yubileyini nishonlamoqda. 	topic to define
+88	Uzbek	Xitoy Xalq Respublikasi raisi Si Tsinpinning Amerika Qo'shma Shtatlariga rasmiy tashrifi ikki davlat o'rtasidagi hamkorlik va birgalikdagi harakatlarni rivojlantirishga xizmat qiladi. Bu haqda AQShning Xitoydagi elchisi Maks Bokus ma'lum qildi. Uning ta'kidlashicha, Xitoy davlati rahbarining tashrifi Qo'shma Shtatlar eng orziqib kutgan muhim voqealardan biridir.\\r\\nAmerika elchisi o'z intervyusida Si Szinpinning tashrifi ikki mamlakatga ekologiya, iqtisodiyot, siyosat kabi turli sohalarda o'zaro hamkorlikni kengaytirish imkonini berishini ta'kidladi.  	topic to define
+89	Uzbek	Тошкентлик шахмат устаси Дмитрий Қаюмов (2389) 9 имкониятдан 8 очко (7 та ғалаба, 2 та дуранг) тўплаб, 6th KLK Tan Sri Lee Loy Seng Seniors Open 2015 ветеранлар мусобақасида биринчи ўринни эгаллади ва россиялик Александр Фоминихдан (2439, иккинчи ўрин) 0,5 очко, индонезиялик Ронни Гунавандан (2371, учинчи ўрин) 1 очко ўзиб кетди.\\r\\nСамарқандлик Жаҳонгир Воҳидов(2532) 18 та мамлакатдан 141 нафар шахматчи иштирок этган 12th IGB Dato' Arthur Tan Malaysian Open 2015 турнирида ғолиб бўлди. Турнирнинг 6 нафар иштирокчиси 9 имкониятдан 7 тадан очко жамғаришди, лекин Жаҳонгир қўшимча кўрсаткич бўйича биринчи ўринга лойиқ топилди.\\r\\n	topic to define
+90	English	When you drive the new expressway to the airport in the Chinese city of Luliang, you are as likely to come across a stray dog as another vehicle. When I recently drove it, a farmer was riding in a 3-wheel flatbed truck and heading in the wrong direction. But it didn't matter. There was no oncoming traffic.\\nThat's because the city's $160 million airport, which opened in 2014, gets at most five flights a day and as few as three. Officials began building the airport when this coal town was still booming. Since then, though, global commodity prices have plunged as China's old industrial economy has sputtered. The airport has become a white elephant.\\n	Social and Political Matters
+91	English	College students can't miss the warnings these days about the risk of campus sexual assault, but increasingly, some students are also taking note of what they perceive as a different danger.\\n"Once you are accused, you're guilty," says Parker Oaks, one of several Boston University students stopped by NPR between classes. "We're living in a society where you're guilty before innocent now."\\nXavier Adsera, another BU student, sounds a similar theme. "We used to not be fair to women on this issue," he says. "Now we're on the other extreme, not being fair to guys."\\n	Social and Political Matters
+92	English	In every book, you have to find a character that you love. This is true for authors as well as readers — we both need something to hang onto when the going gets rough, someone to root for, someone in whom we find small fragments of ourselves.\\nThis is doubly-true in this epoch of the multiply-narrated novel and the omniscient voice. Triply-true when authors get to door-stopping and their books creep upwards of five, six and seven hundred pages. When you're talking about that kind of commitment, you want to do your time with someone you like.\\n	Culture
+93	English	Dave Gahan has sung about a soul that needs saving since his earliest murmurings as the frontman of Depeche Mode. Now, he's recorded his second collection of collaborative songs with Soulsavers since teaming up with the U.K. production enterprise in 2012. The first release was solely a Soulsavers project by virtue of its billing, with Gahan presented as a contributor of vocals to all songs that weren't instrumentals. But Angels & Ghosts puts Gahan's name — and his searching, dependably anguished cry — out front for all to behold.\\nAngels & Ghosts is nothing like a Depeche Mode album in terms of atmosphere, with a dusty, sparse desert-rock sound that couldn't be less electronic. \\n	Culture
+94	English	If you're the parent of a young teen with intense mood swings, researchers have good news. Those emotions are probably normal and should calm down as your child moves through adolescence.\\n\\nBut if stormy emotional seas don't subside as teens move toward young adulthood, it may be a warning to parents of larger problems.\\n\\nResearchers in the Netherlands followed 474 middle- to high-income Dutch adolescents from ages 13 to 18. Forty percent of the teens were considered high risk for aggressive or delinquent behavior at age 12. At various times over five years, the teens rated their daily moods with regard to happiness, anger, sadness and anxiety.	Social and Political Matters
+95	French	Dans son discours sur l’état de l’Union, le président américain a cherché à combattre le pessimisme qui domine la campagne pour les primaires. Avec une cible implicite : le candidat à l’investiture républicaine Donald Trump.\\r\\n“L’opposant d’Obama en 2016 : Donald Trump”, titre Politico au lendemain du dernier discours sur l’état de l’Union du président américain, mardi 12 janvier, devant le Congrès. “Sans même prononcer son nom”, Barack Obama s’est engagé dans une réfutation en règle “du trumpisme et de l’attitude pessimiste qu’il incarne”, estime le site.\\r\\n	Social and Political Matters
+97	French	Le gouvernement de droite a trouvé un accord avec le principal parti d’opposition sur le projet de loi qui permettra à la police de confisquer les biens des réfugiés à leur arrivée au Danemark. Ils ne pourront garder que les objets ayant une valeur affective.\\r\\nC’est ce mercredi que le Parlement danois se penche sur la nouvelle version de ce projet de loi polémique, note le quotidien Jyllands-Posten. Le texte en question stipule que, quand les réfugiés arriveront au Danemark, leurs valises seront désormais fouillées par la police afin de voir s’ils ont de l’argent ou des objets de valeur. Le cas échéant, les forces de l’ordre saisiront les biens.\\r\\n	Social and Political Matters
+98	French	Impressionnantes, puissantes, nées dans l'après-guerre sur les décombres de l'histoire, les oeuvres de l'artiste allemand Anselm Kiefer percutent et émeuvent. Le Centre Pompidou en présente une magistrale rétrospective.\\r\\nCertaines oeuvres claquent comme une gifle. On s'en approche. On recule. Puis on revient sur ses pas, partagé entre stupéfaction et trouble. Anselm Kiefer nous a saisis ! Ici, un livre ouvert arbore ses pages calcinées comme autant de cicatrices. Figé tel un témoin-fossile, il dira, mieux qu'une complexe allégorie, tous les attentats et autodafés dont l'homme a parfois meurtri sa mémoire. Le voyage a commencé. Ses paysages vont habiter des toiles monumentales. Leurs champs de labours enneigés traceront à l'infini des sillons désolés. Ses tournesols, géants au coeur sombre, se pencheront en silence sur un être allongé.\\r\\n	Culture
+99	German	Im Süden Chiles sind mehr als 330 Wale gestrandet - eine der größten Strandungen dieser Art, die jemals registriert wurden. "Es erschien uns wie ein apokalyptisches Bild. Noch nie hatte ich so etwas gesehen", berichtete die Direktorin des Wissenschaftszentrums Huinay, Vreni Häussermann. Sie hatte an der Expedition teilgenommen, die die toten Wale zählte.\\r\\nMehr als 20 Sei-Wale mit einer Länge von etwa zehn Metern waren im vergangenen April als tot gemeldet worden, nachdem sie im Norden des Golfs von Penas in Patagonien fast 2000 Kilometer südlich der chilenischen Hauptstadt Santiago gestrandet waren. Wissenschaftler, darunter Häussermann, überflogen dann im Juni das schwer zugängliche Gebiet.\\r\\n	Nature
+100	German	Das Mindesthaltbarkeitsdatum ist abgelaufen - aber wegwerfen muss man Lebensmittel deshalb noch lange nicht. Vieles hält sich deutlich länger, und beim Check darf man sich ruhig auf die eigenen Sinne verlassen.\\r\\nWir alle werfen Lebensmittelweg, jeden Tag. Das Bundesministerium fürErnährung undLandwirtschaft hat 2012 in einer Studie ermitteln lassen, dass jedes achte Lebensmittel, das wir einkaufen, in der Mülltonne landet - die meisten noch in Originalverpackung. Pro Kopf und Jahr sind das etwa zwei volle Einkaufswagen mit Lebensmitteln im Wert von 235 Euro, die wir wegwerfen.\\r\\n	Health and Sport
+101	German	Was geschieht nach dem Ende des siebten und letzten Buchs der Harry-Potter-Serie? Ein Theaterstück erzählt die berühmte Geschichte weiter - nun stehen die drei Hauptdarsteller dazu fest.\\r\\nHarry Potter als Ehemann, Vater von drei schulpflichtigen Kindern und Mitarbeiter im Ministerium für Magie: Im Sommer kommenden Jahres geht die Geschichte um den berühmtesten Zauberlehrling weiter - allerdings nicht auf Buchseiten, sondern als Theaterstück. Nun ist auch klar, wer die Hauptrollen darin übernehmen wird: Jamie Parker wird den erwachsenen Harry spielen, Noma Dumezweni bekam die Rolle der Hermine und Paul Thornley wird als Ron Weasley zu sehen sein.\\r\\n	Culture
+102	Spanish	El pomelo no es un alimento milagro pero, si lo que queremos es perder peso de forma saludable, este cítrico nos ayudará a darnos un poco de impulso en nuestro objeto. Un estudio del Centro de Investigación Scripps (EE.UU.) monitorizó peso y características metabólicas de 91 participantes, tanto masculinos como femeninos, durante 12 semanas. Cada participante fue asignado al azar en distintos grupos. Un grupo recibió cápsulas de placebo junto con zumo de manzana; el segundo grupo, cápsulas de pomelo con zumo de manzana; el tercer grupo, zumo de pomelo y una cápsula de placebo; el último grupo, la mitad de un pomelo fresco y un placebo, tres veces al día antes de cada comida. Los resultados revelaron que el grupo que había tomado pomelo fresco, además de una reducción significativa de los niveles de glucosa, también presentó una mayor pérdida de peso con respecto a los demás participantes.	Health and Sport
+103	Spanish	Un equipo de investigadores de distintas instituciones internacionales ha descubierto que la mayoría de las estrellas alberga en su interior un intenso campo magnético. De hecho, este es hasta diez millones de veces más potente que el de la Tierra en aquellas que son solo un poco más masivas que el Sol. Para determinarlo, estos astrónomos han analizado una muestra de 3.600 gigantes rojas, unos objetos fríos y muy grandes, con una masa de hasta nueve veces la del astro rey, que ya han agotado el hidrógeno en su núcleo. Este podría ser, precisamente, el destino del Sol dentro de 5.000 o 6.000 millones de años.	Science
+104	Spanish	A lo largo de la Historia, siempre surgieron plagas mortíferas como si fuesen un enemigo invisible que se empeñase, periódicamente, en aniquilar a los seres humanos.\\r\\nEn el siglo XIV, no se produjo la primera manifestación de la peste negra, la infección más letal que se conoce. Ya había aparecido antes en el año 542, en Constantinopla y se conoció como Plaga de Justiniano, después se fue reproduciendo en cliclos de ocho o doce años hasta desaparecer por completo en el año 700. Según cifras estimativas, la peste de la Antigüedad se llevó a un total de más de 200 millones de personas.\\r\\n	History 
+105	Russian	Тем туристам, кто не намерен ограничиваться знакомством только с историческим центром Стокгольма, предложат аренду велосипедов. В этом случае туристические возможности расширяются несказанно. Можно не только посмотреть практически весь город, но и заглянуть на рынки и в музей.\\r\\nПопулярность в Стокгольме пользуется и водный транспорт. Экскурсии на катере позволяют не только полюбоваться городскими набережными, но и побывать в окрестностях шведской столицы – Ваксхольме, где нашли пристанище любители парусного спорта, и в Фьедерхольмарне, где можно посетить музей виски и заглянуть к стеклодувам.\\r\\n	Culture
+106	Russian	Письма и документы немецких лингвистов и писателей-сказочников Якоба и Вильгельма Гримм стали доступны для свободного просмотра в Интернете. Об этом сообщили представители Университета Касселя. Именно они проделали колоссальную работу над архивом семейства Гримм и выложили в сеть отсканированные копии старинных документов. \\r\\nВ виртуальный архив попали письма не только самих братьев, но и их родственников. Датируется коллекция документов 1698-1949 годами. Оригиналы писем и документов хранятся в Государственном земельном архиве Гессена в Марбурге. Переданы документы семейства общественности были Марко Плоком - правнуком Вильгельма Гримма.\\r\\n	Culture
+107	Russian	К химическим явлениям относят такие явления, при которых одни вещества превращаются в другие. Химические явления называют иначе химическими реакциями. \\r\\nТо, из чего состоят физические тела, то есть окружающие нас предметы, называется веществом. Простое вещество состоит из атомов только одного вида или из молекул, построенных из атомов одного вида. Сложное вещество состоит из молекул, построенных из атомов разных видов.\\r\\nСмесью называется вещество, состоящее из молекул (или атомов) двух или нескольких веществ. Вещества, составляющие смесь, могут быть простыми и сложными.\\r\\n	Science
+108	Russian	Финансовые аналитики предрекают резкое и серьезное укрепление доллара в 2016 году. Впрочем, как говорится в материале агентства Bloomberg, перед американским долларом смогут устоять канадский доллар, британский фунт стерлингов и норвежская крона. А вот новозеландский и австралийский доллары, а также швейцарский франк сдадут свои позиции.  Специалисты ожидают, что доллар будет укрепляться не менее двух лет.\\r\\nЧто касается рубля, то специалисты агентства предрекают ему дальнейший обвал - до 20% и падение экономики России на полпроцента. Если эти прогнозы верны, то нас может ожидать курс доллара в 87 рублей.\\r\\n	Economy
+109	Ukranian	Львівська бізнес-школа та Видавництво Старого Лева запрошують на презентацію перекладу книги Сунь-дзи «Мистецтво війни» у м. Івано-Франківську. Вперше з давнокитайської на українську мову книгу переклав Сергій Лесняк, викладач з міжнародного бізнесу, історик філософії Сходу. Перекладач, переконаний, що філософськостратегічний твір давньокитайського воєначальника та викладені в ньому ідеї і поради стосуються не лише стратегії бою і завоювання, але й усієї діяльності людини, зокрема й бізнесу.\\r\\nВ оформленні книжки використано оригінальні каліграфічні написи, надані Сергієм Лесняком.\\r\\n	Culture
+110	Ukranian	Літературний фестиваль в Пулі ошелешив мене величезним вибором книжок. Тобто багато зарубіжних письменників були представлені не так, як у нас двома-трьома книжками, а десятками книжок, включаючи й томи їхнього листування чи щоденники. І хоча на львівському Форумі видавців значно менший асортимент книжок, ніж на ярмарку в Пулі, але зате в нас яблуку ніде впасти. Натомість у Пулі відвідувачів було небагато. При цьому треба сказати, що як і в колишній Югославії, так і в Хорватії, книжки дуже дорогі. Подекуди дорожчі навіть за австрійські чи німецькі, не кажучи про польські та чеські.	Culture
+111	Ukranian	Фізика — природнича наука. В її основі лежить експериментальне дослідження явищ природи, а її задача — формулювання законів, якими пояснюються ці явища. Фізика зосереджується на вивченні найфундаментальніших та найпростіших явищ і на відповідях на найпростіші запитання: з чого складається матерія, яким чином частинки матерії взаємодіють між собою, за якими правилами й законами здійснюється рух частинок, тощо. В основі фізичних досліджень лежать спостереження. Узагальнення спостережень дозволяє фізикам формулювати гіпотези щодо спільних загальних рис тих явищ, за якими велися спостереження. 	Science
+112	Ukranian	В Ірані повідомили про остаточне скасування санкцій, що забороняли європейцям купувати продукцію іранських нафтохімічних підприємств. Про це повідомляє Європейська правда з посиланням на іранське агентство IRNA.\\r\\nІранські нафтохіміки вперше за п'ять років отримали гроші за свій товар через зареєстрований в ЄС банк. За словами директора нафтохімічної торгової компанії Мехді Шаріф Нікнафса, його компанія отримала перший платіж на рахунок в одному з банків Іспанії.\\r\\nЦе перше постачання іранської нафти в ЄС після скасування санкцій, які тривали п'ять років, уточнив він.\\r\\n	Economy
+113	Portoguese	Mais de 10 mil crianças imigrantes podem ter desaparecido depois de chegar na Europa apenas nos últimos dois anos, segundo a unidade de inteligência da polícia da União Europeia.\\r\\nA Europol disse que as milhares de crianças desapareceram depois de serem registradas por autoridades.\\r\\nA polícia do bloco europeu ainda alertou que crianças e jovens podem estar sendo explorados sexualmente e usados em trabalho escravo por gangues de criminosos.\\r\\nEsta foi a primeira vez que a Europol forneceu uma estimativa de quantas crianças imigrantes podem estar desaparecidas em todo o bloco europeu.\\r\\n	Social and Political Matters
+114	Portuguese	Polvos podem ter mais interações sociais do que se acreditava anteriormente, afirma um novo estudo.\\r\\nBiólogos estudaram um grupo de polvos na Costa Leste da Austrália e observaram uma variedade de comportamentos que podem indicar uma complexa capacidade de comunicação.\\r\\nPolvos que ficam "de pé", escuros e com os tentáculos espalhados estão provavelmente com temperamento agressivo.\\r\\nPor outro lado, os polvos podem assumir cores mais claras depois de perder uma briga ou para sinalizar que não querem brigar.\\r\\n	Science
+115	Portuguese	Os casos de zika e microcefalia no Brasil aumentaram a preocupação com a picada do mosquito Aedes aegypti, que já era temido por causa da dengue.\\r\\nDesde outubro, foram notificados 4.180 casos suspeitos de microcefalia no país - 270 já foram confirmados, 462 descartados e os outros seguem em investigação.\\r\\nComo não existe vacina ou tratamento para a zika, o conselho, principalmente para as grávidas, é tomar medidas para se proteger da picada do mosquito.\\r\\nMas por que mosquitos picam algumas pessoas mais do que outras? Segundo um estudo, publicado no ano passado no periódico PLOS ONE, isso pode estar ligado aos genes que controlam o odor corporal.\\r\\n	Science
+116	Portuguese	Barreiras às exportações equatorianas de camarão, peixe e banana para o Brasil e a necessidade de um acordo para facilitar investimentos estão entre as questões que Brasília e Quito prometem resolver em um encontro marcado para março, conforme anunciado na terça-feira pela presidente do Brasil, Dilma Rousseff, e o do Equador, Rafael Correa.\\r\\n"Um dos três maiores deficits comerciais do Equador hoje é precisamente com o Brasil, no qual temos tido dificuldade de entrar com nossas principais exportações não petroleiras – basicamente banana, camarão e peixe, especialmente o atum", disse Correa.\\r\\n	Economy
+117	Portuguese	Os investidores da Apple estão assustados: embora 2015 tenha sido um ano vigoroso, algo peculiar aconteceu neste mês: o preço da ação da Apple caiu para menos de US$ 100 (R$ 410) pela primeira vez desde outubro de 2014.\\r\\nHá muitos rumores no ar, mas é nesta terça-feira que realmente saberemos se 2016 será um ano difícil para a gigante da tecnologia - é nesta terça que devem ser divulgados dados de seu desempenho recente e expectativas para os próximos meses.\\r\\nÉ nesse momento que a companhia apresenta suas preocupações, os problemas que mantêm seus executivos acordados à noite (ou ao menos estressados nas salas de reuniões).\\r\\n	Economy
+118	Italian	RENZI IN NIGERIA: "DISTRUGGEREMO I TERRORISTI"\\r\\nMassimo impegno dell'Italia alla lotta al terrorismo. Lo ha garantito il Presidente del Consiglio Matteo Renzi ad Abuja, in Nigeria, dove ha incontrato il presidente della Repubblica federale, Muhammadu Buhari nel palazzo presidenziale. "I terroristi sanno benissimo che la comunità internazionale è impegnata a distruggerli - prosegue - e noi li distruggeremo, con determinazione, perchè i nostri valori, le nostre idee, i nostri ideali sono troppo grandi per essere bloccati\\r\\n	Social and Political Matters
+119	Italian	L'atleta che ha riportato la storica vittoria è Kotoshogiku (il vero nome è Kazuhiro Kikutsugi) che è un "ozeki", che significa che ha un titolo solo di un livello inferiore allo "yokozuna", il campione assoluto. Kotoshigiku ha battuto Goeido, diventando così il primo sumotori giapponese a vincere il titolo dopo Tochiazuma nel 2006. Nella classifica ha superato di un incontro Hakuho, il grande campione di origine mongola, che con l'altro mongolo Asashoryu ha di fatto dominato il mondo del sumo negli ultimi anni insieme ai due europei Kaido Hoovelson (che combatte come Baruto Kaito), estone e campione 2012 soprannominato  'sumotori' dagli occhi azzuri, e il bulgaro Kotooshu (Kaloyan Mahlyanov Stefanov, il vero nome), primo europeo a conquistare in assoluto il trofeo nel 2008. 	Sport and Health
+120	Italian	Per la prima volta nel Regno Unito un gruppo di scienziati del Francis Crick Institute di Londra è stato autorizzato a gestire embrioni umani per fini di ricerca. Lo ha annunciato l'autorita' britannica per la fertilizzazione e l'embriologia (Hfea). L'autorizzazione prevede l'utilizzo del metodo Crispr-Cas9, che permette di bersagliare e neutralizzare i geni inadempienti nel Dna in modo più preciso. Si cerca in pratica di studiare i geni coinvolti nello sviluppo di cellule che formano la placenta per cercare di spiegare gli aborti spontanei. Si tratta di una delle prime autorizzazioni di manipolazione di embrioni umani, dopo un primo tentativo cinese all'inizio del 2015. 	Science
+121	Italian	L’arte messicana nella città di Partenope: è in corso nell’Instituto Cervantes di Napoli la mostra “Cuore lontano, cuore messicano. 6 artisti in Italia”. L’esposizione, organizzata dall’Ambasciata del Messico in collaborazione con l’Instituto Cervantes, arriva per la prima volta in Italia e comprende 39 opere di diversa dimensione, realizzate tra il 2000 e il 2015 da Ana María Serna, David Beuchot, Jehsel Lau, Karla Guajardo Ro, Ricardo Macías e Santos Badillo. Sei tra i più interessanti artisti messicani residenti in Italia. 	Culture
+122	Italian	Sotto la 'Madunina' fa festa il Milan che affonda 3-0 l'Inter in crisi sempre più palese. Per i nerazzurri ci sono solo 5 punti nelle ultime 6 gare, corredate da tre sconfitte. E' pur vero che i rossoneri arrotondano il risultato solo nel finale, dopo aver rischiato il pari sul rigore fallito da Icardi. Ma i gol incassati sotto questo aspetto fanno ancora più male. E il nervosismo di Mancini, espulso per proteste a inizio ripresa e che mostra il dito medio ai tifosi del Milan, testimonia una situazione complicata nella quale è difficile capire dove mettere mano. 	Sport and Health
+\.
+
+
+--
+-- TOC entry 3756 (class 0 OID 1791154)
 -- Dependencies: 204
 -- Data for Name: skilltest; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY skilltest (id, language, question, answer1, answer2, answer3, scelta) FROM stdin;
+COPY public.skilltest (id, language, question, answer1, answer2, answer3, scelta) FROM stdin;
 89	English	The Internet giant, Amazon, has put a warning on some of the 'Tom and Jerry' cartoons it offers to its customers. Visitors who want to buy or download the series 'Tom and Jerry: The Complete Second Volume' get a warning that the cartoons contain scenes that are racist. The warning says: "Tom and Jerry shorts may show some ethnic and racial prejudices that were once commonplace in American society." It added that the scenes were wrong when the cartoons were made 70 years ago, and are still wrong today. People say the character of the black maid in the cartoon series is racist. Some of the cartoons were edited in the 1960s because of worries about racism. Tom and Jerry were created in 1940 by cartoonists William Hanna and Joseph Barbera. The cartoons won the Oscar for the best Animated Short Film seven times. The shows have become one of the most popular cartoons in animation history. Many people posted on Twitter to say it was "madness" for Amazon to put a warning on the cartoons.	Based on the text information, Tom and Jerry shows were created to criticize racism	According to the warning of Amazon, the racist scenes are wrong nowadays; however, in the past they were acceptable.	According to the warning of Amazon, racism is no longer a common behavior in America	3
 89	English	The Internet giant, Amazon, has put a warning on some of the 'Tom and Jerry' cartoons it offers to its customers. Visitors who want to buy or download the series 'Tom and Jerry: The Complete Second Volume' get a warning that the cartoons contain scenes that are racist. The warning says: "Tom and Jerry shorts may show some ethnic and racial prejudices that were once commonplace in American society." It added that the scenes were wrong when the cartoons were made 70 years ago, and are still wrong today. People say the character of the black maid in the cartoon series is racist. Some of the cartoons were edited in the 1960s because of worries about racism. Tom and Jerry were created in 1940 by cartoonists William Hanna and Joseph Barbera. The cartoons won the Oscar for the best Animated Short Film seven times. The shows have become one of the most popular cartoons in animation history. Many people posted on Twitter to say it was "madness" for Amazon to put a warning on the cartoons.	Based on the text information, Tom and Jerry shows were created to criticize racism	According to the warning of Amazon, the racist scenes are wrong nowadays; however, in the past they were acceptable.	According to the warning of Amazon, racism is no longer a common behavior in America	3
 90	English	Dear Sheila, In your last letter, you asked me to tell you about all the things I did during my summer vacation. We went to Vancouver (1) I have some old friends (2) I haven't seen for about three years. My friend Tim, (3) mother I wrote about in my last letter to you, came with me and we had a great time. We flew into Vancouver on Monday 24th, (4) was also my birthday. The first thing we did was to visit the wonderful aquarium in the city center (5) there are three killer whales and a whole crowd of seals, penguins and dolphins. We arrived in the late afternoon (6) all the animals are fed so it was wonderful to see the dolphins leaping out of the water to get the fish (7) they love to eat so much. The following day, (8) was cloudy and rainy unfortunately, we went to a museum (9) they have some dinosaur skeletons (10) local people have found in the area. The horrible weather never improved all day so we visited a superb seafood restaurant later in the afternoon and had an early dinner. The waiters, (11) were all dressed in traditional fishermen's clothes, were very friendly and told us about the history of the restaurant (12) name was The Jolly Whaler. The restaurant, (13) has been open since 1888, was once visited by the American President J.F. Kennedy and his wife Jackie. The skies were blue on Thursday and we spent some time out on the sea in a large boat (14) we hired. I caught a big fish (15) the captain said was the biggest he'd seen this year. I felt very proud! We left on Thursday evening after a mini-vacation (16) helped me to relax a lot and now I have returned to work. The next time (17) you write to me, you must tell me about YOUR last vacation. Bye for now Sheila, Ben.	Numbers 2, 7, 14, 15, 17 don’t need a relative pronoun	Numbers 4, 8, 10, 13, 16, can be completed with the relative pronoun ‘that’.	Numbers 5, 6, 9 can be completed with the relative pronoun ‘where’	1
@@ -960,152 +1055,164 @@ COPY skilltest (id, language, question, answer1, answer2, answer3, scelta) FROM 
 
 
 --
--- TOC entry 3751 (class 0 OID 1791162)
+-- TOC entry 3758 (class 0 OID 1791162)
 -- Dependencies: 206
 -- Data for Name: traduttore; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new_message, username, email, vat, citta, cap, provincia, idstato, madrelinguaid, stato) FROM stdin;
+COPY public.traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new_message, username, email, vat, citta, cap, provincia, idstato, madrelinguaid, stato) FROM stdin;
+82	Claudia	Ramirez	\N	\N	3e1b7adeca0162d68bd908ddccbf83dcb89376af6e4bf23f9992a29efbe1e1f0	N	clrm2018	claudiaramirez.m@gmail.com	N/A	\N	\N	\N	\N	\N	\N
+83	Akiko	Numata	\N	\N	54b053cca36c971a2807d001744d5bff3650b482f8fc776cd3f71bd5f6e932d3	N	Akikomemceroktaty	numataakiko@hotmail.com	undefined	\N	\N	\N	\N	\N	\N
+84	Adi	Saputra	\N	\N	557afe58fb4ac32832e7384b564a56fd799bdbb106a38864d725159a2be15d70	N	Adi Saputra	adisaputra_9@yahoo.com	undefined	\N	\N	\N	\N	\N	\N
 \.
 
 
 --
--- TOC entry 3767 (class 0 OID 0)
+-- TOC entry 3776 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: agenzia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('agenzia_id_seq', 2, true);
+SELECT pg_catalog.setval('public.agenzia_id_seq', 2, true);
 
 
 --
--- TOC entry 3768 (class 0 OID 0)
+-- TOC entry 3777 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: currencies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('currencies_id_seq', 196, true);
+SELECT pg_catalog.setval('public.currencies_id_seq', 196, true);
 
 
 --
--- TOC entry 3769 (class 0 OID 0)
+-- TOC entry 3778 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('payments_id_seq', 17, true);
+SELECT pg_catalog.setval('public.payments_id_seq', 17, true);
 
 
 --
--- TOC entry 3770 (class 0 OID 0)
+-- TOC entry 3779 (class 0 OID 0)
 -- Dependencies: 205
 -- Name: skilltest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('skilltest_id_seq', 1, false);
+SELECT pg_catalog.setval('public.skilltest_id_seq', 1, false);
 
 
 --
--- TOC entry 3771 (class 0 OID 0)
+-- TOC entry 3780 (class 0 OID 0)
 -- Dependencies: 207
 -- Name: traduttore_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('traduttore_id_seq', 81, true);
+SELECT pg_catalog.setval('public.traduttore_id_seq', 84, true);
 
 
 --
--- TOC entry 3606 (class 2606 OID 1791181)
+-- TOC entry 3611 (class 2606 OID 1791181)
 -- Name: agenzia agenzia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY agenzia
+ALTER TABLE ONLY public.agenzia
     ADD CONSTRAINT agenzia_pkey PRIMARY KEY (username);
 
 
 --
--- TOC entry 3608 (class 2606 OID 1791183)
+-- TOC entry 3613 (class 2606 OID 1791183)
 -- Name: agenzia agenzia_username_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY agenzia
+ALTER TABLE ONLY public.agenzia
     ADD CONSTRAINT agenzia_username_key UNIQUE (username);
 
 
 --
--- TOC entry 3610 (class 2606 OID 1791185)
+-- TOC entry 3615 (class 2606 OID 1791185)
 -- Name: payments payments_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payments
+ALTER TABLE ONLY public.payments
     ADD CONSTRAINT payments_id_key UNIQUE (id);
 
 
 --
--- TOC entry 3612 (class 2606 OID 1791187)
+-- TOC entry 3621 (class 2606 OID 9001220)
+-- Name: ratingtest ratingtest_id_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ratingtest
+    ADD CONSTRAINT ratingtest_id_key UNIQUE (id);
+
+
+--
+-- TOC entry 3617 (class 2606 OID 1791187)
 -- Name: traduttore traduttore_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY traduttore
+ALTER TABLE ONLY public.traduttore
     ADD CONSTRAINT traduttore_pkey PRIMARY KEY (username);
 
 
 --
--- TOC entry 3614 (class 2606 OID 1791189)
+-- TOC entry 3619 (class 2606 OID 1791189)
 -- Name: traduttore traduttore_username_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY traduttore
+ALTER TABLE ONLY public.traduttore
     ADD CONSTRAINT traduttore_username_key UNIQUE (username);
 
 
 --
--- TOC entry 3615 (class 2606 OID 1791190)
+-- TOC entry 3622 (class 2606 OID 1791190)
 -- Name: language_pair language_pair_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY language_pair
-    ADD CONSTRAINT language_pair_username_fkey FOREIGN KEY (username) REFERENCES traduttore(username);
+ALTER TABLE ONLY public.language_pair
+    ADD CONSTRAINT language_pair_username_fkey FOREIGN KEY (username) REFERENCES public.traduttore(username);
 
 
 --
--- TOC entry 3617 (class 2606 OID 1791195)
+-- TOC entry 3624 (class 2606 OID 1791195)
 -- Name: payments payments_secondtranslator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payments
-    ADD CONSTRAINT payments_secondtranslator_fkey FOREIGN KEY (secondtranslator) REFERENCES traduttore(username);
+ALTER TABLE ONLY public.payments
+    ADD CONSTRAINT payments_secondtranslator_fkey FOREIGN KEY (secondtranslator) REFERENCES public.traduttore(username);
 
 
 --
--- TOC entry 3618 (class 2606 OID 1791200)
+-- TOC entry 3625 (class 2606 OID 1791200)
 -- Name: payments payments_translator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payments
-    ADD CONSTRAINT payments_translator_fkey FOREIGN KEY (translator) REFERENCES traduttore(username);
+ALTER TABLE ONLY public.payments
+    ADD CONSTRAINT payments_translator_fkey FOREIGN KEY (translator) REFERENCES public.traduttore(username);
 
 
 --
--- TOC entry 3619 (class 2606 OID 1791205)
+-- TOC entry 3626 (class 2606 OID 1791205)
 -- Name: payments payments_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY payments
-    ADD CONSTRAINT payments_username_fkey FOREIGN KEY (username) REFERENCES agenzia(username);
+ALTER TABLE ONLY public.payments
+    ADD CONSTRAINT payments_username_fkey FOREIGN KEY (username) REFERENCES public.agenzia(username);
 
 
 --
--- TOC entry 3616 (class 2606 OID 1791210)
+-- TOC entry 3623 (class 2606 OID 1791210)
 -- Name: languages test_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY languages
-    ADD CONSTRAINT test_username_fkey FOREIGN KEY (username) REFERENCES traduttore(username);
+ALTER TABLE ONLY public.languages
+    ADD CONSTRAINT test_username_fkey FOREIGN KEY (username) REFERENCES public.traduttore(username);
 
 
 --
--- TOC entry 3759 (class 0 OID 0)
+-- TOC entry 3768 (class 0 OID 0)
 -- Dependencies: 7
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: -
 --
@@ -1117,15 +1224,15 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 3761 (class 0 OID 0)
--- Dependencies: 628
+-- TOC entry 3770 (class 0 OID 0)
+-- Dependencies: 633
 -- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: -
 --
 
 GRANT ALL ON LANGUAGE plpgsql TO rrvkxtiqcmdwhu;
 
 
--- Completed on 2018-02-20 07:25:40 CET
+-- Completed on 2018-03-12 11:48:13 CET
 
 --
 -- PostgreSQL database dump complete
