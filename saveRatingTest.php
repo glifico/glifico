@@ -22,6 +22,7 @@ if(!certToken($db, $user,$token)) exit(json_encode(array("message"=>"wrong token
 
 $today=date("Y-m-d H:i:s");
 $query="INSERT INTO languagerating (datatest, translated, usrname, language) VALUES('$today', '$translated', '$user', '$from');";
+echo($query);
 $result = $db->query($query);
 
 $result->CloseCursor();
