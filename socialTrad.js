@@ -7,7 +7,6 @@ var outTime = false;
 var myTimer;
 var domande = [];
 var domanda = [];
-var lingua = [];
 
 $.ajaxSetup( {
 	async : false
@@ -145,10 +144,6 @@ function showDomanda() {
 	html += '<div class="panel panel-default"><div class="panel-heading"> <font size="2" >' + domanda.text_to_translate;
 	+'</font>  </div> </div>'
 	html += '<br/>'
-	var url = "rest.xsp?api=getLanguage&lingua=" + $("#select-language2").val();
-	$.get(url, function(data) {
-		lingua = data
-	});
 
 	html += '<br><div><center> <textarea rows="4" cols="110" id="textarea" placeholder="Please enter here the translation of the text here"></textarea></center>' + '</div>'
 	var selected = "";
