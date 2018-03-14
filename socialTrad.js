@@ -126,6 +126,7 @@ function startTest() {
 
 	}
 }
+
 function mioTimer() {
 	nowSeconds++;
 	if (nowSeconds >= maxSeconds) {
@@ -171,6 +172,7 @@ function showDomanda() {
 	$("#skill-body").fadeIn("show");
 }
 
+
 function finishTest() {
 	if (confirm("Do you want to submit the test?")) {
 
@@ -181,32 +183,38 @@ function finishTest() {
 		var testo = domanda.text_to_translate;
 
 		var temp = {
-			userId : sysIdUtente,
+			user : getUsername(),
+			token: getToken(),
 			testo : testo,
 			linguaF : linguaF,
 			linguaT : linguaT,
-			tradu : traduzione	
+			trad : traduzione	
 		};
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass
+		
 		$.ajax( {
 			type : "POST",
 			dataType : "application/json",
 			contentType : "application/json; charset=utf-8",
 			data : data,
-			url : "rest.xsp?api=saveTranslation",
+			url : "saveRatingTest.php",
 			complete : function(ret) {
+				var response=ret.responseText;
+				clearTimeout(myTimer);
+				nowSeconds = 0;
+				$('#skill-modal').modal('hide');
+				
+				$("#alertOK").html("Test Completed!");
+				$("#alertOK").fadeIn().delay(5000).fadeOut();
+			},
+			error : function(xhr) {
+				if (xhr.status == 500) {
+					$("#alertError").html("Error from server, please retry.");
+					$("#alertError").fadeIn().delay(1000).fadeOut();
+				}
 
-				// clearTimeout(myTimer);
-			// nowSeconds = 0;
-			$('#skill-modal').modal('hide');
-		},
-		error : function(xhr) {
-			if (xhr.status == 500) {
-				showNotifica("danger", "Errore dal server");
 			}
-
-		}
 		});
 
 	}
