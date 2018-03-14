@@ -177,8 +177,11 @@ function finishTest() {
 	if (confirm("Do you want to submit the test?")) {
 
 		var traduzione = document.getElementById("textarea").value;
-		var linguaF = $("#select-language").val();
-		var linguaT = $("#select-language2").val();
+		var e = document.getElementById("select-language");
+		var linguaF = e.options[e.selectedIndex].text;
+		
+		e = document.getElementById("select-language2");
+		var linguaT = e.options[e.selectedIndex].text;
 		var domanda = domande[0];
 		var testo = domanda.text_to_translate;
 
