@@ -274,10 +274,10 @@ function createTable(){
 		html += '</thead>';
 		html += '<tbody>';
 		for ( var i = 0; i < data.length; i++) {
-			var classe="";
-			if (data[i].TotTest == null||data[i].TotTest <1) {
-				classe=' class="danger"'
-			}
+			var classe="info";
+//			if (data[i].TotTest == null||data[i].TotTest <1) {
+//				classe=' class="danger"'
+//			}
 			html += '<tr valign="middle"  '+classe+'>'
 
 			var lang = data[i].Language
