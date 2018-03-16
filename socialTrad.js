@@ -14,7 +14,6 @@ $.ajaxSetup( {
 
 $(document).ready( function() {
 	init();
-	createTable();
 });
 
 function init() {
@@ -26,6 +25,7 @@ function init() {
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
 			gotLanguages(data);
+			createTable();
 			return(true);
 		}else{
 			mostraDialogTimed('errorPanel');
