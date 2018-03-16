@@ -206,7 +206,7 @@ function finishTest() {
 
 				$("#alertOK").html("Test Completed!");
 				$("#alertOK").fadeIn().delay(5000).fadeOut();
-				
+
 				createTable();
 			},
 			error : function(xhr) {
@@ -267,7 +267,9 @@ function createTable(){
 		html += '<thead>';
 		html += '	<tr valign="middle">';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language</th>';
+		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language from</th>';
+		html += '		<th';
+		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language to</th>';
 		html += '		<th';
 		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Last Execution Date</th>';
 		html += '	</tr>';
@@ -276,11 +278,15 @@ function createTable(){
 		for ( var i = 0; i < data.length; i++) {
 			var classe="info";
 //			if (data[i].TotTest == null||data[i].TotTest <1) {
-//				classe=' class="danger"'
+//			classe=' class="danger"'
 //			}
 			html += '<tr valign="middle"  '+classe+'>'
 
-			var lang = data[i].Language
+			var lang = data[i].LanguageF
+			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
+				+ lang;
+			+ '</b> </td>';
+			lang = data[i].LanguageT
 			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
 				+ lang
 				+ '</b> </td>'

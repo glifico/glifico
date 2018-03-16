@@ -17,11 +17,13 @@ $user=$data['user'];
 $token=$data['token'];
 $translated=$data['trad'];
 $from=$data['linguaF'];
+$to=$data['linguaT'];
+
 
 if(!certToken($db, $user,$token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 $today=date("Y-m-d H:i:s");
-$query="INSERT INTO languagerating (datatest, translated, username, language) VALUES('$today', '$translated', '$user', '$from');";
+$query="INSERT INTO languagerating (datatest, translated, username, languagefrom, languageto) VALUES('$today', '$translated', '$user', '$from', '$to');";
 $result = $db->query($query);
 
 $result->CloseCursor();
