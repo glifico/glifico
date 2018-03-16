@@ -14,6 +14,7 @@ $.ajaxSetup( {
 
 $(document).ready( function() {
 	init();
+	createTable();
 });
 
 function init() {
@@ -205,6 +206,8 @@ function finishTest() {
 
 				$("#alertOK").html("Test Completed!");
 				$("#alertOK").fadeIn().delay(5000).fadeOut();
+				
+				createTable();
 			},
 			error : function(xhr) {
 				if (xhr.status == 500) {
