@@ -99,7 +99,7 @@ function result(){
 		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Rating</th>';
 		html += '	</tr>';
 		html += '</thead>';
-		html += '</tbody>';
+		html += '<tbody>';
 		for ( var i = 0; i < data.length; i++) {
 			var classe="";
 			if (data[i].TotTest == null||data[i].TotTest <1) {
