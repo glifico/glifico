@@ -28,7 +28,8 @@ function init() {
 	
 	$.get(url, function(data) {
 		console.debug("get");
-		id = data[0].IdMothertongue;
+		console.debug(data);
+		id = data.IdMothertongue;
 	});
 	
 	console.debug(id);
