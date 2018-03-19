@@ -21,12 +21,17 @@ $(document).ready( function() {
 });
 
 function init() {
+	console.dubug("init!");
+	
 	var id = "";
 	var url = 'getTranslatorData.php?user='+ getUsername() + '&token=' + getToken();
 	
 	$.get(url, function(data) {
-		 id = data[0].IdMothertongue;
+		console.debug("get");
+		id = data[0].IdMothertongue;
 	});
+	
+	console.debug(id);
 	
 	var url = 'getLanguageById.php?user='+ getUsername() + '&token=' + getToken()+ '&id=' + id;
 		$.get(url, function(language) {
