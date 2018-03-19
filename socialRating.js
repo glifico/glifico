@@ -21,7 +21,7 @@ $(document).ready( function() {
 });
 
 function init() {
-	console.dubug("init!");
+	console.debug("init!");
 	
 	var id = "";
 	var url = 'getTranslatorData.php?user='+ getUsername() + '&token=' + getToken();
