@@ -22,12 +22,14 @@ $(document).ready( function() {
 
 function init() {
 	var id = "";
-	var url = "rest.xsp?api=getMadreLinguaRating&id=" +sysIdUtente;
+	var url = 'getTranslatorData.php?user='+ getUsername() + '&token=' + getToken();
+	
 	$.get(url, function(data) {
 		 id = data[0].IdMothertongue;
 	});
-	var url = "rest.xsp?api=getLanguage&lingua=" + id;
-		$.get(url, function(data) {
+	
+	var url = 'getLanguageById.php?user='+ getUsername() + '&token=' + getToken()+ '&id=' + id;
+		$.get(url, function(language) {
 			
 			var html = "";
 			html += '<select id="select-language" class="form-control">'
