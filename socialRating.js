@@ -25,30 +25,58 @@ function init() {
 	
 	var id = "";
 	var url = 'getTranslatorData.php?user='+ getUsername() + '&token=' + getToken();
-	
-	$.get(url, function(data) {
-		console.debug("get");
-		console.debug(data);
-		id = data.IdMothertongue;
-	});
-	
-	console.debug(id);
-	
-	var url = 'getLanguageById.php?user='+ getUsername() + '&token=' + getToken()+ '&id=' + id;
-		$.get(url, function(language) {
-			
-			var html = "";
-			html += '<select id="select-language" class="form-control">'
-			html += '<option value="-"></option>'
 
-			for (i = 0; i < data.length; i++) {
-				html += '<option value="' + data[i].Id + '">'
-					+ data[i].Language + '</option>'
-			}
-			
-			html += '</select>'
-			$('#span-combo-lingue').html(html);
-		});
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			gotTranslatorData(data);
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
+	}
+
+	req.open("GET", url, true);
+	req.send();
+	
+function gotTranslatorData(data){
+
+	var id = data[0].IdMothertongue;
+	var url = 'getLanguageById.php?user='+ getUsername() + '&token=' + getToken()+ '&id=' + id;
+
+	
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			createSpan(data);
+			return(true);
+		}else{
+			mostraDialogTimed('errorPanel');
+			return(false);
+		}
+	}
+
+	req.open("GET", url, true);
+	req.send();
+	
+}
+	
+	function createSpan(data){
+		var html = "";
+		html += '<select id="select-language" class="form-control">'
+		html += '<option value="-"></option>'
+
+		for (i = 0; i < data.length; i++) {
+			html += '<option value="' + data[i].Id + '">'
+				+ data[i].Language + '</option>'
+		}
+		
+		html += '</select>'
+		$('#span-combo-lingue').html(html);
+	}
 	
 }
 
