@@ -189,7 +189,7 @@ function finishTest() {
 				linguaF : linguaF,
 				linguaT : linguaT,
 				trad : traduzione,
-				id: domanda.idtest,
+				id: domanda.id,
 		};
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass
