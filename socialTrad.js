@@ -179,8 +179,6 @@ function finishTest() {
 		var linguaT = e.options[e.selectedIndex].text;
 		var domanda = domande[0];
 		var testo = domanda.text_to_translate;
-
-		console.debug(domanda);
 		
 		var temp = {
 				user : getUsername(),
@@ -189,10 +187,10 @@ function finishTest() {
 				linguaF : linguaF,
 				linguaT : linguaT,
 				trad : traduzione,
-				id: domanda.id,
+				idtest: domanda.id,
 		};
 		var stringPass = JSON.stringify(temp);
-		var data = stringPass
+		var data = stringPass;
 
 		$.ajax( {
 			type : "POST",
