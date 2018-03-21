@@ -179,7 +179,7 @@ function finishTest() {
 		var linguaT = e.options[e.selectedIndex].text;
 		var domanda = domande[0];
 		var testo = domanda.text_to_translate;
-		
+
 		var temp = {
 				user : getUsername(),
 				token: getToken(),
@@ -277,29 +277,23 @@ function createTable(){
 		html += '<tbody>';
 		for ( var i = 0; i < data.length; i++) {
 			var classe="info";
-//			if (data[i].TotTest == null||data[i].TotTest <1) {
-//			classe=' class="danger"'
-//			}
-			html += '<tr valign="middle"  '+classe+'>'
-
-			var lang = data[i].LanguageF
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
-				+ lang;
+			html += '<tr valign="middle"  '+classe+'>';
+			var lang = data[i].LanguageF;
+			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>';
+			+ lang;
 			+ '</b> </td>';
-			lang = data[i].LanguageT
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
-				+ lang
-				+ '</b> </td>'
+			lang = data[i].LanguageT;
+			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>';
+			+ lang;
+			+ '</b> </td>';
 
-				var data1 = data[i].DataTest
-				data1 = data1.replace("T"," ")
-				data1 = data1.replace("Z","")
-				data1 = data1.substring(0,data1.length-3)
-				html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>'
-
-
-				html += '</tr>'
-					html += "</tbody>";
+			var data1 = data[i].DataTest;
+			data1 = data1.replace("T"," ");
+			data1 = data1.replace("Z","");
+			data1 = data1.substring(0,data1.length-3);
+			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>';
+			html += '</tr>';
+			html += "</tbody>";
 			html += "</table>";
 			$('#tabella').html(html);
 		}

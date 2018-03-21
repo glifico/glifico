@@ -123,7 +123,6 @@ function mioTimer() {
 	getProgress();
 }
 
-var ciao = "";
 var url = "";
 
 function showDomanda() {
