@@ -11,7 +11,7 @@ $query="select * from languagerating WHERE username='$user';";
 $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-    array_push($toExit,array("LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest']));
+    array_push($toExit,array("idtest"=>$row['id'], "LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest']));
 }
 
 $result->CloseCursor();

@@ -103,6 +103,7 @@ function tryOut3() {
 	}
 	startTest();
 }
+
 function startTest() {
 	getTesto();
 	actualPage = 1;
@@ -112,6 +113,7 @@ function startTest() {
 
 	}
 }
+
 function mioTimer() {
 	nowSeconds++;
 	if (nowSeconds >= maxSeconds) {
@@ -120,6 +122,7 @@ function mioTimer() {
 	}
 	getProgress();
 }
+
 var ciao = "";
 var url = "";
 

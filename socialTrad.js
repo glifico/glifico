@@ -137,7 +137,6 @@ function mioTimer() {
 }
 
 function showDomanda() {
-	console.debug(domande);
 	alert("You have 10 minutes to complete the translation! Good Luck.");
 	var html = "";
 	var domanda = domande[0];
@@ -187,7 +186,8 @@ function finishTest() {
 				testo : testo,
 				linguaF : linguaF,
 				linguaT : linguaT,
-				trad : traduzione	
+				trad : traduzione,
+				id: domanda.idtest,
 		};
 		var stringPass = JSON.stringify(temp);
 		var data = stringPass
