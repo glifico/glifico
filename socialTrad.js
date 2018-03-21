@@ -180,6 +180,8 @@ function finishTest() {
 		var domanda = domande[0];
 		var testo = domanda.text_to_translate;
 
+		console.debug(domanda);
+		
 		var temp = {
 				user : getUsername(),
 				token: getToken(),

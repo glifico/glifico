@@ -19,3 +19,5 @@ test.php
 
 vendor/
 composer.phar
+
+ratingtest\.sql
