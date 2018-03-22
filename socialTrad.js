@@ -262,8 +262,6 @@ function createTable(){
 
 
 	function gotData(data){
-		console.debug(data);
-
 		var html = "";
 		html += '<table style="width:100%" class="table">';
 		html += '<thead>';
@@ -281,12 +279,12 @@ function createTable(){
 			var classe="info";
 			html += '<tr valign="middle"  '+classe+'>';
 			var lang = data[i].LanguageF;
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>';
-			+ lang;
+			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
+			+ lang
 			+ '</b> </td>';
 			lang = data[i].LanguageT;
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>';
-			+ lang;
+			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
+			+ lang
 			+ '</b> </td>';
 
 			var data1 = data[i].DataTest;
