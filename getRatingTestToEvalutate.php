@@ -12,14 +12,14 @@ if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wro
 $query = "select * from languagerating WHERE languagefrom='$langF';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
-$toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest']);
+$toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest'], "TranslatedText"=>$row['translated']);
 
 $idtest=$row['idtest'];
 $query = "select * from ratingtest WHERE id='$idtest';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
-$toExit['originaltext'] = $row['text_to_translate'];
+$toExit['OriginalText'] = $row['text_to_translate'];
 $result->CloseCursor();
 
 exit(json_encode($toExit));
