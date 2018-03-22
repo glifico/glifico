@@ -14,6 +14,7 @@ $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 $toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest']);
 
+$idtest=$row['idtest'];
 $query = "select * from ratingtest WHERE id='$idtest';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
