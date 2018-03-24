@@ -16,6 +16,8 @@ $toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "Lang
 
 $idtest=$row['idtest'];
 $query = "select * from ratingtest WHERE id='$idtest';";
+echo($query);
+echo($toExit);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
