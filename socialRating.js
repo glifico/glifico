@@ -140,7 +140,12 @@ function showDomanda() {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			showModal(data);
+			if(data.statuscode==503){
+				alert("Nothing yet for this language, sorry");
+				return false
+			}else{
+				showModal(data);	
+			}
 			return(true);
 		}else{
 			mostraDialogTimed('errorPanel');
@@ -151,24 +156,21 @@ function showDomanda() {
 	req.open("GET", url, true);
 	req.send();
 
-
-	function showModal(data){
-		console.debug('showmodal');
-		console.debug(data);
-
-		var html="";
-		html+='<div>';
-
-		html='testtest';
-		html+='</div>';
-
-		$("#modal-body").html(html);
-		$("#modal-body").fadeIn("show");
-	}
-
-
 }
 
+function showModal(data){
+	console.debug('showmodal');
+	console.debug(data);
+
+	var html="";
+	html+='<div>';
+
+	html='testtest';
+	html+='</div>';
+
+	$("#modal-body").html(html);
+	$("#skill-modal").fadeIn("show");
+}
 
 
 function cambiaPagina() {
