@@ -143,7 +143,6 @@ function showDomanda() {
 			var data=JSON.parse(req.responseText);
 			if(data.statuscode==503){
 				alert("Nothing yet for this language, sorry");
-				return false
 			}else{
 				if(!modalShowed){
 					showModal(data);	
@@ -173,8 +172,9 @@ function showModal(data){
 	html='testtest';
 	html+='</div>';
 
-	$("#modal-body").html(html);
+	$("#skill-body").html(html);
 	$("#skill-body").fadeIn("show");
+	$('#skill-modal').modal('show');
 }
 
 
