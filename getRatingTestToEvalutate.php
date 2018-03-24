@@ -15,9 +15,10 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 $toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest'], "TranslatedText"=>$row['translated']);
 
 $idtest=$row['idtest'];
+
 $query = "select * from ratingtest WHERE id='$idtest';";
 echo($query);
-echo($toExit);
+echo(json_encode($toExit));
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
