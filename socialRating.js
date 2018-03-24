@@ -87,7 +87,7 @@ function getTesto() {
 			});
 }
 
-function tryOut3() {
+function tryOut() {
 
 	started = false;
 	outTime = false;
@@ -97,8 +97,12 @@ function tryOut3() {
 	if (lan != null && lan != "-") {
 		var html = "";
 		$("#skill-body").html(html);
+		$("#modal-body").fadeIn("show");
+		console.debug('tryout');
+		showDomanda();
+		
 	}else{
-		alert("Before select your mandatory tongue")
+		alert("Before test please select your mandatory tongue")
 		return;
 	}
 	startTest();
@@ -125,7 +129,8 @@ function mioTimer() {
 
 
 function showDomanda() {
-
+	console.debug('showdomanda');
+	
 	var e = document.getElementById("select-language");
 	var langF = e.options[e.selectedIndex].text;
 
@@ -148,6 +153,8 @@ function showDomanda() {
 
 
 	function showModal(data){
+		console.debug('showmodal');
+		console.debug(data);
 
 		var html="";
 		html+='<div>';
