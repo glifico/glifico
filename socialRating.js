@@ -173,9 +173,15 @@ function showModal(data){
 	html+='<span class="modal-text">' + data.OriginalText + '</span>';
 	html+='<span>' + 'It was translated as follows' + '</span>';
 	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
-
-	html+="you're asked to evaluate grammar and style";
 	
+	html+="you're asked to evaluate grammar and style";
+	html+='<div class="price">';
+	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="4"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="5"></i></span>';
+	html+='</div>';
 	
 	html+='</div>';
 
