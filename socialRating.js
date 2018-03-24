@@ -169,7 +169,7 @@ function showModal(data){
 	html+='</div>';
 
 	$("#modal-body").html(html);
-	$("#skill-modal").fadeIn("show");
+	$("#skill-body").fadeIn("show");
 }
 
 
