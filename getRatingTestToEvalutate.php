@@ -17,10 +17,13 @@ $toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "Lang
 $idtest=$row['idtest'];
 
 $query = "select * from ratingtest WHERE id='$idtest';";
-echo($query);
-echo(json_encode($toExit));
-$result = $db->query($query);
-$row = $result->fetch(PDO::FETCH_ASSOC);
+try {
+    $result = $db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+} catch(Exception $e) {
+    exit(json_encode(array("message"=>"Nothing in db for this language", "statuscode"=>503)));
+}
+
 
 $toExit['OriginalText'] = $row['text_to_translate'];
 $result->CloseCursor();
