@@ -126,7 +126,7 @@ function mioTimer() {
 
 function showDomanda() {
 
-	var e = document.getElementById("span-combo-lingue");
+	var e = document.getElementById("select-language");
 	var langF = e.options[e.selectedIndex].text;
 
 	var url = 'getRatingTestToEvalutate.php?user='+ getUsername() + '&token=' + getToken()+ '&langF=' + langF;
@@ -152,7 +152,7 @@ function showDomanda() {
 		var html="";
 		html+='<div>';
 
-html='testtest';
+		html='testtest';
 		html+='</div>';
 
 		$("#modal-body").html(html);
