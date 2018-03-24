@@ -169,7 +169,14 @@ function showModal(data){
 	var html="";
 	html+='<div>';
 
-	html='testtest';
+	html+='<h4>This was a translation <b>from</b>' + data.LanguageF + '<b>to</b>' + data.LanguageT + '</h4>';
+	html+='<span class="modal-text">' + data.OriginalText + '</span>';
+	html+='<span>' + 'It was translated as follows' + '</span>';
+	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
+
+	html+="you're asked to evaluate grammar and style";
+	
+	
 	html+='</div>';
 
 	$("#skill-body").html(html);
