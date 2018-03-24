@@ -169,12 +169,12 @@ function showModal(data){
 	var html="";
 	html+='<div>';
 
-	html+='<h4>This was a translation <b>from</b>' + data.LanguageF + '<b>to</b>' + data.LanguageT + '</h4>';
+	html+='<h4>This was a translation <b>from</b> ' + data.LanguageF + ' <b>to</b> ' + data.LanguageT + '</h4>';
 	html+='<span class="modal-text">' + data.OriginalText + '</span>';
-	html+='<span>' + 'It was translated as follows' + '</span>';
+	html+='<h5>' + 'It was translated as follows' + '</h5>';
 	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
 	
-	html+="you're asked to evaluate grammar and style";
+	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
 	html+='<div class="price">';
 	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
 	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="2"></i></span>';
