@@ -100,7 +100,7 @@ function tryOut() {
 		$("#modal-body").fadeIn("show");
 		console.debug('tryout');
 		showDomanda();
-		
+
 	}else{
 		alert("Before test please select your mandatory tongue")
 		return;
@@ -127,10 +127,11 @@ function mioTimer() {
 	getProgress();
 }
 
+var modalShowed=false;
 
 function showDomanda() {
 	console.debug('showdomanda');
-	
+
 	var e = document.getElementById("select-language");
 	var langF = e.options[e.selectedIndex].text;
 
@@ -144,7 +145,9 @@ function showDomanda() {
 				alert("Nothing yet for this language, sorry");
 				return false
 			}else{
-				showModal(data);	
+				if(!modalShowed){
+					showModal(data);	
+				}
 			}
 			return(true);
 		}else{
@@ -158,7 +161,9 @@ function showDomanda() {
 
 }
 
+
 function showModal(data){
+	modalShowed = true;
 	console.debug('showmodal');
 	console.debug(data);
 
