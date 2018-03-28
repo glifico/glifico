@@ -169,7 +169,7 @@ function showModal(data){
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
 	
 	html+='</div>';
-	$('#skill-modal').modal('show');
+//	$('#skill-modal').modal('show');
 	$("#skill-body-head").html(html);
 	$("#skill-body-head").show();
 }
