@@ -126,7 +126,6 @@ function mioTimer() {
 	getProgress();
 }
 
-var modalShowed=false;
 
 function showDomanda() {
 	console.debug('showdomanda');
@@ -143,9 +142,7 @@ function showDomanda() {
 			if(data.statuscode==503){
 				alert("Nothing yet for this language, sorry");
 			}else{
-				if(!modalShowed){
-					showModal(data);	
-				}
+				showModal(data);
 			}
 			return(true);
 		}else{
@@ -161,10 +158,6 @@ function showDomanda() {
 
 
 function showModal(data){
-	modalShowed = true;
-	console.debug('showmodal');
-	console.debug(data);
-
 	var html="";
 	html+='<div>';
 
@@ -174,26 +167,51 @@ function showModal(data){
 	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
 
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
-	html+='<div class="price">';
-	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="3"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="4"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="5"></i></span>';
+	
 	html+='</div>';
-
-	html+='</div>';
-	html+='<span id="bar-progress"></span>';
-	html+='<span id="rimanente"></span>';
-
-	$("#skill-body").html(html);
+	$("#skill-body-head").html(html);
 	$("#skill-body").fadeIn("show");
 	$('#skill-modal').modal('show');
 }
 
 
+var ratings={
+		grammar: -1,
+		style: -1,
+}
 
+angular.module("rate",[]).controller("rate",function($scope){
+	var ctrl=this;
+	ctrl.$onInit=function(){
+		ctrl.grammar=ratings.grammar;
+		ctrl.style=ratings.style;
+	}
 
+	ctrl.getRating=function(whichRating){
+		switch (whichRating) {
+		case 0:
+			return ratings.grammar;
+		case 1:
+			return ratings.style;
+		default:
+			console.info("asking undefined parameter");
+		return -1;
+		}
+	}
+	
+	ctrl.setRating=function(whichRating, mark){
+		switch (whichRating) {
+		case 0:
+			ratings.grammar=mark;
+		case 1:
+			ratings.style=mark;
+		default:
+			console.info("setting undefined parameter");
+		return -1;
+		}
+	}
+
+})
 
 
 
@@ -252,3 +270,8 @@ function finishTest() {
 		showDomanda();
 	}
 }
+
+angular.element(document).ready(function() {
+	console.log("registro rate");
+	angular.bootstrap(document.getElementById('rate'), ['rate']);
+});

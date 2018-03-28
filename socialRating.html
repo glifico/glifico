@@ -293,6 +293,7 @@ Rating
 </div>
 </div>
 
+<div id="rate"  data-ng-controller="rate as ctrl">
 <div class="modal fade bs-example-modal-lg" id="skill-modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content"><div class="modal-header">
@@ -302,9 +303,25 @@ Rating
 <h4 class="modal-title">Social rating</h4>
 </div>
 <div class="modal-body" id="skill-body">
+<span id="skill-body-head"></span>
+
+<div id="skill-body-rating">
+<div class="rating">
+<span class="{{(ctrl.getRating(0)>=5?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="5" data-ng-click="ctrl.setRating(0,5)"></i></span>
+<span class="{{(ctrl.getRating(0)>=4?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="4" data-ng-click="ctrl.setRating(0,4)"></i></span>
+<span class="{{(ctrl.getRating(0)>=3?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="3" data-ng-click="ctrl.setRating(0,3)"></i></span>
+<span class="{{(ctrl.getRating(0)>=2?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="2" data-ng-click="ctrl.setRating(0,2)"></i></span>
+<span class="{{(ctrl.getRating(0)>=1?'filled':'')}}"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" data-ng-click="ctrl.setRating(0,1)"></i></span>
+</div>
+</div>
+
+
+<span id="bar-progress"></span>
+<span id="rimanente"></span>
 </div>
 <div class="modal-footer">
 <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+</div>
 </div>
 </div>
 </div>
@@ -315,6 +332,6 @@ Rating
 <div ng-app="glifico">
  <glificofooter></glificofooter>
  </div>
-					</body>
+</body>
 
 </html>
