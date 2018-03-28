@@ -169,11 +169,13 @@ function showModal(data){
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
 
 	html+='</div>';
-	html+='<span id="rating"';
+	html+='Grammar <b>mark</b>'
 	html+='<div class="rating">';
-	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="3" onclick="setPrice(3)"></i></span>';
-	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setPrice(2)"></i></span>';
-	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setPrice(1)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="5" onclick="setRating(0,5)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="4" onclick="setRating(0,4)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="3" onclick="setRating(0,3)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setRating(0,2)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setRating(0,1)"></i></span>';
 	html+='</div>';
 	html+='<br><br>';
 	html+='<span id="bar-progress"></span>';
@@ -186,6 +188,11 @@ function showModal(data){
 var ratings={
 		grammar: -1,
 		style: -1,
+}
+
+function setRating(whichRating, mark){
+	if(whichRating==0) ratings.grammar=mark;
+	else if(whichRating==1) ratings.style=mark;
 }
 
 
@@ -208,15 +215,16 @@ function getProgress() {
 
 
 function finishTest() {
-	//alert($("#input-rate").val())
+	console.log(ratings);
+
 	if (confirm("Do you want to save the Rating?")) {
 
-		var valutazione = $("#input-rate").val(); 
 		var domanda = idDomanda;
 		var temp = {
-				valutatoreid : sysIdUtente,
+				user : getUsername(),
+				token: getToken(),
 				idtrad : domanda,
-				punteggio : valutazione
+				punteggio : ratings,
 		};
 
 		var stringPass = JSON.stringify(temp);
@@ -240,6 +248,5 @@ function finishTest() {
 
 			}
 		});
-		showDomanda();
 	}
 }
