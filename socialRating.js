@@ -175,7 +175,9 @@ function showModal(data){
 	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setPrice(2)"></i></span>';
 	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setPrice(1)"></i></span>';
 	html+='</div>';
-
+	html+='<br><br>';
+	html+='<span id="bar-progress"></span>';
+	html+='<span id="rimanente"></span>';
 	$('#skill-modal').modal('show');
 	$("#skill-body").html(html);
 }
