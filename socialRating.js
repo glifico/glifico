@@ -114,7 +114,6 @@ function startTest() {
 	if (!started) {
 		started = true;
 		myTimer = setInterval(mioTimer, 1000)
-
 	}
 }
 
@@ -173,7 +172,7 @@ function showModal(data){
 	html+='<span class="modal-text">' + data.OriginalText + '</span>';
 	html+='<h5>' + 'It was translated as follows' + '</h5>';
 	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
-	
+
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
 	html+='<div class="price">';
 	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
@@ -182,8 +181,10 @@ function showModal(data){
 	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="4"></i></span>';
 	html+='<span class="money"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="5"></i></span>';
 	html+='</div>';
-	
+
 	html+='</div>';
+	html+='<span id="bar-progress"></span>';
+	html+='<span id="rimanente"></span>';
 
 	$("#skill-body").html(html);
 	$("#skill-body").fadeIn("show");
@@ -191,63 +192,12 @@ function showModal(data){
 }
 
 
-function cambiaPagina() {
-	var newPage = $("#combo-pagina").val();
-	if (actualPage != newPage) {
-		actualPage = newPage;
-		showDomanda();
-	}
-}
-
-function cambiaPageSize() {
-	var newSize = $("#select-res").val();
-	if (pageSize != newSize) {
-		pageSize = newSize;
-		showDomanda();
-	}
-}
 
 
-function mostraingrande(x){
 
-	var ht ="";
-	for (var i=0;i<records.length;i++) {
-		if (records[i].Id==x) {
-			idDomanda= records[i].Id;
-			ht += '<div class="panel panel-default">'
-				ht += '  <div class="panel-heading">'
-					ht += '    <font>' + records[i].TestoP + '</font>'
-					ht += '  </div>'
-						ht += '</div>'
-							ht += '<div class="panel panel-default">'
-								ht += '  <div class="panel-heading">'
-									ht += '    <font>' + records[i].Traduzione+' </font>'
-//									ht += '<label for="input-7-xs" class="control-label">Extra Small Rating</label>'
-									ht += '<div style="text-align:center"><input id="input-rate" class="rating rating-loading" value="0" data-min="0" data-max="5" data-step="0.5" data-size="xs"></div>'
-										ht += '<script>'
-											ht += '$("#input-rate").rating({showCaption:false,emptyStar:\'<i class="fa fa-star-o"></i>\',filledStar:\'<i class="fa fa-star"></i>\',showClear:false});'
-												ht += '</script>'
-													ht += '  </div>'
-														ht += '</div>'
-		}
-	}
-	$('#skill-modal').modal('show');
-	$("#skill-body").html(ht);
 
-//	ciao = url
-//	var f = x;
-//	var ht ="";
 
-//	$.get(ciao, function(data){
-//	ht += '<div class="panel panel-default"><div class="panel-heading"> <font>' + data[f].TestoP
-//	ht += '</font>  </div> </div>'
-//	ht += '<div class="panel panel-default"><div class="panel-heading"> <font>' + data[f].Traduzione
-//	ht += '</font>  </div> </div>'
-//	});	
 
-//	$('#skill-modal').modal('show');
-//	$("#skill-body").html(ht);
-}
 function getProgress() {
 	var html = "";
 
@@ -257,13 +207,15 @@ function getProgress() {
 		+ maxSeconds
 		+ '" style="width: '
 		+ parseInt((nowSeconds * 100) / maxSeconds)
-		+ '%">'
-		html += "</div>"
+		+ '%">';
+	html += "</div>";
 
-			$("#bar-progress").html(html);
+	$("#bar-progress").html(html);
 	$("#rimanente").html("Seconds remaining: " + (maxSeconds - nowSeconds));
 
 }
+
+
 function finishTest() {
 	//alert($("#input-rate").val())
 	if (confirm("Do you want to save the Rating?")) {
