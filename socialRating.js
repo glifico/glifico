@@ -170,20 +170,16 @@ function showModal(data){
 
 	html+='</div>';
 	html+='Grammar <b>mark</b>'
-	html+='<div class="rating">';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="5" onclick="setRating(0,5)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="4" onclick="setRating(0,4)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="3" onclick="setRating(0,3)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setRating(0,2)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setRating(0,1)"></i></span>';
+		html+='<div class="rating">';
+	for (var i = 5; i > 0; i--) {
+		html+='<span id="grammar'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(0,'+i+')"></i></span>';
+	}
 	html+='</div>';
 	html+='Style <b>mark</b>'	
-	html+='<div class="rating">';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="5" onclick="setRating(1,5)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="4" onclick="setRating(1,4)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="3" onclick="setRating(1,3)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setRating(1,2)"></i></span>';
-	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setRating(1,1)"></i></span>';
+		html+='<div class="rating">';
+	for (var i = 5; i > 0; i--) {
+		html+='<span id="style'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(1,'+i+')"></i></span>';
+	}
 	html+='</div>';
 	html+='<br><br>';
 	html+='<span id="bar-progress"></span>';
@@ -199,8 +195,18 @@ var ratings={
 }
 
 function setRating(whichRating, mark){
-	if(whichRating==0) ratings.grammar=mark;
-	else if(whichRating==1) ratings.style=mark;
+	if(whichRating==0) {
+		ratings.grammar=mark;
+		for (var i = 0; i < mark; i++) {
+			$("#grammar"+i).addClass('filled');
+		}
+	}
+	else if(whichRating==1) {
+		ratings.style=mark;
+		for (var i = 0; i < mark; i++) {
+			$("#style"+i).addClass('filled');
+		}
+	}
 }
 
 
