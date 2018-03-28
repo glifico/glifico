@@ -197,13 +197,13 @@ var ratings={
 function setRating(whichRating, mark){
 	if(whichRating==0) {
 		ratings.grammar=mark;
-		for (var i = 0; i < mark; i++) {
+		for (var i = 0; i <= mark; i++) {
 			$("#grammar"+i).addClass('filled');
 		}
 	}
 	else if(whichRating==1) {
 		ratings.style=mark;
-		for (var i = 0; i < mark; i++) {
+		for (var i = 0; i <= mark; i++) {
 			$("#style"+i).addClass('filled');
 		}
 	}
