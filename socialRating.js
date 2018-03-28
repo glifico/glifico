@@ -177,7 +177,7 @@ function showModal(data){
 	html+='</div>';
 
 	$('#skill-modal').modal('show');
-	$("#modal-body").html(html);
+	$("#skill-body").html(html);
 }
 
 
