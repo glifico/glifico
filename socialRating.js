@@ -167,9 +167,15 @@ function showModal(data){
 	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
 
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
-	
+
 	html+='</div>';
-	
+	html+='<span id="rating"';
+	html+='<div class="rating">';
+	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="3" onclick="setPrice(3)"></i></span>';
+	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setPrice(2)"></i></span>';
+	html+='<span class="money "><i  class="fa fa-usd fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setPrice(1)"></i></span>';
+	html+='</div>';
+
 	$('#skill-modal').modal('show');
 	$("#skill-modal").html(html);
 }
