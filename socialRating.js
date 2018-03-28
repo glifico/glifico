@@ -161,7 +161,7 @@ function showModal(data){
 	var html="";
 	html+='<div>';
 
-	html+='<h4>This was a translation <b>from</b> ' + data.LanguageF + ' <b>to</b> ' + data.LanguageT + '</h4>';
+	html+='<h4>This was a translation from <b>' + data.LanguageF + '</b> to <b>' + data.LanguageT + '</b></h4>';
 	html+='<span class="modal-text">' + data.OriginalText + '</span>';
 	html+='<h5>' + 'It was translated as follows' + '</h5>';
 	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
