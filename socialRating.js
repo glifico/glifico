@@ -177,6 +177,14 @@ function showModal(data){
 	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setRating(0,2)"></i></span>';
 	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setRating(0,1)"></i></span>';
 	html+='</div>';
+	html+='Style <b>mark</b>'	
+	html+='<div class="rating">';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="5" onclick="setRating(1,5)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="4" onclick="setRating(1,4)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="3" onclick="setRating(1,3)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="2" onclick="setRating(1,2)"></i></span>';
+	html+='<span class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="1" onclick="setRating(1,1)"></i></span>';
+	html+='</div>';
 	html+='<br><br>';
 	html+='<span id="bar-progress"></span>';
 	html+='<span id="rimanente"></span>';
