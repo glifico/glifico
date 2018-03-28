@@ -169,9 +169,9 @@ function showModal(data){
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
 	
 	html+='</div>';
-//	$('#skill-modal').modal('show');
-	$("#skill-body-head").html(html);
-	$("#skill-body-head").show();
+	
+	$('#skill-modal').modal('show');
+	$("#skill-modal").html(html);
 }
 
 
@@ -179,41 +179,6 @@ var ratings={
 		grammar: -1,
 		style: -1,
 }
-
-angular.module("rate",[]).controller("rate",function($scope){
-	var ctrl=this;
-	ctrl.$onInit=function(){
-		ctrl.grammar=ratings.grammar;
-		ctrl.style=ratings.style;
-	}
-
-	ctrl.getRating=function(whichRating){
-		switch (whichRating) {
-		case 0:
-			return ratings.grammar;
-		case 1:
-			return ratings.style;
-		default:
-			console.info("asking undefined parameter");
-		return -1;
-		}
-	}
-	
-	ctrl.setRating=function(whichRating, mark){
-		switch (whichRating) {
-		case 0:
-			ratings.grammar=mark;
-		case 1:
-			ratings.style=mark;
-		default:
-			console.info("setting undefined parameter");
-		return -1;
-		}
-	}
-
-})
-
-
 
 
 function getProgress() {
@@ -270,8 +235,3 @@ function finishTest() {
 		showDomanda();
 	}
 }
-
-angular.element(document).ready(function() {
-	console.log("registro rate");
-	angular.bootstrap(document.getElementById('rate'), ['rate']);
-});
