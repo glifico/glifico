@@ -195,14 +195,22 @@ var ratings={
 function setRating(whichRating, mark){
 	if(whichRating==0) {
 		ratings.grammar=mark;
-		for (var i = 0; i <= mark; i++) {
-			$("#grammar"+i).addClass('filled');
+		for (var i = 1; i <=5; i++) {
+			if(i<=mark){
+				$("#grammar"+i).addClass('filled');				
+			}else{
+				$("#grammar"+i).removeClass('filled');
+			}
 		}
 	}
 	else if(whichRating==1) {
 		ratings.style=mark;
-		for (var i = 0; i <= mark; i++) {
-			$("#style"+i).addClass('filled');
+		for (var i = 1; i <=5; i++) {
+			if(i<=mark){
+				$("#style"+i).addClass('filled');				
+			}else{
+				$("#style"+i).removeClass('filled');
+			}
 		}
 	}
 }
@@ -230,7 +238,7 @@ function finishTest() {
 	console.log(ratings);
 	console.log(data);
 
-	
+
 	if (confirm("Do you want to save the Rating?")) {
 
 		var domanda = idDomanda;
