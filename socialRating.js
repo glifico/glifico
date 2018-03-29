@@ -180,7 +180,7 @@ function showModal(data){
 	}
 	html+='</div>';
 	html+='<br><br>';
-	html+='<span id="bar-progress"></span>';
+	html+='<div id="bar-progress" class="progress"></div>';
 	html+='<span id="rimanente"></span>';
 	$('#skill-modal').modal('show');
 	$("#skill-body").html(html);
