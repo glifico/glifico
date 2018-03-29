@@ -12,7 +12,7 @@ if(!certToken($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wro
 $query = "select * from languagerating WHERE languagefrom='$langF' and username!='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
-$toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest'], "TranslatedText"=>$row['translated']);
+$toExit=array("idtest"=>$row['idtest'], "LanguageF"=>$row['languagefrom'], "LanguageT"=>$row['languageto'], "DataTest"=>$row['datatest'], "TranslatedText"=>$row['translated'], "idtrad" => $row['id'] );
 
 $idtest=$row['idtest'];
 

@@ -1,12 +1,9 @@
-var maxpages = 0;
-var actualPage = 1;
-var pageSize = 10;
 var started = false;
 var maxSeconds = 600;
 var nowSeconds = 0;
 var outTime = false;
 var myTimer;
-var data = [];
+var idtrad = -1;
 var next = false;
 var records;
 
@@ -19,8 +16,6 @@ $(document).ready( function() {
 });
 
 function init() {
-	console.debug("init!");
-
 	var id = "";
 	var url = 'getTranslatorData.php?user='+ getUsername() + '&token=' + getToken();
 
@@ -96,7 +91,6 @@ function tryOut() {
 		var html = "";
 		$("#skill-body").html(html);
 		$("#modal-body").fadeIn("show");
-		console.debug('tryout');
 		showDomanda();
 
 	}else{
@@ -108,7 +102,6 @@ function tryOut() {
 
 function startTest() {
 	getTesto();
-	actualPage = 1;
 	if (!started) {
 		started = true;
 		myTimer = setInterval(mioTimer, 1000)
@@ -136,7 +129,7 @@ function showDomanda() {
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
-			data=JSON.parse(req.responseText);
+			var data=JSON.parse(req.responseText);
 			if(data.statuscode==503){
 				alert("Nothing yet for this language, sorry");
 			}else{
@@ -156,6 +149,7 @@ function showDomanda() {
 
 
 function showModal(data){
+	idTest = data.idtrad;
 	var html="";
 	html+='<div>';
 
@@ -241,11 +235,10 @@ function finishTest() {
 
 	if (confirm("Do you want to save the Rating?")) {
 
-		var domanda = idDomanda;
 		var temp = {
 				user : getUsername(),
 				token: getToken(),
-				idtest : data.idtest,
+				idtrad : idtrad,
 				ratings : ratings,
 		};
 
