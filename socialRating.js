@@ -7,10 +7,8 @@ var nowSeconds = 0;
 var outTime = false;
 var myTimer;
 var data = [];
-var lingua = [];
 var next = false;
 var records;
-var idDomanda;
 
 $.ajaxSetup( {
 	async : false
@@ -138,7 +136,7 @@ function showDomanda() {
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
-			var data=JSON.parse(req.responseText);
+			data=JSON.parse(req.responseText);
 			if(data.statuscode==503){
 				alert("Nothing yet for this language, sorry");
 			}else{
@@ -230,15 +228,17 @@ function getProgress() {
 
 function finishTest() {
 	console.log(ratings);
+	console.log(data);
 
+	
 	if (confirm("Do you want to save the Rating?")) {
 
 		var domanda = idDomanda;
 		var temp = {
 				user : getUsername(),
 				token: getToken(),
-				idtrad : domanda,
-				punteggio : ratings,
+				idtest : data.idtest,
+				ratings : ratings,
 		};
 
 		var stringPass = JSON.stringify(temp);
@@ -248,7 +248,7 @@ function finishTest() {
 			dataType : "application/json",
 			contentType : "application/json; charset=utf-8",
 			data : data,
-			url : "rest.xsp?api=saveRating",
+			url : "saveRatingEvaluation.php",
 			complete : function(ret) {
 
 				clearTimeout(myTimer);
@@ -259,7 +259,7 @@ function finishTest() {
 			},
 			error : function(xhr) {
 				if (xhr.status == 500) {
-					showNotifica("danger", "Errore dal server");
+					notify("Error from server");
 				}
 
 			}
