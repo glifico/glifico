@@ -164,13 +164,13 @@ function showModal(data){
 	html+='Grammar <b>mark</b>'
 		html+='<div class="rating">';
 	for (var i = 5; i > 0; i--) {
-		html+='<span id="grammar'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(0,'+i+')"></i> </span>';
+		html+='<span id="grammar'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(0,'+i+')"></i>   </span>';
 	}
 	html+='</div>';
 	html+='Style <b>mark</b>'	
 		html+='<div class="rating">';
 	for (var i = 5; i > 0; i--) {
-		html+='<span id="style'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(1,'+i+')"></i> </span>';
+		html+='<span id="style'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(1,'+i+')"></i>   </span>';
 	}
 	html+='</div>';
 	html+='<br><br>';
