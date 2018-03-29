@@ -255,7 +255,7 @@ function finishTest() {
 				clearTimeout(myTimer);
 				nowSeconds = 0;
 				$('#skill-modal').modal('hide');
-				$("#alertOK").html("Rating stored correctly, thank you ✍🏼");
+				$("#alertOK").html("Rating stored correctly, thank you");
 				$("#alertOK").fadeIn().delay(5000).fadeOut();
 			},
 			error : function(xhr) {
