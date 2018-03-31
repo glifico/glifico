@@ -161,8 +161,6 @@ function showDomanda() {
 		html += '<div style="text-align:center;width:100%"><span id="scaduto" style="font-weight:bold;font-color:red>Tempo scaduto</span></div>'
 	}
 
-	html += '&nbsp;<a class="btn btn-default" href="javascript:void(0)" onclick="finishTest()"><i class="fa fa-paper-plane"></i>&nbsp;Submit</a>';
-
 	$("#skill-body").html(html);
 	$("#skill-body").fadeIn("show");
 }
