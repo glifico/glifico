@@ -156,7 +156,7 @@ function showModal(data){
 	html+='<h4>This was a translation from <b>' + data.LanguageF + '</b> to <b>' + data.LanguageT + '</b></h4>';
 	html+='<span class="modal-text">' + data.OriginalText + '</span>';
 	html+='<h5>' + 'It was translated as follows' + '</h5>';
-	html+='<span class="modal-text">' + data.Translatedtext + '</span>';
+	html+='<span class="modal-text">' + data.TranslatedText + '</span>';
 
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
 
