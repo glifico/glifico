@@ -69,7 +69,7 @@ translateJob=function(id, choice, result){
 		complete : function(ret) {
 			var response=ret.responseText;
 			$("#alertOK").html("Job Translated!");
-			$("#alertOK").fadeIn().delay(2000).fadeOut();
+			$("#alertOK").fadeIn().delay(5000).fadeOut();
 			$("#jobModal").hide();
 			location.href=location.href;
 		},
@@ -175,7 +175,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Translated") return "Work finished";
 		if (doc.status=="Accepted") return "Agency need to pay";
 		if (doc.status=="Not Accepted") return "Work neither accepted or paid";
-		if (doc.status=="Paid") return "ok";
+		if (doc.status=="Paid") return "Payment completed";
 		if (doc.status=="Completed") return "Work closed definetely";
 		return "";
 	}
@@ -232,7 +232,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-choice="'+doc.choice+'"';
 				html+=' data-document="'+doc.document+'"';
-				html+='>Show job and accept it</button>';
+				html+='>Show job</button>';
 			}
 			html+='</td>';
 			html+='<tr>';

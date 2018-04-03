@@ -543,7 +543,7 @@ angular.module("search",[]).controller("search",function($scope){
 					ctrl.pricesAccepted=false;
 
 					$("#alertOK").html("Job created correctly, do another search or go to Jobs");
-					$("#alertOK").fadeIn().delay(5000).fadeOut();
+					$("#alertOK").fadeIn().delay(25000).fadeOut();
 					$("#jobModal").hide();
 				},
 				error : function(xhr) {

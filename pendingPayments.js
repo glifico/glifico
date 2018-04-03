@@ -106,7 +106,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-document="'+doc.document+'"';
-				html+='>Approve Job</button>';
+				html+='>Show Job</button>';
 			}else if(doc.status=="To Be Assigned"){
 				html+="Waiting for translator acceptance..";
 			}
