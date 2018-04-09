@@ -24,10 +24,11 @@ $translator=get_username($selected[0]['id']);
 $firstPrice=$selected[0]['total'];
 $firstCurrency=$selected[0]['currency'];
 $n_characters=$data['ncharacters'];
+$languagefrom=$data['languagefrom'];
 
 if(!certTokenA($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="INSERT INTO payments (job, description, status, username, document, characters, translator, currency, deadline, price) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$n_characters', '$translator', '$firstCurrency','$deadline',$firstPrice);";
+$query="INSERT INTO payments (job, description, status, username, document, languagefrom, characters, translator, currency, deadline, price) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$firstCurrency','$deadline',$firstPrice);";
 $result = $db->query($query);
 
 $result->CloseCursor();
