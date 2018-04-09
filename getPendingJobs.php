@@ -27,6 +27,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         "status" => $row['status'],
         "document" => $row['document'],
         "description" => $row['description'],
+        "deadline" => $row['deadline'],
         "choice" => 1
     ));
 }
@@ -44,6 +45,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         "status" => $row['secondstatus'],
         "document" => $row['document'],
         "description" => $row['description'],
+        "deadline" => $row['deadline'],
         "choice" => 2
     ));
 }
