@@ -60,6 +60,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		html+='<tr class="row">';
 		html+='<th class="col-md-4" style="text-align:center;">Job</th>';
 		html+='<th class="col-md-4" style="text-align:center;">Price</th>';
+		html+='<th class="col-md-4" style="text-align:center;">Deadline</th>';
 		html+='<th class="col-md-4" style="text-align:center;">Status</th>';
 		html+='<th class="col-md-4" style="text-align:center;"></th>';
 		html+='</tr>';
@@ -69,6 +70,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-3">'+doc.job+'</td>';
 			html+='<td class="col-md-3">'+doc.price+" "+doc.currency+'</td>';
+			html+='<td class="col-md-4">'+doc.deadline+'</td>';
 			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
 			if(doc.status=="Paid"){
 				html+=' <i class="fa fa-check" aria-hidden="true"></i>';

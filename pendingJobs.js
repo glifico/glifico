@@ -187,6 +187,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		html+='<tr class="row">';
 		html+='<th class="col-md-3" style="text-align:center;">Job</th>';
 		html+='<th class="col-md-3" style="text-align:center;">Price</th>';
+		html+='<th class="col-md-3" style="text-align:center;">Deadline</th>';
 		html+='<th class="col-md-3" style="text-align:center;">Status</th>';
 		html+='<th class="col-md-3" style="text-align:center;"></th>';
 		html+='</tr>';
@@ -196,6 +197,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-4">'+doc.job+'</td>';
 			html+='<td class="col-md-4">'+doc.price+" "+doc.currency+'</td>';
+			html+='<td class="col-md-4">'+doc.deadline+'</td>';
 			if(doc.choice==1) {choiceStr="as first";}
 			else if(doc.choice==1) {choiceStr="as second";}
 			if(doc.status=="To Be accepted"){
