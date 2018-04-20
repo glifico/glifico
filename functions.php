@@ -37,16 +37,28 @@ function certTokenA($db, $user, $token){
   return $token==hash('crc32',$user."tokenize".$password);
 }
 
-function get_user_email($user){
+function getLanguagePrice($user, $language){
   $db=getDB();
   if(!$db) return;
-  $query="SELECT USERNAME, EMAIL FROM traduttore WHERE username='$user';";
+  $query="SELECT USERNAME, price_euro from language_pair WHERE username='$user' and from_l='$language';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
-  $email=htmlspecialchars($row['email']);
+  $price=$row['price_euro'];
   $result->CloseCursor();
-  return $email;
+  return $price;
+}
+
+function get_user_email($user){
+    $db=getDB();
+    if(!$db) return;
+    $query="SELECT USERNAME, EMAIL FROM traduttore WHERE username='$user';";
+    $result = $db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    
+    $email=htmlspecialchars($row['email']);
+    $result->CloseCursor();
+    return $email;
 }
 
 function get_currency_description($cur){
