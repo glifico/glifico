@@ -40,7 +40,7 @@ function certTokenA($db, $user, $token){
 function getLanguagePrice($user, $language){
   $db=getDB();
   if(!$db) return;
-  $query="SELECT USERNAME, price_euro from language_pair WHERE username='$user' and from_l='$language';";
+  $query="SELECT USERNAME, from_l, price_euro from language_pair WHERE username='$user' and from_l='$language';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
