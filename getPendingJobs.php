@@ -18,11 +18,12 @@ $toExit = [];
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $language = $row['languagefrom'];
-    $price = getLanguagePrice($user, $language);
+    $price = getLanguagePrice($user, $language) * $row['ncharacters'];
     array_push($toExit, array(
         "id" => $row['id'],
         "job" => $row['job'],
         "price" => $price,
+        "ncharacters" => $row['ncharacters'],
         "currency" => $row['currency'],
         "status" => $row['status'],
         "document" => $row['document'],
