@@ -303,7 +303,7 @@ angular.module("search",[]).controller("search",function($scope){
 				var doc=ctrl.documents[i];
 				//doc.Price is class {1,2,3}
 				//doc.PriceTr is Translator defined price for pair
-				var name=doc.FirstName+doc.LastName;
+				var name=doc.FirstName+doc.LastName+doc.Id;
 				var priceAg=ctrl.calculatePriceAg(doc.Price,doc.PriceTr);
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
 				html+='<td class="col-md-2">'+name+'</td>';
