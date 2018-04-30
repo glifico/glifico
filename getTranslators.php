@@ -92,6 +92,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     if ($rating >= $reqRating && $price <= $reqPrice) {
         // add randomnsess to id to avoid identifyng users
         $id = 1000 + 42 * $rowUser['id'];
+        //id is to be shown
+        //code is app private identifier in the database
         array_push($dataToExit, array(
             "Id" => $id,
             "Code" => $rowUser['id'],
