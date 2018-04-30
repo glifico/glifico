@@ -537,7 +537,9 @@ angular.module("search",[]).controller("search",function($scope){
 					$("#table").html("");
 					$("#selectedtable").hide();
 					jobUploaded=false;
-					jobUploaded="";
+					urlUploaded="";
+					ctrl.jobTitle="";
+					ctrl.jobDescription="";
 					ctrl.TrDeadline=ctrl.tomorrow;
 					ctrl.TrCharacters=0;
 					ctrl.processSelected=false;
