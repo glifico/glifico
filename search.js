@@ -327,7 +327,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				name="'"+name+"'";
-				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm selectTrBtn" onclick="selectTr('+doc.Id+','+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
+				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm selectTrBtn" onclick="selectTr('+doc.Code+','+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}

@@ -94,6 +94,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $id = 1000 + 42 * $rowUser['id'];
         array_push($dataToExit, array(
             "Id" => $id,
+            "Code" => $rowUser['id'],
             "Price" => $price,
             "PriceTr" => $priceTransl,
             "NormPrice" => ($priceTransl - $priceAvg) / $sigma,
