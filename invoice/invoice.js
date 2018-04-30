@@ -96,7 +96,8 @@ function generate_cutomPDF(id) {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			getData(id, data.Job, data.Description, data.Date, data.Price)	
+			console.debug(data);
+			getData(data.id, data.Job, data.Description, data.Date, data.Price)	
 		}
 	}
 	req.open("GET",url,true);
