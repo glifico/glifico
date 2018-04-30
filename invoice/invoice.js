@@ -86,6 +86,8 @@ getData= function(id, job, description, date, price) {
 		}
 	}
 	
+	req.open("GET",url,true);
+	req.send();
 		
 }
 
@@ -96,14 +98,12 @@ function generate_cutomPDF(id) {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			console.debug(data);
 			getData(data.id, data.Job, data.Description, data.Date, data.Price)	
 		}
 	}
+	
 	req.open("GET",url,true);
 	req.send();
-	
-	
 }
 
 function create_customPDF(params){
