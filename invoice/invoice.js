@@ -91,7 +91,7 @@ getData= function(id, job, description, date, price) {
 
 function generate_cutomPDF(id) {
 	//GET info job
-	var url = "getInvoiceData.php?id="+id+"user="+getUsername()+"&token="+getToken();
+	var url = "getInvoiceData.php?id="+id+"&user="+getUsername()+"&token="+getToken();
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
