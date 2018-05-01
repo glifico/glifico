@@ -4,7 +4,11 @@ include 'searchParams.php';
 
 function doTheGaussian($prT, $Avg, $sigma)
 {
-    $normPrice = ($prT - $Avg) / $sigma;
+    if($sigma!=0){
+        $normPrice = ($prT - $Avg) / $sigma;
+    }else{
+        $normPrice=0;
+    }
     $C = getCoefficients();
     
     if ($normPrice < $C['A']) {
@@ -94,12 +98,17 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $id = 1000 + 42 * $rowUser['id'];
         //id is to be shown
         //code is app private identifier in the database
+        if($sigma!=0){
+            $normPrice = ($prT - $Avg) / $sigma;
+        }else{
+            $normPrice=0;
+        }
         array_push($dataToExit, array(
             "Id" => $id,
             "Code" => $rowUser['id'],
             "Price" => $price,
             "PriceTr" => $priceTransl,
-            "NormPrice" => ($priceTransl - $priceAvg) / $sigma,
+            "NormPrice" => $normPrice,
             "Rating" => $rating,
             "Field" => $row['field'],
             "FirstName" => $rowUser['nome']{0},
