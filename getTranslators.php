@@ -6,17 +6,15 @@ function doTheGaussian($prT, $Avg, $sigma)
 {
     if($sigma!=0){
         $normPrice = ($prT - $Avg) / $sigma;
-    }else{
-        $normPrice=0;
-    }
-    $C = getCoefficients();
-    
-    if ($normPrice < $C['A']) {
-        return 1;
-    } else if ($normPrice < $C['B']) {
-        return 2;
-    } else if ($normPrice < $C['C']) {
-        return 3;
+        $C = getCoefficients();
+        
+        if ($normPrice < $C['A']) {
+            return 1;
+        } else if ($normPrice < $C['B']) {
+            return 2;
+        } else if ($normPrice < $C['C']) {
+            return 3;
+        }
     }
     // just in case be safe and use class C
     return 3;
@@ -101,7 +99,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         if($sigma!=0){
             $normPrice = ($prT - $Avg) / $sigma;
         }else{
-            $normPrice=0;
+            $normPrice=$prT;
         }
         array_push($dataToExit, array(
             "Id" => $id,
