@@ -35,7 +35,6 @@ $stato=$params['Country'];
 
 
 $query="UPDATE agenzia set nome='$nome', citta='$citta', provincia='$provincia', vat='$vat', cap='$cap', stato='$stato' WHERE username='$user';";
-echo($query);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
