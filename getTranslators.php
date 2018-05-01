@@ -15,6 +15,8 @@ function doTheGaussian($prT, $Avg, $sigma)
         } else if ($normPrice < $C['C']) {
             return 3;
         }
+    }else{
+        $normPrice=$prT;
     }
     // just in case be safe and use class C
     return 3;
