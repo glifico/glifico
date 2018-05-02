@@ -19,6 +19,9 @@ function updateCurrencies(){
             $convResult = $db->query($query);
             $convRow = $convResult->fetch(PDO::FETCH_ASSOC);
             $priceEuro = round((float) $price / $convRow['conversion'],6);
+            if($priceEuro < 0.001){
+                $priceEuro = 0.001;
+            }
             $query = "UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
             $db->query($query);
             echo (json_encode(array("price euro"=>$priceEuro, "price" => $price, "conv" => $convRow['conversion'])));
