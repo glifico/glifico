@@ -5,7 +5,7 @@ include 'searchParams.php';
 function doTheGaussian($prT, $Avg, $sigma)
 {
     if($sigma!=0){
-        $normPrice = ($prT - $Avg) / $sigma;
+        $normPrice = (float) ($prT - $Avg) / $sigma;
         $C = getCoefficients();
         
         if ($normPrice < $C['A']) {
@@ -66,7 +66,7 @@ $sigma = $sigmaRow['stddev_samp'];
 $toExit = [];
 $dataToExit = [];
 $maxB = 0;
-$NB = 0;
+$NumberOfElementsinB = 0;
 $M = getMultipliers();
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $translator = $row['username'];
@@ -84,29 +84,29 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $rating = 0;
     
     $priceTransl = $row['price_euro'];
-    $price = doTheGaussian($priceTransl, $priceAvg, $sigma);
+    $priceClass = doTheGaussian($priceTransl, $priceAvg, $sigma);
     
-    if ($price == 2) {
-        $NB += 1;
+    if ($priceClass == 2) {
+        $NumberOfElementsinB += 1;
         if ($priceTransl >= $maxB) {
             $maxB = $priceTransl;
         }
     }
     
-    if ($rating >= $reqRating && $price <= $reqPrice) {
+    if ($rating >= $reqRating && $priceClass <= $reqPrice) {
         // add randomnsess to id to avoid identifyng users
         $id = 1000 + 42 * $rowUser['id'];
         //id is to be shown
         //code is app private identifier in the database
         if($sigma!=0){
-            $normPrice = ($prT - $Avg) / $sigma;
+            $normPrice = (float) ($prT - $Avg) / $sigma;
         }else{
             $normPrice=$prT;
         }
         array_push($dataToExit, array(
             "Id" => $id,
             "Code" => $rowUser['id'],
-            "Price" => $price,
+            "Price" => $priceClass,
             "PriceTr" => $priceTransl,
             "NormPrice" => $normPrice,
             "Rating" => $rating,
