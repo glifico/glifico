@@ -297,7 +297,7 @@ Here you can see all your jobs
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body modal-agency">...</div>
+			<div class="modal-body">...</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
 					data-dismiss="modal">Close</button>
@@ -318,6 +318,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-title').text('Job: ' + job)
   var html="";
+  html+='<div class="modal-agency">';
   html+="Title: <b>"+job+"</b><br>";
   html+="Price: "+button.data('price')+" "+button.data('currency');
   html+="<br><br>"+button.data('description');
@@ -330,6 +331,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  html+="<br><br><div>You may find document translated at: "+'<a href="'+link+'" target="_Blank">'+link+'</a></div>';
 		btnHtml+='<button type="button" class="btn btn-success" onclick="generate_cutomPDF('+button.data('id')+')">Download recipe</button>';
   }
+  html+='</div>';
   modal.find('.modal-body').html(html);
   modal.find('.modal-footer').html(btnHtml);
 })
