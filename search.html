@@ -359,9 +359,9 @@ Price class:<br>
       <div id="modalBodySelect">
         Number of <b>characters</b>: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
        <br>
-        Number of <b>words</b>: {{ctrl.TrCharacters /10 | number:1}}
+        Number of <b>words</b> (word = 6 characters): {{ctrl.TrCharacters / 6 | number:1}}
        <br>
-        Number of <b>pages</b>: {{ctrl.TrCharacters / 1000 | number:1}}
+        Number of <b>pages</b> (page = 1500 characters): {{ctrl.TrCharacters / 1500 | number:1}}
         <br>
         <span>
         <b>Deadline</b>: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />

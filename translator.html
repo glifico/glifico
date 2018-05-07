@@ -553,12 +553,10 @@ User personal page
 									<md-input-container>
 										<label>Price Per Character</label>
 										<input type="number" ng-model="model.PricePerCharacter" required>
-
-										<!-- DA DEFINIRE!!!!!!! -->
 										<div >
-											Price per word: {{model.PricePerCharacter *10 | number:5}}
+											Price per <b>word</b> (word = 6 characters): {{model.PricePerCharacter * 6 | number:5}}
 											<br>
-											Price per document: {{model.PricePerCharacter *1000 | number:5}}
+											Price per <b>page</b> (page = 1500 characters): {{model.PricePerCharacter * 1500 | number:5}}
 										</div>
 
 									</md-input-container>
@@ -604,12 +602,15 @@ $('#LanguageModal').on('show.bs.modal', function (event) {
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	  var modal = $(this)
 	  var html="";
+	  html+='<div class="modal-translator">';
 	  html+="UPDATE non funziona ancora!!!";
 	  html+="Language from: "+button.data('from')+"<br>";
 	  html+="Language to: "+button.data('to')+"<br>";
+	  html+="Field: "+button.data('field')+"<br>";
 	  html+='<label>Price ['+button.data('currency')+']</label><br>';
 	  openedPrice=button.data('price');
 	  html+='<input type="number" pattern="[0-9]*" class="input" data-ng-model="ctrl.openedEdu.Price"><br>';
+	  html+='</div>';
 	  modal.find('.modal-body').html(html)
 })
 </script>
