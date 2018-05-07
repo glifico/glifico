@@ -310,6 +310,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-title').text('Job: ' + job)
   var html="";
+  htm+='<div class="modal-translator">'
   html+="Title: <b>"+job+"</b><br>";
   html+="Price: "+button.data('price')+" "+button.data('currency');
   html+="<br><br>"+button.data('description');
@@ -325,6 +326,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  btnHtml+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+","+button.data("choice")+')"/>';
 	  btnHtml+='<input class="btn btn-danger" type="button" value="Refuse" onclick="refuseJob('+button.data("id")+","+button.data("choice")+')"/>';
   }
+  html+='</div>'
   modal.find('.modal-body').html(html);
   modal.find('.modal-footer').html(btnHtml);
 })

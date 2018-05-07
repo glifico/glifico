@@ -164,7 +164,7 @@
 	font-size: 22px;
 }
 
-.modal-agency {
+.modal-agency, .modal-translator {
 	text-align: left;
-	padding-left: 2em;
+	padding-left: 2em;	
 }
