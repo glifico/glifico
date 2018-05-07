@@ -68,13 +68,9 @@ getPriceDollars=function(price){
 
 selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 	$("#btnRowN"+rowIndex).prop("disabled",true);
-	for(var i=1;i<=maximumSelectable;i++){
-		$("#selectedTotal"+i).html("Click define job to calculate totals");
-	}
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', selectedTr[0].rowColor);
 		$("#fieasibility").show();
-
 
 		selectedTr[0].isSelected=true;
 		selectedTr[0].price=price;
@@ -129,8 +125,6 @@ deselectTr=function(tr){
 		selectedTr[tr-1].name=selectedTr[tr].name;
 		selectedTr[tr-1].id=selectedTr[tr].id;
 
-
-
 		var html="";
 		html+=getPriceDollars(selectedTr[tr-1].price);
 		html+='     ';
@@ -151,9 +145,6 @@ deselectTr=function(tr){
 
 		$("#selectedPrice"+2).html("");
 		$("#selectedName"+2).html("");
-		$("#selectedTotal1").html("");
-		$("#selectedTotal2").html("");
-
 	}else{
 		selectedTr[tr-1].isSelected=false;
 		selectedTr[tr-1].price=-1;
@@ -166,7 +157,6 @@ deselectTr=function(tr){
 
 		$("#selectedPrice"+2).html("");
 		$("#selectedName"+2).html("");
-		$("#selectedTotal"+2).html("");
 	}
 
 	refreshButtons();
@@ -466,19 +456,6 @@ angular.module("search",[]).controller("search",function($scope){
 			$("#feasibility").html("");
 		}
 		ctrl.updateTotals();
-	}
-
-	ctrl.updateTotals=function(){		
-		var firstHtml="";
-		firstHtml+=ctrl.TrCharacters * ctrl.getAgPrice(1);
-		firstHtml+=" Euro";
-		var secondHtml="";
-		if(isSelected(2)){
-			secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
-			secondHtml+=" Euro";
-		}
-		$("#selectedTotal1").html(firstHtml);
-		$("#selectedTotal2").html(secondHtml);
 	}
 
 	ctrl.isSelected=function(tr){
