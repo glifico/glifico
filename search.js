@@ -470,7 +470,8 @@ angular.module("search",[]).controller("search",function($scope){
 			ctrl.feasibilityColor="#FFF";
 			$("#feasibility").html("");
 		}
-		ctrl.updateTotals();
+		$("#modalBodySelect").show();
+		$("#modalBodyUpload").hide();
 	}
 
 	ctrl.isSelected=function(tr){
@@ -567,7 +568,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.pricesAccepted=false;
 
 		ctrl.calculateFeasibility();
-		$("#modalBodySelect").show();
+		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").hide();
 	}
 
