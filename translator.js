@@ -719,6 +719,11 @@ function refresh(){
 		$scope.submit= function(){
 			console.debug($scope.model);
 
+			if($scope.model.PricePerCharacter<0){
+				alert("Price should be greater than zero!");
+				return;
+			}
+			
 			var arr={
 					"user": getUsername(),
 					"token": getToken(),
