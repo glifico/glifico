@@ -273,7 +273,8 @@ angular.module("search",[]).controller("search",function($scope){
 		var html='';
 		html='<a href="#"';
 		//html+='<button type="button" class="btn btn-secondary"';
-		html+='data-container="body" data-toggle="popover" data-placement="right" data-html="true" data-trigger="focus"';
+		html+='data-container="body" data-toggle="popover" data-placement="right" data-trigger="focus" ';
+		html+='data-title=" '+user.FirstName+user.LastName+user.Id+'" ';
 		html+='data-content=" ';
 		html+='mothertongue: '+user.Mothertongue+'</br>';
 		html+='" >';
@@ -333,7 +334,10 @@ angular.module("search",[]).controller("search",function($scope){
 			html+="No pair found for this search, please try another";
 		}
 		$("#table").html(html);
-		$('[data-toggle="popover"]').popover();
+		$('[data-toggle="popover"]').popover({
+			container: 'body',
+			html: true,
+		});
 	}
 
 	ctrl.setPrice=function(price){
