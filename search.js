@@ -290,7 +290,7 @@ angular.module("search",[]).controller("search",function($scope){
 				var name=doc.FirstName+doc.LastName+doc.Id;
 				var priceAg=ctrl.calculatePriceAg(doc.Price,doc.PriceTr);
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
-				html+='<td class="col-md-2">'+name+'</td>';
+				html+='<td class="col-md-2"><i class="fas fa-info-circle"></i> '+name+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
 				html+='<td class="col-md-2">'+doc.Field+'</td>';
 				html+='<td class="col-md-2">';
