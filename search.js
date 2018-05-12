@@ -279,6 +279,7 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='" >';
 		html+='<i class="fa fa-info-circle"></i>';
 		html+='</a>';
+		return html;
 	}
 
 	ctrl.createTable=function(){
