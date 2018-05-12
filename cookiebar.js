@@ -5,7 +5,7 @@ $(document).ready(function(){
 		effect: 'slide',
 		policyButton: true,
 		policyText: 'Click to see our full privacy policy',
-		policyURL: 'privacy.xsp',
+		policyURL: 'privacy.html',
 		acceptButton:
 		true,
 		acceptText: 'I Understand',
