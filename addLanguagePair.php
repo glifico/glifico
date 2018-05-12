@@ -31,7 +31,7 @@ $price_euro=convert_to_euro($price,$pair['IdCurrency']);
 $currency=get_currency_description($pair['IdCurrency']);
 $idField=$pair['IdParametro_Field'];
 $idService=$pair['IdParametro_Service'];
-$field=$fields[$IdParametro_Field];
+$field=$fields[$idField];
 $service="translations";
 
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
