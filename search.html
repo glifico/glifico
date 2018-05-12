@@ -293,7 +293,8 @@ Select translator and upload a job
 <form name="searchForm" action="/" method="post">
 <table class="table table-responsive">
 <tr class="row">
-<td class="col-md-3"><div id="formleft"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
+<td class="col-md-2"><div id="formfrom"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
+<td class="col-md-2"><div id="formto"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
 <td class="col-md-3"><div id="formcenter"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
 <td class="col-md-3">
 <div id="formRating">
@@ -317,10 +318,10 @@ Price class:<br>
 </div>
 </div>
 </td>
-</tr>
-<td>
+<td class="col-md-2">
 <input type="button" class="btn btn-primary" value="search" data-ng-click="ctrl.search()">
 </td>
+</tr>
 </table>
 <br>
 </form>
@@ -330,8 +331,8 @@ Price class:<br>
 <div id="selectedtable" style="width:80%;margin:auto;">
 <table class="table table-responsive">
 <thead class="thead-default"><tr class="row"><th class="col-md-3" style="text-align:center;"></th><th class="col-md-3" style="text-align:center;">Price/ch [Euro]</th><th class="col-md-2"></th></tr></thead>
-<tr class="row" id="selectedRow1" ><td class="col-md-3" id=""><a style="color:#FEC538">1</a> First Translator: <span id="selectedName1"></span></td><td class="col-md-3"><span id="selectedPrice1"></span></td><td><a data-ng-click="ctrl.deselect(1)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
-<tr class="row" id="selectedRow2" ><td class="col-md-3"><a style="color:#FEC538">2</a> Second Translator: <span id="selectedName2"></span></td><td class="col-md-3"><span id="selectedPrice2"></span></td><td><a data-ng-click="ctrl.deselect(2)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
+<tr class="row" id="selectedRow1" ><td class="col-md-3" id=""><a style="color:#FEC538; font-weight: bold;">1</a> First Translator: <span id="selectedName1"></span></td><td class="col-md-3"><span id="selectedPrice1"></span></td><td><a data-ng-click="ctrl.deselect(1)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
+<tr class="row" id="selectedRow2" ><td class="col-md-3"><a style="color:#FE434D; font-weight: bold;">2</a> Second Translator: <span id="selectedName2"></span></td><td class="col-md-3"><span id="selectedPrice2"></span></td><td><a data-ng-click="ctrl.deselect(2)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
 </table>
 
 <div id="fieasibility">
@@ -358,9 +359,9 @@ Price class:<br>
       <div id="modalBodySelect">
         Number of <b>characters</b>: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
        <br>
-        Number of <b>words</b> (word = 6 characters): {{ctrl.TrCharacters / 6 | number:1}}
+        Number of <b>words</b>: {{ctrl.TrCharacters / 6 | number:1}} (word = 6 characters)
        <br>
-        Number of <b>pages</b> (page = 1500 characters): {{ctrl.TrCharacters / 1500 | number:1}}
+        Number of <b>pages</b>: {{ctrl.TrCharacters / 1500 | number:1}} (page = 1500 characters)
         <br>
         <span>
         <b>Deadline</b>: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />
@@ -374,7 +375,7 @@ Price class:<br>
         <br><br>
         <div id="modal-translators">
         Total translator 1: <b>{{ctrl.TrCharacters * ctrl.getAgPrice(1) | number:2}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(1)*105./100) | number:2 }} Euro</b></span><br>
-        <div data-ng-show="ctrl.isSelected(2)">Total translator 2: {{ctrl.TrCharacters * ctrl.getAgPrice(2) | number:2}} Euro <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(2)*105./100) | number:2}} Euro</b></span></div><br>
+        <div data-ng-show="ctrl.isSelected(2)"><b>Total translator 2: {{ctrl.TrCharacters * ctrl.getAgPrice(2) | number:2}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(2)*105./100) | number:2}} Euro</b></span></div><br>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};font-size:18px;"></span>
         </div>
         <br>

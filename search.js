@@ -84,9 +84,7 @@ selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
-		html+='     ';
-		html+=totalTr+' Euro/ch';
-
+		
 		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(name);
 	}else if(!selectedTr[1].isSelected){
@@ -101,13 +99,9 @@ selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 		selectedTr[1].name=name;
 		selectedTr[1].id=id;
 
-
 		var html="";
 		html+=getPriceDollars(price);
-		html+='     ';
-		html+=totalTr+' Euro/ch';
-
-
+		
 		$("#selectedPrice2").html(html);
 		$("#selectedName2").html(name);
 	}
@@ -342,22 +336,23 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.createForm=function(){
 		var html="";
-		html+='<label>From: </label>';
+		html+='<label>Translate from: </label>';
 		html+='<select id="select-from" placeholder="Translate from" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
-		html+="<br>";
-		html+='<label>To: </label>';
+		$("#formfrom").html(html);
+		html='';
+		html+='<label>to: </label>';
 		html+='<select id="select-to" placeholder="Translate to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
-		$("#formleft").html(html);
+		$("#formto").html(html);
 
 		var html="";
 		html+='<label>Field: </label>';
@@ -365,7 +360,7 @@ angular.module("search",[]).controller("search",function($scope){
 		for(var i=0; i<ctrl.Fields.length; i++){
 			var element=ctrl.Fields[i];
 			html+='<option value="'+element.Id+'"';
-			if(element.Id==97){
+			if(element.Id==105){
 				html+=' selected="selected"';
 			}
 			html+='>'+element.Field+'</option>';
