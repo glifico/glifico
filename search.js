@@ -333,6 +333,7 @@ angular.module("search",[]).controller("search",function($scope){
 			html+="No pair found for this search, please try another";
 		}
 		$("#table").html(html);
+		$('[data-toggle="popover"]').popover();
 	}
 
 	ctrl.setPrice=function(price){
