@@ -269,6 +269,18 @@ angular.module("search",[]).controller("search",function($scope){
 		return getAgPrice(tr);
 	}
 
+	ctrl.createPopOverForUser= function(user){
+		var html='';
+		html='<a href="#" title="Header"';
+		//html+='<button type="button" class="btn btn-secondary"';
+		html+='data-container="body" data-toggle="popover" data-placement="right" data-html="true data-trigger="focus"';
+		html+='data-content=" ';
+		html+='mothertongue:'+user.Mothertongue+'</br>';
+		html+='" >';
+		html+='<i class="fa fa-info-circle"></i>';
+		html+='</a>';
+	}
+
 	ctrl.createTable=function(){
 		var html="";
 		if (ctrl.documents.length>0){
@@ -290,7 +302,7 @@ angular.module("search",[]).controller("search",function($scope){
 				var name=doc.FirstName+doc.LastName+doc.Id;
 				var priceAg=ctrl.calculatePriceAg(doc.Price,doc.PriceTr);
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
-				html+='<td class="col-md-2"><i class="fa fa-info-circle"></i> '+name+'</td>';
+				html+='<td class="col-md-2">'+ctrl.createPopOverForUser(doc)+name+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
 				html+='<td class="col-md-2">'+doc.Field+'</td>';
 				html+='<td class="col-md-2">';
