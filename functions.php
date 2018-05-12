@@ -80,6 +80,9 @@ function convert_to_euro($price,$cur){
   $convResult = $db->query($query);
   $convRow = $convResult->fetch(PDO::FETCH_ASSOC);
   $priceEuro=round((float)$price/$convRow['conversion'],2);
+  if($priceEuro<0.01){
+      $priceEuro=0.01;
+  }
   $convResult->CloseCursor();
   return $priceEuro;
 }

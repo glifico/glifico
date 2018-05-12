@@ -1,6 +1,7 @@
 <?php
 require_once 'functions.php';
 require_once 'languages.php';
+require_once 'fields.php';
 require_once 'speak.php';
 
 
@@ -21,11 +22,17 @@ $pair=$data['values'];
 $from=$language_codes[$pair['IdLanguageFrom']];
 $to=$language_codes[$pair['IdLanguageTo']];
 $price=$pair['PricePerCharacter'];
+
+if($price == 0) {
+    $price=0.001;
+}
+
 $price_euro=convert_to_euro($price,$pair['IdCurrency']);
 $currency=get_currency_description($pair['IdCurrency']);
-$field="translation";
-$seervice="translations";
-
+$idField=$pair['IdParametro_Field'];
+$idService=$pair['IdParametro_Service'];
+$field=$fields[$IdParametro_Field];
+$service="translations";
 
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 

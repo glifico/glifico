@@ -4,7 +4,7 @@ include 'searchParams.php';
 
 function doTheGaussian($prT, $Avg, $sigma)
 {
-    if($sigma!=0){
+    if ($sigma != 0) {
         $normPrice = (float) ($prT - $Avg) / $sigma;
         $C = getCoefficients();
         
@@ -15,8 +15,8 @@ function doTheGaussian($prT, $Avg, $sigma)
         } else if ($normPrice < $C['C']) {
             return 3;
         }
-    }else{
-        $normPrice=$prT;
+    } else {
+        $normPrice = $prT;
     }
     // just in case be safe and use class C
     return 3;
@@ -50,7 +50,11 @@ if (! certTokenA($db, $user, $token))
         "statuscode" => 400
     )));
 
-$query = "SELECT username, from_l, to_l, field, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo' AND field LIKE '$field'";
+$query = "SELECT username, from_l, to_l, field, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
+
+if (strcmp($field, "select all") !== 0) {
+    $query=$query."AND field LIKE '$field'";
+}
 $result = $db->query($query . ";");
 
 $pricequery = "SELECT avg(price_euro) FROM($query) sub;";
@@ -96,12 +100,12 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     if ($rating >= $reqRating && $priceClass <= $reqPrice) {
         // add randomnsess to id to avoid identifyng users
         $id = 1000 + 42 * $rowUser['id'];
-        //id is to be shown
-        //code is app private identifier in the database
-        if($sigma!=0){
+        // id is to be shown
+        // code is app private identifier in the database
+        if ($sigma != 0) {
             $normPrice = (float) ($prT - $Avg) / $sigma;
-        }else{
-            $normPrice=$prT;
+        } else {
+            $normPrice = $prT;
         }
         array_push($dataToExit, array(
             "Id" => $id,

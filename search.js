@@ -84,7 +84,7 @@ selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
-		
+
 		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(name);
 	}else if(!selectedTr[1].isSelected){
@@ -101,7 +101,7 @@ selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 
 		var html="";
 		html+=getPriceDollars(price);
-		
+
 		$("#selectedPrice2").html(html);
 		$("#selectedName2").html(name);
 	}
@@ -290,7 +290,7 @@ angular.module("search",[]).controller("search",function($scope){
 				var name=doc.FirstName+doc.LastName+doc.Id;
 				var priceAg=ctrl.calculatePriceAg(doc.Price,doc.PriceTr);
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
-				html+='<td class="col-md-2"><i class="fas fa-info-circle"></i> '+name+'</td>';
+				html+='<td class="col-md-2"><i class="fa fa-info-circle"></i> '+name+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
 				html+='<td class="col-md-2">'+doc.Field+'</td>';
 				html+='<td class="col-md-2">';
@@ -359,12 +359,14 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='<select id="select-field" placeholder="Field">';
 		for(var i=0; i<ctrl.Fields.length; i++){
 			var element=ctrl.Fields[i];
-			html+='<option value="'+element.Id+'"';
-			if(element.Id==105){
-				html+=' selected="selected"';
-			}
+			html+='<option value="'+element.Id+'"';			
 			html+='>'+element.Field+'</option>';
 		}
+		html+='<option value="'+ctrl.Fields.length+'"';
+		html+=' selected="selected"';
+		//select all trigger query on all parameters
+		//remember to modify getTranslator.php if something changes here
+		html+='>'+"select all"+'</option>';
 		html+='</select>';
 		$("#formcenter").html(html);
 
@@ -429,7 +431,7 @@ angular.module("search",[]).controller("search",function($scope){
 			alert("wrong deadline");
 			return;
 		}
-		
+
 		ctrl.MaxCh=days*10000;
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
