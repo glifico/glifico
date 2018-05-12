@@ -524,7 +524,7 @@ angular.module("search",[]).controller("search",function($scope){
 				},
 				error : function(xhr) {
 					if (xhr.status == 500) {
-						$("#alertError").html("Error from server, please retry.");
+						$("#alertError").html("Error from server, try to change field, rating or price.");
 						$("#alertError").fadeIn().delay(1000).fadeOut();
 					}
 
