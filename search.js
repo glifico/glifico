@@ -271,7 +271,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.createPopOverForUser= function(user){
 		var html='';
-		html='<a href="#"';
+		html='<button type="button" class="btn btn-primary"';
 		//html+='<button type="button" class="btn btn-secondary"';
 		html+='data-container="body" data-toggle="popover" data-placement="right" data-trigger="focus" ';
 		html+='title="'+user.FirstName+user.LastName+user.Id+'" ';
@@ -279,7 +279,7 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='mothertongue: '+user.Mothertongue+'</br>';
 		html+='" >';
 		html+='<i class="fa fa-info-circle"></i>';
-		html+='</a>';
+		html+='</button>';
 		return html;
 	}
 
