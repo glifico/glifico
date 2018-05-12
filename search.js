@@ -273,7 +273,7 @@ angular.module("search",[]).controller("search",function($scope){
 		var html='';
 		html='<a href="#"';
 		//html+='<button type="button" class="btn btn-secondary"';
-		html+='data-container="body" data-toggle="popover" data-placement="right" data-trigger="focus" ';
+		html+='data-toggle="popover" data-placement="right" data-trigger="focus" ';
 		html+='title="'+user.FirstName+user.LastName+user.Id+'" ';
 		html+='data-content=" ';
 		html+='mothertongue: '+user.Mothertongue+'</br>';
@@ -335,7 +335,6 @@ angular.module("search",[]).controller("search",function($scope){
 		}
 		$("#table").html(html);
 		$('[data-toggle="popover"]').popover({
-			container: 'body',
 			title: 'user info',
 			html: true,
 		});
