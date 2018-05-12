@@ -271,7 +271,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.createPopOverForUser= function(user){
 		var html='';
-		html='<a href="#"';
+		html='<a href="#!"';
 		//html+='<button type="button" class="btn btn-secondary"';
 		html+='data-toggle="popover" data-placement="right" data-trigger="focus" ';
 		html+='title="'+user.FirstName+user.LastName+user.Id+'" ';
