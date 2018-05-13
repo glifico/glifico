@@ -279,11 +279,11 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='mothertongue: '+user.Mothertongue+'</br>';
 		for (var i = 0; i < user.UserInfo.length; i++) {
 			var info = user.UserInfo[i];
-			html+=info.language+': ';
+			html+=info.language+' ';
 			if(info.rating!=null){
-				html+=info.rating;
+				html+="with rating of "+info.rating+"/5";
 			}else{
-				html+="n/d";
+				html+="";
 			}
 			html+='</br>';
 		}
