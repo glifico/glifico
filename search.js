@@ -277,27 +277,16 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='title="'+user.FirstName+user.LastName+user.Id+'" ';
 		html+='data-content=" ';
 		html+='mothertongue: '+user.Mothertongue+'</br>';
-		html+='<table class="table">';
-		html+='<thead class="thead-default">';
-		html+='<tr class="row">';
-		html+='<th class="col-md-1" style="text-align:center;">Language spoken</th>';
-		html+='<th class="col-md-1" style="text-align:center;">Rating</th>';
-		html+='</tr>';
-		html+='</thead>';
 		for (var i = 0; i < user.UserInfo.length; i++) {
 			var info = user.UserInfo[i];
-			html+='<tr class="row">';
-			html+='<td class="col-md-1">'+info.language+'</td>';
-			html+='<td class="col-md-1">';
+			html+=info.language+': ';
 			if(info.rating!=null){
 				html+=info.rating;
 			}else{
 				html+="n/d";
 			}
-			html+='</td>';
-			html+='</tr>';
+			html+='</br>';
 		}
-		html+='</table>';
 		html+='" >';
 		html+='<i class="fa fa-info-circle"></i>';
 		html+='</a>';
