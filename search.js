@@ -279,9 +279,9 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='mothertongue: '+user.Mothertongue+'</br>';
 		for (var i = 0; i < user.UserInfo.length; i++) {
 			var info = user.UserInfo[i];
-			html+=info.language+' ';
+			html+='<b>'+info.language+'</b> ';
 			if(info.rating!=null){
-				html+="with rating of "+info.rating+"/5";
+				html+="with rating of <b>"+info.rating+"</b>/5";
 			}else{
 				html+="";
 			}
