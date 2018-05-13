@@ -22,6 +22,20 @@ function doTheGaussian($prT, $Avg, $sigma)
     return 3;
 }
 
+function getInfo($user)
+{
+    $db = getDB();
+    if (! $db)
+        exit();
+    $toexit = [];
+    $query = "select * from languages WHERE username='$user'";
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        array_push($dataToExit, array("language"=>$row['language'], "rating"=>$row['tottest']));
+    }
+    $result->CloseCursor();
+    return $toexit;
+}
+
 $db = getDB();
 if (! $db)
     exit();
@@ -53,7 +67,7 @@ if (! certTokenA($db, $user, $token))
 $query = "SELECT username, from_l, to_l, field, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
 
 if (strcmp($field, "select all") !== 0) {
-    $query=$query."AND field LIKE '$field'";
+    $query = $query . "AND field LIKE '$field'";
 }
 $result = $db->query($query . ";");
 
@@ -118,7 +132,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             "FirstName" => $rowUser['nome']{0},
             "LastName" => $rowUser['cognome']{0},
             "IdMothertongue" => $rowUser['madrelinguaid'],
-            "Mothertongue" => $rowUser['madrelingua']
+            "Mothertongue" => $rowUser['madrelingua'],
+            "UserInfo" => getInfo($translator)
         ));
     }
 }
