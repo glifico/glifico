@@ -29,6 +29,7 @@ function getInfo($user)
         exit();
     $toexit = [];
     $query = "select * from languages WHERE username='$user';";
+    $result = $db->query($query);
     try {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         array_push($dataToExit, array("language"=>$row['language'], "rating"=>$row['tottest']));
