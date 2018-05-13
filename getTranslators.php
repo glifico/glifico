@@ -32,7 +32,7 @@ function getInfo($user)
     $result = $db->query($query);
     try {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        array_push($dataToExit, array("language"=>$row['language'], "rating"=>$row['tottest']));
+        array_push($toexit, array("language"=>$row['language'], "rating"=>$row['tottest']));
     }
     }catch (Exception $e){
         
@@ -63,7 +63,7 @@ $langTo = $data['to'];
 $reqRating = $data['rating'];
 $reqPrice = $data['price'];
 $field = $data['field'];
-if (! certTokenA($db, $user, $token))
+if (!certTokenA($db, $user, $token))
     exit(json_encode(array(
         "message" => "wrong token",
         "statuscode" => 400
