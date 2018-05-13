@@ -284,8 +284,8 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='<th class="col-md-1" style="text-align:center;">Rating</th>';
 		html+='</tr>';
 		html+='</thead>';
-		for (var i = 0; i < user.userinfo.length; i++) {
-			var info = user.userinfo[i];
+		for (var i = 0; i < user.UserInfo.length; i++) {
+			var info = user.UserInfo[i];
 			html+='<tr class="row">';
 			html+='<td class="col-md-1">'+info.language+'</td>';
 			html+='<td class="col-md-1">';
