@@ -54,9 +54,7 @@
 
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.component.js"></script>
-
 <script src="app/login.controller.js"></script>
-
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -86,9 +84,7 @@
 <body onload="onLoad()">
 
 <?php
-
 include "templates/templates.php";
-
 ?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -162,11 +158,11 @@ include "templates/templates.php";
 <div class="modal-body">
 <ul class="nav nav-tabs">
 <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
-<li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li>
-<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li>
+<li><a data-toggle="tab" href="#register">Register a new account</a></li>
 </ul>
 </div>
-<div class="tab-content"><div class="tab-pane fade in active" id="login">
+<div class="tab-content">
+<div class="tab-pane fade in active" id="login">
 <form class="form-horizontal">
 
 <fieldset>
@@ -200,61 +196,47 @@ include "templates/templates.php";
 </div>
 </div>
 </fieldset>
-
 </form>
-
 </div>
-<div class="tab-pane fade" id="regTrad">
+
+
+<div class="tab-pane fane" id="register">
+<div style="width: 90%; margin: auto; padding-bottom: 5em; padding-top: 1em; padding-left: 2em;">
+<h3>What type of account do you want?</h3>
+<span style="width:40%; margin:auto; float: left;">
+<button class="btn btn-primary" style="font-size: 20px;" onclick="showRegAge()"><i class="fa fa-building"></i> Agency</button>
+</span>
+<span style="width:40%; margin:auto; float: right; font-size: 20px">
+<button class="btn btn-primary" style="font-size: 20px;" onclick="showRegTrad()"><i class="fa fa-user"></i> Translator</button>
+</span>
+</div>
+
+<div id="regAge" hidden="true">
+agenziaaaa
+</div>
+
+<div id="regTrad" hidden="true">
+Traduttore
+
+
 <div id="regTradAPP" data-ng-controller="MainController_regTrad as vmMainController_regTrad">
     <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
         <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
-           <div style="width:80%;margin:auto;">
-           <div id="captchaTrad"></div>
-           </div>
-           <div style="taxt-align:centered;padding-left:2rem;padding-top:8px;">
-           Clicking on Register you declare to have read and accepted <a href="terms.html" target="_Blank">Glifico Terms and Conditions<i class="fa fa-external-link" aria-hidden="true"></i></a>
-           </div>
             <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
         </formly-form>
     </form>
 </div>
 
 
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
-</div>
-<div class="tab-pane fade" id="regAg">
-<div id="regAgeAPP" data-ng-controller="MainController_regAge as vmMainController_regAge">
-    <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
-        <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
-         <div style="width:80%;margin:auto;">
-          <div id="captchaAge"></div>
-        </div>
-            <div style="taxt-align:centered;padding-left:2rem;padding-top:10px;">
-           Clicking on Register you declare to have read and accepted <a href="terms.html" target="_Blank">Glifico Terms and Conditions<i class="fa fa-external-link" aria-hidden="true"></i></a>
-           </div>
-            <md-button type="submit" ng-click="vmMainController_regAge.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regAge.form.$invalid">Register!</md-button>
-        </formly-form>
-    </form>
 
 </div>
 
 
-
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
 </div>
 </div>
-</div>
-
 <div class="modal-footer">
 <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+</div>
 </div>
 </div>
 </div>

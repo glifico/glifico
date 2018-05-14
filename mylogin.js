@@ -171,3 +171,14 @@ function logout() {
 	document.cookie = maincookie + "=; expires=" + new Date;
 	location.href="index.html";
 }
+
+
+function showRegAge(){
+	 console.debug("regage");
+	$("#regAge").show();
+}
+
+function showRegAge(){
+	 console.debug("regage");
+	$("#regTrad").show();
+}
