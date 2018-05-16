@@ -215,11 +215,40 @@ include "templates/templates.php";
 agenziaaaa
 </div>
 
-<div id="regTrad" hidden="true">
+<div id="regTrad" class="modal-translator" hidden="true">
 Traduttore
+<div id="regTradForm" data-ng-controller="regTradcontroller as ctrl">
 
+{{ctrl.ispasswordvalid()}}
+{{ctrl.password}}
+{{ctrl.name}}
+{{ctrl.password.length}}
 
-<div id="regTradAPP" data-ng-controller="MainController_regTrad as vmMainController_regTrad">
+<form name="searchForm" action="/" method="post">
+<label>Name: </label>
+<input type="text" data-ng-model="ctrl.name" placeholder="name">
+<br>
+<label>Surname: </label>
+<input type="text" data-ng-model="ctrl.surname" placeholder="surname">
+<br>
+<label>Email: </label>
+<input type="email" data-ng-model="ctrl.email" placeholder="email">
+<br>
+<label>Password: </label>
+<input type="password" data-ng-model="ctrl.password" placeholder="Must be at least 7 characters">
+<span id="passwordcheck" data-ng-show="!ctrl.ispasswordvalid()&&ctrl.password.length>1">Password must have al least 7 characters!</span>
+<br>
+<label>Repeat password: </label>
+<input type="password" data-ng-model="ctrl.reppassword" placeholder="Retype password">
+<br>
+<label><input type="checkbox" data-ng-model="ctrl.tec">I accept <a href="terms.html" target="_Blank">terms and conditions <i class="fa fa-external-link"></i></a></label>
+<br>
+<span id="captchaTrad"></span>
+<br>
+<button type="submit" data-ng-click="ctrl.submit()" class="btn btn-primary" ng-disabled="ctrl.$invalid">Register!</button>
+</form>
+</div>
+
     <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
         <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
             <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
@@ -232,7 +261,6 @@ Traduttore
 </div>
 
 
-</div>
 </div>
 <div class="modal-footer">
 <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>

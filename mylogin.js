@@ -182,3 +182,27 @@ function showRegAge(){
 	 console.debug("regage");
 	$("#regTrad").show();
 }
+
+
+angular.module("regTradcontroller",[]).controller("regTradcontroller",function($scope){
+	var ctrl=this;
+	
+	ctrl.$onInit=function(){
+		ctrl.password="";
+		ctrl.tec=false;
+	}
+
+	ctrl.ispasswordvalid = function(){
+		return ctrl.password.length >= 7;
+	}
+	
+});
+
+
+angular.element(document).ready(function() {
+	console.log("registro regTradcontroller");
+	angular.bootstrap(document.getElementById('regTradForm'), ['regTradcontroller']);
+});
+
+
+
