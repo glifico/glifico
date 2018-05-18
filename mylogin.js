@@ -174,11 +174,10 @@ function logout() {
 
 
 function showRegAge(){
-	 console.debug("regage");
 	$("#regAge").show();
 }
 
-function showRegAge(){
+function showRegTrad(){
 	 console.debug("regage");
 	$("#regTrad").show();
 }

@@ -114,6 +114,56 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 			}
 		});
 //		FINE BLOCCO VALIDAZIONE CAMPO FIELDTOMATCH
+		
+		
+//		INIZIO BLOCCO VALIDAZIONE CAMPO password
+		formlyConfig.setType({
+			name: 'passwordLength',
+			defaultOptions: function passwordLengthDefaultOptions(options) {
+				return {
+					extras: {
+						validateOnModelChange: true
+					},
+					expressionProperties: {
+						'templateOptions.disabled': function(viewValue, modelValue, scope) {
+							var matchField = find(scope.fields, 'key', options.data.fieldToMatch);
+							if (!matchField) {
+								throw new Error('Could not find a field for the key ' + options.data.fieldToMatch);
+							}
+							var model = options.data.modelToMatch || scope.model;
+							var originalValue = model[options.data.fieldToMatch];
+							var invalidOriginal = matchField.formControl && matchField.formControl.$invalid;
+							return !originalValue || invalidOriginal;
+						}
+					},
+					validators: {
+						passwordLength: {
+							expression: function(viewValue, modelValue, fieldScope) {
+								var value = modelValue || viewValue;
+								var model = options.data.modelToMatch || fieldScope.model;
+								return value.length >= 7;
+							},
+							message: options.data.matchFieldMessage || '"Must be at least 7 characters"'
+						}
+					}
+				};
+
+				function find(array, prop, value) {
+					var foundItem;
+					array.some(function(item) {
+						if (item[prop] === value) {
+							foundItem = item;
+						}
+						return !!foundItem;
+					});
+					return foundItem;
+				}
+			}
+		});
+//		FINE BLOCCO VALIDAZIONE CAMPO password
+		
+		
+		
 	});
 })();
 
@@ -150,15 +200,7 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 					required: true
 				}
 			},{
-				className : "col-md-12",
-				key : "VATCode",
-				type : 'input',
-				templateOptions : {
-					label: "VAT Code/Fiscal Code",
-					required: false
-				}
-			},{
-				className : "col-md-12",
+				className : "col-md-6",
 				key : "Email",
 				type : 'input',
 				templateOptions : {
@@ -174,7 +216,15 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 					}
 				}
 			},{
-				className : "col-md-12",
+				className : "col-md-6",
+				key : "VATCode",
+				type : 'input',
+				templateOptions : {
+					label: "VAT Code/Fiscal Code",
+					required: false
+				}
+			},{
+				className : "col-md-4",
 				key : "Username",
 				type : 'input',
 				templateOptions : {
@@ -187,7 +237,7 @@ var wrongCaptcha="Please confirm that you are a human 👤 and not a robot 🤖"
 					}
 				}
 			},{
-				className : "col-md-12",
+				className : "col-md-4",
 				key : "Password",
 				type : 'input',
 				templateOptions : {
@@ -366,8 +416,6 @@ angular.element(document).ready(function() {
 //		FINE BLOCCO VALIDAZIONE CAMPO FIELDTOMATCH
 	});
 })();
-
-
 
 
 ( function() {
