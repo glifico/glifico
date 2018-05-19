@@ -221,12 +221,8 @@ Traduttore
 
 
 <div id="regTradForm" data-ng-controller="regTradcontroller as ctrl">
-{{ctrl.ispasswordvalid()}}
-{{ctrl.password}}
-{{ctrl.name}}
-{{ctrl.password.length}}
 <div>
-<form class="needs-validation" name="searchForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="regTradForm" action="/" method="post" novalidate> 
 <div class="input-group">
 <div class="form-group col-md-4">
 <label>Name: </label>
@@ -241,19 +237,22 @@ Traduttore
 <div class="form-group col-md-8">
 <label>Username: </label>
 <input class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
 </div>
 </div>
 <div class="input-group">
 <div class="form-group col-md-8">
 <label>Email: </label>
-<input class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()&&regTradForm.emailfield.$touched">Must be a valid email address</div>
 </div>
 </div>
 <div class="input-group">
 <div class="form-group col-md-7">
 <label for="password">Password: </label>
-<input class="form-control" type="password" data-ng-model="ctrl.password" placeholder="Must be at least 7 characters">
-<div class="invalid-feedback" id="passwordcheck" data-ng-show="!ctrl.ispasswordvalid()&&ctrl.password.length>1">
+<input name="passwordfield" class="form-control" type="password" data-ng-model="ctrl.password" placeholder="Must be at least 7 characters">
+<div class="invalid-feedback" id="passwordcheck" data-ng-show="!ctrl.ispasswordvalid()&&regTradForm.passwordfield.$touched">
 Password must have al least 7 characters!
 </div>
 </div>
@@ -272,7 +271,7 @@ Password must have al least 7 characters!
 </div>
 <div class="input-group">
 <div class="form-group form-check col-md-8">
-<button type="submit" data-ng-click="ctrl.submit()" class="btn btn-primary" ng-disabled="ctrl.$invalid">Register!</button>
+<button type="submit" data-ng-click="ctrl.submit()" class="btn btn-primary" ng-disabled="ctrl.invalidForm()">Register!</button>
 </div>
 </div>
 </form>
