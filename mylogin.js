@@ -174,11 +174,12 @@ function logout() {
 
 
 function showRegAge(){
+	$("#regTrad").hide();
 	$("#regAge").show();
 }
 
 function showRegTrad(){
-	console.debug("regage");
+	$("#regAge").hide();
 	$("#regTrad").show();
 }
 
@@ -207,6 +208,10 @@ angular.module("regTradcontroller",[]).controller("regTradcontroller",function($
 		return !(ctrl.ispasswordvalid()&&ctrl.isemailvalid()&&ctrl.isuservalid()&&ctrl.tec);
 	}
 
+	ctrl.passwordmatch = function() {
+		return !(ctrl.password===ctrl.reppassword);	
+	}
+
 	ctrl.submit = function(){
 		if(grecaptcha.getResponse(widgetTrad).length>1){
 			var req = createXHTMLHttpRequest() ;
@@ -228,6 +233,18 @@ angular.module("regTradcontroller",[]).controller("regTradcontroller",function($
 					}
 				}
 			}
+			req.open("GET", "confirmMailT.php"+"?"+
+					"user="+ctrl.username+
+					"&name="+ctrl.name+
+					"&lastname="+ctrl.surname+
+					"&password="+ctrl.password+
+					"&email="+ctrl.email+
+					"&VAT="
+			, true);
+			req.send();
+
+		}else{
+			alert(wrongCaptcha);
 		}
 	}
 
