@@ -166,9 +166,13 @@
 
 .modal-agency, .modal-translator {
 	text-align: left;
-	padding-left: 2em;	
+	padding-left: 2em;
 }
 
 .invalid-feedback {
 	color: red;
+}
+
+.form-check {
+	font-size: 24px;
 }
