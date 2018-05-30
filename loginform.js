@@ -76,6 +76,8 @@ angular.module("regTradcontroller",[]).controller("regTradcontroller",function($
 						return(true);
 					}else if(response['statuscode']==408){
 						alert("Username already got, please try another");
+					}else if(response['statuscode']==409 || response['statuscode']==410){
+						alert("Email already present in our systems, try forget password button");
 					}else{
 						$('#alertError').fadeIn().delay(10000).fadeOut();
 						$('#alertError').html("Error from server");
@@ -89,8 +91,8 @@ angular.module("regTradcontroller",[]).controller("regTradcontroller",function($
 					"&lastname="+ctrl.surname+
 					"&password="+ctrl.password+
 					"&email="+ctrl.email+
-					"&VAT="
-			, true);
+					"&VAT="+ctrl.vat
+					, true);
 			req.send();
 
 		}else{
@@ -156,6 +158,8 @@ angular.module("regAgecontroller",[]).controller("regAgecontroller",function($sc
 						return(true);
 					}else if(response['statuscode']==408){
 						alert("Username already got, please try another");
+					}else if(response['statuscode']==409 || response['statuscode']==410){
+						alert("Email already present in our systems, try forget password button");
 					}else{
 						$('#alertError').fadeIn().delay(10000).fadeOut();
 						$('#alertError').html("Error from server");
@@ -170,7 +174,7 @@ angular.module("regAgecontroller",[]).controller("regAgecontroller",function($sc
 					"&VAT="+ctrl.vat+
 					"&password="+ctrl.password+
 					"&email="+ctrl.email
-			, true);
+					, true);
 			req.send();
 		}else{
 			alert(wrongCaptcha);

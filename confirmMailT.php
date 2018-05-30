@@ -22,6 +22,7 @@ $user=$_GET['user'];
 $vat=$_GET['VAT'];
 
 checkPresence($user);
+check_email_presence($email);
 
 $object=array("user"=>$user, "password"=>$password, "name"=>$name, "lastName"=>$last,"email"=>$email, "vat"=>$vat);
 $jsonarray=json_encode($object);

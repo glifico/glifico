@@ -61,6 +61,25 @@ function get_user_email($user){
     return $email;
 }
 
+function check_email_presence($email){
+    $db=getDB();
+    if(!$db) exit;
+    
+    $query="SELECT email FROM agenzia WHERE email='$email';";
+    $result=$db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    
+    if(strlen(htmlspecialchars($row["email"]))>2) exit(json_encode(array("message"=>"email already present", "statuscode"=>409)));
+    $result->CloseCursor();
+    
+    $query="SELECT email FROM traduttore WHERE email='$email';";
+    $result=$db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    
+    if(strlen(htmlspecialchars($row["email"]))>2) exit(json_encode(array("message"=>"email already present", "statuscode"=>410)));
+    $result->CloseCursor();
+}
+
 function get_currency_description($cur){
   $db=getDB();
   if(!$db) return;
