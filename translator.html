@@ -278,9 +278,11 @@ Add your code here
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
 <div class="panel-heading">
-
-User personal page
+<span id="welcomeTr"></span>
 </div>
+<script>
+$("#welcomeTr").html("Welcome, "+getUsername());
+</script>
 </div>
 </div>
 <div style="text-align:center;">
@@ -378,7 +380,7 @@ User personal page
 								<div layout-gt-xs="row">
 									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Save</md-button>
 								</div>
-
+</form>
 						</div>
 				</div>
 				</md-content>

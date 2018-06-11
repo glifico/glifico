@@ -17,8 +17,6 @@ function doDominoLogin() {
 				var type=JSON.parse(logReq.responseText)["type"];
 				saveTheCookie(user, token,type);
 				console.log("logged");
-				$('#alertOK').fadeIn().delay(10000).fadeOut();
-				$('#alertOK').html("Welcome on Glifico "+ username);
 				personalArea();
 				return(true);
 			}else{
@@ -163,6 +161,8 @@ function personalArea(){
 	}else if(isAgency()){
 		location.href="agency.html";
 	}
+	$('#alertOK').html("Welcome on Glifico "+ getUusername());
+	$('#alertOK').fadeIn().delay(10000).fadeOut();
 }
 
 
