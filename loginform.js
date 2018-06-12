@@ -91,7 +91,8 @@ angular.module("regTradcontroller",[]).controller("regTradcontroller",function($
 					"&lastname="+ctrl.surname+
 					"&password="+ctrl.password+
 					"&email="+ctrl.email+
-					"&VAT="+ctrl.vat
+					"&VAT="+ctrl.vat+
+					"&now="+new Date()
 					, true);
 			req.send();
 
@@ -173,7 +174,8 @@ angular.module("regAgecontroller",[]).controller("regAgecontroller",function($sc
 					"&name="+ctrl.companyname+
 					"&VAT="+ctrl.vat+
 					"&password="+ctrl.password+
-					"&email="+ctrl.email
+					"&email="+ctrl.email+
+					"&now="+new Date()
 					, true);
 			req.send();
 		}else{
