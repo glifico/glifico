@@ -187,3 +187,14 @@ input[type=checkbox]
 	font-size: 20px;
 	padding-top: 0.3em;
 }
+
+.panel > .panel-heading{
+	background-image: none;
+    background-color: #ffa24d;
+	border-color: orange;
+    color: white;
+}
+
+.panel-heading {
+	font-size: 23px;
+}
