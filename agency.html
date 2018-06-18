@@ -278,15 +278,127 @@ Add your code here
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
 <div class="panel-heading">
-
-Agency settings
+<span id="welcomeAge"></span>
 </div>
+<script>
+$("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
+</script>
 </div>
 </div>
 <script src="agency.js"></script>
 
 <div style="text-align:center;">
-<div style="width:100%;display: table;margin: 0 auto;">
+<div style="width:90%;display: table;margin: 0 auto;">
+
+
+<div id="regAge" hidden="true">
+<div id="regAgeForm" data-ng-controller="regAgecontroller as ctrl">
+<div>
+<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate> 
+<div class="input-group">
+<div class="form-group col-md-8">
+<label>Company Name: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.companyname" placeholder="name">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Fiscal code: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regAgeForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Street: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regAgeForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>City: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regAgeForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>ZIP code: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regAgeForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>State: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regAgeForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Email reference: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regAgeForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Phone reference: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regAgeForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Payment mode: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regAgeForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>IBAN: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regAgeForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-8">
+<button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="ctrl.invalidForm()">Update my data</button>
+</div>
+</div>
+</form>
+</div>
+ 
+</div>
+</div>
+
+
 
 <div class="jumbotron jumboMain"><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><h2>Editing Company Data</h2></div></div><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12">
 <div id="editAgeAPP" ng-controller="MainController_editAge as vmMainController_editAge">
