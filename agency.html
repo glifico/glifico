@@ -291,10 +291,10 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div style="width:90%;display: table;margin: 0 auto;">
 
 
-<div id="regAge" hidden="true">
-<div id="regAgeForm" data-ng-controller="regAgecontroller as ctrl">
+<div id="infoAge" hidden="true">
+<div id="infoAgeForm" data-ng-controller="infoAgecontroller as ctrl">
 <div>
-<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="infoAgeForm" action="/" method="post" novalidate> 
 <div class="input-group">
 <div class="form-group col-md-8">
 <label>Company Name: </label>
@@ -304,9 +304,9 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="input-group">
 <div class="form-group col-md-10">
 <label>Fiscal code: </label>
-<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
-<div data-ng-show="regAgeForm.username.$touched">
-<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+<input name="vat" class="form-control" type="text" data-ng-model="ctrl.vat" placeholder="vat">
+<div data-ng-show="infoAgeForm.vat.$touched">
+<div class="invalid-feedback" id="vatcheck" data-ng-show="!ctrl.isvatvalid()">It seems an invalid format
 </div>
 </div>
 </div>
@@ -314,18 +314,20 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="input-group">
 <div class="form-group col-md-10">
 <label>Street: </label>
-<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
-<div data-ng-show="regAgeForm.username.$touched">
-<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
-</div>
-</div>
+<input name="street" class="form-control" type="text" data-ng-model="ctrl.street" placeholder="street">
 </div>
 </div>
 <div class="input-group">
 <div class="form-group col-md-10">
 <label>City: </label>
+<input name="city" class="form-control" type="text" data-ng-model="ctrl.city" placeholder="city">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>State: </label>
 <input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
-<div data-ng-show="regAgeForm.username.$touched">
+<div data-ng-show="infoAgeForm.username.$touched">
 <div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
 </div>
 </div>
@@ -334,19 +336,9 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="input-group">
 <div class="form-group col-md-10">
 <label>ZIP code: </label>
-<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
-<div data-ng-show="regAgeForm.username.$touched">
-<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
-</div>
-</div>
-</div>
-</div>
-<div class="input-group">
-<div class="form-group col-md-10">
-<label>State: </label>
-<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
-<div data-ng-show="regAgeForm.username.$touched">
-<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+<input name="zip" class="form-control" type="text" data-ng-model="ctrl.zip" placeholder="ZIP">
+<div data-ng-show="infoAgeForm.zip.$touched">
+<div class="invalid-feedback" id="zipcheck" data-ng-show="!ctrl.iszipvalid()">ZIP code in invalid format
 </div>
 </div>
 </div>
@@ -355,7 +347,7 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="form-group col-md-10">
 <label>Email reference: </label>
 <input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
-<div data-ng-show="regAgeForm.emailfield.$touched">
+<div data-ng-show="infoAgeForm.emailfield.$touched">
 <div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
 </div>
 </div>
@@ -363,27 +355,18 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="input-group">
 <div class="form-group col-md-10">
 <label>Phone reference: </label>
-<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
-<div data-ng-show="regAgeForm.emailfield.$touched">
-<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
-</div>
-</div>
-</div>
-<div class="input-group">
-<div class="form-group col-md-10">
-<label>Payment mode: </label>
-<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
-<div data-ng-show="regAgeForm.emailfield.$touched">
-<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+<input name="phonefield" class="form-control" type="tel" data-ng-model="ctrl.phone" placeholder="phone">
+<div data-ng-show="infoAgeForm.phonefield.$touched">
+<div class="invalid-feedback" id="phonecheck" data-ng-show="!ctrl.isphonevalid()">This phone number seems not valid</div>
 </div>
 </div>
 </div>
 <div class="input-group">
 <div class="form-group col-md-10">
 <label>IBAN: </label>
-<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
-<div data-ng-show="regAgeForm.emailfield.$touched">
-<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+<input name="ibanfield" class="form-control" type="text" data-ng-model="ctrl.IBAN" placeholder="IBAN">
+<div data-ng-show="infoAgeForm.ibanfield.$touched">
+<div class="invalid-feedback" id="ibancheck" data-ng-show="!ctrl.isibanvalid()">This email address seems not valid</div>
 </div>
 </div>
 </div>
@@ -398,19 +381,6 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 
-
-
-<div class="jumbotron jumboMain"><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><h2>Editing Company Data</h2></div></div><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12">
-<div id="editAgeAPP" ng-controller="MainController_editAge as vmMainController_editAge">
-    <form ng-submit="vmMainController_editAge.onSubmit()" name="vmMainController_editAge.form" novalidate>
-        <formly-form model="vmMainController_editAge.model" fields="vmMainController_editAge.fields" options="vmMainController_editAge.options" form="vmMainController_editAge.form">
-            <md-button type="submit" ng-click="vmMainController_editAge.submit()" class="md-raised md-primary" ng-disabled="vmMainController_editAge.form.$invalid">Save</md-button>
-        </formly-form>
-    </form>
-</div>
-</div>
-</div>
-</div>
 
 <div id="Deleteaccount" class="tab-pane fade">
 <input type="button" class="btn btn-primary" placeholder="Delete account">

@@ -121,7 +121,7 @@ function createTable(pairs){
 
 function refresh(){
 	var req=createXHTMLHttpRequest();
-	
+
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var ret=convertJSON(req.responseText);
@@ -723,7 +723,7 @@ function refresh(){
 				alert("Price should be greater than zero!");
 				return;
 			}
-			
+
 			var arr={
 					"user": getUsername(),
 					"token": getToken(),
