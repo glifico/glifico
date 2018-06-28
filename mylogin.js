@@ -161,7 +161,7 @@ function personalArea(){
 	}else if(isAgency()){
 		location.href="agency.html";
 	}
-	$('#alertOK').html("Welcome on Glifico "+ getUusername());
+	$('#alertOK').html("Welcome on Glifico "+ getUsername());
 	$('#alertOK').fadeIn().delay(10000).fadeOut();
 }
 
