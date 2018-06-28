@@ -23,34 +23,36 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 	var ctrl = this;
 
 	ctrl.$onInit= function(){
-//		function MainController_editAge($http,$timeout) {
-//		var vmMainController_editAge = this;
+		var req=createXHTMLHttpRequest();
 
-//		var ctrl=this;
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
+					$('#alertError').fadeIn().delay(10000).fadeOut();
+					if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
+						$('#alertError').html("There was an error, please retry.");
+					} else {
+						$('#alertError').html(ret[0].data.msg);
+					}
+				} else {
+					ctrl.companyname=ret[0].CompanyName;
+					ctrl.vat=ret[0].VATCode;
+					ctrl.street=ret[0].Street;
+					ctrl.city=ret[0].City;
+					ctrl.state=ret[0].State;
+					ctrl.zip=ret[0].ZIP;
+					ctrl.email=ret[0].EmailReference;
+					ctrl.IBAN=ret[0].IBAN;
+				}
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
+			}
+		}
 
-//		var req=createXHTMLHttpRequest();
-
-//		req.onreadystatechange = function(){
-//		if (req.status == 200&req.readyState==4){
-//		var ret = convertJSON(req.responseText);
-//		if (ret[0].data!=undefined && ret[0].data.status != undefined && ret[0].data.status.toLowerCase() == "error") {
-//		$('#alertError').fadeIn().delay(10000).fadeOut();
-//		if (ret[0].data.msg == undefined || ret[0].data.msg == "") {
-//		$('#alertError').html("There was an error, please retry.");
-//		} else {
-//		$('#alertError').html(ret[0].data.msg);
-//		}
-//		} else {
-//		vmMainController_editAge.model=ret[0];	
-//		}
-//		}else{
-//		mostraDialogTimed('errorPanel');
-//		return(false);
-//		}
-//		}
-
-//		req.open("GET", 'getAgencyData.php?user='+getUsername()+'&token='+getToken(), true);
-//		req.send();
+		req.open("GET", 'getAgencyData.php?user='+getUsername()+'&token='+getToken(), true);
+		req.send();
 
 	}
 
