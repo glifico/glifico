@@ -296,9 +296,9 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div>
 <form class="needs-validation" name="infoAgeForm" action="/" method="post" novalidate> 
 <div class="input-group">
-<div class="form-group col-md-8">
+<div class="form-group col-md-10">
 <label>Company Name: </label>
-<input class="form-control" type="text" data-ng-model="ctrl.companyname" placeholder="name">
+<input class="form-control" type="text" data-ng-model="ctrl.companyname" readonly>
 </div>
 </div>
 <div class="input-group">
@@ -312,25 +312,19 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 <div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-3">
 <label>Street: </label>
 <input name="street" class="form-control" type="text" data-ng-model="ctrl.street" placeholder="street">
 </div>
-</div>
-<div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-3">
 <label>City: </label>
 <input name="city" class="form-control" type="text" data-ng-model="ctrl.city" placeholder="city">
 </div>
-</div>
-<div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-3">
 <label>State: </label>
-<input name="username" class="form-control" type="text" data-ng-model="ctrl.state" placeholder="username">
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.state" placeholder="state">
 </div>
-</div>
-<div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-3">
 <label>ZIP code: </label>
 <input name="zip" class="form-control" type="text" data-ng-model="ctrl.zip" placeholder="ZIP">
 <div data-ng-show="infoAgeForm.zip.$touched">

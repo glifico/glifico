@@ -44,8 +44,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					ctrl.zip=ret[0].ZIP;
 					ctrl.email=ret[0].EmailReference;
 					ctrl.iban=ret[0].IBAN;
-					console.debug(ctrl.vat);
-					console.debug(ctrl.iban);
+					$("#")
 				}
 			}else{
 				mostraDialogTimed('errorPanel');
@@ -57,7 +56,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 		req.send();
 
 	}
-
+	
 	ctrl.isibanvalid =function (){
 		if(ctrl.iban){
 			return isValidIBAN(ctrl.iban);
