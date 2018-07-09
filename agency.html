@@ -292,7 +292,7 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#Data">Agency Data</a></li>
-	<li><a data-toggle="tab" href="#Delete" style="visibility: hidden;">Delete account</a></li>
+	<li><a data-toggle="tab" href="#Delete" >Delete account</a></li>
 </ul>
 
 <div class="tab-content">
@@ -334,10 +334,10 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="invalid-feedback" id="zipcheck" data-ng-show="!ctrl.iszipvalid()">ZIP code in invalid format
 </div>
 </div>
+</div>
 <div class="form-group col-md-2">
 <label>State: </label>
 <input name="username" class="form-control" type="text" data-ng-model="ctrl.state" placeholder="state">
-</div>
 </div>
 </div>
 <div class="input-group">
@@ -348,8 +348,6 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
 </div>
 </div>
-</div>
-<div class="input-group">
 </div>
 <div class="input-group">
 <div class="form-group col-md-10">
