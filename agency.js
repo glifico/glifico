@@ -64,6 +64,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 			return false;
 		}
 	}
+	
 
 	
 	ctrl.isemailvalid = function(){

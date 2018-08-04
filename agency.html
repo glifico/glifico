@@ -312,10 +312,6 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="form-group col-md-10">
 <label>VAT code: </label>
 <input name="vat" class="form-control" type="text" data-ng-model="ctrl.vat" placeholder="vat">
-<div data-ng-show="infoAgeForm.vat.$touched">
-<div class="invalid-feedback" id="vatcheck" data-ng-show="!ctrl.isvatvalid()">It seems an invalid format
-</div>
-</div>
 </div>
 </div>
 <div class="input-group">
@@ -350,12 +346,16 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 <div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-8">
 <label>IBAN: </label>
 <input name="ibanfield" class="form-control" type="text" data-ng-model="ctrl.IBAN" placeholder="IBAN">
 <div data-ng-show="infoAgeForm.ibanfield.$touched">
 <div class="invalid-feedback" id="ibancheck" data-ng-show="!ctrl.isibanvalid()">This email address seems not valid</div>
 </div>
+</div>
+<div class="form-group col-md-4">
+<label>SWIFT/BIC: </label>
+<input name="swiftfield" class="form-control" type="text" data-ng-model="ctrl.swift" placeholder="IBAN">
 </div>
 </div>
 <div class="input-group">
