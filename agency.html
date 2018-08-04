@@ -300,6 +300,8 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 
 <div id="infoAge">
 <div id="infoAgeForm" data-ng-controller="infoAgecontroller as ctrl">
+{{ctrl.IBAN}}
+{{ctrl.isibanvalid()}}
 <div>
 <form class="needs-validation" name="infoAgeForm" action="/" method="post" novalidate> 
 <div class="input-group">
