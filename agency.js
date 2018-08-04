@@ -60,7 +60,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 	ctrl.isibanvalid =function (){
 		if(ctrl.iban){
 			//return isValidIBAN(ctrl.iban);
-			return IBANRegex.test(ctrl.IBAN);
+			return /^(?=[0-9A-Z]{16}$)BE\d{14}$|^(?=[0-9A-Z]{22}$)DE\d{20}$|^(?=[0-9A-Z]{27}$)IT\d{2}[A-Z]\d{10}[0-9A-Z]{12}$/.test(ctrl.IBAN);
 		}else{
 			return false;
 		}
