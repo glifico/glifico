@@ -64,13 +64,17 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 		}
 	}
 	
+	ctrl.iszipvalid =function (){
+		return /[0-9]{5}/.test(ctrl.zip);
+	}
+	
 	
 	ctrl.isemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
 	}
 	
-	ctrl.invalidForm = function(){
-		return isemailvalid() && isibanvalid();
+	ctrl.validForm = function(){
+		return isemailvalid() && isibanvalid() && iszipvalid();
 	}
 
 	ctrl.Agesubmit=function(){

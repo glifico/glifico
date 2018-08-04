@@ -300,10 +300,6 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 
 <div id="infoAge">
 <div id="infoAgeForm" data-ng-controller="infoAgecontroller as ctrl">
-{{ctrl.iban}}
-{{ctrl.IBAN}}
-{{ctrl.invalidForm()}}
-
 <div>
 <form class="needs-validation" name="infoAgeForm" action="/" method="post" novalidate> 
 <div class="input-group">
@@ -364,7 +360,7 @@ $("#welcomeAge").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 <div class="input-group">
 <div class="form-group form-check col-md-8">
-<button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="ctrl.invalidForm()">Update my data</button>
+<button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="!ctrl.validForm()">Update my data</button>
 </div>
 </div>
 </form>
