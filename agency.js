@@ -43,8 +43,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					ctrl.state=ret[0].State;
 					ctrl.zip=ret[0].ZIP;
 					ctrl.email=ret[0].EmailReference;
-					ctrl.iban=ret[0].IBAN;
-					$("#")
+					ctrl.IBAN=ret[0].IBAN;
 				}
 			}else{
 				mostraDialogTimed('errorPanel');
