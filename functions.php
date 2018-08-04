@@ -148,7 +148,7 @@ function send_email($to, $subject, $body){
   ));
   curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
   $result = curl_exec($handle);
-
+  return $result;
 }
 
 function notifySlack($channel,$text,$emoji="::")

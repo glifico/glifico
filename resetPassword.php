@@ -27,7 +27,7 @@ $token=hash('sha256',$str);
 $link="https://test.glifico.com/changePassword.html?token=".$token."&user=".$user;
 $result->CloseCursor();
 
-send_email(htmlspecialchars($row["email"]),"Glifico password reset","Use this link to reset your password: '.$link.'");
+$mailStatus = send_email(htmlspecialchars($row["email"]),"Glifico password reset","Use this link to reset your password: '.$link.'");
 
-exit(json_encode(array("statuscode"=>200)));
+exit(json_encode(array("statuscode"=>200, "mail code"=>$mailStatus)));
 ?>
