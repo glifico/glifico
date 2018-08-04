@@ -207,3 +207,9 @@ input[type=checkbox]
 .glifico-footer{
 	padding-top: 2em;
 }
+
+.glifico-info{
+	font-size: 20px;
+	text-align: left;
+	padding-left: 2em; 
+}
