@@ -203,3 +203,7 @@ input[type=checkbox]
 .panel-heading {
 	font-size: 23px;
 }
+
+.glifico-footer{
+	padding-top: 2em;
+}
