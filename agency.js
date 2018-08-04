@@ -75,7 +75,15 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 		var arr={
 				"user": getUsername(),
 				"token": getToken(),
-				"values": vmMainController_editAge.model,
+				"values": {
+					"CompanyName": ctrl.companyname,
+					"FiscalCode": ctrl.vat,
+					"City": ctrl.city,
+					"Country": ctrl.state,
+					"ZIP": ctrl.zip,
+					"email": ctrl.email,
+					"IBAN": ctrl.iban,
+				},
 		};
 
 		var stringPass=JSON.stringify(arr);
