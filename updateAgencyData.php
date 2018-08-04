@@ -31,10 +31,10 @@ $provincia=$params['StateProvince'];
 $cap=$params['ZIP'];
 $vat=$params['FiscalCode'];
 $stato=$params['Country'];
+$iban=$params['IBAN'];
 
 
-
-$query="UPDATE agenzia set nome='$nome', citta='$citta', provincia='$provincia', vat='$vat', cap='$cap', stato='$stato' WHERE username='$user';";
+$query="UPDATE agenzia set nome='$nome', citta='$citta', provincia='$provincia', vat='$vat', cap='$cap', stato='$stato', iban='$iban WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 

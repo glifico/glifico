@@ -65,10 +65,13 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 		}
 	}
 	
-
 	
 	ctrl.isemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
+	}
+	
+	ctrl.invalidForm = function(){
+		return isemailvalid() && isibanvalid();
 	}
 
 	ctrl.Agesubmit=function(){
@@ -83,7 +86,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					"Country": ctrl.state,
 					"ZIP": ctrl.zip,
 					"email": ctrl.email,
-					"IBAN": ctrl.iban,
+					"IBAN": ctrl.IBAN,
 				},
 		};
 
