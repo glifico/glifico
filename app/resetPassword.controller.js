@@ -27,7 +27,7 @@ angular.module("resetController",[])
 				ctrl.submitCompleted=true;
 				$("#form").hide();
 			}else{
-				location.href="index.html"
+				errorMessage("There was an error, please retry");
 			}
 		}
 		req.open("GET","resetPassword.php?user="+ctrl.user,true);
