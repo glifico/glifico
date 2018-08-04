@@ -73,6 +73,10 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
 	}
 	
+	ctrl.isbilemailvalid = function(){
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
+	}
+	
 	ctrl.validForm = function(){
 		return ctrl.isemailvalid() && ctrl.isibanvalid() && ctrl.iszipvalid();
 	}
