@@ -116,7 +116,7 @@ function refresh(){
 /*-----------------------CTRL-------------------*/
 
 
-angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
+angular.module('PersonalAppCtrl').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
 
 	var ctrl = this;
 
@@ -221,7 +221,7 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 
 
 
-angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
+angular.module('LanguagePairsAppCtrl').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
 
 	$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
 	$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:0,IdParametro_Service:0,IdCurrency:'EUR',PricePerCharacter:0};
