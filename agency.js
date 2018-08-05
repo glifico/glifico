@@ -44,6 +44,11 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					ctrl.zip=ret[0].ZIP;
 					ctrl.email=ret[0].EmailReference;
 					ctrl.IBAN=ret[0].IBAN;
+					ctrl.swift=ret[0].swift;
+					ctrl.phone=ret[0].PhoneReference;
+					ctrl.phone_bil=ret[0].PhoneReferenceBilling;
+					ctrl.email_bil=ret[0].EmailReferenceBilling;
+					return (true);
 				}
 			}else{
 				mostraDialogTimed('errorPanel');
