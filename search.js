@@ -583,6 +583,12 @@ angular.module("search",[]).controller("search",function($scope){
 		$("#modalBodyUpload").hide();
 	}
 
+	ctrl.openModal = function(){
+		$('#TrModal').modal('show');
+		ctrl.calculateFeasibility();
+		$("#modalBodySelect").show();
+		$("#modalBodyUpload").hide();
+	}
 
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=3;
