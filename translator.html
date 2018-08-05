@@ -297,10 +297,7 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 
 <div class="tab-content">
 <div id="Data" class="tab-pane fade in active">
-
-<div id="infoAge">
 <div id="PersonalAppID" data-ng-controller="PersonalAppCtrl as ctrl">
-<div>
 <form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate> 
 <div class="input-group">
 <div class="form-group col-md-10">
@@ -372,8 +369,6 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <input name="bil_emailfield" class="form-control" type="tel" data-ng-model="ctrl.bil_phone" placeholder="phone for billing">
 </div>
 </div>
-
-
 <div class="input-group">
 <div class="form-group col-md-5">
 <label>Country</label>
@@ -397,17 +392,14 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="!ctrl.validForm()">Update my data</button>
 </div>
 </div>
-</form>
-</div>
- 
+</form> 
 </div><!-- end of controller -->
-</div>
 </div>
 
 
 
 <div id="Languagepairs" class="tab-pane fade">
-<div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" layout="column" ng-cloak class="md-inline-form">
+<div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" layout="column">
 
 <div id="pairsTable"></div>
 
@@ -505,7 +497,9 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
         <button type="button" class="btn btn-secondary" data-ng-click="closeModal()">Close</button>
       </div>
     </div>
-  </div>
+</div>
+  
+  
 </div>
 </div>
 
