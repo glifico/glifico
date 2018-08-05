@@ -367,7 +367,7 @@ angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($h
 
 
 angular.element(document).ready(function() {
-	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalApp']);
-	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsApp']);
+	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalAppCtrl']);
+	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsAppCtrl']);
 
 });
