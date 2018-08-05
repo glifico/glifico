@@ -112,11 +112,15 @@ function refresh(){
 	req.send();
 }
 
+/*-----------------------APP--------------------*/
+
+var app = angular.module('PersonalApp', ['ngMessages', 'ui.select','ngSanitize','ngAria','ngAnimate','ngMaterial','textAngular','ui.bootstrap']);
+var app = angular.module('LanguagePairsApp', ['ngMessages', 'ui.select','ngSanitize','ngAria','ngAnimate','ngMaterial','textAngular','ui.bootstrap']);
 
 /*-----------------------CTRL-------------------*/
 
 
-angular.module('PersonalAppCtrl').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
+angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
 
 	var ctrl = this;
 
@@ -221,7 +225,7 @@ angular.module('PersonalAppCtrl').controller('PersonalAppCtrl',function($http,$t
 
 
 
-angular.module('LanguagePairsAppCtrl').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
+angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
 
 	$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
 	$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:0,IdParametro_Service:0,IdCurrency:'EUR',PricePerCharacter:0};
@@ -367,7 +371,7 @@ angular.module('LanguagePairsAppCtrl').controller('LanguagePairsAppCtrl',functio
 
 
 angular.element(document).ready(function() {
-	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalAppCtrl']);
-	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsAppCtrl']);
+	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalApp']);
+	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsApp']);
 
 });
