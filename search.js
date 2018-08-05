@@ -578,6 +578,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.pricesAccepted=false;
 
 		ctrl.calculateFeasibility();
+		resetTr();
 		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").hide();
 	}
