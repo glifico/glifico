@@ -286,12 +286,87 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 
+<div style="text-align:center;">
+<div style="width:90%;display: table;margin: 0 auto;">
 
+<ul class="nav nav-tabs">
+	<li class="active"><a data-toggle="tab" href="#Data">Your Personal Data</a></li>
+	<li class="active"><a data-toggle="tab" href="#Languagepairs">Your Languages</a></li>
+	<li><a data-toggle="tab" href="#Deleteaccount" >Delete account</a></li>
+</ul>
+
+<div class="tab-content">
+<div id="Data" class="tab-pane fade in active">
+
+<div id="infoAge">
+<div id="PersonalAppID" data-ng-controller="PersonalAppCtrl as ctrl">
+<div>
+<form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate> 
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Username: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.companyname" readonly>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<label>First name: </label>
+<input name="fname" class="form-control" type="text" data-ng-model="ctrl.fname" placeholder="first name">
+</div>
+<div class="form-group col-md-5">
+<label>Last name: </label>
+<input name="lname" class="form-control" type="text" data-ng-model="ctrl.lname" placeholder="last name">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>VAT code: </label>
+<input name="vat" class="form-control" type="text" data-ng-model="ctrl.vat" placeholder="vat">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-3">
+<label>Street: </label>
+<input name="street" class="form-control" type="text" data-ng-model="ctrl.street" placeholder="street">
+</div>
+<div class="form-group col-md-3">
+<label>City: </label>
+<input name="city" class="form-control" type="text" data-ng-model="ctrl.city" placeholder="city">
+</div>
+<div class="form-group col-md-2">
+<label>ZIP code: </label>
+<input name="zip" class="form-control" type="text" data-ng-model="ctrl.zip" placeholder="ZIP">
+<div data-ng-show="infoTradForm.zip.$touched">
+<div class="invalid-feedback" id="zipcheck" data-ng-show="!ctrl.iszipvalid()">ZIP code in invalid format
+</div>
+</div>
+</div>
+<div class="form-group col-md-2">
+<label>State: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.state" placeholder="state">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<label>Main email address: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="main email">
+<div data-ng-show="infoTradForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+<div class="form-group col-md-5">
+<label>Billing email: </label>
+<input name="bil_emailfield" class="form-control" type="email" data-ng-model="ctrl.bil_email" placeholder="email for billing">
+<div data-ng-show="infoTradForm.bil_emailfield.$touched">
+<div class="invalid-feedback" id="bil_emailcheck" data-ng-show="!ctrl.isbilemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
 <div class="input-group">
 <div class="form-group col-md-7">
 <label>IBAN: </label>
 <input name="ibanfield" class="form-control" type="text" data-ng-model="ctrl.IBAN" placeholder="IBAN">
-<div data-ng-show="infoAgeForm.ibanfield.$touched">
+<div data-ng-show="infoTradForm.ibanfield.$touched">
 <div class="invalid-feedback" id="ibancheck" data-ng-show="!ctrl.isibanvalid()">This IBAN seems not valid</div>
 </div>
 </div>
@@ -300,296 +375,131 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <input name="swiftfield" class="form-control" type="text" data-ng-model="ctrl.swift" placeholder="SWIFT/BIC code">
 </div>
 </div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<label>Main phone number: </label>
+<input name="phonefield" class="form-control" type="tel" data-ng-model="ctrl.phone" placeholder="main phone number">
+</div>
+<div class="form-group col-md-5">
+<label>Billing phone: </label>
+<input name="bil_emailfield" class="form-control" type="tel" data-ng-model="ctrl.bil_phone" placeholder="phone for billing">
+</div>
+</div>
 
 
-<div style="text-align:center;">
-<div style="width:90%;display: table;margin: 0 auto;">
-
-<script src="translator.js"></script>
-
-<div class="jumbotron jumboMain"><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12"><h2>Editing Profile</h2></div></div><div class="row" style="margin-left:10px; margin-right:10px;"><div class="col-md-12">
-
-<div class="row">
-	<div class="col-md-12">
-		<ul class="nav nav-tabs">
-			<li class="active">
-				<a data-toggle="tab" href="#Personal">Personal Data</a></li>
-			<li><a data-toggle="tab" href="#Education" style="visibility:hidden;">Education</a></li>
-			<li><a data-toggle="tab" href="#Specialization" style="visibility:hidden;">Specialization</a></li>
-			<li><a data-toggle="tab" href="#LanguagePairs">Language Pairs</a></li>
-			<li><a data-toggle="tab" href="#Deleteaccount">Delete account</a></li>
-		</ul>
-
-		<div class="tab-content">
-			<div id="Personal" class="tab-pane fade in active">
-				<h3>Personal</h3>
-
-				<div id="PersonalAppID" ng-controller="PersonalAppCtrl" layout="column" ng-cloak class="md-inline-form">
-					<md-content layout-padding>
-						<div>
-							<form name="personalForm" action="/" method="post">
-
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>First Name</label>
-										<input ng-model="model.FirstName" class="text-center" required>
-									</md-input-container>
-
-									<md-input-container>
-										<label>Last Name</label>
-										<input ng-model="model.LastName" class="text-center" required>
-									</md-input-container>
-								</div>
-<!--
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Birthday</label>
-										<input type="date" id="birthday" name="input" data-ng-model="model.Birthday" placeholder="yyyy-MM-dd" />
-									</md-input-container>
-								</div>
--->
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>City</label>
-										<input ng-model="model.City" class="text-center">
-									</md-input-container>
-
-									<md-input-container>
-										<label>State/Province</label>
-										<input ng-model="model.StateProvince" class="text-center">
-									</md-input-container>
-
-									<md-input-container>
-										<label>Postal Code</label>
-										<input name="postalCode" ng-model="model.ZIP" class="text-center" placeholder="" ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-
-										<div ng-messages="userForm.postalCode.$error" role="alert" multiple>
-											<div ng-message="required" class="my-message">You must supply a postal code.</div>
-											<div ng-message="pattern" class="my-message">That doesn't look like a valid postal code.
-											</div>
-											<div ng-message="md-maxlength" class="my-message">
-												Please don't use the long version...we don't need to be that specific...
-											</div>
-										</div>
-									</md-input-container>
-								</div>
-
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Country</label>
-										<md-select placeholder="Select your Country" ng-model="model.IdCountry"  >
-											<md-option ng-repeat="element in Countries" value="{{element.Id}}">
-												{{element.Country}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-								</div>
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Mothertongue</label>
-										<md-select placeholder="Select your Mothertongue" ng-model="model.IdMothertongue" required>
-											<md-option ng-repeat="element in Languages" value="{{element.Id}}">
-												{{element.Language}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-								</div>
-
-								<div layout-gt-xs="row">
-									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Save</md-button>
-								</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<label>Country</label>
+<select placeholder="Select your Country" ng-model="model.IdCountry"  >
+<option ng-repeat="element in Countries" value="{{element.Id}}">
+{{element.Country}}
+</option>
+</select>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<label>Mothertongue</label>
+<select placeholder="Select your Mothertongue" ng-model="model.IdMothertongue" required>
+<option ng-repeat="element in Languages" value="{{element.Id}}">{{element.Language}}</option>
+</select>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-8">
+<button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="!ctrl.validForm()">Update my data</button>
+</div>
+</div>
 </form>
-						</div>
-				</div>
-				</md-content>
-			</div>
-
-
-			<div id="Education" class="tab-pane fade">
-				<h3>Education</h3>
-
-				<div id="EducationAppID" ng-controller="EducationAppCtrl" layout="column" ng-cloak class="md-inline-form">
-					<md-content layout-padding>
-						<div>
-							<form name="educationForm" action="/" method="post">
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Institute</label>
-										<input ng-model="model.Institute" required>
-									</md-input-container>
-									<md-input-container>
-										<label>Field</label>
-										<input ng-model="model.Field" required>
-									</md-input-container>
-								</div>
-								<div layout-gt-xs="row">
-									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Save</md-button>
-								</div>
-							</form>
-						</div>
+</div>
+ 
+</div><!-- end of controller -->
+</div>
+</div>
 
 
 
 
-						<md-list ng-cloak>
-							<md-subheader class="md-no-sticky">My Educations List</md-subheader>
-							  <md-list-item ng-repeat="edu in edus" ng-click="loadEducation(edu)" class="noright">
 
-							    <p>{{ edu.Institute }}, {{ edu.Field }}</p>
-							    <span aria-label="edit" ng-click="loadEducation(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-pencil fa-2x"></i></span>
-							    <span aria-label="download" ng-show="isToShow(edu)" ng-click="download(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-download fa-2x"></i></span>
-							    <span aria-label="attach" ng-click="showAdvanced($event,edu)"  class="md-secondary md-hue-3" ><i class="fa fa-paperclip fa-2x"></i></span>
-							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
+<div id="LanguagePairs" class="tab-pane fade">
+<div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" layout="column" ng-cloak class="md-inline-form">
 
-							 </md-list-item>
-						</md-list>
+<div id="pairsTable"></div>
 
-					</md-content>
+	<md-content layout-padding>
+		<div>
+			<form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
+
+				<div layout-gt-xs="row">
+					<md-input-container>
+						<label>Language From</label>
+						<md-select placeholder="Select language" ng-model="model.IdLanguageFrom" md-on-open="loadLanguages();" required>
+							<md-option ng-repeat="element in Languages" value="{{element.Id}}">
+								{{element.Language}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+					<md-input-container>
+						<label>Language To</label>
+						<md-select placeholder="Select language" ng-model="model.IdLanguageTo" md-on-open="loadLanguages();" required>
+							<md-option ng-repeat="element in Languages" value="{{element.Id}}">
+								{{element.Language}}
+							</md-option>
+						</md-select>
+					</md-input-container>
 				</div>
 
-			</div>
-
-			<div id="Specialization" class="tab-pane fade">
-				<h3>Specialization</h3>
-
-				<div id="SpecializationAppID" ng-controller="SpecializationAppCtrl" layout="column" ng-cloak class="md-inline-form">
-					<md-content layout-padding>
-						<div>
-							<form name="specializationForm" action="/" method="post">
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Institution</label>
-										<input ng-model="model.Institution" required>
-									</md-input-container>
-									<md-input-container>
-										<label>Certification</label>
-										<input ng-model="model.Certification" required>
-									</md-input-container>
-								</div>
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Date</label>
-										<md-datepicker ng-model="model.Date" required></md-datepicker>
-									</md-input-container>
-								</div>
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Level</label>
-										<md-select placeholder="Select your level" ng-model="model.SpecLevel" md-on-open="loadLevels();" required>
-											<md-option ng-repeat="element in Levels" value="{{element.Id}}">
-												{{element.Level}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-								</div>
-								<div layout-gt-xs="row">
-									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Save</md-button>
-								</div>
-							</form>
-						</div>
-
-
-
-
-						<md-list ng-cloak>
-							<md-subheader class="md-no-sticky">My Specializations</md-subheader>
-							  <md-list-item ng-repeat="edu in Specializations" ng-click="loadSpecializations(edu)" class="noright">
-
-							    <p>{{ edu.Institution }}, {{ edu.Certification }}</p>
-							    <span aria-label="edit" ng-click="loadSpecialization(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-pencil fa-2x"></i></span>
-							    <span aria-label="download" ng-show="isToShow(edu)" ng-click="download(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-download fa-2x"></i></span>
-							    <span aria-label="attach" ng-click="showAdvanced($event,edu)"  class="md-secondary md-hue-3" ><i class="fa fa-paperclip fa-2x"></i></span>
-							    <span aria-label="delete" ng-click="doDelete(edu)"  class="md-secondary md-hue-3" ><i class="fa fa-trash fa-2x"></i></span>
-
-							 </md-list-item>
-						</md-list>
-
-					</md-content>
+				<div layout-gt-xs="row">
+					<md-input-container>
+						<label>Field</label>
+						<md-select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required>
+							<md-option ng-repeat="element in Fields" value="{{element.Id}}">
+								{{element.Field}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+					<md-input-container>
+						<label>Service</label>
+						<md-select placeholder="Select service" ng-model="model.IdParametro_Service" md-on-open="loadServices();" required>
+							<md-option ng-repeat="element in Services" value="{{element.Id}}">
+								{{element.Service}}
+							</md-option>
+						</md-select>
+					</md-input-container>
 				</div>
-			</div>
 
+				<div layout-gt-xs="row">
+					<md-input-container>
+						<label>Currency</label>
+						<md-select placeholder="Select Currency" ng-model="model.IdCurrency" md-on-load="loadCurrencies();" required>
+							<md-option ng-repeat="element in Currencies" value="{{element.Id}}">
+								{{element.Currency}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
 
-			<div id="LanguagePairs" class="tab-pane fade">
-				<h3>Language Pairs</h3>
-
-				<div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" layout="column" ng-cloak class="md-inline-form">
-
-				<div id="pairsTable"></div>
-
-					<md-content layout-padding>
-						<div>
-							<form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
-
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Language From</label>
-										<md-select placeholder="Select language" ng-model="model.IdLanguageFrom" md-on-open="loadLanguages();" required>
-											<md-option ng-repeat="element in Languages" value="{{element.Id}}">
-												{{element.Language}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-									<md-input-container>
-										<label>Language To</label>
-										<md-select placeholder="Select language" ng-model="model.IdLanguageTo" md-on-open="loadLanguages();" required>
-											<md-option ng-repeat="element in Languages" value="{{element.Id}}">
-												{{element.Language}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-								</div>
-
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Field</label>
-										<md-select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required>
-											<md-option ng-repeat="element in Fields" value="{{element.Id}}">
-												{{element.Field}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-									<md-input-container>
-										<label>Service</label>
-										<md-select placeholder="Select service" ng-model="model.IdParametro_Service" md-on-open="loadServices();" required>
-											<md-option ng-repeat="element in Services" value="{{element.Id}}">
-												{{element.Service}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-								</div>
-
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Currency</label>
-										<md-select placeholder="Select Currency" ng-model="model.IdCurrency" md-on-load="loadCurrencies();" required>
-											<md-option ng-repeat="element in Currencies" value="{{element.Id}}">
-												{{element.Currency}}
-											</md-option>
-										</md-select>
-									</md-input-container>
-								</div>
-
-								<div layout-gt-xs="row">
-									<md-input-container>
-										<label>Price Per Character</label>
-										<input type="number" ng-model="model.PricePerCharacter" required>
-										<div >
-											Price per <b>word</b> (word = 6 characters): {{model.PricePerCharacter * 6 | number:5}}
-											<br>
-											Price per <b>page</b> (page = 1500 characters): {{model.PricePerCharacter * 1500 | number:5}}
-										</div>
-
-									</md-input-container>
-								</div>
-
-
-								<div layout-gt-xs="row">
-									<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Create a new pair</md-button>
-								</div>
-							</form>
+				<div layout-gt-xs="row">
+					<md-input-container>
+						<label>Price Per Character</label>
+						<input type="number" ng-model="model.PricePerCharacter" required>
+						<div >
+							Price per <b>word</b> (word = 6 characters): {{model.PricePerCharacter * 6 | number:5}}
+							<br>
+							Price per <b>page</b> (page = 1500 characters): {{model.PricePerCharacter * 1500 | number:5}}
 						</div>
 
-					</md-content>
+					</md-input-container>
+				</div>
+
+
+				<div layout-gt-xs="row">
+					<md-button class="md-raised md-primary" type="button" on ng-disabled="personalForm.$invalid" ng-click="submit()">Create a new pair</md-button>
+				</div>
+			</form>
+		</div>
+
+	</md-content>
 
 
 <!-- Language Modal -->
@@ -614,6 +524,23 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 
+
+
+
+<div id="Deleteaccount" class="tab-pane fade">
+<div class="glifico-info">
+Are you sure you want delete your account?
+</div>
+
+<button class="btn btn-primary">Delete account</button>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
 <script>
 $('#LanguageModal').on('show.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
@@ -636,26 +563,8 @@ $('#LanguageModal').on('show.bs.modal', function (event) {
 </script>
 
 
-<div id="Deleteaccount" class="tab-pane fade">
-<input type="button" class="btn btn-primary" placeholder="Delete account">
-</div>
 
-				</div>
-				<!-- language controller -->
-			</div>
-		</div>
-	</div>
-</div>
-
-
-</div>
-</div>
-</div>
-
-
-
-
-<div ng-app="glifico">
+<div data-ng-app="glifico">
  <glificofooter></glificofooter>
  </div>
 
