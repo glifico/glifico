@@ -40,7 +40,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					ctrl.vat=ret[0].VATCode;
 					ctrl.street=ret[0].Street;
 					ctrl.city=ret[0].City;
-					ctrl.state=ret[0].State;
+					ctrl.state=ret[0].Country;
 					ctrl.zip=ret[0].ZIP;
 					ctrl.email=ret[0].EmailReference;
 					ctrl.IBAN=ret[0].IBAN;
@@ -92,12 +92,15 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 				"user": getUsername(),
 				"token": getToken(),
 				"values": {
-					"CompanyName": ctrl.companyname,
 					"FiscalCode": ctrl.vat,
+					"Street": ctrl.street,
 					"City": ctrl.city,
 					"Country": ctrl.state,
 					"ZIP": ctrl.zip,
 					"email": ctrl.email,
+					"email_bil": ctrl.email_bil,
+					"phone": ctrl.phone,
+					"phone_bil": ctrl.phone_bil,
 					"IBAN": ctrl.IBAN,
 				},
 		};

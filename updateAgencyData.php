@@ -25,16 +25,19 @@ $params=$data['values'];
 
 //ToDo
 //exit (json_encode([array("id"=>$row['id'],  "FiscalCode"=>$row['vat'],  "Street"=>$row['street'], "Number"=>$row['number'], "Number"=>$row['number'],  "EmailReference"=>$row['email'],"Bank"=>$row['banca'], "PayamentMode"=>$row['pagamento'], "IBAN"=>$row['iban'],"EmailReferenceBilling"=>$row['email'])]));
-$nome=$params['CompanyName'];
+$street=$params['Street'];
 $citta=$params['City'];
 $provincia=$params['StateProvince'];
+$country=$params['Country'];
 $cap=$params['ZIP'];
 $vat=$params['FiscalCode'];
-$stato=$params['Country'];
 $iban=$params['IBAN'];
+$email=$params['email'];
+$email_bil=$params['email_bil'];
+$phone=$params['phone'];
+$phone_bil=$params['phone_bil'];
 
-
-$query="UPDATE agenzia set nome='$nome', citta='$citta', provincia='$provincia', vat='$vat', cap='$cap', stato='$stato', iban='$iban' WHERE username='$user';";
+$query="UPDATE agenzia set street='$street', citta='$citta', provincia='$provincia', stato='$country', vat='$vat', cap='$cap', email='$email', email_bil='$email_bil', phone='$phone', phone_bil='$phone_bil', WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
