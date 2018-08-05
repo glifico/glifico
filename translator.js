@@ -146,13 +146,14 @@ function refresh(){
 
 	angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
 
+		var ctrl = this;
 
-		$scope.loadCountries = function(){
+		ctrl.loadCountries = function(){
 			var req=createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret = convertJSON(req.responseText);
-					$scope.Countries=ret;
+					ctrl.Countries=ret;
 				}
 			}
 
@@ -160,12 +161,12 @@ function refresh(){
 			req.send();
 		}
 
-		$scope.loadLanguages = function(){
+		ctrl.loadLanguages = function(){
 			var req=createXHTMLHttpRequest();
 			req.onreadystatechange = function(){
 				if (req.status == 200&req.readyState==4){
 					var ret = convertJSON(req.responseText);
-					$scope.Languages=ret;
+					ctrl.Languages=ret;
 				}
 			}
 
@@ -173,18 +174,28 @@ function refresh(){
 			req.send();
 		};
 
-		var ctrl=this;
-
-
 
 		var req=createXHTMLHttpRequest();
 
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
-				$scope.loadLanguages();
-				$scope.loadCountries();
-				$scope.model=ret[0];
+				ctrl.loadLanguages();
+				ctrl.loadCountries();
+				ctrl.fname=ret[0].FirstName;
+				ctrl.lname=ret[0].LastName
+				ctrl.street=ret[0].Street;
+				ctrl.city=ret[0].City;
+				ctrl.IdCountry=ret[0].IdCountry;
+				ctrl.IdMothertongue=ret[0].IdMothertongue;
+				ctrl.state=ret[0].StateProvince;
+				ctrl.zip=ret[0].ZIP;
+				ctrl.email=ret[0].Email;
+				ctrl.IBAN=ret[0].IBAN;
+				ctrl.swift=ret[0].swift;
+				ctrl.phone=ret[0].PhoneReference;
+				ctrl.phone_bil=ret[0].PhoneReferenceBilling;
+				ctrl.email_bil=ret[0].EmailReferenceBilling;
 			}else{
 				mostraDialogTimed('errorPanel');
 				return(false);
@@ -196,7 +207,7 @@ function refresh(){
 
 
 
-		$scope.submit = function() {
+		ctrl.submit = function() {
 			var arr={
 					"user": getUsername(),
 					"token": getToken(),
@@ -333,12 +344,6 @@ function refresh(){
 			$scope.openedEdu=null;
 		}
 
-//		$scope.loadPairs = function(edu){
-//		console.info("loadPairs");
-//		$('#LanguageModal').modal('show');
-//		$scope.openedEdu=edu;
-//		}
-
 
 		$scope.submit= function(){
 			console.debug($scope.model);
@@ -395,8 +400,6 @@ function refresh(){
 
 angular.element(document).ready(function() {
 	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalApp']);
-	//angular.bootstrap(document.getElementById('EducationAppID'), ['EducationApp']);
-	//angular.bootstrap(document.getElementById('SpecializationAppID'), ['SpecializationApp']);
 	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsApp']);
 
 });
