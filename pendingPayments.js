@@ -66,7 +66,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		html+='<th class="col-md-2" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
-		html='<tbody>';
+		html+='<tbody>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
@@ -119,13 +119,13 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='</td>';
 			html+='</tr>';
 		}
-		html="</tbody>";
+		html+="</tbody>";
 		html+='</table>';
 		$("#table").html(html);
 		$("#d_table").DataTable({
 			paging: false,
 			searching: false
-		})
+		});
 	}
 
 	ctrl.$onInit=function(){

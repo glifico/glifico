@@ -247,7 +247,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		html+='</tbody>';
 		html+='</table>';
 		$("#table").html(html);
-		$('#data_table').DataTable({
+		$("#data_table").DataTable({
 		    paging: false,
 		    searching: false
 		});
