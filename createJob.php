@@ -27,6 +27,15 @@ $deadline = $data['deadline'];
 $translator = get_username($selected[0]['id']);
 $firstPrice = $selected[0]['total'];
 $firstCurrency = $selected[0]['currency'];
+if ($count > 0) {
+    $secondtranslator = get_username($selected[1]['id']);
+    $secondPrice = $selected[1]['total'];
+    $secondCurrency = $selected[1]['currency'];
+}else{
+    $secondtranslator = "";
+    $secondPrice = "-1";
+    $secondCurrency = "-1";
+}
 $n_characters = $data['ncharacters'];
 $languagefrom = $data['languagefrom'];
 
@@ -36,12 +45,12 @@ if (! certTokenA($db, $user, $data['token']))
         "statuscode" => 400
     )));
 
-$query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, currency, deadline, price) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$firstCurrency','$deadline',$firstPrice);";
+$query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, currency, secondcurrency, deadline, price, secondprice) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice');";
 $result = $db->query($query);
 
 $result->CloseCursor();
 
-// send_email([array("email"=>get_user_email($translator))],"There is a new job on glifico","You have a new job on glifico, got to https://glifico.com/pendingJobs.html to look it out!");
+// send_email([array("email"=>get_user_email($translator))],"There is a new job on glifico","You have a new job on glifico, go to https://glifico.com/pendingJobs.html to look it out!");
 send_email([
     array(
         "email" => "fvalle.glifico@outlook.com"

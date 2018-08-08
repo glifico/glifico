@@ -12,9 +12,9 @@ $result = $db->query($query);
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
     if ($row['status']=="Paid") {
-        array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"document"=>$row['translated'],"description"=>$row['description'],"deadline"=>$row['deadline'],"ncharacters"=>$row['ncharacters']));
+        array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'], "secondprice"=>$row['secondprice'],"secondcurrency"=>$row['secondcurrency'],"secondstatus"=>$row['secondstatus'],"document"=>$row['translated'],"description"=>$row['description'],"deadline"=>$row['deadline'],"ncharacters"=>$row['ncharacters']));
     }else{
-        array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"document"=>$row['preview'],"description"=>$row['description'], "deadline"=>$row['deadline'],"ncharacters"=>$row['ncharacters']));
+        array_push($toExit,array("id"=>$row['id'],"job"=>$row['job'],"price"=>$row['price'],"currency"=>$row['currency'],"status"=>$row['status'],"secondprice"=>$row['secondprice'],"secondcurrency"=>$row['secondcurrency'],"secondstatus"=>$row['secondstatus'], "document"=>$row['preview'],"description"=>$row['description'], "deadline"=>$row['deadline'],"ncharacters"=>$row['ncharacters']));
     }
 }
 
