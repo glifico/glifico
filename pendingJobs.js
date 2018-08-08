@@ -245,6 +245,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		}
 		html+='</table>';
 		$("#table").html(html);
+		$('#table').DataTable();
 	}
 
 	ctrl.$onInit=function(){
