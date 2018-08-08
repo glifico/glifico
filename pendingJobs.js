@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+	$("#full").hide();
 });
 
 var client = filestack.init('AY86cSRLQTreZccdDlJimz',{
@@ -40,8 +40,9 @@ uploadPreview=function(id){
 	}).then(function(result) {
 		previewURL=result.filesUploaded[0]["url"]
 		isPreviewUploaded=true
-		$("#preview").html('<i class="fa fa-check"></i> uploaded');
-		notify("Preview uploaded");
+		$("#preview").html('<i class="fa fa-check"></i> preview uploaded');
+		$("#full").show();
+		notify("Preview correctly uploaded");
 	},function(result){
 		alert("Error while uploading");
 	});
@@ -186,29 +187,31 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
 		html+='<th class="col-md-3" style="text-align:center;">Job</th>';
-		html+='<th class="col-md-3" style="text-align:center;">Price</th>';
-		html+='<th class="col-md-3" style="text-align:center;">Deadline</th>';
-		html+='<th class="col-md-3" style="text-align:center;">Status</th>';
-		html+='<th class="col-md-3" style="text-align:center;"></th>';
+		html+='<th class="col-md-2" style="text-align:center;">Price</th>';
+		html+='<th class="col-md-2" style="text-align:center;"># characters</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Deadline</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Status</th>';
+		html+='<th class="col-md-2" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
-			html+='<td class="col-md-4">'+doc.job+'</td>';
-			html+='<td class="col-md-4">'+doc.price+" "+doc.currency+'</td>';
-			html+='<td class="col-md-4">'+doc.deadline+'</td>';
+			html+='<td class="col-md-3">'+doc.job+'</td>';
+			html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
+			html+='<td class="col-md-2">'+doc.ncharacters+'</td>';
+			html+='<td class="col-md-2">'+doc.deadline+'</td>';
 			if(doc.choice==1) {choiceStr="as first";}
 			else if(doc.choice==1) {choiceStr="as second";}
 			if(doc.status=="To Be accepted"){
-				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+"To be accepted "+choiceStr+'</td>';
+				html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+"To be accepted "+choiceStr+'</td>';
 			}else{
-				html+='<td class="col-md-4" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
+				html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
 			}
-			html+='<td class="col-md-4">';
+			html+='<td class="col-md-2">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Closed"||doc.status=="Paid"){
-				html+='<i class="fa fa-check" aria-hidden="true"></i></div>';
+				html+='</div>';
 			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
@@ -221,13 +224,14 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-document="'+doc.document+'"';
 				html+='>Show job</button>';
 			}else if(doc.status=="Translated"){
-				html+='Waiting approval...';
+				html+='';
 			}else if(doc.status=="Accepted"){
-				html+='Waiting payment...';
+				html+='';
 			}else if(doc.status=="To Be Assigned"){
 				html+='<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
 				html+=' data-price="'+doc.price+'"';
+				html+=' data-ncharacters="'+doc.ncharacters+'"';
 				html+=' data-id="'+doc.id+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-status="'+doc.status+'"';
