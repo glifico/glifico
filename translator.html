@@ -352,7 +352,11 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" layout="column">
 
 <div id="pairsTable"></div>
-<div>
+<div class="glifico-info">
+Use this form to create a new <b>language pair</b>.
+Please note that pairs are direction sensitive, so translating from english to french is not the same to transale from french to english.
+In this case you have to add two different pairs.
+You can also choose which field is the price for, you are able to choose a generic <emph>translation</emph> field.
 <form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
 <div class="input-group">
 <div class="form-group col-md-10">
