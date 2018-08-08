@@ -11,7 +11,7 @@ $db = getDB();
 if (! $db) exit();
     
 $user = $_GET['user'];
-if (!certToken($db, $user, $_GET['token']))
+if (!(certToken($db, $user, $_GET['token']) || certTokenA($db, $user, $_GET['token'])) )
 exit(json_encode(array(
     "message" => "wrong token",
     "statuscode" => 400
