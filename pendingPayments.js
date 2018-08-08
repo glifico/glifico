@@ -55,7 +55,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 	
 	ctrl.createTable=function(){
 		var html="";	
-		html+='<table class="table table-responsive">';
+		html+='<table id="d_table" class="table table-responsive">';
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
 		html+='<th class="col-md-4" style="text-align:center;">Job</th>';
@@ -65,6 +65,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		html+='<th class="col-md-4" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
+		html='<tbody>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
@@ -115,10 +116,15 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			}
 			html+='</div>';
 			html+='</td>';
-			html+='<tr>';
+			html+='</tr>';
 		}
+		html="</tbody>";
 		html+='</table>';
 		$("#table").html(html);
+		$("#d_table").DataTable({
+			paging: false,
+			searching: false
+		})
 	}
 
 	ctrl.$onInit=function(){
