@@ -181,12 +181,50 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
 		req.send();	
 	}
+	
+	ctrl.isibanvalid =function (){
+		if(ctrl.IBAN){
+			return isValidIBAN(ctrl.IBAN);
+		}else{
+			return false;
+		}
+	}
+	
+	ctrl.iszipvalid =function (){
+		return /[0-9]{5}/.test(ctrl.zip);
+	}
+	
+	
+	ctrl.isemailvalid = function(){
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
+	}
+	
+	ctrl.isbilemailvalid = function(){
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
+	}
+	
+	ctrl.validForm = function(){
+		return ctrl.isemailvalid() && ctrl.isibanvalid() && ctrl.iszipvalid();
+	}
 
 	ctrl.submit = function() {
 		var arr={
 				"user": getUsername(),
 				"token": getToken(),
-				"values": $scope.model,
+				"values": {
+					"FirstName": ctrl.fname,
+					"LastName": ctrl.lname,
+					"FiscalCode": ctrl.vat,
+					"Street": ctrl.street,
+					"City": ctrl.city,
+					"Country": ctrl.state,
+					"ZIP": ctrl.zip,
+					"email": ctrl.email,
+					"email_bil": ctrl.email_bil,
+					"phone": ctrl.phone,
+					"phone_bil": ctrl.phone_bil,
+					"IBAN": ctrl.IBAN,
+				},
 		};
 
 		var stringPass=JSON.stringify(arr);
