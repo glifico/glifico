@@ -183,7 +183,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 
 	ctrl.createTable=function(){
 		var html="";	
-		html+='<table class="table table-responsive">';
+		html+='<table id="data_table" class="table table-responsive">';
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
 		html+='<th class="col-md-3" style="text-align:center;">Job</th>';
@@ -245,7 +245,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		}
 		html+='</table>';
 		$("#table").html(html);
-		$('#table').DataTable();
+		$('#data_table').DataTable();
 	}
 
 	ctrl.$onInit=function(){
