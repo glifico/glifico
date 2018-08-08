@@ -242,12 +242,15 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+='>Show job</button>';
 			}
 			html+='</td>';
-			html+='<tr>';
+			html+='</tr>';
 		}
 		html+='</tbody>';
 		html+='</table>';
 		$("#table").html(html);
-		$('#data_table').DataTable();
+		$('#data_table').DataTable({
+		    paging: false,
+		    searching: false
+		});
 	}
 
 	ctrl.$onInit=function(){
