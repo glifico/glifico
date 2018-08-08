@@ -447,7 +447,7 @@ Price per <b>page</b> (page = 1500 characters): {{model.PricePerCharacter * 1500
 Are you sure you want delete your account?
 </div>
 
-<button class="btn btn-primary">Delete account</button>
+<button class="btn btn-primary" data-toggle="modal" data-target="#DeleteModal">Delete account</button>
 </div>
 </div>
 
@@ -464,13 +464,12 @@ Are you sure you want delete your account?
       <div class="modal-body modal-translator" data-ng-load="">
       Are you sure you want to delete your account?
       
-      After you click the button, Glifico will verify that there are not up to you pending jobs or payments.
+      After you click the button, Glifico will verify that you have not any pending jobs or payments.
       If you have not any pending position with us your account will be closed in the next 30 days and you will receive a confirming email.
-   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#DeleteModal" data-ng-click="askAccountDeletion()">Yes, delete my account.</button>
+   <br><button type="button" class="btn btn-primary" onclick="askAccountDeletion()">Yes, delete my account.</button>
         </div>
       <div class="modal-footer">
-        <!--<button type="button" class="btn btn-primary" data-ng-click="updatePair()">Update pair</button>-->
-        <button type="button" class="btn btn-secondary" data-ng-click="closeModal()">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
 </div>
 </div>
