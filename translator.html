@@ -354,38 +354,58 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <div id="pairsTable"></div>
 <div>
 <form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
-<div>
+<div class="input-group">
+<div class="form-group col-md-10">
 <label>Language From</label>
 <select placeholder="Select language" ng-model="model.IdLanguageFrom" md-on-open="loadLanguages();" required>
 <option ng-repeat="element in Languages" value="{{element.Id}}">{{element.Language}}</option>
 </select>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
 <label>Language To</label>
 <select placeholder="Select language" ng-model="model.IdLanguageTo" md-on-open="loadLanguages();" required>
 <option ng-repeat="element in Languages" value="{{element.Id}}">{{element.Language}}</option>
 </select>
 </div>
-<div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
 <label>Field</label>
 <select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required>
 <option ng-repeat="element in Fields" value="{{element.Id}}">{{element.Field}}</option>
 </select>
+</div>
+<div class="form-group col-md-5">
 <label>Service</label>
 <select placeholder="Select service" ng-model="model.IdParametro_Service" md-on-open="loadServices();" required>
 <option ng-repeat="element in Services" value="{{element.Id}}">{{element.Service}}</option>
 </select>
 </div>
-<div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-8">
 <label>Currency</label>
 <select placeholder="Select Currency" ng-model="model.IdCurrency" md-on-load="loadCurrencies();" required>
 <option ng-repeat="element in Currencies" value="{{element.Id}}">{{element.Currency}}</option>
 </select>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-8">
 <label>Price Per Character</label>
 <input type="number" ng-model="model.PricePerCharacter" required>
 <div>
 Price per <b>word</b> (word = 6 characters): {{model.PricePerCharacter * 6 | number:5}}<br>
 Price per <b>page</b> (page = 1500 characters): {{model.PricePerCharacter * 1500 | number:5}}
 </div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
 <button class="btn btn-primary" type="button" ng-click="submit()">Create a new pair</button>
+</div>
 </div>
 </form>
 </div>

@@ -80,10 +80,10 @@ function createTable(pairs){
 	html+='<table class="table">';
 	html+='<thead>';
 	html+='<tr class="row">';
-	html+='<th class="col-md-3">From</th>';
-	html+='<th class="col-md-3">To</th>';
-	html+='<th class="col-md-3">Price</th>';
-	html+='<th class="col-md-3">Field</th>';
+	html+='<th style="text-align:center;" class="col-md-3">From</th>';
+	html+='<th style="text-align:center;" class="col-md-3">To</th>';
+	html+='<th style="text-align:center;" class="col-md-3">Price</th>';
+	html+='<th style="text-align:center;" class="col-md-3">Field</th>';
 	html+='<th class="col-md-1"></th>';
 	html+='<th class="col-md-1"></th>';
 	html+='</tr>';
