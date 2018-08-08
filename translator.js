@@ -37,6 +37,7 @@ function askAccountDeletion(){
 
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
+			$('#DeleteModal').modal('hide');
 			$('#alertOK').fadeIn().delay(15000).fadeOut();
 			$('#alertOK').html("Your request has been sent to us.");
 		}
