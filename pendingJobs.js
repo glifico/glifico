@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$("#full").hide();
+
 });
 
 var client = filestack.init('AY86cSRLQTreZccdDlJimz',{

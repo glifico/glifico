@@ -284,15 +284,13 @@ In this page you can handle your Jobs on Glifico
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="jobModalLabel">Job</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">...</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
@@ -312,17 +310,17 @@ $('#jobModal').on('show.bs.modal', function (event) {
   var html="";
   html+='<div class="modal-translator">'
   html+="Title: <b>"+job+"</b><br>";
-  html+="Price: "+button.data('price')+" "+button.data('currency');
+  html+="Price: <b>"+button.data('price')+"</b> "+button.data('currency')+"<br>";
   html+="Number of characters: "+button.data('ncharacters');
   html+="<br><br>"+button.data('description');
   var link=button.data('document');
   html+="<br><br><div>You may find the document to translate at: "+'<a href="'+link+'" target="_Blank">'+link+'</a></div>';
   if(button.data('status')=="Assigned"){
 	  html+="<br><br>";
-	  html+="Please use the button below to upload a subset of your translation as a preview for the agency:<br>"
-	  html+='<span id="preview"><i class="fa fa-file-upload"></i><input id="preview-btn" class="btn btn-info" type="button" value="Upload preview" onclick="uploadPreview('+button.data("id")+","+button.data("choice")+')"/></span>';
-	  html+="Now you can upload the full document:<br>"
-	  html+='<span id="full"><i class="fa fa-upload"></i><input class="btn btn-primary" type="button" value="Upload full translated document" onclick="uploadFull('+button.data("id")+","+button.data("choice")+')"/></span>';
+	  html+="Please use the button below to upload a subset of your translation as a <b>preview</b> for the agency:<br>"
+	  html+='<span id="preview"><a class="glifico-fa"><i class="fa fa-cloud-upload"></i></a><br><input id="preview-btn" class="btn btn-info" type="button" value="Upload preview" onclick="uploadPreview('+button.data("id")+","+button.data("choice")+')"/></span>';
+	  html+='<br><span id="full">Now you can upload the full document:<br>'
+	  html+='<a class="glifico-fa"><i class="fa fa-upload"></i></a><input class="btn btn-primary" type="button" value="Upload full translated document" onclick="uploadFull('+button.data("id")+","+button.data("choice")+')"/></span>';
   }
   if(button.data('status')=="To Be Assigned"){
 	  html+="<br><br>";
@@ -337,6 +335,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   html+='</div>'
   modal.find('.modal-body').html(html);
   modal.find('.modal-footer').html(btnHtml);
+  $("#full").hide();
 })
 </script>
 

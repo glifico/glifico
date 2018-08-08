@@ -24,7 +24,7 @@ if(strlen(htmlspecialchars($row["username"]))<2){
 
 $str=htmlspecialchars($row["password"]).$user."glifico";
 $token=hash('sha256',$str);
-$link="https://test.glifico.com/changePassword.html?token=".$token."&user=".$user;
+$link="https://glifico.com/changePassword.html?token=".$token."&user=".$user;
 $result->CloseCursor();
 
 $to=[array("email"=>htmlspecialchars($row["email"]))];
