@@ -58,26 +58,28 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		html+='<table id="d_table" class="table table-responsive">';
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
-		html+='<th class="col-md-4" style="text-align:center;">Job</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Price</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Deadline</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Status</th>';
-		html+='<th class="col-md-4" style="text-align:center;"></th>';
+		html+='<th class="col-md-2" style="text-align:center;">Job</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Price</th>';
+		html+='<th class="col-md-2" style="text-align:center;"># characters</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Deadline</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Status</th>';
+		html+='<th class="col-md-2" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
 		html='<tbody>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
-			html+='<td class="col-md-3">'+doc.job+'</td>';
-			html+='<td class="col-md-3">'+doc.price+" "+doc.currency+'</td>';
-			html+='<td class="col-md-4">'+doc.deadline+'</td>';
-			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
+			html+='<td class="col-md-2">'+doc.job+'</td>';
+			html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
+			html+='<td class="col-md-2">'+doc.ncharacters+'</td>';
+			html+='<td class="col-md-2">'+doc.deadline+'</td>';
+			html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
 			if(doc.status=="Paid"){
 				html+=' <i class="fa fa-check" aria-hidden="true"></i>';
 			}
 			html+='</td>';
-			html+='<td class="col-md-3">';
+			html+='<td class="col-md-2">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Closed"){
 				
@@ -112,7 +114,6 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-document="'+doc.document+'"';
 				html+='>Show Job</button>';
 			}else if(doc.status=="To Be Assigned"){
-				html+="Waiting for translator acceptance..";
 			}
 			html+='</div>';
 			html+='</td>';
