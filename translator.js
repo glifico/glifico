@@ -32,9 +32,21 @@ function strLeft(sourceStr, keyStr) {
 			.split(keyStr)[0];
 }
 
+function askAccountDeletion(){
+	var req=createXHTMLHttpRequest();
+
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			$('#alertOK').fadeIn().delay(15000).fadeOut();
+			$('#alertOK').html("Your request has been sent to us.");
+		}
+	}
+
+	req.open("GET",'askAccountDeletion.php?user='+getUsername()+"&token="+getToken(),true);
+	req.send();
+}
 
 function doDelete(from, to){
-	console.debug("deleting");
 	var arr={
 			"user": getUsername(),
 			"token": getToken(),
