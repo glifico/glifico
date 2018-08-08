@@ -325,7 +325,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  html+="Please use the button below to upload a subset of your translation as a <b>preview</b> for the agency:<br>"
 	  html+='<span id="preview"><a class="glifico-fa"><i class="fa fa-cloud-upload"></i></a><br><input id="preview-btn" class="btn btn-info" type="button" value="Upload preview" onclick="uploadPreview('+button.data("id")+","+button.data("choice")+')"/></span>';
 	  html+='<br><span id="full">Now you can upload the full document:<br>'
-	  html+='<a class="glifico-fa"><i class="fa fa-upload"></i></a><input class="btn btn-primary" type="button" value="Upload full translated document" onclick="uploadFull('+button.data("id")+","+button.data("choice")+')"/></span>';
+	  html+='<a class="glifico-fa"><i class="fa fa-upload"></i></a><br><input class="btn btn-primary" type="button" value="Upload full translated document" onclick="uploadFull('+button.data("id")+","+button.data("choice")+')"/></span>';
   }
   if(button.data('status')=="To Be Assigned"){
 	  html+="<br><br>";
