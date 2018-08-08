@@ -194,6 +194,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		html+='<th class="col-md-2" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
+		html+='<tbody>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
@@ -243,6 +244,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='</td>';
 			html+='<tr>';
 		}
+		html+='</tbody>';
 		html+='</table>';
 		$("#table").html(html);
 		$('#data_table').DataTable();
