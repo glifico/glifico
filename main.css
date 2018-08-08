@@ -21,15 +21,20 @@
 	font-size: 500%;
 }
 
-.glifico-footer {
+.glifico-footer{
+	padding-top: 2em;
 	color: #333333;
 }
 
-:visited.glifico-footer {
+.glifico-footer-link {
 	color: #333333;
 }
 
-:hover.glifico-footer {
+:visited.glifico-footer-link {
+	color: #333333;
+}
+
+:hover.glifico-footer-link {
 	color: #3f6391;
 }
 
@@ -197,10 +202,6 @@ input[type=checkbox]
 
 .panel-heading {
 	font-size: 23px;
-}
-
-.glifico-footer{
-	padding-top: 2em;
 }
 
 .glifico-info{
