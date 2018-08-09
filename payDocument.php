@@ -388,13 +388,14 @@ Please use the form below to pay translator
 
 <?php 
 
+echo($_GET['token']);
 echo('<script src="https://staging.online.satispay.com/button.min.js"');
 echo('id="satispayButton"');
 echo('data-key="dk_gJYxwfxIbFVUZgGOtQNl"');
-echo('data-amount=1000');
+echo('data-amount="10"');
 echo('data-description="Translation on Glifico"');
 echo('data-usercallback="http://test.glifico.com/satispaycreatecharge.php"');
-echo('data-orderid=getOrderId()');
+echo('data-orderid="56"');
 echo('data-callback="satispayCallback"');
 echo('></script>');
 
