@@ -387,12 +387,22 @@ Please use the form below to pay translator
 <br><br><br>
 
 <?php 
-
 $oid=$_GET['token'];
+
+$db=getDB();
+if(!$db) exit;
+
+$query="SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+$price=$row['price'];
+$result->CloseCursor();
+
+
 echo('<script src="https://staging.online.satispay.com/button.min.js"');
 echo('id="satispayButton"');
 echo('data-key="dk_gJYxwfxIbFVUZgGOtQNl"');
-echo('data-amount="10"');
+echo('data-amount="'.$price.'"');
 echo('data-description="Translation on Glifico"');
 echo('data-usercallback="http://test.glifico.com/satispaycreatecharge.php"');
 echo('data-orderid="'.$oid.'"');
