@@ -43,7 +43,7 @@ function checkCharge(chargeId){
 		if (req.status == 200&req.readyState==4){
 			var response=convertJSON(req.responseText);
 			console.debug(response);
-			if(response['status']=='SUCCESS'){
+			if(response['charge']['status']=='SUCCESS'){
 				paymentCompleted();
 			}else{
 				alert('payment refused');
