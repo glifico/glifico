@@ -37,7 +37,7 @@ $email_bil=$params['email_bil'];
 $phone=$params['phone'];
 $phone_bil=$params['phone_bil'];
 
-$query="UPDATE agenzia set street='$street', citta='$citta', provincia='$provincia', stato='$country', vat='$vat', cap='$cap', email='$email', email_bil='$email_bil', phone='$phone', phone_bil='$phone_bil', WHERE username='$user';";
+$query="UPDATE agenzia set street='$street', citta='$citta', provincia='$provincia', stato='$country', vat='$vat', cap='$cap', email='$email', email_bil='$email_bil', phone='$phone', phone_bil='$phone_bil' WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
