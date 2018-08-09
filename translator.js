@@ -149,6 +149,7 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
 				ctrl.Countries=ret;
+				return true;
 			}
 		}
 
@@ -162,6 +163,7 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
 				ctrl.Languages=ret;
+				return true;
 			}
 		}
 

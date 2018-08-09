@@ -41,6 +41,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
 				ctrl.Countries=ret;
+				return true;
 			}
 		}
 
@@ -62,7 +63,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 						$('#alertError').html(ret[0].data.msg);
 					}
 				} else {
-					ctrl.LoadCountries();
+					ctrl.loadCountries();
 					ctrl.companyname=ret[0].CompanyName;
 					ctrl.vat=ret[0].VATCode;
 					ctrl.street=ret[0].Street;
