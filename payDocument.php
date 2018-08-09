@@ -397,7 +397,7 @@ if(!$db) exit;
 $query="SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
-$price=float($row['price'])*100;
+$price=(float)$row['price']*100;
 $result->CloseCursor();
 
 
