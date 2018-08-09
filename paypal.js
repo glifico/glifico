@@ -38,6 +38,7 @@ function paymentCompleted(){
 }
 
 function checkCharge(chargeId){
+	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var response=convertJSON(req.responseText);
