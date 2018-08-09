@@ -26,7 +26,7 @@ $oid=$data['orderid'];
 $db=getDB();
 if(!$db) exit;
 
-$query="SELECT * FROM payments WHERE username='$user' and id='$oid' LIMIT 1;";
+$query="SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
