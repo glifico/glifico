@@ -26,13 +26,13 @@ $uid=$data['uuid'];
 \SatispayOnline\Api::setSandbox(true);
 
 $charge = \SatispayOnline\Charge::create([
-  'user_id' => $uid,
-  'currency' => 'EUR',
-  'amount' => 10,
-  'callback_url' => 'http://test.glifico.com/payDocument.html?token=12&charge_id={uuid}',
-  'metadata' => [
-    'orderid' => '1'
-  ]
+    'user_id' => $uid,
+    'currency' => 'EUR',
+    'amount' => 10,
+    'callback_url' => 'https://test.glifico.com/paydocument.html?charge_id={uuid}',
+    'metadata' => [
+        'orderid' => '1'
+    ]
 ]);
 
 notifySlack($data['uuid']);

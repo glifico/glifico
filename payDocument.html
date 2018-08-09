@@ -385,19 +385,9 @@ Please use the form below to pay translator
 <br>
 <div id="paypal-button"></div>
 <br><br><br>
-<script>
-satispayCallback=function(charge){
-	if (charge.status === 'SUCCESS') {
-	    console.info("payment completed on satispay");
-	    paymentCompleted();
-	  } else {
-		  alert("Payment doesn't end well :-(");
-		  console.log('payment failed or refused')
-	  }
-}
-</script>
 
 <script src="https://staging.online.satispay.com/button.min.js"
+  id="satispayButton"
   data-key="dk_gJYxwfxIbFVUZgGOtQNl"
   data-amount="10"
   data-description="translation"
@@ -406,9 +396,26 @@ satispayCallback=function(charge){
   data-callback="satispayCallback"
 ></script>
 
+<script>
+var satispayButton = document.getElementById('satispayButton')
+satispayButton.on('load', function() {
+  console.log('load event')
+})
+
+satispayButton.on('close', function() {
+  console.log('close event')
+})
+
+satispayButton.on('completed', function(chargeId) {
+  console.log('payment completed event', chargeId)
+  paymentCompleted();
+})
+
+</script>
+
 
 <br><br>
-<button onclick="location.href='pendingPayments.html'" class="btn btn-default" type="button">Return to <br>the job's page</button>
+<button onclick="location.href='pendingPayments.html'" class="btn btn-primary" type="button">Return to <br>the job's page</button>
 </div>
 
 <div id="payCompleted" style="font-size:20px;">

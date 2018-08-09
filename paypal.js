@@ -39,7 +39,6 @@ function paymentCompleted(){
 }
 
 
-
 angular.module("payment",[])
 .controller("paymentController",function(){
 	var ctrl=this;
