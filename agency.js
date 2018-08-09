@@ -34,13 +34,15 @@ function askAccountDeletion(){
 angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($scope){
 
 	var ctrl = this;
-	
+
 	ctrl.loadCountries = function(){
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				ctrl.Countries=ret;
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					ctrl.Countries=ret;
+				});
 				return true;
 			}
 		}
@@ -63,19 +65,21 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 						$('#alertError').html(ret[0].data.msg);
 					}
 				} else {
-					ctrl.loadCountries();
-					ctrl.companyname=ret[0].CompanyName;
-					ctrl.vat=ret[0].VATCode;
-					ctrl.street=ret[0].Street;
-					ctrl.city=ret[0].City;
-					ctrl.country=ret[0].Country;
-					ctrl.zip=ret[0].ZIP;
-					ctrl.email=ret[0].EmailReference;
-					ctrl.IBAN=ret[0].IBAN;
-					ctrl.swift=ret[0].swift;
-					ctrl.phone=ret[0].PhoneReference;
-					ctrl.phone_bil=ret[0].PhoneReferenceBilling;
-					ctrl.email_bil=ret[0].EmailReferenceBilling;
+					$scope.$apply(function () {
+						ctrl.loadCountries();
+						ctrl.companyname=ret[0].CompanyName;
+						ctrl.vat=ret[0].VATCode;
+						ctrl.street=ret[0].Street;
+						ctrl.city=ret[0].City;
+						ctrl.country=ret[0].Country;
+						ctrl.zip=ret[0].ZIP;
+						ctrl.email=ret[0].EmailReference;
+						ctrl.IBAN=ret[0].IBAN;
+						ctrl.swift=ret[0].swift;
+						ctrl.phone=ret[0].PhoneReference;
+						ctrl.phone_bil=ret[0].PhoneReferenceBilling;
+						ctrl.email_bil=ret[0].EmailReferenceBilling;
+					});
 					return (true);
 				}
 			}else{
@@ -88,7 +92,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 		req.send();
 
 	}
-	
+
 	ctrl.isibanvalid =function (){
 		if(ctrl.IBAN){
 			return isValidIBAN(ctrl.IBAN);
@@ -96,20 +100,20 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 			return false;
 		}
 	}
-	
+
 	ctrl.iszipvalid =function (){
 		return /[0-9]{5}/.test(ctrl.zip);
 	}
-	
-	
+
+
 	ctrl.isemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
 	}
-	
+
 	ctrl.isbilemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
 	}
-	
+
 	ctrl.validForm = function(){
 		return ctrl.isemailvalid() && ctrl.isibanvalid() && ctrl.iszipvalid();
 	}

@@ -147,8 +147,10 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				ctrl.Countries=ret;
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					ctrl.Countries=ret;
+				});
 				return true;
 			}
 		}
@@ -162,7 +164,9 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
 				var ret = convertJSON(req.responseText);
-				ctrl.Languages=ret;
+				$scope.$apply(function () {
+					ctrl.Languages=ret;
+				});
 				return true;
 			}
 		}
@@ -291,153 +295,153 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 
 
 
-				angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
+angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
 
-					$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
-					$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:0,IdParametro_Service:0,IdCurrency:'EUR',PricePerCharacter:0};
-
-
-					var ctrl=this;
-
-					$scope.loadLanguages = function(){
-						var req=createXHTMLHttpRequest();
-						req.onreadystatechange = function(){
-							if (req.status == 200&req.readyState==4){
-								var ret = convertJSON(req.responseText);
-								$scope.Languages=ret;
-							}
-						}
-						req.open("GET","getLanguages.php?",true);
-						req.send();
-					}
+	$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
+	$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:0,IdParametro_Service:0,IdCurrency:'EUR',PricePerCharacter:0};
 
 
-					$scope.loadFields = function(){
-						var req=createXHTMLHttpRequest();
-						req.onreadystatechange = function(){
-							if (req.status == 200&req.readyState==4){
-								var ret = convertJSON(req.responseText);
-								$scope.Fields=ret;
-							}
-						}
-						req.open("GET","getFields.php",true);
-						req.send();
-					}
+	var ctrl=this;
 
-					$scope.loadServices = function(){
-						var req=createXHTMLHttpRequest();
-						req.onreadystatechange = function(){
-							if (req.status == 200&req.readyState==4){
-								var ret = convertJSON(req.responseText);
-								$scope.Services=ret;
-							}
-						}
-						req.open("GET","getServices.php",true);
-						req.send();
-					}
+	$scope.loadLanguages = function(){
+		var req=createXHTMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				$scope.Languages=ret;
+			}
+		}
+		req.open("GET","getLanguages.php?",true);
+		req.send();
+	}
 
 
-					ctrl.createTable=function(pairs){
-						createTable(pairs);	
-					};
+	$scope.loadFields = function(){
+		var req=createXHTMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				$scope.Fields=ret;
+			}
+		}
+		req.open("GET","getFields.php",true);
+		req.send();
+	}
 
-					$scope.loadCurrencies = function(){
-						var req=createXHTMLHttpRequest();
-						req.onreadystatechange = function(){
-							if (req.status == 200&req.readyState==4){
-								var ret = convertJSON(req.responseText);
-								$scope.Currencies=ret;
-							}
-						}
-						req.open("GET","getCurrencies.php",true);
-						req.send();
-					}
-
-					ctrl.refresh=function(){
-						var req=createXHTMLHttpRequest();
-
-						$scope.loadLanguages();
-						$scope.loadFields();
-						$scope.loadServices();
-						$scope.loadCurrencies();
-
-						req.onreadystatechange = function(){
-							if (req.status == 200&req.readyState==4){
-								var ret=convertJSON(req.responseText);
-								$scope.Pairs=ret;
-								ctrl.createTable(ret);
-							}
-						}
-
-						req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
-						req.send();
-					}
-
-					ctrl.$onInit=function(){
-						ctrl.refresh();
-						$scope.openedPrice=-1;
-						$scope.model=$scope.defaultModel;
-						console.debug($scope.model);
-					}
-
-					$scope.closeModal=function(){
-						$('#LanguageModal').modal('hide');
-						$scope.openedEdu=null;
-					}
+	$scope.loadServices = function(){
+		var req=createXHTMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				$scope.Services=ret;
+			}
+		}
+		req.open("GET","getServices.php",true);
+		req.send();
+	}
 
 
-					$scope.submit= function(){
-						console.debug($scope.model);
+	ctrl.createTable=function(pairs){
+		createTable(pairs);	
+	};
 
-						if($scope.model.PricePerCharacter<0){
-							alert("Price should be greater than zero!");
-							return;
-						}
+	$scope.loadCurrencies = function(){
+		var req=createXHTMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				$scope.Currencies=ret;
+			}
+		}
+		req.open("GET","getCurrencies.php",true);
+		req.send();
+	}
 
-						var arr={
-								"user": getUsername(),
-								"token": getToken(),
-								"values": $scope.model,
-						};
+	ctrl.refresh=function(){
+		var req=createXHTMLHttpRequest();
 
-						var stringPass=JSON.stringify(arr);
-						var data=stringPass;
+		$scope.loadLanguages();
+		$scope.loadFields();
+		$scope.loadServices();
+		$scope.loadCurrencies();
 
-						$.ajax( {
-							type : "POST",
-							dataType : "application/json",
-							contentType : "application/json; charset=utf-8",
-							data : data,
-							url : "addLanguagePair.php",
-							complete : function(ret) {
-								var response=ret.responseText.replace(/\\/,"");
-								if(convertJSON(response).statuscode==200){
-									$('#alertOK').fadeIn().delay(5000).fadeOut();
-									$('#alertOK').html("Your data was saved correctly.");
-									ctrl.refresh();
-								}else{
-									$('#alertError').fadeIn().delay(1000).fadeOut();
-									$('#alertOK').html("There was an error, please retry.");
-								}
-							},
-							error : function(xhr) {
-								if (xhr.status == 500) {
-									$("#alertError").html("Error from server, please retry.");
-									$("#alertError").fadeIn().delay(1000).fadeOut();
-								}
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret=convertJSON(req.responseText);
+				$scope.Pairs=ret;
+				ctrl.createTable(ret);
+			}
+		}
 
-							}
-						});
+		req.open("GET",'getLanguagePairsData.php?user='+getUsername()+"&token="+getToken(),true);
+		req.send();
+	}
 
-					}
+	ctrl.$onInit=function(){
+		ctrl.refresh();
+		$scope.openedPrice=-1;
+		$scope.model=$scope.defaultModel;
+		console.debug($scope.model);
+	}
 
-
-
-				});
+	$scope.closeModal=function(){
+		$('#LanguageModal').modal('hide');
+		$scope.openedEdu=null;
+	}
 
 
-				angular.element(document).ready(function() {
-					angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalApp']);
-					angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsApp']);
+	$scope.submit= function(){
+		console.debug($scope.model);
 
-				});
+		if($scope.model.PricePerCharacter<0){
+			alert("Price should be greater than zero!");
+			return;
+		}
+
+		var arr={
+				"user": getUsername(),
+				"token": getToken(),
+				"values": $scope.model,
+		};
+
+		var stringPass=JSON.stringify(arr);
+		var data=stringPass;
+
+		$.ajax( {
+			type : "POST",
+			dataType : "application/json",
+			contentType : "application/json; charset=utf-8",
+			data : data,
+			url : "addLanguagePair.php",
+			complete : function(ret) {
+				var response=ret.responseText.replace(/\\/,"");
+				if(convertJSON(response).statuscode==200){
+					$('#alertOK').fadeIn().delay(5000).fadeOut();
+					$('#alertOK').html("Your data was saved correctly.");
+					ctrl.refresh();
+				}else{
+					$('#alertError').fadeIn().delay(1000).fadeOut();
+					$('#alertOK').html("There was an error, please retry.");
+				}
+			},
+			error : function(xhr) {
+				if (xhr.status == 500) {
+					$("#alertError").html("Error from server, please retry.");
+					$("#alertError").fadeIn().delay(1000).fadeOut();
+				}
+
+			}
+		});
+
+	}
+
+
+
+});
+
+
+angular.element(document).ready(function() {
+	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalApp']);
+	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsApp']);
+
+});
