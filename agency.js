@@ -34,6 +34,19 @@ function askAccountDeletion(){
 angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($scope){
 
 	var ctrl = this;
+	
+	ctrl.loadCountries = function(){
+		var req=createXHTMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				var ret = convertJSON(req.responseText);
+				ctrl.Countries=ret;
+			}
+		}
+
+		req.open("GET","getCountries.php",true);
+		req.send();
+	}
 
 	ctrl.$onInit= function(){
 		var req=createXHTMLHttpRequest();
@@ -53,7 +66,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					ctrl.vat=ret[0].VATCode;
 					ctrl.street=ret[0].Street;
 					ctrl.city=ret[0].City;
-					ctrl.state=ret[0].Country;
+					ctrl.country=ret[0].Country;
 					ctrl.zip=ret[0].ZIP;
 					ctrl.email=ret[0].EmailReference;
 					ctrl.IBAN=ret[0].IBAN;
@@ -108,7 +121,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					"FiscalCode": ctrl.vat,
 					"Street": ctrl.street,
 					"City": ctrl.city,
-					"Country": ctrl.state,
+					"Country": ctrl.country,
 					"ZIP": ctrl.zip,
 					"email": ctrl.email,
 					"email_bil": ctrl.email_bil,
