@@ -79,7 +79,6 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			}else{
 				html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
 			}
-			html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
 			html+='<td class="col-md-2">'+doc.ncharacters+'</td>';
 			html+='<td class="col-md-2">'+doc.deadline+'</td>';
 			html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
