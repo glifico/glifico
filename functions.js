@@ -68,10 +68,10 @@ function notify(text){
 }
 
 function showTranslatorStuff(){
-	$("#li-rating").show();
 	$("#li-trad").show();
 	$("#li-skill").show();
 	$("#li-jobs").show();
+	$("#li-rating").show();
 }
 
 function showAgencyStuff(){

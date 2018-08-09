@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 10.3
+-- Dumped from database version 9.6.9
+-- Dumped by pg_dump version 10.4
 
--- Started on 2018-03-14 07:34:06 CET
+-- Started on 2018-08-09 08:01:37 CEST
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3111 (class 0 OID 0)
+-- TOC entry 3120 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
@@ -46,8 +46,8 @@ SET default_with_oids = false;
 CREATE TABLE public.agenzia (
     id integer NOT NULL,
     nome character varying(50),
-    vat character varying(15) DEFAULT NULL::character varying,
-    username character varying(15) NOT NULL,
+    vat character varying(50) DEFAULT NULL::character varying,
+    username character varying(50) NOT NULL,
     password character varying(64),
     email character varying(30),
     street character varying(100),
@@ -58,7 +58,11 @@ CREATE TABLE public.agenzia (
     stato character varying(30),
     banca character varying(30),
     pagamento character varying(30),
-    iban character varying(34)
+    iban character varying(34),
+    swift character varying(10),
+    phone character varying(10),
+    phone_bil character varying(20),
+    email_bil character varying(40)
 );
 
 
@@ -76,7 +80,7 @@ CREATE SEQUENCE public.agenzia_id_seq
 
 
 --
--- TOC entry 3113 (class 0 OID 0)
+-- TOC entry 3122 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: agenzia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -111,7 +115,7 @@ CREATE SEQUENCE public.currencies_id_seq
 
 
 --
--- TOC entry 3114 (class 0 OID 0)
+-- TOC entry 3123 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: currencies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -137,22 +141,25 @@ CREATE TABLE public.language_pair (
 
 
 --
--- TOC entry 199 (class 1259 OID 5964709)
+-- TOC entry 198 (class 1259 OID 5964709)
 -- Name: languagerating; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.languagerating (
     id integer NOT NULL,
     username character varying(255),
-    language character varying(255) NOT NULL,
     translated character varying(2096),
     stylemark integer,
-    grammarmark integer
+    grammarmark integer,
+    datatest timestamp without time zone,
+    idtest integer,
+    languageto character varying(255),
+    languagefrom character varying(255)
 );
 
 
 --
--- TOC entry 198 (class 1259 OID 5964707)
+-- TOC entry 197 (class 1259 OID 5964707)
 -- Name: languagerating_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -165,8 +172,8 @@ CREATE SEQUENCE public.languagerating_id_seq
 
 
 --
--- TOC entry 3115 (class 0 OID 0)
--- Dependencies: 198
+-- TOC entry 3124 (class 0 OID 0)
+-- Dependencies: 197
 -- Name: languagerating_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -208,6 +215,11 @@ CREATE TABLE public.payments (
     preview character varying(200),
     secondstatus character varying(20),
     deadline date,
+    ncharacters integer,
+    languagefrom character varying(255),
+    secondprice numeric,
+    secondcurrency character varying(50),
+    whoaccepted integer,
     CONSTRAINT payments_check CHECK (((translator)::text <> (secondtranslator)::text))
 );
 
@@ -226,7 +238,7 @@ CREATE SEQUENCE public.payments_id_seq
 
 
 --
--- TOC entry 3116 (class 0 OID 0)
+-- TOC entry 3125 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: payments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -235,16 +247,38 @@ ALTER SEQUENCE public.payments_id_seq OWNED BY public.payments.id;
 
 
 --
--- TOC entry 197 (class 1259 OID 5960183)
+-- TOC entry 200 (class 1259 OID 5999618)
 -- Name: ratingtest; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ratingtest (
-    id integer,
+    id integer NOT NULL,
     language character varying(255),
     text_to_translate character varying(2048),
     topic character varying(255)
 );
+
+
+--
+-- TOC entry 199 (class 1259 OID 5999616)
+-- Name: ratingtest_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.ratingtest_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 3126 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: ratingtest_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.ratingtest_id_seq OWNED BY public.ratingtest.id;
 
 
 --
@@ -277,7 +311,7 @@ CREATE SEQUENCE public.skilltest_id_seq
 
 
 --
--- TOC entry 3117 (class 0 OID 0)
+-- TOC entry 3127 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: skilltest_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -306,7 +340,10 @@ CREATE TABLE public.traduttore (
     provincia character varying(30),
     idstato character varying(2),
     madrelinguaid character varying(2),
-    stato character varying(30)
+    stato character varying(30),
+    street character varying(255),
+    iban character varying(30),
+    swift character varying(10)
 );
 
 
@@ -324,7 +361,7 @@ CREATE SEQUENCE public.traduttore_id_seq
 
 
 --
--- TOC entry 3118 (class 0 OID 0)
+-- TOC entry 3128 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: traduttore_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
@@ -333,7 +370,7 @@ ALTER SEQUENCE public.traduttore_id_seq OWNED BY public.traduttore.id;
 
 
 --
--- TOC entry 2946 (class 2604 OID 2850710)
+-- TOC entry 2948 (class 2604 OID 2850710)
 -- Name: agenzia id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -341,7 +378,7 @@ ALTER TABLE ONLY public.agenzia ALTER COLUMN id SET DEFAULT nextval('public.agen
 
 
 --
--- TOC entry 2951 (class 2604 OID 3857802)
+-- TOC entry 2953 (class 2604 OID 3857802)
 -- Name: currencies id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -349,7 +386,7 @@ ALTER TABLE ONLY public.currencies ALTER COLUMN id SET DEFAULT nextval('public.c
 
 
 --
--- TOC entry 2952 (class 2604 OID 5964712)
+-- TOC entry 2954 (class 2604 OID 5964712)
 -- Name: languagerating id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -357,7 +394,7 @@ ALTER TABLE ONLY public.languagerating ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 2949 (class 2604 OID 3419740)
+-- TOC entry 2951 (class 2604 OID 3419740)
 -- Name: payments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -365,7 +402,15 @@ ALTER TABLE ONLY public.payments ALTER COLUMN id SET DEFAULT nextval('public.pay
 
 
 --
--- TOC entry 2948 (class 2604 OID 2995907)
+-- TOC entry 2955 (class 2604 OID 5999621)
+-- Name: ratingtest id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ratingtest ALTER COLUMN id SET DEFAULT nextval('public.ratingtest_id_seq'::regclass);
+
+
+--
+-- TOC entry 2950 (class 2604 OID 2995907)
 -- Name: skilltest id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -373,7 +418,7 @@ ALTER TABLE ONLY public.skilltest ALTER COLUMN id SET DEFAULT nextval('public.sk
 
 
 --
--- TOC entry 2940 (class 2604 OID 2794056)
+-- TOC entry 2942 (class 2604 OID 2794056)
 -- Name: traduttore id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -381,18 +426,21 @@ ALTER TABLE ONLY public.traduttore ALTER COLUMN id SET DEFAULT nextval('public.t
 
 
 --
--- TOC entry 3091 (class 0 OID 2850707)
+-- TOC entry 3099 (class 0 OID 2850707)
 -- Dependencies: 188
 -- Data for Name: agenzia; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.agenzia (id, nome, vat, username, password, email, street, number, citta, provincia, cap, stato, banca, pagamento, iban) FROM stdin;
-1	agenzia		agenzia	cbf921b6eb12815a33f74360d66dfef435f1bbbc9e5a5e1f13196db757f8ae57	filippovalle@aim.com	roma	314	Torino	TO	12309	Italy	\N	\N	\N
+COPY public.agenzia (id, nome, vat, username, password, email, street, number, citta, provincia, cap, stato, banca, pagamento, iban, swift, phone, phone_bil, email_bil) FROM stdin;
+3	GioAgenzia	vvvggg0101010j0	GioAgenzia	0d0b17b5a0105e7273ef9b0f720f70372fba6a4ddc9d6db519b81ec83ada3068	giorgiovalle007@gmail.com	\N	\N	Baricella	Bologna	51000	Italia	\N	\N	\N	\N	\N	\N	\N
+4	Sissitraduzioni	undefined	Sissitranslations	6ec9de8efaf2783e7259048ccd0abdb0b9330895b70c29ba5d5d35756a2704ba	szigetibogi@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+6	Lucagenzia	sda98s7ada9sasm	lucagenzia	0ea237e7cc1600c0169c408e526b84763997f9484bdc5bbbc2eec133ba48662d	luca.sapone86@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+1	agenzia	12312312312	agenzia	cbf921b6eb12815a33f74360d66dfef435f1bbbc9e5a5e1f13196db757f8ae57	filippovalle@aim.com	roma	314	Torino		12309		\N	\N	DE78100110012626899545	\N	\N	\N	\N
 \.
 
 
 --
--- TOC entry 3099 (class 0 OID 3857799)
+-- TOC entry 3107 (class 0 OID 3857799)
 -- Dependencies: 196
 -- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -500,27 +548,51 @@ COPY public.currencies (id, currency, conversion, description) FROM stdin;
 
 
 --
--- TOC entry 3097 (class 0 OID 3770600)
+-- TOC entry 3105 (class 0 OID 3770600)
 -- Dependencies: 194
 -- Data for Name: language_pair; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.language_pair (username, from_l, to_l, price, field, currency, price_euro, service) FROM stdin;
-Claudia	Spanish	Italian	0	translation	USD - US Dollar	0	translations
-Claudia	Italian	Spanish	0	translation	USD - US Dollar	0	translations
-Claudia	Spanish	Portuguese	0	translation	USD - US Dollar	0	translations
-Claudia	Portuguese	Spanish	0	translation	USD - US Dollar	0	translations
-annabaccenetti	English	Italian	80	translation	EUR - Euro	80	translations
+test	Estonian	Italian	0.0005	accounting	EUR - Euro	0.01	translations
+test	English	Italian	0.001	culture	EUR - Euro	0.01	translations
+Zsofia Kraus	Hungarian	Turkish	0.001	translation	HUF - Forint	0.0000030	translations
+simona	German	English	0.001	translation	EUR - Euro	0.001	translations
+Viktorija	Italian	Macedonian	0.001	translation	EUR - Euro	0.001	translations
+Viktorija	Italian	Serbian	0.001	translation	EUR - Euro	0.001	translations
+Viktorija	Serbian	Italian	0.001	translation	EUR - Euro	0.001	translations
+Serena	Italian	English	0.001	translation	EUR - Euro	0.001	translations
+Serena	Italian	French	0.001	translation	EUR - Euro	0.001	translations
+idalconte	Russian	Italian	0.001	translation	EUR - Euro	0.001	translations
+annabaccenetti	French	Italian	0.001	translation	EUR - Euro	0.001	translations
+Viktorija	Italian	Bulgarian	0.001	translation	EUR - Euro	0.001	translations
+Viktorija	Bulgarian	Italian	0.001	translation	EUR - Euro	0.001	translations
+sonia.giardini@gmail.com	Japanese	Italian	0.001	translation	EUR - Euro	0.001	translations
+simkovich0811@gmail.com	Ukranian	Hungarian	0.001	translation	HUF - Forint	0.0000030	translations
+simkovich0811@gmail.com	English	Hungarian	0.001	translation	HUF - Forint	0.0000030	translations
+annabaccenetti	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+savu.florin@gmail.com	Dutch	Romanian	0.001	translation	EUR - Euro	0.001	translations
+Claudia	French	Spanish	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Spanish	Italian	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Italian	Spanish	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Spanish	Portuguese	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Portuguese	Spanish	0.001	translation	USD - US Dollar	0.000859	translations
+mariarosaria_leggieri@yahoo.it	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	translation	EUR - Euro	0.008	translations
+cristina_1987ro	English	Spanish	0.1	translation	EUR - Euro	0.1	translations
+cristina_1987ro	French	Italian	0.1	translation	EUR - Euro	0.1	translations
+giorgio	English	Italian	0.01	translation	EUR - EURO	0.01	translations
 d.fasano5	Russian	Italian	0.1	translation	EUR - Euro	0.1	translations
 d.fasano5	English	Italian	0.1	translation	EUR - Euro	0.1	translations
-savu.florin@gmail.com	Dutch	Romanian	8	translation	EUR - Euro	8	translations
 mmakrai@yahoo.com	English	German	0.08	translation	EUR - Euro	0.08	translations
-mariarosaria_leggieri@yahoo.it	English	Italian	0	translation	EUR - Euro	0	translations
 Christi	English	Greek	0.07	translation	EUR - Euro	0.07	translations
-test	Italian	English	0.001	translation	EUR - Euro	0	
-test	French	English	0.004	translation	EUR - Euro	0	
-luca	Nepali	Italian	0	translation	EUR - Euro	0	
-test	English	Italian	0.001	translation	EUR - Euro	0	
+test	Italian	English	0.001	translation	EUR - Euro	0.001	
+test	French	English	0.004	translation	EUR - Euro	0.004	
+simkovich0811@gmail.com	Hungarian	English	0.001	translation	HUF - Forint	0.0000030	translations
+AngleRei	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+Tony1964	Italian	Spanish	0.001	translation	EUR - Euro	0.001	translations
+Tony1964	Italian	English	0.001	translation	EUR - Euro	0.001	translations
+Tony1964	Spanish	Italian	0.001	translation	EUR - Euro	0.001	translations
 cristina_1987ro	French	Romanian	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	Portuguese	Romanian	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	Portuguese	Italian	0.1	translation	EUR - Euro	0.1	translations
@@ -531,29 +603,31 @@ giuliapiaser	English	Italian	0.06	translation	EUR - Euro	0.06	translations
 ValentinaO	English	Italian	0.03	translation	EUR - Euro	0.03	translations
 ValentinaO	Spanish	Italian	0.03	translation	EUR - Euro	0.03	translations
 ValentinaO	French	Italian	0.03	translation	EUR - Euro	0.03	translations
-VL11939	French	Italian	0	translation	EUR - Euro	0	translations
-simkovich0811@gmail.com	Hungarian	English	1000	translation	HUF - Forint	3.21	translations
-AngleRei	English	Italian	20	translation	EUR - Euro	20	translations
-Tony1964	Italian	Spanish	13	translation	EUR - Euro	13	translations
-Tony1964	Italian	English	13	translation	EUR - Euro	13	translations
-Tony1964	Spanish	Italian	13	translation	EUR - Euro	13	translations
-Tony1964	English	Italian	13	translation	EUR - Euro	13	translations
-Tony1964	English	Spanish	13	translation	EUR - Euro	13	translations
-Tony1964	French	Italian	13	translation	EUR - Euro	13	translations
+Tony1964	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+Tony1964	English	Spanish	0.001	translation	EUR - Euro	0.001	translations
+Tony1964	French	Italian	0.001	translation	EUR - Euro	0.001	translations
+_valentina	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+luca	English	Italian	0.001	translation	EUR - Euro	0.001	
+luca	Nepali	Italian	0.001	translation	EUR - Euro	0.001	
+VL11939	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+Claudia	English	French	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	French	English	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Spanish	French	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	English	Portuguese	0.001	translation	USD - US Dollar	0.000859	translations
+mariarosaria_leggieri@yahoo.it	French	Italian	0.001	translation	EUR - Euro	0.001	translations
+VL11939	French	Italian	0.001	translation	EUR - Euro	0.001	translations
 cristina_1987ro	Catalan	Spanish	0.1	translation	EUR - Euro	0.1	translations
-_valentina	English	Italian	12	translation	EUR - Euro	12	translations
-luca	English	Italian	2	translation	EUR - Euro	2	
-mariarosaria_leggieri@yahoo.it	French	Italian	0	translation	EUR - Euro	0	translations
+luca	Fiji	Japanese	0.002	translation	FJD - Fiji Dollar	0.002277	
+luca	Fiji	Japanese	0.002	translation	GBP - Pound Sterling	0.002277	
+_valentina	Spanish	Italian	0.001	translation	EUR - Euro	0.001	translations
+sarahtankr@gmail.com	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+sarahtankr@gmail.com	French	Italian	0.001	translation	EUR - Euro	0.001	translations
 cristina_1987ro	Catalan	English	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	Catalan	Italian	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	French	Spanish	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	French	English	0.1	translation	EUR - Euro	0.1	translations
 Christi	French	Greek	0.07	translation	EUR - Euro	0.07	translations
-Claudia	French	Spanish	0	translation	USD - US Dollar	0	translations
-_valentina	Spanish	Italian	12	translation	EUR - Euro	12	translations
 juanantcastan@gmail.com	French	Spanish	0.07	translation	EUR - Euro	0.07	translations
-sarahtankr@gmail.com	English	Italian	20	translation	EUR - Euro	20	translations
-sarahtankr@gmail.com	French	Italian	20	translation	EUR - Euro	20	translations
 translatorsitalian	English	Italian	0.07	translation	EUR - Euro	0.07	translations
 translatorsitalian	French	Italian	0.07	translation	EUR - Euro	0.07	translations
 cristina_1987ro	English	Italian	0.1	translation	EUR - Euro	0.1	translations
@@ -561,102 +635,89 @@ cristina_1987ro	Romanian	Spanish	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	Romanian	Italian	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	Spanish	Romanian	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	Catalan	Romanian	0.1	translation	EUR - Euro	0.1	translations
+savu.florin@gmail.com	Romanian	English	0.001	translation	EUR - Euro	0.001	translations
+savu.florin@gmail.com	Romanian	English	0.001	translation	EUR - Euro	0.001	translations
+santaseta@hotmail.com	Italian	Turkish	0.001	translation	TRY - New Turkish Lira	0.000226	translations
+Viktorija	Macedonian	Italian	0.001	translation	EUR - Euro	0.001	translations
+oljafiore@gmail.com	Italian	Serbian	0.001	translation	EUR - Euro	0.001	translations
+idalconte	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+idalconte	Italian	English	0.001	translation	EUR - Euro	0.001	translations
+idalconte	Italian	Russian	0.001	translation	EUR - Euro	0.001	translations
+Viktorija	Croation	Italian	0.001	translation	EUR - Euro	0.001	translations
+Viktorija	Italian	Croation	0.001	translation	EUR - Euro	0.001	translations
 Christi	Turkish	Greek	0.07	translation	EUR - Euro	0.07	translations
+oljafiore@gmail.com	Portuguese	Serbian	0.001	translation	EUR - Euro	0.001	translations
+simona	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+simona	German	Italian	0.001	translation	EUR - Euro	0.001	translations
 Christi	Italian	Greek	0.07	translation	EUR - Euro	0.07	translations
-mmakrai@yahoo.com	English	Croation	0.055	translation	EUR - Euro	0.06	translations
-BibianaSalazar	Spanish	English	0	translation	COP - Colombian Peso	0	translations
+mmakrai@yahoo.com	English	Croation	0.055	translation	EUR - Euro	0.055	translations
 BekirDiri	Turkish	English	0.07	translation	EUR - Euro	0.07	translations
-BibianaSalazar	English	Spanish	0	translation	COP - Colombian Peso	0	translations
-jaredfirth	Russian	English	0.12	translation	USD - US Dollar	0.1	translations
-TheSirion	English	Portuguese	0.07	translation	USD - US Dollar	0.06	translations
-idalconte	English	Italian	500	translation	EUR - Euro	500	translations
-idalconte	Italian	English	500	translation	EUR - Euro	500	translations
-petersenizza	English	Slovenian	0	translation	EUR - Euro	0	translations
-petersenizza	English	Slovenian	0	translation	EUR - Euro	0	translations
-Claudia	French	Italian	0	translation	USD - US Dollar	0	translations
-petersenizza	English	Italian	0	translation	EUR - Euro	0	translations
-petersenizza	Italian	English	0	translation	EUR - Euro	0	translations
+jaredfirth	Russian	English	0.12	translation	USD - US Dollar	0.103054	translations
+simona	French	Italian	0.001	translation	EUR - Euro	0.001	translations
+Claudia	Spanish	English	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	English	Italian	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Italian	English	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Italian	Portuguese	0.001	translation	USD - US Dollar	0.000859	translations
 gloria_732000@yahoo.it	English	Italian	1	translation	EUR - Euro	1	translations
 BekirDiri	English	Turkish	0.06	translation	EUR - Euro	0.06	translations
-idalconte	Italian	Russian	500	translation	EUR - Euro	500	translations
-bertolinolucrezia@gmail.com	English	Italian	0.01	translation	USD - US Dollar	0.01	translations
+bertolinolucrezia@gmail.com	English	Italian	0.01	translation	USD - US Dollar	0.008588	translations
 juanantcastan@gmail.com	English	Spanish	0.07	translation	EUR - Euro	0.07	translations
 cristina_1987ro	Romanian	English	0.1	translation	EUR - Euro	0.1	translations
 cristina_1987ro	Spanish	English	0.1	translation	EUR - Euro	0.1	translations
+TheSirion	English	Portuguese	0.07	translation	USD - US Dollar	0.060115	translations
+simkovich0811@gmail.com	Hungarian	Ukranian	0.001	translation	HUF - Forint	0.0000030	translations
 cristina_1987ro	Spanish	Italian	0.1	translation	EUR - Euro	0.1	translations
-Viktorija	Croation	Italian	15	translation	EUR - Euro	15	translations
-Viktorija	Italian	Croation	15	translation	EUR - Euro	15	translations
-simkovich0811@gmail.com	Hungarian	Ukranian	1000	translation	HUF - Forint	3.21	translations
-Claudia	English	Spanish	0	translation	USD - US Dollar	0	translations
-Claudia	Portuguese	Italian	0	translation	USD - US Dollar	0	translations
-Claudia	Portuguese	French	0	translation	USD - US Dollar	0	translations
-savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8	translations
-savu.florin@gmail.com	Romanian	English	8	translation	EUR - Euro	8	translations
-Claudia	French	Portuguese	0	translation	USD - US Dollar	0	translations
-santaseta@hotmail.com	Italian	Turkish	100	translation	TRY - New Turkish Lira	22.63	translations
-oljafiore@gmail.com	Italian	Serbian	20	translation	EUR - Euro	20	translations
-oljafiore@gmail.com	Portuguese	Serbian	20	translation	EUR - Euro	20	translations
-simona	English	Italian	10	translation	EUR - Euro	10	translations
-simona	German	Italian	10	translation	EUR - Euro	10	translations
-simona	French	Italian	10	translation	EUR - Euro	10	translations
-sebastianvargas92@gmail.com	English	Spanish	0.07	translation	USD - US Dollar	0.06	translations
-sebastianvargas92@gmail.com	Spanish	English	0.07	translation	USD - US Dollar	0.06	translations
-Viktorija	Macedonian	Italian	15	translation	EUR - Euro	15	translations
-eespol@yahoo.com	Nepali	English	15	translation	EUR - Euro	15	translations
+quistis25@gmail.com	Spanish	Italian	0.05	translation	EUR - Euro	0.05	translations
+mchiarasbragaglia@hotmail.it	English	Italian	0.008	translation	EUR - Euro	0.008	translations
+eespol@yahoo.com	Nepali	English	0.001	translation	EUR - Euro	0.001	translations
+oljafiore@gmail.com	Serbian	Italian	0.001	translation	EUR - Euro	0.001	translations
+BibianaSalazar	Spanish	English	0.001	translation	COP - Colombian Peso	0	translations
+BibianaSalazar	English	Spanish	0.001	translation	COP - Colombian Peso	0	translations
+petersenizza	English	Slovenian	0.001	translation	EUR - Euro	0.001	translations
+petersenizza	English	Slovenian	0.001	translation	EUR - Euro	0.001	translations
+Claudia	French	Italian	0.001	translation	USD - US Dollar	0.000859	translations
+petersenizza	English	Italian	0.001	translation	EUR - Euro	0.001	translations
+petersenizza	Italian	English	0.001	translation	EUR - Euro	0.001	translations
+Claudia	English	Spanish	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Portuguese	Italian	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Portuguese	French	0.001	translation	USD - US Dollar	0.000859	translations
+AdrianaB	Spanish	Italian	0.05	translation	EUR - Euro	0.05	translations
+Claudia	French	Portuguese	0.001	translation	USD - US Dollar	0.000859	translations
+Claudia	Portuguese	English	0.001	translation	USD - US Dollar	0.000859	translations
+AdrianaB	French	Italian	0.05	translation	EUR - Euro	0.05	translations
+AdrianaB	English	Italian	0.05	translation	EUR - Euro	0.05	translations
+helga83	English	Hungarian	1	translation	HUF - Forint	0.003211	translations
+sebastianvargas92@gmail.com	English	Spanish	0.07	translation	USD - US Dollar	0.060115	translations
+sebastianvargas92@gmail.com	Spanish	English	0.07	translation	USD - US Dollar	0.060115	translations
 camilla.musso@gmail.com	English	Italian	0.02	translation	EUR - Euro	0.02	translations
 camilla.musso@gmail.com	French	Italian	0.02	translation	EUR - Euro	0.02	translations
 camilla.musso@gmail.com	Spanish	Italian	0.02	translation	EUR - Euro	0.02	translations
 quistis25@gmail.com	English	Italian	0.06	translation	EUR - Euro	0.06	translations
-quistis25@gmail.com	Spanish	Italian	0.05	translation	EUR - Euro	0.05	translations
-oljafiore@gmail.com	Serbian	Italian	20	translation	EUR - Euro	20	translations
-mchiarasbragaglia@hotmail.it	English	Italian	0.008	translation	EUR - Euro	0.01	translations
-AdrianaB	French	Italian	0.05	translation	EUR - Euro	0.05	translations
-AdrianaB	English	Italian	0.05	translation	EUR - Euro	0.05	translations
-AdrianaB	Spanish	Italian	0.05	translation	EUR - Euro	0.05	translations
-Claudia	Spanish	English	0	translation	USD - US Dollar	0	translations
-Zsofia Kraus	Hungarian	Turkish	8500	translation	HUF - Forint	27.29	translations
-Claudia	English	Italian	0	translation	USD - US Dollar	0	translations
-Claudia	Italian	English	0	translation	USD - US Dollar	0	translations
-simona	German	English	10	translation	EUR - Euro	10	translations
-Viktorija	Italian	Macedonian	15	translation	EUR - Euro	15	translations
-Viktorija	Italian	Serbian	15	translation	EUR - Euro	15	translations
-Viktorija	Serbian	Italian	15	translation	EUR - Euro	15	translations
-Serena	Italian	English	6	translation	EUR - Euro	6	translations
-Serena	Italian	French	6	translation	EUR - Euro	6	translations
-mchiarasbragaglia@hotmail.it	Spanish	Italian	0.008	translation	EUR - Euro	0.01	translations
-Claudia	Italian	Portuguese	0	translation	USD - US Dollar	0	translations
-idalconte	Russian	Italian	500	translation	EUR - Euro	500	translations
-cristina_1987ro	English	Spanish	0.1	translation	EUR - Euro	0.1	translations
-cristina_1987ro	French	Italian	0.1	translation	EUR - Euro	0.1	translations
-VL11939	English	Italian	0	translation	EUR - Euro	0	translations
-annabaccenetti	French	Italian	80	translation	EUR - Euro	80	translations
-Claudia	English	French	0	translation	USD - US Dollar	0	translations
-Claudia	French	English	0	translation	USD - US Dollar	0	translations
-Claudia	Spanish	French	0	translation	USD - US Dollar	0	translations
-Claudia	English	Portuguese	0	translation	USD - US Dollar	0	translations
-Viktorija	Italian	Bulgarian	15	translation	EUR - Euro	15	translations
-Viktorija	Bulgarian	Italian	15	translation	EUR - Euro	15	translations
-sonia.giardini@gmail.com	Japanese	Italian	30	translation	EUR - Euro	30	translations
-giorgio	English	Italian	0.01	translation	EUR - EURO	0.01	translations
-simkovich0811@gmail.com	Ukranian	Hungarian	1000	translation	HUF - Forint	3.21	translations
-simkovich0811@gmail.com	English	Hungarian	1000	translation	HUF - Forint	3.21	translations
-Claudia	Portuguese	English	0	translation	USD - US Dollar	0	translations
-helga83	English	Hungarian	1	translation	HUF - Forint	0	translations
 \.
 
 
 --
--- TOC entry 3102 (class 0 OID 5964709)
--- Dependencies: 199
+-- TOC entry 3109 (class 0 OID 5964709)
+-- Dependencies: 198
 -- Data for Name: languagerating; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.languagerating (id, username, language, translated, stylemark, grammarmark) FROM stdin;
+COPY public.languagerating (id, username, translated, stylemark, grammarmark, datatest, idtest, languageto, languagefrom) FROM stdin;
+6	test	ffmrlfmlr	\N	\N	2018-03-21 19:48:12	97	English	Italian
+7	test	jbjbejw	\N	\N	2018-03-21 19:54:10	94	English	Italian
+10	test	bjkrj3nkjnmnfjkenkjnj	\N	\N	2018-03-25 08:52:28	95	English	French
+12	test	ba anjnkbnbrjkcmwr	\N	\N	2018-03-29 05:57:02	118	French	Italian
+14	luca	Under the madunina	\N	\N	2018-03-31 16:37:45	122	English	Italian
+13	\N	4242424242	4	2	2018-03-21 19:48:12	\N	\N	\N
+9	luca	sono bravissimo a tradurre	\N	\N	2018-03-21 19:48:12	95	English	Italian
+11	\N	sono bravissimo a tradurre	1	3	2018-03-21 19:48:12	\N	\N	\N
+15	\N	\N	5	3	\N	\N	\N	\N
+48	\N	\N	3	2	\N	\N	\N	\N
 \.
 
 
 --
--- TOC entry 3094 (class 0 OID 3065281)
+-- TOC entry 3102 (class 0 OID 3065281)
 -- Dependencies: 191
 -- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -668,30 +729,35 @@ luca	English	2017-10-12 09:58:17	0	en	0
 GiorgioTraduttore	English	2017-10-12 09:58:17	0	en	0
 GiorgioTraduttore	Spanish	2017-10-12 09:58:17	0	es	0
 giorgio	English	2017-10-29 16:39:51	1	en	1
-luca	Italian	2017-11-04 17:01:41	2	it	2
 test	Japanese	2017-10-12 09:58:17	2	jp	2
-test	English	2017-10-29 16:38:37	2	en	2
 test	French	2017-11-30 06:43:59	\N	\N	2
-luca	Nepali	\N	\N	\N	\N
+luca	Fiji	\N	\N	\N	\N
+luca	Japanese	\N	\N	\N	\N
+test	Estonian	\N	\N	\N	\N
 test	Italian	\N	\N	\N	\N
+test	English	\N	\N	\N	\N
 \.
 
 
 --
--- TOC entry 3096 (class 0 OID 3419737)
+-- TOC entry 3104 (class 0 OID 3419737)
 -- Dependencies: 193
 -- Data for Name: payments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.payments (id, job, price, currency, status, description, username, translated, translator, secondtranslator, document, preview, secondstatus, deadline) FROM stdin;
-17		1	EUR - EURO	Paid		agenzia	https://cdn.filestackcontent.com/EG5mBCV1QfCetXSI6LPl	luca	\N	https://cdn.filestackcontent.com/S5TtYIMaSPy1SeiuHbMk	https://cdn.filestackcontent.com/tGUSfggTnGW0xVmN7CYX	\N	2018-02-13
-15	engl->ital	1	EUR - EURO	Paid	pagato da filippo	agenzia	https://cdn.filestackcontent.com/TYrGb9QlS0KuavfQ2sDt	luca	\N	https://cdn.filestackcontent.com/kYFKpaOHS3mVGoMCk4lv	https://cdn.filestackcontent.com/VV0V49ZARKSYUIhIq5bw	\N	2018-02-12
+COPY public.payments (id, job, price, currency, status, description, username, translated, translator, secondtranslator, document, preview, secondstatus, deadline, ncharacters, languagefrom, secondprice, secondcurrency, whoaccepted) FROM stdin;
+57	Contratto ABB	9200	EUR - EURO	To Be Assigned	Legal translation for a big company	GioAgenzia	https://cdn.filestackcontent.com/NQEAXlKRQUOv15n8gLei	luca	test	https://cdn.filestackcontent.com/Pdvr3gcjR5QGWylXYIfQ	https://cdn.filestackcontent.com/3fVUdWTuC50Xh96v6W5w	To Be Assigned	2018-05-02	100	English	1	EUR - EURO	0
+18	prova 31marzo	1	EUR - EURO	Assigned	vorrei che traducessi questo	agenzia	https://cdn.filestackcontent.com/kSce3kgIQy6SmKFTZ5vd	test	luca	https://cdn.filestackcontent.com/MoTytfNWREaJkuqic9Mq	https://cdn.filestackcontent.com/honKidWGRfOURlGuGXPD	To Be Assigned	2018-04-12	1000	English	1	EUR - EURO	1
+56	aaa	179.4	EUR - EURO	Assigned	aa	agenzia	\N	test	luca	https://cdn.filestackcontent.com/iknEvaGQ3yHKLilB9HZy	\N	To Be Assigned	2018-05-03	12	Italian	1	EUR - EURO	1
+17		1	EUR - EURO	To Be Assigned		agenzia	https://cdn.filestackcontent.com/EG5mBCV1QfCetXSI6LPl	luca	test	https://cdn.filestackcontent.com/S5TtYIMaSPy1SeiuHbMk	https://cdn.filestackcontent.com/tGUSfggTnGW0xVmN7CYX	To Be Assigned	2018-02-13	1000	English	1	EUR - EURO	0
+15	engl->ital	1	EUR - EURO	To Be Assigned	pagato da filippo	agenzia	https://cdn.filestackcontent.com/TYrGb9QlS0KuavfQ2sDt	luca	test	https://cdn.filestackcontent.com/kYFKpaOHS3mVGoMCk4lv	https://cdn.filestackcontent.com/VV0V49ZARKSYUIhIq5bw	To Be Assigned	2018-02-12	1000	English	1	EUR - EURO	0
+55	aaa	179.4	EUR - EURO	Assigned	aa	agenzia	https://cdn.filestackcontent.com/sWi2Mb75RGWMhAJKQAD8	test	luca	https://cdn.filestackcontent.com/iknEvaGQ3yHKLilB9HZy	https://cdn.filestackcontent.com/mS7eB5TPR9inOrcf3ZFE	To Be Assigned	2018-05-03	12	Italian	1	EUR - EURO	1
 \.
 
 
 --
--- TOC entry 3100 (class 0 OID 5960183)
--- Dependencies: 197
+-- TOC entry 3111 (class 0 OID 5999618)
+-- Dependencies: 200
 -- Data for Name: ratingtest; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -724,7 +790,7 @@ COPY public.ratingtest (id, language, text_to_translate, topic) FROM stdin;
 101	German	Was geschieht nach dem Ende des siebten und letzten Buchs der Harry-Potter-Serie? Ein Theaterstück erzählt die berühmte Geschichte weiter - nun stehen die drei Hauptdarsteller dazu fest.\\r\\nHarry Potter als Ehemann, Vater von drei schulpflichtigen Kindern und Mitarbeiter im Ministerium für Magie: Im Sommer kommenden Jahres geht die Geschichte um den berühmtesten Zauberlehrling weiter - allerdings nicht auf Buchseiten, sondern als Theaterstück. Nun ist auch klar, wer die Hauptrollen darin übernehmen wird: Jamie Parker wird den erwachsenen Harry spielen, Noma Dumezweni bekam die Rolle der Hermine und Paul Thornley wird als Ron Weasley zu sehen sein.\\r\\n	Culture
 102	Spanish	El pomelo no es un alimento milagro pero, si lo que queremos es perder peso de forma saludable, este cítrico nos ayudará a darnos un poco de impulso en nuestro objeto. Un estudio del Centro de Investigación Scripps (EE.UU.) monitorizó peso y características metabólicas de 91 participantes, tanto masculinos como femeninos, durante 12 semanas. Cada participante fue asignado al azar en distintos grupos. Un grupo recibió cápsulas de placebo junto con zumo de manzana; el segundo grupo, cápsulas de pomelo con zumo de manzana; el tercer grupo, zumo de pomelo y una cápsula de placebo; el último grupo, la mitad de un pomelo fresco y un placebo, tres veces al día antes de cada comida. Los resultados revelaron que el grupo que había tomado pomelo fresco, además de una reducción significativa de los niveles de glucosa, también presentó una mayor pérdida de peso con respecto a los demás participantes.	Health and Sport
 103	Spanish	Un equipo de investigadores de distintas instituciones internacionales ha descubierto que la mayoría de las estrellas alberga en su interior un intenso campo magnético. De hecho, este es hasta diez millones de veces más potente que el de la Tierra en aquellas que son solo un poco más masivas que el Sol. Para determinarlo, estos astrónomos han analizado una muestra de 3.600 gigantes rojas, unos objetos fríos y muy grandes, con una masa de hasta nueve veces la del astro rey, que ya han agotado el hidrógeno en su núcleo. Este podría ser, precisamente, el destino del Sol dentro de 5.000 o 6.000 millones de años.	Science
-104	Spanish	A lo largo de la Historia, siempre surgieron plagas mortíferas como si fuesen un enemigo invisible que se empeñase, periódicamente, en aniquilar a los seres humanos.\\r\\nEn el siglo XIV, no se produjo la primera manifestación de la peste negra, la infección más letal que se conoce. Ya había aparecido antes en el año 542, en Constantinopla y se conoció como Plaga de Justiniano, después se fue reproduciendo en cliclos de ocho o doce años hasta desaparecer por completo en el año 700. Según cifras estimativas, la peste de la Antigüedad se llevó a un total de más de 200 millones de personas.\\r\\n	History 
+104	Spanish	A lo largo de la Historia, siempre surgieron plagas mortíferas como si fuesen un enemigo invisible que se empeñase, periódicamente, en aniquilar a los seres humanos.\\r\\nEn el siglo XIV, no se produjo la primera manifestación de la peste negra, la infección más letal que se conoce. Ya había aparecido antes en el año 542, en Constantinopla y se conoció como Plaga de Justiniano, después se fue reproduciendo en cliclos de ocho o doce años hasta desaparecer por completo en el año 700. Según cifras estimativas, la peste de la Antigüedad se llevó a un total de más de 200 millones de personas.\\r\\n	History
 105	Russian	Тем туристам, кто не намерен ограничиваться знакомством только с историческим центром Стокгольма, предложат аренду велосипедов. В этом случае туристические возможности расширяются несказанно. Можно не только посмотреть практически весь город, но и заглянуть на рынки и в музей.\\r\\nПопулярность в Стокгольме пользуется и водный транспорт. Экскурсии на катере позволяют не только полюбоваться городскими набережными, но и побывать в окрестностях шведской столицы – Ваксхольме, где нашли пристанище любители парусного спорта, и в Фьедерхольмарне, где можно посетить музей виски и заглянуть к стеклодувам.\\r\\n	Culture
 106	Russian	Письма и документы немецких лингвистов и писателей-сказочников Якоба и Вильгельма Гримм стали доступны для свободного просмотра в Интернете. Об этом сообщили представители Университета Касселя. Именно они проделали колоссальную работу над архивом семейства Гримм и выложили в сеть отсканированные копии старинных документов. \\r\\nВ виртуальный архив попали письма не только самих братьев, но и их родственников. Датируется коллекция документов 1698-1949 годами. Оригиналы писем и документов хранятся в Государственном земельном архиве Гессена в Марбурге. Переданы документы семейства общественности были Марко Плоком - правнуком Вильгельма Гримма.\\r\\n	Culture
 107	Russian	К химическим явлениям относят такие явления, при которых одни вещества превращаются в другие. Химические явления называют иначе химическими реакциями. \\r\\nТо, из чего состоят физические тела, то есть окружающие нас предметы, называется веществом. Простое вещество состоит из атомов только одного вида или из молекул, построенных из атомов одного вида. Сложное вещество состоит из молекул, построенных из атомов разных видов.\\r\\nСмесью называется вещество, состоящее из молекул (или атомов) двух или нескольких веществ. Вещества, составляющие смесь, могут быть простыми и сложными.\\r\\n	Science
@@ -747,7 +813,7 @@ COPY public.ratingtest (id, language, text_to_translate, topic) FROM stdin;
 
 
 --
--- TOC entry 3093 (class 0 OID 2995904)
+-- TOC entry 3101 (class 0 OID 2995904)
 -- Dependencies: 190
 -- Data for Name: skilltest; Type: TABLE DATA; Schema: public; Owner: -
 --
@@ -1234,86 +1300,87 @@ COPY public.skilltest (id, language, question, answer1, answer2, answer3, scelta
 
 
 --
--- TOC entry 3089 (class 0 OID 2794053)
+-- TOC entry 3097 (class 0 OID 2794053)
 -- Dependencies: 186
 -- Data for Name: traduttore; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new_message, username, email, vat, citta, cap, provincia, idstato, madrelinguaid, stato) FROM stdin;
-26	Roufina Safiullina	ditta Adamantis	\N	Italian	\N	N	roufina@adamantis.eu	roufina@adamantis.eu	\N	Bologna Area	\N	\N	\N	\N	Italy
-37	Irene Isabel	Dal Conte	\N	Italian	\N	N	idalconte	ire.dalconte@gmail.com	\N	Turin	\N	\N	\N	\N	Italy
-38	Lucrezia	Bertolino	\N	Italian	\N	N	bertolinolucrezia@gmail.com	bertolinolucrezia@gmail.com	\N	Trapani	\N	\N	\N	\N	Italy
-40	Sara	Tancredi	\N	Italian	\N	N	sarahtankr@gmail.com	sarahtankr@gmail.com	\N	Cosenza Area	\N	\N	\N	\N	Italy
-42	Simona	Leggero	\N	Italian	\N	N	translatorsitalian	translatorsitalian@gmail.com	\N	Genoa	\N	\N	\N	\N	Italy
-43	cristina	calin	\N	Italian	\N	N	cristina_1987ro	cristina_1987ro@yahoo.com	\N	Pisa	\N	\N	\N	\N	Italy
-44	Giulia	Piaser	\N	Italian	\N	N	giuliapiaser	giulia.piaser@gmail.com	\N	Treviso	\N	\N	\N	\N	Italy
-45	Maria Chiara	Sbragaglia	\N	Italian	\N	N	mchiarasbragaglia@hotmail.it	mchiarasbragaglia@hotmail.it	\N	Civitavecchia	\N	\N	\N	\N	Italy
-46	Valentina	Ottomano	\N	Italian	\N	N	ValentinaO	valentina.ottomano@gmail.com	\N	Milan	\N	\N	\N	\N	Italy
-47	Valentina	Lambrugo	\N	Italian	\N	N	VL11939	valentina.lambrugo@gmail.com	\N	Giussano	\N	\N	\N	\N	Italy
-49	Anna	Baccenetti	\N	Italian	\N	N	annabaccenetti	anna.baccenetti@gmail.com	\N	Milan	\N	\N	\N	\N	Italy
-12	Luca	Sapone	2017-10-12	Italian	4c3eeb5ba4109d98b0c309f9b13a333e622dd592bc8f5fc0a5a71ebf40b741aa	N	luca	luca.sapone86@gmail.com	\N	Torino	\N	TO	IT	it	\N
-13	Giorgio	Valle	1965-07-08	Italian	9f2c3e310418393bac624106a65cfc1f617af21963dd821bdfe5c6639baec339	N	giorgio	giorgio.valle@hotmail.it	\N	Rivara			IT	it	\N
-53	Delia	Fasano	\N	Italian	\N	N	d.fasano5	fasano.delia@gmail.com	\N	Cava deTirreni	\N	\N	\N	\N	Italy
-56	Edoardo	Fattizzo	\N	Italian	\N	N	AngleRei	anglereikun@msn.com	\N	Firenze	\N	\N	\N	\N	Italy
-25	Rafael	Belomo	\N		\N	N	rbelomo@gmail.com	rbelomo@gmail.com	\N		\N	\N	\N	\N	
-27	Okszána	Szimkovics	\N		\N	N	simkovich0811@gmail.com	simkovich0811@gmail.com	\N		\N	\N	\N	\N	
-28	Zsuzsanna	Kiliti	\N	Hungarian	\N	N	porcica7953@gmail.com	porcica7953@gmail.com	\N	Kiskunhalas	\N	\N	\N	\N	Hungary
-29	Zsofia	Kraus	\N	Hungarian	\N	N	Zsofia Kraus	kraus.harimau@gmail.com	\N	Budapest	\N	\N	\N	\N	Hungary
-30	Claudia	Ramirez	\N	Spanish	\N	N	Claudia	claudiaramirez.m@gmail.com	\N	San Salvador	\N	\N	\N	\N	El Salvador
-31	Jared	Firth	\N	English	\N	N	jaredfirth	translations@jaredfirth.com	\N	Abington	\N	\N	\N	\N	United States
-32	Matheus	Ribeiro	\N	Portuguese	\N	N	TheSirion	matheus_ribeiro@hotmail.com	\N	Niterói	\N	\N	\N	\N	Brazil
-33	Helga	Halász	\N	Hungarian	\N	N	helga83	helga.halasz@gmail.com	\N	Szeged	\N	\N	\N	\N	Hungary
-34	Bibiana	Salazar	\N	Spanish	\N	N	BibianaSalazar	traductorescolombia@gmail.com	\N	Medellín	\N	\N	\N	\N	Colombia
-35	Bekir	Diri	\N	Turkish	\N	N	BekirDiri	diribekir@gmail.com	\N	Fatsa	\N	\N	\N	\N	Turkey
-36	Nadia	Kozin	\N		\N	N	nadia.kozin@c7c.org	nadia.kozin@c7c.org	\N	Istanbul	\N	\N	\N	\N	Turkey
-39	Juan Antonio	Castán Abán	\N	Spanish	\N	N	juanantcastan@gmail.com	juanantcastan@gmail.com	\N	Zaragoza Area	\N	\N	\N	\N	Spain
-41	Gulsah	Tamer Sergio	\N		\N	N	gulsah_tamer@hotmail.com	gulsah_tamer@hotmail.com	\N		\N	\N	\N	\N	
-48	Christina	Argyropoulou	\N	Greek	\N	N	Christi	argyropoulou-ch@hotmail.com	\N	Salonicco	\N	\N	\N	\N	Greece
-50	Mohamed Walid	Romdhane	\N	French	\N	N	walid.romdhane	romdhane.oualid@gmail.com	\N	MSAKEN	\N	\N	\N	\N	Tunisia
-51	Monica	Pasin	\N	Italian	\N	N	MonicaPas	monica.pasin@outlook.com	\N	Leeds	\N	\N	\N	\N	Great Britain
-52	Dalila	Minelli	\N		\N	N	lilyblack90@hotmail.it	lilyblack90@hotmail.it	\N		\N	\N	\N	\N	
-54	Florin	Savu	\N	Romanian	\N	N	savu.florin@gmail.com	savu.florin@gmail.com	\N	Constanta	\N	\N	\N	\N	Romania
-55	mariann	makrai	\N	Hungarian	\N	N	mmakrai@yahoo.com	mmakrai@yahoo.com	\N	Croatia	\N	\N	\N	\N	
-57	Eng. Ipek	Budak	\N		\N	N	santaseta@hotmail.com	santaseta@hotmail.com	\N	Istanbul	\N	\N	\N	\N	Turkey
-62	Seba	Vargas	\N		\N	N	seba.v_sk8@hotmail.com	seba.v_sk8@hotmail.com	\N		\N	\N	\N	\N	
-58	Antonella	Donaggio	\N	Italian	\N	N	Tony1964	elledi.edi@gmail.com	\N	Vigliano Biellese (BI)	\N	\N	\N	\N	Italy
-59	valentina	pandolfi	\N	Italian	\N	N	_valentina	valentina.pando@gmail.com	\N	Pesaro	\N	\N	\N	\N	Italy
-60	Maria Rosaria	Leggieri	\N	Italian	\N	N	mariarosaria_leggieri@yahoo.it	mariarosaria_leggieri@yahoo.it	\N	Foggia Area	\N	\N	\N	\N	Italy
-61	Angelica	Albergo	\N	Italian	\N	N	angelique23@hotmail.it	angelique23@hotmail.it	\N	Bari	\N	\N	\N	\N	Italy
-10	Test	tester	2017-11-22	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	IT	it	\N
-11	Gio	Val	1965-07-08	Italian	bda34b1b4ab8051f454ca1f61f91829e6eb872678284e100e6d549efca0d506d	N	GiorgioTraduttore	giorgio.valle@hotmail.it	\N	\N	\N	\N	IT	it	\N
-63	Sebastián	Vargas	\N	Spanish	\N	N	sebastianvargas92@gmail.com	sebastianvargas92@gmail.com	\N	Mendoza	\N	\N	\N	\N	Argentina
-65	Alla	Kolesnikova	\N	Russian	\N	N	alla.kolesnikova.95@mail.ru	alla.kolesnikova.95@mail.ru	\N	Pyatigorsk	\N	\N	\N	\N	Russian Federation
-67	Rubru	Shrestha	\N	Nepali	\N	N	eespol@yahoo.com	eespol@yahoo.com	\N	Madrid	\N	\N	\N	\N	Spain
-70	Olgica	Andric	\N	Serbian	\N	N	oljafiore@gmail.com	oljafiore@gmail.com	\N	Serbia	\N	\N	\N	\N	Yugoslavia
-76	Peter	Senizza	\N	Slovenian	\N	N	petersenizza	info@petersenizza.eu	\N	Sezana	\N	\N	\N	\N	Slovenia
-64	Viktorija	Simonovik	\N	Italian	\N	N	Viktorija	viki4kaitaly@yahoo.it	\N	Vicenza	\N	\N	\N	\N	Italy
-66	Sonia	Giardini	\N	Italian	\N	N	sonia.giardini@gmail.com	sonia.giardini@gmail.com	\N	Italy	\N	\N	\N	\N	Italy
-68	Camilla	Musso	\N	Italian	\N	N	camilla.musso@gmail.com	camilla.musso@gmail.com	\N	Milano	\N	\N	\N	\N	Italy
-69	Alessandra	Gramignano	\N	Italian	\N	N	quistis25@gmail.com	alessandra.gramignano@gmail.com	\N	Trapani	\N	\N	\N	\N	Italy
-71	simona	caiazzo	\N	Italian	\N	N	simona	scaiazzo@alice.it	\N	civitavecchia	\N	\N	\N	\N	Italy
-72	Beatrice	De Bonis	\N	Italian	\N	N	bdebonis92	bdebonis@hotmail.it	\N	Rome	\N	\N	\N	\N	Italy
-73	Maria Mihaela	Barbieru	\N	Italian	\N	N	mbarbieru@hotmail.com	mbarbieru@hotmail.com	\N	Milan Area	\N	\N	\N	\N	Italy
-74	Gloria	Nobili	\N	Italian	\N	N	gloria_732000@yahoo.it	mglorianobili@gmail.com	\N	Monza and Brianza Area	\N	\N	\N	\N	Italy
-75	Luca	Colangelo	\N	Italian	\N	N	luca.colangelo2287@gmail.com	luca.colangelo2287@gmail.com	\N	Milan Area	\N	\N	\N	\N	Italy
-77	Serena	Genovese	\N	Italian	\N	N	Serena	genovese.serena@gmail.com	\N	Torino	\N	\N	\N	\N	Italy
-78	Adriana Beatriz	Carriero	\N	Italian	\N	N	AdrianaB	adriana.carriero@gmail.com	\N	Montoro	\N	\N	\N	\N	Italy
-79	Rita	Sanfilippo	\N	Italian	\N	N	rita11	rita.sanf91@gmail.com	\N	Palermo	\N	\N	\N	\N	Italy
-80	Patrizia	Dal Zotto	\N	Italian	\N	N	patriziadz@teletu.it	patriziadz@teletu.it	\N	Padova Area	\N	\N	\N	\N	Italy
+COPY public.traduttore (id, nome, cognome, data_nascita, madrelingua, password, has_new_message, username, email, vat, citta, cap, provincia, idstato, madrelinguaid, stato, street, iban, swift) FROM stdin;
+26	Roufina Safiullina	ditta Adamantis	\N	Italian	\N	N	roufina@adamantis.eu	roufina@adamantis.eu	\N	Bologna Area	\N	\N	\N	\N	Italy	\N	\N	\N
+37	Irene Isabel	Dal Conte	\N	Italian	\N	N	idalconte	ire.dalconte@gmail.com	\N	Turin	\N	\N	\N	\N	Italy	\N	\N	\N
+38	Lucrezia	Bertolino	\N	Italian	\N	N	bertolinolucrezia@gmail.com	bertolinolucrezia@gmail.com	\N	Trapani	\N	\N	\N	\N	Italy	\N	\N	\N
+40	Sara	Tancredi	\N	Italian	\N	N	sarahtankr@gmail.com	sarahtankr@gmail.com	\N	Cosenza Area	\N	\N	\N	\N	Italy	\N	\N	\N
+42	Simona	Leggero	\N	Italian	\N	N	translatorsitalian	translatorsitalian@gmail.com	\N	Genoa	\N	\N	\N	\N	Italy	\N	\N	\N
+43	cristina	calin	\N	Italian	\N	N	cristina_1987ro	cristina_1987ro@yahoo.com	\N	Pisa	\N	\N	\N	\N	Italy	\N	\N	\N
+44	Giulia	Piaser	\N	Italian	\N	N	giuliapiaser	giulia.piaser@gmail.com	\N	Treviso	\N	\N	\N	\N	Italy	\N	\N	\N
+45	Maria Chiara	Sbragaglia	\N	Italian	\N	N	mchiarasbragaglia@hotmail.it	mchiarasbragaglia@hotmail.it	\N	Civitavecchia	\N	\N	\N	\N	Italy	\N	\N	\N
+46	Valentina	Ottomano	\N	Italian	\N	N	ValentinaO	valentina.ottomano@gmail.com	\N	Milan	\N	\N	\N	\N	Italy	\N	\N	\N
+47	Valentina	Lambrugo	\N	Italian	\N	N	VL11939	valentina.lambrugo@gmail.com	\N	Giussano	\N	\N	\N	\N	Italy	\N	\N	\N
+49	Anna	Baccenetti	\N	Italian	\N	N	annabaccenetti	anna.baccenetti@gmail.com	\N	Milan	\N	\N	\N	\N	Italy	\N	\N	\N
+12	Luca	Sapone	2017-10-12	Italian	4c3eeb5ba4109d98b0c309f9b13a333e622dd592bc8f5fc0a5a71ebf40b741aa	N	luca	luca.sapone86@gmail.com	\N	Torino	\N	TO	IT	it	\N	\N	\N	\N
+13	Giorgio	Valle	1965-07-08	Italian	9f2c3e310418393bac624106a65cfc1f617af21963dd821bdfe5c6639baec339	N	giorgio	giorgio.valle@hotmail.it	\N	Rivara			IT	it	\N	\N	\N	\N
+53	Delia	Fasano	\N	Italian	\N	N	d.fasano5	fasano.delia@gmail.com	\N	Cava deTirreni	\N	\N	\N	\N	Italy	\N	\N	\N
+56	Edoardo	Fattizzo	\N	Italian	\N	N	AngleRei	anglereikun@msn.com	\N	Firenze	\N	\N	\N	\N	Italy	\N	\N	\N
+25	Rafael	Belomo	\N		\N	N	rbelomo@gmail.com	rbelomo@gmail.com	\N		\N	\N	\N	\N		\N	\N	\N
+27	Okszána	Szimkovics	\N		\N	N	simkovich0811@gmail.com	simkovich0811@gmail.com	\N		\N	\N	\N	\N		\N	\N	\N
+28	Zsuzsanna	Kiliti	\N	Hungarian	\N	N	porcica7953@gmail.com	porcica7953@gmail.com	\N	Kiskunhalas	\N	\N	\N	\N	Hungary	\N	\N	\N
+29	Zsofia	Kraus	\N	Hungarian	\N	N	Zsofia Kraus	kraus.harimau@gmail.com	\N	Budapest	\N	\N	\N	\N	Hungary	\N	\N	\N
+30	Claudia	Ramirez	\N	Spanish	\N	N	Claudia	claudiaramirez.m@gmail.com	\N	San Salvador	\N	\N	\N	\N	El Salvador	\N	\N	\N
+31	Jared	Firth	\N	English	\N	N	jaredfirth	translations@jaredfirth.com	\N	Abington	\N	\N	\N	\N	United States	\N	\N	\N
+32	Matheus	Ribeiro	\N	Portuguese	\N	N	TheSirion	matheus_ribeiro@hotmail.com	\N	Niterói	\N	\N	\N	\N	Brazil	\N	\N	\N
+33	Helga	Halász	\N	Hungarian	\N	N	helga83	helga.halasz@gmail.com	\N	Szeged	\N	\N	\N	\N	Hungary	\N	\N	\N
+34	Bibiana	Salazar	\N	Spanish	\N	N	BibianaSalazar	traductorescolombia@gmail.com	\N	Medellín	\N	\N	\N	\N	Colombia	\N	\N	\N
+35	Bekir	Diri	\N	Turkish	\N	N	BekirDiri	diribekir@gmail.com	\N	Fatsa	\N	\N	\N	\N	Turkey	\N	\N	\N
+36	Nadia	Kozin	\N		\N	N	nadia.kozin@c7c.org	nadia.kozin@c7c.org	\N	Istanbul	\N	\N	\N	\N	Turkey	\N	\N	\N
+39	Juan Antonio	Castán Abán	\N	Spanish	\N	N	juanantcastan@gmail.com	juanantcastan@gmail.com	\N	Zaragoza Area	\N	\N	\N	\N	Spain	\N	\N	\N
+41	Gulsah	Tamer Sergio	\N		\N	N	gulsah_tamer@hotmail.com	gulsah_tamer@hotmail.com	\N		\N	\N	\N	\N		\N	\N	\N
+48	Christina	Argyropoulou	\N	Greek	\N	N	Christi	argyropoulou-ch@hotmail.com	\N	Salonicco	\N	\N	\N	\N	Greece	\N	\N	\N
+50	Mohamed Walid	Romdhane	\N	French	\N	N	walid.romdhane	romdhane.oualid@gmail.com	\N	MSAKEN	\N	\N	\N	\N	Tunisia	\N	\N	\N
+51	Monica	Pasin	\N	Italian	\N	N	MonicaPas	monica.pasin@outlook.com	\N	Leeds	\N	\N	\N	\N	Great Britain	\N	\N	\N
+52	Dalila	Minelli	\N		\N	N	lilyblack90@hotmail.it	lilyblack90@hotmail.it	\N		\N	\N	\N	\N		\N	\N	\N
+54	Florin	Savu	\N	Romanian	\N	N	savu.florin@gmail.com	savu.florin@gmail.com	\N	Constanta	\N	\N	\N	\N	Romania	\N	\N	\N
+55	mariann	makrai	\N	Hungarian	\N	N	mmakrai@yahoo.com	mmakrai@yahoo.com	\N	Croatia	\N	\N	\N	\N		\N	\N	\N
+57	Eng. Ipek	Budak	\N		\N	N	santaseta@hotmail.com	santaseta@hotmail.com	\N	Istanbul	\N	\N	\N	\N	Turkey	\N	\N	\N
+62	Seba	Vargas	\N		\N	N	seba.v_sk8@hotmail.com	seba.v_sk8@hotmail.com	\N		\N	\N	\N	\N		\N	\N	\N
+58	Antonella	Donaggio	\N	Italian	\N	N	Tony1964	elledi.edi@gmail.com	\N	Vigliano Biellese (BI)	\N	\N	\N	\N	Italy	\N	\N	\N
+59	valentina	pandolfi	\N	Italian	\N	N	_valentina	valentina.pando@gmail.com	\N	Pesaro	\N	\N	\N	\N	Italy	\N	\N	\N
+60	Maria Rosaria	Leggieri	\N	Italian	\N	N	mariarosaria_leggieri@yahoo.it	mariarosaria_leggieri@yahoo.it	\N	Foggia Area	\N	\N	\N	\N	Italy	\N	\N	\N
+61	Angelica	Albergo	\N	Italian	\N	N	angelique23@hotmail.it	angelique23@hotmail.it	\N	Bari	\N	\N	\N	\N	Italy	\N	\N	\N
+10	Test	tester	2017-11-22	Italian	1dc90894c15d296867ea77a7cfcc30a96643c23b5d0887a2d05ebbd1540eaefa	N	test	fvalle.glifico@outlook.com	\N	Rivara	10080	TO	IT	it	\N	\N	\N	\N
+11	Gio	Val	1965-07-08	Italian	bda34b1b4ab8051f454ca1f61f91829e6eb872678284e100e6d549efca0d506d	N	GiorgioTraduttore	giorgio.valle@hotmail.it	\N	\N	\N	\N	IT	it	\N	\N	\N	\N
+63	Sebastián	Vargas	\N	Spanish	\N	N	sebastianvargas92@gmail.com	sebastianvargas92@gmail.com	\N	Mendoza	\N	\N	\N	\N	Argentina	\N	\N	\N
+65	Alla	Kolesnikova	\N	Russian	\N	N	alla.kolesnikova.95@mail.ru	alla.kolesnikova.95@mail.ru	\N	Pyatigorsk	\N	\N	\N	\N	Russian Federation	\N	\N	\N
+67	Rubru	Shrestha	\N	Nepali	\N	N	eespol@yahoo.com	eespol@yahoo.com	\N	Madrid	\N	\N	\N	\N	Spain	\N	\N	\N
+70	Olgica	Andric	\N	Serbian	\N	N	oljafiore@gmail.com	oljafiore@gmail.com	\N	Serbia	\N	\N	\N	\N	Yugoslavia	\N	\N	\N
+76	Peter	Senizza	\N	Slovenian	\N	N	petersenizza	info@petersenizza.eu	\N	Sezana	\N	\N	\N	\N	Slovenia	\N	\N	\N
+64	Viktorija	Simonovik	\N	Italian	\N	N	Viktorija	viki4kaitaly@yahoo.it	\N	Vicenza	\N	\N	\N	\N	Italy	\N	\N	\N
+66	Sonia	Giardini	\N	Italian	\N	N	sonia.giardini@gmail.com	sonia.giardini@gmail.com	\N	Italy	\N	\N	\N	\N	Italy	\N	\N	\N
+68	Camilla	Musso	\N	Italian	\N	N	camilla.musso@gmail.com	camilla.musso@gmail.com	\N	Milano	\N	\N	\N	\N	Italy	\N	\N	\N
+69	Alessandra	Gramignano	\N	Italian	\N	N	quistis25@gmail.com	alessandra.gramignano@gmail.com	\N	Trapani	\N	\N	\N	\N	Italy	\N	\N	\N
+71	simona	caiazzo	\N	Italian	\N	N	simona	scaiazzo@alice.it	\N	civitavecchia	\N	\N	\N	\N	Italy	\N	\N	\N
+72	Beatrice	De Bonis	\N	Italian	\N	N	bdebonis92	bdebonis@hotmail.it	\N	Rome	\N	\N	\N	\N	Italy	\N	\N	\N
+73	Maria Mihaela	Barbieru	\N	Italian	\N	N	mbarbieru@hotmail.com	mbarbieru@hotmail.com	\N	Milan Area	\N	\N	\N	\N	Italy	\N	\N	\N
+74	Gloria	Nobili	\N	Italian	\N	N	gloria_732000@yahoo.it	mglorianobili@gmail.com	\N	Monza and Brianza Area	\N	\N	\N	\N	Italy	\N	\N	\N
+75	Luca	Colangelo	\N	Italian	\N	N	luca.colangelo2287@gmail.com	luca.colangelo2287@gmail.com	\N	Milan Area	\N	\N	\N	\N	Italy	\N	\N	\N
+77	Serena	Genovese	\N	Italian	\N	N	Serena	genovese.serena@gmail.com	\N	Torino	\N	\N	\N	\N	Italy	\N	\N	\N
+78	Adriana Beatriz	Carriero	\N	Italian	\N	N	AdrianaB	adriana.carriero@gmail.com	\N	Montoro	\N	\N	\N	\N	Italy	\N	\N	\N
+79	Rita	Sanfilippo	\N	Italian	\N	N	rita11	rita.sanf91@gmail.com	\N	Palermo	\N	\N	\N	\N	Italy	\N	\N	\N
+80	Patrizia	Dal Zotto	\N	Italian	\N	N	patriziadz@teletu.it	patriziadz@teletu.it	\N	Padova Area	\N	\N	\N	\N	Italy	\N	\N	\N
+81	Lucas	Sapones	\N	\N	e53d8b67ae2f3f6725a5c2d0fa640761c2c70a2e9af7dc6713cfd00235f0fef6	N	lucastest	luca.sapone86@gmail.com	undefined	\N	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
 --
--- TOC entry 3119 (class 0 OID 0)
+-- TOC entry 3129 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: agenzia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.agenzia_id_seq', 2, true);
+SELECT pg_catalog.setval('public.agenzia_id_seq', 6, true);
 
 
 --
--- TOC entry 3120 (class 0 OID 0)
+-- TOC entry 3130 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: currencies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -1322,25 +1389,34 @@ SELECT pg_catalog.setval('public.currencies_id_seq', 196, true);
 
 
 --
--- TOC entry 3121 (class 0 OID 0)
--- Dependencies: 198
+-- TOC entry 3131 (class 0 OID 0)
+-- Dependencies: 197
 -- Name: languagerating_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.languagerating_id_seq', 1, false);
+SELECT pg_catalog.setval('public.languagerating_id_seq', 48, true);
 
 
 --
--- TOC entry 3122 (class 0 OID 0)
+-- TOC entry 3132 (class 0 OID 0)
 -- Dependencies: 192
 -- Name: payments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.payments_id_seq', 17, true);
+SELECT pg_catalog.setval('public.payments_id_seq', 57, true);
 
 
 --
--- TOC entry 3123 (class 0 OID 0)
+-- TOC entry 3133 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: ratingtest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.ratingtest_id_seq', 1, false);
+
+
+--
+-- TOC entry 3134 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: skilltest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
@@ -1349,16 +1425,16 @@ SELECT pg_catalog.setval('public.skilltest_id_seq', 1, false);
 
 
 --
--- TOC entry 3124 (class 0 OID 0)
+-- TOC entry 3135 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: traduttore_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.traduttore_id_seq', 80, true);
+SELECT pg_catalog.setval('public.traduttore_id_seq', 81, true);
 
 
 --
--- TOC entry 2958 (class 2606 OID 2967884)
+-- TOC entry 2961 (class 2606 OID 6238070)
 -- Name: agenzia agenzia_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1367,7 +1443,7 @@ ALTER TABLE ONLY public.agenzia
 
 
 --
--- TOC entry 2960 (class 2606 OID 2850712)
+-- TOC entry 2963 (class 2606 OID 6238072)
 -- Name: agenzia agenzia_username_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1376,7 +1452,7 @@ ALTER TABLE ONLY public.agenzia
 
 
 --
--- TOC entry 2964 (class 2606 OID 5964717)
+-- TOC entry 2967 (class 2606 OID 5964717)
 -- Name: languagerating languagerating_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1385,7 +1461,7 @@ ALTER TABLE ONLY public.languagerating
 
 
 --
--- TOC entry 2962 (class 2606 OID 3419745)
+-- TOC entry 2965 (class 2606 OID 3419745)
 -- Name: payments payments_id_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1394,7 +1470,25 @@ ALTER TABLE ONLY public.payments
 
 
 --
--- TOC entry 2954 (class 2606 OID 3751374)
+-- TOC entry 2971 (class 2606 OID 5999626)
+-- Name: ratingtest ratingtest_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ratingtest
+    ADD CONSTRAINT ratingtest_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2969 (class 2606 OID 5999612)
+-- Name: languagerating setunique; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.languagerating
+    ADD CONSTRAINT setunique UNIQUE (id);
+
+
+--
+-- TOC entry 2957 (class 2606 OID 3751374)
 -- Name: traduttore traduttore_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1403,7 +1497,7 @@ ALTER TABLE ONLY public.traduttore
 
 
 --
--- TOC entry 2956 (class 2606 OID 3751376)
+-- TOC entry 2959 (class 2606 OID 3751376)
 -- Name: traduttore traduttore_username_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1412,7 +1506,7 @@ ALTER TABLE ONLY public.traduttore
 
 
 --
--- TOC entry 2969 (class 2606 OID 3770603)
+-- TOC entry 2976 (class 2606 OID 3770603)
 -- Name: language_pair language_pair_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1421,7 +1515,16 @@ ALTER TABLE ONLY public.language_pair
 
 
 --
--- TOC entry 2970 (class 2606 OID 5964718)
+-- TOC entry 2978 (class 2606 OID 5999627)
+-- Name: languagerating languagerating_idtest_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.languagerating
+    ADD CONSTRAINT languagerating_idtest_fkey FOREIGN KEY (idtest) REFERENCES public.ratingtest(id);
+
+
+--
+-- TOC entry 2977 (class 2606 OID 5964718)
 -- Name: languagerating languagerating_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1430,7 +1533,7 @@ ALTER TABLE ONLY public.languagerating
 
 
 --
--- TOC entry 2968 (class 2606 OID 3751387)
+-- TOC entry 2974 (class 2606 OID 3751387)
 -- Name: payments payments_secondtranslator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1439,7 +1542,7 @@ ALTER TABLE ONLY public.payments
 
 
 --
--- TOC entry 2967 (class 2606 OID 3751382)
+-- TOC entry 2973 (class 2606 OID 3751382)
 -- Name: payments payments_translator_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1448,7 +1551,7 @@ ALTER TABLE ONLY public.payments
 
 
 --
--- TOC entry 2966 (class 2606 OID 3419820)
+-- TOC entry 2975 (class 2606 OID 6238073)
 -- Name: payments payments_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1457,7 +1560,7 @@ ALTER TABLE ONLY public.payments
 
 
 --
--- TOC entry 2965 (class 2606 OID 3751377)
+-- TOC entry 2972 (class 2606 OID 3751377)
 -- Name: languages test_username_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1466,7 +1569,7 @@ ALTER TABLE ONLY public.languages
 
 
 --
--- TOC entry 3110 (class 0 OID 0)
+-- TOC entry 3119 (class 0 OID 0)
 -- Dependencies: 7
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: -
 --
@@ -1478,15 +1581,15 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 3112 (class 0 OID 0)
--- Dependencies: 613
+-- TOC entry 3121 (class 0 OID 0)
+-- Dependencies: 615
 -- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: -
 --
 
 GRANT ALL ON LANGUAGE plpgsql TO rxalpunoeboees;
 
 
--- Completed on 2018-03-14 07:34:28 CET
+-- Completed on 2018-08-09 08:01:50 CEST
 
 --
 -- PostgreSQL database dump complete
