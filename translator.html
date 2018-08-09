@@ -393,15 +393,15 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <div class="tab-content">
 <div id="Data" class="tab-pane fade in active">
 <div id="PersonalAppID" data-ng-controller="PersonalAppCtrl as ctrl">
-<form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="infoTradForm" action="/" method="post" data-ng-init="ctrl.init()" novalidate> 
 <div class="input-group">
 <div class="form-group col-md-5">
 <label>First name: </label>
-<input name="fname" class="form-control" type="text" data-ng-model="ctrl.fname" data-ng-load="ctrl.fname" placeholder="first name">
+<input name="fname" class="form-control" type="text" data-ng-model="ctrl.fname" placeholder="first name">
 </div>
 <div class="form-group col-md-5">
 <label>Last name: </label>
-<input name="lname" class="form-control" type="text" data-ng-model="ctrl.lname" data-ng-init="ctrl.fname" placeholder="last name">
+<input name="lname" class="form-control" type="text" data-ng-model="ctrl.lname" placeholder="last name">
 </div>
 </div>
 <div class="input-group">

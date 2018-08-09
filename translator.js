@@ -168,8 +168,8 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 		req.open("GET","getLanguages.php",true);
 		req.send();
 	};
-
-	ctrl.$onInit= function(){
+	
+	ctrl.init = function(){
 		var req=createXHTMLHttpRequest();
 
 		req.onreadystatechange = function(){
@@ -191,6 +191,7 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 				ctrl.phone=ret[0].PhoneReference;
 				ctrl.phone_bil=ret[0].PhoneReferenceBilling;
 				ctrl.email_bil=ret[0].EmailReferenceBilling;
+				return (true);
 			}else{
 				mostraDialogTimed('errorPanel');
 				return(false);
@@ -199,6 +200,10 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 
 		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
 		req.send();	
+	}
+
+	ctrl.$onInit= function(){
+		ctrl.init();
 	}
 	
 	ctrl.isibanvalid =function (){
