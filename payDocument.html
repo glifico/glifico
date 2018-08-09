@@ -387,32 +387,7 @@ Please use the form below to pay translator
 <br><br><br>
 
 {{ctrl.amount}}
-<script src="https://staging.online.satispay.com/button.min.js"
-  id="satispayButton"
-  data-key="dk_gJYxwfxIbFVUZgGOtQNl"
-  data-amount={{ctrl.amount * 100}}
-  data-description="Translation on Glifico"
-  data-usercallback="http://test.glifico.com/satispaycreatecharge.php"
-  data-orderid=getPaymentId()
-  data-callback="satispayCallback"
-></script>
 
-<script>
-var satispayButton = document.getElementById('satispayButton')
-satispayButton.on('load', function() {
-  console.log('load event')
-})
-
-satispayButton.on('close', function() {
-  console.log('close event')
-})
-
-satispayButton.on('completed', function(chargeId) {
-  console.log('payment completed event', chargeId)
-  paymentCompleted();
-})
-
-</script>
 
 
 <br><br>

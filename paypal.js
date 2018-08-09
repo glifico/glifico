@@ -10,6 +10,20 @@ $(document).ready(function () {
 });
 
 
+var satispayButton = document.getElementById('satispayButton')
+satispayButton.on('load', function() {
+  console.log('load event')
+})
+
+satispayButton.on('close', function() {
+  console.log('close event')
+})
+
+satispayButton.on('completed', function(chargeId) {
+  console.log('payment completed event', chargeId)
+  paymentCompleted();
+})
+
 function getPaymentId(){
 	var start=location.href.indexOf("token=",0)+6;
 	var end=location.href.length;
