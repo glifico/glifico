@@ -389,8 +389,8 @@ Please use the form below to pay translator
 <script src="https://staging.online.satispay.com/button.min.js"
   id="satispayButton"
   data-key="dk_gJYxwfxIbFVUZgGOtQNl"
-  data-amount="10"
-  data-description="translation"
+  data-amount="{{ctrl.amount * 100}}"
+  data-description="Translation on Glifico"
   data-usercallback="http://test.glifico.com/satispaycreatecharge.php"
   data-orderid=getPaymentId()
   data-callback="satispayCallback"

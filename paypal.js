@@ -9,6 +9,7 @@ $(document).ready(function () {
 
 });
 
+
 function getPaymentId(){
 	var start=location.href.indexOf("token=",0)+6;
 	var end=location.href.length;
