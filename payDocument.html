@@ -392,7 +392,7 @@ Please use the form below to pay translator
   data-amount=1000
   data-description="Translation on Glifico"
   data-usercallback="http://test.glifico.com/satispaycreatecharge.php"
-  data-orderid=56
+  data-orderid=getOrderId()
   data-callback="satispayCallback"
 ></script>
 
@@ -407,8 +407,8 @@ satispayButton.on('close', function() {
 })
 
 satispayButton.on('completed', function(chargeId) {
-	console.log('payment completed event', chargeId)
-	paymentCompleted();
+	console.log('payment completed', chargeId)
+	location.href='pendingPayments.html'
 })
 </script>
 

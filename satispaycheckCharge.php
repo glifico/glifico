@@ -11,39 +11,30 @@ require(dirname(__FILE__) . $dir. '/lib/Checkout.php');
 require(dirname(__FILE__) . $dir. '/lib/Refund.php');
 require(dirname(__FILE__) . $dir. '/lib/User.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-  $data = json_decode(file_get_contents("php://input"),true);
-}
+$data=$_GET['charge_id'];
 
 if(!$data){
   exit(json_encode(array("message"=>"wrong request","statuscode"=>400)));
 }
 
-$uid=$data['uuid'];
-$oid=$data['orderid'];
-
-$db=getDB();
-if(!$db) exit;
-
-$query="SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
-$result = $db->query($query);
-$row = $result->fetch(PDO::FETCH_ASSOC);
-
 \SatispayOnline\Api::setSecurityBearer('osh_ea7knn45ljmjon41kbq542jdl7112k928aeddpvlb9o76qh0o6kfe2md7fh3taufj8l67kaforua611clg0b9e1ss90tl073b770l6jpmk4gjp0evvbui4rrdn6ggr2kcpj13nqn36ht88mmoqsujk1q02ojbsqai3klf0s7aqsdd195aa8bin4kvr7vc9ta6cvc8fcg');
 \SatispayOnline\Api::setSandbox(true);
+$charge = \SatispayOnline\Charge::get($data);
 
-$charge = \SatispayOnline\Charge::create([
-    'user_id' => $uid,
-    'currency' => substr($row['currency'],0,3),
-    'amount' => $row[price]*100,
-    'callback_url' => 'https://test.glifico.com/satispaycheckCharge.php?charge_id={uuid}&orderid='.$oid,
-    'metadata' => [
-        'orderid' => $oid
-    ]
-]);
+if($charge['status']=="SUCCESS"){
+    $db=getDB();
+    if(!$db) exit;
+    
+    $user=$_GET['user'];
+    $id=$_GET['id'];
+    
+    $query="UPDATE payments SET status='Paid' WHERE id='$id';";
+    $result = $db->query($query);
+    
+    $result->CloseCursor();
+    notifySlack("#payments",$user." paid Glifico".json_encode($charge),":heavy_dollar_sign:");
+    exit(json_encode(array("message"=>"payment updated", "statuscode"=>200)));
+}
 
-notifySlack($data['uuid']);
-
-exit(0);
+exit(json_encode(array("message"=>"wrong payment","statuscode"=>400)));
 ?>
