@@ -1,5 +1,5 @@
 <?php
-include 'fuctions.php';
+include 'functions.php';
 
 $dir="/vendor/satispay/online-api-php-sdk/";
 

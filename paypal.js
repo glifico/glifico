@@ -27,7 +27,7 @@ function paymentCompleted(){
 			var data=JSON.parse(req.responseText);
 			if(data['statuscode']==200){
 				notify("Payment completed");
-				alert("Payment completed :-)");
+				alert("Payment completed $$");
 				location.href="pendingPayments.html";
 			}
 		}else{
@@ -104,7 +104,7 @@ angular.module("payment",[])
 			},
 
 			onCancel: function(data, actions) {
-				alert("Payment doesn't end well :-(");
+				alert("Payment doesn't end well...");
 				location.href=location.href;
 			}
 
