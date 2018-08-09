@@ -416,11 +416,11 @@ echo("
 <script>
 var satispayButton = document.getElementById('satispayButton')
 satispayButton.on('load', function() {
-	console.log('load event')
+	console.log('load satispay button')
 })
 
 satispayButton.on('close', function() {
-	console.log('close event')
+	console.log('close satispay button')
 })
 
 satispayButton.on('completed', function(chargeId) {

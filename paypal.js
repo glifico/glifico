@@ -51,7 +51,7 @@ function checkCharge(chargeId){
 		}
 	}
 
-	req.open('GET','https://staging.authservices.satispay.com/online/v1/charges/'+chargeId,true);
+	req.open('GET','satispayCheckCharge.php?chargeId='+chargeId,true);
 	req.send();
 }
 
