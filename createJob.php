@@ -45,7 +45,7 @@ if (! certTokenA($db, $user, $data['token']))
         "statuscode" => 400
     )));
 
-$query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, currency, secondcurrency, deadline, price, secondprice) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice');";
+$query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, currency, secondcurrency, deadline, price, secondprice, whoaccepted) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0');";
 $result = $db->query($query);
 
 $result->CloseCursor();

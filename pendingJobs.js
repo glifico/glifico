@@ -203,8 +203,8 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			html+='<td class="col-md-2">'+doc.ncharacters+'</td>';
 			html+='<td class="col-md-2">'+doc.deadline+'</td>';
 			if(doc.choice==1) {choiceStr="as first";}
-			else if(doc.choice==1) {choiceStr="as second";}
-			if(doc.status=="To Be accepted"){
+			else if(doc.choice==2) {choiceStr="as second";}
+			if(doc.status=="To Be Accepted"){
 				html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+"To be accepted "+choiceStr+'</td>';
 			}else{
 				html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status+'</td>';
