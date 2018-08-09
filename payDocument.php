@@ -386,16 +386,19 @@ Please use the form below to pay translator
 <div id="paypal-button"></div>
 <br><br><br>
 
-<script src="https://staging.online.satispay.com/button.min.js"
-  id="satispayButton"
-  data-key="dk_gJYxwfxIbFVUZgGOtQNl"
-  data-amount=1000
-  data-description="Translation on Glifico"
-  data-usercallback="http://test.glifico.com/satispaycreatecharge.php"
-  data-orderid=getOrderId()
-  data-callback="satispayCallback"
-></script>
+<?php 
 
+echo('<script src="https://staging.online.satispay.com/button.min.js"');
+echo('id="satispayButton"');
+echo('data-key="dk_gJYxwfxIbFVUZgGOtQNl"');
+echo('data-amount=1000');
+echo('data-description="Translation on Glifico"');
+echo('data-usercallback="http://test.glifico.com/satispaycreatecharge.php"');
+echo('data-orderid=getOrderId()');
+echo('data-callback="satispayCallback"');
+echo('></script>');
+
+echo("
 <script>
 var satispayButton = document.getElementById('satispayButton')
 satispayButton.on('load', function() {
@@ -411,6 +414,12 @@ satispayButton.on('completed', function(chargeId) {
 	location.href='pendingPayments.html'
 })
 </script>
+");
+?>
+
+
+
+
 
 <br><br>
 <button onclick="location.href='pendingPayments.html'" class="btn btn-primary" type="button">Return to <br>the job's page</button>

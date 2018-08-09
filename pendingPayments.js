@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 newPayment=function(id){
-	location.href='payDocument.html'+'?token='+id;
+	location.href='payDocument.php'+'?token='+id;
 }
 
 approveJob=function(id){
