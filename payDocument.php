@@ -377,8 +377,8 @@ Please use the form below to pay translator
 </div>
 </div>
 <div id="styledbody" style="text-align:center;">
-<div style="width:80%;display: table;margin: 0 auto;">
-<div id="payment" class="glifico-info" ng-controller="paymentController as ctrl">
+<div class="glifico-info" style="width:80%;display: table;margin: 0 auto;">
+<div id="payment" ng-controller="paymentController as ctrl">
 <span id="message"></span>
 
 <!-- paypal button-->
@@ -397,7 +397,7 @@ if(!$db) exit;
 $query="SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
-$price=$row['price'];
+$price=float($row['price'])*100;
 $result->CloseCursor();
 
 
