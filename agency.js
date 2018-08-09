@@ -62,6 +62,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 						$('#alertError').html(ret[0].data.msg);
 					}
 				} else {
+					ctrl.LoadCountries();
 					ctrl.companyname=ret[0].CompanyName;
 					ctrl.vat=ret[0].VATCode;
 					ctrl.street=ret[0].Street;
