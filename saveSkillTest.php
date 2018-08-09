@@ -53,6 +53,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 $oldscore=$row['skilltest'];
 $newscore=$score;
 $score=intval(($newscore+$oldscore)/2);
+if($score>5) $score =5;
 
 updateTest($db,$user,$language,$newscore);
 

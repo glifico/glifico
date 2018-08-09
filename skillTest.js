@@ -21,6 +21,22 @@ $(document).ready( function() {
 	result();
 });
 
+
+getPriceDollars=function(price){
+	var html="";
+	html+='<div class="price">';
+	html+='<span class="money '+(price>=1?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+	html+='<span class="money '+(price>=2?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+	html+='<span class="money '+(price>=3?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+	html+='<span class="money '+(price>=4?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="4"></i></span>';
+	html+='<span class="money '+(price>=5?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="5"></i></span>';
+	html+='</div>';
+	return html;
+}
+
+
+
+
 function init() {
 
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
@@ -112,14 +128,9 @@ function result(){
 			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
 				+ lang
 				+ '</b> </td>'
-				if (data[i].TotTest == null ||data[i].TotTest <1) {
+				if (data[i].TotTest == null) {
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">Not done yet</td>'
 						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
-						if(data[i].TotTest==0){
-							html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"><img src=images/00.png style="max-width:100px" />'+ '</td>'
-						}else{
-							html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'+ '</td>'
-						}
 				} else {
 					var data1 = data[i].DataTest
 					data1 = data1.replace("T"," ")
@@ -127,14 +138,9 @@ function result(){
 					data1 = data1.substring(0,data1.length-3)
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>'
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="#008000"> <b>Done </b></font>' + '</td>'
-					var totString = (data[i].TotTest + "")
-					if(totString.lenght = 1){
-						totString = totString + '0';
-					}
 					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'
-						+ '<font color="blue"><b><img src=images/'
-						+ totString.replace(".", "")
-						+ '.png style="max-width:100px" />'
+						+ '<font color="blue"><b>'
+						+ getPriceDollars(data[i].TotTest)
 						+ '</b></font>' + '</td>'
 				}
 
