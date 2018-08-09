@@ -6,8 +6,16 @@
 <title>Glifico</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!--
+needed by popover
+-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.js" ></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="js/jquery.cookiebar.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
@@ -31,7 +39,6 @@
 <script src="angularjs/angular-messages.min.js"></script>
 <script src="angularjs/ui-bootstrap-tpls.js"></script>
 <script src="angularjs/ng-upload.js"></script>
-
 <script src="angularjs/ui-grid.min.js"></script>
 
 <script type="text/javascript" src="functions.js"></script>
@@ -50,7 +57,6 @@
 <script src="search.js"></script>
 <link rel="stylesheet" type="text/css" href="search.css">
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.cookiebar.css">
@@ -75,49 +81,9 @@
 </head>
 <body onload="onLoad()">
 
-
-	<!-- custom templates -->
-    <script type="text/ng-template" id="ui-select-single.html">
-      <ui-select data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
-        <ui-select-match placeholder="{{to.placeholder}}" data-allow-clear="true">{{$select.selected}}</ui-select-match>
-        <ui-select-choices data-repeat="option as option in to.options | filter: $select.search">
-          <div ng-bind-html="option | highlight: $select.search"></div>
-        </ui-select-choices>
-      </ui-select>
-    </script>
-    <script type="text/ng-template" id="ui-select-multiple.html">
-      <ui-select multiple data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap">
-        <ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
-        <ui-select-choices data-repeat="option as option in to.options | filter: $select.search">
-          <div ng-bind-html="option | highlight: $select.search"></div>
-        </ui-select-choices>
-      </ui-select>
-    </script>
-	<script type="text/ng-template" id="ui-tagging.html">
-		<ui-select multiple tagging="tagTransform" tagging-label="(nuovo)" data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap" sortable="true">
-		<ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
-		<ui-select-choices data-repeat="option in to.options | filter: $select.search">
-          <div ng-bind-html="option | highlight: $select.search"></div>
-        </ui-select-choices>
-		</ui-select>
-	</script>
-	<script type="text/ng-template" id="ui-tagging-single.html">
-		<ui-select tagging tagging-label="(nuovo)" data-ng-model="model[options.key]" data-required="{{to.required}}" data-disabled="{{to.disabled}}" theme="bootstrap" sortable="true">
-		<ui-select-match placeholder="{{to.placeholder}}">{{$item}}</ui-select-match>
-		<ui-select-choices data-repeat="option in to.options | filter: $select.search">
-		<div ng-bind-html="option | highlight: $select.search"></div>
-        </ui-select-choices>
-		</ui-select>
-	</script>
-
-
-<script>
-  var sysIsLogged=false;
-  var sysUsername='Anonymous';
-  var isLogged = false;
-  var isAgenzia = null;
-</script>
-
+<?php
+include "templates/templates.php";
+?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
@@ -142,9 +108,12 @@
 <li><a href="contacts.html">Contacts</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-<li id="li-rating"><a href="socialRating.html">Rating</a></li>
-<li id="li-trad"><a href="socialTrad.html">Trad</a></li>
-<li id="li-skill"><a href="skillTest.html">Skill Test</a></li>
+<li id="li-jobs" style="display:none;"><a href="pendingJobs.html">Jobs</a></li>
+<li id="li-rating" style="display:none;"><a href="socialRating.html">Rating</a></li>
+<li id="li-trad" style="display:none;"><a href="socialTrad.html">Trad</a></li>
+<li id="li-skill" style="display:none;"><a href="skillTest.html">Skill Test</a></li>
+<li id="li-pay" style="display:none;"><a href="pendingPayments.html">Jobs</a></li>
+<li id="li-search" style="display:none;"><a href="search.html">Search Job</a></li>
 <li class="dropdown-grid" style="position: static;">
 <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()">
 <span class="reverse">
@@ -157,7 +126,7 @@
 </li>
 
 <li class="dropdown">
-<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown">
+<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
 <span class="reverse">
 <div id="loginController" ng-controller="loginController as ctrl">
 <span><p id="usernameTab">{{ctrl.username}}</p></span>
@@ -166,7 +135,8 @@
 </a>
 
 <ul class="dropdown-menu">
-    <li><a onclick="logout()">logout</a></li>
+ 	<li><a onclick="personalArea()">Personal page</a></li>
+    <li><a onclick="logout()">Logout</a></li>
   </ul>
 </li>
 
@@ -186,11 +156,10 @@
 <div class="modal-body">
 <ul class="nav nav-tabs">
 <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
-<li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li>
-<!--<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li> -->
+<li><a data-toggle="tab" href="#register">Register a new account</a></li>
 </ul>
-</div>
-<div class="tab-content"><div class="tab-pane fade in active" id="login">
+<div class="tab-content">
+<div class="tab-pane fade in active" id="login">
 <form class="form-horizontal">
 
 <fieldset>
@@ -218,47 +187,176 @@
 <button IsDefault="false" class="btn btn-success" id="button1id" name="button1id" onClick="doDominoLogin()" type="button">Login</button>
 </div>
 </div>
+<div class="form-group">
+<div class="col-md-8" style="padding-left:50px;">
+<p><a href="resetPassword.html">Forgot password?</a></p>
+</div>
+</div>
 </fieldset>
-
 </form>
-
-</div>
-<div class="tab-pane fade" id="regTrad">
-<div id="regTradAPP" data-ng-controller="MainController_regTrad as vmMainController_regTrad">
-    <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
-        <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
-            <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
-        </formly-form>
-    </form>
 </div>
 
 
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
-</div><div class="tab-pane fade" id="regAg">
-<div id="regAgeAPP" data-ng-controller="MainController_regAge as vmMainController_regAge">
-    <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
-        <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
-            <md-button type="submit" ng-click="vmMainController_regAge.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regAge.form.$invalid">Register!</md-button>
-        </formly-form>
-    </form>
+<div class="tab-pane fade" id="register">
+<div style="width: 90%; margin: auto; padding-bottom: 5em; padding-top: 1em; padding-left: 2em;">
+<h3>What type of account do you want?</h3>
+<span style="width:40%; margin:auto; float: left; font-size: 20px">
+<button class="btn btn-primary" style="font-size: 20px;" onclick="showRegTrad()"><i class="fa fa-user"></i> Translator</button>
+</span>
+<span style="width:40%; margin:auto; float: right;">
+<button class="btn btn-primary" style="font-size: 20px;" onclick="showRegAge()"><i class="fa fa-building"></i> Agency</button>
+</span>
+</div>
+
+<div id="regAge" class="modal-agency" hidden="true">
+<div id="regAgeForm" data-ng-controller="regAgecontroller as ctrl">
+<div>
+<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate> 
+<div class="input-group">
+<div class="form-group col-md-8">
+<label>Company Name: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.companyname" placeholder="name">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Username: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regAgeForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Email: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regAgeForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-7">
+<label for="password">Password: </label>
+<input name="passwordfield" class="form-control" type="password" data-ng-model="ctrl.password" placeholder="Must be at least 7 characters">
+<div data-ng-show="regAgeForm.passwordfield.$touched">
+<div class="invalid-feedback" id="passwordcheck" data-ng-show="!ctrl.ispasswordvalid()">
+Password must have at least 7 characters!
+</div>
+</div>
+</div>
+<div class="form-group col-md-5">
+<label>Repeat password: </label>
+<input name="repeatpasswordfield" class="form-control" type="password" data-ng-model="ctrl.reppassword" placeholder="Retype password">
+<div ng-show="regAgeForm.repeatpasswordfield.$touched">
+<div class="invalid-feedback" id="matchcheck" data-ng-show="ctrl.passwordmatch()">Password must match!</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<span id="captchaAge"></span>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-10">
+<label><input type="checkbox" data-ng-model="ctrl.tec">I accept <a href="terms.html" target="_Blank">terms and conditions <i class="fa fa-external-link"></i></a></label>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-8">
+<button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="ctrl.invalidForm()">Register!</button>
+</div>
+</div>
+</form>
+</div>
+ 
+</div>
+</div>
+
+<div id="regTrad" class="modal-translator" hidden="true">
+<div id="regTradForm" data-ng-controller="regTradcontroller as ctrl">
+<div>
+<form class="needs-validation" name="regTradForm" action="/" method="post" novalidate> 
+<div class="input-group">
+<div class="form-group col-md-5">
+<label>Name: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.name" placeholder="name">
+</div>
+<div class="form-group col-md-5">
+<label>Surname: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.surname" placeholder="surname">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Username: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regTradForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Email: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regTradForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-7">
+<label for="password">Password: </label>
+<input name="passwordfield" class="form-control" type="password" data-ng-model="ctrl.password" placeholder="Must be at least 7 characters">
+<div data-ng-show="regTradForm.passwordfield.$touched">
+<div class="invalid-feedback" id="passwordcheck" data-ng-show="!ctrl.ispasswordvalid()">
+Password must have at least 7 characters!
+</div>
+</div>
+</div>
+<div class="form-group col-md-5">
+<label>Repeat password: </label>
+<input name="repeatpasswordfield" class="form-control" type="password" data-ng-model="ctrl.reppassword" placeholder="Retype password">
+<div ng-show="regTradForm.repeatpasswordfield.$touched">
+<div class="invalid-feedback" id="matchcheck" data-ng-show="ctrl.passwordmatch()">Password must match!</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<span id="captchaTrad"></span>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-10">
+<label><input type="checkbox" data-ng-model="ctrl.tec">I accept <a href="terms.html" target="_Blank">terms and conditions <i class="fa fa-external-link"></i></a></label>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-8">
+<button type="button" data-ng-click="ctrl.submit()" class="btn btn-primary" ng-disabled="ctrl.invalidForm()">Register!</button>
+</div>
+</div>
+</form>
+</div>
+ 
+</div>
+ 
+
+</div>
 </div>
 
 
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
 </div>
 </div>
-</div>
-
 <div class="modal-footer">
 <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+</div>
 </div>
 </div>
 </div>
@@ -270,8 +368,6 @@ md-input-container{
 <div class="alert alert-success" id="alertOK" style="display:none;position: fixed;top: 60px;left: 0;width: 100%;z-index:9999;">
 <a class="close" data-dismiss="alert" href="#">&nbsp;</a>
 </div>
-
-
 
 <!--
 
@@ -293,7 +389,8 @@ Select translator and upload a job
 <form name="searchForm" action="/" method="post">
 <table class="table table-responsive">
 <tr class="row">
-<td class="col-md-3"><div id="formleft"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
+<td class="col-md-2"><div id="formfrom"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
+<td class="col-md-2"><div id="formto"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
 <td class="col-md-3"><div id="formcenter"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></div></td>
 <td class="col-md-3">
 <div id="formRating">
@@ -317,26 +414,25 @@ Price class:<br>
 </div>
 </div>
 </td>
+<td class="col-md-2" style="vertical-align: middle;">
+<input type="button" class="btn btn-primary" value="search" data-ng-click="ctrl.search()">
+</td>
 </tr>
 </table>
 <br>
-<div style="width:100%;margin:auto;">
-<br>
-<input type="button" class="btn btn-primary" value="search" data-ng-click="ctrl.search()">
-</div>
 </form>
 <br>
 <br>
 <div style="width:95%;margin:auto;">
 <div id="selectedtable" style="width:80%;margin:auto;">
 <table class="table table-responsive">
-<thead class="thead-default"><tr class="row"><th class="col-md-3" style="text-align:center;"></th><th class="col-md-3" style="text-align:center;">Price/ch [Euro]</th><th class="col-md-3" style="text-align:center;">Total</th><th class="col-md-2"></th></tr></thead>
-<tr class="row" id="selectedRow1" style="background-color:#FEC538"><td class="col-md-3" id="">First Translator: <span id="selectedName1"></span></td><td class="col-md-3"><span id="selectedPrice1"></span></td><td class="col-md-3"><span id="selectedTotal1"></span></td><td><a data-ng-click="ctrl.deselect(1)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
-<tr class="row" id="selectedRow2" style="background-color:#FE434D"><td class="col-md-3">Second Translator: <span id="selectedName2"></span></td><td class="col-md-3"><span id="selectedPrice2"></span></td><td class="col-md-3"><span id="selectedTotal2"></span></td><td><a data-ng-click="ctrl.deselect(2)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
+<thead class="thead-default"><tr class="row"><th class="col-md-3" style="text-align:center;"></th><th class="col-md-3" style="text-align:center;">Price/ch [Euro]</th><th class="col-md-2"></th></tr></thead>
+<tr class="row" id="selectedRow1" ><td class="col-md-3" id=""><a style="color:#FEC538; font-weight: bold;">1</a> First Translator: <span id="selectedName1"></span></td><td class="col-md-3"><span id="selectedPrice1"></span></td><td><a data-ng-click="ctrl.deselect(1)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
+<tr class="row" id="selectedRow2" ><td class="col-md-3"><a style="color:#FE434D; font-weight: bold;">2</a> Second Translator: <span id="selectedName2"></span></td><td class="col-md-3"><span id="selectedPrice2"></span></td><td><a data-ng-click="ctrl.deselect(2)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
 </table>
 
 <div id="fieasibility">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TrModal" >Define job and calculate totals</button>
+<button type="button" class="btn btn-primary" data-ng-click="ctrl.openModal()" >Define job and calculate totals</button>
 </div>
 </div>
 
@@ -357,15 +453,27 @@ Price class:<br>
       </div>
       <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
       <div id="modalBodySelect">
-        Number of characters: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
-        Deadline: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />
+        Number of <b>characters</b>: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
+       <br>
+        Number of <b>words</b>: {{ctrl.TrCharacters / 6 | number:1}} (word = 6 characters)
+       <br>
+        Number of <b>pages</b>: {{ctrl.TrCharacters / 1500 | number:1}} (page = 1500 characters)
         <br>
-        Days until deadline: {{ctrl.days | number:0}}<br>
-        Available volume: {{ctrl.UrgCh}} characters<br>
-        Max available volume: {{ctrl.MaxCh}} characters<br>
-        Total translator 1: {{ctrl.TrCharacters * ctrl.getAgPrice(1) | number:2}} Euro <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = {{ctrl.TrCharacters * (ctrl.getAgPrice(1)*105./100) | number:2 }} Euro</span><br>
-        <div data-ng-show="ctrl.isSelected(2)">Total translator 2: {{ctrl.TrCharacters * ctrl.getAgPrice(2) | number:2}} Euro <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = {{ctrl.TrCharacters * (ctrl.getAgPrice(2)*105./100) | number:2}} Euro</span></div><br>
+        <span>
+        <b>Deadline</b>: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />
+        </span>
+        <br>
+        <b>Days</b> until deadline: {{ctrl.days | number:0}}<br>
+        <div id="modal-volume">
+        <b>Available</b> volume: {{ctrl.UrgCh}} characters<br>
+        <b>Max available</b> volume: {{ctrl.MaxCh}} characters<br>
+        </div>
+        <br><br>
+        <div id="modal-translators">
+        Total translator 1: <b>{{ctrl.TrCharacters * ctrl.getAgPrice(1) | number:2}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(1)*105./100) | number:2 }} Euro</b></span><br>
+        <div data-ng-show="ctrl.isSelected(2)"><b>Total translator 2: {{ctrl.TrCharacters * ctrl.getAgPrice(2) | number:2}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(2)*105./100) | number:2}} Euro</b></span></div><br>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};font-size:18px;"></span>
+        </div>
         <br>
         </div>
 
@@ -373,10 +481,10 @@ Price class:<br>
         <div id="modalBodyUpload">
         You have selected translators, now fill some informations about your job and upload the document to translate<br>
         Title: <input type="text" placeholder="job's title" data-ng-model="ctrl.jobTitle" ><br>
-        Description: <input type="text" placeholder="brief job's description" data-ng-model="ctrl.jobDescription" ><br>
+        Description and notes about this document:<br><textarea  placeholder="brief job's description" rows = "3" data-ng-model="ctrl.jobDescription" ></textarea><br><br>
         Upload the document to translate: <span id="spanUpload"><input type="button" class="btn btn-primary btn-sm btn-upload" data-ng-click="ctrl.showPicker()" value="Upload document"></span>
 		<br><br>
-			Depending on your choices and prices translator will have up to 5h to accept or decline your request. <br>
+			Depending on your choices and prices translator can accept or decline your request. <br>
 			The job will start when translator had verified feasibility (# of characters, deadline..).
 			Once submitted you will find informations about this and other jobs on <a href="pendingPayments.html" target="_Blank">job's page</a>
         <div class="checkbox">
@@ -384,9 +492,10 @@ Price class:<br>
 		</div>
         <div id="accepturgency" data-ng-show="ctrl.feasibility==1">
          <div class="checkbox">
-  		<label><input type="checkbox" data-ng-model="ctrl.pricesAccepted">I accept that this job is urgent and prices will be increased.</label>
+  		<label><input type="checkbox" data-ng-model="ctrl.pricesAccepted">I accept that this job is urgent so prices were increased as shown.</label>
 		</div>
 		</div>
+		
         </div>
 
 
@@ -394,7 +503,7 @@ Price class:<br>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-ng-Disabled="ctrl.feasibility>=2" data-ng-show="!ctrl.processSelected" data-ng-click="ctrl.startJob()">Start job</button>
         <button type="button" class="btn btn-primary" data-ng-Disabled="!((ctrl.feasibility!=1&&ctrl.conditionsAccepted)||(ctrl.feasibility==1&&ctrl.pricesAccepted&&ctrl.conditionsAccepted))" data-ng-show="ctrl.processSelected" data-ng-click="ctrl.submitJob()">Sumbit job</button>
-        <button type="button" class="btn btn-secondary" data-ng-click="ctrl.closeModal()">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-ng-click="ctrl.closeModal()">Close</button>
       </div>
     </div>
   </div>
@@ -403,7 +512,6 @@ Price class:<br>
 
 </div>
 </div>
-
 
 
 <script>
@@ -418,6 +526,9 @@ $('#TrModal').on('show.bs.modal', function (event) {
 	})
 </script>
 
+<script>
+shouldBeAgency();
+</script>
 
 <div ng-app="glifico">
  <glificofooter></glificofooter>

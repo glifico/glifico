@@ -54,9 +54,7 @@
 
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.component.js"></script>
-
 <script src="app/login.controller.js"></script>
-
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -86,6 +84,10 @@
 <body onload="onLoad()">
 
 
+<?php
+include "templates/templates.php";
+?>
+
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 <div class="navbar-header">
@@ -109,12 +111,12 @@
 <li><a href="contacts.html">Contacts</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-<li id="li-jobs"><a href="pendingJobs.html">Jobs</a></li>
-<li id="li-rating"><a href="socialRating.html">Rating</a></li>
-<li id="li-trad"><a href="socialTrad.html">Trad</a></li>
-<li id="li-skill"><a href="skillTest.html">Skill Test</a></li>
-<li id="li-pay"><a href="pendingPayments.html">Jobs</a></li>
-<li id="li-search"><a href="search.html">Search Job</a></li>
+<li id="li-jobs" style="display:none;"><a href="pendingJobs.html">Jobs</a></li>
+<li id="li-rating" style="display:none;"><a href="socialRating.html">Rating</a></li>
+<li id="li-trad" style="display:none;"><a href="socialTrad.html">Trad</a></li>
+<li id="li-skill" style="display:none;"><a href="skillTest.html">Skill Test</a></li>
+<li id="li-pay" style="display:none;"><a href="pendingPayments.html">Jobs</a></li>
+<li id="li-search" style="display:none;"><a href="search.html">Search Job</a></li>
 <li class="dropdown-grid" style="position: static;">
 <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()">
 <span class="reverse">
@@ -158,11 +160,10 @@
 <div class="modal-body">
 <ul class="nav nav-tabs">
 <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
-<li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li>
-<!--<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li> -->
+<li><a data-toggle="tab" href="#register">Register a new account</a></li>
 </ul>
-</div>
-<div class="tab-content"><div class="tab-pane fade in active" id="login">
+<div class="tab-content">
+<div class="tab-pane fade in active" id="login">
 <form class="form-horizontal">
 
 <fieldset>
@@ -196,61 +197,170 @@
 </div>
 </div>
 </fieldset>
-
 </form>
-
-</div>
-<div class="tab-pane fade" id="regTrad">
-<div id="regTradAPP" data-ng-controller="MainController_regTrad as vmMainController_regTrad">
-    <form ng-submit="vmMainController_regTrad.onSubmit()" name="vmMainController_regTrad.form" novalidate>
-        <formly-form model="vmMainController_regTrad.model" fields="vmMainController_regTrad.fields" options="vmMainController_regTrad.options" form="vmMainController_regTrad.form">
-           <div style="width:80%;margin:auto;">
-           <div id="captchaTrad"></div>
-           </div>
-           <div style="taxt-align:centered;padding-left:2rem;padding-top:8px;">
-           Clicking on Register you declare to have read and accepted <a href="terms.html" target="_Blank">Glifico Terms and Conditions<i class="fa fa-external-link" aria-hidden="true"></i></a>
-           </div>
-            <md-button type="submit" ng-click="vmMainController_regTrad.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regTrad.form.$invalid">Register!</md-button>
-        </formly-form>
-    </form>
 </div>
 
 
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
-</div>
-<div class="tab-pane fade" id="regAg">
-<div id="regAgeAPP" data-ng-controller="MainController_regAge as vmMainController_regAge">
-    <form ng-submit="vmMainController_regAge.onSubmit()" name="vmMainController_regAge.form" novalidate>
-        <formly-form model="vmMainController_regAge.model" fields="vmMainController_regAge.fields" options="vmMainController_regAge.options" form="vmMainController_regAge.form">
-         <div style="width:80%;margin:auto;">
-          <div id="captchaAge"></div>
-        </div>
-            <div style="taxt-align:centered;padding-left:2rem;padding-top:10px;">
-           Clicking on Register you declare to have read and accepted <a href="terms.html" target="_Blank">Glifico Terms and Conditions<i class="fa fa-external-link" aria-hidden="true"></i></a>
-           </div>
-            <md-button type="submit" ng-click="vmMainController_regAge.submit()" class="md-raised md-primary" ng-disabled="vmMainController_regAge.form.$invalid">Register!</md-button>
-        </formly-form>
-    </form>
-
+<div class="tab-pane fade" id="register">
+<div style="width: 90%; margin: auto; padding-bottom: 5em; padding-top: 1em; padding-left: 2em;">
+<h3>What type of account do you want?</h3>
+<span style="width:40%; margin:auto; float: left; font-size: 20px">
+<button class="btn btn-primary" style="font-size: 20px;" onclick="showRegTrad()"><i class="fa fa-user"></i> Translator</button>
+</span>
+<span style="width:40%; margin:auto; float: right;">
+<button class="btn btn-primary" style="font-size: 20px;" onclick="showRegAge()"><i class="fa fa-building"></i> Agency</button>
+</span>
 </div>
 
-
-
-<style>
-md-input-container{
-	width:100%;
-}
-</style>
+<div id="regAge" class="modal-agency" hidden="true">
+<div id="regAgeForm" data-ng-controller="regAgecontroller as ctrl">
+<div>
+<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate> 
+<div class="input-group">
+<div class="form-group col-md-8">
+<label>Company Name: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.companyname" placeholder="name">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Username: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regAgeForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
 </div>
 </div>
 </div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Email: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regAgeForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-7">
+<label for="password">Password: </label>
+<input name="passwordfield" class="form-control" type="password" data-ng-model="ctrl.password" placeholder="Must be at least 7 characters">
+<div data-ng-show="regAgeForm.passwordfield.$touched">
+<div class="invalid-feedback" id="passwordcheck" data-ng-show="!ctrl.ispasswordvalid()">
+Password must have at least 7 characters!
+</div>
+</div>
+</div>
+<div class="form-group col-md-5">
+<label>Repeat password: </label>
+<input name="repeatpasswordfield" class="form-control" type="password" data-ng-model="ctrl.reppassword" placeholder="Retype password">
+<div ng-show="regAgeForm.repeatpasswordfield.$touched">
+<div class="invalid-feedback" id="matchcheck" data-ng-show="ctrl.passwordmatch()">Password must match!</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<span id="captchaAge"></span>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-10">
+<label><input type="checkbox" data-ng-model="ctrl.tec">I accept <a href="terms.html" target="_Blank">terms and conditions <i class="fa fa-external-link"></i></a></label>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-8">
+<button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="ctrl.invalidForm()">Register!</button>
+</div>
+</div>
+</form>
+</div>
+ 
+</div>
+</div>
 
+<div id="regTrad" class="modal-translator" hidden="true">
+<div id="regTradForm" data-ng-controller="regTradcontroller as ctrl">
+<div>
+<form class="needs-validation" name="regTradForm" action="/" method="post" novalidate> 
+<div class="input-group">
+<div class="form-group col-md-5">
+<label>Name: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.name" placeholder="name">
+</div>
+<div class="form-group col-md-5">
+<label>Surname: </label>
+<input class="form-control" type="text" data-ng-model="ctrl.surname" placeholder="surname">
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Username: </label>
+<input name="username" class="form-control" type="text" data-ng-model="ctrl.username" placeholder="username">
+<div data-ng-show="regTradForm.username.$touched">
+<div class="invalid-feedback" id="usercheck" data-ng-show="!ctrl.isuservalid()">Username must have al least 7 characters!
+</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-10">
+<label>Email: </label>
+<input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="email">
+<div data-ng-show="regTradForm.emailfield.$touched">
+<div class="invalid-feedback" id="emailcheck" data-ng-show="!ctrl.isemailvalid()">This email address seems not valid</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-7">
+<label for="password">Password: </label>
+<input name="passwordfield" class="form-control" type="password" data-ng-model="ctrl.password" placeholder="Must be at least 7 characters">
+<div data-ng-show="regTradForm.passwordfield.$touched">
+<div class="invalid-feedback" id="passwordcheck" data-ng-show="!ctrl.ispasswordvalid()">
+Password must have at least 7 characters!
+</div>
+</div>
+</div>
+<div class="form-group col-md-5">
+<label>Repeat password: </label>
+<input name="repeatpasswordfield" class="form-control" type="password" data-ng-model="ctrl.reppassword" placeholder="Retype password">
+<div ng-show="regTradForm.repeatpasswordfield.$touched">
+<div class="invalid-feedback" id="matchcheck" data-ng-show="ctrl.passwordmatch()">Password must match!</div>
+</div>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group col-md-5">
+<span id="captchaTrad"></span>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-10">
+<label><input type="checkbox" data-ng-model="ctrl.tec">I accept <a href="terms.html" target="_Blank">terms and conditions <i class="fa fa-external-link"></i></a></label>
+</div>
+</div>
+<div class="input-group">
+<div class="form-group form-check col-md-8">
+<button type="button" data-ng-click="ctrl.submit()" class="btn btn-primary" ng-disabled="ctrl.invalidForm()">Register!</button>
+</div>
+</div>
+</form>
+</div>
+ 
+</div>
+ 
+
+</div>
+</div>
+
+
+</div>
+</div>
 <div class="modal-footer">
 <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+</div>
 </div>
 </div>
 </div>
@@ -321,7 +431,7 @@ $(document).ready(function(){
 <div class="row" style="margin-left:10px; margin-right:10px;">
 <div class="col-md-4" style="border-right:solid 1px;">
 <div class="icon-box"><i class="fa fa-info fa-4x"></i></div>
-<h5>About Glifico</h5>
+<h5>About Glifico</h5>      
 <div class="text-justify">
 Glifico is a platform that allows translation agencies to contact translators and
 interpreters from all the world and translate documents into any languages.</div>
@@ -333,15 +443,7 @@ interpreters from all the world and translate documents into any languages.</div
  and feedback.</div>
  </div>
  </div>
- <div class="row" style="margin-left:10px; margin-right:10px;">
- <div class="col-md-12">
- <h2>Policy &amp; Privacy</h2>
- </div>
- </div>
- <div class="row" style="margin-left:10px; margin-right:10px;">
- <div class="col-md-12">
- </div>
- </div>
+
  </div>
 
 

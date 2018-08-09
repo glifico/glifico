@@ -15,88 +15,27 @@ function isValidIBAN($v){ //This function check if the checksum if correct
 
 var IBANRegex= /(?=[0-9A-Z]{28}$)AL\d{10}[0-9A-Z]{16}$|^(?=[0-9A-Z]{24}$)AD\d{10}[0-9A-Z]{12}$|^(?=[0-9A-Z]{20}$)AT\d{18}$|^(?=[0-9A-Z]{22}$)BH\d{2}[A-Z]{4}[0-9A-Z]{14}$|^(?=[0-9A-Z]{16}$)BE\d{14}$|^(?=[0-9A-Z]{20}$)BA\d{18}$|^(?=[0-9A-Z]{22}$)BG\d{2}[A-Z]{4}\d{6}[0-9A-Z]{8}$|^(?=[0-9A-Z]{21}$)HR\d{19}$|^(?=[0-9A-Z]{28}$)CY\d{10}[0-9A-Z]{16}$|^(?=[0-9A-Z]{24}$)CZ\d{22}$|^(?=[0-9A-Z]{18}$)DK\d{16}$|^FO\d{16}$|^GL\d{16}$|^(?=[0-9A-Z]{28}$)DO\d{2}[0-9A-Z]{4}\d{20}$|^(?=[0-9A-Z]{20}$)EE\d{18}$|^(?=[0-9A-Z]{18}$)FI\d{16}$|^(?=[0-9A-Z]{27}$)FR\d{12}[0-9A-Z]{11}\d{2}$|^(?=[0-9A-Z]{22}$)GE\d{2}[A-Z]{2}\d{16}$|^(?=[0-9A-Z]{22}$)DE\d{20}$|^(?=[0-9A-Z]{23}$)GI\d{2}[A-Z]{4}[0-9A-Z]{15}$|^(?=[0-9A-Z]{27}$)GR\d{9}[0-9A-Z]{16}$|^(?=[0-9A-Z]{28}$)HU\d{26}$|^(?=[0-9A-Z]{26}$)IS\d{24}$|^(?=[0-9A-Z]{22}$)IE\d{2}[A-Z]{4}\d{14}$|^(?=[0-9A-Z]{23}$)IL\d{21}$|^(?=[0-9A-Z]{27}$)IT\d{2}[A-Z]\d{10}[0-9A-Z]{12}$|^(?=[0-9A-Z]{20}$)[A-Z]{2}\d{5}[0-9A-Z]{13}$|^(?=[0-9A-Z]{30}$)KW\d{2}[A-Z]{4}22!$|^(?=[0-9A-Z]{21}$)LV\d{2}[A-Z]{4}[0-9A-Z]{13}$|^(?=[0-9A-Z]{,28}$)LB\d{6}[0-9A-Z]{20}$|^(?=[0-9A-Z]{21}$)LI\d{7}[0-9A-Z]{12}$|^(?=[0-9A-Z]{20}$)LT\d{18}$|^(?=[0-9A-Z]{20}$)LU\d{5}[0-9A-Z]{13}$|^(?=[0-9A-Z]{19}$)MK\d{5}[0-9A-Z]{10}\d{2}$|^(?=[0-9A-Z]{31}$)MT\d{2}[A-Z]{4}\d{5}[0-9A-Z]{18}$|^(?=[0-9A-Z]{27}$)MR13\d{23}$|^(?=[0-9A-Z]{30}$)MU\d{2}[A-Z]{4}\d{19}[A-Z]{3}$|^(?=[0-9A-Z]{27}$)MC\d{12}[0-9A-Z]{11}\d{2}$|^(?=[0-9A-Z]{22}$)ME\d{20}$|^(?=[0-9A-Z]{18}$)NL\d{2}[A-Z]{4}\d{10}$|^(?=[0-9A-Z]{15}$)NO\d{13}$|^(?=[0-9A-Z]{28}$)PL\d{10}[0-9A-Z]{,16}n$|^(?=[0-9A-Z]{25}$)PT\d{23}$|^(?=[0-9A-Z]{24}$)RO\d{2}[A-Z]{4}[0-9A-Z]{16}$|^(?=[0-9A-Z]{27}$)SM\d{2}[A-Z]\d{10}[0-9A-Z]{12}$|^(?=[0-9A-Z]{,24}$)SA\d{4}[0-9A-Z]{18}$|^(?=[0-9A-Z]{22}$)RS\d{20}$|^(?=[0-9A-Z]{24}$)SK\d{22}$|^(?=[0-9A-Z]{19}$)SI\d{17}$|^(?=[0-9A-Z]{24}$)ES\d{22}$|^(?=[0-9A-Z]{24}$)SE\d{22}$|^(?=[0-9A-Z]{21}$)CH\d{7}[0-9A-Z]{12}$|^(?=[0-9A-Z]{24}$)TN59\d{20}$|^(?=[0-9A-Z]{26}$)TR\d{7}[0-9A-Z]{17}$|^(?=[0-9A-Z]{,23}$)AE\d{21}$|^(?=[0-9A-Z]{22}$)GB\d{2}[A-Z]{4}\d{14}/;
 
+function askAccountDeletion(){
+	var req=createXHTMLHttpRequest();
 
-(function() {
-
-	'use strict';
-
-	var app = angular.module('editAge', ['formly', 'ngMessages', 'formlyMaterial','ui.select','ngSanitize','ngAria','ngAnimate','ngMaterial','textAngular']);
-	app.constant('formlyExampleApiCheck', apiCheck());
-	app.run(function(formlyConfig) {
-		// NOTE: This next line is highly recommended. Otherwise Chrome's autocomplete will appear over your options!
-		formlyConfig.extras.removeChromeAutoComplete = true;
-
-		// Configure custom types
-		formlyConfig.setType({
-			name: 'ui-select-single',
-			'extends': 'select',
-			templateUrl: 'ui-select-single.html'
-		});
-		formlyConfig.setType({
-			name: 'ui-select-multiple',
-			'extends': 'select',
-			templateUrl: 'ui-select-multiple.html'
-		});
-		formlyConfig.setType({
-			name: 'ui-tagging',
-			'extends': 'select',
-			templateUrl: 'ui-tagging.html'
-		});
-		formlyConfig.setType({
-			name: 'ui-tagging-single',
-			'extends': 'select',
-			templateUrl: 'ui-tagging-single.html'
-		});
-
-		formlyConfig.setType({
-			name: 'richEditor',
-			template: '<text-angular ng-model="model[options.key]" ta-disabled="{{to.disabled}}"></text-angular>'
-		});
-
-	});
-})();
-
-
-var editMode = false;
-var QueryString = function() {
-	// This function is anonymous, is executed immediately and
-	// the return value is assigned to QueryString!
-	var query_string = {};
-	var query = window.location.search.substring(1);
-	var vars = query.split("&");
-	for ( var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split("=");
-		// If first entry with this name
-		if (typeof query_string[pair[0]] === "undefined") {
-			query_string[pair[0]] = decodeURIComponent(pair[1]);
-			// If second entry with this name
-		} else if (typeof query_string[pair[0]] === "string") {
-			var arr = [ query_string[pair[0]], decodeURIComponent(pair[1]) ];
-			query_string[pair[0]] = arr;
-			// If third or later entry with this name
-		} else {
-			query_string[pair[0]].push(decodeURIComponent(pair[1]));
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			$('#DeleteModal').modal('hide');
+			$('#alertOK').fadeIn().delay(15000).fadeOut();
+			$('#alertOK').html("Your request has been sent to us.");
 		}
 	}
-	return query_string;
-}();
-function strLeft(sourceStr, keyStr) {
-	return (sourceStr.indexOf(keyStr) == -1 | keyStr == '') ? '' : sourceStr
-			.split(keyStr)[0];
+
+	req.open("GET",'askAccountDeletion.php?user='+getUsername()+"&token="+getToken(),true);
+	req.send();
 }
 
-( function() {
 
-	'use strict';
+angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($scope){
 
-	angular.module('editAge').controller('MainController_editAge',
-			[ '$http','$timeout', MainController_editAge ]);
+	var ctrl = this;
 
-	function MainController_editAge($http,$timeout) {
-		var vmMainController_editAge = this;
-
-		var ctrl=this;
-
+	ctrl.$onInit= function(){
 		var req=createXHTMLHttpRequest();
 
 		req.onreadystatechange = function(){
@@ -110,7 +49,19 @@ function strLeft(sourceStr, keyStr) {
 						$('#alertError').html(ret[0].data.msg);
 					}
 				} else {
-					vmMainController_editAge.model=ret[0];	
+					ctrl.companyname=ret[0].CompanyName;
+					ctrl.vat=ret[0].VATCode;
+					ctrl.street=ret[0].Street;
+					ctrl.city=ret[0].City;
+					ctrl.state=ret[0].Country;
+					ctrl.zip=ret[0].ZIP;
+					ctrl.email=ret[0].EmailReference;
+					ctrl.IBAN=ret[0].IBAN;
+					ctrl.swift=ret[0].swift;
+					ctrl.phone=ret[0].PhoneReference;
+					ctrl.phone_bil=ret[0].PhoneReferenceBilling;
+					ctrl.email_bil=ret[0].EmailReferenceBilling;
+					return (true);
 				}
 			}else{
 				mostraDialogTimed('errorPanel');
@@ -121,200 +72,84 @@ function strLeft(sourceStr, keyStr) {
 		req.open("GET", 'getAgencyData.php?user='+getUsername()+'&token='+getToken(), true);
 		req.send();
 
-
-		vmMainController_editAge.fields = [ {
-			className : "row",
-			fieldGroup : [{
-				className : "col-md-12",
-				key : "id",
-				type : 'input',
-				templateOptions : {
-					label: "ID",
-					required: true,
-					disabled: true
-				}
-			},{
-				className : "col-md-12",
-				key : "CompanyName",
-				type : 'input',
-				templateOptions : {
-					label: "Company Name",
-					required: true,
-					disabled: true
-				}
-			},{
-				className : "col-md-6",
-				key : "FiscalCode",
-				type : 'input',
-				templateOptions : {
-					label: "Fiscal Code",
-					required: false
-				}
-			},{
-				className : "col-md-6",
-				key : "VATCode",
-				type : 'input',
-				templateOptions : {
-					label: "VAT Code",
-					required: false
-				}
-			},{
-				className : "col-md-10",
-				key : "Street",
-				type : 'input',
-				templateOptions : {
-					label: "Street",
-					required: false
-				}
-			},{
-				className : "col-md-2",
-				key : "Number",
-				type : 'input',
-				templateOptions : {
-					label: "Number",
-					required: false
-				}
-			},{
-				className : "col-md-6",
-				key : "City",
-				type : 'input',
-				templateOptions : {
-					label: "City",
-					required: false
-				}
-			},{
-				className : "col-md-6",
-				key : "StateProvince",
-				type : 'input',
-				templateOptions : {
-					label: "StateProvince",
-					required: false
-				}
-			},{
-				className : "col-md-4",
-				key : "ZIP",
-				type : 'input',
-				templateOptions : {
-					label: "ZIP",
-					required: false
-				}
-			},{
-				className : "col-md-8",
-				key : "Country",
-				type : 'input',
-				templateOptions : {
-					label: "Country",
-					required: false
-				}
-			},{
-				className : "col-md-12",
-				key : "EmailReference",
-				type : 'input',
-				templateOptions : {
-					label: "Email Reference",
-					required: false
-				},
-				validators: {
-					emailValidator: function($viewValue, $modelValue, scope) {
-						var value = $modelValue || $viewValue;
-						if(value) {
-							return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/g.test(value)
-						}
-					}
-				}
-			},{
-				className : "col-md-4",
-				key : "Bank",
-				type : 'input',
-				templateOptions : {
-					label: "Bank",
-					required: false
-				}
-			},{
-				className : "col-md-4",
-				key : "PaymentMode",
-				type : 'input',
-				templateOptions : {
-					label: "Payment Mode",
-					required: false
-				}
-			},{
-				className : "col-md-4",
-				key : "IBAN",
-				type : 'input',
-				templateOptions : {
-					label: "IBAN",
-					required: false
-				},
-				validators: {
-					emailValidator: function($viewValue, $modelValue, scope) {
-						var value = $modelValue || $viewValue;
-						if(value) {
-							return IBANRegex.test(value)&&isValidIBAN(value);
-						}
-					}
-				}
-			},{
-				className : "col-md-12",
-				key : "EmailReferenceBilling",
-				type : 'input',
-				templateOptions : {
-					label: "Email Reference Billing",
-					required: false
-				},
-				validators: {
-					emailValidator: function($viewValue, $modelValue, scope) {
-						var value = $modelValue || $viewValue;
-						if(value) {
-							return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/g.test(value)
-						}
-					}
-				}
-			}]
-		}
-		];
-
-
-		vmMainController_editAge.submit = function() {
-			var arr={
-					"user": getUsername(),
-					"token": getToken(),
-					"values": vmMainController_editAge.model,
-			};
-
-			var stringPass=JSON.stringify(arr);
-			var data=stringPass;
-
-			$.ajax( {
-				type : "POST",
-				dataType : "application/json",
-				contentType : "application/json; charset=utf-8",
-				data : data,
-				url : "updateAgencyData.php",
-				complete : function(ret) {
-					var response=ret.responseText.replace(/\\/,"");
-					if(convertJSON(response).statuscode==200){
-						$('#alertOK').fadeIn().delay(10000).fadeOut();
-						$('#alertOK').html("Your data was saved correctly.");	
-					}else{
-						$('#alertError').fadeIn().delay(1000).fadeOut();
-						$('#alertOK').html("There was an error, please retry.");
-					}
-				},
-				error : function(xhr) {
-					if (xhr.status == 500) {
-						$("#alertError").html("Error from server, please retry.");
-						$("#alertError").fadeIn().delay(1000).fadeOut();
-					}
-
-				}
-			});
+	}
+	
+	ctrl.isibanvalid =function (){
+		if(ctrl.IBAN){
+			return isValidIBAN(ctrl.IBAN);
+		}else{
+			return false;
 		}
 	}
-})();
+	
+	ctrl.iszipvalid =function (){
+		return /[0-9]{5}/.test(ctrl.zip);
+	}
+	
+	
+	ctrl.isemailvalid = function(){
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
+	}
+	
+	ctrl.isbilemailvalid = function(){
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
+	}
+	
+	ctrl.validForm = function(){
+		return ctrl.isemailvalid() && ctrl.isibanvalid() && ctrl.iszipvalid();
+	}
 
-angular.element(document).ready(function() {
-	console.log("registro editAge");
-	angular.bootstrap(document.getElementById('editAgeAPP'), ['editAge']);
+	ctrl.Agesubmit=function(){
+
+		var arr={
+				"user": getUsername(),
+				"token": getToken(),
+				"values": {
+					"FiscalCode": ctrl.vat,
+					"Street": ctrl.street,
+					"City": ctrl.city,
+					"Country": ctrl.state,
+					"ZIP": ctrl.zip,
+					"email": ctrl.email,
+					"email_bil": ctrl.email_bil,
+					"phone": ctrl.phone,
+					"phone_bil": ctrl.phone_bil,
+					"IBAN": ctrl.IBAN,
+				},
+		};
+
+		var stringPass=JSON.stringify(arr);
+		var data=stringPass;
+
+		$.ajax( {
+			type : "POST",
+			dataType : "application/json",
+			contentType : "application/json; charset=utf-8",
+			data : data,
+			url : "updateAgencyData.php",
+			complete : function(ret) {
+				var response=ret.responseText.replace(/\\/,"");
+				if(convertJSON(response).statuscode==200){
+					$('#alertOK').fadeIn().delay(10000).fadeOut();
+					$('#alertOK').html("Your data was saved correctly.");	
+				}else{
+					$('#alertError').fadeIn().delay(1000).fadeOut();
+					$('#alertOK').html("There was an error, please retry.");
+				}
+			},
+			error : function(xhr) {
+				if (xhr.status == 500) {
+					$("#alertError").html("Error from server, please retry.");
+					$("#alertError").fadeIn().delay(1000).fadeOut();
+				}
+
+			}
+		});
+	}
+
 });
 
+angular.element(document).ready(function() {
+	console.log("registro infoAge");
+	angular.bootstrap(document.getElementById('infoAgeForm'), ['infoAgecontroller']);
+});

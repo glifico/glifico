@@ -44,8 +44,6 @@
 <script src="app/glificoFooter.component.js"></script>
 <script src="app/login.controller.js"></script>
 
-<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-<script src="pendingJobs.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
@@ -64,8 +62,15 @@
 <link rel="styleSheet" href="angularjs/angular-material.min.css"/>
 <link rel="styleSheet" href="angularjs/textAngular.css"/>
 <link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
-<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="main.css"/>
 
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+<script src="pendingJobs.js"></script>
 		
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -268,7 +273,7 @@ md-input-container{
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
 <div class="panel-heading">
-In this page you can handle your Jobs on Glifico
+In this page you can handle your jobs on Glifico
 </div>
 </div>
 </div>
@@ -289,15 +294,13 @@ In this page you can handle your Jobs on Glifico
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="jobModalLabel">Job</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">...</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
@@ -315,23 +318,34 @@ $('#jobModal').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-title').text('Job: ' + job)
   var html="";
+  html+='<div class="modal-translator">'
   html+="Title: <b>"+job+"</b><br>";
-  html+="Price: "+button.data('price')+" "+button.data('currency');
+  html+="Price: <b>"+button.data('price')+"</b> "+button.data('currency')+"<br>";
+  html+="Number of characters: "+button.data('ncharacters');
   html+="<br><br>"+button.data('description');
   var link=button.data('document');
   html+="<br><br><div>You may find the document to translate at: "+'<a href="'+link+'" target="_Blank">'+link+'</a></div>';
-  var btnHtml="";
   if(button.data('status')=="Assigned"){
 	  html+="<br><br>";
-	  btnHtml+='<span id="preview"><input id="preview-btn" class="btn btn-info" type="button" value="Upload preview" onclick="uploadPreview('+button.data("id")+","+button.data("choice")+')"/></span>';
-	  btnHtml+='<input class="btn btn-primary" type="button" value="Upload full translated document" onclick="uploadFull('+button.data("id")+","+button.data("choice")+')"/>';
-  }else if(button.data('status')=="To Be Assigned"){
+	  html+="Please use the button below to upload a subset of your translation as a <b>preview</b> for the agency:<br>"
+	  html+='<span id="preview"><a class="glifico-fa"><i class="fa fa-cloud-upload"></i></a><br><input id="preview-btn" class="btn btn-info" type="button" value="Upload preview" onclick="uploadPreview('+button.data("id")+","+button.data("choice")+')"/></span>';
+	  html+='<br><span id="full">Now you can upload the full document:<br>'
+	  html+='<a class="glifico-fa"><i class="fa fa-upload"></i></a><br><input class="btn btn-primary" type="button" value="Upload full translated document" onclick="uploadFull('+button.data("id")+","+button.data("choice")+')"/></span>';
+  }
+  if(button.data('status')=="To Be Assigned"){
+	  html+="<br><br>";
+	  html+='Use buttons below to accept or refuse this job. Your job is regulated with <a href="terms.html" target="_Blank">Terms & Conditions</a> you accepted during the registration process on Glifico<br>'
+  }
+  var btnHtml="";
+  if(button.data('status')=="To Be Assigned"){
 	  btnHtml+="<br><br>";
 	  btnHtml+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+","+button.data("choice")+')"/>';
 	  btnHtml+='<input class="btn btn-danger" type="button" value="Refuse" onclick="refuseJob('+button.data("id")+","+button.data("choice")+')"/>';
   }
+  html+='</div>'
   modal.find('.modal-body').html(html);
   modal.find('.modal-footer').html(btnHtml);
+  $("#full").hide();
 })
 </script>
 

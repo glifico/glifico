@@ -23,8 +23,14 @@ if($choice==2){$query="UPDATE payments SET secondStatus='Refused' WHERE secondTr
 
 $result = $db->query($query);
 
+$query="SELECT USERNAME, EMAIL FROM agenzia WHERE username='$user';";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
 
 $result->CloseCursor();
 notifySlack("#payments",$user." refused a job",":no_entry:");
-exit(json_encode(array("message"=>"job updated", "statuscode"=>200)));
+$to=[array("email"=>$row['email'])];
+$mailStatus = send_email($to,"Translator refused a job on Glifico","One of the Job you submitted was refuse. Create a new one on https://glifico.com/search.html");
+
+exit(json_encode(array("message"=>"job updated", "statuscode"=>200, "mailstatus"=>$mailStatus)));
 ?>

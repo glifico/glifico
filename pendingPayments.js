@@ -55,26 +55,38 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 	
 	ctrl.createTable=function(){
 		var html="";	
-		html+='<table class="table table-responsive">';
+		html+='<table id="d_table" class="table table-responsive">';
 		html+='<thead class="thead-default">';
 		html+='<tr class="row">';
-		html+='<th class="col-md-4" style="text-align:center;">Job</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Price</th>';
-		html+='<th class="col-md-4" style="text-align:center;">Status</th>';
-		html+='<th class="col-md-4" style="text-align:center;"></th>';
+		html+='<th class="col-md-2" style="text-align:center;">Job</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Price</th>';
+		html+='<th class="col-md-2" style="text-align:center;"># characters</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Deadline</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Status</th>';
+		html+='<th class="col-md-2" style="text-align:center;"></th>';
 		html+='</tr>';
 		html+='</thead>';
+		html+='<tbody>';
 		for (var i = 0; i < ctrl.documents.length; i++) {
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
-			html+='<td class="col-md-3">'+doc.job+'</td>';
-			html+='<td class="col-md-3">'+doc.price+" "+doc.currency+'</td>';
-			html+='<td class="col-md-3" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
+			html+='<td class="col-md-2">'+doc.job+'</td>';
+			if(doc.choice==0){
+				html+='<td class="col-md-2">';
+				html+=doc.price[0]+" "+doc.currency[0]+"<br>";
+				html+=doc.price[1]+" "+doc.currency[1];
+				html+='</td>';
+			}else{
+				html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
+			}
+			html+='<td class="col-md-2">'+doc.ncharacters+'</td>';
+			html+='<td class="col-md-2">'+doc.deadline+'</td>';
+			html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
 			if(doc.status=="Paid"){
 				html+=' <i class="fa fa-check" aria-hidden="true"></i>';
 			}
 			html+='</td>';
-			html+='<td class="col-md-3">';
+			html+='<td class="col-md-2">';
 			html+='<div id="'+doc.id+'">';
 			if(doc.status=="Closed"){
 				
@@ -84,6 +96,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+='data-job="'+doc.job+'"';
 				html+='data-id="'+doc.id+'"';
 				html+=' data-price="'+doc.price+'"';
+				html+=' data-deadline="'+doc.deadline+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-document="'+doc.document+'"';
@@ -106,16 +119,20 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-document="'+doc.document+'"';
-				html+='>Approve Job</button>';
+				html+='>Show Job</button>';
 			}else if(doc.status=="To Be Assigned"){
-				html+="Waiting for translator acceptance..";
 			}
 			html+='</div>';
 			html+='</td>';
-			html+='<tr>';
+			html+='</tr>';
 		}
+		html+="</tbody>";
 		html+='</table>';
 		$("#table").html(html);
+		$("#d_table").DataTable({
+			paging: false,
+			searching: false
+		});
 	}
 
 	ctrl.$onInit=function(){

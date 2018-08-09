@@ -1,37 +1,67 @@
 <?php
 include 'functions.php';
+include 'updatePrices.php';
 
-$db=getDB();
-if(!$db) exit;
+$db = getDB();
+if (! $db)
+    exit();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-  $data = json_decode(file_get_contents("php://input"),true);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $data = json_decode(file_get_contents("php://input"), true);
 }
 
-if(!$data){
-  exit(json_encode(array("message"=>"wrong request","statuscode"=>500)));
+if (! $data) {
+    exit(json_encode(array(
+        "message" => "wrong request",
+        "statuscode" => 500
+    )));
 }
 
-$user=$data['user'];
-$url=$data['url'];
-$count=$data['count'];
-$selected=$data['translators'];
-$jobTitle=$data['job'];
-$jobDescr=$data['description'];
-$deadline=$data['deadline'];
-$translator=get_username($selected[0]['id']);
-$firstPrice=$selected[0]['total'];
-$firstCurrency=$selected[0]['currency'];
-if(!certTokenA($db, $user,$data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
+$user = $data['user'];
+$url = $data['url'];
+$count = $data['count'];
+$selected = $data['translators'];
+$jobTitle = $data['job'];
+$jobDescr = $data['description'];
+$deadline = $data['deadline'];
+$translator = get_username($selected[0]['id']);
+$firstPrice = $selected[0]['total'];
+$firstCurrency = $selected[0]['currency'];
+if ($count > 0) {
+    $secondtranslator = get_username($selected[1]['id']);
+    $secondPrice = $selected[1]['total'];
+    $secondCurrency = $selected[1]['currency'];
+}else{
+    $secondtranslator = "";
+    $secondPrice = "-1";
+    $secondCurrency = "-1";
+}
+$n_characters = $data['ncharacters'];
+$languagefrom = $data['languagefrom'];
 
-$query="INSERT INTO payments (job, description, status, username, document, translator, currency, deadline, price) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url','$translator', '$firstCurrency','$deadline',$firstPrice);";
+if (! certTokenA($db, $user, $data['token']))
+    exit(json_encode(array(
+        "message" => "wrong token",
+        "statuscode" => 400
+    )));
+
+$query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, currency, secondcurrency, deadline, price, secondprice, whoaccepted) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0');";
 $result = $db->query($query);
 
 $result->CloseCursor();
 
-send_email([array("email"=>get_user_email($translator))],"There is a new job on glifico","You have a new job on glifico, got to https://glifico.com/pendingJobs.html to look it out!");
-//send_email([array("email"=>"fvalle.glifico@outlook.com")],"There is a new job on glifico",get_user_email($translator));
+// send_email([array("email"=>get_user_email($translator))],"There is a new job on glifico","You have a new job on glifico, go to https://glifico.com/pendingJobs.html to look it out!");
+send_email([
+    array(
+        "email" => "fvalle.glifico@outlook.com"
+    )
+], "There is a new job on glifico", get_user_email($translator));
 
-exit(json_encode(array("message"=>"job created", "statuscode"=>200,"selected"=>json_encode($selected))));
+updateCurrencies();
+
+exit(json_encode(array(
+    "message" => "job created",
+    "statuscode" => 200,
+    "selected" => json_encode($selected)
+)));
 ?>

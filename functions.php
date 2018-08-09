@@ -37,16 +37,47 @@ function certTokenA($db, $user, $token){
   return $token==hash('crc32',$user."tokenize".$password);
 }
 
-function get_user_email($user){
+function getLanguagePrice($user, $language){
   $db=getDB();
   if(!$db) return;
-  $query="SELECT USERNAME, EMAIL FROM traduttore WHERE username='$user';";
+  $query="SELECT USERNAME, from_l, price_euro from language_pair WHERE username='$user' and from_l='$language';";
   $result = $db->query($query);
   $row = $result->fetch(PDO::FETCH_ASSOC);
 
-  $email=htmlspecialchars($row['email']);
+  $price=$row['price_euro'];
   $result->CloseCursor();
-  return $email;
+  return $price;
+}
+
+function get_user_email($user){
+    $db=getDB();
+    if(!$db) return;
+    $query="SELECT USERNAME, EMAIL FROM traduttore WHERE username='$user';";
+    $result = $db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    
+    $email=htmlspecialchars($row['email']);
+    $result->CloseCursor();
+    return $email;
+}
+
+function check_email_presence($email){
+    $db=getDB();
+    if(!$db) exit;
+    
+    $query="SELECT email FROM agenzia WHERE email='$email';";
+    $result=$db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    
+    if(strlen(htmlspecialchars($row["email"]))>2) exit(json_encode(array("message"=>"email already present", "statuscode"=>409)));
+    $result->CloseCursor();
+    
+    $query="SELECT email FROM traduttore WHERE email='$email';";
+    $result=$db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    
+    if(strlen(htmlspecialchars($row["email"]))>2) exit(json_encode(array("message"=>"email already present", "statuscode"=>410)));
+    $result->CloseCursor();
 }
 
 function get_currency_description($cur){
@@ -68,6 +99,9 @@ function convert_to_euro($price,$cur){
   $convResult = $db->query($query);
   $convRow = $convResult->fetch(PDO::FETCH_ASSOC);
   $priceEuro=round((float)$price/$convRow['conversion'],2);
+  if($priceEuro<0.01){
+      $priceEuro=0.01;
+  }
   $convResult->CloseCursor();
   return $priceEuro;
 }
@@ -114,7 +148,7 @@ function send_email($to, $subject, $body){
   ));
   curl_setopt($handle,CURLOPT_POSTFIELDS, $data);
   $result = curl_exec($handle);
-
+  return $result;
 }
 
 function notifySlack($channel,$text,$emoji="::")

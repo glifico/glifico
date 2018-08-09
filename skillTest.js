@@ -317,7 +317,7 @@ function finishTest() {
 			dataType : "application/json",
 			contentType : "application/json; charset=utf-8",
 			data : data,
-			url : "saveTest.php",
+			url : "saveSkillTest.php",
 			complete : function(ret) {
 				var response=ret.responseText;
 				//console.debug(response);

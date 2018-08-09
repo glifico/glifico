@@ -10,22 +10,23 @@ var comapnyJSON={
 
 var customer_BillingInfoJSON={
 		CustomerName:'Jhon Appleseed',
-		CustomerGSTIN:'37B76C238B7E1Z5',
-		CustomerState:'KERALA (09)',
-		CustomerPAN:'B76C238B7E',
-		CustomerAddressLine1:'ABCDEFGD HOUSE,IX/642-D',
-		CustomerAddressLine2:'ABCDEFGD P.O., NEDUMBASSERY',
-		CustomerAddressLine3:'COCHIN',
-		CustomerEmail:'abcd@gmail.com',
+		CustomerGSTIN:'...',
+		CustomerState:'...',
+		CustomerPAN:'123',
+		CustomerAddressLine1:'...',
+		CustomerAddressLine2:'...',
+		CustomerAddressLine3:'...',
+		CustomerEmail:'abcd@xxx.com',
 		CustomerPhone:'+918189457845',
 };
 
 
 var invoiceJSON={
-		InvoiceNo:'INV-120152',
-		InvoiceDate:'03-12-2017',
-		TotalAmnt:'Rs.1,24,200',
-		SubTotalAmnt:'Rs.1,04,200',
+		InvoiceNo:'INV-XXXXXX',
+		InvoiceDate:'00-00-2000',
+		TotalAmnt:'-1',
+		SubTotalAmnt:'-1',
+		InvoiceProduct:'translation'
 }
 
 var company_logo = {
@@ -48,7 +49,7 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-getData= function(id, price) {
+getData= function(id, job, description, date, price) {
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
@@ -71,7 +72,8 @@ getData= function(id, price) {
 				},
 				invoice:{
 					InvoiceNo:id.toString(),
-					InvoiceDate: (new Date()).toString().slice(4,15),
+					InvoiceProduct: job,
+					InvoiceDate: date.toString().slice(4,15),
 					TotalAmnt: price.toString()+"Euro",
 					SubTotalAmnt: price.toString()+"Euro",
 				}
@@ -83,13 +85,25 @@ getData= function(id, price) {
 			mostraDialogTimed('Error getting info from service');
 		}
 	}
+	
 	req.open("GET",url,true);
 	req.send();
 		
 }
 
-function generate_cutomPDF(id, price) {
-	getData(id,price)
+function generate_cutomPDF(id) {
+	//GET info job
+	var url = "getInvoiceData.php?id="+id+"&user="+getUsername()+"&token="+getToken();
+	var req = createXHTMLHttpRequest() ;
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var data=JSON.parse(req.responseText);
+			getData(data.id, data.Job, data.Description, data.Date, data.Price)	
+		}
+	}
+	
+	req.open("GET",url,true);
+	req.send();
 }
 
 function create_customPDF(params){
@@ -270,9 +284,9 @@ function create_customPDF(params){
 		{title: "Qty", dataKey: "Qty",width: 40},
 		{title: "Total", dataKey: "Total",width: 40},
 		];
+	
 	var rows = [
-		{"id": 1, "Product": "Translation", "Qty" : "1", "Total":10},
-
+		{"id": 1, "Product": invoiceJSON.InvoiceProduct, "Qty" : "1", "Total": invoiceJSON.SubTotalAmnt},
 		];
 
 	// columnStyles: {

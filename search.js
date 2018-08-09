@@ -68,13 +68,9 @@ getPriceDollars=function(price){
 
 selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 	$("#btnRowN"+rowIndex).prop("disabled",true);
-	for(var i=1;i<=maximumSelectable;i++){
-		$("#selectedTotal"+i).html("Click define job to calculate totals");
-	}
 	if(!selectedTr[0].isSelected){
 		$("#rowN"+rowIndex).css('background-color', selectedTr[0].rowColor);
 		$("#fieasibility").show();
-
 
 		selectedTr[0].isSelected=true;
 		selectedTr[0].price=price;
@@ -88,8 +84,6 @@ selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 		$("#selectedRow2").hide();
 		var html="";
 		html+=getPriceDollars(price);
-		html+='     ';
-		html+=totalTr+' Euro/ch';
 
 		$("#selectedPrice1").html(html);
 		$("#selectedName1").html(name);
@@ -105,12 +99,8 @@ selectTr=function(id, name, price, priceTr, totalTr, rowIndex){
 		selectedTr[1].name=name;
 		selectedTr[1].id=id;
 
-
 		var html="";
 		html+=getPriceDollars(price);
-		html+='     ';
-		html+=totalTr+' Euro/ch';
-
 
 		$("#selectedPrice2").html(html);
 		$("#selectedName2").html(name);
@@ -128,8 +118,6 @@ deselectTr=function(tr){
 		selectedTr[tr-1].rowIndex=selectedTr[tr].rowIndex;
 		selectedTr[tr-1].name=selectedTr[tr].name;
 		selectedTr[tr-1].id=selectedTr[tr].id;
-
-
 
 		var html="";
 		html+=getPriceDollars(selectedTr[tr-1].price);
@@ -151,9 +139,6 @@ deselectTr=function(tr){
 
 		$("#selectedPrice"+2).html("");
 		$("#selectedName"+2).html("");
-		$("#selectedTotal1").html("");
-		$("#selectedTotal2").html("");
-
 	}else{
 		selectedTr[tr-1].isSelected=false;
 		selectedTr[tr-1].price=-1;
@@ -166,7 +151,6 @@ deselectTr=function(tr){
 
 		$("#selectedPrice"+2).html("");
 		$("#selectedName"+2).html("");
-		$("#selectedTotal"+2).html("");
 	}
 
 	refreshButtons();
@@ -285,6 +269,30 @@ angular.module("search",[]).controller("search",function($scope){
 		return getAgPrice(tr);
 	}
 
+	ctrl.createPopOverForUser= function(user){
+		var html='';
+		html='<a href="#!"';
+		//html+='<button type="button" class="btn btn-secondary"';
+		html+='data-toggle="popover" data-placement="right" data-trigger="focus" ';
+		html+='title="'+user.FirstName+user.LastName+user.Id+'" ';
+		html+='data-content=" ';
+		html+='mothertongue: '+user.Mothertongue+'</br>';
+		for (var i = 0; i < user.UserInfo.length; i++) {
+			var info = user.UserInfo[i];
+			html+='<b>'+info.language+'</b> ';
+			if(info.rating!=null){
+				html+="with rating of <b>"+info.rating+"</b>/5";
+			}else{
+				html+="";
+			}
+			html+='</br>';
+		}
+		html+='" >';
+		html+='<i class="fa fa-info-circle"></i>';
+		html+='</a>';
+		return html;
+	}
+
 	ctrl.createTable=function(){
 		var html="";
 		if (ctrl.documents.length>0){
@@ -303,10 +311,10 @@ angular.module("search",[]).controller("search",function($scope){
 				var doc=ctrl.documents[i];
 				//doc.Price is class {1,2,3}
 				//doc.PriceTr is Translator defined price for pair
-				var name=doc.FirstName+doc.LastName;
+				var name=doc.FirstName+doc.LastName+doc.Id;
 				var priceAg=ctrl.calculatePriceAg(doc.Price,doc.PriceTr);
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
-				html+='<td class="col-md-2">'+name+'</td>';
+				html+='<td class="col-md-2">'+ctrl.createPopOverForUser(doc)+' '+name+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
 				html+='<td class="col-md-2">'+doc.Field+'</td>';
 				html+='<td class="col-md-2">';
@@ -327,7 +335,7 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				name="'"+name+"'";
-				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm selectTrBtn" onclick="selectTr('+doc.Id+','+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
+				html+='<button id="btnRowN'+i+'" type="button" class="btn btn-primary btn-sm selectTrBtn" onclick="selectTr('+doc.Code+','+name+','+doc.Price+','+doc.PriceTr+','+priceAg+','+i+')">Select translator</button>';
 				html+='</td>';
 				html+='<tr>';
 			}
@@ -336,6 +344,10 @@ angular.module("search",[]).controller("search",function($scope){
 			html+="No pair found for this search, please try another";
 		}
 		$("#table").html(html);
+		$('[data-toggle="popover"]').popover({
+			title: 'user info',
+			html: true,
+		});
 	}
 
 	ctrl.setPrice=function(price){
@@ -352,34 +364,37 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.createForm=function(){
 		var html="";
-		html+='<label>From: </label>';
+		html+='<label>translate from: </label>';
 		html+='<select id="select-from" placeholder="Translate from" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
-		html+="<br>";
-		html+='<label>To: </label>';
+		$("#formfrom").html(html);
+		html='';
+		html+='<label>translate to: </label>';
 		html+='<select id="select-to" placeholder="Translate to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
 			html+='<option value="'+element.Id+'">'+element.Language+'</option>';
 		}
 		html+='</select>';
-		$("#formleft").html(html);
+		$("#formto").html(html);
 
 		var html="";
 		html+='<label>Field: </label>';
 		html+='<select id="select-field" placeholder="Field">';
 		for(var i=0; i<ctrl.Fields.length; i++){
 			var element=ctrl.Fields[i];
-			html+='<option value="'+element.Id+'"';
-			if(element.Id==97){
-				html+=' selected="selected"';
-			}
+			html+='<option value="'+element.Id+'"';			
 			html+='>'+element.Field+'</option>';
 		}
+		html+='<option value="'+ctrl.Fields.length+'"';
+		html+=' selected="selected"';
+		//select all trigger query on all parameters
+		//remember to modify getTranslator.php if something changes here
+		html+='>'+"select all"+'</option>';
 		html+='</select>';
 		$("#formcenter").html(html);
 
@@ -444,7 +459,7 @@ angular.module("search",[]).controller("search",function($scope){
 			alert("wrong deadline");
 			return;
 		}
-		
+
 		ctrl.MaxCh=days*10000;
 		ctrl.UrgCh=days*8500;
 		ctrl.days=days;
@@ -465,20 +480,8 @@ angular.module("search",[]).controller("search",function($scope){
 			ctrl.feasibilityColor="#FFF";
 			$("#feasibility").html("");
 		}
-		ctrl.updateTotals();
-	}
-
-	ctrl.updateTotals=function(){		
-		var firstHtml="";
-		firstHtml+=ctrl.TrCharacters * ctrl.getAgPrice(1);
-		firstHtml+=" Euro";
-		var secondHtml="";
-		if(isSelected(2)){
-			secondHtml+=ctrl.TrCharacters * ctrl.getAgPrice(2);
-			secondHtml+=" Euro";
-		}
-		$("#selectedTotal1").html(firstHtml);
-		$("#selectedTotal2").html(secondHtml);
+		$("#modalBodySelect").show();
+		$("#modalBodyUpload").hide();
 	}
 
 	ctrl.isSelected=function(tr){
@@ -518,6 +521,8 @@ angular.module("search",[]).controller("search",function($scope){
 					translators: selectedTr,
 					url: urlUploaded,
 					deadline: ctrl.TrDeadline,
+					ncharacters: ctrl.TrCharacters,
+					languagefrom: ctrl.from,
 			};
 
 			var stringPass = JSON.stringify(temp);
@@ -535,7 +540,9 @@ angular.module("search",[]).controller("search",function($scope){
 					$("#table").html("");
 					$("#selectedtable").hide();
 					jobUploaded=false;
-					jobUploaded="";
+					urlUploaded="";
+					ctrl.jobTitle="";
+					ctrl.jobDescription="";
 					ctrl.TrDeadline=ctrl.tomorrow;
 					ctrl.TrCharacters=0;
 					ctrl.processSelected=false;
@@ -543,12 +550,12 @@ angular.module("search",[]).controller("search",function($scope){
 					ctrl.pricesAccepted=false;
 
 					$("#alertOK").html("Job created correctly, do another search or go to Jobs");
-					$("#alertOK").fadeIn().delay(5000).fadeOut();
+					$("#alertOK").fadeIn().delay(25000).fadeOut();
 					$("#jobModal").hide();
 				},
 				error : function(xhr) {
 					if (xhr.status == 500) {
-						$("#alertError").html("Error from server, please retry.");
+						$("#alertError").html("Error from server, try to change field, rating or price.");
 						$("#alertError").fadeIn().delay(1000).fadeOut();
 					}
 
@@ -571,10 +578,17 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.pricesAccepted=false;
 
 		ctrl.calculateFeasibility();
-		$("#modalBodySelect").show();
+		resetTr();
+		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").hide();
 	}
 
+	ctrl.openModal = function(){
+		$('#TrModal').modal('show');
+		ctrl.calculateFeasibility();
+		$("#modalBodySelect").show();
+		$("#modalBodyUpload").hide();
+	}
 
 	ctrl.$onInit=function(){
 		ctrl.selectedPrice=3;
