@@ -307,8 +307,10 @@ angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($h
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				$scope.Languages=ret;
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					$scope.Languages=ret;
+				});
 			}
 		}
 		req.open("GET","getLanguages.php?",true);
@@ -320,8 +322,10 @@ angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($h
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				$scope.Fields=ret;
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					$scope.Fields=ret;
+				});
 			}
 		}
 		req.open("GET","getFields.php",true);
@@ -332,8 +336,10 @@ angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($h
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				$scope.Services=ret;
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					$scope.Services=ret;
+				});
 			}
 		}
 		req.open("GET","getServices.php",true);
@@ -349,8 +355,11 @@ angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($h
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
-				var ret = convertJSON(req.responseText);
-				$scope.Currencies=ret;
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					$scope.Currencies=ret;
+				});
+				return true;
 			}
 		}
 		req.open("GET","getCurrencies.php",true);
