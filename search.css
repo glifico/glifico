@@ -3,15 +3,18 @@
   direction: rtl;
   text-align: center;
 }
+
 .rating > span {
   display: inline-block;
   position: relative;
   width: 1.1em;
 }
+
 .rating > span:hover,
 .rating > span:hover ~ span {
   color: gold;
 }
+
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
   color: gold;
