@@ -71,6 +71,14 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			var doc=ctrl.documents[i];
 			html+='<tr class="row '+ctrl.getClass(doc)+'">';
 			html+='<td class="col-md-2">'+doc.job+'</td>';
+			if(doc.choice==0){
+				html+='<td class="col-md-2">';
+				html+=doc.price[0]+" "+doc.currency[0]+"<br>";
+				html+=doc.price[1]+" "+doc.currency[1];
+				html+='</td>';
+			}else{
+				html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
+			}
 			html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
 			html+='<td class="col-md-2">'+doc.ncharacters+'</td>';
 			html+='<td class="col-md-2">'+doc.deadline+'</td>';
