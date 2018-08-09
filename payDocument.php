@@ -424,12 +424,44 @@ satispayButton.on('close', function() {
 
 satispayButton.on('completed', function(chargeId) {
 	console.log('payment completed', chargeId)
-	location.href='pendingPayments.html'
+    checkCharge(chargeId);
 })
 </script>
 ");
 ?>
 
+
+
+
+
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					ctrl.loadLanguages();
+					ctrl.loadCountries();
+					ctrl.fname=ret[0].FirstName;
+					ctrl.lname=ret[0].LastName
+					ctrl.street=ret[0].Street;
+					ctrl.city=ret[0].City;
+					ctrl.IdCountry=ret[0].IdCountry;
+					ctrl.IdMothertongue=ret[0].IdMothertongue;
+					ctrl.state=ret[0].StateProvince;
+					ctrl.zip=ret[0].ZIP;
+					ctrl.email=ret[0].Email;
+					ctrl.IBAN=ret[0].IBAN;
+					ctrl.swift=ret[0].swift;
+					ctrl.phone=ret[0].PhoneReference;
+					ctrl.phone_bil=ret[0].PhoneReferenceBilling;
+					ctrl.email_bil=ret[0].EmailReferenceBilling;
+				});
+				return (true);
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
+			}
+		}
+
+		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
+		req.send();	
 
 
 

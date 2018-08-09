@@ -37,6 +37,23 @@ function paymentCompleted(){
 	req.send();
 }
 
+function checkCharge(chargeId){
+	req.onreadystatechange = function(){
+		if (req.status == 200&req.readyState==4){
+			var response=convertJSON(req.responseText);
+			console.debug(response);
+			if(response['status']=='SUCCESS'){
+				paymentCompleted();
+			}else{
+				alert('payment refused');
+			}
+		}
+	}
+
+	req.open('GET','https://staging.authservices.satispay.com/online/v1/charges/'+chargeId,true);
+	req.send();
+}
+
 
 angular.module("payment",[])
 .controller("paymentController",function($scope){
