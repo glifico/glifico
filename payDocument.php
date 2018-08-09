@@ -405,6 +405,7 @@ echo('<script src="https://staging.online.satispay.com/button.min.js"');
 echo('id="satispayButton"');
 echo('data-key="dk_gJYxwfxIbFVUZgGOtQNl"');
 echo('data-amount="'.$price.'"');
+echo('data-locale="en"');
 echo('data-description="Translation on Glifico"');
 echo('data-usercallback="http://test.glifico.com/satispaycreatecharge.php"');
 echo('data-orderid="'.$oid.'"');
