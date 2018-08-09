@@ -120,8 +120,6 @@
   var isLogged = false;
   var isAgenzia = null;
 </script>
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 <div class="navbar-header">
@@ -145,9 +143,12 @@
 <li><a href="contacts.html">Contacts</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
+<li id="li-jobs"><a href="pendingJobs.html">Jobs</a></li>
 <li id="li-rating"><a href="socialRating.html">Rating</a></li>
 <li id="li-trad"><a href="socialTrad.html">Trad</a></li>
 <li id="li-skill"><a href="skillTest.html">Skill Test</a></li>
+<li id="li-pay"><a href="pendingPayments.html">Jobs</a></li>
+<li id="li-search"><a href="search.html">Search Job</a></li>
 <li class="dropdown-grid" style="position: static;">
 <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()">
 <span class="reverse">
@@ -160,7 +161,7 @@
 </li>
 
 <li class="dropdown">
-<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown">
+<a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
 <span class="reverse">
 <div id="loginController" ng-controller="loginController as ctrl">
 <span><p id="usernameTab">{{ctrl.username}}</p></span>
@@ -169,7 +170,8 @@
 </a>
 
 <ul class="dropdown-menu">
-    <li><a onclick="logout()">logout</a></li>
+ 	<li><a onclick="personalArea()">Personal page</a></li>
+    <li><a onclick="logout()">Logout</a></li>
   </ul>
 </li>
 
@@ -177,6 +179,9 @@
 </div>
 </div>
 </nav>
+
+
+
 <div aria-labelledby="myModalLabel" class="modal fade" id="loginModal" role="dialog" tabindex="-1">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
@@ -190,7 +195,7 @@
 <ul class="nav nav-tabs">
 <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
 <li><a data-toggle="tab" href="#regTrad">Translator Registration</a></li>
-<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li>
+<!--<li><a data-toggle="tab" href="#regAg">Registration Agency</a></li> -->
 </ul>
 </div>
 <div class="tab-content"><div class="tab-pane fade in active" id="login">
@@ -315,7 +320,7 @@ satispayCallback=function(charge){
   data-orderid=getPaymentId()
   data-callback="satispayCallback"
 ></script>
-
+-->
 <br><br>
 <button onclick="location.href='pendingPayments.html'" class="btn btn-default" type="button">Return to <br>the job's page</button>
 </div>
@@ -332,6 +337,9 @@ You will be automatically redirect in a few seconds...
 </div>
 </div>
 
+<script>
+shouldBeAgency();
+</script>
 
  <div ng-app="glifico">
  <glificofooter></glificofooter>

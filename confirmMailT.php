@@ -27,7 +27,7 @@ check_email_presence($email);
 
 $object=array("user"=>$user, "password"=>$password, "name"=>$name, "lastName"=>$last,"email"=>$email, "vat"=>$vat, "tecAcceptanceDate"=>$now);
 $jsonarray=json_encode($object);
-$link="https://glifico.com/confirmTranslator.html?token=".base64_encode($jsonarray);
+$link="http://beta.glifico.com/confirmTranslator.html?token=".base64_encode($jsonarray);
 
 $to=[array("email"=>$email)];
 $subject="Thank you for sign up on Glifico!";
