@@ -11,7 +11,7 @@ require(dirname(__FILE__) . $dir. '/lib/Checkout.php');
 require(dirname(__FILE__) . $dir. '/lib/Refund.php');
 require(dirname(__FILE__) . $dir. '/lib/User.php');
 
-$data=$_GET['chargeId']
+$data=$_GET['chargeId'];
 
 if(!$data){
   exit(json_encode(array("message"=>"wrong request","statuscode"=>400)));
