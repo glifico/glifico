@@ -2,9 +2,9 @@ $(document).ready(function () {
 	$('#payCompleted').hide();
 
 	if(!isAgency()){
-	$("#payDocumentBody").hide();
+		$("#payDocumentBody").hide();
 
-	alert("Please login as agency");
+		alert("Please login as agency");
 	}
 
 });
@@ -12,16 +12,16 @@ $(document).ready(function () {
 
 var satispayButton = document.getElementById('satispayButton')
 satispayButton.on('load', function() {
-  console.log('load event')
+	console.log('load event')
 })
 
 satispayButton.on('close', function() {
-  console.log('close event')
+	console.log('close event')
 })
 
 satispayButton.on('completed', function(chargeId) {
-  console.log('payment completed event', chargeId)
-  paymentCompleted();
+	console.log('payment completed event', chargeId)
+	paymentCompleted();
 })
 
 function getPaymentId(){
@@ -55,7 +55,7 @@ function paymentCompleted(){
 
 
 angular.module("payment",[])
-.controller("paymentController",function(){
+.controller("paymentController",function($scope){
 	var ctrl=this;
 
 	ctrl.createPage=function(){
@@ -74,9 +74,9 @@ angular.module("payment",[])
 				sandbox:    'AYB0shOY_nnLb7wt0_5T6kN0x3lZkAzOdLyCFcaBLrJuuVHv0E8IK1APo6c3rzaX1oBLCep3LLoa13zT',
 				production: 'AaOBmMuxg4dlVhxWPc2iWzwm4EbeiIt4G2V35LxyuDJ4UdJ8-YhseQw9zg4tPIkuvmY6eXa2wDKRHJH6'
 			},
-			
+
 			locale: 'en_US',
-		    		    
+
 			commit: true, // Show a 'Pay Now' button
 
 			style: {
@@ -85,8 +85,8 @@ angular.module("payment",[])
 				label: 'pay',
 			},
 
-			
-			
+
+
 			payment: function(data, actions) {
 				return actions.payment.create({
 					payment: {
@@ -133,11 +133,13 @@ angular.module("payment",[])
 		var req = createXHTMLHttpRequest() ;
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
-				var data=JSON.parse(req.responseText);
-				ctrl.amount=data.price;
-				ctrl.job=data.job;
-				ctrl.createPage();
-				ctrl.createPaypal();
+				$scope.$apply(function (){
+					var data=JSON.parse(req.responseText);
+					ctrl.amount=data.price;
+					ctrl.job=data.job;
+					ctrl.createPage();
+					ctrl.createPaypal();
+				});
 			}else{
 				mostraDialogTimed('errorPanel');
 			}
