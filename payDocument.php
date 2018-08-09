@@ -384,9 +384,11 @@ Please use the form below to pay translator
 <!-- paypal button-->
 <br>
 <div id="paypal-button"></div>
+</div>
 <br><br><br>
 
 <?php 
+include_once 'functions.php';
 $oid=$_GET['token'];
 
 $db=getDB();
@@ -434,7 +436,6 @@ satispayButton.on('completed', function(chargeId) {
 
 <br><br>
 <button onclick="location.href='pendingPayments.html'" class="btn btn-primary" type="button">Return to <br>the job's page</button>
-</div>
 
 <div id="payCompleted" style="display:none;font-size:20px;">
 Your payment has been <b>completed</b> on Paypal, thanks!
