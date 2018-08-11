@@ -23,11 +23,25 @@ $to=$pair['LanguageTo'];
 
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
+$query="select id, job  from payments where translator ='$user' and status<>'Refused';";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+if (strlen(htmlspecialchars($row["id"])) > 1) {
+    exit (json_encode(array("message"=>"job in progress", "statuscode"=>301)));
+}
+
+$query="select id, job  from payments where secondtranslator ='$user' and secondstatus<>'Refused';";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+if (strlen(htmlspecialchars($row["id"])) > 1) {
+    exit (json_encode(array("message"=>"job in progress", "statuscode"=>302)));
+}
+
 $query="DELETE FROM language_pair WHERE username='$user' AND from_l='$from' AND to_l='$to';";
 $result = $db->query($query);
 
 user_try_del_lang($user,$from);
 user_try_del_lang($user,$to);
 
-exit (json_encode(array("message"=>"language added", "statuscode"=>200)));
+exit (json_encode(array("message"=>"language deleted", "statuscode"=>200)));
 ?>

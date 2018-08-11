@@ -428,7 +428,15 @@ angular.module('LanguagePairsApp').controller('LanguagePairsAppCtrl',function($h
 					$('#alertOK').fadeIn().delay(5000).fadeOut();
 					$('#alertOK').html("Your data was saved correctly.");
 					ctrl.refresh();
-				}else{
+				}else if(convertJSON(response).statuscode==301){
+					$('#alertOK').fadeIn().delay(10000).fadeOut();
+					$('#alertOK').html("Your data not uptdate because you have open jobs in that language.");
+					notify("Your data not uptdate because you have open jobs in that language.");
+				}else if(convertJSON(response).statuscode==302){
+					$('#alertOK').fadeIn().delay(5000).fadeOut();
+					$('#alertOK').html("Your was not uptdate because you have open jobs in that language.");
+					notify("Your data not uptdate because you have open jobs in that language.");
+				}else {
 					$('#alertError').fadeIn().delay(1000).fadeOut();
 					$('#alertOK').html("There was an error, please retry.");
 				}
