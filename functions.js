@@ -35,6 +35,7 @@ function onLoad(){
 	}
 
 	if(isLogged){
+		$("#MegaNavbarLeft").hide();
 		if(isAgency){
 			showAgencyStuff();
 			hideTranslatorStuff();
@@ -69,6 +70,7 @@ function notify(text){
 
 function showTranslatorStuff(){
 	$("#li-trad").show();
+	$("#li-tests").show();
 	$("#li-skill").show();
 	$("#li-jobs").show();
 	$("#li-rating").show();
@@ -82,6 +84,7 @@ function showAgencyStuff(){
 function hideTranslatorStuff(){
 	$("#li-rating").hide();
 	$("#li-trad").hide();
+	$("#li-tests").hide();
 	$("#li-skill").hide();
 	$("#li-jobs").hide();
 }
