@@ -42,7 +42,6 @@ needed by popover
 <script src="angularjs/ui-grid.min.js"></script>
 
 <script type="text/javascript" src="functions.js"></script>
-<script type="text/javascript"></script>
 <script src="cookiebar.js"></script>
 <script src="loginform.js"></script>
 <script src="mylogin.js"></script>
@@ -426,7 +425,7 @@ Price class:<br>
 <div style="width:95%;margin:auto;">
 <div id="selectedtable" style="width:80%;margin:auto;">
 <table class="table table-responsive">
-<thead class="thead-default"><tr class="row"><th class="col-md-3" style="text-align:center;"></th><th class="col-md-3" style="text-align:center;">Price/ch [Euro]</th><th class="col-md-2"></th></tr></thead>
+<thead class="thead-default"><tr class="row"><th class="col-md-3" style="text-align:center;"></th><th class="col-md-3" style="text-align:center;">Price</th><th class="col-md-2"></th></tr></thead>
 <tr class="row" id="selectedRow1" ><td class="col-md-3" id=""><a style="color:#FEC538; font-weight: bold;">1</a> First Translator: <span id="selectedName1"></span></td><td class="col-md-3"><span id="selectedPrice1"></span></td><td><a data-ng-click="ctrl.deselect(1)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
 <tr class="row" id="selectedRow2" ><td class="col-md-3"><a style="color:#FE434D; font-weight: bold;">2</a> Second Translator: <span id="selectedName2"></span></td><td class="col-md-3"><span id="selectedPrice2"></span></td><td><a data-ng-click="ctrl.deselect(2)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></td></tr>
 </table>
@@ -481,12 +480,12 @@ Price class:<br>
         <div id="modalBodyUpload">
         You have selected translators, now fill some informations about your job and upload the document to translate<br>
         Title: <input type="text" placeholder="job's title" data-ng-model="ctrl.jobTitle" ><br>
-        Description and notes about this document:<br><textarea  placeholder="brief job's description" rows = "3" data-ng-model="ctrl.jobDescription" ></textarea><br><br>
+        Description and notes about this document:<br><textarea  placeholder="brief job's description" rows = "5" columns = "20" data-ng-model="ctrl.jobDescription" ></textarea><br><br>
         Upload the document to translate: <span id="spanUpload"><input type="button" class="btn btn-primary btn-sm btn-upload" data-ng-click="ctrl.showPicker()" value="Upload document"></span>
 		<br><br>
 			Depending on your choices and prices translator can accept or decline your request. <br>
 			The job will start when translator had verified feasibility (# of characters, deadline..).
-			Once submitted you will find informations about this and other jobs on <a href="pendingPayments.html" target="_Blank">job's page</a>
+			Once submitted you will find informations about this and other jobs on job's page.
         <div class="checkbox">
   		<label><input type="checkbox" data-ng-model="ctrl.conditionsAccepted">I accept <a href="terms.html" target="_Blank">terms & conditions</a> and prices.</label>
 		</div>

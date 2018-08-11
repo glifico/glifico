@@ -377,7 +377,7 @@ Please use the form below to pay translator
 </div>
 </div>
 <div id="styledbody" style="text-align:center;">
-<div class="glifico-info" style="width:80%;display: table;margin: 0 auto;">
+<div class="glifico-info" style="width:50%;display: table;margin: 0 auto;">
 <div id="payment" ng-controller="paymentController as ctrl">
 <span id="message"></span>
 
