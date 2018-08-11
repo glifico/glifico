@@ -107,7 +107,8 @@ function createTable(pairs){
 		html+='<td class=" col-md-3"><span style="font-size:18px;">'+ edu.LanguageTo +'</span></td>';
 		html+='<td class=" col-md-3"><span style="font-size:18px;">'+edu.Price+' '+ edu.Currency+'</span></td>';
 		html+='<td class=" col-md-3"><span style="font-size:18px;">'+edu.Field+'</span></td>';
-		html+='<td class=" col-md-1"><button data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" data-currency="'+edu.Currency+'" data-from="'+edu.LanguageFrom+'" data-to="'+edu.LanguageTo+'" data-field="'+edu.Field+'" data-service="'+edu.Service+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
+		//html+='<td class=" col-md-1"><button data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" data-currency="'+edu.Currency+'" data-from="'+edu.LanguageFrom+'" data-to="'+edu.LanguageTo+'" data-field="'+edu.Field+'" data-service="'+edu.Service+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
+		html+='<td class=" col-md-1"><button data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" data-currency="'+edu.Currency+'" data-from="'+edu.LanguageFrom+'" data-to="'+edu.LanguageTo+'" data-field="'+edu.Field+'" data-service="'+edu.Service+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-search-plus fa-2x"></i></span></button></td>';
 		html+='<td class=" col-md-1"><button onclick="doDelete('+"'"+edu.LanguageFrom+"'"+','+"'"+edu.LanguageTo+"'"+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
 		html+='</tr>';
 	}

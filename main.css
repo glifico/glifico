@@ -215,10 +215,18 @@ input[type=checkbox]
 	color: #FE434D;
 }
 
-glifico-input-descr{
-	font-size: 10px;
+.glifico-input-descr{
+	font-size: 12px;
 }
 
 .glifico-info-form-language{
-	background:;
+	background: RGB(254,194,77);
+}
+
+.collapse.navbar-collapse{
+	font-size: 18px;
+}
+
+#LanguagePairForm{
+	padding-top: 3rem;
 }
