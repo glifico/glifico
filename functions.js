@@ -15,7 +15,7 @@ function onLoad(){
 
 	var isAgency=false;
 	var isTranslator=false;
-
+	var isLogged = false;
 	
 	if (getLogged()) {
 		isLogged = true;
