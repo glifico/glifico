@@ -453,6 +453,7 @@ Price class:<br>
       <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
       <div id="modalBodySelect">
         Number of <b>characters</b>: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
+       <span class="glifico-input-descr">Use dot (.) for decimals</span>
        <br>
         Number of <b>words</b>: {{ctrl.TrCharacters / 6 | number:1}} (word = 6 characters)
        <br>
