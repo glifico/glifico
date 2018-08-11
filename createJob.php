@@ -20,9 +20,16 @@ if (! $data) {
 $user = $data['user'];
 $url = $data['url'];
 $count = $data['count'];
+if($count < 1) $count=1;
+
 $selected = $data['translators'];
 $jobTitle = $data['job'];
+if(strlen($jobTitle) < 1) $jobTitle="Agency job";
+
 $jobDescr = $data['description'];
+if(strlen($jobDescr) < 1) $jobDescr="Job without desciprion";
+
+
 $deadline = $data['deadline'];
 $translator = get_username($selected[0]['id']);
 $firstPrice = $selected[0]['total'];

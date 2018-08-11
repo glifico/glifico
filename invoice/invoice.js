@@ -318,11 +318,5 @@ function create_customPDF(params){
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
 
-	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-	doc.textAlign(invoiceJSON.TotalAmnt, {align: "left"},rightcol2, startY);
-	doc.setFontType('bold');
-	doc.textAlign('For '+comapnyJSON.CompanyName+',', {align: "center"},rightcol2, startY+=lineSpacing.NormalSpacing+50);
-	doc.textAlign('Authorised Signatory', {align: "center"},rightcol2, startY+=lineSpacing.NormalSpacing+50);
-
 	doc.save("Glifico_invoice.pdf");
 }
