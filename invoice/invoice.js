@@ -138,7 +138,7 @@ function create_customPDF(params){
 	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=150);
 
 	doc.setFontSize(fontSizes.NormalFontSize);
-	doc.textAlign("VAT", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("IVA", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
 	doc.textAlign(comapnyJSON.CompanyGSTIN, {align: "left"}, 80, startY);
@@ -279,10 +279,10 @@ function create_customPDF(params){
 	};
 
 	var columns = [
-		{title: "ID", dataKey: "id",width: 90},
-		{title: "Product", dataKey: "Product",width: 40},
-		{title: "Qty", dataKey: "Qty",width: 40},
-		{title: "Total", dataKey: "Total",width: 40},
+		{title: "ID", dataKey: "id",width: 100},
+		{title: "Product", dataKey: "Product",width: 500},
+		{title: "Qty", dataKey: "Qty",width: 200},
+		{title: "Total", dataKey: "Total",width: 100},
 		];
 	
 	var rows = [
