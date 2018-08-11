@@ -108,6 +108,8 @@ function createTable(pairs){
 	html+='<th class="col-md-1"></th>';
 	html+='<th class="col-md-1"></th>';
 	html+='</tr>';
+	html+='</thead>';
+	html+='<tbody>';
 	for (var i = 0; i < pairs.length; i++) {
 		var edu=pairs[i];
 		html+='<tr class="row">';
@@ -120,7 +122,7 @@ function createTable(pairs){
 		html+='<td class=" col-md-1"><button onclick="doDelete('+"'"+edu.LanguageFrom+"'"+','+"'"+edu.LanguageTo+"'"+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
 		html+='</tr>';
 	}
-	html+='</thead>';
+	html+='</tbody>';
 	html+='</table>';	
 
 	$("#pairsTable").html(html);
