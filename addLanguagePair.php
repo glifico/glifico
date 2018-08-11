@@ -48,7 +48,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 if (strlen(htmlspecialchars($row["username"])) > 2) {
     exit(json_encode(array(
         "message" => "language pair already present",
-        "statuscode" => 405
+        "statuscode" => 305
     )));
 }
 
