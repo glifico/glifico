@@ -486,7 +486,7 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 
 
 <div id="Languagepairs" class="tab-pane fade">
-<div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl" >
+<div id="LanguagePairsAppID" class="glifico-info-form-language" ng-controller="LanguagePairsAppCtrl" >
 
 <div id="pairsTable"></div>
 <div class="glifico-info">
@@ -538,8 +538,8 @@ You can also choose which field is the price for, you are able to choose a gener
 <label>Price Per Character</label>
 <input type="number" ng-model="model.PricePerCharacter" required>
 <div>
-Price per <b>word</b> (word = 6 characters): {{model.PricePerCharacter * 6 | number:5}}<br>
-Price per <b>page</b> (page = 1500 characters): {{model.PricePerCharacter * 1500 | number:5}}
+Price per <b>word</b> (word = 6 characters) {{model.PricePerCharacter * 6 | number:5}}<br>
+Price per <b>page</b> (page = 1500 characters) {{model.PricePerCharacter * 1500 | number:5}}
 </div>
 </div>
 </div>
