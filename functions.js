@@ -50,6 +50,7 @@ function onLoad(){
 			hideTranslatorStuff();
 		}
 	}else{
+		$("#MegaNavbarLeft").show();
 		hideTranslatorStuff();
 		hideAgencyStuff();
 	}
