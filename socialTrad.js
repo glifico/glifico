@@ -141,7 +141,7 @@ function showDomanda() {
 	var html = "";
 	var domanda = domande[0];
 	html += '<form>'
-		html += '<div class="panel panel-default"><div class="panel-heading"> <font size="2" >' + domanda.text_to_translate;
+	html += '<div class="panel panel-default"><div class="modal-translator"> <font size="2" >' + domanda.text_to_translate;
 	+'</font>  </div> </div>'
 	html += '<br/>'
 
