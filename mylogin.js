@@ -15,18 +15,16 @@ function doDominoLogin() {
 				var user=JSON.parse(logReq.responseText)["user"];
 				var token=JSON.parse(logReq.responseText)["token"];
 				var type=JSON.parse(logReq.responseText)["type"];
-				saveTheCookie(user, token,type);
+				saveTheCookie(user, token, type);
 				console.log("logged");
+				$('#alertOK').html("Welcome on Glifico "+ getUsername());
+				$('#alertOK').fadeIn().delay(2000).fadeOut();
 				personalArea();
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
 				return(false);
 			}
-			//Todo
-			/*
-			 * if response = username already present
-			 */
 		};
 	}
 	logReq.open("GET", "login.php"+poststring , true);
@@ -161,8 +159,6 @@ function personalArea(){
 	}else if(isAgency()){
 		location.href="agency.html";
 	}
-	$('#alertOK').html("Welcome on Glifico "+ getUsername());
-	$('#alertOK').fadeIn().delay(10000).fadeOut();
 }
 
 
