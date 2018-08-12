@@ -1,0 +1,8 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Register account}{3}{section.1}
+\contentsline {section}{\numberline {2}Fill your information}{9}{section.2}
+\contentsline {section}{\numberline {3}Add languages}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}Delete a language pair}{16}{subsection.3.1}
+\contentsline {section}{\numberline {4}A job on Glifico}{17}{section.4}
+\contentsline {subsection}{\numberline {4.1}Refuse a job}{24}{subsection.4.1}
+\contentsline {section}{\numberline {5}Help}{25}{section.5}
