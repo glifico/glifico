@@ -69,11 +69,12 @@ if (!certTokenA($db, $user, $token))
         "statuscode" => 400
     )));
 
-$query = "SELECT username, from_l, to_l, field, price_euro from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
+$query = "SELECT username, from_l, to_l, min(price_euro) from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo' ";
 
 if (strcmp($field, "select all") !== 0) {
     $query = $query . "AND field LIKE '$field'";
 }
+$query = $query." group by username, from_l, to_l";
 $result = $db->query($query . ";");
 
 $pricequery = "SELECT avg(price_euro) FROM($query) sub;";
