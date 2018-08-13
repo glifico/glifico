@@ -69,20 +69,28 @@ if (!certTokenA($db, $user, $token))
         "statuscode" => 400
     )));
 
-$query = "SELECT username, from_l, to_l, min(price_euro) from language_pair WHERE from_l LIKE '$langFrom' AND to_l LIKE '$langTo' ";
+$query = "SELECT username, from_l, to_l";
 
 if (strcmp($field, "select all") !== 0) {
-    $query = $query . "AND field LIKE '$field'";
+    $query = $query . ", min(price_euro) as price_euro FROM language_pair WHERE";
+}else{
+    $query = $query . ", field, price_euro FROM language_pair WHERE field LIKE '$field' AND ";
 }
-$query = $query." group by username, from_l, to_l";
+
+$query = $query . " from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
+
+if (strcmp($field, "select all") !== 0) {
+    $query = $query." GROUP BY username, from_l, to_l";
+}
+
 $result = $db->query($query . ";");
 
-$pricequery = "SELECT avg(min) FROM($query) sub;";
+$pricequery = "SELECT avg(price_euro) FROM($query) sub;";
 $priceRes = $db->query($pricequery);
 $priceRow = $priceRes->fetch(PDO::FETCH_ASSOC);
 $priceAvg = $priceRow['avg'];
 
-$sigmaquery = "SELECT stddev_samp(min) FROM($query) sub;";
+$sigmaquery = "SELECT stddev_samp(price_euro) FROM($query) sub;";
 $sigmaRes = $db->query($sigmaquery);
 $sigmaRow = $sigmaRes->fetch(PDO::FETCH_ASSOC);
 $sigma = $sigmaRow['stddev_samp'];
