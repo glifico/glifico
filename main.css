@@ -244,7 +244,9 @@ md-input-container{
 	text-align:center;
 	width:25%;
 	height:32px;
-	background-color:RGB(254,194,77)
+	background-color:RGB(254,194,77);
+	border-left: 1px solid #EFEFEF;
+	border-right: 1px solid #EFEFEF;
 }
 
 .glifico-td{

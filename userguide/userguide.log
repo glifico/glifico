@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.22)  11 AUG 2018 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.22)  13 AUG 2018 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -297,6 +297,19 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip43
+\f@nch@O@elh=\skip44
+\f@nch@O@erh=\skip45
+\f@nch@O@olh=\skip46
+\f@nch@O@orh=\skip47
+\f@nch@O@elf=\skip48
+\f@nch@O@erf=\skip49
+\f@nch@O@olf=\skip50
+\f@nch@O@orf=\skip51
+)
 (/usr/local/texlive/2018basic/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
 
@@ -414,36 +427,36 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip43
+\Hy@SectionHShift=\skip52
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 25.
-Package hyperref Info: Option `colorlinks' set `true' on input line 25.
+Package hyperref Info: Option `breaklinks' set `true' on input line 26.
+Package hyperref Info: Option `colorlinks' set `true' on input line 26.
  (./userguide.aux)
 \openout1 = `userguide.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 39.
 
 (/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -456,14 +469,14 @@ LaTeX Font Info:    ... okay on input line 31.
 * vratio: 1:1
 * modes: 
 * h-part:(L,W,R)=(42.67912pt, 512.14963pt, 42.67912pt)
-* v-part:(T,H,B)=(71.13188pt, 688.5567pt, 85.35826pt)
+* v-part:(T,H,B)=(42.67912pt, 731.23584pt, 71.13188pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=512.14963pt
-* \textheight=688.5567pt
+* \textheight=731.23584pt
 * \oddsidemargin=-29.59087pt
 * \evensidemargin=-29.59087pt
-* \topmargin=-38.1381pt
+* \topmargin=-66.59087pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -512,7 +525,7 @@ e
 ))
 \c@lstlisting=\count118
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 31.
+Package hyperref Info: Link coloring ON on input line 39.
  (/usr/local/texlive/2018basic/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -522,295 +535,362 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 31.
-LaTeX Info: Redefining \pageref on input line 31.
-LaTeX Info: Redefining \nameref on input line 31.
+LaTeX Info: Redefining \ref on input line 39.
+LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \nameref on input line 39.
  (./userguide.out) (./userguide.out)
 \@outlinefile=\write3
 \openout3 = `userguide.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 33.
+(Font)              <12> on input line 41.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 33.
+(Font)              <8> on input line 41.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 33.
-<home.png, id=28, 1284.8pt x 803.0pt>
+(Font)              <6> on input line 41.
+<home.png, id=40, 1284.8pt x 803.0pt>
 File: home.png Graphic file (type png)
 <use home.png>
-Package pdftex.def Info: home.png  used on input line 35.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
+Package pdftex.def Info: home.png  used on input line 43.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [1
 
 {/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
-home.png>] (./userguide.toc)
+home.png>] (./userguide.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 5.
+)
 \tf@toc=\write4
 \openout4 = `userguide.toc'.
 
  [2]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 43.
-<register_translator0.png, id=46, 1284.8pt x 803.0pt>
-File: register_translator0.png Graphic file (type png)
-<use register_translator0.png>
-Package pdftex.def Info: register_translator0.png  used on input line 48.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<register_translator1.png, id=47, 1284.8pt x 803.0pt>
-File: register_translator1.png Graphic file (type png)
-<use register_translator1.png>
-Package pdftex.def Info: register_translator1.png  used on input line 54.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
+<translator_register0.png, id=68, 1284.8pt x 803.0pt>
+File: translator_register0.png Graphic file (type png)
+<use translator_register0.png>
+Package pdftex.def Info: translator_register0.png  used on input line 57.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_register1.png, id=69, 1284.8pt x 803.0pt>
+File: translator_register1.png Graphic file (type png)
+<use translator_register1.png>
+Package pdftex.def Info: translator_register1.png  used on input line 63.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 [3
 
- <./register_translator0.png>] [4 <./register_translator1.png>]
-<register_translator2.png, id=61, 1284.8pt x 803.0pt>
-File: register_translator2.png Graphic file (type png)
-<use register_translator2.png>
-Package pdftex.def Info: register_translator2.png  used on input line 61.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<register_translator3.png, id=62, 1284.8pt x 803.0pt>
-File: register_translator3.png Graphic file (type png)
-<use register_translator3.png>
-Package pdftex.def Info: register_translator3.png  used on input line 66.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
+ <./translator_register0.png> <./translator_register1.png>]
+<translator_register2.png, id=80, 1284.8pt x 803.0pt>
+File: translator_register2.png Graphic file (type png)
+<use translator_register2.png>
+Package pdftex.def Info: translator_register2.png  used on input line 70.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_register3.png, id=81, 1284.8pt x 803.0pt>
+File: translator_register3.png Graphic file (type png)
+<use translator_register3.png>
+Package pdftex.def Info: translator_register3.png  used on input line 75.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [4
+
+ <./translator_register2.png> <./translator_register3.png>]
+<translator_register4.png, id=88, 1284.8pt x 803.0pt>
+File: translator_register4.png Graphic file (type png)
+<use translator_register4.png>
+Package pdftex.def Info: translator_register4.png  used on input line 82.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_register5.png, id=89, 1284.8pt x 803.0pt>
+File: translator_register5.png Graphic file (type png)
+<use translator_register5.png>
+Package pdftex.def Info: translator_register5.png  used on input line 87.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [5
 
- <./register_translator2.png> <./register_translator3.png>]
-<register_translator4.png, id=69, 1284.8pt x 803.0pt>
-File: register_translator4.png Graphic file (type png)
-<use register_translator4.png>
-Package pdftex.def Info: register_translator4.png  used on input line 73.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<register_translator5.png, id=70, 1284.8pt x 803.0pt>
-File: register_translator5.png Graphic file (type png)
-<use register_translator5.png>
-Package pdftex.def Info: register_translator5.png  used on input line 78.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
+ <./translator_register4.png> <./translator_register5.png>]
+<translator_register6.png, id=96, 1284.8pt x 803.0pt>
+File: translator_register6.png Graphic file (type png)
+<use translator_register6.png>
+Package pdftex.def Info: translator_register6.png  used on input line 94.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_register7.png, id=97, 1284.8pt x 803.0pt>
+File: translator_register7.png Graphic file (type png)
+<use translator_register7.png>
+Package pdftex.def Info: translator_register7.png  used on input line 100.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [6
 
- <./register_translator4.png> <./register_translator5.png>]
-<register_translator6.png, id=77, 1284.8pt x 803.0pt>
-File: register_translator6.png Graphic file (type png)
-<use register_translator6.png>
-Package pdftex.def Info: register_translator6.png  used on input line 85.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<register_translator7.png, id=78, 1284.8pt x 803.0pt>
-File: register_translator7.png Graphic file (type png)
-<use register_translator7.png>
-Package pdftex.def Info: register_translator7.png  used on input line 91.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [7
-
- <./register_translator6.png> <./register_translator7.png>]
-File: register_translator0.png Graphic file (type png)
-<use register_translator0.png>
-Package pdftex.def Info: register_translator0.png  used on input line 98.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<login.png, id=86, 1284.8pt x 803.0pt>
+ <./translator_register6.png> <./translator_register7.png>]
+File: translator_register0.png Graphic file (type png)
+<use translator_register0.png>
+Package pdftex.def Info: translator_register0.png  used on input line 107.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<login.png, id=104, 1284.8pt x 803.0pt>
 File: login.png Graphic file (type png)
 <use login.png>
-Package pdftex.def Info: login.png  used on input line 104.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [8
+Package pdftex.def Info: login.png  used on input line 113.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [7
 
- <./login.png>] [9
+ <./login.png>] [8
 
 ]
-<translator_pair0.png, id=96, 1284.8pt x 803.0pt>
+<translator_pair0.png, id=115, 1284.8pt x 803.0pt>
 File: translator_pair0.png Graphic file (type png)
 <use translator_pair0.png>
-Package pdftex.def Info: translator_pair0.png  used on input line 118.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_pair1.png, id=97, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_pair0.png  used on input line 127.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_pair1.png, id=116, 1284.8pt x 803.0pt>
 File: translator_pair1.png Graphic file (type png)
 <use translator_pair1.png>
-Package pdftex.def Info: translator_pair1.png  used on input line 124.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [10
+Package pdftex.def Info: translator_pair1.png  used on input line 133.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [9
 
- <./translator_pair0.png>] [11 <./translator_pair1.png>]
-<translator_pair2.png, id=108, 1284.8pt x 803.0pt>
+ <./translator_pair0.png> <./translator_pair1.png>]
+<translator_pair2.png, id=123, 1284.8pt x 803.0pt>
 File: translator_pair2.png Graphic file (type png)
 <use translator_pair2.png>
-Package pdftex.def Info: translator_pair2.png  used on input line 132.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_pair3.png, id=109, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_pair2.png  used on input line 141.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_pair3.png, id=124, 1284.8pt x 803.0pt>
 File: translator_pair3.png Graphic file (type png)
 <use translator_pair3.png>
-Package pdftex.def Info: translator_pair3.png  used on input line 138.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [12
+Package pdftex.def Info: translator_pair3.png  used on input line 147.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [10
 
  <./translator_pair2.png> <./translator_pair3.png>]
-[13]
-<translator_pair4.png, id=121, 1284.8pt x 803.0pt>
+<translator_pair4.png, id=131, 1284.8pt x 803.0pt>
 File: translator_pair4.png Graphic file (type png)
 <use translator_pair4.png>
-Package pdftex.def Info: translator_pair4.png  used on input line 148.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_pair5.png, id=122, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_pair4.png  used on input line 155.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_pair5.png, id=132, 1284.8pt x 803.0pt>
 File: translator_pair5.png Graphic file (type png)
 <use translator_pair5.png>
-Package pdftex.def Info: translator_pair5.png  used on input line 154.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [14
+Package pdftex.def Info: translator_pair5.png  used on input line 161.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [11
 
  <./translator_pair4.png> <./translator_pair5.png>]
-<translator_pair6.png, id=129, 1284.8pt x 803.0pt>
+<translator_pair6.png, id=139, 1284.8pt x 803.0pt>
 File: translator_pair6.png Graphic file (type png)
 <use translator_pair6.png>
-Package pdftex.def Info: translator_pair6.png  used on input line 162.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_pair7.png, id=130, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_pair6.png  used on input line 169.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_pair7.png, id=140, 1284.8pt x 803.0pt>
 File: translator_pair7.png Graphic file (type png)
 <use translator_pair7.png>
-Package pdftex.def Info: translator_pair7.png  used on input line 168.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [15
+Package pdftex.def Info: translator_pair7.png  used on input line 175.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [12
 
  <./translator_pair6.png> <./translator_pair7.png>]
-<translator_pair8.png, id=137, 1284.8pt x 803.0pt>
+<translator_pair8.png, id=147, 1284.8pt x 803.0pt>
 File: translator_pair8.png Graphic file (type png)
 <use translator_pair8.png>
-Package pdftex.def Info: translator_pair8.png  used on input line 177.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [16
+Package pdftex.def Info: translator_pair8.png  used on input line 184.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [13
 
  <./translator_pair8.png>]
-<translator_job0.png, id=143, 1284.8pt x 803.0pt>
+<translator_job0.png, id=154, 1284.8pt x 803.0pt>
 File: translator_job0.png Graphic file (type png)
 <use translator_job0.png>
-Package pdftex.def Info: translator_job0.png  used on input line 188.
+Package pdftex.def Info: translator_job0.png  used on input line 195.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_job1.png, id=144, 1284.8pt x 803.0pt>
+<translator_job1.png, id=155, 1284.8pt x 803.0pt>
 File: translator_job1.png Graphic file (type png)
 <use translator_job1.png>
-Package pdftex.def Info: translator_job1.png  used on input line 194.
+Package pdftex.def Info: translator_job1.png  used on input line 201.
 (pdftex.def)             Requested size: 435.3303pt x 272.07292pt.
- [17
+ [14
 
  <./translator_job0.png> <./translator_job1.png>]
-<translator_job2.png, id=151, 1284.8pt x 803.0pt>
+<translator_job2.png, id=162, 1284.8pt x 803.0pt>
 File: translator_job2.png Graphic file (type png)
 <use translator_job2.png>
-Package pdftex.def Info: translator_job2.png  used on input line 202.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_job3.png, id=152, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_job2.png  used on input line 209.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_job3.png, id=163, 1284.8pt x 803.0pt>
 File: translator_job3.png Graphic file (type png)
 <use translator_job3.png>
-Package pdftex.def Info: translator_job3.png  used on input line 208.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [18
+Package pdftex.def Info: translator_job3.png  used on input line 215.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [15
 
  <./translator_job2.png> <./translator_job3.png>]
-<translator_job4.png, id=159, 1284.8pt x 803.0pt>
+<translator_job4.png, id=170, 1284.8pt x 803.0pt>
 File: translator_job4.png Graphic file (type png)
 <use translator_job4.png>
-Package pdftex.def Info: translator_job4.png  used on input line 216.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_job5.png, id=160, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_job4.png  used on input line 223.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_job5.png, id=171, 1284.8pt x 803.0pt>
 File: translator_job5.png Graphic file (type png)
 <use translator_job5.png>
-Package pdftex.def Info: translator_job5.png  used on input line 223.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [19
+Package pdftex.def Info: translator_job5.png  used on input line 230.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+
+[16
 
  <./translator_job4.png> <./translator_job5.png>]
-<translator_job6.png, id=168, 1284.8pt x 803.0pt>
+<translator_job6.png, id=178, 1284.8pt x 803.0pt>
 File: translator_job6.png Graphic file (type png)
 <use translator_job6.png>
-Package pdftex.def Info: translator_job6.png  used on input line 231.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_job7.png, id=169, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_job6.png  used on input line 238.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_job7.png, id=179, 1284.8pt x 803.0pt>
 File: translator_job7.png Graphic file (type png)
 <use translator_job7.png>
-Package pdftex.def Info: translator_job7.png  used on input line 237.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [20
+Package pdftex.def Info: translator_job7.png  used on input line 244.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [17
 
  <./translator_job6.png> <./translator_job7.png>]
-<translator_job8.png, id=176, 1284.8pt x 803.0pt>
+<translator_job8.png, id=186, 1284.8pt x 803.0pt>
 File: translator_job8.png Graphic file (type png)
 <use translator_job8.png>
-Package pdftex.def Info: translator_job8.png  used on input line 245.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_job9.png, id=177, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_job8.png  used on input line 252.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_job9.png, id=187, 1284.8pt x 803.0pt>
 File: translator_job9.png Graphic file (type png)
 <use translator_job9.png>
-Package pdftex.def Info: translator_job9.png  used on input line 251.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [21
+Package pdftex.def Info: translator_job9.png  used on input line 258.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [18
 
  <./translator_job8.png> <./translator_job9.png>]
-<translator_job10.png, id=184, 1284.8pt x 803.0pt>
+<translator_job10.png, id=194, 1284.8pt x 803.0pt>
 File: translator_job10.png Graphic file (type png)
 <use translator_job10.png>
-Package pdftex.def Info: translator_job10.png  used on input line 259.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-<translator_job11.png, id=185, 1284.8pt x 803.0pt>
+Package pdftex.def Info: translator_job10.png  used on input line 266.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_job11.png, id=195, 1284.8pt x 803.0pt>
 File: translator_job11.png Graphic file (type png)
 <use translator_job11.png>
-Package pdftex.def Info: translator_job11.png  used on input line 265.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [22
+Package pdftex.def Info: translator_job11.png  used on input line 272.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+[19
 
  <./translator_job10.png> <./translator_job11.png>]
 File: translator_job11.png Graphic file (type png)
 <use translator_job11.png>
-Package pdftex.def Info: translator_job11.png  used on input line 272.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
- [23
+Package pdftex.def Info: translator_job11.png  used on input line 279.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [20
 
 ]
-<translator_job3_del.png, id=196, 1284.8pt x 803.0pt>
+<translator_job3_del.png, id=207, 1284.8pt x 803.0pt>
 File: translator_job3_del.png Graphic file (type png)
 <use translator_job3_del.png>
-Package pdftex.def Info: translator_job3_del.png  used on input line 280.
-(pdftex.def)             Requested size: 486.54057pt x 304.08943pt.
-
-[24
+Package pdftex.def Info: translator_job3_del.png  used on input line 287.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [21
 
  <./translator_job3_del.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 289.
+<translator_skilltest0.png, id=214, 1284.8pt x 803.0pt>
+File: translator_skilltest0.png Graphic file (type png)
+<use translator_skilltest0.png>
+Package pdftex.def Info: translator_skilltest0.png  used on input line 297.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_skilltest1.png, id=215, 1284.8pt x 803.0pt>
+File: translator_skilltest1.png Graphic file (type png)
+<use translator_skilltest1.png>
+Package pdftex.def Info: translator_skilltest1.png  used on input line 303.
+(pdftex.def)             Requested size: 435.3303pt x 272.07292pt.
+ [22
+
+ <./translator_skilltest0.png> <./translator_skilltest1.png>]
+<translator_skilltest2.png, id=222, 1284.8pt x 803.0pt>
+File: translator_skilltest2.png Graphic file (type png)
+<use translator_skilltest2.png>
+Package pdftex.def Info: translator_skilltest2.png  used on input line 311.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_skilltest3.png, id=223, 1284.8pt x 803.0pt>
+File: translator_skilltest3.png Graphic file (type png)
+<use translator_skilltest3.png>
+Package pdftex.def Info: translator_skilltest3.png  used on input line 317.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+
+[23
+
+ <./translator_skilltest2.png> <./translator_skilltest3.png>]
+<translator_skilltest4.png, id=230, 1284.8pt x 803.0pt>
+File: translator_skilltest4.png Graphic file (type png)
+<use translator_skilltest4.png>
+Package pdftex.def Info: translator_skilltest4.png  used on input line 325.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_skilltest5.png, id=231, 1284.8pt x 803.0pt>
+File: translator_skilltest5.png Graphic file (type png)
+<use translator_skilltest5.png>
+Package pdftex.def Info: translator_skilltest5.png  used on input line 331.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [24
+
+ <./translator_skilltest4.png> <./translator_skilltest5.png>]
+<translator_skilltest6.png, id=238, 1284.8pt x 803.0pt>
+File: translator_skilltest6.png Graphic file (type png)
+<use translator_skilltest6.png>
+Package pdftex.def Info: translator_skilltest6.png  used on input line 339.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_skilltest7.png, id=239, 1284.8pt x 803.0pt>
+File: translator_skilltest7.png Graphic file (type png)
+<use translator_skilltest7.png>
+Package pdftex.def Info: translator_skilltest7.png  used on input line 345.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [25
 
+ <./translator_skilltest6.png> <./translator_skilltest7.png>]
+<translator_skilltest8.png, id=247, 1284.8pt x 803.0pt>
+File: translator_skilltest8.png Graphic file (type png)
+<use translator_skilltest8.png>
+Package pdftex.def Info: translator_skilltest8.png  used on input line 353.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_skilltest9.png, id=248, 1284.8pt x 803.0pt>
+File: translator_skilltest9.png Graphic file (type png)
+<use translator_skilltest9.png>
+Package pdftex.def Info: translator_skilltest9.png  used on input line 359.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [26
+
+ <./translator_skilltest8.png> <./translator_skilltest9.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 369.
+ [27
+
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 289.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 369.
  (./userguide.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 289.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 289.
-
-
-Package rerunfilecheck Warning: File `userguide.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `userguide.out':
-(rerunfilecheck)             Before: DE79466050FB649F7D49BF6450266B3F;822
-(rerunfilecheck)             After:  13FFD6D1B45B43F84F1E52666C065E40;885.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 289.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 369.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 369.
+Package rerunfilecheck Info: File `userguide.out' has not changed.
+(rerunfilecheck)             Checksum: B2B42CF98F39A8FE66D2B786D2F7E352;1083.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 369.
  ) 
 Here is how much of TeX's memory you used:
- 11319 strings out of 494091
- 161451 string characters out of 6163523
- 235390 words of memory out of 5000000
- 14849 multiletter control sequences out of 15000+600000
- 9325 words of font info for 33 fonts, out of 8000000 for 9000
+ 11511 strings out of 494091
+ 164579 string characters out of 6163523
+ 238704 words of memory out of 5000000
+ 15021 multiletter control sequences out of 15000+600000
+ 10019 words of font info for 35 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 28i,7n,32p,242b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-0.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmtt10.pfb>
-Output written on userguide.pdf (25 pages, 3619327 bytes).
+ 28i,11n,43p,242b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/filippo/Library/texlive/2018basic/texmf-var/fonts/pk/ljfour/jknappen
+/ec/tcrm1095.600pk></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2018basic/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on userguide.pdf (27 pages, 4902142 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 303 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 283 words of extra memory for PDF output out of 10000 (max. 10000000)
 

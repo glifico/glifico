@@ -284,7 +284,7 @@ function showDomanda() {
 		html += '&nbsp;<a class="btn btn-default" href="javascript:void(0)" onclick="nextDomanda()">Next&nbsp;<i class="fa fa-arrow-right"></i></a>'
 	}
 	if (last) {
-		html += '&nbsp;<a class="btn btn-default" href="javascript:void(0)" onclick="finishTest()"><i class="fa fa-paper-plane"></i>&nbsp;Submit</a>'
+		html += '&nbsp;<a class="btn btn-primary" href="javascript:void(0)" onclick="finishTest()"><i class="fa fa-paper-plane"></i>&nbsp;Submit</a>'
 	}
 	html += "</span>"
 		html += "</form></p><br /><br />";
