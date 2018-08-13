@@ -75,11 +75,13 @@ function showTranslatorStuff(){
 	$("#li-skill").show();
 	$("#li-jobs").show();
 	$("#li-rating").show();
+	$("#translator-help").show();
 }
 
 function showAgencyStuff(){
 	$("#li-pay").show();
 	$("#li-search").show();
+	$("#agency-help").show();
 }
 
 function hideTranslatorStuff(){
@@ -88,11 +90,13 @@ function hideTranslatorStuff(){
 	$("#li-tests").hide();
 	$("#li-skill").hide();
 	$("#li-jobs").hide();
+	$("#translator-help").hide();
 }
 
 function hideAgencyStuff(){
 	$("#li-pay").hide();
 	$("#li-search").hide();
+	$("#agency-help").hide();
 }
 
 
