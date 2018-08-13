@@ -132,9 +132,9 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         // id is to be shown
         // code is app private identifier in the database
         if ($sigma != 0) {
-            $normPrice = (float) ($prT - $Avg) / (float) $sigma;
+            $normPrice = (float) ($priceTransl - $Avg) / (float) $sigma;
         } else {
-            $normPrice = $prT;
+            $normPrice = $priceTransl;
         }
         array_push($dataToExit, array(
             "Id" => $id,
@@ -150,8 +150,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             "Mothertongue" => $rowUser['madrelingua'],
             "UserInfo" => getInfo($translator),
             "Debug"=>$sigma,
-            "Debug1"=>$Avg,
-            "Debug2"=>$prT
+            "Debug1"=>$priceAvg,
+            "Debug2"=>$priceTransl
         ));
     }
 }
