@@ -316,7 +316,11 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='<tr id="rowN'+i+'" class="row '+ctrl.getClass(doc)+'">';
 				html+='<td class="col-md-2">'+ctrl.createPopOverForUser(doc)+' '+name+'</td>';
 				html+='<td class="col-md-1">'+doc.Mothertongue+'</td>';
-				html+='<td class="col-md-2">'+doc.Field+'</td>';
+				if(doc.Field!=null){
+					html+='<td class="col-md-2">'+doc.Field+'</td>';
+				}else{
+					html+='<td class="col-md-2">'+"all"+'</td>';
+				}
 				html+='<td class="col-md-2">';
 				html+='<div class="price">';
 				html+='<span class="money '+(doc.Rating>=1?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';

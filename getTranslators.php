@@ -132,7 +132,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         // id is to be shown
         // code is app private identifier in the database
         if ($sigma != 0) {
-            $normPrice = (float) ($prT - $Avg) / $sigma;
+            $normPrice = (float) ($prT - $Avg) / (float) $sigma;
         } else {
             $normPrice = $prT;
         }
