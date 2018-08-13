@@ -77,12 +77,12 @@ if (strcmp($field, "select all") !== 0) {
 $query = $query." group by username, from_l, to_l";
 $result = $db->query($query . ";");
 
-$pricequery = "SELECT avg(price_euro) FROM($query) sub;";
+$pricequery = "SELECT avg(min) FROM($query) sub;";
 $priceRes = $db->query($pricequery);
 $priceRow = $priceRes->fetch(PDO::FETCH_ASSOC);
 $priceAvg = $priceRow['avg'];
 
-$sigmaquery = "SELECT stddev_samp(price_euro) FROM($query) sub;";
+$sigmaquery = "SELECT stddev_samp(min) FROM($query) sub;";
 $sigmaRes = $db->query($sigmaquery);
 $sigmaRow = $sigmaRes->fetch(PDO::FETCH_ASSOC);
 $sigma = $sigmaRow['stddev_samp'];
