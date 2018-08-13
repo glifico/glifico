@@ -73,7 +73,7 @@ getData= function(id, job, description, date, price) {
 				invoice:{
 					InvoiceNo:id.toString(),
 					InvoiceProduct: job,
-					InvoiceDate: date.toString().slice(4,15),
+					InvoiceDate: date.toString().slice(0,11),
 					TotalAmnt: price.toString()+"Euro",
 					SubTotalAmnt: price.toString()+"Euro",
 				}
