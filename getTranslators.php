@@ -72,14 +72,15 @@ if (!certTokenA($db, $user, $token))
 $query = "SELECT username, from_l, to_l";
 
 if (strcmp($field, "select all") !== 0) {
-    $query = $query . ", min(price_euro) as price_euro FROM language_pair WHERE";
-}else{
     $query = $query . ", field, price_euro FROM language_pair WHERE field LIKE '$field' AND ";
-}
+}else{
+    $query = $query . ", min(price_euro) as price_euro FROM language_pair WHERE";
+    }
 
 $query = $query . " from_l LIKE '$langFrom' AND to_l LIKE '$langTo'";
 
 if (strcmp($field, "select all") !== 0) {
+}else{
     $query = $query." GROUP BY username, from_l, to_l";
 }
 
