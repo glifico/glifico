@@ -149,9 +149,6 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             "IdMothertongue" => $rowUser['madrelinguaid'],
             "Mothertongue" => $rowUser['madrelingua'],
             "UserInfo" => getInfo($translator),
-            "Debug"=>$sigma,
-            "Debug1"=>$priceAvg,
-            "Debug2"=>$priceTransl
         ));
     }
 }
