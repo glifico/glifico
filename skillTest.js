@@ -107,13 +107,13 @@ function result(){
 		html += '<thead>';
 		html += '	<tr valign="middle">';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language</th>';
+		html += '			class="glifico-th">Language</th>';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Last Execution Date</th>';
+		html += '			class="glifico-th">Last Execution Date</th>';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Status</th>';
+		html += '			class="glifico-th">Status</th>';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Rating</th>';
+		html += '			class="glifico-th">Rating</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
@@ -125,22 +125,22 @@ function result(){
 			html += '<tr valign="middle"  '+classe+'>'
 
 			var lang = data[i].Language
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
+			html += '<td class="glifico-td"> <b>'
 				+ lang
 				+ '</b> </td>'
 				if (data[i].TotTest == null) {
-					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">Not done yet</td>'
-						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
-						html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"></td>'
+					html += '<td class="glifico-td">Not done yet</td>'
+						html += '<td class="glifico-td">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
+						html += '<td class="glifico-td"></td>'
 				} else {
 					var data1 = data[i].DataTest
 					data1 = data1.replace("T"," ")
 					data1 = data1.replace("Z","")
 					data1 = data1.substring(0,data1.length-3)
-					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>'
-					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + '<font color="#008000"> <b>Done </b></font>' + '</td>'
-					html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">'
-						+ '<font color="blue"><b>'
+					html += '<td class="glifico-td">' + data1 + '</td>'
+					html += '<td class="glifico-td">' + '<font color="#008000"> <b>Done</b></font>' + '</td>'
+					html += '<td class="glifico-td">'
+						+ '<font color="black" size="5px"><b>'
 						+ getPriceDollars(data[i].TotTest)
 						+ '</b></font>' + '</td>'
 				}
@@ -187,8 +187,8 @@ function tryOut() {
 	var lan = $("#select-language").val();
 	if (lan != null && lan != "-") {
 		var html = "";
-		html = 'Are you ready?<br /><a class="btn btn-default" href="javascript:void(0)" onClick="startTest()">Go!</a>'
-			$("#skill-body").html(html);
+		html = 'Are you ready?<br /><a class="btn btn-success" href="javascript:void(0)" onClick="startTest()">Let\'s go!</a>'
+		$("#skill-body").html(html);
 		$('#skill-modal').modal('show');
 	}else{
 		alert("Please complete the field");
