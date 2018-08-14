@@ -1,6 +1,6 @@
 <?php
-include 'functions.php';
-include 'updatePrices.php';
+include_once 'functions.php';
+include_once 'updatePrices.php';
 
 $db = getDB();
 if (! $db)
