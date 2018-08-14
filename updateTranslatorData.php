@@ -35,7 +35,7 @@ $iban=$params['IBAN'];
 $swift=$params['swift'];
 
 
-$query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', street='$street',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId', email='$email', iban='$iban', 'swift='$swift' WHERE username='$user';";
+$query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', street='$street',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId', email='$email', iban='$iban', swift='$swift' WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
