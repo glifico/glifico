@@ -121,15 +121,15 @@ function result(){
 		html += '<thead>';
 		html += '	<tr class ="row" valign="middle">';
 		html += '		<th';
-		html += '			class="glifico-th col-md-2">Language</th>';
+		html += '			class="glifico-th-5 col-md-2">Language</th>';
 		html += '		<th';
-		html += '			class="glifico-th col-md-2">Last Execution Date</th>';
+		html += '			class="glifico-th-5 col-md-2">Last Execution Date</th>';
 		html += '		<th';
-		html += '			class="glifico-th col-md-2">Status</th>';
+		html += '			class="glifico-th-5 col-md-2">Status</th>';
 		html += '		<th';
-		html += '			class="glifico-th col-md-3">Rating</th>';
+		html += '			class="glifico-th-5 col-md-3">Rating</th>';
 		html += '		<th';
-		html += '			class="glifico-th col-md-2">Share with friends</th>';
+		html += '			class="glifico-th-5 col-md-2">Share with friends</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
@@ -141,26 +141,26 @@ function result(){
 			html += '<tr class ="row" valign="middle"  '+classe+'>'
 
 			var lang = data[i].Language
-			html += '<td class="glifico-td col-md-2"> <b>'
+			html += '<td class="glifico-td-5 col-md-2"> <b>'
 				+ lang
 				+ '</b> </td>'
 				if (data[i].TotTest == null) {
-					html += '<td class="glifico-td col-md-2">Not done yet</td>'
-						html += '<td class="glifico-td col-md-2">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
-						html += '<td class="glifico-td col-md-3"></td>'
-						html += '<td class="glifico-td col-md-2"></td>'
+					html += '<td class="glifico-td-5 col-md-2">Not done yet</td>'
+						html += '<td class="glifico-td-5 col-md-2">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
+						html += '<td class="glifico-td-5 col-md-3"></td>'
+						html += '<td class="glifico-td-5 col-md-2"></td>'
 				} else {
 					var data1 = data[i].DataTest
 					data1 = data1.replace("T"," ")
 					data1 = data1.replace("Z","")
 					data1 = data1.substring(0,data1.length-3)
-					html += '<td class="glifico-td col-md-2">' + data1 + '</td>'
-					html += '<td class="glifico-td col-md-2">' + '<font color="#008000"> <b>Done</b></font>' + '</td>'
-					html += '<td class="glifico-td col-md-3">'
+					html += '<td class="glifico-td-5 col-md-2">' + data1 + '</td>'
+					html += '<td class="glifico-td-5 col-md-2">' + '<font color="#008000"> <b>Done</b></font>' + '</td>'
+					html += '<td class="glifico-td-5 col-md-3">'
 						+ '<font color="black" size="5px"><b>'
 						+ getStars(data[i].TotTest)
 						+ '</b></font>' + '</td>'
-						html+='<td class="glifico-td col-md-2">'+getSocial()+'</td>'
+						html+='<td class="glifico-td-5 col-md-2">'+getSocial()+'</td>'
 				}
 
 			html += '</tr>'

@@ -259,6 +259,25 @@ md-input-container{
 	border-right:1px solid #EFEFEF;
 }
 
+.glifico-th-5{
+	text-align:center;
+	width:20%;
+	height:32px;
+	background-color:RGB(254,194,77);
+	border-left: 1px solid #EFEFEF;
+	border-right: 1px solid #EFEFEF;
+}
+
+.glifico-td-5{
+	text-align:center;
+	width:20%;
+	height:42px;
+	border-top:1px solid #EFEFEF;
+	border-bottom:1px solid #EFEFEF;
+	border-left:1px solid #EFEFEF;
+	border-right:1px solid #EFEFEF;
+}
+
 .required label {
     font-weight: bold;
 }
