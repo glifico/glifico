@@ -37,10 +37,10 @@ getStars=function(price){
 getSocial=function(){
 	var html='';
 	html+='<font size="3px">';
-	//html+='<a href="https://twitter.com/home?status=I%20made%20a%20rating%20on%20Glifico!%0A%23glifico">';
+	//html+='<a href="https://twitter.com/home?status=I%20rate%20myself%20on%20Glifico!%0A%23glifico">';
 	//html+='<i class="fa fa-twitter"></i>';
 	//html+='</a>';
-	html+=' <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20just%20made%20a%20rating%20on%20Glifico&source=">';
+	html+=' <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20rate%20myself%20on%20Glifico!&source=">';
 	html+='<i class="fa fa-linkedin"></i>';
 	html+='</a>';
 	html+=' <a href="https://www.facebook.com/sharer/sharer.php?u=www.glifico.com">';
