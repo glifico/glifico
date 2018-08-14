@@ -1,6 +1,6 @@
 <?php
 include_once 'functions.php';
-include_once 'tets.php';
+include_once 'test.php';
 
 $db=getDB();
 if(!$db) exit();
