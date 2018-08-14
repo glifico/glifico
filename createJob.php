@@ -64,10 +64,11 @@ send_email([
     )
 ], "There is a new job on glifico", get_user_email($translator));
 
-updateCurrencies();
+$retCurrencies = updateCurrencies();
 
 exit(json_encode(array(
     "message" => "job created",
+    "currencies"=> $retCurrencies,
     "statuscode" => 200,
     "selected" => json_encode($selected)
 )));
