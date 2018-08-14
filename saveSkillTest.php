@@ -37,15 +37,15 @@ $domande=$data['document'];
 if(!certToken($db, $user,$token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
 
-$score=0;
+$currentscore=0;
 
 foreach ($domande as $domanda) {
   $id=$domanda['id'];
   $risposta=search($db, $id);
-  if($risposta==$domanda['scelta']) $score+=1;
+  if($risposta==$domanda['scelta']) $currentscore+=1;
 }
 
-$score = $score / count($domande);
+$newscore = 5 * (float) $currentscore / count($domande);
 
 //get old data to make a mean
 $language=$domande[0]['language'];
@@ -56,11 +56,10 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 $oldscore=$row['skilltest'];
 $score=intval(($newscore+$oldscore)/2);
 if($score>5) $score = 5;
-$newscore=$score;
 
-updateTest($db,$user,$language,$newscore);
-updateTotalTest($db,$user,$language,$newscore);
+updateTest($db,$user,$language,$score);
+updateTotalTest($db,$user,$language,$score);
 
 $result->CloseCursor();
-exit(json_encode(array("message"=>"test submitted","statuscode"=>200,"score"=>$newscore)));
+exit(json_encode(array("message"=>"test submitted","statuscode"=>200,"score"=>$currentscore)));
 ?>
