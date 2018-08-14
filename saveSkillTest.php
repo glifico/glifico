@@ -58,7 +58,7 @@ $score=intval(($newscore+$oldscore)/2);
 if($score>5) $score = 5;
 
 updateTest($db,$user,$language,$score);
-updateTotalTest($db,$user,$language,$score);
+updateTotalTest($db,$user,$language,$newscore);
 
 $result->CloseCursor();
 exit(json_encode(array("message"=>"test submitted","statuscode"=>200,"score"=>$currentscore)));
