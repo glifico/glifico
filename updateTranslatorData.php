@@ -36,10 +36,11 @@ $swift=$params['swift'];
 
 
 $query="UPDATE traduttore set nome='$nome', cognome='$cognome', data_nascita='$data_nascita', citta='$citta', provincia='$provincia', street='$street',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId', email='$email', iban='$iban', swift='$swift' WHERE username='$user';";
+echo($query);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
 $result->CloseCursor();
-exit(json_encode(array("message"=>"Translator data updated","query"=>$query, "statuscode"=>200)));
+exit(json_encode(array("message"=>"Translator data updated", "statuscode"=>200)));
 
 ?>
