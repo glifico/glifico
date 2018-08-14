@@ -129,7 +129,7 @@ function result(){
 		html += '		<th';
 		html += '			class="glifico-th col-md-3">Rating</th>';
 		html += '		<th';
-		html += '			class="glifico-th col-md-2">Share</th>';
+		html += '			class="glifico-th col-md-2">Share with friends</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
