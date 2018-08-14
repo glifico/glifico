@@ -258,3 +258,13 @@ md-input-container{
 	border-left:1px solid #EFEFEF;
 	border-right:1px solid #EFEFEF;
 }
+
+.required label {
+    font-weight: bold;
+}
+
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}

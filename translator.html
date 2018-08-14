@@ -427,7 +427,7 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 <div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group required col-md-10">
 <label>Main email address: </label>
 <input name="emailfield" class="form-control" type="email" data-ng-model="ctrl.email" placeholder="main email">
 <div data-ng-show="infoTradForm.emailfield.$touched">
@@ -476,7 +476,7 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 <div class="input-group">
 <div class="form-group form-check col-md-8">
-<button type="button" data-ng-click="ctrl.Agesubmit()" class="btn btn-primary" ng-disabled="!ctrl.validForm()">Update my data</button>
+<button type="button" data-ng-click="ctrl.submit()" class="btn btn-primary" ng-disabled="!ctrl.validForm()">Update my data</button>
 </div>
 </div>
 </form> 
