@@ -21,7 +21,7 @@ try {
     $result = $db->query($query);
     $row = $result->fetch(PDO::FETCH_ASSOC);
 } catch(Exception $e) {
-    exit(json_encode(array("message"=>"Nothing in db for this language", "statuscode"=>503)));
+    exit(json_encode(array("message"=>"Nothing in db for this language", "statuscode"=>303)));
 }
 
 

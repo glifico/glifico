@@ -4,6 +4,8 @@ var nowSeconds = 0;
 var outTime = false;
 var myTimer;
 var idtrad = -1;
+var lfrom = '';
+var lto = '';
 var next = false;
 var records;
 
@@ -130,8 +132,8 @@ function showDomanda() {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			if(data.statuscode==503){
-				alert("Nothing yet for this language, sorry");
+			if(data.statuscode==303){
+				alert("Nothing to evaluate yet for this language, sorry..");
 			}else{
 				showModal(data);
 			}
@@ -149,7 +151,9 @@ function showDomanda() {
 
 
 function showModal(data){
-	idTest = data.idtrad;
+	idtrad = data.idest;
+	lfrom = data.LanguageF;
+	lto = data.LanguageT;
 	var html="";
 	html+='<div>';
 
@@ -239,6 +243,8 @@ function finishTest() {
 				user : getUsername(),
 				token: getToken(),
 				idtrad : idtrad,
+				languageto: lto,
+				languagefrom: lfrom,
 				ratings : ratings,
 		};
 
@@ -251,10 +257,11 @@ function finishTest() {
 			data : data,
 			url : "saveRatingEvaluation.php",
 			complete : function(ret) {
-
 				clearTimeout(myTimer);
 				nowSeconds = 0;
+				notify("Thank you for your precious rating!");
 				$('#skill-modal').modal('hide');
+				$('#congratulations').show();
 				$("#alertOK").html("Rating stored correctly, thank you");
 				$("#alertOK").fadeIn().delay(5000).fadeOut();
 			},
