@@ -34,7 +34,23 @@ getStars=function(price){
 	return html;
 }
 
-
+getSocial=function(){
+	var html='';
+	html+='<font size="10px">';
+	html+='<a href="https://twitter.com/home?status=I%20made%20a%20rating%20on%20Glifico!%0A%23glifico">';
+	html+='<i class="fa fa-twitter"></i>';
+	html+='</a>';
+	html+='</font>';
+	html+='<br>';
+	html+='<font size="10px">';
+	html+='<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20just%20made%20a%20rating%20on%20Glifico&source=">';
+	html+='<i class="fa fa-linkedin"></i>';
+	html+='</a>';
+	html+='</font>';
+	html+='<br>';
+	html+='<div class="fb-share-button" data-href="https://www.glifico.com" data-layout="button" data-size="large" data-mobile-iframe="false"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.glifico.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>';
+	return html;
+}
 
 
 function init() {
@@ -114,6 +130,8 @@ function result(){
 		html += '			class="glifico-th">Status</th>';
 		html += '		<th';
 		html += '			class="glifico-th">Rating</th>';
+		html += '		<th';
+		html += '			class="glifico-th">Share</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
@@ -143,6 +161,7 @@ function result(){
 						+ '<font color="black" size="5px"><b>'
 						+ getStars(data[i].TotTest)
 						+ '</b></font>' + '</td>'
+						html+='<td class="glifico-td">'+getSocial()+'</td>'
 				}
 
 			html += '</tr>'
@@ -188,7 +207,7 @@ function tryOut() {
 	if (lan != null && lan != "-") {
 		var html = "";
 		html = 'Are you ready?<br /><a class="btn btn-success" href="javascript:void(0)" onClick="startTest()">Let\'s go!</a>'
-		$("#skill-body").html(html);
+			$("#skill-body").html(html);
 		$('#skill-modal').modal('show');
 	}else{
 		alert("Please complete the field");
