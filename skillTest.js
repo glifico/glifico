@@ -41,14 +41,16 @@ getSocial=function(){
 	html+='<i class="fa fa-twitter"></i>';
 	html+='</a>';
 	html+='</font>';
-	html+='<br>';
 	html+='<font size="10px">';
 	html+='<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20just%20made%20a%20rating%20on%20Glifico&source=">';
 	html+='<i class="fa fa-linkedin"></i>';
 	html+='</a>';
 	html+='</font>';
-	html+='<br>';
-	html+='<div class="fb-share-button" data-href="https://www.glifico.com" data-layout="button" data-size="large" data-mobile-iframe="false"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.glifico.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>';
+	html+='<font size="10px">';
+	html+='<a href="https://www.facebook.com/sharer/sharer.php?u=www.glifico.com">';
+	html+='<i class="fa fa-facebook"></i>';
+	html+='</a>';
+	html+='</font>';
 	return html;
 }
 
@@ -123,15 +125,15 @@ function result(){
 		html += '<thead>';
 		html += '	<tr valign="middle">';
 		html += '		<th';
-		html += '			class="glifico-th">Language</th>';
+		html += '			class="glifico-th col-md-2">Language</th>';
 		html += '		<th';
-		html += '			class="glifico-th">Last Execution Date</th>';
+		html += '			class="glifico-th col-md-2">Last Execution Date</th>';
 		html += '		<th';
-		html += '			class="glifico-th">Status</th>';
+		html += '			class="glifico-th col-md-2">Status</th>';
 		html += '		<th';
-		html += '			class="glifico-th">Rating</th>';
+		html += '			class="glifico-th col-md-3">Rating</th>';
 		html += '		<th';
-		html += '			class="glifico-th">Share</th>';
+		html += '			class="glifico-th col-md-2">Share</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
@@ -143,25 +145,26 @@ function result(){
 			html += '<tr valign="middle"  '+classe+'>'
 
 			var lang = data[i].Language
-			html += '<td class="glifico-td"> <b>'
+			html += '<td class="glifico-td col-md-2"> <b>'
 				+ lang
 				+ '</b> </td>'
 				if (data[i].TotTest == null) {
-					html += '<td class="glifico-td">Not done yet</td>'
-						html += '<td class="glifico-td">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
-						html += '<td class="glifico-td"></td>'
+					html += '<td class="glifico-td col-md-2">Not done yet</td>'
+						html += '<td class="glifico-td col-md-2">' + '<font color="red"> <i> Not Done </i> </font>' + '</td>'
+						html += '<td class="glifico-td col-md-3"></td>'
+						html += '<td class="glifico-td col-md-2"></td>'
 				} else {
 					var data1 = data[i].DataTest
 					data1 = data1.replace("T"," ")
 					data1 = data1.replace("Z","")
 					data1 = data1.substring(0,data1.length-3)
-					html += '<td class="glifico-td">' + data1 + '</td>'
-					html += '<td class="glifico-td">' + '<font color="#008000"> <b>Done</b></font>' + '</td>'
-					html += '<td class="glifico-td">'
+					html += '<td class="glifico-td col-md-2">' + data1 + '</td>'
+					html += '<td class="glifico-td col-md-2">' + '<font color="#008000"> <b>Done</b></font>' + '</td>'
+					html += '<td class="glifico-td col-md-3">'
 						+ '<font color="black" size="5px"><b>'
 						+ getStars(data[i].TotTest)
 						+ '</b></font>' + '</td>'
-						html+='<td class="glifico-td">'+getSocial()+'</td>'
+						html+='<td class="glifico-td col-md-2">'+getSocial()+'</td>'
 				}
 
 			html += '</tr>'
