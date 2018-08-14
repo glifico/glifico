@@ -44,6 +44,8 @@ foreach ($domande as $domanda) {
   if($risposta==$domanda['scelta']) $score+=1;
 }
 
+$score = $score / count($domande);
+
 //get old data to make a mean
 $language=$domande[0]['language'];
 $query="SELECT username, skilltest FROM languages WHERE username='$user' AND language='$language' ORDER BY skilltest DESC;";
