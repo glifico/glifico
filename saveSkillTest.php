@@ -1,5 +1,6 @@
 <?php
-include 'functions.php';
+include_once 'functions.php';
+include_once 'test.php';
 
 
 function search($db, $id){
@@ -53,11 +54,12 @@ $result = $db->query($query);
 
 $row = $result->fetch(PDO::FETCH_ASSOC);
 $oldscore=$row['skilltest'];
-$newscore=$score;
 $score=intval(($newscore+$oldscore)/2);
-if($score>5) $score =5;
+if($score>5) $score = 5;
+$newscore=$score;
 
 updateTest($db,$user,$language,$newscore);
+updateTotalTest($db,$user,$language,$newscore);
 
 $result->CloseCursor();
 exit(json_encode(array("message"=>"test submitted","statuscode"=>200,"score"=>$newscore)));
