@@ -105,7 +105,7 @@ function tryOut2() {
 	}
 	if (lan != null && lan != "-" && lan2 != null && lan2 != "-") {
 		var html = "";
-		html = 'Are you ready? <br /><a class="btn btn-default" href="javascript:void(0)" onClick="startTest()"> Go!</a>'
+		html = 'Are you ready? <br /><a class="btn btn-success" href="javascript:void(0)" onClick="startTest()">Let\'s go!</a>'
 			$("#skill-body").html(html);
 		$('#skill-modal').modal('show');
 	}else{

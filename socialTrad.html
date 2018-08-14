@@ -384,30 +384,25 @@ trad
 		</div>
 
 <div style="width:100%; float: center; text-align: center;">
-<div style="width: 60%; display: table; margin: 0 auto;">
+<div style="width: 40%; display: table; margin: 0 auto;">
+<span class="input-group">Choose the language you want to translate <strong>from</strong>:</span><br>
 <div class="input-group">
-<div class="form-group col-md-10">
-<span>Choose the language you want to translate <strong>from</strong>:</span><br>
 <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-flag-o"></i></span>
 <span class="cambia" id="span-combo-lingue">Loading...</span>
 </div>
-<div class="form-group col-md-10">
-<span>Choose the language you want to translate <strong>to</strong>:</span>
+<div class="input-group">
+<span class="input-group">Choose the language you want to translate <strong>to</strong>:</span>
 <span class="input-group-addon" id="span1"><i class="fa fa-flag-o"></i></span>
-<span class="cambia" id="span2">Loading...</span>
+<span class="cambia" id="span2" onkeydown="if(event.keyCode == 13) document.getElementById('buttonTry').click()">Loading...</span>
 </div>
 </div>
 <br><br>
-<a class="btn btn-primary" onCLick="tryOut2()">Start Test</a>
+<a class="btn btn-primary" id="buttonTry" onCLick="tryOut2()">Start Test!</a>
 </div>
 
 <br><br>
 <div style="width: 90%; display: table; margin: 0 auto;">
 <span id="tabella"></span>
-</div>
-</div>
-<div style="margin-right: 10px; margin-left: 10px;">
-<br>
 </div>
 </div>
 
@@ -423,7 +418,7 @@ trad
 </div>
 <div class="modal-body" id="skill-body"></div>
 <div class="modal-footer">
-<a class="btn btn-default" href="javascript:void(0)" onclick="finishTest()"><i class="fa fa-paper-plane"></i>&nbsp;Submit</a>
+<a class="btn btn-success" href="javascript:void(0)" onclick="finishTest()"><i class="fa fa-paper-plane"></i>&nbsp;Submit</a>
 <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
 </div>
 </div>
