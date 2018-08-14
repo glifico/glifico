@@ -125,6 +125,7 @@ function startTest() {
 		myTimer = setInterval(mioTimer, 1000)
 
 	}
+	$("#submit-btn-trad").show();
 }
 
 function mioTimer() {
