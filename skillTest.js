@@ -22,7 +22,7 @@ $(document).ready( function() {
 });
 
 
-getPriceDollars=function(price){
+getStars=function(price){
 	var html="";
 	html+='<div class="price">';
 	html+='<span class="money '+(price>=1?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
@@ -141,7 +141,7 @@ function result(){
 					html += '<td class="glifico-td">' + '<font color="#008000"> <b>Done</b></font>' + '</td>'
 					html += '<td class="glifico-td">'
 						+ '<font color="black" size="5px"><b>'
-						+ getPriceDollars(data[i].TotTest)
+						+ getStars(data[i].TotTest)
 						+ '</b></font>' + '</td>'
 				}
 

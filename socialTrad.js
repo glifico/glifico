@@ -16,6 +16,19 @@ $(document).ready( function() {
 	init();
 });
 
+
+getStars=function(price){
+	var html="";
+	html+='<div class="price">';
+	html+='<span class="money '+(price>=1?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+	html+='<span class="money '+(price>=2?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+	html+='<span class="money '+(price>=3?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+	html+='<span class="money '+(price>=4?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="4"></i></span>';
+	html+='<span class="money '+(price>=5?'filled':'')+'"><i  class="fa fa-star fa-fw" aria-hidden="true" data-rating="5"></i></span>';
+	html+='</div>';
+	return html;
+}
+
 function init() {
 
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
@@ -142,7 +155,7 @@ function showDomanda() {
 	var html = "";
 	var domanda = domande[0];
 	html += '<form>'
-	html += '<div class="panel panel-default"><div class="modal-translator"> <font size="2" >' + domanda.text_to_translate;
+		html += '<div class="panel panel-default"><div class="modal-translator"> <font size="2" >' + domanda.text_to_translate;
 	+'</font>  </div> </div>'
 	html += '<br/>'
 
@@ -266,32 +279,31 @@ function createTable(){
 		html += '<thead>';
 		html += '	<tr valign="middle">';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language from</th>';
+		html += '			class="glifico-th">Language from</th>';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Language to</th>';
+		html += '			class="glifico-th">Language To</th>';
 		html += '		<th';
-		html += '			style="text-align:center;width:25%;height:32px;background-color:#EFEFEF">Last Execution Date</th>';
+		html += '			class="glifico-th">Grammar mark</th>';
+		html += '		<th';
+		html += '			class="glifico-th">Style mark</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
 		for ( var i = 0; i < data.length; i++) {
-			var classe="info";
-			html += '<tr valign="middle"  '+classe+'>';
-			var lang = data[i].LanguageF;
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
-				+ lang
-				+ '</b> </td>';
-			lang = data[i].LanguageT;
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF"> <b>'
-				+ lang
-				+ '</b> </td>';
-
-			var data1 = data[i].DataTest;
-			data1 = data1.replace("T"," ");
-			data1 = data1.replace("Z","");
-			data1 = data1.substring(0,data1.length-3);
-			html += '<td style="text-align:center;width:25%;height:42px;border-top:1px solid #EFEFEF;border-bottom:1px solid #EFEFEF;border-left:1px solid #EFEFEF;border-right:1px solid #EFEFEF">' + data1 + '</td>';
-			html += '</tr>';
+			html += '<tr valign="middle">'
+			html += '<td class="glifico-td">' + data[i].LanguageF + '</td>';
+			html += '<td class="glifico-td">' + data[i].LanguageT + '</td>'
+			if(data[i].Grammarmark == null){
+				html += '<td class="glifico-td">' + '<font color="red"> <i> Not evalutated yet </i> </font>' + '</td>'
+			}else{
+				html += '<td class="glifico-td">' + getStars(data[i].Grammarmark) + '</td>'
+			}
+			if(data[i].Stylemark == null){
+				html += '<td class="glifico-td">' + '<font color="red"> <i> Not evalutated yet </i> </font>' + '</td>'
+			}else{
+				html += '<td class="glifico-td">' + getStars(data[i].Stylemark) + '</td>'
+			}
+		html+='</tr>'
 		}
 		html += "</tbody>";
 		html += "</table>";
