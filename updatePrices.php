@@ -24,11 +24,11 @@ function updateCurrencies()
         }
         $query = "UPDATE language_pair SET price_euro='$priceEuro' WHERE username='$username' AND from_l='$from' AND to_l='$to' AND price='$price';";
         $db->query($query);
-        echo (json_encode(array(
-            "price euro" => $priceEuro,
-            "price" => $price,
-            "conv" => $convRow['conversion']
-        )));
+//         echo (json_encode(array(
+//             "price euro" => $priceEuro,
+//             "price" => $price,
+//             "conv" => $convRow['conversion']
+//         )));
     }
     $result->CloseCursor();
 
