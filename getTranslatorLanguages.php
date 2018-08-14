@@ -12,7 +12,7 @@ $result = $db->query($query);
 
 $toExit=[];
 while($row = $result->fetch(PDO::FETCH_ASSOC)){
-  array_push($toExit,array("IdLanguageTo"=>$row['idlanguageto'],"LanguageTo"=>$row['language']));
+    array_push($toExit,array("IdLanguageTo"=>substr($row['language'],0,2),"LanguageTo"=>$row['language']));
 }
 
 $result->CloseCursor();
