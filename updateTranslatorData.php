@@ -40,6 +40,6 @@ $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
 $result->CloseCursor();
-exit(json_encode(array("message"=>"Translator data updated", "statuscode"=>200)));
+exit(json_encode(array("message"=>"Translator data updated","query"=>$query, "statuscode"=>200)));
 
 ?>
