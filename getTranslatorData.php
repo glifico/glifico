@@ -22,6 +22,8 @@ exit (json_encode([array("FirstName"=>$row['nome'],
     "IdCountry"=>$row['idstato'],
     "IdMothertongue"=>$row['madrelinguaid'],
     "Email"=>$row['email'],
-    "Street"=>$row['street']
+    "Street"=>$row['street'],
+    "IBAN"=>$row['iban'],
+    "swift"=>$row['swift']
 )]));
 ?>
