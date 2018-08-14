@@ -273,11 +273,13 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 					"City": ctrl.city,
 					"Country": ctrl.state,
 					"ZIP": ctrl.zip,
-					"email": ctrl.email,
+					"Email": ctrl.email,
 					"email_bil": ctrl.email_bil,
 					"phone": ctrl.phone,
 					"phone_bil": ctrl.phone_bil,
 					"IBAN": ctrl.IBAN,
+					"IdMothertongue": ctrl.IdMothertongue,
+					"IdCountry": ctrl.IdCountry
 				},
 		};
 
