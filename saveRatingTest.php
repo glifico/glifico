@@ -2,7 +2,7 @@
 include 'functions.php';
 
 $db=getDB();
-if(!$db) exit();
+if(!$db) exit;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -27,6 +27,5 @@ $today=date("Y-m-d H:i:s");
 $query="INSERT INTO languagerating (datatest, translated, username, languagefrom, languageto, idtest) VALUES('$today', '$translated', '$user', '$from', '$to','$idtest');";
 $result = $db->query($query);
 
-$result->CloseCursor();
 exit(json_encode(array("message"=>"test submitted","statuscode"=>200)));
 ?>

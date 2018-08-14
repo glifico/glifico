@@ -9,7 +9,11 @@ function updateTotalTest($db, $user, $languageto, $tot)
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $oldscore = $row['tottest'];
     $newscore = $tot;
-    $score = intval(($newscore + $oldscore) / 2);
+    if ($oldscore != null) {
+        $score = intval(($newscore + $oldscore) / 2);
+    } else {
+        $score = $tot;
+    }
     if ($score > 5)
         $score = 5;
     $today = date("Y-m-d H:i:s");
