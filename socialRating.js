@@ -3,9 +3,7 @@ var maxSeconds = 600;
 var nowSeconds = 0;
 var outTime = false;
 var myTimer;
-var idtrad = -1;
-var lfrom = '';
-var lto = '';
+var downloadeddata = [];
 var next = false;
 var records;
 
@@ -151,9 +149,7 @@ function showDomanda() {
 
 
 function showModal(data){
-	idtrad = data.idest;
-	lfrom = data.LanguageF;
-	lto = data.LanguageT;
+	downloadeddata = data;
 	var html="";
 	html+='<div>';
 
@@ -242,9 +238,7 @@ function finishTest() {
 		var temp = {
 				user : getUsername(),
 				token: getToken(),
-				idtrad : idtrad,
-				languageto: lto,
-				languagefrom: lfrom,
+				downloadeddata : downloadeddata,
 				ratings : ratings,
 		};
 
