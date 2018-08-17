@@ -6,7 +6,7 @@ function getCoefficients()
 }
 
 function getMultipliers(){
-  return array("multA"=>1.20,"multB"=>1.15,"multC"=>1.30);
+  return array("multA"=>1.15,"multB"=>1.20,"multC"=>1.30);
 }
 
  ?>
