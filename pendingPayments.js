@@ -81,6 +81,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+='<td class="col-md-2">'+doc.price+" "+doc.currency+'</td>';
 			}
 			html+='<td class="col-md-2">'+doc.ncharacters+'</td>';
+			html+='<td class="col-md-2">'+doc.createdline+'</td>';
 			html+='<td class="col-md-2">'+doc.deadline+'</td>';
 			html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
 			if(doc.status=="Paid"){
@@ -97,7 +98,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+='data-job="'+doc.job+'"';
 				html+='data-id="'+doc.id+'"';
 				html+=' data-price="'+doc.price+'"';
-				html+=' data-deadline="'+doc.createdline+'"';
+				html+=' data-createdline="'+doc.createdline+'"';
 				html+=' data-deadline="'+doc.deadline+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';
