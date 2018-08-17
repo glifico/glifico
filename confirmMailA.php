@@ -26,7 +26,7 @@ check_email_presence($email);
 
 $object=array("user"=>$user, "password"=>$password, "name"=>$name, "email"=>$email, "vat"=>$vat, "tecAcceptanceDate"=>$now);
 $jsonarray=json_encode($object);
-$link="http://beta.glifico.com/confirmAgency.html?token=".base64_encode($jsonarray);
+$link="http://glifico.com/confirmAgency.html?token=".base64_encode($jsonarray);
 
 
 $to=[array("email"=>$email)];

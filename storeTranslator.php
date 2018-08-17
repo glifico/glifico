@@ -17,11 +17,12 @@ $cognome=$json['lastName'];
 $email=$json['email'];
 $password=$json["password"];
 $vat=$json['vat'];
+$tec=$json['tecAcceptanceDate'];
 $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
 
-$query="INSERT INTO traduttore(nome, cognome, vat, email, username, password) VALUES ('$nome', '$cognome', '$vat', '$email', '$user', '$pwd');";
+$query="INSERT INTO traduttore(nome, cognome, vat, email, username, password, tec) VALUES ('$nome', '$cognome', '$vat', '$email', '$user', '$pwd','$tec');";
 
 $db->query($query);
 
