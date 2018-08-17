@@ -253,15 +253,12 @@ angular.module("search",[]).controller("search",function($scope){
 		switch(priceClass){
 		case 1:
 			toReturn = (mb*ctrl.params.multA);
-			console.debug(toReturn);
 			break;
 		case 2:
 			toReturn = (mb*ctrl.params.multB);
-			console.debug(toReturn);
 			break;
 		case 3:
 			toReturn = (priceTr*ctrl.params.multC);
-			console.debug(toReturn);
 			break;
 		}
 
