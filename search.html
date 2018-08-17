@@ -470,7 +470,7 @@ Price class:<br>
         </div>
         <br><br>
         <div id="modal-translators">
-        Total translator 1: <b>{{ctrl.TrCharacters * ctrl.getAgPrice(1) | number:.0-5}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(1)*105./100) | number:2 }} Euro</b></span><br>
+        Total translator 1: <input type="number" data-ng-model="{{ctrl.TrCharacters * ctrl.getAgPrice(1) | number:5}} Euro" ng-pattern="/[^0]\d.(\d{1,2})+/" readonly> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(1)*105./100) | number:2 }} Euro</b></span><br>
         <div data-ng-show="ctrl.isSelected(2)">Total translator 2: <b>{{ctrl.TrCharacters * ctrl.getAgPrice(2) | number:5}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(2)*105./100) | number:2}} Euro</b></span></div><br>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};font-size:18px;"></span>
         </div>
