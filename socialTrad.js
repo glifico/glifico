@@ -304,7 +304,7 @@ function createTable(){
 		html += '		<th';
 		html += '			class="glifico-th-5">Style mark</th>';
 		html += '		<th';
-		html += '			class="glifico-th-5"></th>';
+		html += '			class="glifico-th-5">Share with friends</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
