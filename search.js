@@ -1,6 +1,8 @@
 $(document).ready(function () {
 	$("#selectedtable").hide();
 	$("#fieasibility").hide();
+	$("#spanUpload").hide();
+	$("#spanUploadbtn").show();
 });
 
 
@@ -23,7 +25,8 @@ showPicker=function() {
 		jobUploaded=true;
 		urlUploaded=result.filesUploaded[0]["url"];
 		filename=result.filesUploaded[0]["filename"];
-		$("#spanUpload").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#spanUpload").show();
+		$("#spanUploadbtn").hide();
 		$("#spanUploadFilename").html('Filename: '+filename);
 		$(".btn-upload").prop("disabled",true);
 	},function(result){
@@ -587,6 +590,8 @@ angular.module("search",[]).controller("search",function($scope){
 		resetTr();
 		$("#modalBodySelect").hide();
 		$("#modalBodyUpload").hide();
+		$("#spanUpload").hide();
+		$("#spanUploadbtn").show();
 	}
 
 	ctrl.openModal = function(){
