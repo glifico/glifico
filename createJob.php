@@ -33,7 +33,6 @@ if(strlen($jobDescr) < 1) $jobDescr="Job without desciprion";
 $deadline = $data['deadline'];
 $createdlinePOST = new DateTime($data['createdline']);
 $createdline = $createdlinePOST->format('Y-m-d H:i:s');
-echo($createdline);
 $translator = get_username($selected[0]['id']);
 $firstPrice = $selected[0]['total'];
 $firstCurrency = $selected[0]['currency'];
@@ -56,7 +55,6 @@ if (! certTokenA($db, $user, $data['token']))
     )));
 
 $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline');";
-echo($query);
 $result = $db->query($query);
 
 $result->CloseCursor();
