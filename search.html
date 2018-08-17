@@ -457,11 +457,11 @@ Price class:<br>
         Number of <b>words</b>: {{ctrl.TrCharacters / 6 | number:1}} (word = 6 characters)
        <br>
         Number of <b>pages</b>: {{ctrl.TrCharacters / 1500 | number:1}} (page = 1500 characters)
-        <br>
+        <br><br>
         <span>
         <b>Deadline</b>: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />
         </span>
-        <br>
+        <br><br>
         <b>Days</b> until deadline: {{ctrl.days | number:0}}<br>
         <div id="modal-volume">
         <b>Available</b> volume: {{ctrl.UrgCh}} characters<br>
@@ -472,7 +472,7 @@ Price class:<br>
         Total translator 1: <b>{{ctrl.TrCharacters * ctrl.getAgPrice(1) | number:5}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(1)*105./100) | number:2 }} Euro</b></span><br>
         <div data-ng-show="ctrl.isSelected(2)">Total translator 2: <b>{{ctrl.TrCharacters * ctrl.getAgPrice(2) | number:5}} Euro</b> <span style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};" data-ng-show="ctrl.feasibility==1">+ 5% = <b>{{ctrl.TrCharacters * (ctrl.getAgPrice(2)*105./100) | number:2}} Euro</b></span></div><br>
         <span id="feasibility" style="background-color:{{ctrl.feasibilityBack}};color{{ctrl.feasibilityColor}};font-size:18px;"></span>
-        <span class="glifico-input-descr">dot (.) is for decimals</span>
+        <span class="glifico-input-descr">Note: dot (.) is for decimals</span>
         </div>
         <br>
         </div>
