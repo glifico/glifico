@@ -54,9 +54,7 @@ if (! certTokenA($db, $user, $data['token']))
     )));
 
 $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline');";
-$result = $db->query($query);
-
-$result->CloseCursor();
+$db->query($query);
 
 // send_email([array("email"=>get_user_email($translator))],"There is a new job on glifico","You have a new job on glifico, go to https://glifico.com/pendingJobs.html to look it out!");
 send_email([
