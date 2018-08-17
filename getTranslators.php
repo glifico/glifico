@@ -1,6 +1,7 @@
 <?php
-include 'functions.php';
-include 'searchParams.php';
+include_once 'functions.php';
+include_once 'searchParams.php';
+include_once 'updatePrices.php';
 
 function doTheGaussian($prT, $Avg, $sigma)
 {
@@ -55,6 +56,8 @@ if (! $data) {
         "statuscode" => 400
     )));
 }
+
+updateCurrencies();
 
 $user = $data['user'];
 $token = $data['token'];
