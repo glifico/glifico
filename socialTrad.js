@@ -29,6 +29,23 @@ getStars=function(price){
 	return html;
 }
 
+getSocial=function(){
+	var html='';
+	html+='<font size="5px">';
+	//html+='<a href="https://twitter.com/home?status=I%20rate%20myself%20on%20Glifico!%0A%23glifico">';
+	//html+='<i class="fa fa-twitter"></i>';
+	//html+='</a>';
+	html+=' <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20rate%20myself%20on%20Glifico!&source=">';
+	html+='<i class="fa fa-linkedin"></i>';
+	html+='</a>';
+	html+='          <a href="https://www.facebook.com/sharer/sharer.php?u=www.glifico.com">';
+	html+='<i class="fa fa-facebook"></i>';
+	html+='</a>';
+	html+='</font>';
+	return html;
+}
+
+
 function init() {
 
 	var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
@@ -279,31 +296,34 @@ function createTable(){
 		html += '<thead>';
 		html += '	<tr valign="middle">';
 		html += '		<th';
-		html += '			class="glifico-th">Language from</th>';
+		html += '			class="glifico-th-5">Language from</th>';
 		html += '		<th';
-		html += '			class="glifico-th">Language To</th>';
+		html += '			class="glifico-th-5">Language To</th>';
 		html += '		<th';
-		html += '			class="glifico-th">Grammar mark</th>';
+		html += '			class="glifico-th-5">Grammar mark</th>';
 		html += '		<th';
-		html += '			class="glifico-th">Style mark</th>';
+		html += '			class="glifico-th-5">Style mark</th>';
+		html += '		<th';
+		html += '			class="glifico-th-5"></th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
 		for ( var i = 0; i < data.length; i++) {
 			html += '<tr valign="middle">'
-			html += '<td class="glifico-td">' + data[i].LanguageF + '</td>';
-			html += '<td class="glifico-td">' + data[i].LanguageT + '</td>'
+				html += '<td class="glifico-td-5">' + data[i].LanguageF + '</td>';
+			html += '<td class="glifico-td-5">' + data[i].LanguageT + '</td>'
 			if(data[i].Grammarmark == null){
-				html += '<td class="glifico-td">' + '<font color="red"> <i> Not evalutated yet </i> </font>' + '</td>'
+				html += '<td class="glifico-td-5">' + '<font color="red"> <i> Not evalutated yet </i> </font>' + '</td>'
 			}else{
-				html += '<td class="glifico-td">' + getStars(data[i].Grammarmark) + '</td>'
+				html += '<td class="glifico-td-5">' + getStars(data[i].Grammarmark) + '</td>'
 			}
 			if(data[i].Stylemark == null){
-				html += '<td class="glifico-td">' + '<font color="red"> <i> Not evalutated yet </i> </font>' + '</td>'
+				html += '<td class="glifico-td-5">' + '<font color="red"> <i> Not evalutated yet </i> </font>' + '</td>'
 			}else{
-				html += '<td class="glifico-td">' + getStars(data[i].Stylemark) + '</td>'
+				html += '<td class="glifico-td-5">' + getStars(data[i].Stylemark) + '</td>'
 			}
-		html+='</tr>'
+			html+='<td class="glifico-td-5 col-md-2">'+getSocial()+'</td>'
+			html+='</tr>'
 		}
 		html += "</tbody>";
 		html += "</table>";
