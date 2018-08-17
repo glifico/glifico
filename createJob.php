@@ -41,8 +41,8 @@ if ($count > 0) {
     $secondCurrency = $selected[1]['currency'];
 }else{
     $secondtranslator = "";
-    $secondPrice = "-1";
-    $secondCurrency = "-1";
+    $secondPrice = -1;
+    $secondCurrency = "-EUR";
 }
 $n_characters = $data['ncharacters'];
 $languagefrom = $data['languagefrom'];
@@ -53,9 +53,14 @@ if (! certTokenA($db, $user, $data['token']))
         "statuscode" => 400
     )));
 
-$query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline');";
-$result = $db->query($query);
+    if($secondPrice = -1){
+$query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, currency, deadline, price, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline');";
+    }else{
+        $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline');";
+    }
 
+            $result = $db->query($query);
+            
 echo($query);
 $result->CloseCursor();
 
