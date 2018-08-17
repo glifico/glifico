@@ -22,7 +22,9 @@ showPicker=function() {
 		notify("Document uploaded");
 		jobUploaded=true;
 		urlUploaded=result.filesUploaded[0]["url"];
+		filename=result.filesUploaded[0]["filename"];
 		$("#spanUpload").html('<i class="fa fa-check" aria-hidden="true"></i>');
+		$("#spanUploadFilename").html('Filename: '+filename);
 		$(".btn-upload").prop("disabled",true);
 	},function(result){
 		alert("Error while uploading");
