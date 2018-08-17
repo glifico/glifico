@@ -553,7 +553,6 @@ angular.module("search",[]).controller("search",function($scope){
 					ctrl.jobTitle="";
 					ctrl.jobDescription="";
 					ctrl.TrDeadline=ctrl.tomorrow;
-					ctrl.createdline=new Date();
 					ctrl.TrCharacters=0;
 					ctrl.processSelected=false;
 					ctrl.conditionsAccepted=false;

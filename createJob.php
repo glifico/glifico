@@ -31,8 +31,7 @@ if(strlen($jobDescr) < 1) $jobDescr="Job without desciprion";
 
 
 $deadline = $data['deadline'];
-$createdlinePOST = new DateTime($data['createdline']);
-$createdline = $createdlinePOST->format('Y-m-d H:i:s');
+$createdline = date('Y-m-d H:i:s');
 $translator = get_username($selected[0]['id']);
 $firstPrice = $selected[0]['total'];
 $firstCurrency = $selected[0]['currency'];
