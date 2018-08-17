@@ -18,7 +18,7 @@ $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
 $query="INSERT INTO agenzia(nome, vat, email, username, password) VALUES ('$nome', '$vat', '$email', '$user', '$pwd');";
-$db->query($query);
+$result = $db->query($query);
 
 exit (json_encode(array("message"=>"agency added", "statuscode"=>200)));
 
