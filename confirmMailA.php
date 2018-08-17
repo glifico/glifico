@@ -19,13 +19,12 @@ $password=$_GET['password'];
 $email=$_GET['email'];
 $user=$_GET['user'];
 $vat=$_GET['VAT'];
-$now = new DateTime($_GET['now']);
-$tec = $now->format('Y-m-d H:i:s');
+$now=$_GET['now'];
 
 checkPresence($user);
 check_email_presence($email);
 
-$object=array("user"=>$user, "password"=>$password, "name"=>$name, "email"=>$email, "vat"=>$vat, "tecAcceptanceDate"=>$tec);
+$object=array("user"=>$user, "password"=>$password, "name"=>$name, "email"=>$email, "vat"=>$vat, "tecAcceptanceDate"=>$now);
 $jsonarray=json_encode($object);
 $link="http://glifico.com/confirmAgency.html?token=".base64_encode($jsonarray);
 

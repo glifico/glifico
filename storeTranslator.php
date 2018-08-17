@@ -17,7 +17,8 @@ $cognome=$json['lastName'];
 $email=$json['email'];
 $password=$json["password"];
 $vat=$json['vat'];
-$tec=$json['tecAcceptanceDate'];
+$now = new DateTime($_GET['tecAcceptanceDate']);
+$tec = $now->format('Y-m-d H:i:s');
 $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
