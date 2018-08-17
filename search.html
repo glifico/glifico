@@ -462,7 +462,7 @@ Price class:<br>
         <b>Deadline</b>: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />
         </span>
         <br><br>
-        <b>Days</b> until deadline: {{ctrl.days | number:0}}<br>
+        <b>Days</b> until deadline: {{ctrl.days | number:0}}<br><br>
         <div id="modal-volume">
         <b>Available</b> volume: {{ctrl.UrgCh}} characters<br>
         <b>Max available</b> volume: {{ctrl.MaxCh}} characters<br>
