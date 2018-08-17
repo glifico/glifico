@@ -23,7 +23,7 @@ $pwd=hash('sha256',$salted);
 
 
 $query="INSERT INTO traduttore(nome, cognome, vat, email, username, password, tec) VALUES ('$nome', '$cognome', '$vat', '$email', '$user', '$pwd','$tec');";
-
+echo($query);
 $db->query($query);
 
 exit (json_encode(array("message"=>"translator added", "statuscode"=>200)));
