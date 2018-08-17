@@ -371,7 +371,7 @@ angular.module("search",[]).controller("search",function($scope){
 
 	ctrl.createForm=function(){
 		var html="";
-		html+='<label>translate from: </label>';
+		html+='<label>Translate from: </label>';
 		html+='<select id="select-from" placeholder="Translate from" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
@@ -380,7 +380,7 @@ angular.module("search",[]).controller("search",function($scope){
 		html+='</select>';
 		$("#formfrom").html(html);
 		html='';
-		html+='<label>translate to: </label>';
+		html+='<label>Translate to: </label>';
 		html+='<select id="select-to" placeholder="Translate to" required>';
 		for(var i=0; i<ctrl.Languages.length; i++){
 			var element=ctrl.Languages[i];
