@@ -61,6 +61,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		html+='<th class="col-md-2" style="text-align:center;">Job</th>';
 		html+='<th class="col-md-2" style="text-align:center;">Price</th>';
 		html+='<th class="col-md-2" style="text-align:center;"># characters</th>';
+		html+='<th class="col-md-2" style="text-align:center;">Creation date</th>';
 		html+='<th class="col-md-2" style="text-align:center;">Deadline</th>';
 		html+='<th class="col-md-2" style="text-align:center;">Status</th>';
 		html+='<th class="col-md-2" style="text-align:center;"></th>';
@@ -96,6 +97,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+='data-job="'+doc.job+'"';
 				html+='data-id="'+doc.id+'"';
 				html+=' data-price="'+doc.price+'"';
+				html+=' data-deadline="'+doc.createdline+'"';
 				html+=' data-deadline="'+doc.deadline+'"';
 				html+=' data-currency="'+doc.currency+'"';
 				html+=' data-description="'+doc.description+'"';

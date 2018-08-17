@@ -27,6 +27,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 "document" => $row['translated'],
                 "description" => $row['description'],
                 "deadline" => $row['deadline'],
+                "createdline" => $row['createdline'],
                 "ncharacters" => $row['ncharacters'],
                 "choice"=>1
             ));
@@ -40,6 +41,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 "document" => $row['preview'],
                 "description" => $row['description'],
                 "deadline" => $row['deadline'],
+                "createdline" => $row['createdline'],
                 "ncharacters" => $row['ncharacters'],
                 "choice"=>1
             ));
@@ -55,6 +57,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 "document" => $row['translated'],
                 "description" => $row['description'],
                 "deadline" => $row['deadline'],
+                "createdline" => $row['createdline'],
                 "ncharacters" => $row['ncharacters'],
                 "choice"=>2
             ));
@@ -68,6 +71,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 "document" => $row['preview'],
                 "description" => $row['description'],
                 "deadline" => $row['deadline'],
+                "createdline" => $row['createdline'],
                 "ncharacters" => $row['ncharacters'],
                 "choice"=>2
             ));
@@ -82,6 +86,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             "document" => $row['preview'],
             "description" => $row['description'],
             "deadline" => $row['deadline'],
+            "createdline" => $row['createdline'],
             "ncharacters" => $row['ncharacters'],
             "choice"=>0
         ));
