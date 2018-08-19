@@ -90,6 +90,20 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             "ncharacters" => $row['ncharacters'],
             "choice"=>0
         ));
+    }else if ($row['whoaccepted'] == -1) {
+        array_push($toExit, array(
+            "id" => $row['id'],
+            "job" => $row['job'],
+            "price" => [$row['price'], $row['secondprice']],
+            "currency" => [$row['currency'],$row['secondcurrency']],
+            "status" => "To Be Assigned",
+            "document" => $row['preview'],
+            "description" => $row['description'],
+            "deadline" => $row['deadline'],
+            "createdline" => $row['createdline'],
+            "ncharacters" => $row['ncharacters'],
+            "choice"=>0
+        ));
     }
 }
 
