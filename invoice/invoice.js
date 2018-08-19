@@ -91,7 +91,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 						CustomerGSTIN:data.VATCode,
 						CustomerState:data.Country,
 						CustomerPAN:'',
-						CustomerAddressLine1:data.Street,
+						CustomerAddressLine1:data.Street+' '+data.ZIP+' '+data.City,
 						CustomerAddressLine2:data.ZIP,
 						CustomerAddressLine3:data.City,
 						CustomerEmail:data.EmailReferenceBilling,
@@ -181,8 +181,8 @@ function create_customPDF(params){
 	doc.textAlign("Address", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(comapnyJSON.CompanyAddressLine1, {align: "left"}, 110, startY);
-	//doc.textAlign(comapnyJSON.CompanyAddressLine2, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
-	// doc.textAlign(comapnyJSON.CompanyAddressLine3, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
+	//doc.textAlign(comapnyJSON.CompanyAddressLine2, {align: "left"}, 80, startY);
+	//doc.textAlign(comapnyJSON.CompanyAddressLine3, {align: "left"}, 80, startY);
 
 	doc.setFontType('bold');
 	doc.textAlign("State", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
@@ -313,7 +313,7 @@ function create_customPDF(params){
 		];
 
 	var rows = [
-		{"Service": "Translation services","id": 1,"JobDate":invoiceJSON.InvoiceJobDate ,"Product": invoiceJSON.InvoiceProduct, "LFrom":invoiceJSON.InvoiceLFrom, "LTo": invoiceJSON.InvoiceLTo, "Qty" : invoiceJSON.InvoiceNcharacters, "Total": invoiceJSON.TotalAmnt, "Currency":"Euro"},
+		{"Service": "Translation services","id": 1,"JobDate":invoiceJSON.InvoiceJobDate ,"Product": invoiceJSON.InvoiceProduct, "LFrom":invoiceJSON.InvoiceLFrom, "LTo": invoiceJSON.InvoiceLTo, "Qty" : invoiceJSON.InvoiceNcharacters, "Total": invoiceJSON.Taxable, "Currency":"Euro"},
 		];
 
 	// columnStyles: {
