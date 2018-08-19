@@ -34,7 +34,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
    $createdTime = new DateTime($row['createdline'], new DateTimeZone("Europe/Rome"));
    $interval = $createdTime->diff($now);
    
-   
+   $element['interval'] = $interval;
    $element['createdsince'] = ($interval->i+$interval->h*60+$interval->d*24*60);
    array_push($toExit, $element);
 }
