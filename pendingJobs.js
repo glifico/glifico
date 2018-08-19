@@ -162,7 +162,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Assigned") return "bg-info";
 		if (doc.status=="Refused") return "bg-danger";
 		if (doc.status=="Translated") return "bg-warning";
-		if (doc.status=="Accepted") return "bg-info";
+		if (doc.status=="Approved") return "bg-info";
 		if (doc.status=="Not Accepted") return "bg-danger";
 		if (doc.status=="Paid") return "bg-success";
 		if (doc.status=="Completed") return "bg-success";
@@ -174,7 +174,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		if (doc.status=="Assigned") return "Translator is working";
 		if (doc.status=="Refused") return "Translator refused";
 		if (doc.status=="Translated") return "Work finished";
-		if (doc.status=="Accepted") return "Agency need to pay";
+		if (doc.status=="Approved") return "Agency need to pay";
 		if (doc.status=="Not Accepted") return "Work neither accepted or paid";
 		if (doc.status=="Paid") return "Payment completed";
 		if (doc.status=="Completed") return "Work closed definetely";

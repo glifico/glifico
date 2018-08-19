@@ -8,7 +8,15 @@ $user=$_GET['user'];
 $id=$_GET['id'];
 if(!certTokenA($db, $user,$_GET['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="UPDATE payments SET status='Paid' WHERE username='$user' and id='$id';";
+$query="SELECT id, username, whoaccepted from payments WHERE username='$user' and id='$id';";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+$choice=$row['whoaccepted'];
+
+if($choice==1){$query="UPDATE payments SET status='Paid' WHERE username='$user' and id='$id';";}
+if($choice==2){$query="UPDATE payments SET secondstatus='Paid' WHERE username='$user' and id='$id';";}
+
 $result = $db->query($query);
 
 

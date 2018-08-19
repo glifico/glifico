@@ -104,7 +104,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-document="'+doc.document+'"';
 				html+='>Download recipe and document</button>';
-			}else if (doc.status=="Accepted"){
+			}else if (doc.status=="Approved"){
 				html+='<button onClick="newPayment('+doc.id+')"  class="btn btn-primary">Pay now!</button>';				
 			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
