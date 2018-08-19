@@ -39,5 +39,5 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 }
 $result->CloseCursor();
 
-exit($toExit);
+exit(json_encode($toExit));
 ?>
