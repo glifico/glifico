@@ -221,8 +221,8 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 					ctrl.email=ret[0].Email;
 					ctrl.IBAN=ret[0].IBAN;
 					ctrl.swift=ret[0].swift;
-					ctrl.phone=ret[0].PhoneReference;
-					ctrl.phone_bil=ret[0].PhoneReferenceBilling;
+					ctrl.phone=ret[0].Phone;
+					ctrl.phone_bil=ret[0].PhoneBilling;
 					ctrl.email_bil=ret[0].EmailReferenceBilling;
 					ctrl.nratings=ret[0].nratings;
 				});
