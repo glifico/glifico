@@ -384,7 +384,7 @@ Please use the form below to pay translator
 <br>
 <div style="padding-top: 2em;" id="paypal-button"></div>
 </div>
-<br><br><br>
+<br><br>
 
 <?php 
 include_once 'functions.php';
