@@ -1,9 +1,9 @@
 var comapnyJSON={
-		CompanyName:'Glifico',
+		CompanyName:'GLIFICO',
 		//VAT
 		CompanyGSTIN:'IT0000000000',
 		CompanyState:'Italy',
-		CompanyAddressLine1:'ABCDEFGD HOUSE,IX/642-D',
+		CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
 		companyEmail:'info@glifico.com',
 		companyPhone:'+3900000000000',
 };
@@ -49,7 +49,7 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-getData= function(id, job, description, date, price) {
+getData= function(id, job, description, date, price, ncharacters, languages, jobdate, urgency) {
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
@@ -59,36 +59,40 @@ getData= function(id, job, description, date, price) {
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText)[0];
 			params={
-				costumer:{
-					CustomerName:data.CompanyName,
-					CustomerGSTIN:'',
-					CustomerState:data.Country,
-					CustomerPAN:'',
-					CustomerAddressLine1:data.City,
-					CustomerAddressLine2:data.Street,
-					CustomerAddressLine3:data.ZIP,
-					CustomerEmail:data.EmailReferenceBilling,
-					CustomerPhone:''
-				},
-				invoice:{
-					InvoiceNo:id.toString(),
-					InvoiceProduct: job,
-					InvoiceDate: date.toString().slice(0,11),
-					TotalAmnt: price.toString()+"Euro",
-					SubTotalAmnt: price.toString()+"Euro",
-				}
+					costumer:{
+						CustomerName:data.CompanyName,
+						CustomerGSTIN:'',
+						CustomerState:data.Country,
+						CustomerPAN:'',
+						CustomerAddressLine1:data.Street,
+						CustomerAddressLine2:data.ZIP,
+						CustomerAddressLine3:data.City,
+						CustomerEmail:data.EmailReferenceBilling,
+						CustomerPhone:''
+					},
+					invoice:{
+						InvoiceNo:id.toString(),
+						InvoiceProduct: job,
+						InvoiceDate: date.toString().slice(0,11),
+						InvoiceNcharacters: ncharacters,
+						InvoiceLFrom: languages.from,
+						InvoiceLTo: languages.to,
+						InvoiceJobDate: jobdate,
+						InvoiceUrgency: urgency,
+						TotalAmnt: price.toString(),
+					}
 			}
 
 			create_customPDF(params);
-			
+
 		}else{
 			mostraDialogTimed('Error getting info from service');
 		}
 	}
-	
+
 	req.open("GET",url,true);
 	req.send();
-		
+
 }
 
 function generate_cutomPDF(id) {
@@ -98,16 +102,16 @@ function generate_cutomPDF(id) {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			getData(data.id, data.Job, data.Description, data.Date, data.Price)	
+			getData(data.id, data.Job, data.Description, data.Date, data.Price, data.ncharacters, data.languages, data.jobDate, data.urgency)	
 		}
 	}
-	
+
 	req.open("GET",url,true);
 	req.send();
 }
 
 function create_customPDF(params){
-	
+
 	customer_BillingInfoJSON =  params.costumer;
 	invoiceJSON = params.invoice;
 
@@ -135,31 +139,28 @@ function create_customPDF(params){
 
 
 	//  doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=15+company_logo.h);
-	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=150);
+	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, 80, startY+=150);
 
 	doc.setFontSize(fontSizes.NormalFontSize);
-	doc.textAlign("IVA", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("VAT number", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
 	doc.textAlign(comapnyJSON.CompanyGSTIN, {align: "left"}, 80, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("STATE", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Address", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.setFontType('normal');
+	doc.textAlign(comapnyJSON.CompanyAddressLine1, {align: "left"}, 80, startY);
+	//doc.textAlign(comapnyJSON.CompanyAddressLine2, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
+	// doc.textAlign(comapnyJSON.CompanyAddressLine3, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
+
+	doc.setFontType('bold');
+	doc.textAlign("State", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(comapnyJSON.CompanyState, {align: "left"}, 80, startY);
 
-
-	// doc.setFontType('bold');
-	// doc.textAlign("Address", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
-	// doc.setFontType('normal');
-	// doc.textAlign(comapnyJSON.CompanyAddressLine1, {align: "left"}, 80, startY);
-	// doc.textAlign(comapnyJSON.CompanyAddressLine2, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
-	// doc.textAlign(comapnyJSON.CompanyAddressLine3, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
-
-
-
 	doc.setFontType('bold');
-	doc.textAlign("EMAIL", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("eMail", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(comapnyJSON.companyEmail, {align: "left"}, 80, startY);
 
@@ -197,7 +198,7 @@ function create_customPDF(params){
 
 	doc.setFontSize(fontSizes.Head2TitleFontSize);
 	doc.setFontType('bold');
-	doc.textAlign("TAX INVOICE", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing+2);
+	doc.textAlign("INVOICE", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing+2);
 
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.setFontType('bold');
@@ -205,13 +206,13 @@ function create_customPDF(params){
 	//-------Customer Info Billing---------------------
 	var startBilling=startY;
 
-	doc.textAlign("Billing Address,", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign(customer_BillingInfoJSON.CustomerName, {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Costumer: ", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(customer_BillingInfoJSON.CustomerName, {align: "center"}, 80, startY);
 	doc.setFontSize(fontSizes.NormalFontSize);
-	doc.textAlign("VAT", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("VAT number", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-	doc.textAlign(customer_BillingInfoJSON.CustomerGSTIN, {align: "left"}, 80, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerGSTIN, {align: "center"}, 80, startY);
 
 
 	// doc.setFontType('bold');
@@ -220,26 +221,26 @@ function create_customPDF(params){
 	// doc.textAlign(customer_BillingInfoJSON.CustomerPAN, {align: "left"}, 80, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("Address", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Address", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine1, {align: "left"}, 80, startY);
-	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine2, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine3, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine1, {align: "center"}, 80, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine2, {align: "center"}, 80, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine3, {align: "center"}, 160, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("STATE", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("State", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerState, {align: "left"}, 80, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerState, {align: "center"}, 80, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("EMAIL", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("eMail", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerEmail, {align: "left"}, 80, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerEmail, {align: "center"}, 80, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("Phone: ", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Phone: ", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerPhone, {align: "left"}, 80, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerPhone, {align: "center"}, 80, startY);
 
 
 
@@ -279,14 +280,19 @@ function create_customPDF(params){
 	};
 
 	var columns = [
+		{title: "Service", dataKey: "id",width: 100},
 		{title: "ID", dataKey: "id",width: 100},
-		{title: "Product", dataKey: "Product",width: 500},
-		{title: "Qty", dataKey: "Qty",width: 200},
+		{title: "Creation Date", dataKey: "JobDate",width: 100},
+		{title: "Translation title", dataKey: "Product",width: 500},
+		{title: "Translated from", dataKey: "LFrom",width: 100},
+		{title: "Translated to", dataKey: "LTo",width: 100},
+		{title: "Characters", dataKey: "Qty",width: 200},
 		{title: "Total", dataKey: "Total",width: 100},
+		{title: "Currency", dataKey: "Currency",width: 100},
 		];
-	
+
 	var rows = [
-		{"id": 1, "Product": invoiceJSON.InvoiceProduct, "Qty" : "1", "Total": invoiceJSON.SubTotalAmnt},
+		{"Service": "Translation services","id": 1,"JobDate":invoiceJSON.InvoiceJobDate ,"Product": invoiceJSON.InvoiceProduct, "LFrom":invoiceJSON.InvoiceLFrom, "LTo": invoiceJSON.InvoiceLTo, "Qty" : invoiceJSON.ncharacters, "Total": invoiceJSON.TotalAmnt, "Currency":"Euro"},
 		];
 
 	// columnStyles: {
