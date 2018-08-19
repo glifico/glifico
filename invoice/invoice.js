@@ -53,8 +53,9 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
-	vatprice = 0.22*price;
 	price = 1.22*taxable;
+	vatprice = 0.22*price;
+
 	
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
