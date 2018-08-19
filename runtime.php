@@ -23,7 +23,7 @@ $timestamp = time();
 $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
 $now->setTimeStamp($timestamp);
 
-$query = "SELECT * FROM payments ORDER BY creationline DESC;";
+$query = "SELECT * FROM payments ORDER BY createdline DESC;";
 $result = $db->query($query);
 $toExit = [];
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
