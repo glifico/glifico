@@ -16,5 +16,5 @@ $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
 $result->CloseCursor();
-exit (json_encode(array("id"=>$row['id'], "Price"=>$row['price'], "Description"=>$row['description'], "Job"=>$row['job'], "Date"=>$row['deadline'], "jobDate"=>$row['creationline'], "ncharacters"=> $row['ncharacters'], "languages"=>array("from"=>$row['languagefrom'],"to"=>$row['languageto']))));
+exit (json_encode(array("id"=>$row['id'], "Price"=>$row['price'], "Description"=>$row['description'], "Job"=>$row['job'], "Date"=>$row['deadline'], "jobDate"=>$row['createdline'], "ncharacters"=> $row['ncharacters'], "languages"=>array("from"=>$row['languagefrom'],"to"=>$row['languageto']), "urgency"=>$row['urgency'])));
 ?>
