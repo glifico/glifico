@@ -305,16 +305,18 @@ function create_customPDF(params){
 	startY=doc.autoTableEndPosY()+30;
 	doc.setFontSize(fontSizes.NormalFontSize);
 
-	doc.setFontType('bold');
-	doc.textAlign("Sub Total,", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign(invoiceJSON.SubTotalAmnt, {align: "left"}, rightcol2, startY);
-	doc.setFontSize(fontSizes.NormalFontSize);
-	doc.setFontType('normal');
+//	doc.setFontType('bold');
+//	doc.textAlign("Sub Total,", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+//	doc.textAlign(invoiceJSON.SubTotalAmnt, {align: "left"}, rightcol2, startY);
+//	doc.setFontSize(fontSizes.NormalFontSize);
+//	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
 
 
 	doc.setFontType('bold');
 	doc.textAlign("Total: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(invoiceJSON.SubTotalAmnt, {align: "left"}, rightcol2, startY);
+	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
 
