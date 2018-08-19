@@ -54,7 +54,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 
 	params={}
 	price = 1.22*taxable;
-	vatprice = 0.22*price;
+	vatprice = 0.22*taxable;
 
 	
 	var req = createXHTMLHttpRequest() ;
@@ -205,44 +205,39 @@ function create_customPDF(params){
 	doc.setFontType('bold');
 
 	//-------Customer Info Billing---------------------
-	var startBilling=startY+10;
-	var startCenter = startX + 300;
+	var startBilling=startY+30;
+	var startCenter = startX + 200;
+	var startCenterField = 110;
 
 	doc.textAlign("Costumer: ", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign(customer_BillingInfoJSON.CustomerName, {align: "center"}, startCenter+ 10, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerName, {align: "center"}, startCenterField, startY);
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.textAlign("VAT number", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-	doc.textAlign(customer_BillingInfoJSON.CustomerGSTIN, {align: "left"}, startCenter+ 10, startY);
-
-
-	// doc.setFontType('bold');
-	// doc.textAlign("PAN", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
-	// doc.setFontType('normal');
-	// doc.textAlign(customer_BillingInfoJSON.CustomerPAN, {align: "left"}, 80, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerGSTIN, {align: "left"}, startCenterField, startY);
 
 	doc.setFontType('bold');
 	doc.textAlign("Address", {align: "center"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine1, {align: "left"}, startCenter+ 10, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine1, {align: "left"}, startCenterField, startY);
 	//doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine2, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
 	//doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine3, {align: "left"}, 160, startY);
 
 	doc.setFontType('bold');
 	doc.textAlign("State", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerState, {align: "left"}, startCenter+ 10, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerState, {align: "left"}, startCenterField, startY);
 
 	doc.setFontType('bold');
 	doc.textAlign("eMail", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerEmail, {align: "left"}, startCenter+ 10, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerEmail, {align: "left"}, startCenterField, startY);
 
 	doc.setFontType('bold');
 	doc.textAlign("Phone: ", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(customer_BillingInfoJSON.CustomerPhone, {align: "left"}, startCenter+ 10, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerPhone, {align: "left"}, startCenterField, startY);
 
 
 
