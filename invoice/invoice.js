@@ -171,7 +171,7 @@ function create_customPDF(params){
 	doc.textAlign(comapnyJSON.companyEmail, {align: "left"}, 110, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("Phone: ", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Phone", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(comapnyJSON.companyPhone, {align: "left"}, 110, startY);
 
@@ -201,16 +201,16 @@ function create_customPDF(params){
 	doc.setFontType('bold');
 	doc.textAlign("INVOICE", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing+2);
 
-	doc.setFontSize(fontSizes.NormalFontSize);
-	doc.setFontType('bold');
 
 	//-------Customer Info Billing---------------------
 	var startBilling=startY+30;
-	var startCenter = startX + 20;
+	var startCenter = startX + 200;
 	var startCenterField = 110;
 
+	doc.setFontSize(fontSizes.NormalFontSize);
+	doc.setFontType('bold');
 	doc.textAlign("Costumer: ", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign(customer_BillingInfoJSON.CustomerName, {align: "center"}, startCenterField, startY);
+	doc.textAlign(customer_BillingInfoJSON.CustomerName, {align: "left"}, startCenterField, startY);
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.textAlign("VAT number", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
@@ -218,7 +218,7 @@ function create_customPDF(params){
 	doc.textAlign(customer_BillingInfoJSON.CustomerGSTIN, {align: "left"}, startCenterField, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("Address", {align: "center"}, startCenter, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Address", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine1, {align: "left"}, startCenterField, startY);
 	//doc.textAlign(customer_BillingInfoJSON.CustomerAddressLine2, {align: "left"}, 80, startY+=lineSpacing.NormalSpacing);
@@ -235,7 +235,7 @@ function create_customPDF(params){
 	doc.textAlign(customer_BillingInfoJSON.CustomerEmail, {align: "left"}, startCenterField, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("Phone: ", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Phone", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(customer_BillingInfoJSON.CustomerPhone, {align: "left"}, startCenterField, startY);
 

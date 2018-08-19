@@ -324,7 +324,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
   html+="Number of characters: "+button.data('ncharacters');
   html+="<br><br>"+button.data('description');
   var link=button.data('document');
-  html+="<br><br><div>You may find the document to translate at: "+'<a class="btn btn-primary" href="'+link+'" target="_Blank">Download it!</a></div>';
+  html+="<br><br><div>You may download the document to translate: "+'<a class="btn btn-primary" href="'+link+'" target="_Blank">Download it!</a></div>';
   if(button.data('status')=="Assigned"){
 	  html+="<br><br>";
 	  html+="Please use the button below to upload a subset of your translation as a <b>preview</b> for the agency:<br>"

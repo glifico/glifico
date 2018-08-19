@@ -433,10 +433,10 @@ $('#jobModal').on('show.bs.modal', function (event) {
   var link=button.data('document');
   var btnHtml="";
   if(button.data('status')=="Translated"){
-	  html+="<br><br><div>You may download the preview of document translated: "+'<a class="btn btn-primary" href="'+link+'" target="_Blank">Download it!</a></div>';
+	  html+="<br><br><div>You are ready to download the preview of document translated: "+'<a class="btn btn-primary" href="'+link+'" target="_Blank">Download it!</a></div>';
 	  btnHtml+='<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="approveJob('+button.data('id')+')">Approve</button>';
   }else if(button.data('status')=="Paid"){
-	  html+="<br><br><div>You may find document translated at: "+'<a class="btn btn-primary" href="'+link+'" target="_Blank">Download it!</a></div>';
+	  html+="<br><br><div>You may download translated document: "+'<a class="btn btn-primary" href="'+link+'" target="_Blank">Download it!</a></div>';
 		btnHtml+='<button type="button" class="btn btn-success" onclick="generate_cutomPDF('+button.data('id')+')">Download recipe</button>';
   }
   html+='</div>';
