@@ -53,7 +53,9 @@ getData= function(id, job, description, date, price, ncharacters, languages, job
 	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
-
+	vatprice = 0.22*price;
+	taxable = 0.73*price;
+	
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
@@ -80,6 +82,8 @@ getData= function(id, job, description, date, price, ncharacters, languages, job
 						InvoiceJobDate: jobdate,
 						InvoiceUrgency: urgency,
 						TotalAmnt: price.toString(),
+						VATPrice: vatprice,
+						Taxable: taxable,
 					}
 			}
 
@@ -313,20 +317,22 @@ function create_customPDF(params){
 	startY=doc.autoTableEndPosY()+30;
 	doc.setFontSize(fontSizes.NormalFontSize);
 
-//	doc.setFontType('bold');
-//	doc.textAlign("Sub Total,", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-//	doc.textAlign(invoiceJSON.SubTotalAmnt, {align: "left"}, rightcol2, startY);
-//	doc.setFontSize(fontSizes.NormalFontSize);
-//	doc.setFontType('normal');
-	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-
 
 	doc.setFontType('bold');
-	doc.textAlign("Total: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Taxable: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(invoiceJSON.Taxable, {align: "left"}, rightcol2, startY);
+	
+	doc.setFontType('bold');
+	doc.textAlign("Tax rate: 22%", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+
+	doc.setFontType('bold');
+	doc.textAlign("VAT amount: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(invoiceJSON.VATPrice, {align: "left"}, rightcol2, startY);
+	
+	doc.setFontType('bold');
+	doc.textAlign("To be paid: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
 	doc.textAlign(invoiceJSON.TotalAmnt, {align: "left"}, rightcol2, startY);
-	doc.setFontSize(fontSizes.NormalFontSize);
-	doc.setFontType('normal');
-	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
+	
 
 	doc.save("Glifico_invoice.pdf");
 }
