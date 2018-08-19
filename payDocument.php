@@ -382,7 +382,7 @@ Please use the form below to pay translator
 
 <!-- paypal button-->
 <br>
-<div id="paypal-button"></div>
+<div style="padding-top: 2em;" id="paypal-button"></div>
 </div>
 <br><br><br>
 

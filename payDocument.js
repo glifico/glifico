@@ -69,7 +69,7 @@ angular.module("payment",[])
 		html+='<tbody>';
 		html+='<tr><td>Taxable:</td><td>'+ctrl.taxable+'</td></tr>';
 		html+='<tr><td>Tax Rate:</td><td>22%</td></tr>';
-		html+='<tr><td>VAT:</td><td>'+ctrl.vat+'</td></tr>';
+		html+='<tr><td>VAT:</td><td>'+ctrl.tax+'</td></tr>';
 		html+='<tr><td>To Be Paid:</td><td>'+ctrl.amount+'</td></tr>';
 		html+='</tbody>';
 		html+='</table>'
@@ -104,7 +104,7 @@ angular.module("payment",[])
 					payment: {
 						transactions: [
 							{
-								amount: { total: Number(ctrl.amount).toFixed(2), currency: 'EUR' }
+								amount: { total: ctrl.amount, currency: 'EUR' }
 							}
 							]
 					},
@@ -147,9 +147,9 @@ angular.module("payment",[])
 			if (req.status == 200&req.readyState==4){
 				$scope.$apply(function (){
 					var data=JSON.parse(req.responseText);
-					ctrl.taxable=data.price;
-					ctrl.tax=ctrl.taxable*0.22;
-					ctrl.amount=1.22*ctrl.taxable;
+					ctrl.taxable=Number(data.price).toFixed(2);
+					ctrl.tax=Number(ctrl.taxable*0.22).toFixed(2);
+					ctrl.amount=Number(1.22*ctrl.taxable).toFixed(2);
 					ctrl.job=data.job;
 					ctrl.createPage();
 					ctrl.createPaypal();
