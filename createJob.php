@@ -37,7 +37,16 @@ $timestamp = time();
 $dt = new DateTime("now", new DateTimeZone("Europe/Rome")); //first argument "must" be a string
 $dt->setTimestamp($timestamp); //adjust the object to correct timestamp
 $createdline = $dt->format('Y-m-d H:i:s');
+
+$fiesibility = $data['feasibility'];
+if($fiesibility==1){
+    $urgency = 'yes';
+}else{
+    $urgency = "no";
+}
+
 $translator = get_username($selected[0]['id']);
+
 $firstPrice = $selected[0]['total'];
 $firstCurrency = $selected[0]['currency'];
 if ($count > 0) {
@@ -61,9 +70,9 @@ if (! certTokenA($db, $user, $data['token']))
     )));
 
 if ($secondPrice = - 1) {
-    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, currency, deadline, price, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline');";
+    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, currency, deadline, price, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline', '$urgency');";
 } else {
-    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline');";
+    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline', '$urgency');";
 }
 
 $result = $db->query($query);
