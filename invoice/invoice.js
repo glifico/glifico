@@ -61,6 +61,30 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText)[0];
+			if(data.VATCode == null){
+				data.VATCode = ' ';
+			}
+			if(data.EmailReferenceBilling == null){
+				data.EmailReferenceBilling = data.EmailReference;
+			}
+			if(data.EmailReference == null){
+				data.EmailReferenceBilling = " ";
+			}
+			if(data.PhoneReferenceBilling == null){
+				data.PhoneReferenceBilling = ' ';
+			}
+			if(data.Street == null){
+				data.Street = ' ';
+			}
+			if(data.ZIP == null){
+				data.ZIP = ' ';
+			}
+			if(data.City == null){
+				data.City = ' ';
+			}
+			if(data.Country == null){
+				data.Country = ' ';
+			}
 			params={
 					costumer:{
 						CustomerName:data.CompanyName,
