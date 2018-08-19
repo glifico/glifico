@@ -32,10 +32,10 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
    $element['object'] = $row;
    
    $createdTime = new DateTime($row['createdline'], new DateTimeZone("Europe/Rome"));
-   $interval = $now->diff($createdTime);
+   $interval = $createdTime->diff($now);
    
    
-   $element['createdsince'] = $interval->i;
+   $element['createdsince'] = $interval->format("%i");
    array_push($toExit, $element);
 }
 $result->CloseCursor();
