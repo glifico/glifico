@@ -259,7 +259,7 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 	}
 	
 	ctrl.isbilemailvalid = function(){
-		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.bilemail);
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email_bil);
 	}
 	
 
@@ -281,9 +281,8 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 					"ZIP": ctrl.zip,
 					"Email": ctrl.email,
 					"EmailReferenceBilling": ctrl.email_bil,
-					"email_bil": ctrl.email_bil,
 					"phone": ctrl.phone,
-					"phonebilling": ctrl.phone_bil,
+					"phonebilling": ctrl.bil_phone,
 					"IBAN": ctrl.IBAN,
 					"IdMothertongue": ctrl.IdMothertongue,
 					"IdCountry": ctrl.IdCountry
