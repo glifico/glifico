@@ -101,7 +101,7 @@ acceptJob=function(id, choice){
 		dataType : "application/json",
 		contentType : "application/json; charset=utf-8",
 		data : data,
-		url : "setJobAssigned.php",
+		url : "setJobAccepted.php",
 		complete : function(ret) {
 			var response=ret.responseText;
 			$("#alertOK").html("Job correctly set as assigned!");
