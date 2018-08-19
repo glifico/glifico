@@ -37,7 +37,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
    $element['createdsince'] = $interval->format("i");
    array_push($toExit, $element);
 }
-
-
 $result->CloseCursor();
+
+exit($toExit);
 ?>
