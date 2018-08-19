@@ -24,7 +24,6 @@ function updateTotalTest($db, $user, $languageto, $tot)
 
     $query = "UPDATE languages SET tottest='$score', datatest='$today' WHERE username='$user' and language='$languageto';";
     $result = $db->query($query);
-    echo ($query);
     $result->CloseCursor();
 }
 
