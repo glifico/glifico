@@ -63,15 +63,24 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $alarmed = $row['secondcall'];
     $id = $row['id'];
     
-    $runtimeAction = "";
+    $runtimeAction = "---";
 
     if ($second == "Refused") {
         if ($first == "Accepted") {
             $query = "UPDATE payments SET status='Assigned', whoaccepted=1  WHERE id='$id';";
             $result = $db->query($query);
             
+            send_email([
+                array(
+                    // "email" => get_user_email($row['firsttranslator'])
+                    "email" => "fvalle.glifico@outlook.com"
+                )
+            ], "Job starts on Glifico", "Your job on glifico: " . $row['job']." was assigned to you!");
+            
+            
             $runtimeAction = "first accepted second refused";
             
+            $element['runtime'] = $runtimeAction;
             array_push($toExit, $element);
             continue;
         }
@@ -82,8 +91,16 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $query = "UPDATE payments SET secondstatus='Assigned', whoaccepted=2  WHERE id='$id';";
             $result = $db->query($query);
             
+            send_email([
+                array(
+                    // "email" => get_user_email($row['firsttranslator'])
+                    "email" => "fvalle.glifico@outlook.com"
+                )
+            ], "Job starts on Glifico", "Your job on glifico: " . $row['job']." was assigned to you!");
+            
             $runtimeAction = "second accepted first refused";
             
+            $element['runtime'] = $runtimeAction;
             array_push($toExit, $element);
             continue;
         }

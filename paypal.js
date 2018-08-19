@@ -64,8 +64,14 @@ angular.module("payment",[])
 
 	ctrl.createPage=function(){
 		var html="";
-		html+="You have to pay "+ctrl.amount+" EUR for <b>"+ctrl.job+"</b>";
-
+		html+="You have to pay for <b>"+ctrl.job+"</b>";
+		html+='<table class="table>';
+		html+='<tbody>';
+		html+='<tr><td>Taxable:</td><td>'+ctrl.taxable+'</td></tr>';
+		html+='<tr><td>Tax Rate:</td><td>22%</td></tr>';
+		html+='<tr><td>VAT:</td><td>'+ctrl.vat+'</td></tr>';
+		html+='<tr><td>To Be Paid:</td><td>'+ctrl.amount+'</td></tr>';
+		
 		$("#message").html(html);
 	}
 
@@ -139,7 +145,9 @@ angular.module("payment",[])
 			if (req.status == 200&req.readyState==4){
 				$scope.$apply(function (){
 					var data=JSON.parse(req.responseText);
-					ctrl.amount=data.price;
+					ctrl.taxable=data.price;
+					ctrl.tax=ctrl.taxable*0.22;
+					ctrl.amount=1.22*ctrl.taxable;
 					ctrl.job=data.job;
 					ctrl.createPage();
 					ctrl.createPaypal();
