@@ -394,9 +394,9 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <div id="Data" class="tab-pane fade in active">
 <div id="PersonalAppID" data-ng-controller="PersonalAppCtrl as ctrl">
 <div id="accountstatus" style="font-size:18px;padding-top:1em;padding-bottom:2em;">
-<span data-ng-show="ctrl.nratings<2">You're a newbie <i class="fa fa-user"></i></span>
-<span data-ng-show="ctrl.nratings>=2&&ctrl.nratings<5">You're a rater <i class="fa fa-star"></i></span>
-<span data-ng-show="ctrl.nratings>=5">You're an expert rater<i class="fa fa-trophy"></i></span>
+<span data-ng-show="ctrl.nratings<2">You're a newbie <font color="red"><i class="fa fa-user"></i></font></span>
+<span data-ng-show="ctrl.nratings>=2&&ctrl.nratings<5">You're a rater <font color="gold"><i class="fa fa-star"></i></font></span>
+<span data-ng-show="ctrl.nratings>=5">You're an expert rater <font color="gold"><i class="fa fa-trophy"></i></font></span>
 </div>
 
 <form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate> 

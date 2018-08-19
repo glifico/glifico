@@ -39,6 +39,7 @@ $swift=$params['swift'];
 
 
 $query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia', street='$street',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId', email='$email', emailbilling='$bil_email', phone='$Phone', phonebilling='$PhoneBilling', iban='$iban', swift='$swift' WHERE username='$user';";
+echo($query);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
