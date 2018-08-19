@@ -33,7 +33,10 @@ if (strlen($jobDescr) < 1)
     $jobDescr = "Job without description";
 
 $deadline = $data['deadline'];
-$createdline = date('Y-m-d H:i:s');
+$timestamp = time();
+$dt = new DateTime("now", new DateTimeZone("Europe/Rome")); //first argument "must" be a string
+$dt->setTimestamp($timestamp); //adjust the object to correct timestamp
+$createdline = $dt->format('Y-m-d H:i:s');
 $translator = get_username($selected[0]['id']);
 $firstPrice = $selected[0]['total'];
 $firstCurrency = $selected[0]['currency'];

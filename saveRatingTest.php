@@ -23,7 +23,11 @@ $idtest=$data['idtest'];
 
 if(!certToken($db, $user,$token)) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$today=date("Y-m-d H:i:s");
+$timestamp = time();
+$dt = new DateTime("now", new DateTimeZone("Europe/Rome")); //first argument "must" be a string
+$dt->setTimestamp($timestamp); //adjust the object to correct timestamp
+$today = $dt->format('Y-m-d H:i:s');
+
 $query="INSERT INTO languagerating (datatest, translated, username, languagefrom, languageto, idtest) VALUES('$today', '$translated', '$user', '$from', '$to','$idtest');";
 $result = $db->query($query);
 
