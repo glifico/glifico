@@ -205,7 +205,7 @@ function create_customPDF(params){
 	//-------Customer Info Billing---------------------
 	var startBilling=startY+30;
 	var startCenter = startX + 200;
-	var startCenterField = 110;
+	var startCenterField = startCenter+ 110;
 
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.setFontType('bold');
