@@ -43,8 +43,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
-<script src="paypal.js"></script>
+<script src="payDocument.js"></script>
 
 
 <script src="app/glifico.modules.js"></script>
@@ -376,8 +375,8 @@ Please use the form below to pay translator
 </div>
 </div>
 </div>
-<div id="styledbody" style="text-align:center;">
-<div class="glifico-info" style="width:50%;display: table;margin: 0 auto;">
+<div id="styledbody" style="text-align:center;float:center;">
+<div class="glifico-info" style="width:50%;display: table;margin: 0 auto;float:center;text-align:center;">
 <div id="payment" ng-controller="paymentController as ctrl">
 <span id="message"></span>
 
