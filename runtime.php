@@ -23,14 +23,14 @@ $timestamp = time();
 $now = new DateTime("now", new DateTimeZone("Europe/Rome"));
 $now->setTimeStamp($timestamp);
 
-$query = "SELECT * FROM payments WHERE username='$user' ORDER BY status DESC;";
+$query = "SELECT * FROM payments ORDER BY creationline DESC;";
 $result = $db->query($query);
 $toExit = [];
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
    $element = [];
    $element['job'] = $row;
    
-   $createdTime = $row['createdline'];
+   $createdTime = new DateTime($row['createdline'], new DateTimeZone("Europe/Rome"));
    $interval = $now->diff($createdTime);
    
    
