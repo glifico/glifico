@@ -84,7 +84,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 						InvoiceUrgency: urgency,
 						TotalAmnt: price.toFixed(2).toString(),
 						VATPrice: vatprice.toFixed(2).toString(),
-						Taxable: taxable.toFixed(2).toString(),
+						Taxable: Number(taxable).toFixed(2).toString(),
 					}
 			}
 
