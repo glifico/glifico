@@ -28,13 +28,14 @@ $result = $db->query($query);
 $toExit = [];
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
    $element = [];
-   $element['job'] = $row;
+   $element['job'] = $row['id'];
+   $elebent['object'] = $row;
    
    $createdTime = new DateTime($row['createdline'], new DateTimeZone("Europe/Rome"));
    $interval = $now->diff($createdTime);
    
    
-   $element['createdsince'] = $interval->format("i");
+   $element['createdsince'] = $interval->format("%i");
    array_push($toExit, $element);
 }
 $result->CloseCursor();
