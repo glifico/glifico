@@ -12,13 +12,19 @@ function updateTotalTest($db, $user, $languageto, $tot)
     if ($oldscore != null) {
         $score = intval(($newscore + $oldscore) / 2);
     } else {
-        $score = $tot;
+        $score = intval($tot);
     }
     if ($score > 5)
         $score = 5;
-    $today = date("Y-m-d H:i:s");
+    
+    $timestamp = time();
+    $dt = new DateTime("now", new DateTimeZone("Europe/Rome")); // first argument "must" be a string
+    $dt->setTimestamp($timestamp); // adjust the object to correct timestamp
+    $today = $dt->format('Y-m-d H:i:s');
+
     $query = "UPDATE languages SET tottest='$score', datatest='$today' WHERE username='$user' and language='$languageto';";
-    $result = $db->query($query);    
+    $result = $db->query($query);
+    echo ($query);
     $result->CloseCursor();
 }
 
