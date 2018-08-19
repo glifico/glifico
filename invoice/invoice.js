@@ -206,7 +206,7 @@ function create_customPDF(params){
 
 	//-------Customer Info Billing---------------------
 	var startBilling=startY+30;
-	var startCenter = startX + 200;
+	var startCenter = startX + 20;
 	var startCenterField = 110;
 
 	doc.textAlign("Costumer: ", {align: "left"}, startCenter, startY+=lineSpacing.NormalSpacing);
