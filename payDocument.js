@@ -71,6 +71,8 @@ angular.module("payment",[])
 		html+='<tr><td>Tax Rate:</td><td>22%</td></tr>';
 		html+='<tr><td>VAT:</td><td>'+ctrl.vat+'</td></tr>';
 		html+='<tr><td>To Be Paid:</td><td>'+ctrl.amount+'</td></tr>';
+		html+='</tbody>';
+		html+='</table>'
 		
 		$("#message").html(html);
 	}
