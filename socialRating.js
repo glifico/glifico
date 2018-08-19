@@ -35,6 +35,10 @@ function init() {
 	req.send();
 
 	function gotTranslatorData(data){
+		
+		html='';
+		html='You have a total of <b>'+data[0].nratings+'</b> ratings!';
+		$("#totalratings").html(html);
 
 		var id = data[0].IdMothertongue;
 		var url = 'getLanguageById.php?user='+ getUsername() + '&token=' + getToken()+ '&id=' + id;
@@ -69,10 +73,6 @@ function init() {
 
 		html += '</select>'
 			$('#span-combo-lingue').html(html);
-		
-		html='';
-		html='You have a total of <b>'+data.nratings+'</b> ratings!';
-		$("#totalratings").html(html);
 	}
 
 }
