@@ -117,7 +117,8 @@ function create_customPDF(params){
 
 	var doc = new jsPDF('p', 'pt');
 
-	console.debug("jsPDFcreated")
+	console.info("jsPDFcreated");
+	console.debug(invoiceJSON);
 
 	var rightStartCol1=400;
 	var rightStartCol2=480;

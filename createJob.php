@@ -48,6 +48,8 @@ if ($count > 0) {
 }
 $n_characters = $data['ncharacters'];
 $languagefrom = $data['languagefrom'];
+$languageto = $data['languageto'];
+
 
 if (! certTokenA($db, $user, $data['token']))
     exit(json_encode(array(
@@ -56,9 +58,9 @@ if (! certTokenA($db, $user, $data['token']))
     )));
 
 if ($secondPrice = - 1) {
-    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, currency, deadline, price, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline');";
+    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, currency, deadline, price, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline');";
 } else {
-    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline');";
+    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline');";
 }
 
 $result = $db->query($query);

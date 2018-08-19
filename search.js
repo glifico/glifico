@@ -532,6 +532,7 @@ angular.module("search",[]).controller("search",function($scope){
 					deadline: ctrl.TrDeadline,
 					ncharacters: ctrl.TrCharacters,
 					languagefrom: ctrl.from,
+					languageto: ctrl.to,
 			};
 
 			var stringPass = JSON.stringify(temp);
