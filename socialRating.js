@@ -69,6 +69,10 @@ function init() {
 
 		html += '</select>'
 			$('#span-combo-lingue').html(html);
+		
+		html='';
+		html='You have a total of <b>'+data.nratings+'</b> ratings!';
+		$("#totalratings").html(html);
 	}
 
 }

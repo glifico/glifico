@@ -13,6 +13,7 @@ $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
 $result->CloseCursor();
+
 exit (json_encode([array("FirstName"=>$row['nome'],
     "LastName"=>$row['cognome'],
     "Birthday"=>$row['data_nascita'],
@@ -24,6 +25,10 @@ exit (json_encode([array("FirstName"=>$row['nome'],
     "Email"=>$row['email'],
     "Street"=>$row['street'],
     "IBAN"=>$row['iban'],
-    "swift"=>$row['swift']
+    "swift"=>$row['swift'],
+    "nratings"=>$row['nratings'],
+    "EmailReferenceBilling"=>$row['emailbilling'],
+    "Phone"=>$row['phone'],
+    "PhoneBilling"=>$row['phonebilling']
 )]));
 ?>

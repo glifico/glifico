@@ -23,6 +23,9 @@ $params=$data['values'];
 $nome=$params['FirstName'];
 $cognome=$params['LastName'];
 $data_nascita=$params['Birthday'];
+$bil_email=$params['EmailReferenceBilling'];
+$Phone=$row['phone'];
+$PhoneBilling=$row['phonebilling'];
 $citta=$params['City'];
 $provincia=$params['StateProvince'];
 $cap=$params['ZIP'];
@@ -35,7 +38,7 @@ $iban=$params['IBAN'];
 $swift=$params['swift'];
 
 
-$query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia', street='$street',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId', email='$email', iban='$iban', swift='$swift' WHERE username='$user';";
+$query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia', street='$street',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId', email='$email', emailbilling='$bil_email', phone='$Phone', phonebilling='$PhoneBilling', iban='$iban', swift='$swift' WHERE username='$user';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 

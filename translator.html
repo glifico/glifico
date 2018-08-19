@@ -455,7 +455,14 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 <div class="form-group col-md-5">
 <label>Billing phone: </label>
-<input name="bil_emailfield" class="form-control" type="tel" data-ng-model="ctrl.bil_phone" placeholder="phone for billing">
+<input name="bil_phonefield" class="form-control" type="tel" data-ng-model="ctrl.bil_phone" placeholder="phone for billing">
+</div>
+</div>
+<div class="form-group required col-md-10">
+<label>Billing or Paypal email address: </label>
+<input name="bil_emailfield" class="form-control" type="email" data-ng-model="ctrl.email_bil" placeholder="billing email">
+<div data-ng-show="infoTradForm.bil_emailfield.$touched">
+<div class="invalid-feedback" id="bil_emailcheck" data-ng-show="!ctrl.isbilemailvalid()">This email address seems not valid</div>
 </div>
 </div>
 <div class="input-group">
@@ -480,6 +487,11 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 </form> 
+<div id="accountstatus">
+<span data-ng-show="ctrl.nratings<2">You're a newbie <i class="fa fa-user"></i></span>
+<span data-ng-show="ctrl.nratings>=2&ctrl.nratings<5">You're a rater <i class="fa fa-star"></i></span>
+<span data-ng-show="ctrl.nratings>=5">You're an expert rater<i class="fa fa-trophy"></i></span>
+</div>
 </div><!-- end of controller -->
 </div>
 

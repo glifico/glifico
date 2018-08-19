@@ -224,6 +224,7 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 					ctrl.phone=ret[0].PhoneReference;
 					ctrl.phone_bil=ret[0].PhoneReferenceBilling;
 					ctrl.email_bil=ret[0].EmailReferenceBilling;
+					ctrl.nratings=ret[0].nratings;
 				});
 				return (true);
 			}else{
@@ -256,6 +257,11 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 	ctrl.isemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
 	}
+	
+	ctrl.isbilemailvalid = function(){
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.bilemail);
+	}
+	
 
 	ctrl.validForm = function(){
 		return ctrl.isemailvalid() && ctrl.isibanvalid();
@@ -274,9 +280,10 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 					"Country": ctrl.state,
 					"ZIP": ctrl.zip,
 					"Email": ctrl.email,
+					"EmailReferenceBilling": ctrl.email_bil,
 					"email_bil": ctrl.email_bil,
 					"phone": ctrl.phone,
-					"phone_bil": ctrl.phone_bil,
+					"phonebilling": ctrl.phone_bil,
 					"IBAN": ctrl.IBAN,
 					"IdMothertongue": ctrl.IdMothertongue,
 					"IdCountry": ctrl.IdCountry
