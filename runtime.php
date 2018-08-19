@@ -71,6 +71,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $result = $db->query($query);
             
             $runtimeAction = "first accepted second refused";
+            
+            array_push($toExit, $element);
             continue;
         }
     }
@@ -81,6 +83,8 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             $result = $db->query($query);
             
             $runtimeAction = "second accepted first refused";
+            
+            array_push($toExit, $element);
             continue;
         }
     }
@@ -108,7 +112,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                         // "email" => get_user_email($row['secondtranslator'])
                         "email" => "fvalle.glifico@outlook.com"
                     )
-                ], "Job on Glifico requires you", "Go to glifico.com, noone of the translators you selected accepted the job " . $row['job'] . ", try search again!");
+                ], "Job on Glifico requires you", "Go to glifico.com, no one of the translators you selected accepted the job " . $row['job'] . ", try search again!");
             }
             
             $query = "UPDATE payments SET firstcall=1  WHERE id='$id';";
