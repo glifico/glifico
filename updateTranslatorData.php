@@ -22,10 +22,9 @@ if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wr
 $params=$data['values'];
 $nome=$params['FirstName'];
 $cognome=$params['LastName'];
-$data_nascita=$params['Birthday'];
 $bil_email=$params['EmailReferenceBilling'];
-$Phone=$row['phone'];
-$PhoneBilling=$row['phonebilling'];
+$Phone=$params['phone'];
+$PhoneBilling=$params['phonebilling'];
 $citta=$params['City'];
 $provincia=$params['StateProvince'];
 $cap=$params['ZIP'];
@@ -35,11 +34,10 @@ $data_nascita=$params['Birthday'];
 $street=$params['Street'];
 $email=$params['Email'];
 $iban=$params['IBAN'];
-$swift=$params['swift'];
+$swift=$params['SWIFT'];
 
 
 $query="UPDATE traduttore set nome='$nome', cognome='$cognome', citta='$citta', provincia='$provincia', street='$street',  cap='$cap', idstato='$idStato', madrelinguaid='$madrelinguaId', email='$email', emailbilling='$bil_email', phone='$Phone', phonebilling='$PhoneBilling', iban='$iban', swift='$swift' WHERE username='$user';";
-echo($query);
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 

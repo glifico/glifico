@@ -285,7 +285,8 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeo
 					"phonebilling": ctrl.bil_phone,
 					"IBAN": ctrl.IBAN,
 					"IdMothertongue": ctrl.IdMothertongue,
-					"IdCountry": ctrl.IdCountry
+					"IdCountry": ctrl.IdCountry,
+					"SWIFT": ctrl.swift
 				},
 		};
 
