@@ -21,4 +21,4 @@ vendor/
 composer.phar
 
 ratingtest\.sql
-/Untitled.ipynb
+*.ipynb

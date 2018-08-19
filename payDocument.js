@@ -64,8 +64,8 @@ angular.module("payment",[])
 
 	ctrl.createPage=function(){
 		var html="";
-		html+="You have to pay for <b>"+ctrl.job+"</b>";
-		html+='<table class="table>';
+		html+="You have to pay for <b>"+ctrl.job+"</b><br>";
+		html+='<table class="table">';
 		html+='<tbody>';
 		html+='<tr><td>Taxable:</td><td>'+ctrl.taxable+'</td></tr>';
 		html+='<tr><td>Tax Rate:</td><td>22%</td></tr>';
@@ -104,7 +104,7 @@ angular.module("payment",[])
 					payment: {
 						transactions: [
 							{
-								amount: { total: ctrl.amount, currency: 'EUR' }
+								amount: { total: Number(ctrl.amount).toFixed(2), currency: 'EUR' }
 							}
 							]
 					},
