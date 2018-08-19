@@ -64,14 +64,14 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 			params={
 					costumer:{
 						CustomerName:data.CompanyName,
-						CustomerGSTIN:'',
+						CustomerGSTIN:data.VATCode,
 						CustomerState:data.Country,
 						CustomerPAN:'',
 						CustomerAddressLine1:data.Street,
 						CustomerAddressLine2:data.ZIP,
 						CustomerAddressLine3:data.City,
 						CustomerEmail:data.EmailReferenceBilling,
-						CustomerPhone:''
+						CustomerPhone:data.PhoneReferenceBilling,
 					},
 					invoice:{
 						InvoiceNo:id.toString(),
