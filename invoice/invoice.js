@@ -54,7 +54,7 @@ getData= function(id, job, description, date, price, ncharacters, languages, job
 
 	params={}
 	vatprice = 0.22*price;
-	taxable = 0.73*price;
+	taxable = 0.78*price;
 	
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
@@ -82,8 +82,8 @@ getData= function(id, job, description, date, price, ncharacters, languages, job
 						InvoiceJobDate: jobdate,
 						InvoiceUrgency: urgency,
 						TotalAmnt: price.toString(),
-						VATPrice: vatprice,
-						Taxable: taxable,
+						VATPrice: vatprice.toString(),
+						Taxable: taxable.toString(),
 					}
 			}
 
