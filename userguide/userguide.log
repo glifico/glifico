@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.22)  19 AUG 2018 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.7.22)  21 AUG 2018 19:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -634,377 +634,388 @@ Package pdftex.def Info: login.png  used on input line 113.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [7
 
- <./login.png>] [8
+ <./login.png>]
+<translator_home.png, id=121, 1284.8pt x 803.0pt>
+File: translator_home.png Graphic file (type png)
+<use translator_home.png>
+Package pdftex.def Info: translator_home.png  used on input line 121.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+ [8
 
-]
-<translator_pair0.png, id=125, 1284.8pt x 803.0pt>
+ <./translator_home.png>]
+<translator_pair0.png, id=127, 1284.8pt x 803.0pt>
 File: translator_pair0.png Graphic file (type png)
 <use translator_pair0.png>
-Package pdftex.def Info: translator_pair0.png  used on input line 127.
+Package pdftex.def Info: translator_pair0.png  used on input line 155.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_pair1.png, id=126, 1284.8pt x 803.0pt>
+<translator_pair1.png, id=128, 1284.8pt x 803.0pt>
 File: translator_pair1.png Graphic file (type png)
 <use translator_pair1.png>
-Package pdftex.def Info: translator_pair1.png  used on input line 133.
+Package pdftex.def Info: translator_pair1.png  used on input line 161.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [9
 
  <./translator_pair0.png> <./translator_pair1.png>]
-<translator_pair2.png, id=133, 1284.8pt x 803.0pt>
+<translator_pair2.png, id=135, 1284.8pt x 803.0pt>
 File: translator_pair2.png Graphic file (type png)
 <use translator_pair2.png>
-Package pdftex.def Info: translator_pair2.png  used on input line 141.
+Package pdftex.def Info: translator_pair2.png  used on input line 169.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_pair3.png, id=134, 1284.8pt x 803.0pt>
+<translator_pair3.png, id=136, 1284.8pt x 803.0pt>
 File: translator_pair3.png Graphic file (type png)
 <use translator_pair3.png>
-Package pdftex.def Info: translator_pair3.png  used on input line 147.
+Package pdftex.def Info: translator_pair3.png  used on input line 175.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [10
 
  <./translator_pair2.png> <./translator_pair3.png>]
-<translator_pair4.png, id=141, 1284.8pt x 803.0pt>
+<translator_pair4.png, id=143, 1284.8pt x 803.0pt>
 File: translator_pair4.png Graphic file (type png)
 <use translator_pair4.png>
-Package pdftex.def Info: translator_pair4.png  used on input line 155.
+Package pdftex.def Info: translator_pair4.png  used on input line 183.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_pair5.png, id=142, 1284.8pt x 803.0pt>
+<translator_pair5.png, id=144, 1284.8pt x 803.0pt>
 File: translator_pair5.png Graphic file (type png)
 <use translator_pair5.png>
-Package pdftex.def Info: translator_pair5.png  used on input line 161.
+Package pdftex.def Info: translator_pair5.png  used on input line 189.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [11
 
  <./translator_pair4.png> <./translator_pair5.png>]
-<translator_pair6.png, id=149, 1284.8pt x 803.0pt>
+<translator_pair6.png, id=151, 1284.8pt x 803.0pt>
 File: translator_pair6.png Graphic file (type png)
 <use translator_pair6.png>
-Package pdftex.def Info: translator_pair6.png  used on input line 169.
+Package pdftex.def Info: translator_pair6.png  used on input line 197.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_pair7.png, id=150, 1284.8pt x 803.0pt>
+<translator_pair7.png, id=152, 1284.8pt x 803.0pt>
 File: translator_pair7.png Graphic file (type png)
 <use translator_pair7.png>
-Package pdftex.def Info: translator_pair7.png  used on input line 175.
+Package pdftex.def Info: translator_pair7.png  used on input line 203.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [12
 
  <./translator_pair6.png> <./translator_pair7.png>]
-<translator_pair8.png, id=157, 1284.8pt x 803.0pt>
+<translator_pair8.png, id=159, 1284.8pt x 803.0pt>
 File: translator_pair8.png Graphic file (type png)
 <use translator_pair8.png>
-Package pdftex.def Info: translator_pair8.png  used on input line 184.
+Package pdftex.def Info: translator_pair8.png  used on input line 212.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [13
 
  <./translator_pair8.png>]
-<translator_job0.png, id=164, 1284.8pt x 803.0pt>
+<translator_job0.png, id=166, 1284.8pt x 803.0pt>
 File: translator_job0.png Graphic file (type png)
 <use translator_job0.png>
-Package pdftex.def Info: translator_job0.png  used on input line 195.
+Package pdftex.def Info: translator_job0.png  used on input line 223.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_job1.png, id=165, 1284.8pt x 803.0pt>
+<translator_job1.png, id=167, 1284.8pt x 803.0pt>
 File: translator_job1.png Graphic file (type png)
 <use translator_job1.png>
-Package pdftex.def Info: translator_job1.png  used on input line 201.
+Package pdftex.def Info: translator_job1.png  used on input line 229.
 (pdftex.def)             Requested size: 435.3303pt x 272.07292pt.
  [14
 
  <./translator_job0.png> <./translator_job1.png>]
-<translator_job2.png, id=172, 1284.8pt x 803.0pt>
+<translator_job2.png, id=174, 1284.8pt x 803.0pt>
 File: translator_job2.png Graphic file (type png)
 <use translator_job2.png>
-Package pdftex.def Info: translator_job2.png  used on input line 209.
+Package pdftex.def Info: translator_job2.png  used on input line 237.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_job3.png, id=173, 1284.8pt x 803.0pt>
+<translator_job3.png, id=175, 1284.8pt x 803.0pt>
 File: translator_job3.png Graphic file (type png)
 <use translator_job3.png>
-Package pdftex.def Info: translator_job3.png  used on input line 215.
+Package pdftex.def Info: translator_job3.png  used on input line 243.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [15
 
  <./translator_job2.png> <./translator_job3.png>]
-<translator_job4.png, id=180, 1284.8pt x 803.0pt>
+<translator_job4.png, id=182, 1284.8pt x 803.0pt>
 File: translator_job4.png Graphic file (type png)
 <use translator_job4.png>
-Package pdftex.def Info: translator_job4.png  used on input line 223.
+Package pdftex.def Info: translator_job4.png  used on input line 251.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_job5.png, id=181, 1284.8pt x 803.0pt>
+<translator_job5.png, id=183, 1284.8pt x 803.0pt>
 File: translator_job5.png Graphic file (type png)
 <use translator_job5.png>
-Package pdftex.def Info: translator_job5.png  used on input line 230.
+Package pdftex.def Info: translator_job5.png  used on input line 258.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-
-[16
+ [16
 
  <./translator_job4.png> <./translator_job5.png>]
-<translator_job6.png, id=188, 1284.8pt x 803.0pt>
+<translator_job6.png, id=190, 1284.8pt x 803.0pt>
 File: translator_job6.png Graphic file (type png)
 <use translator_job6.png>
-Package pdftex.def Info: translator_job6.png  used on input line 238.
+Package pdftex.def Info: translator_job6.png  used on input line 266.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_job7.png, id=189, 1284.8pt x 803.0pt>
+<translator_job7.png, id=191, 1284.8pt x 803.0pt>
 File: translator_job7.png Graphic file (type png)
 <use translator_job7.png>
-Package pdftex.def Info: translator_job7.png  used on input line 244.
+Package pdftex.def Info: translator_job7.png  used on input line 272.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [17
 
  <./translator_job6.png> <./translator_job7.png>]
-<translator_job8.png, id=196, 1284.8pt x 803.0pt>
+<translator_job8.png, id=198, 1284.8pt x 803.0pt>
 File: translator_job8.png Graphic file (type png)
 <use translator_job8.png>
-Package pdftex.def Info: translator_job8.png  used on input line 252.
+Package pdftex.def Info: translator_job8.png  used on input line 280.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_job9.png, id=197, 1284.8pt x 803.0pt>
+<translator_job9.png, id=199, 1284.8pt x 803.0pt>
 File: translator_job9.png Graphic file (type png)
 <use translator_job9.png>
-Package pdftex.def Info: translator_job9.png  used on input line 258.
+Package pdftex.def Info: translator_job9.png  used on input line 286.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [18
 
  <./translator_job8.png> <./translator_job9.png>]
-<translator_job10.png, id=204, 1284.8pt x 803.0pt>
+<translator_job10.png, id=206, 1284.8pt x 803.0pt>
 File: translator_job10.png Graphic file (type png)
 <use translator_job10.png>
-Package pdftex.def Info: translator_job10.png  used on input line 266.
+Package pdftex.def Info: translator_job10.png  used on input line 294.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_job11.png, id=205, 1284.8pt x 803.0pt>
+<translator_job11.png, id=207, 1284.8pt x 803.0pt>
 File: translator_job11.png Graphic file (type png)
 <use translator_job11.png>
-Package pdftex.def Info: translator_job11.png  used on input line 272.
+Package pdftex.def Info: translator_job11.png  used on input line 300.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-[19
+ [19
 
  <./translator_job10.png> <./translator_job11.png>]
 File: translator_job11.png Graphic file (type png)
 <use translator_job11.png>
-Package pdftex.def Info: translator_job11.png  used on input line 279.
+Package pdftex.def Info: translator_job11.png  used on input line 307.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
- [20
+
+[20
 
 ]
-<translator_job3_del.png, id=218, 1284.8pt x 803.0pt>
+<translator_job3_del.png, id=220, 1284.8pt x 803.0pt>
 File: translator_job3_del.png Graphic file (type png)
 <use translator_job3_del.png>
-Package pdftex.def Info: translator_job3_del.png  used on input line 287.
+Package pdftex.def Info: translator_job3_del.png  used on input line 315.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [21
 
  <./translator_job3_del.png>]
-<translator_skilltest0.png, id=224, 1284.8pt x 803.0pt>
+<translator_skilltest0.png, id=226, 1284.8pt x 803.0pt>
 File: translator_skilltest0.png Graphic file (type png)
 <use translator_skilltest0.png>
-Package pdftex.def Info: translator_skilltest0.png  used on input line 297.
+Package pdftex.def Info: translator_skilltest0.png  used on input line 325.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_skilltest1.png, id=225, 1284.8pt x 803.0pt>
+<translator_skilltest1.png, id=227, 1284.8pt x 803.0pt>
 File: translator_skilltest1.png Graphic file (type png)
 <use translator_skilltest1.png>
-Package pdftex.def Info: translator_skilltest1.png  used on input line 303.
+Package pdftex.def Info: translator_skilltest1.png  used on input line 331.
 (pdftex.def)             Requested size: 435.3303pt x 272.07292pt.
  [22
 
  <./translator_skilltest0.png> <./translator_skilltest1.png>]
-<translator_skilltest2.png, id=232, 1284.8pt x 803.0pt>
+<translator_skilltest2.png, id=234, 1284.8pt x 803.0pt>
 File: translator_skilltest2.png Graphic file (type png)
 <use translator_skilltest2.png>
-Package pdftex.def Info: translator_skilltest2.png  used on input line 311.
+Package pdftex.def Info: translator_skilltest2.png  used on input line 339.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_skilltest3.png, id=233, 1284.8pt x 803.0pt>
+<translator_skilltest3.png, id=235, 1284.8pt x 803.0pt>
 File: translator_skilltest3.png Graphic file (type png)
 <use translator_skilltest3.png>
-Package pdftex.def Info: translator_skilltest3.png  used on input line 317.
+Package pdftex.def Info: translator_skilltest3.png  used on input line 345.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-
-[23
+ [23
 
  <./translator_skilltest2.png> <./translator_skilltest3.png>]
-<translator_skilltest4.png, id=240, 1284.8pt x 803.0pt>
+<translator_skilltest4.png, id=242, 1284.8pt x 803.0pt>
 File: translator_skilltest4.png Graphic file (type png)
 <use translator_skilltest4.png>
-Package pdftex.def Info: translator_skilltest4.png  used on input line 325.
+Package pdftex.def Info: translator_skilltest4.png  used on input line 353.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_skilltest5.png, id=241, 1284.8pt x 803.0pt>
+<translator_skilltest5.png, id=243, 1284.8pt x 803.0pt>
 File: translator_skilltest5.png Graphic file (type png)
 <use translator_skilltest5.png>
-Package pdftex.def Info: translator_skilltest5.png  used on input line 331.
+Package pdftex.def Info: translator_skilltest5.png  used on input line 359.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [24
 
  <./translator_skilltest4.png> <./translator_skilltest5.png>]
-<translator_skilltest6.png, id=248, 1284.8pt x 803.0pt>
+<translator_skilltest6.png, id=250, 1284.8pt x 803.0pt>
 File: translator_skilltest6.png Graphic file (type png)
 <use translator_skilltest6.png>
-Package pdftex.def Info: translator_skilltest6.png  used on input line 339.
+Package pdftex.def Info: translator_skilltest6.png  used on input line 367.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_skilltest7.png, id=249, 1284.8pt x 803.0pt>
+<translator_skilltest7.png, id=251, 1284.8pt x 803.0pt>
 File: translator_skilltest7.png Graphic file (type png)
 <use translator_skilltest7.png>
-Package pdftex.def Info: translator_skilltest7.png  used on input line 345.
+Package pdftex.def Info: translator_skilltest7.png  used on input line 373.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
- [25
+
+[25
 
  <./translator_skilltest6.png> <./translator_skilltest7.png>]
-<translator_skilltest8.png, id=257, 1284.8pt x 803.0pt>
+<translator_skilltest8.png, id=259, 1284.8pt x 803.0pt>
 File: translator_skilltest8.png Graphic file (type png)
 <use translator_skilltest8.png>
-Package pdftex.def Info: translator_skilltest8.png  used on input line 353.
+Package pdftex.def Info: translator_skilltest8.png  used on input line 381.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_skilltest9.png, id=258, 1284.8pt x 803.0pt>
+<translator_skilltest9.png, id=260, 1284.8pt x 803.0pt>
 File: translator_skilltest9.png Graphic file (type png)
 <use translator_skilltest9.png>
-Package pdftex.def Info: translator_skilltest9.png  used on input line 359.
+Package pdftex.def Info: translator_skilltest9.png  used on input line 387.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [26
 
  <./translator_skilltest8.png> <./translator_skilltest9.png>]
-<translator_socialtrad0.png, id=265, 1284.8pt x 803.0pt>
+<translator_socialtrad00.png, id=267, 1284.8pt x 803.0pt>
+File: translator_socialtrad00.png Graphic file (type png)
+<use translator_socialtrad00.png>
+Package pdftex.def Info: translator_socialtrad00.png  used on input line 396.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_socialtrad0.png, id=268, 1284.8pt x 803.0pt>
 File: translator_socialtrad0.png Graphic file (type png)
 <use translator_socialtrad0.png>
-Package pdftex.def Info: translator_socialtrad0.png  used on input line 367.
+Package pdftex.def Info: translator_socialtrad0.png  used on input line 401.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialtrad1.png, id=266, 1284.8pt x 803.0pt>
+<translator_socialtrad1.png, id=269, 1284.8pt x 803.0pt>
 File: translator_socialtrad1.png Graphic file (type png)
 <use translator_socialtrad1.png>
-Package pdftex.def Info: translator_socialtrad1.png  used on input line 373.
+Package pdftex.def Info: translator_socialtrad1.png  used on input line 407.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [27
 
- <./translator_socialtrad0.png> <./translator_socialtrad1.png>]
-<translator_socialtrad2.png, id=273, 1284.8pt x 803.0pt>
+ <./translator_socialtrad00.png> <./translator_socialtrad0.png>]
+<translator_socialtrad2.png, id=276, 1284.8pt x 803.0pt>
 File: translator_socialtrad2.png Graphic file (type png)
 <use translator_socialtrad2.png>
-Package pdftex.def Info: translator_socialtrad2.png  used on input line 380.
+Package pdftex.def Info: translator_socialtrad2.png  used on input line 413.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialtrad3.png, id=274, 1284.8pt x 803.0pt>
+ [28 <./translator_socialtrad1.png> <./translator_socialtrad2.png>]
+<translator_socialtrad3.png, id=283, 1284.8pt x 803.0pt>
 File: translator_socialtrad3.png Graphic file (type png)
 <use translator_socialtrad3.png>
-Package pdftex.def Info: translator_socialtrad3.png  used on input line 386.
+Package pdftex.def Info: translator_socialtrad3.png  used on input line 420.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
- [28
-
- <./translator_socialtrad2.png> <./translator_socialtrad3.png>]
-<translator_socialtrad4.png, id=281, 1284.8pt x 803.0pt>
+<translator_socialtrad4.png, id=284, 1284.8pt x 803.0pt>
 File: translator_socialtrad4.png Graphic file (type png)
 <use translator_socialtrad4.png>
-Package pdftex.def Info: translator_socialtrad4.png  used on input line 393.
+Package pdftex.def Info: translator_socialtrad4.png  used on input line 427.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialtrad5.png, id=282, 1284.8pt x 803.0pt>
+ [29
+
+ <./translator_socialtrad3.png> <./translator_socialtrad4.png>]
+<translator_socialtrad5.png, id=291, 1284.8pt x 803.0pt>
 File: translator_socialtrad5.png Graphic file (type png)
 <use translator_socialtrad5.png>
-Package pdftex.def Info: translator_socialtrad5.png  used on input line 399.
+Package pdftex.def Info: translator_socialtrad5.png  used on input line 434.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-
-[29
-
- <./translator_socialtrad4.png> <./translator_socialtrad5.png>]
-<translator_socialtrad6.png, id=289, 1284.8pt x 803.0pt>
+<translator_socialtrad6.png, id=292, 1284.8pt x 803.0pt>
 File: translator_socialtrad6.png Graphic file (type png)
 <use translator_socialtrad6.png>
-Package pdftex.def Info: translator_socialtrad6.png  used on input line 406.
-(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialtrad7.png, id=290, 1284.8pt x 803.0pt>
-File: translator_socialtrad7.png Graphic file (type png)
-<use translator_socialtrad7.png>
-Package pdftex.def Info: translator_socialtrad7.png  used on input line 412.
+Package pdftex.def Info: translator_socialtrad6.png  used on input line 440.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [30
 
- <./translator_socialtrad6.png> <./translator_socialtrad7.png>]
-<translator_socialtrad8.png, id=297, 1284.8pt x 803.0pt>
+ <./translator_socialtrad5.png> <./translator_socialtrad6.png>]
+<translator_socialtrad7.png, id=299, 1284.8pt x 803.0pt>
+File: translator_socialtrad7.png Graphic file (type png)
+<use translator_socialtrad7.png>
+Package pdftex.def Info: translator_socialtrad7.png  used on input line 447.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_socialtrad8.png, id=300, 1284.8pt x 803.0pt>
 File: translator_socialtrad8.png Graphic file (type png)
 <use translator_socialtrad8.png>
-Package pdftex.def Info: translator_socialtrad8.png  used on input line 419.
+Package pdftex.def Info: translator_socialtrad8.png  used on input line 453.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialtrad9.png, id=298, 1284.8pt x 803.0pt>
+<translator_socialtrad9.png, id=301, 1284.8pt x 803.0pt>
 File: translator_socialtrad9.png Graphic file (type png)
 <use translator_socialtrad9.png>
-Package pdftex.def Info: translator_socialtrad9.png  used on input line 425.
+Package pdftex.def Info: translator_socialtrad9.png  used on input line 459.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [31
 
- <./translator_socialtrad8.png> <./translator_socialtrad9.png>]
-<translator_socialrating0.png, id=306, 1284.8pt x 803.0pt>
+ <./translator_socialtrad7.png> <./translator_socialtrad8.png>] [32 <./translat
+or_socialtrad9.png>]
+<translator_socialrating0.png, id=315, 1284.8pt x 803.0pt>
 File: translator_socialrating0.png Graphic file (type png)
 <use translator_socialrating0.png>
-Package pdftex.def Info: translator_socialrating0.png  used on input line 432.
+Package pdftex.def Info: translator_socialrating0.png  used on input line 473.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialrating1.png, id=307, 1284.8pt x 803.0pt>
+<translator_socialrating1.png, id=316, 1284.8pt x 803.0pt>
 File: translator_socialrating1.png Graphic file (type png)
 <use translator_socialrating1.png>
-Package pdftex.def Info: translator_socialrating1.png  used on input line 438.
-(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
- [32
-
- <./translator_socialrating0.png> <./translator_socialrating1.png>]
-<translator_socialrating2.png, id=314, 1284.8pt x 803.0pt>
-File: translator_socialrating2.png Graphic file (type png)
-<use translator_socialrating2.png>
-Package pdftex.def Info: translator_socialrating2.png  used on input line 445.
-(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialrating3.png, id=315, 1284.8pt x 803.0pt>
-File: translator_socialrating3.png Graphic file (type png)
-<use translator_socialrating3.png>
-Package pdftex.def Info: translator_socialrating3.png  used on input line 451.
+Package pdftex.def Info: translator_socialrating1.png  used on input line 479.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [33
 
- <./translator_socialrating2.png> <./translator_socialrating3.png>]
-<translator_socialrating4.png, id=322, 1284.8pt x 803.0pt>
-File: translator_socialrating4.png Graphic file (type png)
-<use translator_socialrating4.png>
-Package pdftex.def Info: translator_socialrating4.png  used on input line 458.
+ <./translator_socialrating0.png> <./translator_socialrating1.png>]
+<translator_socialrating2.png, id=323, 1284.8pt x 803.0pt>
+File: translator_socialrating2.png Graphic file (type png)
+<use translator_socialrating2.png>
+Package pdftex.def Info: translator_socialrating2.png  used on input line 487.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialrating5.png, id=323, 1284.8pt x 803.0pt>
-File: translator_socialrating5.png Graphic file (type png)
-<use translator_socialrating5.png>
-Package pdftex.def Info: translator_socialrating5.png  used on input line 464.
+<translator_socialrating3.png, id=324, 1284.8pt x 803.0pt>
+File: translator_socialrating3.png Graphic file (type png)
+<use translator_socialrating3.png>
+Package pdftex.def Info: translator_socialrating3.png  used on input line 493.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [34
 
- <./translator_socialrating4.png> <./translator_socialrating5.png>]
-<translator_socialrating6.png, id=330, 1284.8pt x 803.0pt>
-File: translator_socialrating6.png Graphic file (type png)
-<use translator_socialrating6.png>
-Package pdftex.def Info: translator_socialrating6.png  used on input line 471.
+ <./translator_socialrating2.png> <./translator_socialrating3.png>]
+<translator_socialrating4.png, id=331, 1284.8pt x 803.0pt>
+File: translator_socialrating4.png Graphic file (type png)
+<use translator_socialrating4.png>
+Package pdftex.def Info: translator_socialrating4.png  used on input line 501.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialrating7.png, id=331, 1284.8pt x 803.0pt>
-File: translator_socialrating7.png Graphic file (type png)
-<use translator_socialrating7.png>
-Package pdftex.def Info: translator_socialrating7.png  used on input line 477.
+<translator_socialrating5.png, id=332, 1284.8pt x 803.0pt>
+File: translator_socialrating5.png Graphic file (type png)
+<use translator_socialrating5.png>
+Package pdftex.def Info: translator_socialrating5.png  used on input line 507.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [35
 
- <./translator_socialrating6.png> <./translator_socialrating7.png>]
-<translator_socialrating8.png, id=338, 1284.8pt x 803.0pt>
-File: translator_socialrating8.png Graphic file (type png)
-<use translator_socialrating8.png>
-Package pdftex.def Info: translator_socialrating8.png  used on input line 484.
+ <./translator_socialrating4.png> <./translator_socialrating5.png>]
+<translator_socialrating6.png, id=339, 1284.8pt x 803.0pt>
+File: translator_socialrating6.png Graphic file (type png)
+<use translator_socialrating6.png>
+Package pdftex.def Info: translator_socialrating6.png  used on input line 515.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
-<translator_socialrating9.png, id=339, 1284.8pt x 803.0pt>
-File: translator_socialrating9.png Graphic file (type png)
-<use translator_socialrating9.png>
-Package pdftex.def Info: translator_socialrating9.png  used on input line 490.
+<translator_socialrating7.png, id=340, 1284.8pt x 803.0pt>
+File: translator_socialrating7.png Graphic file (type png)
+<use translator_socialrating7.png>
+Package pdftex.def Info: translator_socialrating7.png  used on input line 521.
 (pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
  [36
 
+ <./translator_socialrating6.png> <./translator_socialrating7.png>]
+<translator_socialrating8.png, id=347, 1284.8pt x 803.0pt>
+File: translator_socialrating8.png Graphic file (type png)
+<use translator_socialrating8.png>
+Package pdftex.def Info: translator_socialrating8.png  used on input line 529.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+<translator_socialrating9.png, id=348, 1284.8pt x 803.0pt>
+File: translator_socialrating9.png Graphic file (type png)
+<use translator_socialrating9.png>
+Package pdftex.def Info: translator_socialrating9.png  used on input line 535.
+(pdftex.def)             Requested size: 460.93153pt x 288.07506pt.
+
+[37
+
  <./translator_socialrating8.png> <./translator_socialrating9.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
- [37
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 544.
+ [38
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
- (./userguide.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 499.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 544.
+
+(./userguide.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 544.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 544.
 Package rerunfilecheck Info: File `userguide.out' has not changed.
 (rerunfilecheck)             Checksum: 77DD840D07896072438767C637BAE259;1313.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 499.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 544.
  ) 
 Here is how much of TeX's memory you used:
- 11625 strings out of 494091
- 167779 string characters out of 6163523
- 238704 words of memory out of 5000000
- 15103 multiletter control sequences out of 15000+600000
+ 11641 strings out of 494091
+ 168118 string characters out of 6163523
+ 239741 words of memory out of 5000000
+ 15116 multiletter control sequences out of 15000+600000
  10019 words of font info for 35 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  28i,11n,43p,242b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1018,10 +1029,10 @@ pe1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts
 nts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive/2018basic/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on userguide.pdf (37 pages, 6903348 bytes).
+Output written on userguide.pdf (38 pages, 7219038 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 225 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
- 399 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 409 PDF objects out of 1000 (max. 8388607)
+ 229 compressed objects within 3 object streams
+ 51 named destinations out of 1000 (max. 500000)
+ 409 words of extra memory for PDF output out of 10000 (max. 10000000)
 
