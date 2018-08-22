@@ -31,7 +31,6 @@ $provincia=$params['StateProvince'];
 $country=$params['Country'];
 $cap=$params['ZIP'];
 $vat=$params['FiscalCode'];
-$iban=$params['IBAN'];
 $email=$params['email'];
 $email_bil=$params['email_bil'];
 $phone=$params['phone'];

@@ -77,8 +77,8 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 						ctrl.IBAN=ret[0].IBAN;
 						ctrl.swift=ret[0].swift;
 						ctrl.phone=ret[0].PhoneReference;
-						ctrl.phone_bil=ret[0].PhoneReferenceBilling;
-						ctrl.email_bil=ret[0].EmailReferenceBilling;
+						ctrl.bil_phone=ret[0].PhoneReferenceBilling;
+						ctrl.bil_email=ret[0].EmailReferenceBilling;
 					});
 					return (true);
 				}
@@ -130,9 +130,9 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 					"Country": ctrl.country,
 					"ZIP": ctrl.zip,
 					"email": ctrl.email,
-					"email_bil": ctrl.email_bil,
+					"email_bil": ctrl.bil_email,
 					"phone": ctrl.phone,
-					"phone_bil": ctrl.phone_bil,
+					"phone_bil": ctrl.bil_phone,
 					"IBAN": ctrl.IBAN,
 				},
 		};
