@@ -21,7 +21,7 @@ $to=[array("email"=>"info@glifico.com", "name"=>"Glifico")];
 $mailStatus = send_email($to,"!!ACCOUNT DELETION",$user." voule eliminare l'account, controlla ed eliminalo, 30 giorni da oggi");
 
 $to=[array("email"=>"fvalle.glifico@outlook.com", "name"=>"Filippo")];
-$mailStatus = send_email($to,"!!ACCOUNT DELETION",$user." voule eliminare l'account, controlla ed eliminalo, 30 giorni da oggi");
+$mailStatus = send_email($to,"!!ACCOUNT DELETION",$user." vuole eliminare l'account, controlla ed eliminalo, 30 giorni da oggi");
 
 
 exit(json_encode(array("statuscode"=>200, "mail code"=>$mailStatus)));
