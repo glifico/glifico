@@ -533,7 +533,7 @@ angular.module("search",[]).controller("search",function($scope){
 					ncharacters: ctrl.TrCharacters,
 					languagefrom: ctrl.from,
 					languageto: ctrl.to,
-					fiesibility: ctrl.feasibility,
+					feasibility: ctrl.feasibility,
 			};
 
 			var stringPass = JSON.stringify(temp);
