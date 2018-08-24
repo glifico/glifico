@@ -1,26 +1,20 @@
 letsencrypt/
+glifico/
 
-policy.py
-genHash.py
 *.py
+awesome*
 
 *.db
-Cloudflare*
-
 *~
 
-deploy.sh
-*DB.sh
-.DS_Store
 *.phar
 
 *.swp
 /.~lock.awesomeTranslation.doc#
-test.php
-
-
 vendor/
 composer.phar
 
-ratingtest\.sql
+*.sql
 *.ipynb
+*.sh
+.DS_Store
