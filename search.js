@@ -64,9 +64,9 @@ var maximumSelectable=2;
 getPriceDollars=function(price){
 	var html="";
 	html+='<div class="price">';
-	html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-	html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-	html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+	html+='<span class="money '+(price>=1?'filled':'')+'"><i class="fas fa-dollar-sign fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+	html+='<span class="money '+(price>=2?'filled':'')+'"><i class="fas fa-dollar-sign fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+	html+='<span class="money '+(price>=3?'filled':'')+'"><i class="fas fa-dollar-sign fa-fw" aria-hidden="true" data-rating="3"></i></span>';
 	html+='</div>';
 	return html;
 }
@@ -337,9 +337,9 @@ angular.module("search",[]).controller("search",function($scope){
 				html+='</td>';
 				html+='<td class="col-md-2">';
 				html+='<div class="price">';
-				html+='<span class="money '+(doc.Price>=1?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="1"></i></span>';
-				html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="2"></i></span>';
-				html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fa fa-usd fa-fw" aria-hidden="true" data-rating="3"></i></span>';
+				html+='<span class="money '+(doc.Price>=1?'filled':'')+'"><i class="fas fa-dollar-sign fa-fw" aria-hidden="true" data-rating="1"></i></span>';
+				html+='<span class="money '+(doc.Price>=2?'filled':'')+'"><i class="fas fa-dollar-sign fa-fw" aria-hidden="true" data-rating="2"></i></span>';
+				html+='<span class="money '+(doc.Price>=3?'filled':'')+'"><i class="fas fa-dollar-sign fa-fw" aria-hidden="true" data-rating="3"></i></span>';
 				html+='</div>';
 				html+='</td>';
 				html+='<td class="col-md-2">';
