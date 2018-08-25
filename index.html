@@ -4,8 +4,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Glifico</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="Description" content="Everything you need to find your translator and be sure to get you job done!">
+
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108156271-1"></script>
@@ -18,75 +19,40 @@
 </script>
 
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookiebar.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-resource.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-aria.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="angularjs/textAngular-rangy.min.js"></script>
-<script src="angularjs/textAngular.min.js"></script>
-<script src="angularjs/angular-material.min.js"></script>
-<script src="angularjs/angular-touch.js"></script>
-<script src="angularjs/api-check.min.js"></script>
-
-
-<script src="angularjs/formly.min.js"></script>
-<script src="angularjs/formly-material.min.js"></script>
-<script src="angularjs/select.js"></script>
-<script src="angularjs/angular-sanitize.js"></script>
-<script src="angularjs/angular-messages.min.js"></script>
-<script src="angularjs/ui-bootstrap-tpls.js"></script>
-<script src="angularjs/ng-upload.js"></script>
-
-<script src="angularjs/ui-grid.min.js"></script>
-
-<script type="text/javascript" src="functions.js"></script>
-<script type="text/javascript"></script>
+<script src="functions.js"></script>
 <script src="cookiebar.js"></script>
 <script src="loginform.js"></script>
 <script src="mylogin.js"></script>
-
-
 <script src="app/glifico.modules.js"></script>
 <script src="app/glificoFooter.component.js"></script>
 <script src="app/login.controller.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="styleSheet" href="angularjs/angular-material.min.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css" href="css/jquery.cookiebar.css">
-<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/font-awesome/css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/plugins/simple-line-icons/simple-line-icons.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.min.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/skins/navbar-inverse.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/animation/animation.css">
-<link rel="styleSheet" href="angularjs/select.css"/>
-<link rel="styleSheet" href="angularjs/select2.css"/>
-<link rel="styleSheet" href="angularjs/selectize.default.css"/>
-<link rel="styleSheet" href="angularjs/angular-material.min.css"/>
-<link rel="styleSheet" href="angularjs/textAngular.css"/>
-<link rel="styleSheet" href="angularjs/ui-grid.min.css"/>
 <link rel="stylesheet" type="text/css" href="main.css">
 <link rel="shortcut icon" type="image/x-icon" href="favicon288.ico">
 <link rel="apple-touch-icon" href="favicon288.ico">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en"></script>
 </head>
 <body onload="onLoad()">
-
-
-<?php
-include "templates/templates.php";
-?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
@@ -390,7 +356,6 @@ Password must have at least 7 characters!
 <div id="divMadeEasy"><br>Translations made easy. Your way</div>
 </div>
 </div>
-<br><br>
 <div class="jumbotron jumboMain">
 <div class="row" id="what">
 <div class="col-md-12">
