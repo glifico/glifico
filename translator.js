@@ -321,12 +321,7 @@ angular.module('PersonalAppCtrl',[]).controller('PersonalAppCtrl',function($scop
 
 
 
-angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',function($http,$timeout,$scope,$mdDialog) {
-
-	$scope.nullModel = {IdLanguageFrom:null,IdLanguageTo:null,IdParametro_Field:null,IdParametro_Service:null,IdCurrency:null,PricePerCharacter:null};
-	$scope.defaultModel = {IdLanguageFrom:'en',IdLanguageTo:'it',IdParametro_Field:0,IdParametro_Service:0,IdCurrency:'EUR',PricePerCharacter:0};
-
-
+angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',function($scope) {
 	var ctrl=this;
 
 	$scope.loadLanguages = function(){
