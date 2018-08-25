@@ -85,7 +85,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 			html+='<td class="col-md-2">'+doc.deadline+'</td>';
 			html+='<td class="col-md-2" data-toggle="tooltip" data-placement="top" title="'+ctrl.getToolTip(doc)+'">'+doc.status;
 			if(doc.status=="Paid"){
-				html+=' <i class="fa fa-check" aria-hidden="true"></i>';
+				html+=' <i class="fas fa-check" aria-hidden="true"></i>';
 			}
 			html+='</td>';
 			html+='<td class="col-md-2">';
