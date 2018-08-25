@@ -7,3 +7,6 @@ Allow: /index.html
 Allow: /services.html
 Allow: /about.html
 Allow: /contacts.html
+Allow: /sitemap.txt
+
+SITEMAP: http://glifico.com/sitemap.txt
