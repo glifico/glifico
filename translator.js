@@ -159,13 +159,13 @@ function refresh(){
 
 /*-----------------------APP--------------------*/
 
-var app = angular.module('PersonalApp', ['ngMessages', 'ui.select','ngSanitize','ngAria','ngAnimate','ngMaterial','textAngular','ui.bootstrap']);
-var app = angular.module('LanguagePairsApp', ['ngMessages', 'ui.select','ngSanitize','ngAria','ngAnimate','ngMaterial','textAngular','ui.bootstrap']);
+var app = angular.module('PersonalApp', []);
+var app = angular.module('LanguagePairsApp', []);
 
 /*-----------------------CTRL-------------------*/
 
 
-angular.module('PersonalApp').controller('PersonalAppCtrl',function($http,$timeout,$scope) {
+angular.module('PersonalApp').controller('PersonalAppCtrl',function($scope) {
 
 	var ctrl = this;
 
