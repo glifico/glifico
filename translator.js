@@ -478,4 +478,8 @@ angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',func
 });
 
 
+angular.element(document).ready(function() {
+	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalAppCtrl']);
+	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsAppCtrl']);
 
+});
