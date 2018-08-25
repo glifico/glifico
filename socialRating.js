@@ -134,10 +134,10 @@ function showDomanda() {
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			if(data.statuscode==303){
-				alert("Nothing to evaluate yet for this language, sorry..");
-			}else{
+			if(data.statuscode==200){
 				showModal(data);
+			}else if(data.statuscode==303){
+				alert("Nothing to evaluate yet for this language, sorry..");
 			}
 			return(true);
 		}else{
