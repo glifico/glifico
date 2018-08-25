@@ -410,18 +410,14 @@ angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',func
 	ctrl.$onInit=function(){
 		ctrl.refresh();
 		$scope.openedPrice=-1;
-		$scope.model=$scope.defaultModel;
-		console.debug($scope.model);
 	}
 
 	$scope.closeModal=function(){
 		$('#LanguageModal').modal('hide');
-		$scope.openedEdu=null;
 	}
 
 
 	$scope.submit= function(){
-		console.debug($scope.model);
 
 		if($scope.model.PricePerCharacter<0){
 			alert("Price should be greater than zero!");
