@@ -40,7 +40,7 @@ uploadPreview=function(id){
 	}).then(function(result) {
 		previewURL=result.filesUploaded[0]["url"]
 		isPreviewUploaded=true
-		$("#preview").html('<i class="fa fa-check"></i> preview uploaded');
+		$("#preview").html('<i class="fas fa-check"></i> preview uploaded');
 		$("#full").show();
 		notify("Preview correctly uploaded");
 	},function(result){
