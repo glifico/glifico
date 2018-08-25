@@ -1,0 +1,10 @@
+http://glifico.com/services.html
+http://glifico.com/about.html
+http://glifico.com/privacy.html
+http://glifico.com/contacts.html
+http://glifico.com/terms.html
+http://glifico.com/index.html
+http://glifico.com/pdf_viewer/web/userguide.pdf
+http://glifico.com/pdf_viewer/web/userguide_agency.pdf
+http://test.glifico.com/pdf_viewer/web/viewer.html?file=userguide.pdf
+http://test.glifico.com/pdf_viewer/web/viewer.html?file=userguide_agency.pdf
