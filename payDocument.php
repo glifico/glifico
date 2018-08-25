@@ -6,6 +6,17 @@
 <title>Glifico</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124595968-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124595968-1');
+</script>
+
+
 <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.cookiebar.js"></script>
@@ -76,10 +87,6 @@
 
 </head>
 <body onload="onLoad()">
-
-<?php
-include "templates/templates.php";
-?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
@@ -367,6 +374,29 @@ Password must have at least 7 characters!
 
 
 <br><br><br><br>
+<?php 
+
+$query = "SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+if ($row['whoaccepted'] == 1) {
+    $price = (float) $row['price'] * 1.22 * 100;
+} else {
+    $price = (float) $row['secondprice'] * 1.22 * 100;
+}
+
+echo("<script>");
+echo("ga('ecommerce:addTransaction', {");
+echo("'id': '$oid',");                     // Transaction ID. Required.
+echo("'affiliation': 'Glifico',");   // Affiliation or store name.
+echo("'revenue': '$price',");               // Grand Total.
+echo("'tax': '1.22'");                     // Tax.
+echo("});");
+echo("</script>");
+
+?>
+
+
 <div id="payDocumentBody">
 <div style="margin-right:10px;margin-left:10px">
 <div class="panel panel-default">
