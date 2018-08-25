@@ -282,7 +282,7 @@ angular.module('PersonalApp').controller('PersonalAppCtrl',function($scope) {
 					"Email": ctrl.email,
 					"EmailReferenceBilling": ctrl.email_bil,
 					"phone": ctrl.phone,
-					"phonebilling": ctrl.bil_phone,
+					"phonebilling": ctrl.phone_bil,
 					"IBAN": ctrl.IBAN,
 					"IdMothertongue": ctrl.IdMothertongue,
 					"IdCountry": ctrl.IdCountry,
