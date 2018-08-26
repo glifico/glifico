@@ -146,7 +146,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         if ($row['whoaccepted'] != 0) {
             if ($second == "Accepted") {
                 if ($alarmed == 0) {
-                    $query = "UPDATE payments SET firststatus='Other accepted', secondstatus='Assigned', whoaccepted=2, secondcall=1  WHERE id='$id';";
+                    $query = "UPDATE payments SET status='Other accepted', secondstatus='Assigned', whoaccepted=2, secondcall=1  WHERE id='$id';";
                     $result = $db->query($query);
 
                     send_email([
