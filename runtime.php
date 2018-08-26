@@ -105,11 +105,16 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         }
     }
 
+    if ($first == "Assigned") {
+        $query = "UPDATE payments SET secondstatus='Other accepted', whoaccepted=1, firstcall=1  WHERE id='$id';";
+        $result = $db->query($query);
+    }
+    
     if ($first == "Accepted") {
-
+        if ($advised == 0) {
         $query = "UPDATE payments SET status='Assigned', secondstatus='Other accepted', whoaccepted=1, firstcall=1  WHERE id='$id';";
         $result = $db->query($query);
-        if ($advised == 0) {
+       
             send_email([
                 array(
                     // "email" => get_user_email($row['secondtranslator'])
