@@ -17,8 +17,10 @@ $result = $db->query($query);
 $toExit = [];
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $language = $row['languagefrom'];
-    $price = getLanguagePrice($user, $language, $field) * $row['ncharacters'];
+    $from = $row['languagefrom'];
+    $to = $row['languageto'];
+    $field = $row['field'];
+    $price = getLanguagePrice($user, $from, $to, $field) * $row['ncharacters'];
     array_push($toExit, array(
         "id" => $row['id'],
         "job" => $row['job'],
@@ -36,8 +38,10 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 $query = "SELECT * FROM payments WHERE secondTranslator='$user' ORDER BY status DESC;";
 $result = $db->query($query);
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $language = $row['languagefrom'];
-    $price = getLanguagePrice($user, $language, $field) * $row['ncharacters'] ;
+    $from = $row['languagefrom'];
+    $to = $row['languageto'];
+    $field = $row['field'];
+    $price = getLanguagePrice($user, $from, $to, $field) * $row['ncharacters'] ;
     array_push($toExit, array(
         "id" => $row['id'],
         "job" => $row['job'],
