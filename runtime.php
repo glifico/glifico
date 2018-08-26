@@ -109,12 +109,12 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $query = "UPDATE payments SET secondstatus='Other accepted', whoaccepted=1, firstcall=1  WHERE id='$id';";
         $result = $db->query($query);
     }
-    
+
     if ($first == "Accepted") {
         if ($advised == 0) {
-        $query = "UPDATE payments SET status='Assigned', secondstatus='Other accepted', whoaccepted=1, firstcall=1  WHERE id='$id';";
-        $result = $db->query($query);
-       
+            $query = "UPDATE payments SET status='Assigned', secondstatus='Other accepted', whoaccepted=1, firstcall=1  WHERE id='$id';";
+            $result = $db->query($query);
+
             send_email([
                 array(
                     // "email" => get_user_email($row['secondtranslator'])
@@ -142,38 +142,35 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
             $runtimeAction = "nobody accepted, agency allerted";
         }
-        
-           
 
-        
         if ($row['whoaccepted'] != 0) {
             if ($second == "Accepted") {
-                $query = "UPDATE payments SET firststatus='Other accepted', secondstatus='Assigned', whoaccepted=2, secondcall=1  WHERE id='$id';";
-                $result = $db->query($query);
-                
-                send_email([
-                    array(
-                        // "email" => get_user_email($row['firsttranslator'])
-                        "email" => "fvalle.glifico@outlook.com"
-                    )
-                ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to you!");
-                
-                send_email([
-                    array(
-                        // "email" => get_user_email($row['firsttranslator'])
-                        "email" => "fvalle.glifico@outlook.com"
-                    )
-                ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to other, you did nothing in 5h..");
-                
-                
-                $runtimeAction = "second accepted first null";
-                
-                $element['runtime'] = $runtimeAction;
-                array_push($toExit, $element);
-                continue;
+                if ($alarmed == 0) {
+                    $query = "UPDATE payments SET firststatus='Other accepted', secondstatus='Assigned', whoaccepted=2, secondcall=1  WHERE id='$id';";
+                    $result = $db->query($query);
+
+                    send_email([
+                        array(
+                            // "email" => get_user_email($row['firsttranslator'])
+                            "email" => "fvalle.glifico@outlook.com"
+                        )
+                    ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to you!");
+
+                    send_email([
+                        array(
+                            // "email" => get_user_email($row['firsttranslator'])
+                            "email" => "fvalle.glifico@outlook.com"
+                        )
+                    ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to other, you did nothing in 5h..");
+
+                    $runtimeAction = "second accepted first null";
+
+                    $element['runtime'] = $runtimeAction;
+                    array_push($toExit, $element);
+                    continue;
+                }
             }
         }
-        
     } else if ($status == "new") {} else if ($status == "notify") {
         if ($first != "Accepted" && $second != "Accepted") {
             if ($alarmed == 0) {
