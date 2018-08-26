@@ -21,7 +21,9 @@ $user = $data['user'];
 $url = $data['url'];
 $count = $data['count'];
 if ($count < 1)
+{
     $count = 1;
+}
 
 $selected = $data['translators'];
 $jobTitle = $data['job'];
@@ -49,7 +51,7 @@ $translator = get_username($selected[0]['id']);
 
 $firstPrice = $selected[0]['total'];
 $firstCurrency = $selected[0]['currency'];
-if (int($count) > 0) {
+if ($count > 0) {
     $secondtranslator = get_username($selected[1]['id']);
     $secondPrice = $selected[1]['total'];
     $secondCurrency = $selected[1]['currency'];
@@ -69,7 +71,7 @@ if (! certTokenA($db, $user, $data['token']))
         "statuscode" => 400
     )));
 
-if (int($count) == 1) {
+if ($count == 1) {
     $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, currency, deadline, price, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline', '$urgency');";
 } else {
     $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline', '$urgency');";
