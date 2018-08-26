@@ -62,24 +62,23 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $advised = $row['firstcall'];
     $alarmed = $row['secondcall'];
     $id = $row['id'];
-    
+
     $runtimeAction = "---";
 
     if ($second == "Refused") {
         if ($first == "Accepted") {
             $query = "UPDATE payments SET status='Assigned', whoaccepted=1  WHERE id='$id';";
             $result = $db->query($query);
-            
+
             send_email([
                 array(
                     // "email" => get_user_email($row['firsttranslator'])
                     "email" => "fvalle.glifico@outlook.com"
                 )
-            ], "Job starts on Glifico", "Your job on glifico: " . $row['job']." was assigned to you!");
-            
-            
+            ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to you!");
+
             $runtimeAction = "first accepted second refused";
-            
+
             $element['runtime'] = $runtimeAction;
             array_push($toExit, $element);
             continue;
@@ -90,16 +89,16 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         if ($second == "Accepted") {
             $query = "UPDATE payments SET secondstatus='Assigned', whoaccepted=2  WHERE id='$id';";
             $result = $db->query($query);
-            
+
             send_email([
                 array(
                     // "email" => get_user_email($row['firsttranslator'])
                     "email" => "fvalle.glifico@outlook.com"
                 )
-            ], "Job starts on Glifico", "Your job on glifico: " . $row['job']." was assigned to you!");
-            
+            ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to you!");
+
             $runtimeAction = "second accepted first refused";
-            
+
             $element['runtime'] = $runtimeAction;
             array_push($toExit, $element);
             continue;
@@ -107,16 +106,17 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     }
 
     if ($first == "Accepted") {
+
+        $query = "UPDATE payments SET status='Assigned', secondstatus='Other accepted', whoaccepted=1, firstcall=1  WHERE id='$id';";
+        $result = $db->query($query);
         if ($advised == 0) {
-            $query = "UPDATE payments SET status='Assigned', secondstatus='Other accepted', whoaccepted=1, firstcall=1  WHERE id='$id';";
-            $result = $db->query($query);
             send_email([
                 array(
                     // "email" => get_user_email($row['secondtranslator'])
                     "email" => "fvalle.glifico@outlook.com"
                 )
             ], "Job notice on Glifico", "We're sorry but translator who was first choice accepted job: " . $row['job']);
-        
+
             $runtimeAction = "first accepted second advised";
         } else {}
     }
@@ -131,10 +131,10 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                     )
                 ], "Job on Glifico requires you", "Go to glifico.com, no one of the translators you selected accepted the job " . $row['job'] . ", try search again!");
             }
-            
+
             $query = "UPDATE payments SET firstcall=1  WHERE id='$id';";
             $result = $db->query($query);
-            
+
             $runtimeAction = "nobody accepted, agency allerted";
         }
     } else if ($status == "new") {} else if ($status == "notify") {
@@ -156,12 +156,12 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
                 $query = "UPDATE payments SET secondcall=1  WHERE id='$id';";
                 $result = $db->query($query);
-            
+
                 $runtimeAction = "2h remaining";
             }
         }
     }
-    
+
     $element['runtime'] = $runtimeAction;
 
     array_push($toExit, $element);
