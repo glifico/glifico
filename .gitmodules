@@ -1,3 +1,0 @@
-[submodule "wordpress/wordpress-heroku"]
-	path = wordpress/wordpress-heroku
-	url = git@github.com:mhoofman/wordpress-heroku.git
