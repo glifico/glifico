@@ -587,6 +587,7 @@ angular.module("search",[]).controller("search",function($scope){
 		ctrl.TrDeadline=ctrl.tomorrow;
 		ctrl.conditionsAccepted=false;
 		ctrl.pricesAccepted=false;
+		ctrl.jobUploaded=false;
 
 		ctrl.calculateFeasibility();
 		resetTr();
