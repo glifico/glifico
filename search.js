@@ -591,10 +591,11 @@ angular.module("search",[]).controller("search",function($scope){
 
 		ctrl.calculateFeasibility();
 		resetTr();
-		$("#modalBodySelect").hide();
-		$("#modalBodyUpload").hide();
 		$("#spanUpload").hide();
 		$("#spanUploadbtn").show();
+		$("#spanUploadFilename").html('');
+		$("#modalBodySelect").hide();
+		$("#modalBodyUpload").hide();
 	}
 
 	ctrl.openModal = function(){
