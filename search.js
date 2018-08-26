@@ -527,6 +527,7 @@ angular.module("search",[]).controller("search",function($scope){
 					job: ctrl.jobTitle,
 					description: ctrl.jobDescription,
 					count: countSelected(),
+					field: ctrl.field,
 					translators: selectedTr,
 					url: urlUploaded,
 					deadline: ctrl.TrDeadline,

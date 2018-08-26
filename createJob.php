@@ -47,6 +47,8 @@ if($fiesibility==1){
     $urgency = "no";
 }
 
+$field = $data['field'];
+
 $translator = get_username($selected[0]['id']);
 
 $firstPrice = $selected[0]['total'];
@@ -72,9 +74,9 @@ if (! certTokenA($db, $user, $data['token']))
     )));
 
 if ($count == 1) {
-    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, currency, deadline, price, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline', '$urgency');";
+    $query = "INSERT INTO payments (job, description, field, status, username, document, languagefrom, languageto, ncharacters, translator, currency, deadline, price, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr', '$field', 'To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline', '$urgency');";
 } else {
-    $query = "INSERT INTO payments (job, description, status, username, document, languagefrom, languageto, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr','To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline', '$urgency');";
+    $query = "INSERT INTO payments (job, description, field, status, username, document, languagefrom, languageto, ncharacters, translator, secondtranslator, secondstatus, currency, secondcurrency, deadline, price, secondprice, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr', '$field', 'To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$secondtranslator', 'To Be Assigned', '$firstCurrency', '$secondCurrency' ,'$deadline','$firstPrice', '$secondPrice','0', '$createdline', '$urgency');";
 }
 
 $result = $db->query($query);

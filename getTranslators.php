@@ -116,9 +116,9 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $rowRating = $resultRating->fetch(PDO::FETCH_ASSOC);
     
     $rating = $rowRating['tottest'];
-    if ($rating == NULL)
+    if ($rating == NULL){
         $rating = 0;
-    
+    }
     $priceTransl = $row['price_euro'];
     $priceClass = doTheGaussian($priceTransl, $priceAvg, $sigma);
     
