@@ -279,6 +279,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 
 	ctrl.$onInit=function(){		
 		ctrl.refresh();
+		ctrl.startTimer();
 	}
 
 	
@@ -287,7 +288,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	ctrl.startTimer = function () {
 		if (!started) {
 			started = true;
-			myTimer = setInterval(mioTimer, 1000)
+			myTimer = setInterval(ctrl.mioTimer, 1000)
 		}
 	}
 
