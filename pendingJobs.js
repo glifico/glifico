@@ -262,7 +262,6 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				var data=JSON.parse(req.responseText);
 				ctrl.documents=data;
 				ctrl.createTable();
-				console.debug("new table");
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
@@ -275,7 +274,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 
 	ctrl.$onInit=function(){		
 		ctrl.refresh();
-		ctrl.timer = setInterval(ctrl.refresh, 2000);
+		ctrl.timer = setInterval(ctrl.refresh, 15*60*1000);
 	}
 
 });
