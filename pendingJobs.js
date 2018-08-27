@@ -294,7 +294,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 
 	ctrl.mioTimer = function() {
 		nowseconds++;
-		if (nowseconds >= maxSeconds) {
+		if (nowseconds >= maxseconds) {
 			clearTimeout(myTimer);
 			ctrl.refresh();
 		}
