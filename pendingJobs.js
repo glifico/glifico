@@ -1,8 +1,3 @@
-var started = false;
-var nowseconds = 0;
-var maxseconds = 2; //refresh every 15 minutes
-var myTimer; 
-
 $(document).ready(function () {
 
 });
@@ -280,27 +275,9 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 
 	ctrl.$onInit=function(){		
 		ctrl.refresh();
-		ctrl.startTimer();
+		ctrl.timer = setInterval(ctrl.refresh(), 2000);
 	}
 
-
-
-
-	ctrl.startTimer = function () {
-		if (!started) {
-			started = true;
-			myTimer = setInterval(ctrl.mioTimer, 1000)
-		}
-	}
-
-	ctrl.mioTimer = function() {
-		nowseconds++;
-		if (nowseconds >= maxseconds) {
-			ctrl.refresh();
-			nowseconds = 0;
-			clearTimeout(myTimer);
-		}
-	}
 });
 
 
