@@ -267,6 +267,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				var data=JSON.parse(req.responseText);
 				ctrl.documents=data;
 				ctrl.createTable();
+				console.debug("new table");
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
@@ -295,8 +296,9 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	ctrl.mioTimer = function() {
 		nowseconds++;
 		if (nowseconds >= maxseconds) {
-			clearTimeout(myTimer);
 			ctrl.refresh();
+			nowseconds = 0;
+			clearTimeout(myTimer);
 		}
 	}
 });
