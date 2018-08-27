@@ -1,3 +1,8 @@
+var started = false;
+		var nowseconds = 0;
+		var maxseconds = 2000;
+		var myTimer; 
+
 $(document).ready(function () {
 
 });
@@ -253,7 +258,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		});
 	}
 
-	ctrl.$onInit=function(){
+	ctrl.$onInit=function(){		
 		var url = "getPendingJobs.php?user=" + getUsername()+"&token="+getToken();
 
 		var req = createXHTMLHttpRequest() ;
@@ -272,7 +277,25 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		req.send();
 	}
 
+	
+	
+
+	ctrl.startTimer = function () {
+		if (!started) {
+			started = true;
+			myTimer = setInterval(mioTimer, 1000)
+		}
+	}
+
+	ctrl.mioTimer = function() {
+		nowSeconds++;
+		if (nowSeconds >= maxSeconds) {
+			clearTimeout(myTimer);
+			ctrl.createTable();
+		}
+	}
 });
+
 
 
 
