@@ -274,7 +274,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 
 	ctrl.$onInit=function(){		
 		ctrl.refresh();
-		ctrl.timer = setInterval(ctrl.refresh, 15*60*1000);
+		ctrl.timer = setInterval(ctrl.refresh, 5*60*1000);
 	}
 
 });
