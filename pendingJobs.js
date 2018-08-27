@@ -257,8 +257,8 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		    searching: false
 		});
 	}
-
-	ctrl.$onInit=function(){		
+	
+	ctrl.refresh=function(){
 		var url = "getPendingJobs.php?user=" + getUsername()+"&token="+getToken();
 
 		var req = createXHTMLHttpRequest() ;
@@ -277,6 +277,10 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		req.send();
 	}
 
+	ctrl.$onInit=function(){		
+		ctrl.refresh();
+	}
+
 	
 	
 
@@ -291,7 +295,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		nowSeconds++;
 		if (nowSeconds >= maxSeconds) {
 			clearTimeout(myTimer);
-			ctrl.createTable();
+			ctrl.refresh();
 		}
 	}
 });
