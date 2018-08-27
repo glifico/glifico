@@ -36,6 +36,7 @@ function onLoad(){
 
 	if(isLogged){
 		$("#MegaNavbarLeft").hide();
+		$("#usernameLoginRegister").hide();
 		if(isAgency){
 			showAgencyStuff();
 			hideTranslatorStuff();
@@ -51,6 +52,7 @@ function onLoad(){
 		}
 	}else{
 		$("#MegaNavbarLeft").show();
+		$("#usernameLoginRegister").show();
 		hideTranslatorStuff();
 		hideAgencyStuff();
 	}
