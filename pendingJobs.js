@@ -1,7 +1,7 @@
 var started = false;
-		var nowseconds = 0;
-		var maxseconds = 2000;
-		var myTimer; 
+var nowseconds = 0;
+var maxseconds = 2000;
+var myTimer; 
 
 $(document).ready(function () {
 
@@ -253,11 +253,11 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		html+='</table>';
 		$("#table").html(html);
 		$("#data_table").DataTable({
-		    paging: false,
-		    searching: false
+			paging: false,
+			searching: false
 		});
 	}
-	
+
 	ctrl.refresh=function(){
 		var url = "getPendingJobs.php?user=" + getUsername()+"&token="+getToken();
 
@@ -282,8 +282,8 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 		ctrl.startTimer();
 	}
 
-	
-	
+
+
 
 	ctrl.startTimer = function () {
 		if (!started) {
@@ -293,8 +293,8 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 	}
 
 	ctrl.mioTimer = function() {
-		nowSeconds++;
-		if (nowSeconds >= maxSeconds) {
+		nowseconds++;
+		if (nowseconds >= maxSeconds) {
 			clearTimeout(myTimer);
 			ctrl.refresh();
 		}
