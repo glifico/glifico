@@ -1,6 +1,6 @@
 var started = false;
 var nowseconds = 0;
-var maxseconds = 2*1000; //refresh every 15 minutes
+var maxseconds = 2; //refresh every 15 minutes
 var myTimer; 
 
 $(document).ready(function () {
