@@ -1,5 +1,4 @@
 <?php
-include 'functions.php';
 
 function NotifySlack($subject, $name, $email, $body)
 {
