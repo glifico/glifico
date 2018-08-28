@@ -11,7 +11,7 @@ function NotifySlack($subject, $name, $email, $body)
     'Content-Type: application/json'
   ));
   $data='{
-    "channel": "#costumerservice",
+    "channel": "#customerservice",
     "username": "GlificoForm",
     "text": "'.$name.' ('.$email.') wrote to Glifico: '.$body.'",
     "icon_emoji": ":email:"
