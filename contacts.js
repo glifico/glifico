@@ -18,6 +18,8 @@ angular.module('ContactsAppCtrl',[]).controller('ContactsAppCtrl',function($scop
 			if (req.status == 200){
 				$('#alertOK').fadeIn().delay(10000).fadeOut();
 				$('#alertOK').html("Message sent..");
+				ctrl.message='';
+				ctrl.subject='';
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
