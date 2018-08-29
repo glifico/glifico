@@ -1,4 +1,4 @@
-angular.module("pendingPayments",[]).controller("pendingPayments",function(){
+angular.module("Payments",[]).controller("Payments",function(){
 	var ctrl=this;
 
 	ctrl.getClass=function(doc){
@@ -138,5 +138,5 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 
 angular.element(document).ready(function() {
 	console.log("registro pendingPayment");
-	angular.bootstrap(document.getElementById('paymentsTable'), ['pendingPayments']);
+	angular.bootstrap(document.getElementById('payments'), ['Payments']);
 });
