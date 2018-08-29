@@ -29,6 +29,18 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <script>
+  function createXHTMLHttpRequest() {
+    try { return new ActiveXObject("Msxml2.XMLHTTP") ; } catch (e) {}
+    try { return new ActiveXObject("Microsoft.XMLHTTP") ; } catch (e) {}
+    try { return new XMLHttpRequest() ; } catch (e) {}
+    alert("XMLHttpRequest is not supported on this browser!");
+    return null;
+  }
+  </script>
+
+
   <script src="angular.min.js"></script>
   <script src="payments.js"></script>
   <script src="gaussian.controller.js"></script>
