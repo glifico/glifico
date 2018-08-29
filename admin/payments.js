@@ -103,6 +103,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		}
 		html+="</tbody>";
 		html+='</table>';
+		console.debug("table");
 		$("#paymentstable").html(html);
 		$("#d_table").DataTable({
 			paging: false,
@@ -111,6 +112,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 	}
 
 	ctrl.$onInit=function(){
+		console.debug("init");
 		var url = "getPendingPayments.php?user=admin&token=glifico";
 
 		var req = createXHTMLHttpRequest() ;
@@ -119,6 +121,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 				var data=JSON.parse(req.responseText);
 				ctrl.documents=data;
 				ctrl.createTable();
+				console.debug(data);
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
