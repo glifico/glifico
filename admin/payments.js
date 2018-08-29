@@ -121,10 +121,8 @@ angular.module("Payments",[]).controller("Payments",function(){
 				var data=JSON.parse(req.responseText);
 				ctrl.documents=data;
 				ctrl.createTable();
-				console.debug(data);
 				return(true);
 			}else{
-				alert('error');
 				return(false);
 			}
 		}
