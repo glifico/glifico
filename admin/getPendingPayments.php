@@ -7,7 +7,7 @@ exit();
 
 $user = $_GET['user'];
 $token = $_GET['token'];
-if ($user=='admin' & $token =='glifico'){
+if ($user!='admin' || $token !='glifico'){
   exit(json_encode(array(
     "message" => "wrong token",
     "statuscode" => 400
