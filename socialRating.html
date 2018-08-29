@@ -195,7 +195,7 @@
 <div id="regAge" class="modal-agency" hidden="true">
 <div id="regAgeForm" data-ng-controller="regAgecontroller as ctrl">
 <div>
-<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate>
 <div class="input-group">
 <div class="form-group col-md-8">
 <label>Company Name: </label>
@@ -256,14 +256,14 @@ Password must have at least 7 characters!
 </div>
 </form>
 </div>
- 
+
 </div>
 </div>
 
 <div id="regTrad" class="modal-translator" hidden="true">
 <div id="regTradForm" data-ng-controller="regTradcontroller as ctrl">
 <div>
-<form class="needs-validation" name="regTradForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="regTradForm" action="/" method="post" novalidate>
 <div class="input-group">
 <div class="form-group col-md-5">
 <label>Name: </label>
@@ -328,9 +328,9 @@ Password must have at least 7 characters!
 </div>
 </form>
 </div>
- 
+
 </div>
- 
+
 
 </div>
 </div>
@@ -359,10 +359,17 @@ Rating
 -->
 
 <br><br><br><br>
-<div style="margin-right:10px;margin-left:10px"><div class="panel panel-default"><div class="panel-heading">In this page you can rate the translations of other users<br>Choose which languages you are intending to give your opinion<br>The questions may about graeerer or reading comprension and will be
+<div class="row">
+<div style="margin-right:10px;margin-left:10px">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      In this page you can rate the translations of other users<br>Choose which languages you are intending to give your opinion<br>The questions may about graeerer or reading comprension and will be
 				submitted in the language in which you are being evalutaed. Select
 				the most appropriate answer amoung the given choices.<br>You can keep track of time on the bar at the bottom of the page.<br>When the time expire the test will stop and your test can be
-				submitted for evaluation.<br>A deep breath... and he's take the test!</div></div>
+				submitted for evaluation.<br>A deep breath... and he's take the test!
+      </div>
+
+<div class="panel-body">
 <div style="text-align:center;">
 <div style="width:40%;display: table;margin: 0 auto;">
 <span class="input-group">Please confirm your mother tongue to evaluate other translators:</span><br>
@@ -372,8 +379,6 @@ Rating
 </div>
 <br><br>
 <span class="input-group"><a class="btn btn-primary" onCLick="tryOut()"><strong>Rate now!</strong></a></span>
-</div>
-</div>
 <br>
 <div style="width:90%;display: table;margin: 0 auto;">
 <div id="congratulations" class="glifico-info" style="display:none;">
@@ -394,6 +399,12 @@ Rating
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
 
 <div class="modal fade" id="skill-modal" role="dialog" tabindex="-1">
 <div class="modal-dialog modal-lg" role="document">
@@ -412,9 +423,9 @@ Rating
 </div>
 </div>
 
-					
-					
-					
+
+
+
 <div ng-app="glifico">
  <glificofooter></glificofooter>
  </div>
