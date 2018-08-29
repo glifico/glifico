@@ -103,7 +103,7 @@ angular.module("pendingPayments",[]).controller("pendingPayments",function(){
 		}
 		html+="</tbody>";
 		html+='</table>';
-		$("#table").html(html);
+		$("#paymentstable").html(html);
 		$("#d_table").DataTable({
 			paging: false,
 			searching: false
