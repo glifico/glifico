@@ -124,7 +124,7 @@ angular.module("Payments",[]).controller("Payments",function(){
 				console.debug(data);
 				return(true);
 			}else{
-				mostraDialogTimed('errorPanel');
+				alert('error');
 				return(false);
 			}
 		}
