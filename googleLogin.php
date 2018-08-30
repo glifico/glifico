@@ -16,11 +16,12 @@ if(!$data){
 $id_token = $data['id_token'];
 $CLIENT_ID = "814902183251-s44gin3hj5rd4h9smt4bepdtn1ofj77i.apps.googleusercontent.com";
 
-echo($CLIENT_ID);
-
 $client = new Google_Client([
     'client_id' => $CLIENT_ID
 ]); // Specify the CLIENT_ID of the app that accesses the backend
+
+$client->setAuthConfigFile("client_secret.json");
+
 $payload = $client->verifyIdToken($id_token);
 if ($payload) {
     $userid = $payload['sub'];
