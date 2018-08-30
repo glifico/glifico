@@ -27,10 +27,37 @@ $payload = $token_data['payload'];
 
 if ($payload) {
     $userid = $payload['sub'];
-    // If request specified a G Suite domain:
-    // $domain = $payload['hd'];
+    $email = $payload['email'];
+    
+    $query = "SELECT USERNAME, PASSWORD FROM traduttore WHERE email='$email';";
+    $result = $db->query($query);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    $type = "T";
+    $user = $row['username'];
+   
+    if ($payload['email_verified']) {
+        $token = tokenize($user, $pwd);
+        echo json_encode(array(
+            "user" => $user,
+            "token" => $token,
+            "type" => $type,
+            "statuscode" => 200
+        ));
+    } else {
+        exit(json_encode(array(
+            "message" => "error: no account with your email",
+            "statuscode" => 400
+        )));
+    }
+    
+    $result->CloseCursor();
+    
 } else {
     // Invalid ID token
+    exit(json_encode(array(
+        "message" => "error on Google server",
+        "statuscode" => 401
+    )));
 }
 
 exit(json_encode($payload));
