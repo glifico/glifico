@@ -7,11 +7,11 @@ var widgetAge;
 var widgetTrad;
 var onloadCallback = function() {
 	widgetTrad = grecaptcha.render('captchaTrad', {
-		'sitekey' : '6Lf1wjEUAAAAAOf4MdQzLzsqsdp4t_Wzp6BzfXpu',
+		'sitekey' : '6LflVW0UAAAAAHQvvd75yFy5RGSEhnLWc9sh0Ovn',
 		'theme' : 'light'
 	});
 	widgetAge = grecaptcha.render('captchaAge', {
-		'sitekey' : '6Lf1wjEUAAAAAOf4MdQzLzsqsdp4t_Wzp6BzfXpu',
+		'sitekey' : '6LcmVm0UAAAAAGXxuA4ecnOGolopT0LT45xqiTVT',
 		'theme' : 'light'
 	});
 };
