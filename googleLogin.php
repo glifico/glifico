@@ -16,6 +16,8 @@ if(!$data){
 $id_token = $data['id_token'];
 $CLIENT_ID = "814902183251-ctp5kv30jdl5vah5m35ni396e420ls4q";
 
+echo($CLIENT_ID);
+
 $client = new Google_Client([
     'client_id' => $CLIENT_ID
 ]); // Specify the CLIENT_ID of the app that accesses the backend
