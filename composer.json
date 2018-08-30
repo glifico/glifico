@@ -1,6 +1,10 @@
 {
-    "require": {
-        "satispay/online-api-php-sdk": "^1.6"
-	"google/apiclient" : "^1"
+  "name" : "glifico/glifico",
+  "description" : "Everything you need to find your translator",
+  "license" : "GPL-3.0-or-later",
+    "require" :
+    {
+        "satispay/online-api-php-sdk": "^1.6",
+	       "google/apiclient" : "^1.1.8"
     }
 }

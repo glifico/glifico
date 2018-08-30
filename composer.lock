@@ -1,23 +1,66 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de5266d56e814f0dfab91ddb47dbb3bb",
+    "content-hash": "d95318bc86bb998d746d8d19ddfe4ea3",
     "packages": [
         {
-            "name": "satispay/online-api-php-sdk",
-            "version": "1.6.2",
+            "name": "google/apiclient",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/satispay/online-api-php-sdk.git",
-                "reference": "fc4a1cbad858202be92d517dd6d3d884dd1380d9"
+                "url": "https://github.com/google/google-api-php-client.git",
+                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/satispay/online-api-php-sdk/zipball/fc4a1cbad858202be92d517dd6d3d884dd1380d9",
-                "reference": "fc4a1cbad858202be92d517dd6d3d884dd1380d9",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/85309a3520bb5f53368d43e35fd24f43c9556323",
+                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-v1-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Google/autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "time": "2016-06-06T21:22:48+00:00"
+        },
+        {
+            "name": "satispay/online-api-php-sdk",
+            "version": "1.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/satispay/online-api-php-sdk.git",
+                "reference": "f40c6694e54bcd718a9f706322d2cfd81c1b0f84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/satispay/online-api-php-sdk/zipball/f40c6694e54bcd718a9f706322d2cfd81c1b0f84",
+                "reference": "f40c6694e54bcd718a9f706322d2cfd81c1b0f84",
                 "shasum": ""
             },
             "require": {
@@ -34,7 +77,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -50,7 +93,7 @@
                 "satispay",
                 "sdk"
             ],
-            "time": "2017-12-04T09:31:51+00:00"
+            "time": "2018-02-28T16:54:06+00:00"
         }
     ],
     "packages-dev": [],
