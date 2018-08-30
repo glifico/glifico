@@ -46,7 +46,7 @@ if ($payload) {
    
     if ($payload['email_verified']) {
         $token = tokenize($user, $pwd);
-        exit json_encode(array(
+        exit (json_encode(array(
             "payload" => $payload,
             "user" => $user,
             "token" => $token,
