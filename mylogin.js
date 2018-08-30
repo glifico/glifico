@@ -205,7 +205,7 @@ function onSignIn(googleUser) {
 			var type=JSON.parse(response)["type"];
 			saveTheCookie(user, token, type);
 			console.log("logged");
-			$('#alertOK').html("Welcome on Glifico "+ getUsername()+ '<img src="'+JSON.parse(response)["payload"]["picture"]+'" alt="profile_pic"/>');
+			$('#alertOK').html("Welcome on Glifico "+ getUsername());
 			$('#alertOK').fadeIn().delay(2000).fadeOut();
 			personalArea();
 			return(true);
