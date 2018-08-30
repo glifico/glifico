@@ -184,4 +184,31 @@ function onSignIn(googleUser) {
 	console.log('Name: ' + profile.getName());
 	console.log('Image URL: ' + profile.getImageUrl());
 	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	var array = {
+			id_token: googleUser.getAuthResponse().id_token,
+			email: profile.getEmail(),
+			name: profile.getName(),
+	}
+	
+	var data = JSON.stringify(array);
+	
+	$.ajax( {
+		type : "POST",
+		dataType : "application/json",
+		contentType : "application/json; charset=utf-8",
+		data : data,
+		url : "googleLogin.php",
+		complete : function(ret) {
+			var response=ret.responseText;
+			//console.debug(response);
+			console.debug(response);
+		},
+		error : function(xhr) {
+			if (xhr.status == 500) {
+				$("#alertError").html("Error from Google server, please retry.");
+				$("#alertError").fadeIn().delay(1000).fadeOut();
+			}
+
+		}
+	});
 }
