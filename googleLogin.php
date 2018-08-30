@@ -52,7 +52,7 @@ if ($payload) {
             "token" => $token,
             "type" => $type,
             "statuscode" => 200
-        ));
+        )));
     } else {
         exit(json_encode(array(
             "message" => "error: no account with your email",
