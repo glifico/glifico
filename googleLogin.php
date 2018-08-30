@@ -43,6 +43,7 @@ if ($payload) {
     $row = $result->fetch(PDO::FETCH_ASSOC);
     $type = "T";
     $user = $row['username'];
+    $pwd = htmlspecialchars($row['password']);
    
     if ($payload['email_verified']) {
         $token = tokenize($user, $pwd);

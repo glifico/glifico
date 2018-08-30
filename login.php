@@ -36,12 +36,12 @@ if (strlen(htmlspecialchars($row["username"])) < 2) {
 
 if (htmlspecialchars($row["password"]) == $pwd) {
     $token = tokenize($user, $pwd);
-    echo json_encode(array(
+    exit (json_encode(array(
         "user" => $user,
         "token" => $token,
         "type" => $type,
         "statuscode" => 200
-    ));
+    )));
 } else {
     exit(json_encode(array(
         "message" => "error: wrong password",
