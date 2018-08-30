@@ -51,6 +51,11 @@
 
 
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=en"></script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="43159722110-on4b33g9qorbslrk193ia11m5fonb7dn.apps.googleusercontent.com">
+
+
 </head>
 <body onload="onLoad()">
 
@@ -169,6 +174,16 @@
 <button IsDefault="false" class="btn btn-success" id="button1id" name="button1id" onClick="doDominoLogin()" type="button">Login</button>
 </div>
 </div>
+
+<div class="form-group">
+<label class="col-md-4 control-label"></label>
+<div class="col-md-8">
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+</div>
+</div>
+
+
+
 <div class="form-group">
 <div class="col-md-8" style="padding-left:50px;">
 <p><a href="resetPassword.html">Forgot password?</a></p>
