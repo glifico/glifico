@@ -14,7 +14,7 @@ if(!$data){
 
 
 $id_token = $data['id_token'];
-$CLIENT_ID = "nzRYXzDEWsxJDdtoOOVEQrCp";
+$CLIENT_ID = "814902183251-ctp5kv30jdl5vah5m35ni396e420ls4q";
 
 $client = new Google_Client([
     'client_id' => $CLIENT_ID
