@@ -46,7 +46,8 @@ if ($payload) {
    
     if ($payload['email_verified']) {
         $token = tokenize($user, $pwd);
-        echo json_encode(array(
+        exit json_encode(array(
+            "payload" => $payload,
             "user" => $user,
             "token" => $token,
             "type" => $type,
@@ -68,7 +69,5 @@ if ($payload) {
         "statuscode" => 401
     )));
 }
-
-exit(json_encode($payload));
 
 ?>

@@ -200,8 +200,15 @@ function onSignIn(googleUser) {
 		url : "googleLogin.php",
 		complete : function(ret) {
 			var response=ret.responseText;
-			//console.debug(response);
-			console.debug(response);
+			var user=JSON.parse(response)["user"];
+			var token=JSON.parse(response)["token"];
+			var type=JSON.parse(response)["type"];
+			saveTheCookie(user, token, type);
+			console.log("logged");
+			$('#alertOK').html("Welcome on Glifico "+ getUsername());
+			$('#alertOK').fadeIn().delay(2000).fadeOut();
+			personalArea();
+			return(true);
 		},
 		error : function(xhr) {
 			if (xhr.status == 500) {
