@@ -1,5 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
+require_once 'functions.php';
 
 // Get $id_token via HTTPS POST.
 
@@ -28,6 +29,14 @@ $payload = $token_data['payload'];
 if ($payload) {
     $userid = $payload['sub'];
     $email = $payload['email'];
+    
+    $db = getDB();
+    if(!$db){
+        exit(json_encode(array(
+            "message" => "error: app not running properly",
+            "statuscode" => 505
+        )));
+    }
     
     $query = "SELECT USERNAME, PASSWORD FROM traduttore WHERE email='$email';";
     $result = $db->query($query);
