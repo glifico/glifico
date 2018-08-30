@@ -14,7 +14,7 @@ if(!$data){
 
 
 $id_token = $data['id_token'];
-$CLIENT_ID = "814902183251-ctp5kv30jdl5vah5m35ni396e420ls4q";
+$CLIENT_ID = "814902183251-ctp5kv30jdl5vah5m35ni396e420ls4q.apps.googleusercontent.com";
 
 echo($CLIENT_ID);
 
