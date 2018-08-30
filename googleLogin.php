@@ -22,7 +22,9 @@ $client = new Google_Client([
 
 $client->setAuthConfigFile("client_secret.json");
 
-$payload = json_decode($client->verifyIdToken($id_token), true);
+$token_data = $client->verifyIdToken($id_token)->getAttributes();
+$payload = $token_data['payload'];
+
 if ($payload) {
     $userid = $payload['sub'];
     // If request specified a G Suite domain:
