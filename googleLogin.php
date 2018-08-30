@@ -31,6 +31,6 @@ if ($payload) {
     // Invalid ID token
 }
 
-exit($payload);
+exit(json_encode($payload));
 
 ?>
