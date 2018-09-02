@@ -90,7 +90,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 					costumer:{
 						CustomerName:data.FirstName+' '+data.LastName,
 						CustomerGSTIN:"",
-						CustomerState:data.Country,
+						CustomerState:data.IdCountry,
 						CustomerPAN:'',
 						CustomerAddressLine1:data.Street+' '+data.ZIP+' '+data.StateProvince+' '+data.City+' '+data.IdCountry,
 						CustomerAddressLine2:data.ZIP,
