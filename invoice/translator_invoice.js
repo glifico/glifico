@@ -63,35 +63,35 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText)[0];
-			if(data.FirstName === null){
+			if(!data.FirstName){
 				data.FirstName = ' ';
 			}
-			if(data.LastName === null){
+			if(!data.LastName){
 				data.LastName = ' ';
 			}
-			if(data.EmailReferenceBilling === null){
-				data.EmailReferenceBilling = data.EmailReference;
+			if(!data.EmailReferenceBilling){
+				data.EmailReferenceBilling = data.Email;
 			}
-			if(data.Email === null){
+			if(!data.Email){
 				data.Email = " ";
 				data.EmailReferenceBilling = " ";
 			}
-			if(data.PhoneBilling === null){
+			if(!data.PhoneBilling){
 				data.PhoneBilling = ' ';
 			}
-			if(data.Street === null){
+			if(!data.Street){
 				data.Street = ' ';
 			}
-			if(data.ZIP === null){
+			if(!data.ZIP){
 				data.ZIP = ' ';
 			}
-			if(data.City === null){
+			if(!data.City){
 				data.City = ' ';
 			}
-			if(data.StateProvince === null){
+			if(!data.StateProvince){
 				data.StateProvince = ' ';
 			}
-			if(data.IdCountry === null){
+			if(!data.IdCountry){
 				data.IdCountry = ' ';
 			}
 			params={
