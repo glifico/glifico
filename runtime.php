@@ -137,7 +137,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 ], "Job on Glifico requires you", "Go to glifico.com, no one of the translators you selected accepted the job " . $row['job'] . ", try search again!");
             }
 
-            $query = "UPDATE payments SET firstcall=1, status='Too late to accept', secondstatus='Too late to accept'  WHERE id='$id';";
+            $query = "UPDATE payments SET firstcall=1, status='Too late', secondstatus='Too late'  WHERE id='$id';";
             $result = $db->query($query);
 
             $runtimeAction = "nobody accepted, agency allerted";
