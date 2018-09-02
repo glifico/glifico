@@ -65,6 +65,9 @@ angular.module("Payments",[]).controller("Payments",function(){
 			html+=' data-preview="'+doc.preview+'"';
 			html+=' data-translated="'+doc.translated+'"';
 			html+=' data-urgency="'+doc.urgency+'"';
+			html+=' data-translator_email="'+doc.translator_data.emailbilling+' '+doc.translator_data.email+'"';
+			html+=' data-translator_iban="'+doc.translator_data.iban+'"';
+			html+=' data-translator_info="'+doc.translator_data.infobilling+'"';
 			html+='>Show more</button>';
 			html+='</div>';
 			html+='</td>';
