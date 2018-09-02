@@ -122,8 +122,6 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 
 			create_custom_translator_PDF(params);
 
-		}else{
-			alert('Error getting info from service');
 		}
 	}
 

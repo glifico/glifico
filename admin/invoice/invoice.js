@@ -115,8 +115,6 @@ getAgencyData= function(id, job, description, date, taxable, ncharacters, langua
 
 			create_customPDF(params);
 
-		}else{
-			mostraDialogTimed('Error getting info from service');
 		}
 	}
 
