@@ -207,12 +207,12 @@ function create_customPDF(params){
 	doc.setFontType('bold');
 	doc.textAlign("eMail", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(comapnyJSON.companyEmail, {align: "left"}, rightStartCol2, startY);
+	doc.textAlign(comapnyJSON.CompanyEmail, {align: "left"}, rightStartCol2, startY);
 
 	doc.setFontType('bold');
 	doc.textAlign("Phone", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(comapnyJSON.companyPhone, {align: "left"}, rightStartCol2, startY);
+	doc.textAlign(comapnyJSON.CompanyPhone, {align: "left"}, rightStartCol2, startY);
 
 	
 	
