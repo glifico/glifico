@@ -169,7 +169,7 @@ function create_customPDF(params){
 
 
 	//  doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=15+company_logo.h);
-	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, rightStartCol1, startY+=15);
+	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, rightStartCol1, startY+=InitialstartY+15);
 
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.textAlign("VAT number", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
@@ -218,12 +218,12 @@ function create_customPDF(params){
 
 	doc.setLineWidth(1);
 	// doc.line(20, startY+lineSpacing.NormalSpacing, 580, startY+=lineSpacing.NormalSpacing);
-	doc.line(20, startY+lineSpacing.NormalSpacing, 220, startY+=200+lineSpacing.NormalSpacing);
-	doc.line(380, startY+lineSpacing.NormalSpacing, 580, startY+lineSpacing.NormalSpacing);
+	doc.line(20, startY+lineSpacing.NormalSpacing+200, 220, startY+lineSpacing.NormalSpacing+200);
+	doc.line(380, startY+lineSpacing.NormalSpacing+200, 580, startY+lineSpacing.NormalSpacing+200);
 
 	doc.setFontSize(fontSizes.Head2TitleFontSize);
 	doc.setFontType('bold');
-	doc.textAlign("RECEIPE", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing+2);
+	doc.textAlign("RECEIPE", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing+200);
 
 
 	//-------Customer Info Billing---------------------
