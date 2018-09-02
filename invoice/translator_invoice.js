@@ -61,6 +61,12 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText)[0];
+			if(data.FirstName == null){
+				data.FirstName = ' ';
+			}
+			if(data.LastName == null){
+				data.LastName = ' ';
+			}
 			if(data.EmailReferenceBilling == null){
 				data.EmailReferenceBilling = data.EmailReference;
 			}
@@ -96,7 +102,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 						CustomerAddressLine2:data.ZIP,
 						CustomerAddressLine3:data.City,
 						CustomerEmail:data.EmailReferenceBilling,
-						CustomerPhone:data.PhoneReferenceBilling,
+						CustomerPhone:data.PhoneBilling,
 					},
 					invoice:{
 						InvoiceNo:id.toString(),
