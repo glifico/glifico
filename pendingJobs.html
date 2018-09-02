@@ -57,6 +57,15 @@
 
 <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
 <script src="pendingJobs.js"></script>
+
+<!-- pdf -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
+<script src="invoice/jspdf.min.js"></script>
+<script src="invoice/jspdf.plugin.autotable.js"></script>
+<script src="invoice/jsPdf_Plugins.js"></script>
+<script src="invoice/translator_invoice.js"></script>
+
 </head>
 <body onload="onLoad()">
 
@@ -424,11 +433,14 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  html+="<br><br>";
 	  html+='Use buttons below to accept or refuse this job. Your job is regulated with <a href="terms.html" target="_Blank">Terms & Conditions</a> you accepted during the registration process on Glifico<br>'
   }
+  
   var btnHtml="";
   if(button.data('status')=="To Be Assigned"){
 	  btnHtml+="<br><br>";
 	  btnHtml+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+","+button.data("choice")+')"/>';
 	  btnHtml+='<input class="btn btn-danger" type="button" value="Refuse" onclick="refuseJob('+button.data("id")+","+button.data("choice")+')"/>';
+  }else if(button.data('status')=="Closed"){
+		btnHtml+='<button type="button" class="btn btn-success" onclick="generate_cutomPDF('+button.data('id')+')">Download a draft invoice</button>';
   }
   html+='</div>'
   modal.find('.modal-body').html(html);

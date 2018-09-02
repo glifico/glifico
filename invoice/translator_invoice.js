@@ -1,23 +1,23 @@
 var comapnyJSON={
-		CompanyName:'GLIFICO',
+		CompanyName:'xxx',
 		//VAT
 		CompanyGSTIN:'IT0000000000',
-		CompanyState:'Italy',
-		CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
-		companyEmail:'info@glifico.com',
+		CompanyState:'...',
+		CompanyAddressLine1:'...',
+		companyEmail:'trad@example.com',
 		companyPhone:'+3900000000000',
 };
 
 var customer_BillingInfoJSON={
-		CustomerName:'Jhon Appleseed',
-		CustomerGSTIN:'...',
-		CustomerState:'...',
-		CustomerPAN:'123',
-		CustomerAddressLine1:'...',
+		CustomerName:'Glifico',
+		CustomerGSTIN:'IT000000',
+		CustomerState:'Italy',
+		CustomerPAN:'',
+		CustomerAddressLine1:'Torino',
 		CustomerAddressLine2:'...',
 		CustomerAddressLine3:'...',
-		CustomerEmail:'abcd@xxx.com',
-		CustomerPhone:'+918189457845',
+		CustomerEmail:'info@glifico.com',
+		CustomerPhone:'+390000000000',
 };
 
 
@@ -50,7 +50,7 @@ var lineSpacing={
 };
 
 getData= function(id, job, description, date, taxable, ncharacters, languages, jobdate, urgency) {
-	var url = "getAgencyData.php?user="+getUsername()+"&token="+getToken();
+	var url = "getTranslatorData.php?user="+getUsername()+"&token="+getToken();
 
 	params={}
 	price = 1.22*taxable;
@@ -217,6 +217,7 @@ function create_customPDF(params){
 	doc.setFontType('normal');
 
 	doc.setLineWidth(1);
+	startY+=200;
 	// doc.line(20, startY+lineSpacing.NormalSpacing, 580, startY+=lineSpacing.NormalSpacing);
 	doc.line(20, startY+lineSpacing.NormalSpacing, 220, startY+lineSpacing.NormalSpacing);
 	doc.line(380, startY+lineSpacing.NormalSpacing, 580, startY+lineSpacing.NormalSpacing);
@@ -316,10 +317,7 @@ function create_customPDF(params){
 		{"Service": "Translation services","id": 1,"JobDate":invoiceJSON.InvoiceJobDate ,"Product": invoiceJSON.InvoiceProduct, "LFrom":invoiceJSON.InvoiceLFrom, "LTo": invoiceJSON.InvoiceLTo, "Qty" : invoiceJSON.InvoiceNcharacters, "Total": invoiceJSON.Taxable, "Currency":"Euro"},
 		];
 
-	// columnStyles: {
-	//   id: {fillColor: 255}
-	// },
-
+	
 	doc.autoTable(columns, rows, options);   //From dynamic data.
 	// doc.autoTable(res.columns, res.data, options); //From htmlTable
 
@@ -338,18 +336,13 @@ function create_customPDF(params){
 	doc.textAlign(invoiceJSON.Taxable, {align: "left"}, rightcol2, startY);
 	
 	doc.setFontType('bold');
-	doc.textAlign("Tax rate: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign("22%", {align: "left"}, rightcol2, startY);
-
+	doc.textAlign("Tax and contributions: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("TBD", {align: "left"}, rightcol2, startY);
 	
 	doc.setFontType('bold');
-	doc.textAlign("VAT amount: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign(invoiceJSON.VATPrice, {align: "left"}, rightcol2, startY);
-	
-	doc.setFontType('bold');
-	doc.textAlign("To be paid: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
-	doc.textAlign(invoiceJSON.TotalAmnt, {align: "left"}, rightcol2, startY);
+	doc.textAlign("To be paid by Glifico: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("TBD", {align: "left"}, rightcol2, startY);
 	
 
-	doc.save("Glifico_invoice.pdf");
+	doc.save("Glifico_autoreceipe.pdf");
 }

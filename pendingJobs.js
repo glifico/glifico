@@ -211,8 +211,18 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 			}
 			html+='<td class="col-md-2">';
 			html+='<div id="'+doc.id+'">';
-			if(doc.status=="Closed"||doc.status=="Paid"){
-				html+='</div>';
+			if(doc.status=="Closed"){
+				html+='<button type="button" class="btn btn-success" data-toggle="modal" data-target="#jobModal"';
+				html+='data-job="'+doc.job+'"';
+				html+=' data-price="'+doc.price+'"';
+				html+=' data-id="'+doc.id+'"';
+				html+=' data-currency="'+doc.currency+'"';
+				html+=' data-status="'+doc.status+'"';
+				html+=' data-choice="'+doc.choice+'"';
+				html+=' data-description="'+doc.description+'"';
+				html+=' data-document="'+doc.document+'"';
+				html+='>Show job and download draft receipe</button>';
+			}if(doc.status=="Paid"){
 			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';
 				html+='data-job="'+doc.job+'"';
@@ -241,6 +251,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-document="'+doc.document+'"';
 				html+='>Show job</button>';
 			}
+			html+='</div>';
 			html+='</td>';
 			html+='</tr>';
 		}
