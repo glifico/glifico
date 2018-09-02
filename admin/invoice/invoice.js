@@ -1,41 +1,3 @@
-var comapnyJSON={
-		CompanyName:'GLIFICO',
-		//VAT
-		CompanyGSTIN:'IT0000000000',
-		CompanyState:'Italy',
-		CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
-		companyEmail:'info@glifico.com',
-		companyPhone:'+3900000000000',
-};
-
-var customer_BillingInfoJSON={
-		CustomerName:'Jhon Appleseed',
-		CustomerGSTIN:'...',
-		CustomerState:'...',
-		CustomerPAN:'123',
-		CustomerAddressLine1:'...',
-		CustomerAddressLine2:'...',
-		CustomerAddressLine3:'...',
-		CustomerEmail:'abcd@xxx.com',
-		CustomerPhone:'+918189457845',
-};
-
-
-var invoiceJSON={
-		InvoiceNo:'INV-XXXXXX',
-		InvoiceDate:'00-00-2000',
-		TotalAmnt:'-1',
-		SubTotalAmnt:'-1',
-		InvoiceProduct:'translation'
-}
-
-var company_logo = {
-		// src1:''
-		// src:'data:image/jpeg;base64,'
-		// w: 80,
-		// h: 50
-};
-
 var fontSizes={
 		HeadTitleFontSize:18,
 		Head2TitleFontSize:16,
@@ -124,6 +86,44 @@ getAgencyData= function(id, job, description, date, taxable, ncharacters, langua
 }
 
 function generate_agency_invoice(id) {
+	var comapnyJSON={
+			CompanyName:'GLIFICO',
+			//VAT
+			CompanyGSTIN:'IT0000000000',
+			CompanyState:'Italy',
+			CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
+			companyEmail:'info@glifico.com',
+			companyPhone:'+3900000000000',
+	};
+
+	var customer_BillingInfoJSON={
+			CustomerName:'Jhon Appleseed',
+			CustomerGSTIN:'...',
+			CustomerState:'...',
+			CustomerPAN:'123',
+			CustomerAddressLine1:'...',
+			CustomerAddressLine2:'...',
+			CustomerAddressLine3:'...',
+			CustomerEmail:'abcd@xxx.com',
+			CustomerPhone:'+918189457845',
+	};
+
+
+	var invoiceJSON={
+			InvoiceNo:'INV-XXXXXX',
+			InvoiceDate:'00-00-2000',
+			TotalAmnt:'-1',
+			SubTotalAmnt:'-1',
+			InvoiceProduct:'translation'
+	}
+
+	var company_logo = {
+			// src1:''
+			// src:'data:image/jpeg;base64,'
+			// w: 80,
+			// h: 50
+	};
+	
 	//GET info job
 	var url = "getInvoiceData.php?id="+id;
 	var req = createXHTMLHttpRequest() ;

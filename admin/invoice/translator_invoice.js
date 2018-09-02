@@ -1,43 +1,3 @@
-var comapnyJSON={
-		CompanyName:'xxx',
-		//VAT
-		CompanyGSTIN:'IT0000000000',
-		CompanyState:'...',
-		CompanyAddressLine1:'...',
-		CompanyAddressLine2:'...',
-		CompanyAddressLine3:'...',
-		CompanyEmail:'trad@example.com',
-		CompanyPhone:'+3900000000000',
-};
-
-var customer_BillingInfoJSON={
-		CustomerName:'Glifico',
-		CustomerGSTIN:'IT000000',
-		CustomerState:'Italy',
-		CustomerPAN:'',
-		CustomerAddressLine1:'Torino',
-		CustomerAddressLine2:'...',
-		CustomerAddressLine3:'...',
-		CustomerEmail:'info@glifico.com',
-		CustomerPhone:'+390000000000',
-};
-
-
-var invoiceJSON={
-		InvoiceNo:'INV-XXXXXX',
-		InvoiceDate:'00-00-2000',
-		TotalAmnt:'-1',
-		SubTotalAmnt:'-1',
-		InvoiceProduct:'translation'
-}
-
-var company_logo = {
-		// src1:''
-		// src:'data:image/jpeg;base64,'
-		// w: 80,
-		// h: 50
-};
-
 var fontSizes={
 		HeadTitleFontSize:18,
 		Head2TitleFontSize:16,
@@ -132,6 +92,48 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 
 function generate_translator_cutomPDF(id) {
 	//GET info job
+	
+	var comapnyJSON={
+			CompanyName:'xxx',
+			//VAT
+			CompanyGSTIN:'IT0000000000',
+			CompanyState:'...',
+			CompanyAddressLine1:'...',
+			CompanyAddressLine2:'...',
+			CompanyAddressLine3:'...',
+			CompanyEmail:'trad@example.com',
+			CompanyPhone:'+3900000000000',
+	};
+
+	var customer_BillingInfoJSON={
+			CustomerName:'Glifico',
+			CustomerGSTIN:'IT000000',
+			CustomerState:'Italy',
+			CustomerPAN:'',
+			CustomerAddressLine1:'Torino',
+			CustomerAddressLine2:'...',
+			CustomerAddressLine3:'...',
+			CustomerEmail:'info@glifico.com',
+			CustomerPhone:'+390000000000',
+	};
+
+
+	var invoiceJSON={
+			InvoiceNo:'INV-XXXXXX',
+			InvoiceDate:'00-00-2000',
+			TotalAmnt:'-1',
+			SubTotalAmnt:'-1',
+			InvoiceProduct:'translation'
+	}
+
+	var company_logo = {
+			// src1:''
+			// src:'data:image/jpeg;base64,'
+			// w: 80,
+			// h: 50
+	};
+	
+	
 	var url = "getInvoiceTranslatorData.php?id="+id;
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
