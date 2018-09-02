@@ -218,7 +218,7 @@ function create_customPDF(params){
 
 	doc.setLineWidth(1);
 	// doc.line(20, startY+lineSpacing.NormalSpacing, 580, startY+=lineSpacing.NormalSpacing);
-	doc.line(20, startY+lineSpacing.NormalSpacing, 220, startY+lineSpacing.NormalSpacing);
+	doc.line(20, startY+lineSpacing.NormalSpacing, 220, startY+=200+lineSpacing.NormalSpacing);
 	doc.line(380, startY+lineSpacing.NormalSpacing, 580, startY+lineSpacing.NormalSpacing);
 
 	doc.setFontSize(fontSizes.Head2TitleFontSize);
