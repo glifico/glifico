@@ -13,7 +13,7 @@ if(!certToken($db, $user, $_GET['token'])) {
 }
 
 $id=$_GET['id'];
-$query="SELECT *, invoices.id as id_invoice FROM payments JOIN invoices ON invoices.job=payments.id WHERE payments.id='$id';";
+$query="SELECT invoices.id as id_invoice, tp.languagefrom, tp.languageto, tp.ncharacters, tp.field, tp.description, tp.job, invoices.date, tp.createdline, tp.urgency FROM payments tp JOIN invoices ON invoices.job=tp.id WHERE tp.id='$id';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 
