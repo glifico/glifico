@@ -169,50 +169,50 @@ function create_customPDF(params){
 
 
 	//  doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=15+company_logo.h);
-	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, rightStartCol1, startY+=150);
+	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=150);
 
 	doc.setFontSize(fontSizes.NormalFontSize);
-	doc.textAlign("VAT number", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("VAT number", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	// var w = doc.getStringUnitWidth('GSTIN') * NormalFontSize;
-	doc.textAlign(comapnyJSON.CompanyGSTIN, {align: "left"}, rightStartCol2, startY);
+	doc.textAlign(comapnyJSON.CompanyGSTIN, {align: "left"}, 110, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("Address", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Address", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(comapnyJSON.CompanyAddressLine1, {align: "left"}, rightStartCol2, startY);
+	doc.textAlign(comapnyJSON.CompanyAddressLine1, {align: "left"}, 110, startY);
 	//doc.textAlign(comapnyJSON.CompanyAddressLine2, {align: "left"}, 80, startY);
 	//doc.textAlign(comapnyJSON.CompanyAddressLine3, {align: "left"}, 80, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("State", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("State", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(comapnyJSON.CompanyState, {align: "left"}, rightStartCol2, startY);
+	doc.textAlign(comapnyJSON.CompanyState, {align: "left"}, 110, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("eMail", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("eMail", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(comapnyJSON.companyEmail, {align: "left"}, rightStartCol2, startY);
+	doc.textAlign(comapnyJSON.companyEmail, {align: "left"}, 110, startY);
 
 	doc.setFontType('bold');
-	doc.textAlign("Phone", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign("Phone", {align: "left"}, startX, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(comapnyJSON.companyPhone, {align: "left"}, rightStartCol2, startY);
+	doc.textAlign(comapnyJSON.companyPhone, {align: "left"}, 110, startY);
 
 	
 	
 	var tempY=InitialstartY+10;
 
 	doc.setFontType('bold');
-	doc.textAlign("INVOICE NO: ", {align: "left"},  startX, tempY+=lineSpacing.NormalSpacing);
+	doc.textAlign("INVOICE NO: ", {align: "left"},  rightStartCol1, tempY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(invoiceJSON.InvoiceNo, {align: "left"}, startX+80, tempY);
+	doc.textAlign(invoiceJSON.InvoiceNo, {align: "left"}, rightStartCol2, tempY);
 
 
 	doc.setFontType('bold');
-	doc.textAlign("INVOICE Date: ", {align: "left"},  startX, tempY+=lineSpacing.NormalSpacing);
+	doc.textAlign("INVOICE Date: ", {align: "left"},  rightStartCol1, tempY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign(invoiceJSON.InvoiceDate, {align: "left"}, startX+80, tempY);
+	doc.textAlign(invoiceJSON.InvoiceDate, {align: "left"}, rightStartCol2, tempY);
 
 	doc.setFontType('normal');
 
@@ -223,7 +223,7 @@ function create_customPDF(params){
 
 	doc.setFontSize(fontSizes.Head2TitleFontSize);
 	doc.setFontType('bold');
-	doc.textAlign("RECEIPE", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing+2);
+	doc.textAlign("INVOICE", {align: "center"}, startX, startY+=lineSpacing.NormalSpacing+2);
 
 
 	//-------Customer Info Billing---------------------
