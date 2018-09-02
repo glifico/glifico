@@ -78,8 +78,8 @@ angular.module("Payments",[]).controller("Payments",function(){
 		console.debug("table");
 		$("#paymentstable").html(html);
 		$("#d_table").DataTable({
-			paging: false,
-			searching: false
+			paging: true,
+			searching: true
 		});
 	}
 
