@@ -88,7 +88,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 			}
 			params={
 					costumer:{
-						CustomerName:data.CompanyName,
+						CustomerName:data.FirstName+' '+data.LastName,
 						CustomerGSTIN:"",
 						CustomerState:data.Country,
 						CustomerPAN:'',
