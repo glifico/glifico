@@ -54,6 +54,7 @@ angular.module("Payments",[]).controller("Payments",function(){
 			html+=' data-id="'+doc.id+'"';
 			html+=' data-price="'+doc.price+'"';
 			html+=' data-price_to_translator="'+doc.price_to_translator+'"';
+			html+=' data-ncharacters="'+doc.ncharacters+'"';
 			html+=' data-status="'+doc.status+'"';
 			html+=' data-field="'+doc.field+'"';
 			html+=' data-createdline="'+doc.createdline+'"';
