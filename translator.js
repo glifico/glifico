@@ -219,6 +219,7 @@ angular.module('PersonalAppCtrl',[]).controller('PersonalAppCtrl',function($scop
 					ctrl.phone_bil=ret[0].PhoneBilling;
 					ctrl.email_bil=ret[0].EmailReferenceBilling;
 					ctrl.nratings=ret[0].nratings;
+					ctrl.info_bil=ret[0].InfoBilling;
 				});
 				return (true);
 			}else{
@@ -281,7 +282,8 @@ angular.module('PersonalAppCtrl',[]).controller('PersonalAppCtrl',function($scop
 					"IdMothertongue": ctrl.IdMothertongue,
 					"IdCountry": ctrl.IdCountry,
 					"SWIFT": ctrl.swift,
-					"StateProvince": ctrl.state
+					"StateProvince": ctrl.state,
+					"InfoBilling": ctrl.info_bil
 				},
 		};
 

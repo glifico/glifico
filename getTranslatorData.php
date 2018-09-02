@@ -29,6 +29,7 @@ exit (json_encode([array("FirstName"=>$row['nome'],
     "nratings"=>$row['nratings'],
     "EmailReferenceBilling"=>$row['emailbilling'],
     "Phone"=>$row['phone'],
-    "PhoneBilling"=>$row['phonebilling']
+    "PhoneBilling"=>$row['phonebilling'],
+    "InfoBilling"=>$row['infobilling']
 )]));
 ?>
