@@ -157,8 +157,8 @@ function create_customPDF(params){
 	console.info("jsPDFcreated");
 	console.debug(invoiceJSON);
 
-	var rightStartCol1=400;
-	var rightStartCol2=480;
+	var rightStartCol1=380;
+	var rightStartCol2=460;
 
 
 	var InitialstartX=40;
