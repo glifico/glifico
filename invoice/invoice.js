@@ -68,6 +68,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 				data.EmailReferenceBilling = data.EmailReference;
 			}
 			if(data.EmailReference == null){
+				data.EmailReference = " ";
 				data.EmailReferenceBilling = " ";
 			}
 			if(data.PhoneReferenceBilling == null){

@@ -221,7 +221,7 @@ angular.module("pendingJobs",[]).controller("pendingJobs",function(){
 				html+=' data-choice="'+doc.choice+'"';
 				html+=' data-description="'+doc.description+'"';
 				html+=' data-document="'+doc.document+'"';
-				html+='>Show job and download draft receipe</button>';
+				html+='>Show job and download draft invoice</button>';
 			}if(doc.status=="Paid"){
 			}else if(doc.status=="Assigned"){
 				html+='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#jobModal"';

@@ -61,17 +61,15 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText)[0];
-			if(data.VATCode == null){
-				data.VATCode = ' ';
-			}
 			if(data.EmailReferenceBilling == null){
 				data.EmailReferenceBilling = data.EmailReference;
 			}
 			if(data.EmailReference == null){
+				data.EmailReference = " ";
 				data.EmailReferenceBilling = " ";
 			}
-			if(data.PhoneReferenceBilling == null){
-				data.PhoneReferenceBilling = ' ';
+			if(data.PhoneBilling == null){
+				data.PhoneBilling = ' ';
 			}
 			if(data.Street == null){
 				data.Street = ' ';
@@ -82,16 +80,19 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 			if(data.City == null){
 				data.City = ' ';
 			}
-			if(data.Country == null){
-				data.Country = ' ';
+			if(data.StateProvince == null){
+				data.StateProvince = ' ';
+			}
+			if(data.IdCountry == null){
+				data.IdCountry = ' ';
 			}
 			params={
 					costumer:{
 						CustomerName:data.CompanyName,
-						CustomerGSTIN:data.VATCode,
+						CustomerGSTIN:"",
 						CustomerState:data.Country,
 						CustomerPAN:'',
-						CustomerAddressLine1:data.Street+' '+data.ZIP+' '+data.City,
+						CustomerAddressLine1:data.Street+' '+data.ZIP+' '+data.StateProvince+' '+data.City+' '+data.IdCountry,
 						CustomerAddressLine2:data.ZIP,
 						CustomerAddressLine3:data.City,
 						CustomerEmail:data.EmailReferenceBilling,
@@ -124,9 +125,9 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 
 }
 
-function generate_cutomPDF(id) {
+function generate_translator_cutomPDF(id) {
 	//GET info job
-	var url = "getInvoiceData.php?id="+id+"&user="+getUsername()+"&token="+getToken();
+	var url = "getInvoiceTranslatorData.php?id="+id+"&user="+getUsername()+"&token="+getToken();
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){

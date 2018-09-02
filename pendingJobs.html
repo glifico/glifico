@@ -440,7 +440,7 @@ $('#jobModal').on('show.bs.modal', function (event) {
 	  btnHtml+='<input class="btn btn-primary" type="button" value="Accept" onclick="acceptJob('+button.data("id")+","+button.data("choice")+')"/>';
 	  btnHtml+='<input class="btn btn-danger" type="button" value="Refuse" onclick="refuseJob('+button.data("id")+","+button.data("choice")+')"/>';
   }else if(button.data('status')=="Closed"){
-		btnHtml+='<button type="button" class="btn btn-success" onclick="generate_cutomPDF('+button.data('id')+')">Download a draft invoice</button>';
+		btnHtml+='<button type="button" class="btn btn-success" onclick="generate_translator_cutomPDF('+button.data('id')+')">Download a draft invoice</button>';
   }
   html+='</div>'
   modal.find('.modal-body').html(html);
