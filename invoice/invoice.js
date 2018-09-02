@@ -169,7 +169,7 @@ function create_customPDF(params){
 
 
 	//  doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, startX, startY+=15+company_logo.h);
-	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, rightStartCol1, startY+=150);
+	doc.textAlign(comapnyJSON.CompanyName, {align: "left"}, rightStartCol1, startY+=15);
 
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.textAlign("VAT number", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
@@ -228,8 +228,8 @@ function create_customPDF(params){
 
 	//-------Customer Info Billing---------------------
 	var startBilling=startY+30;
-	var startCenter = startX + 200;
-	var startCenterField = startCenter+ 110;
+	var startCenter = startX + 190;
+	var startCenterField = startCenter+ 100;
 
 	doc.setFontSize(fontSizes.NormalFontSize);
 	doc.setFontType('bold');
