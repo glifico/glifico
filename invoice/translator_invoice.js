@@ -98,7 +98,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 					translator:{
 						CompanyName:data.FirstName+' '+data.LastName,
 						CompanyGSTIN:" ",
-						CustomerState:data.IdCountry,
+						CompanyState:data.IdCountry,
 						CompanyAddressLine1:data.Street+' '+data.ZIP,
 						CompanyAddressLine2:data.ZIP+' '+data.StateProvince,
 						CompanyAddressLine3:data.City+', '+data.IdCountry,
