@@ -70,7 +70,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 				data.LastName = ' ';
 			}
 			if(!data.EmailReferenceBilling){
-				data.EmailReferenceBilling = data.EmailReference;
+				data.EmailReferenceBilling = data.Email;
 			}
 			if(!data.Email){
 				data.Email = " ";
@@ -94,6 +94,7 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 			if(!data.IdCountry){
 				data.IdCountry = ' ';
 			}
+			console.debug(data);
 			params={
 					translator:{
 						CompanyName:data.FirstName+' '+data.LastName,
