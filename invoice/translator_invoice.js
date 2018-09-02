@@ -190,12 +190,12 @@ function create_customPDF(params){
 	doc.textAlign(comapnyJSON.CompanyAddressLine1, {align: "left"}, rightStartCol2, startY);
 	
 	doc.setFontType('bold');
-	doc.textAlign("Address", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(" ", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(comapnyJSON.CompanyAddressLine2, {align: "left"}, rightStartCol2, startY);
 	
 	doc.setFontType('bold');
-	doc.textAlign("Address", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
+	doc.textAlign(" ", {align: "left"}, rightStartCol1, startY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
 	doc.textAlign(comapnyJSON.CompanyAddressLine3, {align: "left"}, rightStartCol2, startY);
 	
@@ -234,8 +234,8 @@ function create_customPDF(params){
 	doc.setLineWidth(1);
 	startY+=200;
 	// doc.line(20, startY+lineSpacing.NormalSpacing, 580, startY+=lineSpacing.NormalSpacing);
-	doc.line(20, startY+lineSpacing.NormalSpacing+200, 220, startY+lineSpacing.NormalSpacing+200);
-	doc.line(380, startY+lineSpacing.NormalSpacing+200, 580, startY+lineSpacing.NormalSpacing+200);
+	doc.line(20, startY+lineSpacing.NormalSpacing, 220, startY+lineSpacing.NormalSpacing);
+	doc.line(380, startY+lineSpacing.NormalSpacing, 580, startY+lineSpacing.NormalSpacing);
 
 	doc.setFontSize(fontSizes.Head2TitleFontSize);
 	doc.setFontType('bold');
