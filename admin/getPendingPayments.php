@@ -31,6 +31,10 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $status = $row['secondstatus'];
         $translator_price = getLanguagePrice($row['secondtranslator'], $row['languagefrom'], $row['languageto'], $row['field']);
     }
+    
+    $query="SELECT * from traduttore where username='$translator';";
+    $Trresult = $db->query($query);
+    $translator_data = $Trresult->fetch(PDO::FETCH_ASSOC);
 
     array_push($toExit, array(
         "id" => $row['id'],
@@ -52,8 +56,11 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         "translator"=>$translator,
         "status" => $status,
         "urgency"=>$row['urgency'],
-        "price_to_translator" => $translator_price * $row['ncharacters']
+        "price_to_translator" => $translator_price * $row['ncharacters'],
+        "translator_data"=>$translator_data,
     ));
+
+    $Trresult->CloseCursor();
 }
 
 $result->CloseCursor();

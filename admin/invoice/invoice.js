@@ -1,3 +1,41 @@
+var comapnyJSON={
+		CompanyName:'GLIFICO',
+		//VAT
+		CompanyGSTIN:'IT0000000000',
+		CompanyState:'Italy',
+		CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
+		companyEmail:'info@glifico.com',
+		companyPhone:'+3900000000000',
+};
+
+var customer_BillingInfoJSON={
+		CustomerName:'Jhon Appleseed',
+		CustomerGSTIN:'...',
+		CustomerState:'...',
+		CustomerPAN:'123',
+		CustomerAddressLine1:'...',
+		CustomerAddressLine2:'...',
+		CustomerAddressLine3:'...',
+		CustomerEmail:'abcd@xxx.com',
+		CustomerPhone:'+918189457845',
+};
+
+
+var invoiceJSON={
+		InvoiceNo:'INV-XXXXXX',
+		InvoiceDate:'00-00-2000',
+		TotalAmnt:'-1',
+		SubTotalAmnt:'-1',
+		InvoiceProduct:'translation'
+}
+
+var company_logo = {
+		// src1:''
+		// src:'data:image/jpeg;base64,'
+		// w: 80,
+		// h: 50
+};
+
 var fontSizes={
 		HeadTitleFontSize:18,
 		Head2TitleFontSize:16,
@@ -18,7 +56,7 @@ getAgencyData= function(id, job, description, date, taxable, ncharacters, langua
 	price = 1.22*taxable;
 	vatprice = 0.22*taxable;
 
-	
+
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
@@ -86,7 +124,8 @@ getAgencyData= function(id, job, description, date, taxable, ncharacters, langua
 }
 
 function generate_agency_invoice(id) {
-	var comapnyJSON={
+	
+	comapnyJSON={
 			CompanyName:'GLIFICO',
 			//VAT
 			CompanyGSTIN:'IT0000000000',
@@ -96,7 +135,7 @@ function generate_agency_invoice(id) {
 			companyPhone:'+3900000000000',
 	};
 
-	var customer_BillingInfoJSON={
+	customer_BillingInfoJSON={
 			CustomerName:'Jhon Appleseed',
 			CustomerGSTIN:'...',
 			CustomerState:'...',
@@ -109,7 +148,7 @@ function generate_agency_invoice(id) {
 	};
 
 
-	var invoiceJSON={
+	invoiceJSON={
 			InvoiceNo:'INV-XXXXXX',
 			InvoiceDate:'00-00-2000',
 			TotalAmnt:'-1',
@@ -117,7 +156,7 @@ function generate_agency_invoice(id) {
 			InvoiceProduct:'translation'
 	}
 
-	var company_logo = {
+	company_logo = {
 			// src1:''
 			// src:'data:image/jpeg;base64,'
 			// w: 80,
@@ -198,8 +237,8 @@ function create_customPDF(params){
 	doc.setFontType('normal');
 	doc.textAlign(comapnyJSON.CompanyPhone, {align: "left"}, rightStartCol2, startY);
 
-	
-	
+
+
 	var tempY=InitialstartY+10;
 
 	doc.setFontType('bold');
@@ -335,20 +374,20 @@ function create_customPDF(params){
 	doc.setFontType('bold');
 	doc.textAlign("Taxable: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
 	doc.textAlign(invoiceJSON.Taxable, {align: "left"}, rightcol2, startY);
-	
+
 	doc.setFontType('bold');
 	doc.textAlign("Tax rate: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
 	doc.textAlign("22%", {align: "left"}, rightcol2, startY);
 
-	
+
 	doc.setFontType('bold');
 	doc.textAlign("VAT amount: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
 	doc.textAlign(invoiceJSON.VATPrice, {align: "left"}, rightcol2, startY);
-	
+
 	doc.setFontType('bold');
 	doc.textAlign("To be paid: ", {align: "left"}, rightcol1, startY+=lineSpacing.NormalSpacing);
 	doc.textAlign(invoiceJSON.TotalAmnt, {align: "left"}, rightcol2, startY);
-	
+
 
 	doc.save("Glifico_invoice.pdf");
 }
