@@ -51,8 +51,8 @@ var lineSpacing={
 		NormalSpacing:12,
 };
 
-getData= function(id, job, description, date, taxable, ncharacters, languages, jobdate, urgency) {
-	var url = "getTranslatorData.php?user="+getUsername()+"&token="+getToken();
+getData= function(id, job, description, date, taxable, ncharacters, languages, jobdate, urgency, translator) {
+	var url = "getTranslatorData.php?user="+translator;
 
 	params={}
 	price = 1.22*taxable;
@@ -134,12 +134,12 @@ getData= function(id, job, description, date, taxable, ncharacters, languages, j
 
 function generate_translator_cutomPDF(id) {
 	//GET info job
-	var url = "getInvoiceTranslatorData.php?id="+id+"&user="+getUsername()+"&token="+getToken();
+	var url = "getInvoiceTranslatorData.php?id="+id;
 	var req = createXHTMLHttpRequest() ;
 	req.onreadystatechange = function(){
 		if (req.status == 200&req.readyState==4){
 			var data=JSON.parse(req.responseText);
-			getData(data.id, data.Job, data.Description, data.Date, data.Price, data.ncharacters, data.languages, data.jobDate, data.urgency)	
+			getData(data.id, data.Job, data.Description, data.Date, data.Price, data.ncharacters, data.languages, data.jobDate, data.urgency, data.Translator)	
 		}
 	}
 
