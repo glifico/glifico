@@ -221,18 +221,18 @@ function create_customPDF(params){
 	doc.setFontType('bold');
 	doc.textAlign("INVOICE NO: ", {align: "left"},  startX, tempY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign( "TBD", {align: "left"}, startX+80, tempY);
+	doc.textAlign( "To Be Defined", {align: "left"}, startX+80, tempY);
 
 
 	doc.setFontType('bold');
 	doc.textAlign("INVOICE Date: ", {align: "left"},  startX, tempY+=lineSpacing.NormalSpacing);
 	doc.setFontType('normal');
-	doc.textAlign("TBD", {align: "left"}, startX+80, tempY);
+	doc.textAlign("To Be Defined", {align: "left"}, startX+80, tempY);
 
 	doc.setFontType('normal');
 
 	doc.setLineWidth(1);
-	startY+=200;
+	startY+=110;
 	// doc.line(20, startY+lineSpacing.NormalSpacing, 580, startY+=lineSpacing.NormalSpacing);
 	doc.line(20, startY+lineSpacing.NormalSpacing, 220, startY+lineSpacing.NormalSpacing);
 	doc.line(380, startY+lineSpacing.NormalSpacing, 580, startY+lineSpacing.NormalSpacing);
