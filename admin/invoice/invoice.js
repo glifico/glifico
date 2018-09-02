@@ -125,15 +125,7 @@ getAgencyData= function(id, job, description, date, taxable, ncharacters, langua
 
 function generate_agency_invoice(id) {
 	
-	comapnyJSON={
-			CompanyName:'GLIFICO',
-			//VAT
-			CompanyGSTIN:'IT0000000000',
-			CompanyState:'Italy',
-			CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
-			companyEmail:'info@glifico.com',
-			companyPhone:'+3900000000000',
-	};
+	
 
 	customer_BillingInfoJSON={
 			CustomerName:'Jhon Appleseed',
@@ -179,6 +171,16 @@ function generate_agency_invoice(id) {
 
 
 function create_customPDF(params){
+	
+	comapnyJSON={
+			CompanyName:'GLIFICO',
+			//VAT
+			CompanyGSTIN:'IT0000000000',
+			CompanyState:'Italy',
+			CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
+			companyEmail:'info@glifico.com',
+			companyPhone:'+3900000000000',
+	};
 
 	customer_BillingInfoJSON =  params.costumer;
 	invoiceJSON = params.invoice;
