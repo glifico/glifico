@@ -31,6 +31,7 @@ $today = $dt->format('Y-m-d H:i:s');
 $query="INSERT INTO languagerating (datatest, translated, username, languagefrom, languageto, idtest) VALUES('$today', '$translated', '$user', '$from', '$to','$idtest');";
 $result = $db->query($query);
 
+
 $query= "update traduttore set nratings=nratings+1 where username='$user';";
 $result = $db->query($query);
 

@@ -46,7 +46,6 @@ if ($oldgrammar != null & $oldstyle != null) {
 $query = "INSERT INTO languagerating (grammarmark, stylemark) VALUES('$grammarmark','$stylemark') where id='$idrating';";
 $result = $db->query($query);
 
-$result->CloseCursor();
 
 $tot = ($grammarmark + $stylemark) / 2;
 updateTotalTest($db, $evaluatedUser, $languageto, $tot);

@@ -139,7 +139,6 @@ function showDomanda() {
 				alert("Nothing to evaluate yet for this language, sorry..");
 			}
 		}else{
-			mostraDialogTimed('errorPanel');
 			return(false);
 		}
 	}
@@ -151,8 +150,6 @@ function showDomanda() {
 
 
 function showModal(data){
-	console.debug('showdomanda');
-	console.debug(data);
 	downloadeddata = data;
 	var html="";
 	html+='<div>';
