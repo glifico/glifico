@@ -111,7 +111,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 	}
 
 	ctrl.isbilemailvalid = function(){
-		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
+		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.bil_email);
 	}
 
 	ctrl.validForm = function(){
