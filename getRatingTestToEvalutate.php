@@ -26,7 +26,7 @@ try {
 
 
 $toExit['OriginalText'] = $row['text_to_translate'];
-$toExit['statuscode'] = 400;
+$toExit['statuscode'] = 200;
 $result->CloseCursor();
 
 exit(json_encode($toExit));

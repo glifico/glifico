@@ -134,10 +134,10 @@ function showDomanda() {
 			var data=JSON.parse(req.responseText);
 			if(data.statuscode==200){
 				showModal(data);
+				return(true);
 			}else if(data.statuscode==303){
 				alert("Nothing to evaluate yet for this language, sorry..");
 			}
-			return(true);
 		}else{
 			mostraDialogTimed('errorPanel');
 			return(false);
