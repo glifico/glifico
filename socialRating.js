@@ -123,8 +123,6 @@ function mioTimer() {
 
 
 function showDomanda() {
-	console.debug('showdomanda');
-
 	var e = document.getElementById("select-language");
 	var langF = e.options[e.selectedIndex].text;
 
@@ -153,6 +151,8 @@ function showDomanda() {
 
 
 function showModal(data){
+	console.debug('showdomanda');
+	console.debug(data);
 	downloadeddata = data;
 	var html="";
 	html+='<div>';
@@ -180,8 +180,8 @@ function showModal(data){
 	html+='<br><br>';
 	html+='<div id="bar-progress" class="progress"></div>';
 	html+='<span id="rimanente"></span>';
-	$('#skill-modal').modal('show');
 	$("#skill-body").html(html);
+	$('#skill-modal').modal('show');
 }
 
 
