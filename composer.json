@@ -12,9 +12,5 @@
   "support": {
     "email": "info@glifico.com"
   },
-  "license" : "GPL-3.0-or-later",
-  "require" :
-  {
-    "satispay/online-api-php-sdk": "^1.6",
-  }
+  "license" : "GPL-3.0-or-later"
 }

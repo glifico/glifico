@@ -399,53 +399,6 @@ Please use the form below to pay translator
 </div>
 <br><br>
 
-<?php 
-include_once 'functions.php';
-$oid = $_GET['token'];
-
-$db = getDB();
-if (! $db)
-    exit();
-
-$query = "SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
-$result = $db->query($query);
-$row = $result->fetch(PDO::FETCH_ASSOC);
-if ($row['whoaccepted'] == 1) {
-    $price = (float) $row['price'] * 1.22 * 100;
-} else {
-    $price = (float) $row['secondprice'] * 1.22 * 100;
-}
-$result->CloseCursor();
-
-echo ('<script src="https://staging.online.satispay.com/button.min.js"');
-echo ('id="satispayButton"');
-echo ('data-key="dk_gJYxwfxIbFVUZgGOtQNl"');
-echo ('data-amount="' . $price . '"');
-echo ('data-locale="en"');
-echo ('data-description="Translation on Glifico"');
-echo ('data-usercallback="http://test.glifico.com/satispaycreatecharge.php"');
-echo ('data-orderid="' . $oid . '"');
-echo ('data-callback="satispayCallback"');
-echo ('></script>');
-
-echo ("
-<script>
-var satispayButton = document.getElementById('satispayButton')
-satispayButton.on('load', function() {
-	console.log('load satispay button')
-})
-
-satispayButton.on('close', function() {
-	console.log('close satispay button')
-})
-
-satispayButton.on('completed', function(chargeId) {
-	console.log('payment completed', chargeId)
-    checkCharge(chargeId);
-})
-</script>
-");
-?>
 
 <br><br>
 <button onclick="location.href='pendingPayments.html'" class="btn btn-primary" type="button">Return to <br>the job's page</button>
