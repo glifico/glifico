@@ -16,6 +16,5 @@
   "require" :
   {
     "satispay/online-api-php-sdk": "^1.6",
-    "google/apiclient" : "^1.1.8"
   }
 }
