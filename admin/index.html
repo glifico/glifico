@@ -100,15 +100,17 @@
 				<ul class="nav navbar-nav side-nav">
 					<li class=""><a href="#payments"><i
 							class="fas fa-fw fa-file-invoice"
-						></i> Payments</a></li>
+						></i> payments</a></li>
 
-					<li class=""><a href="#gaussian"><i
-							class="fas fa-chart-bar"
-						></i> Gaussian</a></li>
-
-					<li class=""><a href="#users"><i
+				<li class=""><a href="#users"><i
 							class="fas fa-users"
 						></i> users</a></li>
+				
+					<li class=""><a href="#gaussian"><i
+							class="fas fa-chart-bar"
+						></i> gaussian</a></li>
+				
+				<li class=""><a href="#currencies"><i class="fas fa-search-dollar"></i> currencies</a></li>
 
 				</ul>
 			</div>
@@ -255,6 +257,30 @@
 										<div ng-controller="AdminCtrl as ctrl">
 											<gaussiancomponent></gaussiancomponent>
 										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.row -->
+				
+				<!-- /.row -->
+
+				<div id="gaussian" class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">
+									<i class="fa fa-bar-chart-o fa-fw"></i> Gaussian
+								</h3>
+							</div>
+							<div class="panel-body">
+								<div ng-app="admin">
+									<div
+										style="text-align: centered; padding-left: 5%; padding-top: 2rem; width: 98%;">
+										<h1>Currencies</h1>
+										<a class="btn btn-primary" href="downloadExchangeRates.php" target="_Blank">Aggiorna tassi di cambio</a>
 									</div>
 								</div>
 							</div>
