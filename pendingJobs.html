@@ -84,7 +84,7 @@
 </a>
 </div>
 <div class="collapse navbar-collapse" id="MegaNavbar">
-<ul id = "MegaNavbarLeft" class="nav navbar-nav navbar-left">
+<ul id = "MegaNavbarLeft" class="nav navbar-nav navbar-left" style="display:none;">
 <li><a href="about.html">About</a></li>
 <li><a href="services.html">Services</a></li>
 <li><a href="privacy.html">Privacy</a></li>
@@ -113,7 +113,7 @@
 <span class="reverse">
 <span id="view:_id4:computedField1">
 <script>function modalLogin(){  $('#loginModal').modal('show');}</script>
-<span id="usernameLoginRegister" onClick="modalLogin()">Register / Login</span>
+<span id="usernameLoginRegister" onClick="modalLogin()" style="display:none;">Register / Login</span>
 </span>
 </span>
 </a>
@@ -208,7 +208,7 @@
 <div id="regAge" class="modal-agency" hidden="true">
 <div id="regAgeForm" data-ng-controller="regAgecontroller as ctrl">
 <div>
-<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="regAgeForm" action="/" method="post" novalidate>
 <div class="input-group">
 <div class="form-group col-md-8">
 <label>Company Name: </label>
@@ -269,14 +269,14 @@ Password must have at least 7 characters!
 </div>
 </form>
 </div>
- 
+
 </div>
 </div>
 
 <div id="regTrad" class="modal-translator" hidden="true">
 <div id="regTradForm" data-ng-controller="regTradcontroller as ctrl">
 <div>
-<form class="needs-validation" name="regTradForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="regTradForm" action="/" method="post" novalidate>
 <div class="input-group">
 <div class="form-group col-md-5">
 <label>Name: </label>
@@ -341,9 +341,9 @@ Password must have at least 7 characters!
 </div>
 </form>
 </div>
- 
+
 </div>
- 
+
 
 </div>
 </div>
