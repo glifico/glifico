@@ -11,8 +11,6 @@
 var isLogged=false;
 
 function onLoad(){
-	console.log(document.cookie);
-
 	var isAgency=false;
 	var isTranslator=false;
 	var isLogged = false;
