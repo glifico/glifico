@@ -30,7 +30,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 $result->CloseCursor();
 notifySlack("#payments",$user." refused a job",":no_entry:");
 $to=[array("email"=>$row['email'])];
-$mailStatus = send_email($to,"Translator refused a job on Glifico","One of the Job you submitted was refuse. Create a new one on https://glifico.com/search.html");
+$mailStatus = send_email($to,"Translator refused a job on Glifico","One of the Job you submitted was refused. Create a new one on https://glifico.com/search.html");
 
 exit(json_encode(array("message"=>"job updated", "statuscode"=>200, "mailstatus"=>$mailStatus)));
 ?>
