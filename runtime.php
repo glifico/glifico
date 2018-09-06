@@ -2,19 +2,9 @@
 require_once 'technicalstatus.php';
 require_once 'functions.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $data = json_decode(file_get_contents("php://input"), true);
-}
 
-if (! $data) {
-    exit(json_encode(array(
-        "message" => "wrong request",
-        "statuscode" => 500
-    )));
-}
-
-$user = $data['user'];
-$token = $data['token'];
+$user = $_GET['user'];
+$token = $_GET['token'];
 
 $db = getDB();
 if (! $db)
