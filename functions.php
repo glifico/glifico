@@ -70,6 +70,20 @@ function get_user_email($user)
     return $email;
 }
 
+function get_agency_email($user)
+{
+    $db = getDB();
+    if (! $db)
+        return;
+        $query = "SELECT USERNAME, EMAIL FROM agenzia WHERE username='$user';";
+        $result = $db->query($query);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        
+        $email = htmlspecialchars($row['email']);
+        $result->CloseCursor();
+        return $email;
+}
+
 function check_email_presence($email)
 {
     $db = getDB();

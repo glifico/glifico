@@ -72,8 +72,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
             send_email([
                 array(
-                    // "email" => get_user_email($row['firsttranslator'])
-                    "email" => "fvalle.glifico@outlook.com"
+                    "email" => get_user_email($row['firsttranslator'])
                 )
             ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to you!");
 
@@ -92,8 +91,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
             send_email([
                 array(
-                    // "email" => get_user_email($row['firsttranslator'])
-                    "email" => "fvalle.glifico@outlook.com"
+                    "email" => get_user_email($row['secondtranslator'])
                 )
             ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to you!");
 
@@ -117,8 +115,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
             send_email([
                 array(
-                    // "email" => get_user_email($row['secondtranslator'])
-                    "email" => "fvalle.glifico@outlook.com"
+                    "email" => get_user_email($row['secondtranslator'])
                 )
             ], "Job notice on Glifico", "We're sorry but translator who was first choice accepted job: " . $row['job']);
 
@@ -131,8 +128,7 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             if ($row['whoaccepted'] == 0) {
                 send_email([
                     array(
-                        // "email" => get_user_email($row['secondtranslator'])
-                        "email" => "fvalle.glifico@outlook.com"
+                        "email" => get_agency_email($row['username'])
                     )
                 ], "Job on Glifico requires you", "Go to glifico.com, no one of the translators you selected accepted the job " . $row['job'] . ", try search again!");
             }
@@ -151,15 +147,13 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
                     send_email([
                         array(
-                            // "email" => get_user_email($row['firsttranslator'])
-                            "email" => "fvalle.glifico@outlook.com"
+                            "email" => get_user_email($row['secondtranslator'])
                         )
                     ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to you!");
 
                     send_email([
                         array(
-                            // "email" => get_user_email($row['firsttranslator'])
-                            "email" => "fvalle.glifico@outlook.com"
+                            "email" => get_user_email($row['firsttranslator'])
                         )
                     ], "Job starts on Glifico", "Your job on glifico: " . $row['job'] . " was assigned to other, you did nothing in 5h..");
 
@@ -176,15 +170,13 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             if ($alarmed == 0) {
                 send_email([
                     array(
-                        // "email" => get_user_email($row['secondtranslator'])
-                        "email" => "fvalle.glifico@outlook.com"
+                        "email" => get_user_email($row['firsttranslator'])
                     )
                 ], "New Job on Glifico", "Go to glifico.com, there is a new job and you have less than 2h to accept it");
 
                 send_email([
                     array(
-                        // "email" => get_user_email($row['secondtranslator'])
-                        "email" => "fvalle.glifico@outlook.com"
+                        "email" => get_user_email($row['secondtranslator'])
                     )
                 ], "New Job on Glifico", "Go to glifico.com, there is a new job and you have less than 2h to accept it");
 

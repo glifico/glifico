@@ -31,5 +31,14 @@ $result = $db->query($query);
 
 $result->CloseCursor();
 notifySlack("#payments",$user." paid Glifico",":heavy_dollar_sign:");
-exit(json_encode(array("message"=>"payment updated", "statuscode"=>200)));
+$query="SELECT USERNAME, EMAIL FROM agenzia WHERE username='$user';";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+$result->CloseCursor();
+$to=[array("email"=>$row['email'])];
+$mailStatus = send_email($to,"You paid a job on Glifico","One of your jobs is now correctly paid. Go to https://glifico.com/pendingPayments.html to download your receipe.");
+
+
+exit(json_encode(array("message"=>"payment updated", "statuscode"=>200, "emal_status"=>$mailStatus)));
 ?>

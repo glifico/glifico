@@ -27,5 +27,15 @@ $result = $db->query($query);
 
 $result->CloseCursor();
 notifySlack("#payments",$user." translated a job",":thumbsup:");
-exit(json_encode(array("message"=>"job translated", "statuscode"=>200)));
+
+$query="SELECT USERNAME, EMAIL FROM agenzia WHERE username='$user';";
+$result = $db->query($query);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+$result->CloseCursor();
+$to=[array("email"=>$row['email'])];
+$mailStatus = send_email($to,"Translator translated a job on Glifico","One of your jobs is now translated.");
+
+
+exit(json_encode(array("message"=>"job translated", "statuscode"=>200, "email_status"=>$mailStatus)));
 ?>
