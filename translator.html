@@ -386,7 +386,7 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=5">You're an expert rater   <font color="gold"><i class="fa fa-trophy"></i></font></span>
 </div>
 
-<form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate> 
+<form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate>
 <div class="input-group">
 <div class="form-group col-md-5">
 <label>First name: </label>
@@ -483,7 +483,7 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <button type="button" data-ng-click="ctrl.submit()" class="btn btn-primary" ng-disabled="!ctrl.validForm()">Update my data</button>
 </div>
 </div>
-</form> 
+</form>
 </div><!-- end of controller -->
 </div>
 
@@ -494,10 +494,8 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 
 <div id="pairsTable"></div>
 <div class="glifico-info glifico-info-form-language"">
-Use this form to create a new <b>language pair</b>.
-Please note that pairs are direction sensitive. For instance translating from English to French is not the same as to translate from French to English.
-In these cases you have to add two different pairs.
-You can also choose which field is the price for, you are able to choose a generic <emph>translation</emph> field.
+  Use this form to create a new language pair. Please note that pairs are direction sensitive. For instance, translating from English into
+  French is not the same as to translate from French into English. In these cases, you have to add two different pairs. You can also choose which field of expertise the price (or rate) is for. You can also choose a general translation field.
 <form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
 <div class="input-group">
 <div class="form-group col-md-10">
@@ -576,8 +574,8 @@ Price per <b>page</b> (page = 1500 characters) {{model.PricePerCharacter * 1500 
 </div>
 </div>
 </div>
-  
-  
+
+
 
 </div>
 </div>
@@ -603,7 +601,7 @@ Are you sure you want to delete your account?
       </div>
       <div class="modal-body modal-translator" data-ng-load="">
       Are you sure you want to delete your account?
-      
+
       After you click the button, Glifico will verify that you have not any pending jobs or payments.
       If you have not any pending positions with us your account will be closed in the next 30 days and you will receive a confirming email.
    <br><button type="button" class="btn btn-primary" onclick="askAccountDeletion()">Yes, delete my account.</button>
