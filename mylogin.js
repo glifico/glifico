@@ -15,18 +15,16 @@ function doDominoLogin() {
 				var user=JSON.parse(logReq.responseText)["user"];
 				var token=JSON.parse(logReq.responseText)["token"];
 				var type=JSON.parse(logReq.responseText)["type"];
-				saveTheCookie(user, token,type);
+				saveTheCookie(user, token, type);
 				console.log("logged");
-				location.href=location.href;
+				$('#alertOK').html("Welcome on Glifico "+ getUsername());
+				$('#alertOK').fadeIn().delay(2000).fadeOut();
+				personalArea();
 				return(true);
 			}else{
 				mostraDialogTimed('errorPanel');
 				return(false);
 			}
-			//Todo
-			/*
-			 * if response = username already present
-			 */
 		};
 	}
 	logReq.open("GET", "login.php"+poststring , true);
@@ -100,6 +98,9 @@ function getLogged(){
 	return return_value; 
 }
 
+function isLogged(){
+	return getLogged();
+}
 
 
 /**
@@ -144,10 +145,28 @@ function getType(){
 	return return_value; // null if cookie doesn't exist, string otherwise
 }
 
+function isAgency(){
+	return (getType()=="A")&&getLogged();
+}
+
+function isTranslator(){
+	return (getType()=="T")&&getLogged();
+}
+
+function personalArea(){
+	if(isTranslator()){
+		location.href="translator.html";
+	}else if(isAgency()){
+		location.href="agency.html";
+	}
+}
+
+
 /**
  * delete cookie and refresh
  */
 function logout() {
 	document.cookie = maincookie + "=; expires=" + new Date;
 	location.href="index.html";
+
 }

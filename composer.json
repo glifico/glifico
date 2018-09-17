@@ -1,1 +1,16 @@
-{}
+{
+  "name" : "glifico/glifico",
+  "description" : "Everything you need to find your translator",
+  "authors": [
+    {
+      "name": "Filippo Valle",
+      "email": "fvalle@glifico.com",
+      "homepage": "https://www.glifico.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "info@glifico.com"
+  },
+  "license" : "GPL-3.0-or-later"
+}

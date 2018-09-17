@@ -1,15 +1,2 @@
-user-agent: *
+User-Agent: *
 Disallow: /
-Allow: /index.html
-Allow: /services.html
-Allow: /about.html
-Allow: /contacts.html
-Allow: /sitemap.txt
-Allow: /privacy.html
-Allow: /terms.html
-Allow: /pdf_viewer/web/*.pdf
-
-user-agent: Mediapartners-Google
-Disallow: /
-
-SITEMAP: http://glifico.com/sitemap.txt

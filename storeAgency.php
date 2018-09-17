@@ -1,13 +1,7 @@
 <?php
-$dbopts = parse_url(getenv('DATABASE_URL'));
-$dsn = "pgsql:"
-."host=".$dbopts["host"].";"
-. "dbname=".ltrim($dbopts["path"],'/').";"
-. "user=".$dbopts["user"].";"
-. "port=5432;"
-. "sslmode=require;"
-. "password=".$dbopts["pass"];
-$db = new PDO($dsn);
+include 'functions.php';
+
+$db=getDB();
 if(!$db) exit;
 
 $token=$_GET['token'];
@@ -18,17 +12,15 @@ $json=json_decode($str,true);
 $nome=$json['name'];
 $email=$json['email'];
 $user=$json['user'];
+$now = new DateTime($_GET['tecAcceptanceDate']);
+$tec = $now->format('Y-m-d H:i:s');
 $password=$json["password"];
 $vat=$json['vat'];
 $salted=$user."startup".$password;
 $pwd=hash('sha256',$salted);
 
-
-$query="INSERT INTO agenzia(nome, vat, email, username, password) VALUES ('$nome', '$vat', '$email', '$user', '$pwd');";
-
+$query="INSERT INTO agenzia(nome, vat, email, username, password, tec) VALUES ('$nome', '$vat', '$email', '$user', '$pwd', '$tec');";
 $db->query($query);
 
 exit (json_encode(array("message"=>"agency added", "statuscode"=>200)));
-
-$result->CloseCursor();
 ?>

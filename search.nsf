@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xe="http://www.ibm.com/xsp/coreex"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+    <xp:this.resources>
+   <!--
+        <xp:script src="/json2.jss" clientSide="false"></xp:script>
+    </xp:this.resources>
+    <xp:this.resources>
+        <xp:dojoModule name="dijit.Dialog"></xp:dojoModule>
+    </xp:this.resources>
+
+
+    <xp:scriptBlock id="scriptBlock2">
+        <xp:this.value><![CDATA[
+    function displayWait() {
+    txtContent = "Searching database...";
+    txtContent = "<div style=\"text-align:center\"><img src=\"ajax-loader.gif\" alt=\"\" /><br/><br/>"
+            + txtContent + "</div>";
+    loadingDialog = new dijit.Dialog( {
+        title : "",
+        content : txtContent
+    });
+    dojo.body().appendChild(loadingDialog.domNode);
+    loadingDialog.titleBar.style.display = 'none';
+    loadingDialog.startup();
+    loadingDialog.show();
+}
+
+function hideWait() {
+    loadingDialog.hide()
+}]]></xp:this.value>
+    </xp:scriptBlock>
+	<xc:ccIsLogged></xc:ccIsLogged>
+	<xc:ccNavBar></xc:ccNavBar>
+	<div class="jumbotron jumboMain">
+
+		<div class="row" style="margin-left:10px; margin-right:10px;">
+		<div class="col-md-12">
+			<h2>Find a translator</h2>
+		</div>
+	</div>
+	<div class="row" style="margin-left:10px; margin-right:10px;">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="row">
+						<div class="col-md-10">
+							<xp:comboBox styleClass="form-control input-md" id="LinguaDA"
+								style="width:100%;" value="#{viewScope.LinguaDA}">
+								<xp:selectItem itemLabel="Select FROM language" itemValue=""></xp:selectItem>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript: var search = new glifico.ui.Search();
+		 														return search.doComboListLanguages();}]]></xp:this.value>
+								</xp:selectItems>
+							</xp:comboBox>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<xp:checkBox text="Only Mothertongue" id="checkBox1"></xp:checkBox>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="row">
+						<div class="col-md-10">
+							<xp:comboBox styleClass="form-control input-md" id="comboBox2"
+								style="width:100%;" value="#{viewScope.LinguaA}">
+								<xp:selectItem itemLabel="Select TO language" itemValue=""></xp:selectItem>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript: var search = new glifico.ui.Search();
+		 														return search.doComboListLanguages();}]]></xp:this.value>
+								</xp:selectItems>
+
+							</xp:comboBox>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<xp:checkBox text="Only Mothertongue" id="checkBox2"></xp:checkBox>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="row">
+						<div class="col-md-10">
+							<xp:comboBox styleClass="form-control input-md" id="comboBox3" style="width:100%;" value="#{viewScope.SpecializationID}">
+							<xp:selectItem itemLabel="Select a specialization" itemValue=""></xp:selectItem>
+								<xp:selectItems>
+									<xp:this.value><![CDATA[#{javascript: var search = new glifico.ui.Search();
+		 														return search.doComboListSpecializations();}]]></xp:this.value>
+								</xp:selectItems>
+							</xp:comboBox>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<xp:button value="Search" id="button1">
+						<xp:eventHandler event="onclick" submit="true"
+							refreshMode="partial" refreshId="panelSearchResult"
+							onComplete="hideWait();" onStart="displayWait();">
+							<xp:this.action><![CDATA[#{javascript:
+try{
+	var idLanguageFrom:String = getComponent("LinguaDA").getAttributes().get("value");
+	var idLanguageTo:String = getComponent("comboBox2").getAttributes().get("value");
+	var idSpecialization:String = getComponent("comboBox3").getAttributes().get("value");
+	var isFromMothertongue:Boolean = false;
+	var isToMothertongue:Boolean = false;
+
+	if (getComponent("checkBox1").getValue() == "true") {
+	  isFromMothertongue=true;
+	}
+	if (getComponent("checkBox2").getValue() == "true") {
+	  isToMothertongue=true;
+	}
+
+	var search = new glifico.ui.Search();
+	var docuList:java.util.List = search.doSearch(viewScope.get("LinguaDA"),idLanguageTo,isFromMothertongue,isToMothertongue,idSpecialization);
+	viewScope.put("ricerca",true);
+	viewScope.put("searchResult",docuList);
+	viewScope.put("searchResultStart",docuList);
+	viewScope.put("filtroFascia","");
+}catch(e){
+	_dump(e);
+	throw e;
+}
+}]]></xp:this.action>
+						</xp:eventHandler></xp:button>
+					<xp:br></xp:br>
+					<xp:br></xp:br>
+					<xp:panel id="panelSearchResult" styleClass="text-left">
+						<div class="well well-sm">
+							<div class="row">
+								<div class="col-sm-4">
+									<xp:comboBox
+										styleClass="form-control input-md" id="comboFiltroFascia"
+										style="width:100%">
+										<xp:this.value><![CDATA[#{viewScope.filtroFascia}]]></xp:this.value>
+										<xp:this.rendered><![CDATA[#{javascript:viewScope.get("ricerca")}]]></xp:this.rendered><xp:selectItem
+											itemLabel="Select a price range" itemValue="">
+										</xp:selectItem>
+										<xp:selectItem itemLabel="A"></xp:selectItem>
+										<xp:selectItem itemLabel="B"></xp:selectItem>
+										<xp:selectItem itemLabel="C"></xp:selectItem>
+
+										<xp:eventHandler
+											event="onchange" submit="true" refreshMode="partial"
+											onComplete="hideWait();" onStart="displayWait();"
+											refreshId="panelSearchResult">
+											<xp:this.action><![CDATA[#{javascript:
+											var docuList:java.util.List = viewScope.get("searchResultStart");
+											var docuListRes:java.util.List = new java.util.ArrayList();
+											if(getComponent("comboFiltroFascia").getValue()==null || getComponent("comboFiltroFascia").getValue()==""){
+													viewScope.put("searchResult",viewScope.get("searchResultStart"));
+											}else{
+												for(var i=0;i<docuList.size();i++){
+													var val:org.bson.Document = docuList.get(i);
+													if(val.FasciaPrezzo==getComponent("comboFiltroFascia").getValue()){
+														docuListRes.add(val);
+													}
+												}
+												viewScope.put("searchResult",docuListRes);
+											}
+
+
+											}]]></xp:this.action>
+										</xp:eventHandler>
+									</xp:comboBox>
+								</div>
+								<div class="col-sm-4">
+								</div>
+								<div class="col-sm-4">
+								</div>
+							</div>
+						</div>
+
+<xp:pager
+        partialRefresh="true"
+        id="pager1"
+        for="repeat1"
+        panelPosition="left"
+        styleClass="bootstrapPager">
+        <xp:pagerControl
+          type="Previous"
+          id="pagerControl1"
+          styleClass="bootstrapPagerPrevious">
+        <xp:this.value><![CDATA[Â«]]></xp:this.value></xp:pagerControl>
+        <xp:pagerControl
+          type="Group"
+          id="pagerControl2"
+          styleClass="bootstrapPagerMiddle">
+        </xp:pagerControl>
+        <xp:pagerControl
+          type="Next"
+          id="pagerControl3"
+          styleClass="bootstrapPagerNext">
+        <xp:this.value><![CDATA[Â»]]></xp:this.value></xp:pagerControl>
+</xp:pager>
+
+						<xp:br></xp:br>
+						<xp:repeat id="repeat1" rows="30"
+							value="#{viewScope.searchResult}" var="searchVar"
+							indexVar="searchIndex">
+							<div class="col-md-3 col-sm-4 col-xs-6" style="height:200px;">
+								<div class="container" style="border:#ccc 1px solid;height:90%;width:100%;color:#000;" styleClass="nobluelink">
+									<div id="#{javascript:'tDetails'+searchIndex}" class="panel panel-default hide">
+										  <div class="panel-heading">
+										  	<b>Transaltor's details</b>
+										  </div>
+										  <div class="panel-body">
+											<ul class="nav nav-tabs" role="tablist">
+											    <li role="presentation" class="active">
+											    	<xp:text
+											    		escape="false">
+											    		<xp:this.value><![CDATA[#{javascript:"<a href=\""+'#educations'+searchIndex+"\" aria-controls=\""+'educations'+searchIndex+"\" role=\"tab\" data-toggle=\"tab\"><i class=\"fa fa-graduation-cap\" aria-hidden=\"true\"></i></a>"}]]></xp:this.value>
+											    	</xp:text>
+											    </li>
+											    <li role="presentation">
+													<xp:text
+											    		escape="false">
+											    		<xp:this.value><![CDATA[#{javascript:"<a href=\""+'#specializations'+searchIndex+"\" aria-controls=\""+'specializations'+searchIndex+"\" role=\"tab\" data-toggle=\"tab\"><i class=\"fa fa-certificate\" aria-hidden=\"true\"></i></a>"}]]></xp:this.value>
+											    	</xp:text>
+												</li>
+												<li role="presentation">
+													<xp:text
+											    		escape="false">
+											    		<xp:this.value><![CDATA[#{javascript:"<a href=\""+'#stars'+searchIndex+"\" aria-controls=\""+'stars'+searchIndex+"\" role=\"tab\" data-toggle=\"tab\"><i class=\"fa fa-star\" aria-hidden=\"true\"></i></a>"}]]></xp:this.value>
+											    	</xp:text>
+												</li>
+												<li role="presentation">
+													<xp:text
+											    		escape="false">
+											    		<xp:this.value><![CDATA[#{javascript:"<a href=\""+'#comments'+searchIndex+"\" aria-controls=\""+'comments'+searchIndex+"\" role=\"tab\" data-toggle=\"tab\"><i class=\"fa fa-comments\" aria-hidden=\"true\"></i></a>"}]]></xp:this.value>
+											    	</xp:text>
+												</li>
+											</ul>
+											<div class="tab-content">
+											    <div role="tabpanel" class="tab-pane active" id="#{javascript:'educations'+searchIndex}">
+													<xp:text
+														escape="false" id="computedField1">
+<xp:this.value>
+<![CDATA[#{javascript:
+var search = new glifico.ui.Search();
+var val:org.bson.Document = searchVar;
+search.getEdu(@Text(val.IDTraduttore));
+}]]>
+</xp:this.value>
+													</xp:text>
+											    </div>
+											    <div role="tabpanel" class="tab-pane" id="#{javascript:'specializations'+searchIndex}">
+												<xp:text
+														escape="false" id="computedField5">
+														<xp:this.value>
+														<![CDATA[#{javascript:
+														var search = new glifico.ui.Search();
+														var val:org.bson.Document = searchVar;
+														search.getSpec(@Text(val.IDTraduttore));
+														}]]>
+														</xp:this.value>
+													</xp:text>
+												</div>
+												 <div role="tabpanel" class="tab-pane" id="#{javascript:'stars'+searchIndex}">
+												<xp:text escape="false"
+													id="computedField6">
+													<xp:this.value>
+														<![CDATA[#{javascript:try {
+    var search = new glifico.ui.Search();
+	var val:org.bson.Document = searchVar;
+	search.getRating(@Text(val.IDTraduttore));
+} catch(e){
+	_dump(e);
+}
+
+														}]]>
+													</xp:this.value>
+												</xp:text>
+												 </div>
+											</div>
+										  </div>
+									</div>
+									<div id="#{javascript:'tDetailsHREF'+searchIndex}" data-toggle="popover"
+									data-placement="top"
+									data-trigger="click"
+									data-html="true" data-container="body" class="nobluelink">
+										<div class="row">
+											<div class="col-md-12 text-center">
+												<span class="fa fa-user fa-5x"></span><xp:br></xp:br>
+											</div>
+											<div class="col-md-12">
+												Social:
+												<xp:text escape="false">
+													<xp:this.value><![CDATA[#{javascript:
+	var indice = 1;
+	var html = "";
+	var val:org.bson.Document = searchVar;
+	for(var indi=1;indi<=val.RatingSocial;indi++){
+	 html += "<span class=\"fa fa-star\"></span>";
+	 indice = indi;
+	}
+	if(val.RatingSocial>indice){
+	 html += "<span class=\"fa fa-star-half\"></span>";
+	}
+	return html;
+	}]]></xp:this.value>
+												</xp:text>
+											</div>
+											<div class="col-md-12">
+												Works:
+	<xp:text escape="false">
+												<xp:this.value><![CDATA[#{javascript:
+	var indice = 1;
+	var html = "";
+	var val:org.bson.Document = searchVar;
+	for(var indi=1;indi<=val.RatingWork;indi++){
+	 html += "<span class=\"fa fa-star\"></span>";
+	 indice = indi;
+	 	}
+	if(val.RatingWork>indice){
+	 html += "<span class=\"fa fa-star-half\"></span>";
+	}
+	return html;
+	}]]></xp:this.value>
+												</xp:text>
+											</div>
+											<div class="col-md-12">
+												<xp:text escape="true" id="computedField2">
+													<xp:this.value>
+														<![CDATA[#{javascript:
+														var val:org.bson.Document = searchVar;
+														"ID: " + val.IDTraduttore}]]>
+													</xp:this.value>
+												</xp:text>
+											</div>
+											<div class="col-md-12">
+												<xp:text escape="true" id="computedField3">
+													<xp:this.value>
+														<![CDATA[#{javascript:
+														var val:org.bson.Document = searchVar;
+														"Country: " + val.Country}]]>
+													</xp:this.value>
+												</xp:text>
+											</div>
+											<div class="col-md-12">
+												<xp:text escape="true" id="computedField4">
+													<xp:this.value>
+														<![CDATA[#{javascript:
+														var val:org.bson.Document = searchVar;
+														"Price Range: " + val.FasciaPrezzo}]]>
+												</xp:this.value>
+												</xp:text>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<xp:text escape="false">
+								<xp:this.value><![CDATA[#{javascript:var nomediv='#tDetails'+searchIndex;
+var nomehref='#tDetailsHREF'+searchIndex;
+
+var js = "<script>$('"+nomehref+"').popover({";
+js+=	"html: true, ";
+js+= "content: $('"+nomediv+"').remove().html()";
+js+= "});</script>";
+
+return js;}]]></xp:this.value>
+							</xp:text>
+
+						</xp:repeat>
+						<xp:br></xp:br>
+
+						</xp:panel></div>
+			</div>
+		</div>
+	</div>
+
+	 </div>
+	 -->
+
+	</xp:view>

@@ -13,6 +13,13 @@ angular.module("resetController",[])
 		}
 	};
 
+	ctrl.getUsername=function(){
+		var start=location.href.indexOf("user=");
+		start+=5;
+		var end=location.href.length;
+		return location.href.substring(start,end);
+	};
+	
 	ctrl.onSubmit=function(){
 		var req=createXHTMLHttpRequest();
 		req.onreadystatechange=function(){
@@ -20,10 +27,9 @@ angular.module("resetController",[])
 				ctrl.submitCompleted=true;
 				$("#form").hide();
 			}else{
-
 			}
 		}
-		req.open("GET","https://glifico.herokuapp.com/resetPassword.php?user="+ctrl.user,true);
+		req.open("GET","resetPassword.php?user="+ctrl.user,true);
 		req.send();
 		message('Thanks. We have sent you an email with instructions.');
 	};
@@ -39,14 +45,14 @@ angular.module("resetController",[])
 				}else{
 					errorMessage("Wrong token");
 				}
-			}else{
+			}else if(req.status!=200){
 				errorMessage("There was an error, please retry");
 			}
 		}
 
 		var startQuery=location.href.indexOf("?",0)+1;
 		var endQuery=location.href.length;
-		req.open("GET","https://glifico.herokuapp.com/changePassword.php?"+"password="+ctrl.password+"&"+location.href.substring(startQuery,endQuery),true);
+		req.open("GET","changePassword.php?"+"password="+ctrl.password+"&"+location.href.substring(startQuery,endQuery),true);
 		req.send();
 	}
 
