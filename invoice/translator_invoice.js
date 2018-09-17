@@ -11,13 +11,13 @@ var comapnyJSON={
 };
 
 var customer_BillingInfoJSON={
-		CustomerName:'Glifico',
-		CustomerGSTIN:'IT000000',
+		CustomerName:'Glifico by SISSI TRADUZIONI',
+		CustomerGSTIN:'03692530045',
 		CustomerState:'Italy',
 		CustomerPAN:'',
-		CustomerAddressLine1:'Torino',
-		CustomerAddressLine2:'...',
-		CustomerAddressLine3:'...',
+		CustomerAddressLine1:'10100 Torino (TO)',
+		CustomerAddressLine2:' ',
+		CustomerAddressLine3:' ',
 		CustomerEmail:'info@glifico.com',
 		CustomerPhone:'+390000000000',
 };

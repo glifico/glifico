@@ -1,9 +1,9 @@
 var comapnyJSON={
-		CompanyName:'GLIFICO',
+		CompanyName:'Glifico by SISSI TRADUZIONI',
 		//VAT
-		CompanyGSTIN:'IT0000000000',
+		CompanyGSTIN:'03692530045',
 		CompanyState:'Italy',
-		CompanyAddressLine1:'Corso italia 1, 10100 Torino (TO)',
+		CompanyAddressLine1:'10100 Torino (TO)',
 		CompanyEmail:'info@glifico.com',
 		CompanyPhone:'+3900000000000',
 };
