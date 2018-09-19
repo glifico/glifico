@@ -357,28 +357,6 @@ Password must have at least 7 characters!
 
 
 <br><br><br><br>
-<?php 
-
-$query = "SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
-$result = $db->query($query);
-$row = $result->fetch(PDO::FETCH_ASSOC);
-if ($row['whoaccepted'] == 1) {
-    $price = (float) $row['price'] * 1.22 * 100;
-} else {
-    $price = (float) $row['secondprice'] * 1.22 * 100;
-}
-
-echo("<script>");
-echo("ga('ecommerce:addTransaction', {");
-echo("'id': '$oid',");                     // Transaction ID. Required.
-echo("'affiliation': 'Glifico',");   // Affiliation or store name.
-echo("'revenue': '$price',");               // Grand Total.
-echo("'tax': '1.22'");                     // Tax.
-echo("});");
-echo("</script>");
-
-?>
-
 
 <div id="payDocumentBody">
 <div style="margin-right:10px;margin-left:10px">
