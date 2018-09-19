@@ -358,6 +358,12 @@ Password must have at least 7 characters!
 
 <br><br><br><br>
 <?php 
+include_once 'functions.php';
+$oid = $_GET['token'];
+
+$db = getDB();
+if (! $db)
+    exit();
 
 $query = "SELECT * FROM payments WHERE id='$oid' LIMIT 1;";
 $result = $db->query($query);
