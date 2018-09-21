@@ -12,5 +12,8 @@
   "support": {
     "email": "info@glifico.com"
   },
-  "license" : "GPL-3.0-or-later"
+  "license" : "GPL-3.0-or-later",
+   "require" : {
+	"php": "~7.2.0"
+	}
 }
