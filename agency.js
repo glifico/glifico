@@ -115,7 +115,7 @@ angular.module("infoAgecontroller",[]).controller("infoAgecontroller",function($
 	}
 
 	ctrl.validForm = function(){
-		return ctrl.isemailvalid() && ctrl.isibanvalid() && ctrl.iszipvalid();
+		return ctrl.isemailvalid() && ctrl.iszipvalid();
 	}
 
 	ctrl.Agesubmit=function(){
