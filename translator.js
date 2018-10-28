@@ -6,13 +6,13 @@ function isValidIBAN($v){ //This function check if the checksum if correct
 	$v = $v.replace(/^(.{4})(.*)$/,"$2$1"); //Move the first 4 chars from left to the right
 	$v = $v.replace(/[A-Z]/g,function($e){return $e.charCodeAt(0) - 'A'.charCodeAt(0) + 10}); //Convert A-Z to 10-25
 	var $sum = 0;
-	var $ei = 1; //First exponent 
+	var $ei = 1; //First exponent
 	for(var $i = $v.length - 1; $i >= 0; $i--){
-		$sum += $ei * parseInt($v.charAt($i),10); //multiply the digit by it's exponent 
+		$sum += $ei * parseInt($v.charAt($i),10); //multiply the digit by it's exponent
 		$ei = ($ei * 10) % 97; //compute next base 10 exponent  in modulus 97
-	}; 
+	};
 	return $sum % 97 == 1;
-};  
+};
 
 var IBANRegex= /(?=[0-9A-Z]{28}$)AL\d{10}[0-9A-Z]{16}$|^(?=[0-9A-Z]{24}$)AD\d{10}[0-9A-Z]{12}$|^(?=[0-9A-Z]{20}$)AT\d{18}$|^(?=[0-9A-Z]{22}$)BH\d{2}[A-Z]{4}[0-9A-Z]{14}$|^(?=[0-9A-Z]{16}$)BE\d{14}$|^(?=[0-9A-Z]{20}$)BA\d{18}$|^(?=[0-9A-Z]{22}$)BG\d{2}[A-Z]{4}\d{6}[0-9A-Z]{8}$|^(?=[0-9A-Z]{21}$)HR\d{19}$|^(?=[0-9A-Z]{28}$)CY\d{10}[0-9A-Z]{16}$|^(?=[0-9A-Z]{24}$)CZ\d{22}$|^(?=[0-9A-Z]{18}$)DK\d{16}$|^FO\d{16}$|^GL\d{16}$|^(?=[0-9A-Z]{28}$)DO\d{2}[0-9A-Z]{4}\d{20}$|^(?=[0-9A-Z]{20}$)EE\d{18}$|^(?=[0-9A-Z]{18}$)FI\d{16}$|^(?=[0-9A-Z]{27}$)FR\d{12}[0-9A-Z]{11}\d{2}$|^(?=[0-9A-Z]{22}$)GE\d{2}[A-Z]{2}\d{16}$|^(?=[0-9A-Z]{22}$)DE\d{20}$|^(?=[0-9A-Z]{23}$)GI\d{2}[A-Z]{4}[0-9A-Z]{15}$|^(?=[0-9A-Z]{27}$)GR\d{9}[0-9A-Z]{16}$|^(?=[0-9A-Z]{28}$)HU\d{26}$|^(?=[0-9A-Z]{26}$)IS\d{24}$|^(?=[0-9A-Z]{22}$)IE\d{2}[A-Z]{4}\d{14}$|^(?=[0-9A-Z]{23}$)IL\d{21}$|^(?=[0-9A-Z]{27}$)IT\d{2}[A-Z]\d{10}[0-9A-Z]{12}$|^(?=[0-9A-Z]{20}$)[A-Z]{2}\d{5}[0-9A-Z]{13}$|^(?=[0-9A-Z]{30}$)KW\d{2}[A-Z]{4}22!$|^(?=[0-9A-Z]{21}$)LV\d{2}[A-Z]{4}[0-9A-Z]{13}$|^(?=[0-9A-Z]{,28}$)LB\d{6}[0-9A-Z]{20}$|^(?=[0-9A-Z]{21}$)LI\d{7}[0-9A-Z]{12}$|^(?=[0-9A-Z]{20}$)LT\d{18}$|^(?=[0-9A-Z]{20}$)LU\d{5}[0-9A-Z]{13}$|^(?=[0-9A-Z]{19}$)MK\d{5}[0-9A-Z]{10}\d{2}$|^(?=[0-9A-Z]{31}$)MT\d{2}[A-Z]{4}\d{5}[0-9A-Z]{18}$|^(?=[0-9A-Z]{27}$)MR13\d{23}$|^(?=[0-9A-Z]{30}$)MU\d{2}[A-Z]{4}\d{19}[A-Z]{3}$|^(?=[0-9A-Z]{27}$)MC\d{12}[0-9A-Z]{11}\d{2}$|^(?=[0-9A-Z]{22}$)ME\d{20}$|^(?=[0-9A-Z]{18}$)NL\d{2}[A-Z]{4}\d{10}$|^(?=[0-9A-Z]{15}$)NO\d{13}$|^(?=[0-9A-Z]{28}$)PL\d{10}[0-9A-Z]{,16}n$|^(?=[0-9A-Z]{25}$)PT\d{23}$|^(?=[0-9A-Z]{24}$)RO\d{2}[A-Z]{4}[0-9A-Z]{16}$|^(?=[0-9A-Z]{27}$)SM\d{2}[A-Z]\d{10}[0-9A-Z]{12}$|^(?=[0-9A-Z]{,24}$)SA\d{4}[0-9A-Z]{18}$|^(?=[0-9A-Z]{22}$)RS\d{20}$|^(?=[0-9A-Z]{24}$)SK\d{22}$|^(?=[0-9A-Z]{19}$)SI\d{17}$|^(?=[0-9A-Z]{24}$)ES\d{22}$|^(?=[0-9A-Z]{24}$)SE\d{22}$|^(?=[0-9A-Z]{21}$)CH\d{7}[0-9A-Z]{12}$|^(?=[0-9A-Z]{24}$)TN59\d{20}$|^(?=[0-9A-Z]{26}$)TR\d{7}[0-9A-Z]{17}$|^(?=[0-9A-Z]{,23}$)AE\d{21}$|^(?=[0-9A-Z]{22}$)GB\d{2}[A-Z]{4}\d{14}/;
 
@@ -62,13 +62,14 @@ function askAccountDeletion(){
 	req.send();
 }
 
-function doDelete(from, to){
+function doDelete(from, to, field){
 	var arr={
 			"user": getUsername(),
 			"token": getToken(),
 			"values": {
 				"LanguageFrom": from,
 				"LanguageTo": to,
+				"Field": field
 			}
 	};
 
@@ -89,11 +90,11 @@ function doDelete(from, to){
 				refresh();
 			}else if(convertJSON(response).statuscode==301){
 				$('#alertOK').fadeIn().delay(10000).fadeOut();
-				$('#alertOK').html("Your data not uptdate because you have open jobs in that language.");
+				$('#alertOK').html("Your data was not uptdated because you have open jobs in that language.");
 				notify("Your data not uptdate because you have open jobs in that language.");
 			}else if(convertJSON(response).statuscode==302){
 				$('#alertOK').fadeIn().delay(5000).fadeOut();
-				$('#alertOK').html("Your was not uptdate because you have open jobs in that language.");
+				$('#alertOK').html("Your data not uptdate because you have open jobs in that language.");
 				notify("Your data not uptdate because you have open jobs in that language.");
 			}else{
 				$('#alertError').fadeIn().delay(1000).fadeOut();
@@ -134,11 +135,11 @@ function createTable(pairs){
 		html+='<td class=" col-md-3"><span style="font-size:18px;">'+edu.Field+'</span></td>';
 		//html+='<td class=" col-md-1"><button data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" data-currency="'+edu.Currency+'" data-from="'+edu.LanguageFrom+'" data-to="'+edu.LanguageTo+'" data-field="'+edu.Field+'" data-service="'+edu.Service+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-pencil fa-2x"></i></span></button></td>';
 		html+='<td class=" col-md-1"><button data-toggle="modal" data-target="#LanguageModal"  data-price="'+edu.Price+'" data-currency="'+edu.Currency+'" data-from="'+edu.LanguageFrom+'" data-to="'+edu.LanguageTo+'" data-field="'+edu.Field+'" data-service="'+edu.Service+'" class="md-secondary md-hue-3" aria-label="edit"><span><i class="fa fa-search-plus fa-2x"></i></span></button></td>';
-		html+='<td class=" col-md-1"><button onclick="doDelete('+"'"+edu.LanguageFrom+"'"+','+"'"+edu.LanguageTo+"'"+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
+		html+='<td class=" col-md-1"><button onclick="doDelete('+"'"+edu.LanguageFrom+"'"+','+"'"+edu.LanguageTo+"'"+','+"'"+edu.Field+"'"+')"><span><i class="fa fa-trash fa-2x"></i></span></button></td>';
 		html+='</tr>';
 	}
 	html+='</tbody>';
-	html+='</table>';	
+	html+='</table>';
 
 	$("#pairsTable").html(html);
 }
@@ -229,7 +230,7 @@ angular.module('PersonalAppCtrl',[]).controller('PersonalAppCtrl',function($scop
 		}
 
 		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
-		req.send();	
+		req.send();
 	}
 
 	ctrl.$onInit= function(){
@@ -252,11 +253,11 @@ angular.module('PersonalAppCtrl',[]).controller('PersonalAppCtrl',function($scop
 	ctrl.isemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
 	}
-	
+
 	ctrl.isbilemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email_bil);
 	}
-	
+
 
 	ctrl.validForm = function(){
 		return ctrl.isemailvalid() && ctrl.isibanvalid();
@@ -371,7 +372,7 @@ angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',func
 
 
 	ctrl.createTable=function(pairs){
-		createTable(pairs);	
+		createTable(pairs);
 	};
 
 	$scope.loadCurrencies = function(){
@@ -449,7 +450,7 @@ angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',func
 					ctrl.refresh();
 				}else if(convertJSON(response).statuscode==301){
 					$('#alertOK').fadeIn().delay(10000).fadeOut();
-					$('#alertOK').html("Your data was not updatet because you have open jobs in that language.");
+					$('#alertOK').html("Your data was not updated because you have open jobs in that language.");
 					notify("Your data not uptdate because you have open jobs in that language.");
 				}else if(convertJSON(response).statuscode==302){
 					$('#alertOK').fadeIn().delay(5000).fadeOut();
