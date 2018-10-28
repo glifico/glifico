@@ -89,11 +89,11 @@ function doDelete(from, to){
 				refresh();
 			}else if(convertJSON(response).statuscode==301){
 				$('#alertOK').fadeIn().delay(10000).fadeOut();
-				$('#alertOK').html("Your data not uptdate because you have open jobs in that language.");
+				$('#alertOK').html("Your data was not uptdated because you have open jobs in that language.");
 				notify("Your data not uptdate because you have open jobs in that language.");
 			}else if(convertJSON(response).statuscode==302){
 				$('#alertOK').fadeIn().delay(5000).fadeOut();
-				$('#alertOK').html("Your was not uptdate because you have open jobs in that language.");
+				$('#alertOK').html("Your data not uptdate because you have open jobs in that language.");
 				notify("Your data not uptdate because you have open jobs in that language.");
 			}else{
 				$('#alertError').fadeIn().delay(1000).fadeOut();
