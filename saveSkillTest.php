@@ -64,7 +64,11 @@ $result = $db->query($query);
 
 $row = $result->fetch(PDO::FETCH_ASSOC);
 $oldscore = $row['skilltest'];
-$score = intval(($newscore + $oldscore) / 2);
+if ($oldscore != null) {
+    $score = intval(($newscore + $oldscore) / 2);
+} else {
+    $score = intval($newscore);
+}
 if ($score > 5)
     $score = 5;
 
