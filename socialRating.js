@@ -65,7 +65,6 @@ function init() {
 		req.onreadystatechange = function(){
 			if (req.status == 200&req.readyState==4){
 				var data=JSON.parse(req.responseText);
-				gotLanguages(data);
 				createSpan(data);
 				return(true);
 			}else{
