@@ -35,14 +35,12 @@ function init() {
 	req.send();
 
 	function gotTranslatorData(data){
-		
+
 		html='';
 		html='You have a total of <b>'+data[0].nratings+'</b> ratings!';
 		$("#totalratings").html(html);
 
-		var id = data[0].IdMothertongue;
-		var url = 'getLanguageById.php?user='+ getUsername() + '&token=' + getToken()+ '&id=' + id;
-
+		var url = "getTranslatorLanguages.php?user="+getUsername()+"&token="+getToken();
 
 		var req = createXHTMLHttpRequest() ;
 		req.onreadystatechange = function(){
@@ -67,8 +65,8 @@ function init() {
 			html += '<option value="-"></option>'
 
 				for (i = 0; i < data.length; i++) {
-					html += '<option value="' + data[i].Id + '">'
-					+ data[i].Language + '</option>'
+					html += '<option value="' + data[i].IdLanguageTo + '">'
+					+ data[i].LanguageTo + '</option>'
 				}
 
 		html += '</select>'
@@ -139,6 +137,8 @@ function showDomanda() {
 				alert("Nothing to evaluate yet for this language, sorry..");
 			}
 		}else{
+			$("#alertError").html("Nothing to evaluate yet, try later");
+			$("#alertError").fadeIn().delay(10000).fadeOut();
 			return(false);
 		}
 	}
@@ -168,7 +168,7 @@ function showModal(data){
 		html+='<span id="grammar'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(0,'+i+')"></i>   </span>';
 	}
 	html+='</div>';
-	html+='Style <b>mark</b>'	
+	html+='Style <b>mark</b>'
 		html+='<div class="rating">';
 	for (var i = 5; i > 0; i--) {
 		html+='<span id="style'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(1,'+i+')"></i>   </span>';
@@ -192,7 +192,7 @@ function setRating(whichRating, mark){
 		ratings.grammar=mark;
 		for (var i = 1; i <=5; i++) {
 			if(i<=mark){
-				$("#grammar"+i).addClass('filled');				
+				$("#grammar"+i).addClass('filled');
 			}else{
 				$("#grammar"+i).removeClass('filled');
 			}
@@ -202,7 +202,7 @@ function setRating(whichRating, mark){
 		ratings.style=mark;
 		for (var i = 1; i <=5; i++) {
 			if(i<=mark){
-				$("#style"+i).addClass('filled');				
+				$("#style"+i).addClass('filled');
 			}else{
 				$("#style"+i).removeClass('filled');
 			}
