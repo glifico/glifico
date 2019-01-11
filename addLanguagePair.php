@@ -23,7 +23,7 @@ $user = $data['user'];
 $pair = $data['values'];
 $from = $language_codes[$pair['IdLanguageFrom']];
 $to = $language_codes[$pair['IdLanguageTo']];
-$price = float($pair['PricePerWord']) / 6.;
+$price = $pair['PricePerWord'] / 6.;
 
 if ($price == 0) {
     $price = 0.001;
