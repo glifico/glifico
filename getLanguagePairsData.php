@@ -17,7 +17,7 @@ $result = $db->query($query);
 
 $toExit = [];
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    $price = round($row['price'], 4) / 6.;
+    $price = round($row['price']* 6., 4);
     array_push($toExit, array(
         "LanguageFrom" => $row['from_l'],
         "LanguageTo" => $row['to_l'],
