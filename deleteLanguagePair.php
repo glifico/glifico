@@ -24,21 +24,21 @@ $field=$pair['Field'];
 
 if(!certToken($db, $user, $data['token'])) exit(json_encode(array("message"=>"wrong token", "statuscode"=>400)));
 
-$query="select id, job  from payments where translator ='$user' and languagefrom = '$from' and field = 'select all' and languageto = '$to' and whoaccepted=1;";
+$query="select id, job  from payments where translator ='$user' and languagefrom = '$from' and field = 'select all' and languageto = '$to' and whoaccepted=1 and status!='Closed';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 if (strlen(htmlspecialchars($row["job"])) > 1) {
     exit (json_encode(array("message"=>"job in progress", "job" =>$row, "statuscode"=>301)));
 }
 
-$query="select id, job  from payments where translator ='$user' and languagefrom = '$from' and field = '$field' and languageto = '$to' and whoaccepted=1;";
+$query="select id, job  from payments where translator ='$user' and languagefrom = '$from' and field = '$field' and languageto = '$to' and whoaccepted=1 and status!='Closed';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 if (strlen(htmlspecialchars($row["job"])) > 1) {
     exit (json_encode(array("message"=>"job in progress", "job" =>$row, "statuscode"=>301)));
 }
 
-$query="select id, job  from payments where secondtranslator ='$user' and languagefrom = '$from' and languageto = '$to' and field = 'select all' and whoaccepted=2;";
+$query="select id, job  from payments where secondtranslator ='$user' and languagefrom = '$from' and languageto = '$to' and field = 'select all' and whoaccepted=2 and secondstatus!='Closed';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 if (strlen(htmlspecialchars($row["job"])) > 1) {
@@ -46,7 +46,7 @@ if (strlen(htmlspecialchars($row["job"])) > 1) {
 }
 
 
-$query="select id, job  from payments where secondtranslator ='$user' and languagefrom = '$from' and languageto = '$to' and field = '$field' and whoaccepted=2;";
+$query="select id, job  from payments where secondtranslator ='$user' and languagefrom = '$from' and languageto = '$to' and field = '$field' and whoaccepted=2 and secondstatus!='Closed';";
 $result = $db->query($query);
 $row = $result->fetch(PDO::FETCH_ASSOC);
 if (strlen(htmlspecialchars($row["job"])) > 1) {
