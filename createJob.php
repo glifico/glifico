@@ -72,7 +72,7 @@ if (! certTokenA($db, $user, $data['token']))
     )));
 
  $mailStatus = [];
-    
+
 if ($count == 1) {
     $query = "INSERT INTO payments (job, description, field, status, username, document, languagefrom, languageto, ncharacters, translator, currency, deadline, price, whoaccepted, createdline, urgency) VALUES ('$jobTitle','$jobDescr', '$field', 'To Be Assigned', '$user', '$url', '$languagefrom', '$languageto', '$n_characters', '$translator', '$firstCurrency','$deadline','$firstPrice','0', '$createdline', '$urgency');";
 } else {
@@ -91,6 +91,7 @@ $mailStatus['second']=send_email([
 ], "There is a new job on glifico", "You have a new job on glifico, go to https://glifico.com/pendingJobs.html to look it out! You have 5 h to accept it!");
 
 $result = $db->query($query);
+error_log("creating job data: ".$query);
 $result->CloseCursor();
 
 $retCurrencies = updateCurrencies();
