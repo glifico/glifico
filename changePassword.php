@@ -1,9 +1,8 @@
 <?php
 include 'functions.php';
 
-$db=getDB();
-$db = new PDO ( $dsn );
-if (! $db) exit ();
+$db = getDB();
+if (! $db) exit();
 
 if (isset ( $_GET ["user"] ) && isset ( $_GET ["password"] ) && isset ( $_GET ["token"] )) {
 	$user = $_GET ["user"];
