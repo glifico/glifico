@@ -439,11 +439,11 @@ Price class:<br>
       </div>
       <div class="modal-body" data-ng-load="ctrl.calculateFeasibility()">
       <div id="modalBodySelect">
-        Number of <b>characters</b>: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrCharacters" min="1"><br>
+        Number of <b>words</b>: <input type="text" placeholder="1" pattern="[0-9]*" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrWords" min="1"><br>
        <br>
-        Number of <b>words</b>: {{ctrl.TrCharacters / 6 | number:1}} (word = 6 characters)
+        Number of <b>characters</b>: {{ctrl.TrCharacters | number:0}} (word = 6 characters)
        <br>
-        Number of <b>pages</b>: {{ctrl.TrCharacters / 1500 | number:1}} (page = 1500 characters)
+        Number of <b>pages</b>: {{ctrl.TrCharacters / 1500 | number:0}} (page = 1500 characters)
         <br><br>
         <span>
         <b>Deadline</b>: <input type="date" id="TrDate" name="input" data-ng-change="ctrl.calculateFeasibility()" data-ng-model="ctrl.TrDeadline" placeholder="yyyy-MM-dd" min="{{ctrl.tomorrow | date:'yyyy-MM-dd'}}" max="2100-01-01" required />
@@ -451,8 +451,8 @@ Price class:<br>
         <br><br>
         <b>Days</b> until deadline: {{ctrl.days | number:0}}<br><br>
         <div id="modal-volume">
-        <b>Available</b> volume: {{ctrl.UrgCh}} characters<br>
-        <b>Max available</b> volume: {{ctrl.MaxCh}} characters<br>
+        <b>Available</b> volume: {{ctrl.UrgCh / 6 | number:0 }} words<br>
+        <b>Max available</b> volume: {{ctrl.MaxCh / 6 | number:0}} words<br>
         </div>
         <br><br>
         <div id="modal-translators">

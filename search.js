@@ -459,6 +459,7 @@ angular.module("search",[]).controller("search",function($scope){
 	}
 
 	ctrl.calculateFeasibility=function(){
+		ctrl.TrCharacters = ctrl.TrWords * 6;
 		var timeDiff = ctrl.TrDeadline.getTime() - ctrl.today.getTime();
 		var days = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
