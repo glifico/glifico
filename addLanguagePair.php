@@ -58,9 +58,12 @@ foreach ($idsField as $idField) {
     $query = "INSERT INTO language_pair (username,from_l,to_l,price,price_euro,field,service,currency) VALUES ('$user','$from','$to','$price','$price_euro','$field','$service','$currency');";
     $result = $db->query($query);
 
+    syslog(LOG_INFO, $query);
+    
     if ($both) {
         $query = "INSERT INTO language_pair (username,from_l,to_l,price,price_euro,field,service,currency) VALUES ('$user','$to','$from','$price','$price_euro','$field','$service','$currency');";
         $result = $db->query($query);
+        syslog(LOG_INFO, $query);
     }
 }
 
