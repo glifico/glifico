@@ -253,11 +253,11 @@ angular.module('PersonalAppCtrl',[]).controller('PersonalAppCtrl',function($scop
 	ctrl.isemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email);
 	}
-	
+
 	ctrl.isbilemailvalid = function(){
 		return /[a-zA-Z0-9.]+@[a-zA-Z0-9\.]+\.+[a-z]{2,3}/.test(ctrl.email_bil);
 	}
-	
+
 
 	ctrl.validForm = function(){
 		return ctrl.isemailvalid() && ctrl.isibanvalid();
@@ -431,6 +431,7 @@ angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',func
 				"user": getUsername(),
 				"token": getToken(),
 				"values": $scope.model,
+				"both": $('#reverseLang')[0].checked
 		};
 
 		var stringPass=JSON.stringify(arr);

@@ -498,15 +498,13 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
   French is not the same as to translate from French into English. In these cases, you have to add two different pairs. You can also choose which field of expertise the price (or rate) is for. You can also choose a general translation field.
 <form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
 <div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-6">
 <label>Language From</label>
 <select placeholder="Select language" ng-model="model.IdLanguageFrom" md-on-open="loadLanguages();" required>
 <option ng-repeat="element in Languages" value="{{element.Id}}">{{element.Language}}</option>
 </select>
 </div>
-</div>
-<div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-6">
 <label>Language To</label>
 <select placeholder="Select language" ng-model="model.IdLanguageTo" md-on-open="loadLanguages();" required>
 <option ng-repeat="element in Languages" value="{{element.Id}}">{{element.Language}}</option>
@@ -514,9 +512,15 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 <div class="input-group">
+<div class="form-group col-md-10">
+<input type="checkbox" id="reverseLang" name="reverse">
+  <label for="reverse">I am able to translate both ways!</label>
+</div>
+</div>
+<div class="input-group">
 <div class="form-group col-md-5">
 <label>Field</label>
-<select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required>
+<select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required multiple>
 <option ng-repeat="element in Fields" value="{{element.Id}}">{{element.Field}}</option>
 </select>
 </div>
@@ -536,18 +540,20 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 <div class="input-group">
-<div class="form-group col-md-8">
+<div class="form-group col-md-4">
 <label>Price Per Word</label>
 <input type="number" ng-model="model.PricePerWord" ng-onchange="" required><br>
 <span class="glifico-input-descr">Use dot (.) for decimals</span>
-<div>
-Price per <b>character</b> (word = 6 characters) {{model.PricePerWord / 6 | number:2}}<br>
+</div>
+<div class="form-group col-md-4">
+Price per <b>character</b> (word = 6 characters) {{model.PricePerWord / 6 | number:2}}
+</div>
+<div class="form-group col-md-4">
 Price per <b>page</b> (page = 1500 characters) {{model.PricePerWord * 1500 | number:2}}
 </div>
 </div>
-</div>
 <div class="input-group">
-<div class="form-group col-md-5">
+<div class="form-group col-md-10">
 <button class="btn btn-primary" type="button" ng-click="submit()">Create a new pair</button>
 </div>
 </div>

@@ -21,6 +21,7 @@ if (! $data) {
 
 $user = $data['user'];
 $pair = $data['values'];
+$both = $data['both'];
 $from = $language_codes[$pair['IdLanguageFrom']];
 $to = $language_codes[$pair['IdLanguageTo']];
 $price = $pair['PricePerWord'] / 6.;
@@ -31,9 +32,8 @@ if ($price == 0) {
 
 $price_euro = convert_to_euro($price, $pair['IdCurrency']);
 $currency = get_currency_description($pair['IdCurrency']);
-$idField = $pair['IdParametro_Field'];
+$idsField = $pair['IdParametro_Field'];
 $idService = $pair['IdParametro_Service'];
-$field = $fields[$idField];
 $service = "translations";
 
 if (! certToken($db, $user, $data['token']))
@@ -52,8 +52,17 @@ if (strlen(htmlspecialchars($row["username"])) > 2) {
     )));
 }
 
-$query = "INSERT INTO language_pair (username,from_l,to_l,price,price_euro,field,service,currency) VALUES ('$user','$from','$to','$price','$price_euro','$field','$service','$currency');";
-$result = $db->query($query);
+foreach ($idsField as $idField) {
+    $field = $fields[$idField];
+    
+    $query = "INSERT INTO language_pair (username,from_l,to_l,price,price_euro,field,service,currency) VALUES ('$user','$from','$to','$price','$price_euro','$field','$service','$currency');";
+    $result = $db->query($query);
+
+    if ($both) {
+        $query = "INSERT INTO language_pair (username,from_l,to_l,price,price_euro,field,service,currency) VALUES ('$user','$to','$from','$price','$price_euro','$field','$service','$currency');";
+        $result = $db->query($query);
+    }
+}
 
 user_try_add_lang($user, $from);
 user_try_add_lang($user, $to);
