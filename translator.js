@@ -431,6 +431,7 @@ angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',func
 				"user": getUsername(),
 				"token": getToken(),
 				"values": $scope.model,
+				"both": $('#reverseLang')[0].checked
 		};
 
 		var stringPass=JSON.stringify(arr);
