@@ -221,6 +221,7 @@ input[type=checkbox]
 
 .glifico-info-form-language{
 	background: RGB(254,194,77);
+	padding-top: 1em;
 }
 
 .collapse.navbar-collapse{

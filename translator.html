@@ -492,21 +492,18 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <div id="Languagepairs" class="tab-pane fade">
 <div id="LanguagePairsAppID" ng-controller="LanguagePairsAppCtrl as ctrl" >
 
-<div id="pairsTable"></div>
 <div class="glifico-info glifico-info-form-language"">
   Use this form to create a new language pair. Please note that pairs are direction sensitive. For instance, translating from English into
   French is not the same as to translate from French into English. In these cases, you have to add two different pairs. You can also choose which field of expertise the price (or rate) is for. You can also choose a general translation field.
 <form id="LanguagePairForm" name="languagePairsForm" action="/" method="post">
 <div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-6">
 <label>Language From</label>
 <select placeholder="Select language" ng-model="model.IdLanguageFrom" md-on-open="loadLanguages();" required>
 <option ng-repeat="element in Languages" value="{{element.Id}}">{{element.Language}}</option>
 </select>
 </div>
-</div>
-<div class="input-group">
-<div class="form-group col-md-10">
+<div class="form-group col-md-6">
 <label>Language To</label>
 <select placeholder="Select language" ng-model="model.IdLanguageTo" md-on-open="loadLanguages();" required>
 <option ng-repeat="element in Languages" value="{{element.Id}}">{{element.Language}}</option>
@@ -514,11 +511,18 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 </div>
 <div class="input-group">
+<div class="form-group col-md-10">
+<input type="checkbox" id="reverseLang" name="reverse">
+  <label for="reverse">I am able to translate both ways!</label>
+</div>
+</div>
+<div class="input-group">
 <div class="form-group col-md-5">
-<label>Field</label>
-<select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required>
+<label>Fields</label>
+<select placeholder="Select Field" ng-model="model.IdParametro_Field" md-on-open="loadFields();" required multiple>
 <option ng-repeat="element in Fields" value="{{element.Id}}">{{element.Field}}</option>
 </select>
+<span class="glifico-input-descr">Select more than one with control-click (Windows) or command-click (Mac)</span>
 </div>
 <!-- <div class="form-group col-md-5">
 <label>Service</label>
@@ -537,12 +541,12 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 <div class="input-group">
 <div class="form-group col-md-8">
-<label>Price Per Character</label>
-<input type="number" ng-model="model.PricePerCharacter" required><br>
+<label>Price Per Word</label>
+<input type="number" ng-model="model.PricePerWord" ng-onchange="" required><br>
 <span class="glifico-input-descr">Use dot (.) for decimals</span>
 <div>
-Price per <b>word</b> (word = 6 characters) {{model.PricePerCharacter * 6 | number:5}}<br>
-Price per <b>page</b> (page = 1500 characters) {{model.PricePerCharacter * 1500 | number:5}}
+Price per <b>character</b> (word = 6 characters) {{model.PricePerWord / 6. | number:2}}<br>
+Price per <b>page</b> (page = 1500 characters) {{model.PricePerWord / 6. * 1500 | number:0}}
 </div>
 </div>
 </div>
@@ -553,6 +557,8 @@ Price per <b>page</b> (page = 1500 characters) {{model.PricePerCharacter * 1500 
 </div>
 </form>
 </div>
+<br>
+<div id="pairsTable"></div>
 
 
 <!-- Language Modal -->
