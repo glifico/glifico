@@ -384,8 +384,38 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings<2">You're a newbie   <font color="red"><i class="fa fa-user"></i></font></span>
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=2&&ctrl.nratings<5">You're a rater   <font color="gold"><i class="fa fa-star"></i></font></span>
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=5">You're an expert rater   <font color="gold"><i class="fa fa-trophy"></i></font></span>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accountstatusmodal">
+  What does this mean? <font color="red"><i class="fa fa-user"></i></font><font color="gold"><i class="fa fa-star"></i></font><font color="gold"><i class="fa fa-trophy"></i></font>
+</button>
+
+<div class="modal fade" id="accountstatusmodal" tabindex="-1" role="dialog" aria-labelledby="accountstatusmodalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h5 class="modal-title" id="accountstatusmodalLabel">Your status  <font color="red"><i class="fa fa-user"></i></font><font color="gold"><i class="fa fa-star"></i></font><font color="gold"><i class="fa fa-trophy"></i></font></h5>
+      </div>
+      <div class="modal-body">
+      <h2>Why improve?</h2>
+      Translators with an higher score have more chances to be selected by agencies!
+      
+      <h2>How to improve your <b>score</b>?</h2>
+      <p>Do some <a href="skillTest.html">Aptitude Tests</a></p>
+      <p>Do some <a href="socialTrad.html">Rating Tests</a></p>
+      <p>Do some <a href="socialRating.html">social rating</a></p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
+</div>
+<br>
 <form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate>
 <div class="input-group">
 <div class="form-group col-md-5">
