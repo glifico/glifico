@@ -389,10 +389,13 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
   What does this mean? <font color="red"><i class="fa fa-user"></i></font><font color="gold"><i class="fa fa-star"></i></font><font color="gold"><i class="fa fa-trophy"></i></font>
 </button>
 
+<link rel="stylesheet" href="flashingbutton.css">
+
 <div id="congratulations" class="glifico-info" style="padding-top:2em;">
-You Have done {{ctrl.nratings}} tests here on Glifico, now spread the world!
+You have done {{ctrl.nratings}} tests here on Glifico <button class="btn btn-primary flash-button" data-toggle="modal" data-target="#accountstatusmodal">Do some more tests!</button>
 <br>
 <br>
+Spread the world!<br>
 <font size="15px">
 <a href="https://twitter.com/home?status=I%20made%20a%20rating%20on%20Glifico!%0A%23glifico" target="_Blank">
 <i class="fab fa-twitter"></i>
@@ -419,9 +422,9 @@ You Have done {{ctrl.nratings}} tests here on Glifico, now spread the world!
       Translators with an higher score have more chances to be selected by agencies!
       
       <h2>How to improve your <b>score</b>?</h2>
-      <p>Do some <a href="skillTest.html">Aptitude Tests</a></p>
-      <p>Do some <a href="socialTrad.html">Rating Tests</a></p>
-      <p>Do some <a href="socialRating.html">Social Rating</a></p>
+      <p>Want a multiple choiche test: do <a href="skillTest.html">Aptitude Tests</a></p>
+      <p>Want to translate: <a href="socialTrad.html">Rating Tests</a>!</p>
+      <p>Feel social: go to <a href="socialRating.html">Social Rating</a></p>
         
       </div>
       <div class="modal-footer">

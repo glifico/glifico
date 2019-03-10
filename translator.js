@@ -183,6 +183,20 @@ angular.module('TranslatorAppCtrl',[]).controller('PersonalAppCtrl',function($sc
 
 		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
 		req.send();
+		
+		if(Notification.permission=="granted"){
+			var options = {
+					body: "Improve your scores, do some test!",
+					icon: "favicon288.ico",
+					data: "skillTest.html"
+			}
+			var not = new Notification("Glifico",options);
+			setTimeout(not.close.bind(not), 60000); 
+			not.onclick = function(e) {
+			    window.location.href = e.target.data;
+			}
+		}
+		
 	}
 
 });
