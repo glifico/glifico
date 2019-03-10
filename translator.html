@@ -372,14 +372,14 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <div style="width:90%;display: table;margin: 0 auto;">
 
 <ul class="nav nav-tabs">
-	<li class="active"><a data-toggle="tab" href="#Data">Your Personal Data</a></li>
+	<li class="active"><a data-toggle="tab" href="#Profile">Translator</a></li>
+	<li><a data-toggle="tab" href="#Data">Your Personal Data</a></li>
 	<li><a data-toggle="tab" href="#Languagepairs">Your Languages</a></li>
 	<li><a data-toggle="tab" href="#Deleteaccount" >Delete account</a></li>
 </ul>
 
 <div class="tab-content">
 <div id="Data" class="tab-pane fade in active">
-<div id="PersonalAppID" data-ng-controller="PersonalAppCtrl as ctrl">
 <div id="accountstatus" style="font-size:19px;padding-top:1em;padding-bottom:2em;">
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings<2">You're a newbie   <font color="red"><i class="fa fa-user"></i></font></span>
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=2&&ctrl.nratings<5">You're a rater   <font color="gold"><i class="fa fa-star"></i></font></span>
@@ -404,7 +404,7 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
       <h2>How to improve your <b>score</b>?</h2>
       <p>Do some <a href="skillTest.html">Aptitude Tests</a></p>
       <p>Do some <a href="socialTrad.html">Rating Tests</a></p>
-      <p>Do some <a href="socialRating.html">social rating</a></p>
+      <p>Do some <a href="socialRating.html">Social Rating</a></p>
         
       </div>
       <div class="modal-footer">
@@ -415,6 +415,13 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </div>
 
 </div>
+</div>
+</div>
+
+<div class="tab-content">
+<div id="Data" class="tab-pane fade">
+<div id="PersonalAppID" data-ng-controller="PersonalAppCtrl as ctrl">
+
 <br>
 <form class="needs-validation" name="infoTradForm" action="/" method="post" novalidate>
 <div class="input-group">

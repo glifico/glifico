@@ -293,11 +293,10 @@ md-input-container{
   background-color: #fa3e3e;
   border-radius: 2px;
   color: white;
- 
   padding: 1px 3px;
-  font-size: 10px;
-  
+  font-size: 15px;
   position: absolute; /* Position the badge within the relatively positioned button */
   top: 0;
   right: 0;
+  font-weight:bold;
 }
