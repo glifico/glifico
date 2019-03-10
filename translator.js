@@ -160,6 +160,33 @@ function refresh(){
 
 /*-----------------------APP--------------------*/
 
+
+angular.module('TranslatorAppCtrl',[]).controller('PersonalAppCtrl',function($scope) {
+
+	var ctrl = this;
+
+	ctrl.$onInit = function(){
+		var req=createXHTMLHttpRequest();
+
+		req.onreadystatechange = function(){
+			if (req.status == 200&req.readyState==4){
+				$scope.$apply(function () {
+					var ret = convertJSON(req.responseText);
+					ctrl.nratings=ret[0].nratings;
+				});
+				return (true);
+			}else{
+				mostraDialogTimed('errorPanel');
+				return(false);
+			}
+		}
+
+		req.open("GET", 'getTranslatorData.php?user='+getUsername()+'&token='+getToken(), true);
+		req.send();
+	}
+
+});
+
 angular.module('PersonalAppCtrl',[]).controller('PersonalAppCtrl',function($scope) {
 
 	var ctrl = this;
@@ -484,6 +511,7 @@ angular.module('LanguagePairsAppCtrl',[]).controller('LanguagePairsAppCtrl',func
 
 angular.element(document).ready(function() {
 	angular.bootstrap(document.getElementById('PersonalAppID'), ['PersonalAppCtrl']);
+	angular.bootstrap(document.getElementById('accountstatus'), ['TranslatorAppCtrl']);
 	angular.bootstrap(document.getElementById('LanguagePairsAppID'), ['LanguagePairsAppCtrl']);
 
 });

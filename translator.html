@@ -379,14 +379,31 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 </ul>
 
 <div class="tab-content">
-<div id="Data" class="tab-pane fade in active">
-<div id="accountstatus" style="font-size:19px;padding-top:1em;padding-bottom:2em;">
+<div id="Profile" class="tab-pane fade in active">
+
+<div id="accountstatus" style="font-size:19px;padding-top:1em;padding-bottom:2em;" data-ng-controller="PersonalAppCtrl as ctrl">
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings<2">You're a newbie   <font color="red"><i class="fa fa-user"></i></font></span>
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=2&&ctrl.nratings<5">You're a rater   <font color="gold"><i class="fa fa-star"></i></font></span>
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=5">You're an expert rater   <font color="gold"><i class="fa fa-trophy"></i></font></span>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accountstatusmodal">
   What does this mean? <font color="red"><i class="fa fa-user"></i></font><font color="gold"><i class="fa fa-star"></i></font><font color="gold"><i class="fa fa-trophy"></i></font>
 </button>
+
+<div id="congratulations" class="glifico-info" style="padding-top:2em;">
+You Have done {{ctrl.nratings}} tests here on Glifico, now spread the world!
+<br>
+<br>
+<font size="15px">
+<a href="https://twitter.com/home?status=I%20made%20a%20rating%20on%20Glifico!%0A%23glifico" target="_Blank">
+<i class="fab fa-twitter"></i>
+</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20just%20made%20a%20rating%20on%20Glifico&source=" target="_Blank">
+<i class="fab fa-linkedin"></i>
+</a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=www.glifico.com" target="_Blank"><i class="fab fa-facebook"></i></a>
+</font>
+<br>
+</div>
 
 <div class="modal fade" id="accountstatusmodal" tabindex="-1" role="dialog" aria-labelledby="accountstatusmodalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
