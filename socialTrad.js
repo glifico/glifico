@@ -35,10 +35,10 @@ getSocial=function(){
 	//html+='<a href="https://twitter.com/home?status=I%20rate%20myself%20on%20Glifico!%0A%23glifico">';
 	//html+='<i class="fa fa-twitter"></i>';
 	//html+='</a>';
-	html+=' <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20rate%20myself%20on%20Glifico!&source=">';
+	html+=' <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.glifico.com&title=Glifico&summary=I%20rate%20myself%20on%20Glifico!&source=" target="_Blank">';
 	html+='<i class="fab fa-linkedin"></i>';
 	html+='</a>';
-	html+='          <a href="https://www.facebook.com/sharer/sharer.php?u=www.glifico.com">';
+	html+='          <a href="https://www.facebook.com/sharer/sharer.php?u=www.glifico.com" target="_Blank">';
 	html+='<i class="fab fa-facebook"></i>';
 	html+='</a>';
 	html+='</font>';
