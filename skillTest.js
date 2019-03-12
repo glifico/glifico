@@ -36,7 +36,7 @@ getStars=function(price){
 
 getSocial=function(){
 	var html='';
-	html+='<font size="5px">';
+	html+='<font size="6px">';
 	//html+='<a href="https://twitter.com/home?status=I%20rate%20myself%20on%20Glifico!%0A%23glifico">';
 	//html+='<i class="fa fa-twitter"></i>';
 	//html+='</a>';
@@ -130,6 +130,8 @@ function result(){
 		html += '			class="glifico-th-5 col-md-3">Rating</th>';
 		html += '		<th';
 		html += '			class="glifico-th-5 col-md-2">Share with friends</th>';
+		html += '		<th';
+		html += '			class="glifico-th-5 col-md-2">Get your badge</th>';
 		html += '	</tr>';
 		html += '</thead>';
 		html += '<tbody>';
@@ -161,6 +163,9 @@ function result(){
 						+ getStars(data[i].TotTest)
 						+ '</b></font>' + '</td>'
 						html+='<td class="glifico-td-5 col-md-2">'+getSocial()+'</td>'
+						html+='<td class="glifico-td-5 col-md-2">'
+						html+='<button class="btn btn-primary" onclick="createpdf(\''+data[i].Translator.nome+'\',\''+data[i].Translator.cognome+'\',\''+data[i].Language+'\',\''+data[i].TotTest+'\')"><font size="3px"><i class="fas fa-certificate"></i></font></button>'
+						html+='</td>'
 				}
 
 			html += '</tr>'
