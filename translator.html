@@ -46,6 +46,7 @@
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/MegaNavbar.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/skins/navbar-inverse.css">
 <link rel="stylesheet" type="text/css" href="MegaNavbar/assets/css/animation/animation.css">
+<link href="intro.js-2.9.3/introjs.css" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="favicon288.ico">
 <link rel="apple-touch-icon" href="favicon288.ico">
 
@@ -81,17 +82,17 @@
 <li id="li-pay" style="display:none;"><a href="pendingPayments.html">Jobs <i class="fa fa-file"></i></a></li>
 <li id="li-search" style="display:none;"><a href="search.html">Search <i class="fa fa-search"></i></a></li>
 
-<li id="li-tests" style="display:none;" class="dropdown">
+<li id="li-tests" style="display:none;" class="dropdown" >
 <a aria-expanded="false" aria-haspopup="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
-<span class="reverse">Skill tests<span class="button__badge">2</span></span>
+<span class="reverse" data-intro="Do the tests" data-step="4">Skill tests<span class="button__badge">2</span></span>
 </a>
 
 <ul class="dropdown-menu">
- 	<li id="li-skill" style="display:none;"><a href="skillTest.html">Aptitude <i class="fa fa-globe"></i></a></li>
- 	<li id="li-trad" style="display:none;"><a href="socialTrad.html">Translations <i class="fa fa-language"></i></a></li>
+ 	<li id="li-skill" style="display:none;" ><a href="skillTest.html" >Aptitude <i class="fa fa-globe"></i></a></li>
+ 	<li id="li-trad" style="display:none;" ><a href="socialTrad.html" >Translations <i class="fa fa-language"></i></a></li>
 </ul>
 </li>
-<li id="li-rating" style="display:none;"><a href="socialRating.html">Rate it! <i class="fa fa-star"></i><span class="button__badge">1</span></a></li>
+<li id="li-rating" style="display:none;"><a href="socialRating.html" data-intro="Be social" data-step="5">Rate it! <i class="fa fa-star"></i><span class="button__badge">1</span></a></li>
 
 <li class="dropdown-grid" style="position: static;">
 <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" id="a6" onClick="modalLogin()">
@@ -373,8 +374,8 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 
 <ul class="nav nav-tabs">
 	<li class="active"><a data-toggle="tab" href="#Profile">Translator</a></li>
-	<li><a data-toggle="tab" href="#Data">Your Personal Data</a></li>
-	<li><a data-toggle="tab" href="#Languagepairs">Your Languages</a></li>
+	<li><a data-toggle="tab" href="#Data"  data-intro="Fill your information" data-step="2">Your Personal Data</a></li>
+	<li><a data-toggle="tab" href="#Languagepairs" data-intro="Add here all languages you know" data-step="3">Your Languages</a></li>
 	<li><a data-toggle="tab" href="#Deleteaccount" >Delete account</a></li>
 </ul>
 
@@ -382,16 +383,18 @@ $("#welcomeTr").html("Welcome, <b>"+getUsername()+"!</b>");
 <div id="Profile" class="tab-pane fade in active">
 
 <div id="accountstatus" style="font-size:19px;padding-top:1em;padding-bottom:2em;" data-ng-controller="PersonalAppCtrl as ctrl">
+<div data-intro="Your current status on Glifico" data-step="1">
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings<2">You're a newbie   <font color="red"><i class="fa fa-user"></i></font></span>
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=2&&ctrl.nratings<5">You're a rater   <font color="gold"><i class="fa fa-star"></i></font></span>
 <span style="float:left;padding-left:1em;" data-ng-show="ctrl.nratings>=5">You're an expert rater   <font color="gold"><i class="fa fa-trophy"></i></font></span>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accountstatusmodal">
   What does this mean? <font color="red"><i class="fa fa-user"></i></font><font color="gold"><i class="fa fa-star"></i></font><font color="gold"><i class="fa fa-trophy"></i></font>
 </button>
+</div>
 
 <link rel="stylesheet" href="flashingbutton.css">
 
-<div id="congratulations" class="glifico-info" style="padding-top:2em;">
+<div id="congratulations" class="glifico-info" style="padding-top:2em;" >
 You have done {{ctrl.nratings}} tests here on Glifico <button class="btn btn-primary flash-button" data-toggle="modal" data-target="#accountstatusmodal">Do some more tests!</button>
 <br>
 <br>
@@ -710,6 +713,8 @@ shouldBeTranslator()
  <glificofooter></glificofooter>
  </div>
 
+
+<script src="intro.js-2.9.3/intro.js"></script>
 
 </body>
 

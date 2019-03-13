@@ -55,6 +55,8 @@ function onLoad(){
 		hideAgencyStuff();
 	}
 
+	introJs().start();
+	
 	if(Notification.permission!="denied") Notification.requestPermission();
 }
 
