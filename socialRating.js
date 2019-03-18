@@ -75,13 +75,6 @@ function init() {
 
 }
 
-function getTesto() {
-	$(document).ready(
-			function() {
-				showDomanda();
-			});
-}
-
 function tryOut() {
 
 	started = false;
@@ -103,7 +96,6 @@ function tryOut() {
 }
 
 function startTest() {
-	getTesto();
 	if (!started) {
 		started = true;
 		myTimer = setInterval(mioTimer, 1000)
@@ -137,8 +129,6 @@ function showDomanda() {
 				alert("Nothing to evaluate yet for this language, sorry..");
 			}
 		}else{
-			$("#alertError").html("Nothing to evaluate yet, try later");
-			$("#alertError").fadeIn().delay(10000).fadeOut();
 			return(false);
 		}
 	}
@@ -162,13 +152,13 @@ function showModal(data){
 	html+="<br><h4>You're asked to evaluate grammar and style</h4>";
 
 	html+='</div>';
-	html+='Grammar <b>mark</b>'
+	html+='<b>Grammar</b> mark'
 		html+='<div class="rating">';
 	for (var i = 5; i > 0; i--) {
 		html+='<span id="grammar'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(0,'+i+')"></i>   </span>';
 	}
 	html+='</div>';
-	html+='Style <b>mark</b>'
+	html+='<b>Style</b> mark'
 		html+='<div class="rating">';
 	for (var i = 5; i > 0; i--) {
 		html+='<span id="style'+ i +'" class="money"><i  class="fa fa-star fa-2x fa-fw" aria-hidden="true" data-rating="'+i+'" onclick="setRating(1,'+i+')"></i>   </span>';

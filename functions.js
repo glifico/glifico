@@ -54,8 +54,6 @@ function onLoad(){
 		hideTranslatorStuff();
 		hideAgencyStuff();
 	}
-
-	introJs().start();
 	
 	if(Notification.permission!="denied") Notification.requestPermission();
 }

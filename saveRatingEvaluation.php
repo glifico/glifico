@@ -39,12 +39,14 @@ $oldgrammar = $row['grammarmark'];
 $oldstyle = $row['stylemark'];
 
 if ($oldgrammar != null & $oldstyle != null) {
-    $grammarmark = ($grammarmark + $oldgrammar) / 2;
-    $stylemark = ($oldstyle + $stylemark) / 2;
+    $grammarmark = round(($grammarmark + $oldgrammar) / 2.);
+    $stylemark = round(($oldstyle + $stylemark) / 2.);
 }
 
-$query = "INSERT INTO languagerating (grammarmark, stylemark) VALUES('$grammarmark','$stylemark') where id='$idrating';";
+$query = "UPDATE languagerating SET grammarmark = '$grammarmark' , stylemark = '$stylemark' where id='$idrating';";
 $result = $db->query($query);
+
+error_log("saving rating data: ".$query);
 
 
 $tot = ($grammarmark + $stylemark) / 2;
